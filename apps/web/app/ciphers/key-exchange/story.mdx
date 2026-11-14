@@ -1,7 +1,10 @@
 {/*
   Follows the cipher page template in docs/STANDARDS.md.
-  Facts come from The Code Book, chapter 5 (chapter 6 of the full edition, which
-  also has the worked exchange with Y = 7 and P = 11). The wording is ours.
+  The story comes from The Code Book, chapter 5. The abridged edition explains
+  one-way functions and 3^x (mod 7), but leaves out the exchange itself. The
+  worked exchange (Y = 7, P = 11, Alice sends 2, Bob sends 4) is from the full
+  edition, chapter 6. The date of publication is from the paper in Further
+  reading. The wording is ours.
 */}
 
 <Standfirst>
@@ -62,7 +65,7 @@ In normal arithmetic, the powers of 3 climb steadily: 3, 9, 27, 81. In mod 7 the
 
 ### The exchange
 
-Alice and Bob agree on two numbers in public, Y and P. The book uses Y = 7 and P = 11. Their one-way function is 7<sup>x</sup> (mod 11).
+Alice and Bob agree on two numbers in public, Y and P. The full edition of the book uses Y = 7 and P = 11. Their one-way function is 7<sup>x</sup> (mod 11).
 
 Alice picks a secret number, 3. She works out 7<sup>3</sup> (mod 11), which is 2, and sends the 2 to Bob. Bob picks 6, works out 7<sup>6</sup> (mod 11), which is 4, and sends the 4 to Alice.
 
@@ -86,7 +89,7 @@ Hellman's colleagues told him he was crazy. America's National Security Agency h
 
 For two years almost every idea failed. Hellman had a saying for it: "God rewards fools." Only a fool, he said, stays excited after ninety-nine flops.
 
-At last one idea paid off: the exchange you have just run. Diffie and Hellman showed it to the world in June 1976. For two thousand years everyone had believed that keys must be delivered. They were wrong.
+At last one idea paid off: the exchange you have just run. Diffie and Hellman published it in November 1976. For two thousand years everyone had believed that keys must be delivered. They were wrong.
 
 <DigDeeper title="The secret first discovery">
   In 1974 Malcolm Williamson, at Britain's secret GCHQ, found the same exchange. He was trying to prove that a friend's idea was wrong. His work was secret, so he said nothing while the Americans became famous. You can read that story on the [RSA page](/ciphers/rsa).
@@ -138,6 +141,6 @@ He could not find the mathematics to build it. Three men on the other side of Am
 
 ## Go deeper
 
-- Simon Singh, *The Code Book*, chapter 5.
-- Whitfield Diffie and Martin Hellman, "New Directions in Cryptography", *IEEE Transactions on Information Theory*, November 1976. The paper that announced the idea.
+- Simon Singh, *The Code Book*, chapter 5. The full edition works through the exchange with numbers, in its chapter 6.
+- Whitfield Diffie and Martin Hellman, "New Directions in Cryptography", *IEEE Transactions on Information Theory*, November 1976. The paper that announced the exchange.
 - Steven Levy, *Crypto* (2001). The people behind public-key cryptography.

@@ -13,14 +13,45 @@ import {
 const germanFor = (group: number) => CODEBOOK.find((entry) => entry.group === group)?.german;
 
 describe("Zimmermann telegram code", () => {
-  // Source: U.S. National Archives, "Zimmermann Telegram: Decode Worksheet" (Record Group 59).
-  // The worksheet shows the telegram's groups with the German pencilled in by the codebreakers:
+  // Source: U.S. National Archives, Zimmermann telegram decode worksheet (Record Group 59, NAID 302024).
+  // The worksheet shows the telegram's groups with the German written beside them:
   // 17214 "ganz geheim"; 67893 "Mexico"; then "4458 gemeinsam, 5905 Krieg, 17166 führen",
   // which the telegram's English translation gives as "make war together"; and 97556 "Zimmermann".
   it("reads real groups of the telegram", () => {
     expect([4458, 5905, 17166].map(germanFor)).toEqual(["gemeinsam", "Krieg", "führen"]);
     expect(decode([4458, 5905, 17166])).toEqual(["TOGETHER", "WAR", "MAKE"]);
     expect(decode([17214, 67893, 97556])).toEqual(["MOST SECRET", "MEXICO", "ZIMMERMANN"]);
+  });
+
+  // The same worksheet, page by page: every group below is written there beside this German word.
+  it("matches the worksheet for all 21 real groups", () => {
+    const worksheet: [number, string][] = [
+      [17214, "ganz geheim"],
+      [18222, "(full stop)"],
+      [21560, "wir"],
+      [13605, "Februar"],
+      [98092, "U-Boot"],
+      [5905, "Krieg"],
+      [10392, "beginnen"],
+      [17504, "neutral"],
+      [67893, "Mexico"],
+      [12137, "Bündnis"],
+      [4458, "gemeinsam"],
+      [17166, "führen"],
+      [6929, "und"],
+      [14218, "in"],
+      [36477, "Texas"],
+      [22464, "Präsident"],
+      [20420, "mit"],
+      [52262, "Japan"],
+      [76036, "England"],
+      [17142, "Frieden"],
+      [97556, "Zimmermann"],
+    ];
+    const real = CODEBOOK.filter((entry) => !entry.madeUp);
+    expect(real).toHaveLength(21);
+    expect(CODEBOOK.filter((entry) => entry.madeUp)).toHaveLength(4);
+    for (const [group, german] of worksheet) expect(germanFor(group)).toBe(german);
   });
 
   it("gives every word one group and every group one word", () => {

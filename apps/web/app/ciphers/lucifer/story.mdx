@@ -1,7 +1,8 @@
 {/*
   Follows the cipher page template in docs/STANDARDS.md.
   Lucifer is only in the full edition of The Code Book (chapter 6). Dates and
-  numbers were checked against the sources in "Further reading". The wording is ours.
+  numbers were checked against the book and the sources in "Further reading".
+  The wording is ours.
   The simulator is a toy Feistel network, not real DES.
 */}
 
@@ -41,7 +42,7 @@ The simulator has scrambled the letters `HI`. Each row shows the message after o
 
 A computer cannot scramble letters. It scrambles numbers, written as ones and zeros called **bits**. The page on [binary](/ciphers/binary) shows how each letter gets its own pattern. `H` is `01001000` and `I` is `01001001`.
 
-A cipher like Lucifer chops the message into **blocks** of a fixed size and scrambles one block at a time. Real Lucifer blocks were 64 bits long. Ours are 16 bits, which is two letters, so that you can see every bit.
+A cipher like Lucifer chops the message into **blocks** of a fixed size and scrambles one block at a time. The version that became the standard used blocks of 64 bits. Ours are 16 bits, which is two letters, so that you can see every bit.
 
 The key is a number too. Here it is one letter, which makes 8 bits.
 
@@ -89,10 +90,10 @@ On 15 May 1973, America's National Bureau of Standards asked for a cipher that t
 
 The method would be public. All the secrecy would sit in the key. So the size of the key mattered a great deal, and here the National Security Agency, America's codebreakers, stepped in. A Senate committee later found that the NSA had convinced IBM a shorter key was enough.
 
-The key was set at 56 bits. That gives more than 70,000,000,000,000,000 keys. On 23 November 1976 this version of Lucifer was adopted as the **Data Encryption Standard**, or DES. Businesses could at last send secrets to each other.
+Feistel's strongest Lucifer had a key of 128 bits. The standard got a key of 56 bits. That still gives more than 70,000,000,000,000,000 keys. On 23 November 1976 this version of Lucifer was approved as the **Data Encryption Standard**, or DES. It was published on 15 January 1977. Businesses could at last send secrets to each other.
 
 <DigDeeper title="Why would the NSA want a shorter key?">
-  Many people suspected a simple reason. With 56 bits, no business could afford to try every key. But an agency with the world's biggest computers perhaps could. The NSA has always denied weakening DES, and it did help IBM make the scrambling tables stronger.
+  Many people suspected a simple reason. With 56 bits, no business could afford to try every key. But an agency with the world's biggest computers perhaps could. The Senate committee found that the NSA had not tampered with the design, and that it had helped to make the scrambling tables stronger.
 </DigDeeper>
 
 <DigDeeper title="How real DES differs from this toy">
@@ -105,7 +106,7 @@ The key was set at 56 bits. That gives more than 70,000,000,000,000,000 keys. On
 
 Nobody found an easy trick for undoing the rounds. The weak point was the one people had argued about in 1976: the number of keys. A cipher with a public method is only as safe as its key is long.
 
-Computers kept getting faster. In July 1998 a group called the Electronic Frontier Foundation built a machine named Deep Crack for about $250,000. It tried key after key and found a DES key in 56 hours. In 2001 a new standard with much longer keys was chosen to replace DES.
+Computers kept getting faster. In July 1998 a group called the Electronic Frontier Foundation built a machine named Deep Crack for about $250,000. It tried key after key and found a DES key in 56 hours. In 2001 a new standard with much longer keys was published to replace DES. It is called AES.
 
 Our toy is far weaker. If its key is a capital letter, there are only 26 keys.
 
@@ -143,7 +144,8 @@ Could two strangers agree on a secret key while an enemy listens to every word? 
 
 ## Go deeper
 
-- Simon Singh, *The Code Book* (full edition), chapter 6.
-- National Institute of Standards and Technology, *FIPS PUB 46-3: Data Encryption Standard*. The official description, with the S-box tables.
-- Wikipedia, "Data Encryption Standard" and "Horst Feistel". The dates on this page were checked against these.
-- Electronic Frontier Foundation, *Cracking DES* (1998). How Deep Crack was built.
+- Simon Singh, *The Code Book* (full edition, 1999), chapter 6, "Alice and Bob Go Public".
+- National Institute of Standards and Technology, [FIPS PUB 46-3: Data Encryption Standard (DES)](https://csrc.nist.gov/pubs/fips/46-3/final), 1999. The official description, with the S-box tables. The first version, [FIPS PUB 46](https://csrc.nist.gov/pubs/fips/46/final), is dated 15 January 1977.
+- William E. Burr, ["Data Encryption Standard"](https://nvlpubs.nist.gov/nistpubs/sp958-lide/html/250-253.html), in NIST Special Publication 958 (2001). A short history by the standards body itself.
+- Wikipedia, [Data Encryption Standard](https://en.wikipedia.org/wiki/Data_Encryption_Standard), [Lucifer (cipher)](https://en.wikipedia.org/wiki/Lucifer_(cipher)) and [Horst Feistel](https://en.wikipedia.org/wiki/Horst_Feistel). Our check for the dates, the key sizes and the Senate committee's findings.
+- Electronic Frontier Foundation, *Cracking DES: Secrets of Encryption Research, Wiretap Politics, and Chip Design* (O'Reilly, 1998). How Deep Crack was built.

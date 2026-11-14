@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { LETTER_WORDS, decode, decodeHeard, encode, lookUp, speak, spell } from "../src/navajo/index.ts";
+import { LETTER_WORDS, TERM_WORDS, decode, decodeHeard, encode, lookUp, speak, spell } from "../src/navajo/index.ts";
 
 describe("Navajo code", () => {
   // Source: The Code Book, chapter 4. "Pacific" is spelled pig, ant, cat, ice, fox, ice, cat.
@@ -30,6 +30,15 @@ describe("Navajo code", () => {
     const groups = encode("Submarine at Guam");
     expect(groups[0]).toEqual([{ navajo: "Besh-lo", meaning: "iron fish", stands: "SUBMARINE", kind: "term" }]);
     expect(groups.map((group) => group.length)).toEqual([1, 2, 4]);
+  });
+
+  // Source: US Navy, Navajo Code Talkers' Dictionary (revised 15 June 1945):
+  // "FIGHTER PLANE, DA-HE-TIH-HI, HUMMING BIRD" and "OBS. PLAN[E], NE-AS-JAH, OWL".
+  // The Code Book calls the fighter plane an owl. We follow the dictionary.
+  it("follows the Navy dictionary where the book differs", () => {
+    expect(lookUp("Da-he-tih-hi")).toMatchObject({ meaning: "hummingbird", stands: "FIGHTER PLANE" });
+    expect(lookUp("Ne-as-jah")).toMatchObject({ meaning: "owl", stands: "O", kind: "letter" });
+    expect(TERM_WORDS).toHaveLength(14);
   });
 
   it("finds terms of two words, and plurals", () => {

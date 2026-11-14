@@ -18,9 +18,13 @@ export interface Entry {
 
 /**
  * A small codebook. Every group with a German word is a real group of the
- * Zimmermann telegram, with the reading pencilled beside it by the British codebreakers.
- * Source: U.S. National Archives, "Zimmermann Telegram: Decode Worksheet"
- * (Record Group 59; docsteach.org/documents/document/zimmermann-telegram-decode-worksheet).
+ * Zimmermann telegram as sent on from Washington to Mexico, with the German
+ * reading written beside it on the decode worksheet. The worksheet was made in
+ * London by Edward Bell of the American embassy, working with the Admiralty.
+ * Source: U.S. National Archives, Record Group 59, National Archives Identifier 302024,
+ * "Letter from Ambassador Walter Page to the Secretary of State" (the decode worksheet;
+ * docsteach.org/documents/document/zimmermann-telegram-decode-worksheet).
+ * All 21 pairs were checked against the scanned pages of that worksheet.
  * The four groups marked `madeUp` are ours, added so that more sentences can be built.
  */
 export const CODEBOOK: Entry[] = [
@@ -43,6 +47,7 @@ export const CODEBOOK: Entry[] = [
   { word: "AND", german: "und", group: 6929 },
   { word: "WITH", german: "mit", group: 20420 },
   { word: "IN", german: "in", group: 14218 },
+  // The worksheet writes "Stop" for 18222. The telegram used several other groups for a full stop too.
   { word: "STOP", german: "(full stop)", group: 18222 },
   { word: "ZIMMERMANN", german: "Zimmermann", group: 97556 },
   { word: "ATTACK", group: 8813, madeUp: true },

@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import { buildSquare, cipherPairs, decipher, digraphs, encipher, trace } from "../src/playfair/index.ts";
 
 describe("Playfair cipher", () => {
-  // Source: Simon Singh, The Code Book (full edition), the Playfair appendix, and his own
-  // site (simonsingh.com, The Black Chamber, "Playfair Cipher"): keyword CHARLES.
+  // Source: Simon Singh, The Code Book (full edition), Appendix E, and his own
+  // site (simonsingh.net, The Black Chamber, "Playfair Cipher"): keyword CHARLES.
   it("builds the book's square from the keyword CHARLES", () => {
     expect(buildSquare("charles")).toBe("CHARL" + "ESBDF" + "GIKMN" + "OPQTU" + "VWXYZ");
   });

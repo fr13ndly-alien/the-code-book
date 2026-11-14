@@ -8,6 +8,6 @@ export const meta: CipherMeta = {
   order: 1,
   hook: "Two signals, short and long, carried the world's news down a wire. They kept no secrets at all.",
   firstStep: "Press Send and watch the lamp.",
-  source: "The Code Book (full edition)",
+  source: "The Code Book (full edition), chapter 2",
   fullEditionOnly: true,
 };

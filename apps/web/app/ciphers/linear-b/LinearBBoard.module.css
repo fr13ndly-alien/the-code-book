@@ -1,0 +1,79 @@
+.words {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: center;
+  max-width: 100%;
+}
+
+.entry {
+  display: grid;
+  gap: var(--space-1);
+  justify-items: center;
+}
+
+.entry h3 {
+  font-size: var(--text-sm);
+  font-weight: normal;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* A word is a clay-coloured strip of signs, like one line of a tablet. */
+.word {
+  display: flex;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+button.word[aria-pressed="true"] {
+  border-color: var(--color-accent);
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+
+.word[data-verdict="clashes"] .sound {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.sign {
+  display: block;
+  width: var(--tap);
+  padding: var(--space-1);
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  color: inherit;
+}
+
+button.sign[aria-pressed="true"] {
+  background: var(--color-surface-raised);
+  color: var(--color-accent);
+}
+
+.sign[data-bridge="true"] {
+  outline: 2px solid var(--color-lamp);
+  outline-offset: -2px;
+}
+
+.face {
+  display: grid;
+  justify-items: center;
+  font-family: var(--font-cipher);
+}
+
+.sound {
+  min-height: 1.5em;
+  font-size: var(--text-sm);
+  color: var(--color-lamp);
+}
+
+.count {
+  min-height: 1.5em;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}

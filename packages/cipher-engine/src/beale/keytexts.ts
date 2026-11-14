@@ -34,7 +34,11 @@ const DECLARATION_TEXT =
   "usurpations, all having in direct object the establishment of an absolute tyranny over these States. " +
   "To prove this, let facts be submitted to a candid world.";
 
-/** Abraham Lincoln's Gettysburg Address (1863), the "Bliss" copy. */
+/**
+ * Abraham Lincoln's Gettysburg Address (1863), the "Bliss" copy, the last one Lincoln wrote out.
+ * Checked word for word against the Bliss text at Abraham Lincoln Online. Lincoln's dashes are
+ * written as commas here, which does not change the word numbering.
+ */
 const GETTYSBURG_TEXT =
   "Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in " +
   "Liberty, and dedicated to the proposition that all men are created equal. " +
@@ -52,7 +56,10 @@ const GETTYSBURG_TEXT =
   "nation, under God, shall have a new birth of freedom, and that government of the people, by the people, for " +
   "the people, shall not perish from the earth.";
 
-/** The preamble to the Constitution of the United States (1787). */
+/**
+ * The preamble to the Constitution of the United States (1787).
+ * Checked against the US National Archives transcription.
+ */
 const CONSTITUTION_TEXT =
   "We the People of the United States, in Order to form a more perfect Union, establish Justice, insure " +
   "domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings " +

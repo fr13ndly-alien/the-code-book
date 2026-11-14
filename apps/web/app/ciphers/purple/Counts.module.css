@@ -1,0 +1,11 @@
+.chart {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* With the sixes first, the first six bars of the kit's chart stand on a brass line. */
+.chart[data-sixes-first="true"] li:nth-child(-n + 6) {
+  background: var(--color-surface-raised);
+  box-shadow: inset 0 -2px 0 var(--color-accent);
+  color: var(--color-accent);
+}

@@ -53,6 +53,11 @@
   align-items: center;
 }
 
+/* A choice with long labels wraps on a narrow phone. */
+.choice {
+  flex-wrap: wrap;
+}
+
 .stepperRow button,
 .choice button {
   min-width: var(--tap);

@@ -1,0 +1,14 @@
+.whole summary {
+  display: flex;
+  align-items: center;
+  min-height: var(--tap);
+  color: var(--color-accent);
+  cursor: pointer;
+}
+
+.whole p {
+  margin: 0;
+  font-family: var(--font-cipher);
+  color: var(--color-lamp);
+  overflow-wrap: anywhere;
+}

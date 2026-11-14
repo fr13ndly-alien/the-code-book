@@ -21,7 +21,9 @@ export interface CodeWord {
 
 /**
  * The spelling alphabet: letter, English word, Navajo word.
- * Source: The Code Book, Table 8, "The Navajo alphabet code".
+ * Source: The Code Book, Table 8, "The Navajo alphabet code". The spellings are
+ * the book's. The Navy dictionary spells four of them a little differently
+ * (Tkele-cho-g, Klizzie-yazzie, Al-na-as-dzoh, Besh-do-tliz).
  */
 const ALPHABET_TABLE: [string, string, string][] = [
   ["A", "ant", "Wol-la-chee"],
@@ -62,10 +64,16 @@ export const LETTER_WORDS: CodeWord[] = ALPHABET_TABLE.map(([stands, meaning, na
 
 /**
  * A small part of the lexicon of military terms: term, everyday meaning, Navajo word.
- * Submarine and amphibious are printed in The Code Book, chapter 4. All entries
- * follow the US Navy's "Navajo Code Talkers' Dictionary" (revised 15 June 1945,
- * published by the Naval History and Heritage Command), which gives
- * Da-he-tih-hi, the fighter plane, as "humming bird".
+ * Every entry was checked against the US Navy's "Navajo Code Talkers' Dictionary"
+ * (revised 15 June 1945, published by the Naval History and Heritage Command),
+ * and follows it. The dictionary's entry for our BOMBER is "bomber plane".
+ *
+ * The Code Book, chapter 4, prints three of these terms, and differs on two:
+ * - It calls Da-he-tih-hi, the fighter plane, an owl. The dictionary gives
+ *   "humming bird". Owl (Ne-as-jah) is the dictionary's observation plane, and
+ *   the letter O in the book's own Table 8.
+ * - It gives fortifications as "cave dwellings". The dictionary has "cliff dwelling".
+ * Submarine (iron fish, Besh-lo) and amphibious (frog, Chal) agree.
  */
 const LEXICON_TABLE: [string, string, string][] = [
   ["FIGHTER PLANE", "hummingbird", "Da-he-tih-hi"],
@@ -78,7 +86,7 @@ const LEXICON_TABLE: [string, string, string][] = [
   ["SUBMARINE", "iron fish", "Besh-lo"],
   ["AMPHIBIOUS", "frog", "Chal"],
   ["TANK", "tortoise", "Chay-da-gahi"],
-  ["GRENADE", "potato", "Ni-ma-si"],
+  ["GRENADE", "potatoes", "Ni-ma-si"],
   ["BOMB", "eggs", "A-ye-shi"],
   ["FORTIFICATION", "cliff dwelling", "Ah-na-sozi"],
   ["AMERICA", "our mother", "Ne-he-mah"],

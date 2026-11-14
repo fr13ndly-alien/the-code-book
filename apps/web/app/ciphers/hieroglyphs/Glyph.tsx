@@ -11,7 +11,7 @@ const OUTLINES: Record<SignId, string> = {
   loaf: "M5 29a15 15 0 0 1 30 0z",
   lasso: "M13 5c2 9 15 11 15 21a8 8 0 0 1-16 0c0-10 13-12 15-21",
   lion: "M4 32h29M8 32V19a5 5 0 0 1 10 0v4h10a5 5 0 0 1 5 5v4M33 27c4-2 5-9 1-12M12 18h1",
-  rib: "M4 25h24l8-9H12z",
+  plinth: "M4 25h24l8-9H12z",
   reeds: "M11 36V11c0-5 6-6 7-2s-1 13-7 15M25 36V11c0-5 6-6 7-2s-1 13-7 15",
   reed: "M18 36V11c0-5 6-6 7-2s-1 13-7 15",
   cloth: "M15 36V9a4 4 0 0 1 8 0v17",

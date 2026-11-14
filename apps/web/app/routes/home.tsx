@@ -52,8 +52,6 @@ export default function Home() {
 
       <p className={styles.note}>
         Pages marked “Full edition” cover ciphers from the full edition of the book that the abridged edition leaves out.
-        Two ciphers have no page because this edition names them without saying how they work: the Japanese Purple
-        machine, and the Linear B script.
       </p>
     </main>
   );

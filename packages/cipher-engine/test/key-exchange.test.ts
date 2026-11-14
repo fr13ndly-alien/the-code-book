@@ -8,10 +8,10 @@ describe("Diffie-Hellman-Merkle key exchange", () => {
     expect(powerTable({ base: 3, modulus: 7 })).toEqual([3, 2, 6, 4, 5, 1]);
   });
 
-  // Source: The Code Book, full edition, chapter 6, Table 25. Alice and Bob agree
-  // on Y = 7 and P = 11. Alice picks 3 and sends 2; Bob picks 6 and sends 4.
-  // Both arrive at the key 9.
-  it("runs the book's worked exchange", () => {
+  // Source: The Code Book, full edition, chapter 6 (the abridged edition leaves
+  // the exchange out). Alice and Bob agree on Y = 7 and P = 11. Alice picks 3
+  // and sends 2; Bob picks 6 and sends 4. Both arrive at the key 9.
+  it("runs the worked exchange from the full edition of the book", () => {
     const { alice, bob } = exchange({ base: 7, modulus: 11 }, 3, 6);
     expect(alice.sends).toBe(2);
     expect(bob.sends).toBe(4);

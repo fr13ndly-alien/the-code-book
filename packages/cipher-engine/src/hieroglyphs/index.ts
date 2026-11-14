@@ -28,15 +28,21 @@ export interface Sign {
  * The Code Book, Tables 9, 11 and 12 and its account of the Rameses cartouche.
  * The book writes the reeds as "e" (Table 11); Egyptologists now write i or y.
  * The hard c of Cleopatra is written "k" here, as in the Greek spelling Kleopatra.
- * The fox skins are really the two consonants m-s; the book reads them as m.
+ * The fox skins are really the two consonants m-s; the book reads them as m,
+ * as Champollion did at first.
+ * The other sounds are also the book's, rounded to the Greek names. Egyptologists
+ * now write the hand as d, the hill slope as q, the vulture as a throat sound
+ * (aleph), the lasso as w-aleph and the lion as r-w, used for l in Greek names.
  * Names and numbers follow Gardiner's sign list ("Egyptian Grammar", 1927).
+ * Aa15 is in Gardiner's "unclassified" group: nobody is sure what it shows.
+ * "Plinth" (a flat base seen from the side) is the name it usually goes by.
  */
 export const SIGNS = {
   stool: { name: "stool", gardiner: "Q3", sound: "p" },
   loaf: { name: "loaf of bread", gardiner: "X1", sound: "t" },
   lasso: { name: "lasso", gardiner: "V4", sound: "o" },
   lion: { name: "lion", gardiner: "E23", sound: "l" },
-  rib: { name: "rib", gardiner: "Aa15", sound: "m" },
+  plinth: { name: "plinth", gardiner: "Aa15", sound: "m" },
   reeds: { name: "pair of reeds", gardiner: "M17 twice", sound: "e" },
   cloth: { name: "folded cloth", gardiner: "S29", sound: "s" },
   slope: { name: "hill slope", gardiner: "N29", sound: "k" },
@@ -44,7 +50,7 @@ export const SIGNS = {
   vulture: { name: "vulture", gardiner: "G1", sound: "a" },
   hand: { name: "hand", gardiner: "D46", sound: "t" },
   mouth: { name: "mouth", gardiner: "D21", sound: "r" },
-  basket: { name: "basket", gardiner: "V31", sound: "k" },
+  basket: { name: "basket with a handle", gardiner: "V31", sound: "k" },
   water: { name: "ripple of water", gardiner: "N35", sound: "n" },
   bolt: { name: "door bolt", gardiner: "O34", sound: "s" },
   sun: { name: "sun", gardiner: "N5", sound: "ra" },
@@ -75,7 +81,7 @@ export const CARTOUCHES = {
   /** The Code Book, Tables 9 and 11: p t o l m e s, for Ptolemaios. */
   ptolemy: {
     name: "Ptolemy",
-    signs: ["stool", "loaf", "lasso", "lion", "rib", "reeds", "cloth"],
+    signs: ["stool", "loaf", "lasso", "lion", "plinth", "reeds", "cloth"],
     greek: ["p", "t", "o", "l", "m", "e", "s"],
   },
   /** The Code Book, Table 11: c l e o p a t r a, from the Bankes obelisk. */

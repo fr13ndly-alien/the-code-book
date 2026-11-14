@@ -1,0 +1,59 @@
+.switches {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+  max-width: 100%;
+}
+
+.switch {
+  display: grid;
+  gap: var(--space-1);
+  justify-items: center;
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+/* The switches the chosen letter passes through. */
+.switch[data-used="true"] {
+  border-color: var(--color-accent);
+  background: var(--color-surface-raised);
+}
+
+.name,
+.next {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.position {
+  font-family: var(--font-cipher);
+  font-size: var(--text-xl);
+  color: var(--color-text);
+}
+
+/* The 25 contacts of the switch as a row of ticks. The wiper stands on the brass one. */
+.dial {
+  display: flex;
+  align-items: end;
+  gap: 2px;
+  height: var(--space-3);
+}
+
+.dial span {
+  width: 3px;
+  height: var(--space-2);
+  background: var(--color-border);
+}
+
+.dial span[data-now="true"] {
+  height: var(--space-3);
+  background: var(--color-accent);
+}
+
+@media (min-width: 60rem) {
+  .switches {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
