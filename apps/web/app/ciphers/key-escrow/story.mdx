@@ -1,0 +1,146 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 6 (the pages after PGP). The wording is ours.
+  Two facts are not in the book and were checked against the sources in Further reading:
+  the Clipper announcement of April 1993 and Matt Blaze's paper of 1994.
+  The four-letter key and its split are a toy of ours, not the real chip.
+*/}
+
+<Standfirst>
+  A spare copy of every key, cut in two, for the police to borrow.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## A laptop nobody could read
+
+In 1993 a bomb went off under the World Trade Center in New York. One of the men behind it, Ramsey Yousef, kept plans for more attacks on his laptop. He had enciphered them.
+
+The police had long caught criminals by listening to their telephone calls. This is called a **wiretap**. Now anybody could get a cipher that no police force could break. PGP was free.
+
+But the same cipher protected honest people from spies and thieves. So governments asked a hard question. Can you build a lock that keeps everyone out, except a police officer sent by a judge?
+
+<Label>Try it</Label>
+
+## Ask for half a key
+
+Alice has left a copy of her key with two government agencies. Each one holds half. Make a guess first: if the police get one half, how much of her key do they know?
+
+<Try action="lodged" button="Show Alice's lodged key">
+  Set "Warrant from a judge" to Yes. Press "Agency one: release your half". Then read the police desk in the simulator.
+</Try>
+
+<Check question="How much does one half tell the police?">
+  Nothing at all. Half one is four letters picked by chance. Each letter of the key could still be any of the 26. The desk shows keys that all fit it.
+</Check>
+
+<Label>How it works</Label>
+
+## A spare key and two strangers
+
+### A middleman holds a copy
+
+**Escrow** is an old idea from business. A tenant may leave a deposit with a lawyer. The landlord gets it only if the flat is damaged.
+
+**Key escrow** does this with a cipher key. Alice gives a copy of her private key to an **escrow agent**. The agent keeps it secret. If there is good evidence that Alice is a criminal, the agent hands the copy to the police.
+
+<Try action="lodged" button="Start again without a warrant">
+  Look at the two agency buttons. With no warrant they release nothing. Only Alice and Bob can read the message.
+</Try>
+
+### Cut the key in two
+
+One agent with everybody's keys is a lot to trust. So the American plan split each key into two halves and sent them to two separate federal authorities.
+
+The simulator does this with a toy key of four letters. Count `A` as 0 and `Z` as 25. Half one is four letters picked by chance. Half two is the key minus half one, letter by letter. Alice's key starts with `L`, and half one starts with `Q`. That is 11 minus 16, which is 5 below 0. Add 26 to get 21, which is `V`.
+
+<Try action="lodged" button="Show the split">
+  Press "Lodge the key again with new halves" a few times. Both halves change every time on Alice's desk. Her key does not.
+</Try>
+
+### Both halves, or nothing
+
+To rebuild the key, add the two halves letter by letter. If a sum passes 25, take 26 away. The police need a warrant first. Then both agencies must hand over their halves.
+
+<Try action="oneHalf" button="Give the police one half">
+  Press "Agency two: release your half". The police desk adds the halves, gets `LOCK`, and reads the message.
+</Try>
+
+<Label>The story</Label>
+
+## Two camps and a chip
+
+After PGP, two camps argued. The police said wiretaps keep order, and strong ciphers end wiretaps. They had examples. The Cali drug cartel arranged deals in cipher. The sect that gassed the Tokyo subway in 1995 had enciphered files with RSA.
+
+The other camp said privacy is a human right. They had examples too. For years the FBI tapped the telephone of Martin Luther King Jr., and used what it heard against him. Businesses joined this camp. Nobody will shop on the Internet if thieves can read card numbers.
+
+Key escrow was offered as the middle way. America adopted the Escrowed Encryption Standard in 1994. It had two systems: **Clipper** for telephones and **Capstone** for computers. A Clipper telephone had a chip holding its secret key. When you bought it, a copy of that key went to the two authorities, in halves.
+
+<DigDeeper title="The spy network that reads for keywords">
+  America's National Security Agency listens around the world with four partner countries. Its Echelon system scans messages for words on a list, such as "assassin" and "Pentagon", and sets those messages aside.
+
+  Strong ciphers would blind it. One camp called that a reason to restrict ciphers. The other called it a reason to use them, since Echelon reads innocent messages too.
+
+  <Try>
+    Open "A toy keyword scanner" at the bottom of the controls. A school trip is set aside. The enciphered plot is let through.
+  </Try>
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## Why almost nobody wanted it
+
+Nobody needed to break Clipper's cipher. The plan failed because people did not trust it.
+
+Civil liberties groups asked how you would feel if the government held keys to every house. Experts warned that one crooked employee could sell escrowed keys. Foreign firms feared that American officials might read their secrets.
+
+<Try action="lodged" button="Play the critic">
+  Press "An insider at agency one leaks a half". The split holds: a thief with one half reads nothing. Now press "Both databases are stolen". The thief reads everything, with no warrant.
+</Try>
+
+There was a simpler problem. Outside government work, the standard was a choice. People could use any other cipher they liked.
+
+<Try action="outlaw" button="Let the sender switch ciphers">
+  The police have a warrant and both halves. They rebuild `LOCK`, but the sender used a key nobody lodged. The message stays shut.
+</Try>
+
+The government had hoped Clipper would become the nation's favourite cipher. It won few supporters, and the government backed away.
+
+<DigDeeper title="A flaw in the chip itself">
+  The Clipper plan was first announced in April 1993. In 1994 Matt Blaze, a researcher at AT&T Bell Laboratories, studied the chips. Each call carried a small field of data that let the police find the right escrowed key. Blaze showed ways to talk in cipher without sending a valid one.
+</DigDeeper>
+
+<Label>Challenge</Label>
+
+## Rebuild the key
+
+<Challenge answer="THE MONEY IS UNDER THE BRIDGE">
+  You are the police officer. You have caught the message `VOM BQUMN KZ CCFLZ IJL JGKKOT`. A judge has read your evidence. Agency one holds the half `WTGB` and agency two holds `GOCO`.
+
+  Get the key. What does the message say?
+
+  <Try action="challenge" button="Load the case" />
+</Challenge>
+
+<Check question="What two things did you need before you could read it?">
+  A warrant, and both halves. The warrant is the law's protection: a judge must agree. The two halves are the mathematical protection: neither agency can read the message alone.
+</Check>
+
+<Label>What came next</Label>
+
+## Whom do you fear more?
+
+The argument did not end. Simon Singh guessed that strong ciphers would win at first. No country wants laws that stop people shopping on the Internet.
+
+But it could swing back. After a terrible attack, people might accept escrow. If a government then abused it, they would demand privacy again. The public decides which it fears more: criminals or its own government.
+
+Internet shops needed more than secrecy, though. They needed to know who had really sent an order. The same keys can prove that: [digital signatures](/ciphers/digital-signatures).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 6.
+- National Institute of Standards and Technology, *Escrowed Encryption Standard* (FIPS 185, February 1994). The standard itself.
+- The White House, "Statement by the Press Secretary", 16 April 1993. The first announcement of the Clipper chip.
+- Matt Blaze, "Protocol Failure in the Escrowed Encryption Standard" (1994). The flaw in the chip's escrow field.

@@ -21,37 +21,39 @@ export function LetterGrid(props: {
 }) {
   const { cells, columnHeads, rowHeads, mark, onPick } = props;
   return (
-    <table className={styles.grid} aria-label={props.label} data-size={props.size ?? "large"}>
-      {columnHeads && (
-        <thead>
-          <tr>
-            {rowHeads && <td />}
-            {columnHeads.map((head, column) => (
-              <th key={column} scope="col">
-                {head}
-              </th>
-            ))}
-          </tr>
-        </thead>
-      )}
-      <tbody>
-        {cells.map((line, row) => (
-          <tr key={row}>
-            {rowHeads && <th scope="row">{rowHeads[row]}</th>}
-            {line.map((letter, column) => (
-              <td key={column} data-mark={mark?.(row, column)} data-empty={letter === ""}>
-                {onPick && letter !== "" ? (
-                  <button type="button" onClick={() => onPick(row, column)}>
-                    {letter}
-                  </button>
-                ) : (
-                  letter
-                )}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div className={styles.scroll}>
+      <table className={styles.grid} aria-label={props.label} data-size={props.size ?? "large"}>
+        {columnHeads && (
+          <thead>
+            <tr>
+              {rowHeads && <td />}
+              {columnHeads.map((head, column) => (
+                <th key={column} scope="col">
+                  {head}
+                </th>
+              ))}
+            </tr>
+          </thead>
+        )}
+        <tbody>
+          {cells.map((line, row) => (
+            <tr key={row}>
+              {rowHeads && <th scope="row">{rowHeads[row]}</th>}
+              {line.map((letter, column) => (
+                <td key={column} data-mark={mark?.(row, column)} data-empty={letter === ""}>
+                  {onPick && letter !== "" ? (
+                    <button type="button" onClick={() => onPick(row, column)}>
+                      {letter}
+                    </button>
+                  ) : (
+                    letter
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }

@@ -1,0 +1,37 @@
+.message {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2) var(--space-4);
+  max-width: 44rem;
+}
+
+/* The figures of one word stay together on a line. */
+.word {
+  display: flex;
+}
+
+.message button {
+  display: grid;
+  justify-items: center;
+  padding: var(--space-1) 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--color-lamp);
+}
+
+.letter {
+  font-family: var(--font-cipher);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+}
+
+.message button[aria-pressed="true"] {
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+.message button[aria-pressed="true"] .letter {
+  color: var(--color-accent-ink);
+}

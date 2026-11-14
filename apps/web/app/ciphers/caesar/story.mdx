@@ -51,7 +51,7 @@ To decipher, go the other way: find each letter in the bottom row and read the o
 
 Every cipher has two parts. The **algorithm** is the method: here, "shift the alphabet". The **key** is the detail that makes one use of it different from another: here, how far to shift.
 
-Caesar's enemies might guess the method. That is not enough. To read the message they need the key too. A good cipher stays safe even when the enemy knows exactly how it works, as long as the key is secret.
+Caesar's enemies might guess the method. That is not enough. To read the message they need the key too. A good cipher stays safe even when the enemy knows exactly how it works, as long as the key is secret. This rule is called **Kerckhoffs' principle**, after Auguste Kerckhoffs, the Dutch linguist who set it down in 1883.
 
 <Check question="How many different keys does the Caesar shift have?">
   Only 25. You can shift by 1, 2, 3 and so on up to 25. A shift of 26 brings every letter back to itself, which hides nothing.
@@ -66,6 +66,12 @@ We know how Caesar's cipher worked because of Suetonius, who wrote about the liv
 This is a **substitution cipher**: each letter stays where it is in the message but changes into a different letter. It is the first substitution cipher we know of that an army used. Before this, most secret writing just moved the letters of a message around.
 
 It suited a general. There is nothing to carry and nothing to lose. An officer only has to remember one number.
+
+<DigDeeper title="Caesar's other cipher">
+  The letter on the spear did not use the shift. Caesar tells the story himself in his *Gallic Wars*. For that message he swapped each Roman letter for a Greek one. The Gauls could not read it.
+
+  It is the same idea with a different cipher alphabet. Each letter keeps its place and changes its shape. The shift by three is the one Suetonius describes, so that is the one we call the Caesar cipher.
+</DigDeeper>
 
 <Label>How it was broken</Label>
 

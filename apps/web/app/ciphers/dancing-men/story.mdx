@@ -1,0 +1,127 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 2, and the sources in Further reading. The wording is ours.
+*/}
+
+<Standfirst>
+  Sherlock Holmes read a row of dancing stick men by counting which one danced most.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## A child's drawing that frightens a grown woman
+
+Hilton Cubitt, a gentleman from Norfolk, lays a sheet of paper on Sherlock Holmes's table. On it is a row of little stick men. Some wave their arms. Some kick a leg. A few hold flags.
+
+Dr Watson laughs. It looks like a child's scribble. But Cubitt is not laughing. Figures like these keep appearing at his house, chalked on a door and a window sill. Each time, his wife Elsie turns pale with fear, and she will not say why.
+
+Holmes studies the paper for a long time. He is sure the dancers are writing. How can a line of stick men spell a message?
+
+<Label>Try it</Label>
+
+## Find the busiest dancer
+
+The simulator shows the first message Holmes read: `AM HERE ABE SLANEY`. It has 15 dancing men. Make a guess first: which letter dances most often, and how many times?
+
+<Try action="slaney" button="Show the first message">
+  One dancer is bright, and so are all his twins. Count them. Then tap any other dancing man and watch his twins light up too.
+</Try>
+
+<Check question="Which letter dances most in AM HERE ABE SLANEY?">
+  `E`, four times out of fifteen. That is no accident. `E` is the commonest letter in English, so it is usually the commonest figure in any long danced message.
+</Check>
+
+<Label>How it works</Label>
+
+## A stick man for every letter
+
+### One pose, one letter
+
+Each letter of the alphabet has its own dancer. The pose is what matters: where the two arms and two legs point. The same letter always gets the same pose. This is a **substitution cipher**: every letter is swapped for a symbol, and the list of swaps is the **key**.
+
+The key under the message shows all 26 poses. Be warned: they are our own invention. Conan Doyle's messages needed only 18 letters, so his story has no dancer for the other eight. We drew a fresh set in the same spirit.
+
+<Try action="blank" button="Clear the message">
+  Type your name in "Your message". Tap one of your dancers, then find his bright twin in the key.
+</Try>
+
+### Flags instead of spaces
+
+There are no gaps between the dancers. Instead, the last dancer of a word holds a little flag. The flag changes nothing else: an `E` with a flag is still an `E`.
+
+<Try action="trap" button="Load COME HERE AT ONCE">
+  Count the flags. There are three, one at the end of each word except the last. The message stops there, so the last word needs none.
+</Try>
+
+### Verne's two locks
+
+Jules Verne built a different puzzle into *Journey to the Center of the Earth*. His heroes find a parchment covered in runes. First they swap each rune for an ordinary letter. The result is still nonsense. It only makes sense when they read the letters backwards.
+
+So Verne used two steps: a substitution, then a reversal. To undo them, go in the opposite order.
+
+<Try action="verne" button="Open Verne's parchment">
+  Press ▲ next to "Step" twice to hide `DESCEND THE CRATER`. Press it twice more to undo each step. The swapping alphabet is ours.
+</Try>
+
+<Label>The story</Label>
+
+## When ciphers became entertainment
+
+In the 1800s ordinary people grew fascinated by secret writing, and authors noticed. Verne's novel appeared in 1864. In 1885 he built another, *Mathias Sandorff*, around a cipher.
+
+In America, Edgar Allan Poe dared the readers of a Philadelphia paper to send him ciphers in which each letter was swapped for one symbol. Hundreds arrived, and he solved them all. In 1843 he wrote "The Gold Bug", a story about coded directions to pirate treasure.
+
+In Britain, Arthur Conan Doyle made his detective an expert. Holmes claims to have written a study of "one hundred and sixty separate ciphers". "The Adventure of the Dancing Men" was printed in December 1903.
+
+<DigDeeper title="Invisible ink by the fire">
+  In "The Gold Bug", William Legrand sketches a beetle on a scrap of paper. He holds it near the fire, and the heat brings out writing in invisible ink. It is a cipher left by the pirate Captain Kidd. Legrand breaks it by counting its symbols, and finds the treasure.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## Holmes counts the dancers
+
+These writers did not cheat. Their heroes break ciphers the way real codebreakers do, with **frequency analysis**: counting the symbols and matching them to the letters of the language.
+
+Holmes begins with the count. In the first message, four dancers out of fifteen are the same. He names that figure `E`. Next he sees that some dancers carry flags, and reasons that a flag ends a word. Now he knows how long each word is.
+
+One message is a single word of five letters, with `E` second and fourth. Holmes reads it as `NEVER`, which gives him `N`, `V` and `R`. Another word must be the wife's name, `ELSIE`. Each new letter unlocks more words. At last Holmes writes a danced message of his own, and the villain walks into the trap.
+
+Legrand does the same in Poe's story. His commonest symbol is an `8`, and he too calls it `E`.
+
+<Try action="desk" button="Sit at Holmes's desk">
+  Tap the first figure in the counts, the commonest. Pick `E` in the letters. Now hunt for a short word that ends in `E` and keeps coming back. Name its other figures. Stuck? Press "Give me a letter".
+</Try>
+
+<Label>Challenge</Label>
+
+## A message on the sundial
+
+<Challenge answer="COME TO THE GARDEN WALL AT SEVEN">
+  A strip of paper lies on the sundial. It holds 26 dancing men, and six of them carry flags.
+
+  Read it with the key, or with what you worked out at Holmes's desk. What does it say?
+
+  <Try action="garden" button="Load the message" />
+</Challenge>
+
+<Check question="Why do the flags help a codebreaker?">
+  They show where each word ends, so they do the same job as spaces. Short words are easy to guess. A three-letter word that ends in the commonest figure is very often `THE`.
+</Check>
+
+<Label>What came next</Label>
+
+## Hide the habits, not the letters
+
+Stick men, runes and Poe's symbols share one flaw. Each letter always wears the same disguise, so the commonest letter is still the commonest symbol. By the 1800s a detective story could explain the attack, and readers followed every step.
+
+People with real secrets needed a cipher that blurs the count. One answer was to swap letters two at a time, because pairs are far harder to count. Try it on the next page: [the Playfair cipher](/ciphers/playfair).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 2, for Verne, Conan Doyle and Poe.
+- Arthur Conan Doyle, "The Adventure of the Dancing Men", *The Strand Magazine*, December 1903. The Arthur Conan Doyle Encyclopedia shows the 18 original figures under "Dancing Men Alphabet".
+- Edgar Allan Poe, "The Gold-Bug", *Dollar Newspaper*, Philadelphia, June 1843. The Edgar Allan Poe Society of Baltimore gives its printing history.
+- Jules Verne, *Journey to the Center of the Earth*, 1864.

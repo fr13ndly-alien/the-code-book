@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  LIPOGRAM_PLAINTEXT,
   SAMPLE_CIPHER_ALPHABET,
   SAMPLE_PLAINTEXT,
   assign,
@@ -94,5 +95,22 @@ describe("frequency analysis", () => {
     expect(guesses.L).toBe("T");
     expect(guesses.B).not.toBe("H");
     expect(partialText(ciphertext, guesses).slice(0, 6)).toBe("i aoge");
+  });
+
+  // The page's lipogram preset: our own passage with no letter E, after Perec's La Disparition
+  // (The Code Book, chapter 1). This is the ciphertext the "lipogram" preset loads.
+  it("makes the lipogram ciphertext from a passage with no E, so the tallest bar is not E", () => {
+    expect(LIPOGRAM_PLAINTEXT).not.toMatch(/e/i);
+    expect(lettersOnly(LIPOGRAM_PLAINTEXT).length).toBeGreaterThan(150);
+    const ciphertext = encipher(LIPOGRAM_PLAINTEXT, SAMPLE_CIPHER_ALPHABET);
+    expect(ciphertext).toBe(
+      "X KLCJS BYL CMJ YKRXPV XL VXQP. JXYP QXK FCMJYPD LBJCMDB X DXF YP CMJ JCCI, XPV QYPV KBCCE XRR CMJ QYPVCQK. " +
+        "SU XMPL RYL X RXSF XPV KXL ZU YL, AXRS XK X AXL. Y JXP LC KBML CMJ ZXJP XPV ZJYPD YP KYT DCXLK. ZU PCCP LBXL KLCJS QXK IXJ XQXU, XPV X ZJYDBL KMP QXK VJUYPD CMJ SMVVU UXJV. PCL X LBYPD QXK RCKL.",
+    );
+    expect(count(ciphertext, "O")).toBe(0);
+    expect(decipher(ciphertext, SAMPLE_CIPHER_ALPHABET)).toBe(LIPOGRAM_PLAINTEXT);
+    const tallest = rankLetters(countLetters(ciphertext))[0]!;
+    expect(decipher(tallest, SAMPLE_CIPHER_ALPHABET)).toBe("A");
+    expect(guessByRank(ciphertext)[tallest]).toBe("E");
   });
 });

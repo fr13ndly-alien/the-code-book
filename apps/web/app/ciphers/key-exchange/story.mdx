@@ -45,7 +45,7 @@ Picture a post office that reads every letter. Alice puts a message in an iron b
 
 Now Alice takes her padlock off and sends the box a third time. Only Bob's padlock is left, and he has that key. No key ever travelled.
 
-This showed that sharing a secret without sharing a key was possible. But ciphers are fussier than padlocks. You must usually undo them in reverse order, as you take off shoes before socks. The team needed mathematics that did not care about order.
+This showed that sharing a secret without sharing a key was possible. But ciphers are fussier than padlocks. You must usually undo them in reverse order: the last lock on is the first one off. Think of taking off shoes before socks. The team needed mathematics that did not care about order.
 
 <Try action="agreed" button="Show the finished exchange">
   Look at step 4. Alice used Bob's number with her secret. Bob used Alice's number with his. The order did not matter.
@@ -65,7 +65,7 @@ In normal arithmetic, the powers of 3 climb steadily: 3, 9, 27, 81. In mod 7 the
 
 ### The exchange
 
-Alice and Bob agree on two numbers in public, Y and P. The full edition of the book uses Y = 7 and P = 11. Their one-way function is 7<sup>x</sup> (mod 11).
+Alice and Bob agree on two numbers in public, Y and P. The shorter edition of the book names this exchange but does not work an example. The full edition does, with Y = 7 and P = 11. Their one-way function is 7<sup>x</sup> (mod 11).
 
 Alice picks a secret number, 3. She works out 7<sup>3</sup> (mod 11), which is 2, and sends the 2 to Bob. Bob picks 6, works out 7<sup>6</sup> (mod 11), which is 4, and sends the 4 to Alice.
 

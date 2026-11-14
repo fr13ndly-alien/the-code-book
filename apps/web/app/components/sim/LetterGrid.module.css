@@ -1,3 +1,9 @@
+/* A wide table scrolls sideways in its own strip, so the rest of the board stays put. */
+.scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 .grid {
   --cell: 2.75rem;
   border-collapse: collapse;

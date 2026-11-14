@@ -21,36 +21,38 @@ export function AlphabetRows(props: {
 }) {
   const columns = [...props.rows[0]!.letters];
   return (
-    <table className={styles.table}>
-      <tbody>
-        {props.rows.map((row) => (
-          <tr key={row.label} data-kind={row.kind ?? "plain"}>
-            <th scope="row">{row.label}</th>
-            {[...row.letters].map((letter, column) => (
-              <td key={column} data-on={column === props.highlight}>
-                {letter}
-              </td>
-            ))}
-          </tr>
-        ))}
-        {props.onPick && (
-          <tr className={styles.pickers}>
-            <th scope="row" className="visually-hidden">
-              Highlight
-            </th>
-            {columns.map((letter, column) => (
-              <td key={column}>
-                <button
-                  type="button"
-                  aria-label={`Highlight ${letter}`}
-                  aria-pressed={column === props.highlight}
-                  onClick={() => props.onPick!(column)}
-                />
-              </td>
-            ))}
-          </tr>
-        )}
-      </tbody>
-    </table>
+    <div className={styles.scroll}>
+      <table className={styles.table}>
+        <tbody>
+          {props.rows.map((row) => (
+            <tr key={row.label} data-kind={row.kind ?? "plain"}>
+              <th scope="row">{row.label}</th>
+              {[...row.letters].map((letter, column) => (
+                <td key={column} data-on={column === props.highlight}>
+                  {letter}
+                </td>
+              ))}
+            </tr>
+          ))}
+          {props.onPick && (
+            <tr className={styles.pickers}>
+              <th scope="row" className="visually-hidden">
+                Highlight
+              </th>
+              {columns.map((letter, column) => (
+                <td key={column}>
+                  <button
+                    type="button"
+                    aria-label={`Highlight ${letter}`}
+                    aria-pressed={column === props.highlight}
+                    onClick={() => props.onPick!(column)}
+                  />
+                </td>
+              ))}
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </div>
   );
 }

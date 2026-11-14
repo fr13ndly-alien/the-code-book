@@ -15,3 +15,14 @@ export const SAMPLE_PLAINTEXT =
  * "A VOID BY GEORGES PEREC" starting three letters in.
  */
 export const SAMPLE_CIPHER_ALPHABET = "XZAVOIDBYGERSPCFHJKLMNQTUW";
+
+/**
+ * A lipogram: a passage that leaves one letter out on purpose. We wrote this one
+ * ourselves, with no letter E, after the idea of Georges Perec's novel La Disparition
+ * (The Code Book, chapter 1). Over 200 letters, so the count is a fair one.
+ */
+export const LIPOGRAM_PLAINTEXT =
+  "A STORM HIT OUR ISLAND AT DAWN. RAIN WAS POURING THROUGH A GAP IN OUR ROOF, AND WIND SHOOK " +
+  "ALL OUR WINDOWS. MY AUNT LIT A LAMP AND SAT BY IT, CALM AS A CAT. I RAN TO SHUT OUR BARN AND " +
+  "BRING IN SIX GOATS. BY NOON THAT STORM WAS FAR AWAY, AND A BRIGHT SUN WAS DRYING OUR MUDDY " +
+  "YARD. NOT A THING WAS LOST.";

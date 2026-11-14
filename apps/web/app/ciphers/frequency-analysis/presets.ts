@@ -1,4 +1,5 @@
 import {
+  LIPOGRAM_PLAINTEXT,
   SAMPLE_CIPHER_ALPHABET,
   SAMPLE_PLAINTEXT,
   encipher,
@@ -8,6 +9,9 @@ import type { FrequencyAnalysisState } from "./useFrequencyAnalysis";
 
 /** The intercepted message, made by the engine from our own passage and the key of the book's example. */
 const INTERCEPTED = encipher(SAMPLE_PLAINTEXT, SAMPLE_CIPHER_ALPHABET);
+
+/** A passage of ours with no letter E, enciphered with the same key. */
+const LIPOGRAM = encipher(LIPOGRAM_PLAINTEXT, SAMPLE_CIPHER_ALPHABET);
 
 /** Setups that buttons in story.mdx can load, by name. */
 export const PRESETS: Record<string, FrequencyAnalysisState> = {
@@ -19,4 +23,7 @@ export const PRESETS: Record<string, FrequencyAnalysisState> = {
 
   /** The first three letters found: E, T and H. */
   started: { ciphertext: INTERCEPTED, guesses: { O: "E", L: "T", B: "H" }, picked: "X" },
+
+  /** A message with no E in it, filled in by rank: the tallest bar gets called E and is wrong. */
+  lipogram: { ciphertext: LIPOGRAM, guesses: guessByRank(LIPOGRAM), picked: "X" },
 };
