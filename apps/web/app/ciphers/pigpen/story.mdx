@@ -1,0 +1,120 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, Appendix D, and chapter 2 for what came next.
+  The wording is ours. The grids follow the layout printed in the appendix.
+*/}
+
+<Standfirst>
+  The Freemasons wrote their secrets in corners, boxes and dots. The key is four small grids.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## A page of corners and dots
+
+Imagine a lodge of Freemasons in the 1700s. The Freemasons are a society with private meetings, and this lodge keeps a record book. Its secretary does not want outsiders to read it.
+
+So he writes without letters. His page fills with little corners, open boxes and arrowheads, some with a dot inside. To a stranger it looks like a builder's doodles.
+
+Any member can read it at a glance, and write it just as fast. Nobody has to carry a sheet of 26 strange signs. Everything they need fits in four tiny drawings. How can four grids hold a whole alphabet?
+
+<Label>Try it</Label>
+
+## Sketch a letter
+
+The simulator shows the four grids with the alphabet written in them. Guess first: what would you draw for `E`, the letter in the middle of the first grid?
+
+<Try action="masons" button="Load the first message">
+  Tap `E` in the first grid. Watch which lines light up, then find the same shape in the message.
+</Try>
+
+<Check question="What is the symbol for E?">
+  A closed box. `E` sits in the middle cell, so it has a grid line on all four sides. A letter in a corner, such as `A`, touches only two lines, so its symbol is a corner.
+</Check>
+
+<Label>How it works</Label>
+
+## Lines, corners and dots
+
+### A cell for every letter
+
+The first grid looks like a board for noughts and crosses. It holds `A` to `I`, one letter in each cell. To write a letter, you sketch the lines that surround its cell, and nothing else.
+
+Each of the nine cells is fenced in differently. The corner cells have two lines, the edge cells have three and the middle cell has four. So every letter gets its own shape. `A` is a corner. `B` is a box with no lid. `E` is a whole box.
+
+<Try action="blank" button="Clear the message">
+  Type `BAD` in "Your message". Tap each symbol and see which cell of the first grid it came from.
+</Try>
+
+### Add a dot, then an X
+
+Nine cells are not enough for 26 letters. So the second grid is the same shape with a dot in every cell. It holds `J` to `R`. Their symbols are the same nine shapes, each with a dot.
+
+The third grid is a big X. Its four spaces hold `S`, `T`, `U` and `V`. Each symbol is a V shape, turned a different way. The fourth grid is an X with dots, for `W`, `X`, `Y` and `Z`.
+
+Nine and nine and four and four make 26.
+
+<Try action="masons" button="Bring back the message">
+  Tap `N` in the second grid, then `E` in the first, and compare. Then tap `S` and `T` in the third grid and see how the V turns.
+</Try>
+
+<Check question="Which two letters are drawn as a closed box?">
+  `E` and `N`. Both sit in the middle of a noughts-and-crosses grid. `N` is in the dotted grid, so its box has a dot inside.
+</Check>
+
+<Label>The story</Label>
+
+## A cipher that would not die
+
+By the 1700s, codebreakers had long known how to beat a cipher like this one. Even so, the Freemasons used pigpen to keep their records private.
+
+Why choose a weak cipher? Because it was easy. The four grids are simple to remember and quick to draw, so there is no key sheet to hide or lose. And the Masons were not trying to beat a king's codebreaker. They only wanted to stop a curious person who picked up the book.
+
+Pigpen swaps each letter for a symbol instead of another letter. That makes it look much stranger than a Caesar shift. But look at what stays the same. Every `E` becomes the same box, every time. So pigpen is a **monoalphabetic substitution cipher**: one fixed disguise for each letter. Turning letters into drawings changes how the secret looks. It does not change how well the secret is kept.
+
+<Label>How it was broken</Label>
+
+## Count the boxes
+
+The part of *The Code Book* that explains pigpen ends with a riddle. It says that without the key, the cipher can be broken by something. Then it gives the answer in pigpen.
+
+<Try action="riddle" button="Load the book's riddle">
+  The letters are hidden. Tap a symbol, find the bright lines in the grids, and read the letter in that cell. What are the two words?
+</Try>
+
+The answer is the attack from [the frequency analysis page](/ciphers/frequency-analysis). A codebreaker does not need the grids at all. She counts how often each shape appears. In a long English message the commonest shape probably stands for `E`. The next ones are probably `T` and `A`. Short words and doubled shapes give more clues. Soon she can read the message, and work out the grids afterwards.
+
+The row of counts under the message keeps that tally for you. A few words are too short for the count to be trusted, but a page of a record book is plenty.
+
+Pigpen has a second weakness. Its only secret is the layout of the grids. Once somebody learns that, every message ever written with it lies open.
+
+<Label>Challenge</Label>
+
+## A note on the lodge door
+
+<Challenge answer="THE LODGE MEETS AT MIDNIGHT">
+  A folded note is pinned inside the lodge door. It has five words, all in pigpen.
+
+  Use the grids to read it. What does it say?
+
+  <Try action="lodge" button="Load the note" />
+</Challenge>
+
+<Check question="Why is pigpen no safer than swapping letters for letters?">
+  Each letter still has one fixed symbol. The counts and patterns of English pass straight through. So frequency analysis works on shapes just as well as on letters.
+</Check>
+
+<Label>What came next</Label>
+
+## Looking secret is not being secret
+
+Pigpen teaches a lesson that people keep forgetting. Odd symbols make a message look secret. They do not make it safe.
+
+Serious codemakers had already moved on. The Vigenère cipher changes its cipher alphabet from one letter to the next, so simple counting fails. Its use spread through the 1600s and 1700s. People came to call it *le chiffre indéchiffrable*, the uncrackable cipher. Then an English inventor decided to test that name. Meet him on the next page: [Babbage against the Vigenère cipher](/ciphers/babbage).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, Appendix D, "The Pigpen Cipher". The grids on this page follow its drawing.
+- Simon Singh, *The Code Book*, chapter 1. Frequency analysis, the attack that breaks pigpen.

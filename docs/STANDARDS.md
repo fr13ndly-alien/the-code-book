@@ -1,6 +1,9 @@
 # Standards for The Code Book, interactive
 
-Every cipher page follows this document. The Enigma page is the reference: when a rule is unclear, look at how `apps/web/app/ciphers/enigma/` does it.
+Every cipher page follows this document. Two pages are the references. When a rule is unclear, look at how they do it:
+
+- `apps/web/app/ciphers/caesar/` for a page with a 2D simulator. Most pages are like this.
+- `apps/web/app/ciphers/enigma/` for a page with a 3D model.
 
 The reasons behind the content and UI rules are in `reports/Cipher page content template.md`. The reasons behind the tech choices are in `reports/Cipher simulator tech stack.md`.
 
@@ -19,24 +22,29 @@ Contents:
 
 ```
 packages/cipher-engine/        Pure TypeScript. All cipher logic and its tests. No DOM, no React.
-  src/<cipher>/                One folder per cipher.
-  test/<cipher>.test.ts
+  src/text/                    Letter helpers shared by every cipher.
+  src/<slug>/index.ts          One folder per cipher, named like its page.
+  test/<slug>.test.ts
 apps/web/                      The website (React Router, prerendered to static HTML).
   app/app.css                  Design tokens and element defaults. Nothing else is global.
-  app/routes.ts                One line per page.
+  app/routes.ts                Finds the pages by itself. Do not edit it to add a cipher.
+  app/routes/home.tsx          The menu: the chapters of the book and their ciphers.
   app/components/              Parts shared by every cipher page.
     CipherPage.tsx             The page layout: simulator, controls, story panel.
     story/Story.tsx            The blocks a story may use (Try, Check, Challenge, ...).
+    sim/                       The kit for 2D simulators and controls (see section 4).
   app/three/                   Helpers shared by 3D scenes.
-  app/ciphers/index.ts         The list of published ciphers, oldest first.
+  app/ciphers/chapters.ts      The chapters of the book.
+  app/ciphers/index.ts         Collects every cipher's meta.ts into the menu.
   app/ciphers/<slug>/          Everything that belongs to one cipher.
-    meta.ts                    Title, era, hook, first step, source.
+    meta.ts                    Title, era, chapter, order, hook, first step, source.
     route.tsx                  Wires state, simulator, controls and story into CipherPage.
     story.mdx                  The article.
     use<Cipher>.ts             The page's state: a reducer over the engine.
     presets.ts                 Named setups that story buttons can load.
+    <Cipher>Board.tsx          The 2D simulator, or
+    scene/                     the 3D model.
     <Cipher>Controls.tsx       The HTML controls.
-    scene/                     The 3D model, if the cipher has one.
 docs/STANDARDS.md              This file.
 ```
 
@@ -71,6 +79,8 @@ The engine's `tsconfig.json` has no `"DOM"` library, so the compiler rejects bro
 - **Return the working, not only the answer.** `pressKey` returns a `trace` of every stage the current passes through. Each cipher should expose the steps a page might want to show.
 - **Test against history.** Every cipher has at least one test taken from a published source: a known test vector or a real message. Name the source in the test.
 - **Cite data.** Wiring tables, alphabets and the like carry a comment saying where they came from.
+- **No randomness inside.** A cipher that needs chance (a one-time pad, photons) takes the random values as an argument or a seed. The view makes them and keeps them in state.
+- **One folder, one import.** The site imports a cipher as `@codebook/cipher-engine/<slug>` and the shared helpers as `@codebook/cipher-engine/text`.
 
 ### State rules
 
@@ -174,7 +184,7 @@ Use plain Markdown plus these. Do not add a new block without adding it here.
 ### Sources and copyright
 
 - The facts come from The Code Book. **The words must be ours.** Do not copy sentences from the book. Quote at most one short phrase per page, in quotation marks.
-- The PDF in `resource/` is the abridged edition. For ciphers that appear only in the full edition, check each fact against a second source and list it in Further reading.
+- The PDF in `resource/` is the abridged edition. For ciphers that appear only in the full edition, set `fullEditionOnly` in `meta.ts`, check each fact against a second source and list it in Further reading.
 - Dates, names and numbers must match the book or a named source. Leave out what you cannot check.
 - Each page ends with the credit line that `CipherPage` adds from `meta.source`.
 
@@ -231,6 +241,21 @@ Target: WCAG 2.2 level AA.
 - Respect `prefers-reduced-motion`. The global rule switches off transitions; scenes must not add motion that ignores it.
 - The page must work at 320px wide and at 200% zoom.
 
+### The simulator kit
+
+2D simulators and all controls are built from `app/components/sim/`. Use these before writing your own. If a page needs something else, build it inside the cipher's folder; move it into the kit when a second page needs it.
+
+| Part | Use it for |
+|---|---|
+| `Board` | The stage of a 2D simulator. Centres its content and scrolls when it is too big. |
+| `Controls`, `Row`, `Button` | The frame of the HTML controls. The first `Row` holds the state and the output. |
+| `TextField`, `Output` | Typing a message or key; showing what the cipher produced. |
+| `Stepper`, `Choice` | A number or letter to step through; a choice such as Encipher or Decipher. |
+| `AlphabetRows` | A plain alphabet above one or more cipher alphabets. |
+| `LetterGrid` | Any grid of letters: a Vigenère square, a Playfair square, a transposition table. |
+| `FrequencyBars` | Letter counts, with normal English behind them to compare. |
+| `Caption`, `Letters` | A line of explanation on the board; cipher letters inside text. |
+
 ### Words in the interface
 
 - Sentence case everywhere: "Back to start", not "Back To Start".
@@ -253,13 +278,13 @@ The budget numbers are estimates. Measure on a real phone before relying on them
 
 ## 6. How to add a cipher
 
-1. **Engine.** Add `packages/cipher-engine/src/<cipher>/` and export it from `src/index.ts`. Write the tests first, with at least one from a published source.
-2. **Folder.** Create `apps/web/app/ciphers/<slug>/` with `meta.ts`.
+1. **Engine.** Add `packages/cipher-engine/src/<slug>/index.ts`. Write the tests first, with at least one from a published source.
+2. **Folder.** Create `apps/web/app/ciphers/<slug>/` with `meta.ts`. Give it the chapter it belongs to and its place in that chapter. That is all the menu needs.
 3. **State.** Write `use<Cipher>.ts`: the state type, the actions and the reducer.
 4. **Controls.** Write `<Cipher>Controls.tsx`. Make the whole cipher usable from here before any 3D exists.
-5. **Simulator.** Add `scene/` for a 3D device, or a 2D widget for ciphers without one.
+5. **Simulator.** Write `<Cipher>Board.tsx` from the kit, or add `scene/` for a 3D device.
 6. **Story.** Write `story.mdx` to the template in section 3. Add the presets its buttons need.
-7. **Route.** Write `route.tsx` (copy Enigma's), add a line to `app/routes.ts`, and add the meta to `app/ciphers/index.ts`.
+7. **Route.** Write `route.tsx` (copy Caesar's). The page appears at `/ciphers/<slug>` once the file exists; restart the dev server to see a new one.
 8. **Check.** Go through the list below.
 
 ## 7. Checklist before a cipher is done
@@ -269,7 +294,7 @@ The budget numbers are estimates. Measure on a real phone before relying on them
 - [ ] One test uses a historical or published example, with its source named.
 - [ ] The story has all eight parts in order, and is within the word counts.
 - [ ] No sentence is copied from the book. Every date, name and number has been checked.
-- [ ] The challenge was generated by the engine and solved once by hand on the page.
+- [ ] The challenge was generated by the engine, a test proves its answer, and it was solved once by hand on the page.
 - [ ] Every action works from the HTML controls alone, using only the keyboard.
 - [ ] The page works at 375px wide with the story open and closed.
 - [ ] The built `index.html` for the page contains the story text.
@@ -277,7 +302,7 @@ The budget numbers are estimates. Measure on a real phone before relying on them
 
 ## 8. Not built yet
 
-These were chosen in the tech stack report but are left out of the prototype. Add them when a second cipher exists, so their shape is based on two real cases.
+These were chosen in the tech stack report but are not built yet.
 
 | Item | Plan |
 |---|---|

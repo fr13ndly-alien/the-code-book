@@ -1,0 +1,54 @@
+.attack {
+  width: 100%;
+  max-width: 34rem;
+}
+
+.attack summary {
+  display: flex;
+  align-items: center;
+  min-height: var(--tap);
+  color: var(--color-accent);
+  cursor: pointer;
+}
+
+.attack ol {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.attack button {
+  display: flex;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: var(--tap);
+  padding: 0 var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: transparent;
+  font-family: var(--font-cipher);
+  color: var(--color-text-muted);
+  text-align: left;
+  align-items: center;
+}
+
+.shift {
+  flex: 0 0 1.5rem;
+  text-align: right;
+}
+
+/* One line per shift: the start of a reading is enough to tell English from nonsense. */
+.reading {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.attack button[aria-pressed="true"] {
+  border-color: var(--color-accent);
+  background: var(--color-surface-raised);
+  color: var(--color-lamp);
+}

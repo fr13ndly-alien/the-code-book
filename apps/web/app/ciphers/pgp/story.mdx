@@ -1,0 +1,138 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 6. The wording is ours.
+*/}
+
+<Standfirst>
+  Phil Zimmermann put two ciphers in one envelope and gave strong secrecy to everybody for free.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## Loose on the internet
+
+In June 1991 Phil Zimmermann, a programmer in Boulder, Colorado, made a risky choice. For years he had been writing a program to let ordinary people lock their e-mail. He had meant to sell it.
+
+Then the United States Senate discussed a rule that seemed to threaten every strong cipher. The rule was dropped, but Zimmermann feared it would return. So he asked a friend to post his program on a Usenet bulletin board, where anyone could copy it without paying.
+
+The cipher inside it, RSA, was famous for being slow. It needed the big computers of governments and banks. How did Zimmermann make it run on a home computer?
+
+<Label>Try it</Label>
+
+## Two locks, one envelope
+
+Alice wants to send Bob a message. Make a guess first: how many separate things will she have to put in the envelope?
+
+<Try action="start" button="Start with Alice's message">
+  Press "Next step" four times. Watch Alice's desk fill with working, and watch the envelope in the middle fill up.
+</Try>
+
+<Check question="How many things did Alice send?">
+  Two. Part 1 is her message, locked with a small random key. Part 2 is that small key, locked with Bob's public key. Bob needs both parts, and he must open part 2 first.
+</Check>
+
+<Label>How it works</Label>
+
+## A fast cipher carries the message, a slow one carries the key
+
+### The fast lock
+
+Ciphers where both people share one key are called **symmetric**. They are quick, even for a long message. Zimmermann chose a symmetric cipher called IDEA.
+
+Alice's computer invents a new key for every message. It is called a **session key**, because it is used for one session and then thrown away.
+
+The simulator uses a toy instead of IDEA. Each letter of the message is shifted along the alphabet by a letter of the session key. That is far too weak for real use, but it shows the idea.
+
+<Try action="lockedMessage" button="Show the fast lock">
+  Read down one column of the table on Alice's desk: message letter, key letter, shifted letter. Then press "New session key" and watch every shifted letter change.
+</Try>
+
+### The slow lock
+
+A symmetric cipher has an old problem. Bob needs the same key, and Alice cannot just send it, because Eve is listening.
+
+This is where RSA comes in. Bob has two keys. His **public key** is for locking, and he gives it to everyone. His **private key** is for unlocking, and he tells nobody. Alice locks the session key with Bob's public key.
+
+RSA is slow because it works with huge numbers. But the session key is tiny compared with the message. Locking it takes hardly any time.
+
+<Try action="lockedKey" button="Show the slow lock">
+  Look at the second table on Alice's desk. Each key letter becomes a number, and each number is raised to the power 7 and divided by 187. Only the remainder is kept.
+</Try>
+
+### Bob works backwards
+
+Bob gets the two locked parts. He uses his private key on part 2, which gives him the session key. Then he uses the session key on part 1, which gives him the message.
+
+Neither person has to think about any of this. Zimmermann's program did both locks by itself. He named it **Pretty Good Privacy**, or PGP, after a pretend grocery shop on one of his favourite radio shows.
+
+<Try action="sent" button="Send the envelope">
+  Press "Next step" twice and watch Bob's desk. First the four numbers turn back into the session key. Then the session key turns the letters back into the message.
+</Try>
+
+<Check question="Why not lock the whole message with RSA?">
+  It would take too long. In the 1980s a long message could take several minutes on a home computer. Locking only the short session key with RSA gives the same safety at a fraction of the cost.
+</Check>
+
+<Label>The story</Label>
+
+## The programmer and the grand jury
+
+Zimmermann had been a political activist before he wrote PGP. He worried about what e-mail meant for privacy. Reading paper letters is slow work, one envelope at a time. E-mail can be scanned by a machine, millions of messages at once, and nobody can tell.
+
+Once PGP was on the internet it spread around the world. Human rights groups used it to protect their records. Zimmermann heard that resistance groups in Burma were using it in the jungle.
+
+At home he was in trouble. American law counted strong ciphers as weapons, like missiles and machine guns. Sending them abroad needed a licence. In February 1993 two government investigators came to see him. For three years a grand jury looked into whether he was an arms dealer.
+
+<DigDeeper title="Privacy or policing?">
+  The case started an argument that is still going on. The police said they need to listen to criminals, and that strong ciphers make this impossible. Others said that privacy is a human right, and that governments had misused wiretaps before. Businesses joined that side, because nobody shops online without secrecy. The author's own view was that the result depends on whom people fear more: criminals or their government.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## Nobody broke it, so they argued about it
+
+In 1996 the government dropped the case. PGP was already everywhere, and a trial would change nothing. Nobody had found a way to break it either.
+
+The reason is in Bob's public key. The number N is two secret primes multiplied together. Whoever can split N back into those primes can work out Bob's private key. Then both locks fall.
+
+Bob's toy N is 187. Eve can split that in moments.
+
+<Try action="eve" button="Look through Eve's eyes">
+  Eve's desk shows only what travels: the public key and the two locked parts. Press "Eve: split N into its primes". She tries dividing by 2, then 3, then 4, until a number fits. Then she reads everything.
+</Try>
+
+A real N is hundreds of digits long. Nobody knows a quick way to split a number that size. A deputy director of America's National Security Agency once did the sum. Suppose every personal computer in the world worked on one PGP message. They would need about twelve million times the age of the universe.
+
+<Label>Challenge</Label>
+
+## Be Eve for a day
+
+<Challenge answer="IT IS OUT ON THE NET">
+  It is June 1991, and you are Eve. You copy an envelope on its way to Bob. Part 1 reads `HF ZC NGK YM FYO MQK`. Part 2 reads `95 121 91 114`. Bob still uses his toy public key: N is 187 and e is 7.
+
+  Break in. What does the message say?
+
+  <Try action="intercepted" button="Load the envelope" />
+</Challenge>
+
+<Check question="Eve got the session key. Can she read Alice's next message with it?">
+  No. Every message gets a new random session key. But Eve also found Bob's private key, which is much worse. With that she can unlock the session key of every message anyone ever sends him.
+</Check>
+
+<Label>What came next</Label>
+
+## Who really sent this?
+
+PGP gave everybody a lock that no spy could pick. For the first time, the strongest ciphers were not kept for armies and kings.
+
+But a lock does not tell you who used it. Bob's public key is public. Anyone can lock a message with it, and anyone can type "from Alice" at the top. How can Bob be sure a message is really hers?
+
+The answer uses the same two keys the other way round. Alice locks with her own private key, and the world checks with her public one. PGP did this as well. See how on the next page: [digital signatures](/ciphers/digital-signatures).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 6.
+- Philip Zimmermann, "Why I Wrote PGP" (1991, updated 1999). His own reasons, in his own words.
+- D. Atkins, W. Stallings and P. Zimmermann, *PGP Message Exchange Formats* (RFC 1991, 1996). How the two parts of the envelope were really laid out.

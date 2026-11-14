@@ -1,0 +1,47 @@
+/* The day's haul: the first six letters of each message, in a block like a clerk's worksheet. */
+.openings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-1) var(--space-3);
+  max-width: 34rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-cipher);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.openings b {
+  color: var(--color-lamp);
+}
+
+.chains {
+  display: grid;
+  gap: var(--space-1);
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-cipher);
+  font-size: var(--text-sm);
+}
+
+.chains li {
+  padding: var(--space-1) var(--space-2);
+  border-left: 2px solid var(--color-border);
+  overflow-wrap: anywhere;
+}
+
+.chains li[data-on="true"] {
+  border-color: var(--color-accent);
+  color: var(--color-lamp);
+}
+
+.chains span {
+  margin-left: var(--space-2);
+  font-family: var(--font-ui);
+  color: var(--color-accent);
+  white-space: nowrap;
+}

@@ -1,0 +1,13 @@
+.reveal summary {
+  display: flex;
+  align-items: center;
+  min-height: var(--tap);
+  color: var(--color-accent);
+  cursor: pointer;
+}
+
+.reveal p {
+  font-family: var(--font-cipher);
+  color: var(--color-text);
+  overflow-wrap: anywhere;
+}

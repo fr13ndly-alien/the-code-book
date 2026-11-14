@@ -1,0 +1,123 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 1. The wording is ours.
+*/}
+
+<Standfirst>
+  A strip of leather, a wooden staff, and a message that only appears at the right thickness.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## The messenger's belt
+
+In 404 BC a messenger staggered up to Lysander, a general of Sparta. The man was bloody and battered. Five messengers had set out from Persia, and he was the only one to arrive.
+
+He carried no letter. Instead he took off his belt and handed it over. On the inside of the leather was a row of letters that spelled nothing at all.
+
+Lysander wound the belt round a wooden staff he kept with him. Now the letters lined up into words. They warned him that Pharnabazus of Persia was about to attack. Lysander got ready, and beat the attack off.
+
+How can a stick turn nonsense into a warning?
+
+<Label>Try it</Label>
+
+## Unwind the strip
+
+The model shows a leather strip wound round a staff. The message "send more troops to southern flank and" is written along it in four lines. Guess first: when you unwind the strip, which four letters come first?
+
+<Try action="book" button="Show the book's staff">
+  Press ▲ next to "Turn the staff" to see each line in turn. Then find "The unwound strip" in the controls and read its first group.
+</Try>
+
+<Check question="Which letters come first on the unwound strip?">
+  `STSF`. The first turn of the strip touches every line once, so it carries the first letter of each line: `S` from "send", `T` from "troops", `S` from "southern" and `F` from "flank".
+</Check>
+
+<Label>How it works</Label>
+
+## The staff does the shuffling
+
+### Write along, read around
+
+A **scytale** is a wooden staff with a strip of leather or parchment wound round it. The sender writes along the length of the staff, putting one letter on each turn of the strip. At the end of the staff they roll it a little and start a new line.
+
+Then they unwind the strip. Each turn held one letter from every line, so the strip now reads down the lines instead of along them. The words are gone, and what is left looks like a random list of letters.
+
+<Try action="short" button="Wind a short message">
+  This staff holds three lines: `HELP`, `ISCO` and `MING`. Read the unwound strip in the controls. Then type your own message and watch the strip change.
+</Try>
+
+### Nothing changes but the order
+
+Look closely at the strip. Every letter of the message is still there. None has turned into a different letter. They have only swapped places. This kind of cipher is called a **transposition**, and the rail fence on the last page is another.
+
+The scytale makes the swapping easy. Nobody has to count or remember a pattern. The wood does the work.
+
+### The thickness is the key
+
+To read the strip, the receiver winds it round a staff "of the same diameter" as the sender's. A fatter or thinner staff takes a different number of letters on each turn. Then the letters from one line no longer sit side by side, and the staff shows nonsense.
+
+So the secret that sender and receiver share, the **key**, is the size of the staff.
+
+<Try action="wrongStaff" button="Wind the strip on the wrong staff">
+  This is the book's strip on a staff that is too thin. Press ▲ next to "Thickness" one step at a time. Watch the model and "The lines on the staff" until words appear.
+</Try>
+
+<Check question="Why does the wrong staff show nonsense?">
+  The strip's letters are in a fixed order. The thickness decides how many of them go round before the next turn starts. Change that number and each letter lands on a different line, next to the wrong neighbours.
+</Check>
+
+<Label>The story</Label>
+
+## Sparta's cipher stick
+
+The scytale dates from the fifth century BC. It is the first cipher device we know of that was made for an army. It suited soldiers well. A staff is easy to carry, and it does the scrambling for you.
+
+The Spartans added a second trick. A messenger could wear the strip as a belt, with the letters on the inside. To a guard it was only a belt. So the message was hidden twice: first out of sight, then scrambled in case it was found.
+
+Notice what the device cannot do. It moves letters, but it never disguises them. That is the mark of every transposition cipher.
+
+<Label>How it was broken</Label>
+
+## Try another stick
+
+The key is one small number: how many letters fit round the staff. That leaves very few keys. An enemy who knows the method does not need the Spartan staff. They can try a thin stick, then a thicker one, and so on. Trying every key like this is called a **brute-force attack**.
+
+On paper it is even quicker. Write the strip out in rows of two letters, then three, then four. With the right number, the message reads down the columns.
+
+<Try action="belt" button="Load a captured belt">
+  The strip reads `PUAHSTAPTRLANACANKBSYATOZOU`. Open "Try every staff at once" under the controls. Look down the list for the line you can read.
+</Try>
+
+A cipher with only a handful of keys is safe only while the method itself stays secret.
+
+<Label>Challenge</Label>
+
+## Lysander's warning
+
+<Challenge answer="PHARNABAZUS PLANS TO ATTACK YOU">
+  Imagine you are Lysander. The belt in your hands reads `PUAHSTAPTRLANACANKBSYATOZOU`, and your staff is missing.
+
+  Find the right thickness. What does the belt say?
+
+  <Try action="belt" button="Load the belt" />
+</Challenge>
+
+<Check question="What stays the same when a message goes through a scytale?">
+  The letters themselves. The strip holds exactly the letters of the message, each one unchanged. Only their order is different, which is what makes it a transposition.
+</Check>
+
+<Label>What came next</Label>
+
+## Change the letters instead
+
+The rail fence and the scytale both keep the letters and move them. There is a second way to scramble a message, and it works the other way round. Leave every letter in its place, but swap it for a different letter. This is called **substitution**.
+
+One of the oldest descriptions of it comes from India, in a book better known for other advice. It pairs up the letters of the alphabet and swaps each with its partner: [the Kama Sutra cipher](/ciphers/kama-sutra).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 1.
+- Plutarch, *Life of Lysander*, chapter 19. An ancient description of how the Spartans used the scytale.

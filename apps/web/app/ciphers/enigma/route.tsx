@@ -1,7 +1,8 @@
 import { lazy } from "react";
 import { CipherPage, StageLoading } from "~/components/CipherPage";
 import { ClientOnly } from "~/components/ClientOnly";
-import { Check, Challenge, DigDeeper, Label, Standfirst, Story, Try } from "~/components/story/Story";
+import { STORY_BLOCKS, Story } from "~/components/story/Story";
+import { pageMeta } from "~/ciphers";
 import { EnigmaControls } from "./EnigmaControls";
 import { meta as enigma } from "./meta";
 import { PRESETS } from "./presets";
@@ -12,9 +13,7 @@ import { usePlugPicker } from "./usePlugPicker";
 // three.js is large, so the 3D scene loads only once the page is on screen.
 const EnigmaScene = lazy(() => import("./scene/EnigmaScene"));
 
-export function meta() {
-  return [{ title: `${enigma.title} | The Code Book, interactive` }, { name: "description", content: enigma.hook }];
-}
+export const meta = pageMeta(enigma);
 
 export default function EnigmaRoute() {
   const [state, dispatch] = useEnigma();
@@ -43,7 +42,7 @@ export default function EnigmaRoute() {
       }
       story={
         <Story onAction={(name) => dispatch({ type: "load", ...PRESETS[name]! })}>
-          <StoryText components={{ Standfirst, Label, Try, Check, Challenge, DigDeeper }} />
+          <StoryText components={STORY_BLOCKS} />
         </Story>
       }
     />

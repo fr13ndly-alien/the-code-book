@@ -1,0 +1,123 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 5. The wording is ours.
+*/}
+
+<Standfirst>
+  A computer cannot scramble letters. It turns them into ones and zeros, and scrambles those.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## Riders with locked briefcases
+
+In the 1970s, some of the most trusted people in a bank were its dispatch riders. They raced across the world with padlocked briefcases. Inside were not banknotes but keys: the secret settings for the next week of the bank's messages.
+
+By then the messages themselves were scrambled by computers, in an instant. Yet the keys still travelled by hand, as they had in Caesar's day.
+
+That contrast is the story of this chapter. Before you can see why the keys were such a headache, you need to see what the computer was doing with them.
+
+How does a machine that only understands numbers encipher a word?
+
+<Label>Try it</Label>
+
+## What a computer sees
+
+A computer stores everything as **binary digits**, or **bits**: ones and zeros. Make a guess first. How many bits would you need to give every capital letter its own pattern?
+
+<Try action="ascii" button="Show a single A">
+  The board shows `A` as seven bits: `1000001`. Type `B` and then `C` after it in "Your message" and watch the patterns count upwards.
+</Try>
+
+<Check question="Why seven bits, when five would cover 26 letters?">
+  Seven bits make 128 different patterns, because 2 multiplied by itself seven times is 128. That leaves room for small letters, digits and punctuation too. A small `a` is `1100001` and `!` is `0100001`.
+</Check>
+
+<Label>How it works</Label>
+
+## Scramble the numbers
+
+### Letters become numbers
+
+The rule that turns characters into bits is called **ASCII**, said "az-key". It is short for American Standard Code for Information Interchange. It is not secret, and it is not a cipher. Every computer uses the same table, just as every telegraph operator used the same Morse code.
+
+So the first step hides nothing. `HELLO` becomes five rows of seven bits, 35 bits in all, and anyone can turn them back.
+
+### Add the key
+
+Now comes the cipher. Sender and receiver agree on a key. Here it is the word `DAVID`, which ASCII also turns into 35 bits.
+
+Line the key up under the message and compare the bits in pairs. If the two bits are the same, write `0`. If they are different, write `1`. The row you get is the ciphertext.
+
+<Try action="hello" button="Load HELLO and DAVID">
+  Find the block for `H`. Its last key bit is `0`. Tap it to flip it to `1`, and watch the bit below change. Flip a few more, then press "Undo my flipped digits".
+</Try>
+
+### Add it again
+
+To decipher, the receiver does the very same sum. He lines the same key up under the ciphertext and compares again. Every bit the key changed is changed back.
+
+<Try action="back" button="Load the ciphertext">
+  The top rows are now the ciphertext from the book, and the key is still `DAVID`. Read the letters at the left of each bottom row.
+</Try>
+
+<Check question="Why does the same sum both encipher and decipher?">
+  A key bit of `1` flips the bit above it, and a key bit of `0` leaves it alone. Do that twice and every flipped bit flips back. So the second sum undoes the first.
+</Check>
+
+<Label>The story</Label>
+
+## From government rooms to offices
+
+A computer cipher differs from a machine like Enigma in three ways. A computer can copy a machine too complicated to build. It is far faster. And it works on numbers, not letters.
+
+At first only governments and armies had computers. Then they got cheaper. In 1947 Bell Laboratories invented the transistor, which replaced the bulky valve. From 1951 firms such as Ferranti built computers to order. IBM launched its first in 1953. The integrated circuit followed in 1959.
+
+In the 1960s ordinary businesses could afford them. Banks began to encipher money transfers and trade talks. Every one of those messages needed a key at both ends.
+
+<Label>How it was broken</Label>
+
+## The key is the problem
+
+The cipher on this page is weak. A short key word, used over and over, is the old Vigenère cipher dressed in bits. And the sum has a nasty property: it works three ways round.
+
+<Try action="known" button="Guess the message">
+  You have the book's ciphertext, and you suspect it says `HELLO`. So `HELLO` has been typed in as the key. Read the bottom rows: out comes the real key.
+</Try>
+
+Anyone who knows one message can work out the key and read the rest. Real computer ciphers do far more mixing to stop this.
+
+But even a perfect cipher leaves the bank's problem untouched. Both ends need the same key, and it cannot be sent down the line being tapped. This is the **key distribution problem**. Germany faced it with Enigma's monthly books of day keys. In the 1970s it meant riders with briefcases, and the cost kept growing.
+
+<Label>Challenge</Label>
+
+## Who is the message for?
+
+<Challenge answer="ALICE">
+  A bank sends five characters: `0001100 0000011 0000111 0000110 0011100`. A rider has brought you the key: `MONEY`.
+
+  Type the key and read the name.
+
+  <Try action="intercepted" button="Load the ciphertext" />
+</Challenge>
+
+<Check question="What would an eavesdropper need to read this message?">
+  Only the key. The ASCII table is public and so is the method. All the secrecy sits in the five letters the rider carried, which is why delivering keys safely mattered so much.
+</Check>
+
+<Label>What came next</Label>
+
+## One cipher for everyone
+
+Computers gave every business the power to scramble messages. That made two new problems.
+
+The first was choice. If each company invents its own cipher, no two companies can talk in secret. Business needed one strong cipher that everybody shared and trusted. The story of that standard is next: [Lucifer](/ciphers/lucifer).
+
+The second problem was the riders. However good the cipher, somebody still had to carry the key. Later in this chapter, two people who have never met will agree on a key in public.
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 5.
+- The ASCII table: the American Standard Code for Information Interchange, the 7-bit code used on this page.

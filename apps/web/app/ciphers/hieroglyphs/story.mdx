@@ -1,0 +1,135 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 4. The wording is ours.
+  This page is about breaking a lost script, not a cipher, so "How it works" is the codebreakers' method.
+*/}
+
+<Standfirst>
+  Nobody had read a hieroglyph for fourteen centuries, until two scholars treated royal names as a code.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## A stone in a wall
+
+In 1799 French soldiers were knocking down an old wall at a fort in Rosetta, a town in the Nile Delta. Built into the wall was a dark slab covered in writing.
+
+The scholars travelling with Napoleon's army saw at once why it mattered. The stone carried one text three times: in Greek, in an Egyptian script called demotic, and in hieroglyphs. Anyone educated could read the Greek. Nobody on Earth could read the other two.
+
+The last people who understood hieroglyphs had died long before. No teacher, no dictionary and no speaker was left.
+
+How do you read a script when there is no one to ask what a single sign means?
+
+<Label>Try it</Label>
+
+## One sign, one sound
+
+Make a guess first. Is each hieroglyph a picture of an idea, or a letter with a sound?
+
+The top ring holds a king's name. The Greek text says the king is Ptolemy, and "Ptolemy" starts with a `p`. So the first sign, the square, should sound like `p`.
+
+<Try action="start" button="Show the first step">
+  The square in the top ring is already chosen. Press `p` in the row of sounds under the board. Then look at the middle ring: a `p` has appeared there too.
+</Try>
+
+<Check question="Why did the square in the second ring change as well?">
+  It is the same sign, so it must have the same sound. That is the whole method: a sound you find in one name can be tested in every other name.
+</Check>
+
+<Label>How it works</Label>
+
+## Names are the way in
+
+### The ring around a king
+
+In the summer of 1814 an English scientist, Thomas Young, took a copy of the Rosetta stone on holiday. He noticed that some groups of hieroglyphs sat inside a loop. Such a loop is called a **cartouche**.
+
+Young guessed that a loop marked something important: the king's name. The Greek text named the king as Ptolemaios. And a name sounds much the same in any language.
+
+That gave Young a **crib**: a piece of the answer known in advance. He matched the signs in the loop to the sounds of the name, in order.
+
+<Try>
+  Finish the top ring. Tap each sign in turn and give it the Greek letter printed above it: `t`, `o`, `l`, `m`, `e`, `s`.
+</Try>
+
+### A second name tests the first
+
+One name proves little. Perhaps the match is luck. In 1822 a Frenchman, Jean-François Champollion, studied an obelisk carved in Greek and hieroglyphs. It had two cartouches: Ptolemy again, and Queen Cleopatra.
+
+The two names share the sounds p, t, o, l and e. If Young's idea was right, the signs for those sounds in Ptolemy should turn up in the right places in Cleopatra.
+
+<Try action="ptolemy" button="Load Ptolemy, fully read">
+  Look at the middle ring. Three sounds have appeared under the right Greek letters: `l`, `o` and `p`. Now give the other signs their Greek letters. The single reed is the `e` of the pair of reeds above.
+</Try>
+
+Only t did not match. Ptolemy writes it with a half circle and Cleopatra with a hand. Champollion decided that two signs could share one sound, as `c` and `k` do in "cat" and "kid".
+
+<Check question="Why was the match with Cleopatra such strong evidence?">
+  Nobody chose those signs to fit. The lion, the lasso and the square got their sounds from Ptolemy alone. Then they landed exactly on L, O and P in a different name. Luck does not do that three times.
+</Check>
+
+<Label>The story</Label>
+
+## Why nobody had tried
+
+Egyptians wrote in hieroglyphs for over three thousand years. Then, near the end of the fourth century AD, the old scripts were banned as pagan and replaced by a new one, Coptic. Within a few lifetimes nobody could read the temple walls.
+
+Later scholars made a wrong guess and stuck to it. They thought each sign was a **semagram**: a picture standing for a whole idea. In 1652 a famous priest, Athanasius Kircher, published "translations" built on that belief. They were pure invention, but he was so respected that people trusted them.
+
+So the Rosetta stone, cut in 196 BC, sat in the British Museum from 1802 with its Greek fully translated. Few people dared to treat the signs as **phonograms**: signs for sounds.
+
+Even Young lost his nerve. He decided that sounds were only used to spell foreign names, such as the Greek Ptolemy, and he gave up.
+
+<DigDeeper title="A damaged crib">
+  The stone was no easy answer sheet. Half the lines of hieroglyphs are missing, and the rest are broken. Worse, nobody had spoken ancient Egyptian for at least eight centuries. Matching signs to Greek words could give a meaning, but not a sound.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## A sun that says "ra"
+
+Champollion read more foreign names, but they proved nothing new. Then, on September 14, 1822, he received drawings from the temple of Abu Simbel. Its cartouches were older than any Greek ruler of Egypt.
+
+One held just four signs. The last two were known: `s` and `s`. The first was a circle like the sun. Champollion had learned Coptic, the last form of the Egyptian language, as a teenager. The Coptic word for sun is "ra".
+
+So the name ran ra, something, s, s. Only one pharaoh fitted: Rameses. The missing sign had to be `m`.
+
+<Try action="rameses" button="Load the Abu Simbel cartouche">
+  The bottom ring reads `? ? s s`. The sun sign is chosen. Press `ra`. Then tap the second sign and press `m`.
+</Try>
+
+This was the breakthrough. An Egyptian name, far older than the Greeks, was spelled with sounds too. And the sun showed a second trick, the **rebus**: a picture used for the sound of its word. It also proved the language behind the signs was Coptic's ancestor. Champollion ran to tell his brother, then collapsed.
+
+<Label>Challenge</Label>
+
+## Name the conqueror
+
+<Challenge answer="ALEXANDER">
+  Champollion's first cartouche without a translation held one of the greatest names of ancient times. With the sounds from Ptolemy and Cleopatra it reads `a l ? s e ? t r ?`.
+
+  Scribes often left out vowels. Guess the name, test it by giving the three unknown signs their sounds, and type the name in English.
+
+  <Try action="alexander" button="Load the cartouche" />
+</Challenge>
+
+<Check question="Which three sounds did the unknown signs turn out to have?">
+  `k`, `n` and `s`: the name is written alksentrs. Each new name gave Champollion new signs, and each new sign helped with the next name. The key grew as he used it.
+</Check>
+
+<Label>What came next</Label>
+
+## Curiosity, not war
+
+In 1824 Champollion published his full system. He saw Egypt for himself at last, and died in 1832, aged forty-one.
+
+Nobody had hidden anything in the hieroglyphs. Yet reading them took a codebreaker's tools: a crib, a guess, and a second text to test the guess.
+
+Those tools were about to meet a new kind of opponent. In the Second World War, Hitler's generals used a cipher machine even stronger than Enigma. To beat it, Britain's codebreakers built a machine of their own: [Colossus and the Lorenz cipher](/ciphers/lorenz).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 4.
+- Maurice Pope, *The Story of Decipherment*. How this and other lost scripts were read.
+- The Rosetta stone is on show at the British Museum in London, where it has been since 1802.

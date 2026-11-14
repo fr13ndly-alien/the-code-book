@@ -1,0 +1,45 @@
+.pairs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* One pair: two letters joined by a short line, like the brackets in the book. */
+.pair {
+  display: grid;
+  justify-items: center;
+}
+
+.pair button {
+  width: var(--tap);
+  height: var(--tap);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  font-family: var(--font-cipher);
+  font-size: var(--text-lg);
+}
+
+.link {
+  width: 1px;
+  height: var(--space-2);
+  background: var(--color-text-muted);
+}
+
+.pair button[data-mark="on"] {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+  font-weight: bold;
+}
+
+.pair button[data-mark="partner"] {
+  border-color: var(--color-lamp);
+  background: var(--color-surface-raised);
+  color: var(--color-lamp);
+  font-weight: bold;
+}

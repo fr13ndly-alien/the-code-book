@@ -1,0 +1,27 @@
+.marks {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--space-4);
+}
+
+/* A dot is as wide as it is tall. A dash is three dots long, as on the wire. */
+.mark {
+  width: var(--space-2);
+  height: var(--space-2);
+  border-radius: var(--space-1);
+  background: var(--color-text-muted);
+}
+
+.mark[data-kind="dash"] {
+  width: var(--space-6);
+}
+
+.mark[data-state="sent"] {
+  background: var(--color-lamp);
+}
+
+.mark[data-state="now"] {
+  background: var(--color-accent);
+  outline: 2px solid var(--color-lamp);
+}

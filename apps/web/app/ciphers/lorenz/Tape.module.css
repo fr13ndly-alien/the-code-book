@@ -1,0 +1,63 @@
+.frame {
+  display: grid;
+  gap: var(--space-1);
+  max-width: 100%;
+}
+
+.label {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* A long tape scrolls sideways inside the board. */
+.tape {
+  display: flex;
+  max-width: 100%;
+  overflow-x: auto;
+  border-block: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.column {
+  display: grid;
+  flex: none;
+  gap: var(--space-1);
+  justify-items: center;
+  width: var(--space-8);
+  padding: var(--space-1) 0 var(--space-2);
+  border: 0;
+  background: transparent;
+  font-family: var(--font-cipher);
+}
+
+.column[aria-pressed="true"] {
+  background: var(--color-surface-raised);
+  box-shadow: inset 0 0 0 2px var(--color-accent);
+}
+
+.tape[data-kind="cipher"] .symbol {
+  color: var(--color-lamp);
+}
+
+/* A hole that was not punched is a faint ring; a punched hole is filled. */
+.hole {
+  width: var(--space-3);
+  height: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+}
+
+.hole[data-on="true"] {
+  border-color: var(--color-text);
+  background: var(--color-text);
+}
+
+.tape[data-kind="cipher"] .hole[data-on="true"] {
+  border-color: var(--color-lamp);
+  background: var(--color-lamp);
+}
+
+/* Real tape has a row of small feed holes between the second and third rows. The gap marks it. */
+.hole[data-feed="true"] {
+  margin-top: var(--space-2);
+}

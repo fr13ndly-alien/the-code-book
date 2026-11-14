@@ -1,8 +1,6 @@
 # the-code-book
 
-An interactive website for the ciphers in Simon Singh's *The Code Book*, from the oldest to the newest. Each cipher gets a page with a simulator you can operate and the story behind it.
-
-This is a prototype with one cipher: the Enigma machine.
+An interactive website for the ciphers in Simon Singh's *The Code Book*. The menu follows the chapters of the book. Each cipher gets a page with a simulator you can operate and the story behind it.
 
 ## Run it
 
@@ -13,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Then open http://localhost:5173/ciphers/enigma.
+Then open http://localhost:5173.
 
 | Command | What it does |
 |---|---|

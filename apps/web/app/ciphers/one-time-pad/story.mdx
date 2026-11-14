@@ -1,0 +1,144 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  This cipher is only in the full edition of The Code Book (chapter 3).
+  Dates and names were checked against the sources in Further reading. The wording is ours.
+*/}
+
+<Standfirst>
+  A sheet of random letters, used once and burned, makes the only cipher that can never be broken.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## A line between two enemies
+
+In October 1962 the United States and the Soviet Union came close to nuclear war over missiles in Cuba. Messages between the two leaders were slow to arrive. Every delay made a deadly mistake more likely.
+
+So in 1963 the two countries set up a direct line between Washington and Moscow. Its messages had to stay private, and no codebreaker on Earth could be allowed to read them.
+
+They did not pick a clever new machine cipher. They picked an idea from 1917, so simple you can do it with a pencil. Each side handed the other reels of tape punched with random marks.
+
+How can random nonsense make a cipher nobody can break?
+
+<Label>Try it</Label>
+
+## Tear off a sheet
+
+The simulator holds the message `ATTACK THE VALLEY AT DAWN`. Above it is a sheet of random letters, the **pad**. Guess first: the message has five `A`s. Will they all turn into the same cipher letter?
+
+<Try action="book" button="Load the message">
+  Look along the "Ciphertext" row under each `A`. Then press "Tear off the sheet" three times and watch the whole ciphertext change.
+</Try>
+
+<Check question="Do the five As match?">
+  No. They become `P`, `O`, `L`, `V` and `C`. Each letter of the message is enciphered with its own pad letter, so the same letter comes out differently every time. A new sheet gives a completely new ciphertext.
+</Check>
+
+<Label>How it works</Label>
+
+## A key as long as the message
+
+### Add the letters
+
+Number the alphabet from `A` = 0 to `Z` = 25. To encipher a letter, add the number of the pad letter above it. If the total passes 25, take away 26 and carry on from `A`.
+
+This is the old [Vigenère cipher](/ciphers/vigenere), with one change. A Vigenère key is a short word, used again and again. Here the **key** is as long as the message and never repeats.
+
+To decipher, the receiver uses an identical sheet and takes the pad letters away again.
+
+<Try action="book" button="Load the message">
+  Tap under the first `T` of the message. Read the sum in the caption. Then tap under the second `T`: a different pad letter gives a different answer.
+</Try>
+
+### Random means no pattern
+
+Codebreakers live on patterns. They beat Vigenère by finding where the keyword repeats. A pad of random letters has no repeats, no words and no favourite letters.
+
+<Try action="blank" button="Clear the message">
+  Type `AAAAAAAAAA`. The ciphertext is just the first ten letters of the pad. Even the most boring message comes out looking random.
+</Try>
+
+### Every message is possible
+
+Here is the part that makes the cipher unbreakable. Suppose a codebreaker tries every possible pad. One pad turns the ciphertext into "attack the valley at dawn". Another turns it into "defend the hill at sunset". Others give every 21-letter sentence there is.
+
+All those pads are equally likely, because the real one was random. So the codebreaker cannot tell which message is true.
+
+<Try action="other" button="Show the other message">
+  Look at the second table. It shows a pad that makes the same ciphertext say the opposite. Now type any 21-letter message of your own in "Another message it could be".
+</Try>
+
+<Check question="Why can't the codebreaker just pick the message that makes sense?">
+  Because thousands of messages make sense, and each has a pad that fits. With an ordinary cipher only one key gives real words. Here every sensible message, and every silly one, is as likely as the next.
+</Check>
+
+### Once only
+
+The pad is a block of sheets, each with different random letters. Sender and receiver hold matching copies. You use the top sheet for one message, then tear it off and destroy it. That is why it is called a **one-time pad**.
+
+<Label>The story</Label>
+
+## Perfect, and almost useless
+
+In 1917 Gilbert Vernam was an engineer at the American telephone company AT&T. He built a machine that mixed each character of a message with one from a key tape. Joseph Mauborgne, a US Army signals officer, saw what the key had to be: completely random, and never used twice.
+
+Later the mathematician Claude Shannon proved what they suspected. His proof, published in 1949, shows that this cipher gives a codebreaker nothing at all to work with.
+
+So why did armies not switch to it? Count the cost. An army sends huge numbers of messages a day. Each needs its own sheet of fresh random letters. Somebody has to make them all. Somebody has to carry matching pads to every radio operator, even on a battlefield. If one pad is captured, its messages are lost.
+
+The one-time pad suits a few people with time to prepare, such as spies, embassies and two leaders with a hotline.
+
+<DigDeeper title="Making random letters is hard">
+  People are bad at being random. A typist hitting keys "at random" tends to swap hands in a rhythm, and that is a pattern. Good pads come from physical noise, such as radioactive decay or electrical hiss. This page asks your device for its best random numbers.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## Twice is too often
+
+Nobody has broken a one-time pad that was used properly. Nobody ever will. Every success against it came from people breaking the rules.
+
+The worst rule to break is "once only". In 1942, with the German army near Moscow, the Soviet pad printers ran off some sheets more than once. American codebreakers began work on the messages in 1943, in a project later named Venona. In December 1946 Meredith Gardner made the first break. In time about 3,000 messages were read, and they uncovered Soviet spies such as the atom scientist Klaus Fuchs.
+
+<Try action="reuse" button="Send two messages on one sheet">
+  Two ciphertexts now share a pad. Play the codebreaker: in "Another message it could be", type `ATTACK`. Watch the row "Reads as". Then try `DEFEND`.
+</Try>
+
+With one message, any guess fits and you cannot check it. With two, a right guess makes the other message turn into words. The second message is the check.
+
+<Try action="guess" button="Show a longer guess" />
+
+<Label>Challenge</Label>
+
+## The agent's last sheet
+
+<Challenge answer="BURN THIS SHEET NOW">
+  You are an agent abroad. The top sheet of your pad begins `QXJTM ZKWPL HRVBD NGYCF`.
+
+  Tonight's radio message is `RRAGFGSOHSLVOORJ`.
+
+  Pick "Decipher", then type in the pad and the message, or use the button. What are your orders?
+
+  <Try action="intercepted" button="Load the sheet and the message" />
+</Challenge>
+
+<Check question="Why must the agent obey this order?">
+  A sheet that still exists can be found, and it unlocks the message it was used for. Worse, a kept sheet might be used again by mistake, and a pad used twice can be broken.
+</Check>
+
+<Label>What came next</Label>
+
+## Secrecy you can afford
+
+The one-time pad proves that perfect secrecy exists. It also shows the price. The key must be as long as everything you will ever say, and you must deliver it safely first. That delivery problem haunts cryptography to the end of this story.
+
+Armies needed something else: a cipher nearly as strong, worked by a small key and fast enough for thousands of messages a day. The answer was to let a machine do the scrambling. The first such machine was already about 450 years old, and made of two discs: [the cipher disc](/ciphers/cipher-disc).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book* (full edition), chapter 3. The source of the "attack the valley at dawn" example.
+- [Wikipedia: One-time pad](https://en.wikipedia.org/wiki/One-time_pad). Vernam, Mauborgne, Shannon's proof and the hotline.
+- [Wikipedia: Venona project](https://en.wikipedia.org/wiki/Venona_project). What happened when pads were printed twice.
+- Claude Shannon, "Communication Theory of Secrecy Systems", *Bell System Technical Journal*, 1949. The proof itself.

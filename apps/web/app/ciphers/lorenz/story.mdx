@@ -1,0 +1,144 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  The Colossus story comes from The Code Book, chapter 5. The abridged edition says
+  little about how the Lorenz machine worked: those facts were checked against
+  The National Museum of Computing and the Crypto Museum (see Further reading).
+  The wording is ours.
+*/}
+
+<Standfirst>
+  Hitler's own cipher machine was beaten by a machine built in secret: the first programmable computer.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## The message sent twice
+
+On 30 August 1941 a German operator sent a long message, about four thousand characters, over a new radio link. It was enciphered by a machine the British had never seen. At the far end, the message did not arrive properly. So he was asked to send it again.
+
+He should have reset his machine to a new starting point. He did not. He typed the message a second time from the same start, and he shortened a few words as he went.
+
+British listeners recorded both versions. At Bletchley Park, John Tiltman saw what the lazy repeat had given him.
+
+What was this machine doing to the message, and why was a repeat so dangerous?
+
+<Label>Try it</Label>
+
+## Five holes for every letter
+
+The machine was the **Lorenz** cipher, used for messages between Hitler and his generals. It worked on a **teleprinter**, a typewriter that sends letters down a wire. A teleprinter turns each letter into a column of five positions on paper tape. Each position is a hole or no hole.
+
+Guess first: with five positions, how many different columns can there be?
+
+<Try action="letter" button="Punch a single A">
+  Look at the input tape. The letter `A` is two holes, then three blanks. In the table, a hole is `1` and a blank is `0`. Now type `B` after the `A` in "Input tape" and compare.
+</Try>
+
+<Check question="How many different columns can five positions make?">
+  Thirty-two, because 2 × 2 × 2 × 2 × 2 = 32. That covers 26 letters with six left over. The spare ones mean things like "space" and "new line". On this page a space is written `9`, as the codebreakers wrote it.
+</Check>
+
+<Label>How it works</Label>
+
+## Add a key, hole by hole
+
+### Adding without carrying
+
+The Lorenz machine made a second, secret column for every letter: the **key**. Then it added the two columns, one position at a time, with a very simple rule. If the two positions are alike, the answer is `0`. If they differ, the answer is `1`.
+
+So hole plus blank is a hole. Hole plus hole is a blank. Computer people call this rule **XOR**.
+
+<Try action="start" button="Load a short order">
+  The first letter is chosen. Read the table row by row: "Tape" plus "Key" gives "Out". Then press ▲ next to "Letter shown" and watch a new key meet the next letter.
+</Try>
+
+### Wheels make the key
+
+The key came from wheels with pins round the edge. A raised pin meant `1` and a lowered pin `0`. After every letter the wheels stepped on by one pin, so each letter met a fresh key.
+
+The wheels had different numbers of pins. Here they have 41, 31, 29, 26 and 23, like five wheels of the real machine. Those numbers share no factors, so the wheels fall out of step at once. They only line up again after 22,041,682 letters.
+
+This page is a simplified model. The real machine had twelve wheels: five more key wheels that moved in fits and starts, and two to control them. The pin patterns here are invented.
+
+<Try>
+  Press ▲ next to "Wheel 1" a few times. One row of the table changes, and so does the whole output tape.
+</Try>
+
+### The same sum undoes itself
+
+Adding the key twice is the same as not adding it at all. Alike gives `0`, so any key added to itself vanishes.
+
+That means the receiver needs no second machine design. He sets his wheels to the same start, feeds in the ciphertext, and the plain message comes out.
+
+<Try action="start" button="Load the order again">
+  Press "Feed the output back in". The output tape becomes the input, and the new output reads `ATTACK9AT9DAWN`.
+</Try>
+
+<Check question="Why must sender and receiver start their wheels in the same place?">
+  The receiver has to add exactly the same key, letter for letter. If one wheel starts a single pin out, one position in five is wrong all along the tape, and the message is nonsense.
+</Check>
+
+<Label>The story</Label>
+
+## A machine nobody had seen
+
+The Lorenz machine was far more complicated than Enigma. Yet nobody at Bletchley had ever set eyes on one.
+
+The message sent twice changed that. Because both versions used the same key, Tiltman could play one against the other and recover both the message and the key. A young mathematician, Bill Tutte, then studied that long stretch of key. From its patterns alone he worked out the wheels inside the machine.
+
+After that the codebreakers could read Lorenz messages, but only by hand. Each one took weeks, and by then the news was stale.
+
+<DigDeeper title="Why the key matters more than the message">
+  A message is used once. But a stretch of key shows how the machine behaves. Tutte's team worked out the whole design by the start of 1942 from about four thousand characters of key. The British then built their own copy, called Tunny, without ever seeing the original.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## Speed, then a computer
+
+The weakness is in the adding. See it for yourself.
+
+<Try action="blankTape" button="Run blank tape through">
+  The input tape has no holes at all. Look at the output: it is the key itself, laid bare. Anything you know about a message, you can subtract to see the key.
+</Try>
+
+Two messages added with the same key are worse still. Add the two ciphertexts together and the key cancels out. What is left is one message added to the other, and a patient codebreaker can pull them apart. That is what the repeated message gave away.
+
+For everyday messages the wheel starts had to be found by counting and comparing, millions of times. Max Newman, a Bletchley mathematician, designed a machine to do it. His bosses thought it could not be built. An engineer, Tommy Flowers, built it anyway in ten months.
+
+**Colossus** was ready in December 1943. It used about fifteen hundred electronic valves, far faster than the clicking switches of earlier machines. More important, it could be set up for different jobs. It was programmable: the forerunner of the modern computer.
+
+<Label>Challenge</Label>
+
+## Read the tape
+
+<Challenge answer="COLOSSUS">
+  An intercepted tape reads `HWOOI8W3`. A careless operator has let slip the wheel starts: 5, 4, 3, 2, 1.
+
+  Set the five wheels and read the output tape. What is the word?
+
+  <Try action="intercepted" button="Load the tape" />
+</Challenge>
+
+<Check question="Why did the same machine that enciphered the word also decipher it?">
+  Because adding the same key twice cancels it. With the wheels at the same start, the machine adds the same key to the ciphertext, and only the message is left.
+</Check>
+
+<Label>What came next</Label>
+
+## A secret computer
+
+After the war Colossus was broken up. Flowers was ordered to destroy the plans, and he burned them. Everyone who had worked on it was sworn to silence.
+
+So when the Americans finished a machine called ENIAC in 1945, with eighteen thousand valves, the world took it for the first computer. For decades it kept that title.
+
+Computers were now part of the fight. Codebreakers used them to test keys at great speed. Soon codemakers used them too. And a computer does not think in letters or even in five holes. It thinks in numbers: [letters as binary numbers](/ciphers/binary).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 5.
+- The National Museum of Computing, Bletchley Park, "Tunny and Heath Robinson" (tnmoc.org). The repeated message of 30 August 1941 and the rebuilt machines.
+- Crypto Museum, "Lorenz SZ-40/42" (cryptomuseum.com). The machine, its wheels and how it was broken.
+- International Telegraph Alphabet No. 2 (ITA2), the five-hole teleprinter code used on this page.

@@ -1,0 +1,136 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 2. The wording is ours.
+*/}
+
+<Standfirst>
+  One keyword, twenty-six alphabets, and a cipher so strong that people called it unbreakable.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## A walk in the Pope's garden
+
+One day in the 1460s, Leon Battista Alberti was strolling through the gardens of the Vatican. Alberti was an architect, a painter and a poet. There he met a friend, Leonardo Dato, who worked as the Pope's secretary. Dato began to talk about ciphers.
+
+By then, ciphers were in trouble. Every cipher swapped each letter for one fixed partner. Codebreakers had learned to count the letters in a message, and counting gave the partners away.
+
+The chat set Alberti thinking, and he wrote an essay with a new idea in it. What if a letter did not keep the same partner all the way through a message?
+
+<Label>Try it</Label>
+
+## One letter, many disguises
+
+The simulator holds the message `DIVERT TROOPS TO EAST RIDGE` and the keyword `WHITE`. The message has two `T`s side by side. Guess first: will they turn into the same cipher letter?
+
+<Try action="white" button="Load the message">
+  Press ▲ next to "Letter" until you reach letter 6, then go on to letter 7. Watch the "Cipher" row above the square.
+</Try>
+
+<Check question="Do the two Ts get the same cipher letter?">
+  No. The first `T` becomes `P` and the second becomes `A`. Each sits under a different letter of the keyword, so each uses a different row of the square. A codebreaker who counts letters can no longer trust the count.
+</Check>
+
+<Label>How it works</Label>
+
+## Twenty-six alphabets and a keyword
+
+### The square
+
+Alberti suggested using two cipher alphabets and swapping between them. A Frenchman, Blaise de Vigenère, pushed the idea as far as it goes. His cipher uses 26.
+
+The grid on the simulator is the **Vigenère square**. The top line is the plain alphabet. Under it are 26 cipher alphabets, each pushed one place further along than the one above. Every row is a [Caesar shift](/ciphers/caesar). The letter at the left of a row is its name.
+
+A cipher that uses one cipher alphabet is called **monoalphabetic**. A cipher that switches between several is **polyalphabetic**.
+
+<Try action="oneLetter" button="Use a keyword of one letter">
+  The keyword is now just `W`. Step through the message with ▲. Only one row is ever used, so this is a plain Caesar shift, and both `T`s become `P`.
+</Try>
+
+### The keyword picks the row
+
+Sender and receiver must switch rows in the same order. They agree on a **keyword**. Write it above the message, again and again, until every letter of the message has a key letter over it.
+
+To encipher a letter, look at its key letter. Go to the row with that name. Then go along to the column under your plain letter. The letter where row and column meet is the cipher letter.
+
+With the keyword `WHITE` you use five rows in turn. The sixth letter goes back to the `W` row.
+
+<Try action="troops" button="Jump to the double O">
+  You are at the first `O` of `TROOPS`. Read its key letter, row and cipher letter. Press ▲ once for the second `O`. One becomes `H`, the other `S`.
+</Try>
+
+### Reading it back
+
+The receiver knows the keyword, so the work runs backwards. Write the keyword above the ciphertext. For each letter, go to the row of its key letter and find the cipher letter in that row. The plain letter is at the top of that column.
+
+<Try action="receive" button="Decipher the message">
+  The ciphertext is loaded, and "I want to" is set to "Decipher". Step through with ▲ and watch the order come back. Then change one letter of the keyword and see the plaintext turn to nonsense.
+</Try>
+
+<Check question="The ciphertext has five Zs. Do they all stand for the same letter?">
+  No. Here `Z` stands for `D`, then `R`, then `S`. The most common cipher letter is not `E` in disguise, so counting letters points the codebreaker the wrong way.
+</Check>
+
+<Label>The story</Label>
+
+## The diplomat who retired to study
+
+Blaise de Vigenère was born in 1523 and worked as a French diplomat. At twenty-six he was sent to Rome for two years, and there he came across Alberti's writing. At first, ciphers were only part of his job.
+
+At thirty-nine he had saved enough money to stop working and study. Only then did he turn Alberti's idea into a complete cipher. He published it in 1586 in *A Treatise on Secret Writing*.
+
+His cipher had two strengths. Counting letters did not break it. And the key could be any word or phrase at all, so there were far too many keys to try.
+
+The telegraph made it popular with businesses in the nineteenth century. A telegraph clerk had to read every message he sent, and a cipher kept trade secrets from him. People called it *le chiffre indéchiffrable*: "the uncrackable cipher".
+
+<DigDeeper title="Who else had a hand in it?">
+  The full edition of the book names two more men between Alberti and Vigenère. Johannes Trithemius was a German abbot, and Giovanni Porta was an Italian scientist. Each added to the idea. Vigenère read all three and gave the cipher its final form, which is why it carries his name.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## The keyword comes round again
+
+The weakness hides in the keyword. It is short, so it repeats. A keyword of four letters can encipher a common word like `THE` in only four ways. In a long message, the same way is sure to turn up twice.
+
+<Try action="repeats" button="Load “the sun and the man in the moon”">
+  The keyword is `KING`. You are at the second `THE`. Read its three cipher letters, then step on with ▲ to the third `THE`. Both are `BUK`.
+</Try>
+
+The two `BUK`s start eight letters apart. Eight is twice the length of `KING`. So a repeat in the ciphertext tells a codebreaker something about how long the keyword is.
+
+Once you know the length, the cipher falls apart. With a five-letter keyword, letters 1, 6, 11 and so on all used the same row. They are one Caesar shift. So are letters 2, 7, 12. The "unbreakable" cipher is five easy ciphers woven together.
+
+Charles Babbage saw this, probably in 1854. You can follow his attack on the page [Babbage breaks the Vigenère cipher](/ciphers/babbage).
+
+<Label>Challenge</Label>
+
+## The answer from the ridge
+
+<Challenge answer="HOLD THE RIDGE UNTIL DARK">
+  The order went out: `DIVERT TROOPS TO EAST RIDGE`. An hour later a rider brings the reply: `DVTW XDL ZBHCL CGXES LTVG`.
+
+  It was enciphered with the same keyword, `WHITE`. What does it say?
+
+  <Try action="reply" button="Load the reply" />
+</Challenge>
+
+<Check question="Why is a long keyword safer than a short one?">
+  A longer keyword brings more rows of the square into play. A word like `THE` can then be enciphered in more ways, so repeats are rarer and harder to find.
+</Check>
+
+<Label>What came next</Label>
+
+## Strong, but slow
+
+The Vigenère cipher beat letter-counting, and that was a real victory for the codemakers. But it had a cost. Every single letter needs its own trip into the square. Do that by hand for a long message and it takes an age.
+
+So many people stayed with older, simpler ciphers. Others looked for a middle way: a cipher nearly as quick as plain substitution, but harder to break by counting. Their answer gave the common letters several disguises each. That is the next page: [the homophonic cipher](/ciphers/homophonic).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 2.
+- Blaise de Vigenère, *Traicté des chiffres* (1586). The book in which he set out the cipher.
+- David Kahn, *The Codebreakers*. A full history, with more on Alberti, Trithemius and Porta.

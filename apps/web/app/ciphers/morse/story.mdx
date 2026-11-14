@@ -1,0 +1,132 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  The abridged Code Book only mentions Morse code in passing, so the facts here
+  were checked against the sources listed under "Further reading". The wording is ours.
+*/}
+
+<Standfirst>
+  Two signals, short and long, carried the world's news down a wire. They kept no secrets at all.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## Four words from Washington
+
+On 24 May 1844 Samuel Morse sat in the Capitol building in Washington with his hand on a small metal key. A wire ran from it all the way to Baltimore. At the far end waited his partner, Alfred Vail.
+
+Morse pressed the key in a pattern of short and long taps. In Baltimore a machine scratched the same pattern onto a strip of paper. Vail read it off: "What hath God wrought".
+
+Until that day a message could travel no faster than a horse, a ship or a train. Now it crossed the country in the time it took to tap it out.
+
+But a wire can only do two things: carry current, or not. How do you spell words with that?
+
+<Label>Try it</Label>
+
+## Watch the lamp
+
+The simulator has a lamp in place of a wire. It is loaded with `SOS`, the best-known signal of all. Make a guess first: which takes longer to send, the `S` or the `O`?
+
+<Try action="sos" button="Load SOS">
+  Press "Send" in the controls. Watch the lamp flash, and watch the dots and dashes light up under each letter.
+</Try>
+
+<Check question="Which letter took longer, S or O?">
+  `O`. An `S` is three short flashes, called dots. An `O` is three long ones, called dashes. Each dash lasts as long as three dots, so the `O` takes more than twice the time.
+</Check>
+
+<Label>How it works</Label>
+
+## Short, long and silence
+
+### A pattern for every letter
+
+**Morse code** gives each letter its own pattern of **dots** and **dashes**. The table under the lamp shows all of them, with the ten figures as well.
+
+The patterns are not all the same length. `E`, the most common letter in English, is a single dot. `T` is a single dash. Rare letters such as `J`, `Q` and `Y` need four signals each. An operator sends thousands of letters a day, so short patterns for common letters save a great deal of time.
+
+<Try action="common" button="Compare common and rare letters">
+  Three common letters are followed by three rare ones. Count the dots and dashes under each card. Then press "Send" and time the two words by eye.
+</Try>
+
+### The gaps do half the work
+
+Dots and dashes are not enough. `E` is one dot and `S` is three. So are three dots one `S`, or `EEE`?
+
+Silence gives the answer. Inside a letter, the gap between signals is as short as one dot. Between two letters it is three dots long. Between two words it is seven. A trained ear hears those pauses as clearly as you see the spaces on this page.
+
+<Try action="first" button="Load Morse's first message">
+  Press "Send" and watch the lamp. Notice the short pause after each letter and the long one after each word.
+</Try>
+
+### Keying by hand
+
+A telegraph operator made every one of those signals by hand, pressing a key for a short or a long time. At the other end, a second operator turned the pattern back into letters.
+
+You can do both jobs here. As you key in a letter, the table narrows down what it could be. One dot might be the start of many letters. Dot, dot, dot leaves only a few.
+
+<Try action="key" button="Give me the key">
+  Press "Dot" three times, then "Next letter". Press "Dash" three times, then "Next letter". Finish with three more dots. Read "It reads" in the controls.
+</Try>
+
+<Label>The story</Label>
+
+## A code, not a cipher
+
+Morse and Vail built their telegraph to be read. The table of dots and dashes was published, and every operator knew it by heart. There is no key to keep secret, so Morse code hides nothing. It is a way of sending letters, just as handwriting is a way of showing them.
+
+That made the telegraph fast, and awkward. To send a telegram you handed your words to an operator, who read them and tapped them out. Another operator read them at the far end. Anyone who cut into the wire along the way could read them too.
+
+People with private business did not like that. The answer was to scramble the message first, and only then give it to the operator.
+
+<DigDeeper title="Why this is called International Morse">
+  The table on this page is not quite the one Morse and Vail used. A German telegrapher, Friedrich Gerke, tidied their code in 1848. A conference in Paris in 1865 turned a version of his work into the international standard. The original lived on in North America as American Morse.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## Nothing to break
+
+You cannot break Morse code, because it was never locked. Reading someone else's telegram takes no cleverness, only the table.
+
+So Victorian businesses turned to a real cipher. *The Code Book* tells how the telegraph made the Vigenère cipher popular with them. It was the best way to stop the operator from reading what he sent. Enciphering took time and made a telegram cost more, and people paid anyway.
+
+The message below was enciphered before it reached the operator. The plaintext was `ATTACK AT DAWN`, and the Vigenère keyword was `LEMON`.
+
+<Try action="enciphered" button="Send an enciphered telegram">
+  Press "Send". You are the operator, and you can read every letter on the cards. Can you tell what the message says?
+</Try>
+
+Morse code and a cipher do two different jobs. One turns letters into signals. The other hides the meaning. A secret telegram needs both, in that order.
+
+<Label>Challenge</Label>
+
+## Read the wire
+
+<Challenge answer="COME AT ONCE">
+  A strip of paper tape comes out of the telegraph. It shows dots and dashes, but no letters.
+
+  Key each pattern in by hand, with "Next letter" and "Next word" in the right places. What does the telegram say?
+
+  <Try action="wire" button="Load the tape" />
+</Challenge>
+
+<Check question="Why could you read this without being told a key?">
+  Because Morse code has no key. The table is the same for everyone and it is public. That is the difference between a code for sending and a cipher for hiding.
+</Check>
+
+<Label>What came next</Label>
+
+## From wires to the air
+
+The telegraph needed a wire between sender and receiver. Around the end of the century the Italian physicist Guglielmo Marconi found a way to send the same dots and dashes with no wire at all. He had invented radio.
+
+Generals and admirals loved it. They also feared it, because radio waves travel in every direction. Every message reaches the enemy as well as your own side. From then on, secrecy depended completely on codes and ciphers. In 1917 one intercepted telegram changed a war: [the Zimmermann telegram](/ciphers/zimmermann).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book* (full edition), for the telegraph and why Victorians enciphered their telegrams.
+- Library of Congress, *Samuel F. B. Morse Papers*: "Invention of the Telegraph". It holds the paper tape of 24 May 1844.
+- International Telecommunication Union, Recommendation ITU-R M.1677-1, *International Morse code*. The official table and timings.
+- Wikipedia, "Friedrich Clemens Gerke", for the 1848 revision and the Paris conference of 1865.

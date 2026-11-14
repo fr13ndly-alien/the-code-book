@@ -1,0 +1,139 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 1 and Appendix B. The wording is ours.
+  The intercepted message is our own passage, enciphered by the engine.
+*/}
+
+<Standfirst>
+  Every language has favourite letters. A scholar in Baghdad used them to break the unbreakable cipher.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## Counting in Baghdad
+
+In ninth-century Baghdad, scholars read the Koran with unusual care. They wanted to know which of Muhammad's revelations came first. So they counted words, because some words were newer than others.
+
+Then they went further and counted single letters. They found that Arabic has favourites. The letters `a` and `l` turn up everywhere. The letter `j` appears only a tenth as often.
+
+One scholar, al-Kindi, saw what this meant for secret writing. For centuries the substitution cipher had seemed unbreakable, because it had far too many keys to try. Could a simple count of letters do what no search could?
+
+<Label>Try it</Label>
+
+## Find the favourite
+
+The simulator holds an intercepted message. Somebody swapped every letter for another, using a shuffled alphabet. The bars count how often each cipher letter appears. Guess first: which letter does English use most?
+
+<Try action="intercepted" button="Load the intercepted message">
+  Tap the tallest bar, `O`. Then tap `e` in the row of plain letters and watch the message.
+</Try>
+
+<Check question="Why is E a good guess for the tallest bar?">
+  `E` is the most common letter in English: about one letter in every eight. A substitution cipher changes how a letter looks, but not how often it appears. So the busiest cipher letter is probably `E` in disguise.
+</Check>
+
+<Label>How it works</Label>
+
+## Al-Kindi's recipe
+
+### Count, rank, match
+
+Al-Kindi's method is called **frequency analysis**. A letter's **frequency** is how often it turns up. First, take a long piece of ordinary writing in the right language and count each letter. In English, `E` comes first, then `T`, then `A`. Rare letters such as `J`, `Q`, `X` and `Z` each make up less than one letter in a hundred.
+
+Next, count the letters of the ciphertext in the same way. Now match the two lists. The most common cipher letter probably stands for `E`. The second probably stands for `T`, and so on down the list.
+
+On the simulator, the solid bars are the ciphertext and the outlines are normal English. Both are sorted with the tallest first, so you can compare their shapes.
+
+<Try action="byRank" button="Follow the recipe blindly">
+  This fills in every letter by its rank alone. Read the message. Is it English yet?
+</Try>
+
+### Close, but not right
+
+The result is almost readable, and that is the lesson. The table of English frequencies is only an average. No real message matches it exactly, and a short one can be far off. With fewer than a hundred letters, the method struggles.
+
+So a codebreaker treats the count as a first guess, and then looks for words. This message is full of the word `tae`. No such word exists, but "the" is the most common three-letter word in English. The cipher letter shown as `a` must really be `H`.
+
+<Try>
+  Cipher `B` is already picked. Tap `h` in the row of plain letters. Every `tae` becomes `the`, and other words start to show.
+</Try>
+
+### Letters have personalities
+
+Each letter also has habits, and a cipher cannot hide them. Vowels are friendly: `E` stands next to nearly every other letter. Consonants are choosier. `T` is rarely seen beside `B`, `D`, `G`, `J`, `K`, `M`, `Q` or `V`.
+
+`H` often comes just before `E`, as in "the" and "then", but rarely after it. Only a few letters like to double: the usual pairs are `SS`, `EE`, `TT`, `FF`, `LL`, `MM` and `OO`. And only two English words have a single letter: "a" and "I".
+
+<Try action="started" button="Start with E, T and H">
+  Find the two cipher letters that stand alone as words: `X` and `Y`. One is `a` and one is `i`. Give each its letter, then guess the word `thJee`.
+</Try>
+
+<Check question="A cipher letter touches almost every other letter. Is it a vowel or a consonant?">
+  Probably a vowel. Vowels are needed in nearly every word, so they end up beside nearly every letter. Tap a letter and the simulator tells you how many different letters it touches.
+</Check>
+
+<Label>The story</Label>
+
+## The philosopher of the Arabs
+
+The earliest description of this attack that we know of comes from al-Kindi, a ninth-century scientist. People called him "the philosopher of the Arabs". He wrote 290 books, on medicine, astronomy, mathematics, language and music.
+
+His great work on ciphers was lost for centuries. It was found again only in 1987, in an archive in Istanbul. Its title is *A Manuscript on Deciphering Cryptographic Messages*. The recipe itself takes up just two short paragraphs.
+
+Baghdad was the right place for the discovery. Its rulers ran a rich, well-organised empire, and officials used ciphers every day, even for tax records. Scholars there studied mathematics, statistics and language side by side. Breaking the cipher needed all three.
+
+With al-Kindi a new science began: **cryptanalysis**, the reading of secret messages without the key. From now on, every codemaker had an opponent.
+
+<DigDeeper title="The novel with no letter E">
+  In 1969 the French author Georges Perec wrote *La Disparition*, a novel of two hundred pages that never uses the letter `e`. Gilbert Adair then translated it into English as *A Void*, still without a single `e`.
+
+  Encipher that book and the tallest bar would not be `E` at all. A codebreaker who trusted the count blindly would go wrong from the first step.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## Too faithful to hide
+
+Frequency analysis ended the long safety of the **monoalphabetic substitution cipher**. That is the name for any cipher that swaps each letter for one fixed letter or symbol. Its billions of keys no longer mattered. A codebreaker could find the message in minutes without testing a single key.
+
+The weakness is that the cipher is too faithful. Every `E` becomes the same cipher letter, every time. So the habits of the language show straight through the disguise.
+
+The attack spread, or was discovered again, in Europe. In 1506 Giovanni Soro became cipher secretary of Venice. He was so good that other states sent him messages they could not read.
+
+Codemakers fought back. They slipped in **nulls**, extra symbols that mean nothing, to spoil the count. They also swapped some whole words for single symbols.
+
+<Try action="started" button="Carry on from E, T and H">
+  Finish the job. Guess a word, fill in its letters, and see whether the words around it start to make sense. If they turn to nonsense, rub the guess out and try another.
+</Try>
+
+<Label>Challenge</Label>
+
+## The spy's password
+
+<Challenge answer="LANTERN">
+  The intercepted message is a spy's report. Its last sentence is `LBO FXKKQCJV YK RXPLOJP`.
+
+  Break the cipher. What is the password, the last word of the report?
+
+  <Try action="intercepted" button="Load the message" />
+</Challenge>
+
+<Check question="Why would this attack struggle with a message of ten letters?">
+  Ten letters are too few to count. The table of frequencies is an average over a lot of writing. A short message can easily have no `E` at all, so its tallest bar tells you very little.
+</Check>
+
+<Label>What came next</Label>
+
+## A queen trusts her cipher
+
+The lesson is that a huge number of keys does not make a cipher safe. A cipher is only as strong as the patterns it hides, and plain substitution hides none.
+
+Yet people went on trusting it, with a few extra tricks added on top. In 1586 one of them was a queen in prison, plotting against another queen. She wrote in symbols, with nulls and with signs for whole words. England's best codebreaker was waiting for her letters. Would her tricks beat the count? Find out on the next page: [the cipher of Mary Queen of Scots](/ciphers/mary-queen-of-scots).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 1, and Appendix B, "Some Elementary Tips for Frequency Analysis".
+- Al-Kindi, *A Manuscript on Deciphering Cryptographic Messages*, ninth century. The first known description of the method.
+- H. Beker and F. Piper, *Cipher Systems: The Protection of Communication*. The source of the table of English letter frequencies.

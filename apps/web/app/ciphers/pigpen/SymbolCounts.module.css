@@ -1,0 +1,47 @@
+.counts {
+  display: grid;
+  gap: var(--space-1);
+  justify-items: center;
+  max-width: 40rem;
+}
+
+.title {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.counts ol {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.counts button {
+  display: grid;
+  justify-items: center;
+  padding: var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface-raised);
+  color: var(--color-lamp);
+}
+
+.count {
+  font-family: var(--font-cipher);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+}
+
+.counts button[aria-pressed="true"] {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+.counts button[aria-pressed="true"] .count {
+  color: var(--color-accent-ink);
+}

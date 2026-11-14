@@ -35,7 +35,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     <main className="message-page">
       <h1>{notFound ? "Page not found" : "Something went wrong"}</h1>
       <p>{notFound ? "That page does not exist." : "Reload the page to try again."}</p>
-      <a href="/">Back to the timeline</a>
+      <a href="/">Back to the menu</a>
     </main>
   );
 }

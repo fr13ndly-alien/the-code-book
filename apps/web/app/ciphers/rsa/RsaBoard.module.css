@@ -1,0 +1,78 @@
+.panels {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: stretch;
+  max-width: 34rem;
+}
+
+.panel {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  font-size: var(--text-sm);
+  overflow-x: auto;
+}
+
+.panel h2 {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+}
+
+.panel p,
+.panel td {
+  font-family: var(--font-cipher);
+}
+
+.panel b {
+  color: var(--color-lamp);
+}
+
+.lines,
+.squares {
+  border-collapse: collapse;
+}
+
+.lines th,
+.squares th {
+  padding: var(--space-1) var(--space-3) var(--space-1) 0;
+  font-family: var(--font-cipher);
+  font-weight: normal;
+  color: var(--color-text-muted);
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+.lines td,
+.squares td {
+  padding: var(--space-1) var(--space-3) var(--space-1) 0;
+  vertical-align: top;
+}
+
+.panel .tag {
+  font-family: var(--font-ui);
+  color: var(--color-text-muted);
+}
+
+.lines tr[data-kind="public"] .tag {
+  color: var(--color-accent);
+}
+
+.squares tr[data-on="true"] td:not(.tag) {
+  color: var(--color-lamp);
+  font-weight: bold;
+}
+
+.squares tr[data-on="false"] {
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 60rem) {
+  .panel {
+    font-size: var(--text-md);
+  }
+}

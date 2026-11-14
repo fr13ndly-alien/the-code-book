@@ -1,0 +1,149 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Lucifer is only in the full edition of The Code Book (chapter 6). Dates and
+  numbers were checked against the sources in "Further reading". The wording is ours.
+  The simulator is a toy Feistel network, not real DES.
+*/}
+
+<Standfirst>
+  IBM's Lucifer kneaded messages like dough, sixteen times over, and became America's standard cipher.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## A cipher named after the devil
+
+Horst Feistel left Germany for America in 1934. When war came, his new country did not trust him. He spent part of it under house arrest, and only became a citizen in 1944.
+
+Ciphers fascinated him, and in 1968 he joined IBM, where he could study them freely. By then banks and businesses were buying computers. Each one scrambled its messages in its own way. A bank could not send a secret to a customer whose computer scrambled differently.
+
+Feistel built a cipher strong enough for all of them to share. He called it Lucifer. How do you scramble a message so well that everyone can know the method?
+
+<Label>Try it</Label>
+
+## Flip one bit
+
+The simulator has scrambled the letters `HI`. Each row shows the message after one more round of scrambling. Make a guess first: if you change one tiny part of the message, how much of the ciphertext changes?
+
+<Try action="lucifer" button="Show HI, sixteen rounds">
+  Tap the first `0` in the top row to flip it to `1`. Watch the bottom row, and read "Bits changed by the flip".
+</Try>
+
+<Check question="How much of the ciphertext changed?">
+  About half of it: 8 bits of 16. One flipped bit at the top spreads until every bit at the bottom has an even chance of changing. Codemakers call this an avalanche.
+</Check>
+
+<Label>How it works</Label>
+
+## Knead, swap, repeat
+
+### Letters become bits
+
+A computer cannot scramble letters. It scrambles numbers, written as ones and zeros called **bits**. The page on [binary](/ciphers/binary) shows how each letter gets its own pattern. `H` is `01001000` and `I` is `01001001`.
+
+A cipher like Lucifer chops the message into **blocks** of a fixed size and scrambles one block at a time. Real Lucifer blocks were 64 bits long. Ours are 16 bits, which is two letters, so that you can see every bit.
+
+The key is a number too. Here it is one letter, which makes 8 bits.
+
+<Try action="lucifer" button="Show HI again">
+  Change "Two letters" to your initials. Then change "Key letter" and watch every row below the top one change.
+</Try>
+
+### One round
+
+Think of the block as a slab of dough. Lucifer cuts it into a left half and a right half. Then it does three things, which together make one **round**.
+
+First, it scrambles a copy of the right half, using the key. Second, it adds the scrambled copy to the left half. Adding bits is simple: two bits that match give `0`, and two that differ give `1`. Third, the halves swap sides.
+
+Notice that the right half itself has not changed. It has only moved. That detail matters later.
+
+<Try action="oneRound" button="Show one round">
+  Read the line above the table. It works through round 1: the right half `01001001` is scrambled to `01101111`, then added to the left half.
+</Try>
+
+### Sixteen rounds
+
+One round hides very little. Half of the block is still there in plain sight. So Lucifer kneads again, and again, with a slightly different **round key** each time. Here the round key is the main key turned one place to the left.
+
+Every round folds each half into the other. After a few rounds, each bit of the ciphertext depends on every bit of the message and every bit of the key.
+
+<Try action="oneFlip" button="Flip a bit, one round">
+  One bit is flipped, and after one round only 1 bit has changed. Press ▲ next to "Rounds" and watch the count: 1, then 4, then 9.
+</Try>
+
+### Backwards with the same machine
+
+To decipher, you run the very same rounds with the round keys in reverse order. Nothing has to be unscrambled.
+
+Here is why. Each round leaves one half untouched, so the receiver can scramble that half again and get the same result. Adding the same bits twice cancels out. The older half comes back.
+
+<Try action="reverse" button="Decipher 0A68">
+  The ciphertext `0A68` goes in at the top. Follow the rows down to `HI`. Use "Explain round" to step through the rounds being undone.
+</Try>
+
+<Label>The story</Label>
+
+## From Lucifer to a standard
+
+On 15 May 1973, America's National Bureau of Standards asked for a cipher that the whole country could use. IBM offered a version of Lucifer.
+
+The method would be public. All the secrecy would sit in the key. So the size of the key mattered a great deal, and here the National Security Agency, America's codebreakers, stepped in. A Senate committee later found that the NSA had convinced IBM a shorter key was enough.
+
+The key was set at 56 bits. That gives more than 70,000,000,000,000,000 keys. On 23 November 1976 this version of Lucifer was adopted as the **Data Encryption Standard**, or DES. Businesses could at last send secrets to each other.
+
+<DigDeeper title="Why would the NSA want a shorter key?">
+  Many people suspected a simple reason. With 56 bits, no business could afford to try every key. But an agency with the world's biggest computers perhaps could. The NSA has always denied weakening DES, and it did help IBM make the scrambling tables stronger.
+</DigDeeper>
+
+<DigDeeper title="How real DES differs from this toy">
+  Real DES has 64-bit blocks, so each half is 32 bits. Its scrambling step uses eight different tables, called S-boxes, and shuffles the bits afterwards. Our toy borrows one row of the first DES table and uses it twice. It is far too small to keep a real secret.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## Too few keys, in the end
+
+Nobody found an easy trick for undoing the rounds. The weak point was the one people had argued about in 1976: the number of keys. A cipher with a public method is only as safe as its key is long.
+
+Computers kept getting faster. In July 1998 a group called the Electronic Frontier Foundation built a machine named Deep Crack for about $250,000. It tried key after key and found a DES key in 56 hours. In 2001 a new standard with much longer keys was chosen to replace DES.
+
+Our toy is far weaker. If its key is a capital letter, there are only 26 keys.
+
+<Try action="intercepted" button="Load an intercepted block">
+  You have caught the block `4FD3`. Open "Try every key letter, A to Z" under the controls. Twenty-five of the readings are rubbish.
+</Try>
+
+<Label>Challenge</Label>
+
+## Two letters from the bank
+
+<Challenge answer="OK">
+  A bank sends its customer a two-letter answer, scrambled with sixteen rounds. You catch it as `4FD3`. You know the key is a capital letter, but not which one.
+
+  What did the bank say?
+
+  <Try action="intercepted" button="Load the block" />
+</Challenge>
+
+<Check question="Why does deciphering not need a machine that unscrambles?">
+  Each round leaves one half untouched. The receiver scrambles that half in the same way and adds it again. Adding the same bits twice cancels out, so the other half returns.
+</Check>
+
+<Label>What came next</Label>
+
+## The key still has to travel
+
+DES gave everyone the same strong lock. It did nothing about the oldest problem in secret writing. Before a bank and its customer can use DES, both must hold the same key, and nobody else may see it.
+
+In the 1970s, banks sent trusted couriers around the world with keys in locked cases. That was slow and costly, and it could never work for millions of ordinary people.
+
+Could two strangers agree on a secret key while an enemy listens to every word? It sounds impossible. See how it was done on the next page: [the key exchange](/ciphers/key-exchange).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book* (full edition), chapter 6.
+- National Institute of Standards and Technology, *FIPS PUB 46-3: Data Encryption Standard*. The official description, with the S-box tables.
+- Wikipedia, "Data Encryption Standard" and "Horst Feistel". The dates on this page were checked against these.
+- Electronic Frontier Foundation, *Cracking DES* (1998). How Deep Crack was built.

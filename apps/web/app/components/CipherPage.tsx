@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { Link } from "react-router";
+import { neighbours } from "~/ciphers";
 import type { CipherMeta } from "~/ciphers/types";
 import styles from "./CipherPage.module.css";
 
@@ -19,11 +20,12 @@ interface CipherPageProps {
  */
 export function CipherPage({ meta, stage, controls, story }: CipherPageProps) {
   const [storyOpen, setStoryOpen] = useState(true);
+  const { previous, next } = neighbours(meta.slug);
 
   return (
     <div className={styles.page} data-story-open={storyOpen}>
       <header className={styles.header}>
-        <Link to="/" className={styles.back} aria-label="Back to the timeline">
+        <Link to="/" className={styles.back} aria-label="Back to the menu">
           ←
         </Link>
         <h1 className={styles.title}>{meta.title}</h1>
@@ -50,6 +52,20 @@ export function CipherPage({ meta, stage, controls, story }: CipherPageProps) {
       <aside id="story" className={styles.story} aria-label="The story" hidden={!storyOpen}>
         <article className={styles.article}>
           {story}
+          <nav className={styles.neighbours} aria-label="Other ciphers">
+            {previous && (
+              <Link to={`/ciphers/${previous.slug}`} rel="prev">
+                <span>Previous</span>
+                {previous.title}
+              </Link>
+            )}
+            {next && (
+              <Link to={`/ciphers/${next.slug}`} rel="next" data-next>
+                <span>Next</span>
+                {next.title}
+              </Link>
+            )}
+          </nav>
           <footer className={styles.source}>Based on {meta.source}, by Simon Singh. Retold in our own words.</footer>
         </article>
       </aside>

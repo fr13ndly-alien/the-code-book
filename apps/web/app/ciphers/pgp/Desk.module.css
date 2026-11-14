@@ -1,0 +1,75 @@
+.desk {
+  display: grid;
+  gap: var(--space-2);
+  width: 100%;
+  min-width: 0;
+  max-width: 36rem;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+.title {
+  font-size: var(--text-md);
+  color: var(--color-accent);
+}
+
+.note {
+  font-size: var(--text-sm);
+  font-weight: normal;
+  color: var(--color-text-muted);
+}
+
+.line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  align-items: baseline;
+}
+
+.label {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.value {
+  font-family: var(--font-cipher);
+  overflow-wrap: anywhere;
+}
+
+.value[data-secret="true"] {
+  color: var(--color-lamp);
+}
+
+/* A long message makes a wide table: it scrolls inside its desk. */
+.scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.working {
+  border-collapse: collapse;
+  font-family: var(--font-cipher);
+}
+
+.working th {
+  padding-right: var(--space-3);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: normal;
+  color: var(--color-text-muted);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.working td {
+  min-width: var(--space-6);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.working tr[data-secret="true"] td {
+  color: var(--color-lamp);
+}

@@ -1,0 +1,125 @@
+/* Shared by the clerk's desk and the codebreaker's desk. */
+
+/* A telegram: a row of chips, each a word and its group of figures. */
+.telegram {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-1);
+  min-height: var(--tap);
+  max-width: 40rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.empty {
+  align-self: center;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--tap);
+  min-height: var(--tap);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  line-height: 1.25;
+}
+
+.word {
+  font-family: var(--font-cipher);
+  font-size: var(--text-sm);
+}
+
+.group {
+  font-family: var(--font-cipher);
+  color: var(--color-lamp);
+}
+
+.german {
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+/* A group the codebreaker has not worked out: tappable, with a dashed edge. */
+button.chip {
+  border-style: dashed;
+  border-color: var(--color-accent);
+}
+
+button.chip[data-guess="true"] .word {
+  color: var(--color-accent);
+  font-weight: bold;
+}
+
+button.chip[aria-pressed="true"] {
+  border-style: solid;
+  background: var(--color-accent);
+}
+
+button.chip[aria-pressed="true"] .word,
+button.chip[aria-pressed="true"] .group {
+  color: var(--color-accent-ink);
+}
+
+/* The codebook: one button for each word. */
+.codebook,
+.suspects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+  gap: var(--space-1);
+  width: 100%;
+  max-width: 40rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  column-gap: var(--space-2);
+  width: 100%;
+  min-height: var(--tap);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  text-align: left;
+  line-height: 1.25;
+}
+
+.entry .group {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.suspect {
+  width: 100%;
+  min-height: var(--tap);
+  padding: 0 var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface-raised);
+  font-family: var(--font-cipher);
+  font-size: var(--text-sm);
+}
+
+.suspect[data-used="true"] {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.suspect:disabled {
+  cursor: default;
+  opacity: 0.5;
+}

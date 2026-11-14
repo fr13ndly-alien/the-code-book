@@ -1,0 +1,56 @@
+.disc {
+  width: min(100%, 20rem);
+  height: auto;
+  font-family: var(--font-cipher);
+  font-weight: bold;
+}
+
+.outer {
+  fill: var(--color-surface-raised);
+  stroke: var(--color-border);
+}
+
+.inner {
+  fill: var(--color-surface);
+  stroke: var(--color-accent);
+}
+
+.hub {
+  fill: var(--color-bg);
+  stroke: var(--color-border);
+}
+
+.pin {
+  fill: var(--color-accent);
+}
+
+/* The small disc turns about the pin, which is the origin of the view box. */
+.ring {
+  transform-origin: 0 0;
+  transition: transform var(--ease);
+}
+
+.plain text {
+  fill: var(--color-text);
+}
+
+.ring text {
+  fill: var(--color-lamp);
+}
+
+.plain [data-on="true"] text,
+.ring [data-on="true"] text {
+  fill: var(--color-accent-ink);
+}
+
+.mark {
+  fill: transparent;
+}
+
+[data-on="true"] .mark {
+  fill: var(--color-accent);
+}
+
+.tap {
+  cursor: pointer;
+}

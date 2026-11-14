@@ -1,0 +1,6 @@
+/* A wide table scrolls sideways inside its own strip, so the caption stays put. */
+.scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: var(--space-1);
+}

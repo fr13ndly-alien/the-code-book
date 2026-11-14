@@ -1,0 +1,133 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 3 (and chapter 2 for Alberti himself). The wording is ours.
+*/}
+
+<Standfirst>
+  Two copper rings on a pin: the first cipher machine, and the seed of every one that followed.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## Two discs and a needle
+
+In the fifteenth century an Italian architect, Leon Battista Alberti, sat down with two discs of copper. One was a little larger than the other. Around the edge of each he wrote the alphabet.
+
+He laid the small disc on the large one and pushed a needle through the middle of both. Now the inner alphabet could turn while the outer one stayed still.
+
+It does not look like much. Yet armies used discs like it for five hundred years, and soldiers in the American Civil War still carried them. In the story of secret writing, it is the first machine.
+
+What can two rings of letters do that a pencil cannot?
+
+<Label>Try it</Label>
+
+## Turn the inner ring
+
+The disc on this page starts with the inner `F` beside the outer `A`. Guess first: which inner letter is beside the outer `B`?
+
+<Try action="five" button="Set the disc to F">
+  Find `B` on the outer ring and read the letter under it. Then press ▲ next to "Inner letter beside A" and watch the ring turn.
+</Try>
+
+<Check question="Which letter is beside B?">
+  `G`. Both rings hold the alphabet in order, so when `A` meets `F`, `B` meets `G`, `C` meets `H`, and so on all the way round. One turn of the disc resets all 26 pairs at once.
+</Check>
+
+<Label>How it works</Label>
+
+## One wheel, many alphabets
+
+### Outside plain, inside cipher
+
+The outer ring is the **plain alphabet**: the letters of your message. The inner ring is the **cipher alphabet**: the letters you send.
+
+To encipher, find each letter of your message on the outer ring and write down the inner letter beside it. To decipher, do the reverse: find the letter on the inner ring and read the outer one.
+
+Left still, the disc is a [Caesar shift](/ciphers/caesar). Put the inner `B` beside `A` for a shift of one, or the inner `F` for a shift of five. The disc adds no secrecy to Caesar's cipher. It adds speed, and it stops you miscounting.
+
+<Try action="five" button="Set the disc to F">
+  Type your name in "Your message". Tap any letter on the inner ring to bring it round beside `A`, and watch the ciphertext change.
+</Try>
+
+### Turn it as you go
+
+Alberti saw that the disc could do more. What if you turn it during the message?
+
+Then the cipher alphabet changes from one letter to the next. The same plain letter gets a different disguise each time. A cipher that uses many alphabets is called **polyalphabetic**, and Alberti was one of the first to think of it.
+
+<Try action="turning" button="Make the disc turn by itself">
+  The disc now moves one step after every letter. Type `AAAA` slowly. Watch the ring turn, and read the ciphertext.
+</Try>
+
+Four identical letters went in and `ABCD` came out. Someone counting letters to find the most common one would learn nothing. Counting only works when a letter keeps its disguise.
+
+### A keyword says where to turn
+
+Sender and receiver must turn their discs in the same way. One step each time is easy to guess, so the book describes a better rule: a keyword.
+
+Take the keyword `LEON`. For the first letter, put the inner `L` beside `A`. For the second, the inner `E`. Then `O`, then `N`, then back to `L`. The book enciphers "goodbye" like this, and its `g` becomes `R`.
+
+<Try action="leon" button="Load the book's example">
+  Read the row "Inner letter at A" under the disc: it spells the keyword again and again. Add letters to the message and watch the disc jump.
+</Try>
+
+<Check question="You have met this cipher before under another name. Which?">
+  It is the [Vigenère cipher](/ciphers/vigenere). The disc does the job of the big square of alphabets. It is quicker to use and it leads to fewer slips.
+</Check>
+
+<Label>The story</Label>
+
+## Five centuries of service
+
+Alberti was a man of the Renaissance: an architect, a painter, a poet and a philosopher. He came to ciphers in the 1460s after a talk with a friend who worked for the Pope.
+
+His disc was basic, but it lasted. The picture in the book shows one used by the Confederate army in the American Civil War, four hundred years later.
+
+The book has a useful name for what the disc does. It calls it a **scrambler**: something that takes each plain letter and turns it into another. A scrambler that stays still is weak. A scrambler that changes while you write is much stronger. Keep that idea. The next machine is built from it.
+
+<Label>How it was broken</Label>
+
+## Still a Caesar, still a Vigenère
+
+A machine is only as strong as the cipher inside it.
+
+A still disc has just 25 useful settings. An enemy who captures a message can try every one, a **brute-force attack**. You can do it now.
+
+<Try action="caught" button="Load a captured message">
+  The message `BNWM VXAN LXYYNA` came from a disc that stayed still. Press ▲ next to "Inner letter beside A" until the plaintext turns into English.
+</Try>
+
+A disc turned by a keyword is harder, but not safe. It is the Vigenère cipher done by wheel, and the keyword comes round again and again. Charles Babbage and Friedrich Kasiski found how to use that repeat. Once you know the keyword's length, each of its letters is a simple Caesar shift. You can follow the attack on [the Babbage page](/ciphers/babbage).
+
+The disc made enciphering quicker. It did not make the cipher any better.
+
+<Label>Challenge</Label>
+
+## A message on the move
+
+<Challenge answer="HOLD THE BRIDGE">
+  A rider brings you `SAYR IXV TKCYCB`. You know the sender's habit: he starts with the inner `L` beside `A`, and turns his disc one step after every letter.
+
+  Set up your disc the same way and pick "Decipher", or use the button. What are your orders?
+
+  <Try action="intercepted" button="Set up the disc for me" />
+</Challenge>
+
+<Check question="The plaintext has two Ds. Why are they not the same letter in the ciphertext?">
+  The disc had turned between them. The first `D` met the inner ring at one setting and the second at another, so they came out as `R` and `Y`.
+</Check>
+
+<Label>What came next</Label>
+
+## The disc goes electric
+
+The lesson of the disc is that a scrambler should keep moving. Its weakness is that it moves in a short, simple pattern, and a short pattern repeats.
+
+In 1918 a German inventor, Arthur Scherbius, set out to fix that. His machine was, in the book's words, "an electrical version of Alberti's cipher disc". It wired several discs together and turned them by itself with every key press. The pattern took thousands of letters to repeat. He called it [Enigma](/ciphers/enigma).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 3, "The Development of Cipher Machines". Chapter 2 introduces Alberti.
+- David Kahn, *The Codebreakers*. Its chapter on Alberti calls him the father of Western cryptology.

@@ -1,0 +1,143 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 5 (chapter 6 of the full edition, which
+  also has the worked exchange with Y = 7 and P = 11). The wording is ours.
+*/}
+
+<Standfirst>
+  Two strangers agree on a secret key while an eavesdropper hears every word they say.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## Riders with locked cases
+
+In the 1970s, banks used computers to scramble their messages. But a customer could only unscramble one with the same key. So the banks sent trusted riders around the world, carrying keys in padlocked cases. As the banks grew, the cost became a nightmare.
+
+Every cipher before this had the same snag. To share a secret, you first had to share a key, and that was a secret too.
+
+In 1974 Whitfield Diffie heard that a professor named Martin Hellman was working on this very problem. He drove three thousand miles across America to meet him. Could two people agree on a key without ever meeting, while an enemy listened?
+
+<Label>Try it</Label>
+
+## Three steps to a secret
+
+The simulator has three columns. Alice and Bob are the two people. Everything in the middle is said in public, where Eve the eavesdropper hears it. Make a guess first: can Alice and Bob end up with a number Eve does not have?
+
+<Try action="book" button="Start the book's example">
+  Press "Next step" three times. Watch what crosses the middle column, and what never does.
+</Try>
+
+<Check question="What key do Alice and Bob each reach?">
+  Both reach `9`. Alice works out 4<sup>3</sup> and Bob works out 2<sup>6</sup>. Each is 64, which is 9 in mod 11. The key itself never crossed the middle column.
+</Check>
+
+<Label>How it works</Label>
+
+## A lock made of arithmetic
+
+### The box with two padlocks
+
+Picture a post office that reads every letter. Alice puts a message in an iron box, locks it with her padlock, and posts it. Bob cannot open it. Instead he adds his own padlock and posts it back.
+
+Now Alice takes her padlock off and sends the box a third time. Only Bob's padlock is left, and he has that key. No key ever travelled.
+
+This showed that sharing a secret without sharing a key was possible. But ciphers are fussier than padlocks. You must usually undo them in reverse order, as you take off shoes before socks. The team needed mathematics that did not care about order.
+
+<Try action="agreed" button="Show the finished exchange">
+  Look at step 4. Alice used Bob's number with her secret. Bob used Alice's number with his. The order did not matter.
+</Try>
+
+### One-way functions
+
+Some things are easy to do and hard to undo. Mixing yellow and blue paint is easy. Unmixing the green is not. A sum like that is called a **one-way function**.
+
+The team found theirs in **modular arithmetic**, where numbers go round in a loop like the hours on a clock. In mod 7 there are only the numbers 0 to 6. To work something out, do the sum normally, divide by 7 and keep the remainder.
+
+In normal arithmetic, the powers of 3 climb steadily: 3, 9, 27, 81. In mod 7 they jump about: 3, 2, 6, 4, 5, 1. If you are told the answer, nothing hints at which power made it.
+
+<Try action="clock" button="Show the powers of 3 in mod 7">
+  Read the row "Eve tries". It lists 3<sup>1</sup> up to 3<sup>6</sup> in mod 7. Then press ▲ next to "Public prime P" and see the pattern change.
+</Try>
+
+### The exchange
+
+Alice and Bob agree on two numbers in public, Y and P. The book uses Y = 7 and P = 11. Their one-way function is 7<sup>x</sup> (mod 11).
+
+Alice picks a secret number, 3. She works out 7<sup>3</sup> (mod 11), which is 2, and sends the 2 to Bob. Bob picks 6, works out 7<sup>6</sup> (mod 11), which is 4, and sends the 4 to Alice.
+
+Then each takes the number they received and raises it to their own secret. Alice gets 4<sup>3</sup> (mod 11). Bob gets 2<sup>6</sup> (mod 11). Both are 9.
+
+<Try action="book" button="Start again from step 1">
+  Change "Alice's secret" and "Bob's secret" with the ▲ buttons. Step through again. The two keys always match.
+</Try>
+
+### What Eve heard
+
+Eve knows 7 and 11. She saw the 2 and the 4 go past. She does not know the 3 or the 6, and she needs one of them to make the key.
+
+To find Alice's secret she must undo the one-way function. Which power of 7 gives 2 in mod 11? There is no shortcut. She can only try them one by one.
+
+<Label>The story</Label>
+
+## Three fools at Stanford
+
+Hellman's colleagues told him he was crazy. America's National Security Agency had a huge budget and had surely tried already. Hellman had little money, so Diffie joined him at Stanford University as a student. Ralph Merkle came next, from a group whose professor had no patience for the idea.
+
+For two years almost every idea failed. Hellman had a saying for it: "God rewards fools." Only a fool, he said, stays excited after ninety-nine flops.
+
+At last one idea paid off: the exchange you have just run. Diffie and Hellman showed it to the world in June 1976. For two thousand years everyone had believed that keys must be delivered. They were wrong.
+
+<DigDeeper title="The secret first discovery">
+  In 1974 Malcolm Williamson, at Britain's secret GCHQ, found the same exchange. He was trying to prove that a friend's idea was wrong. His work was secret, so he said nothing while the Americans became famous. You can read that story on the [RSA page](/ciphers/rsa).
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## Trying every secret
+
+Nobody has found a quick way to undo the one-way function. The only attack is the slow one: try every secret until one fits. With a small P, that takes no time at all.
+
+<Try action="eve" button="Let Eve attack the book's example">
+  Read Eve's guesses. The third one gives 2, the number Alice sent. Eve now has the key. Then press ▲ next to "Public prime P" and watch her list change.
+</Try>
+
+So the safety is all in the size of P. With P = 11, Eve needs ten guesses at most. Real exchanges use a P hundreds of digits long. Then trying every secret would take longer than the age of the universe.
+
+<Try action="bigger" button="Make P a little bigger">
+  With P = 101, Eve needs 73 guesses. Alice and Bob did hardly any more work than before.
+</Try>
+
+<Label>Challenge</Label>
+
+## You are Eve
+
+<Challenge answer="DAWN">
+  Alice and Bob have agreed on Y = 5 and P = 23. You saw Alice send 21 and Bob send 14. They will use their key as a [Caesar shift](/ciphers/caesar), and Alice's message is `OLHY`.
+
+  Find the key. Then shift each letter back that many places. When does the raid begin?
+
+  <Try action="intercepted" button="Listen in" />
+</Challenge>
+
+<Check question="Why can Alice make the key quickly when Eve cannot?">
+  Alice knows her own secret, so she only does one sum. Eve has to find that secret first, and the one-way function gives her no clue. She must try every number.
+</Check>
+
+<Label>What came next</Label>
+
+## No more back and forth
+
+The exchange solved a problem two thousand years old. But it is awkward. Alice and Bob must swap numbers before either can send a word. If Bob is asleep, Alice has to wait.
+
+Diffie had already imagined something better, in 1975. Suppose locking and unlocking used two different keys. Alice could publish her locking key for anyone to use, like handing out open padlocks. Only she would keep the key that opens them.
+
+He could not find the mathematics to build it. Three men on the other side of America did: [RSA](/ciphers/rsa).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 5.
+- Whitfield Diffie and Martin Hellman, "New Directions in Cryptography", *IEEE Transactions on Information Theory*, November 1976. The paper that announced the idea.
+- Steven Levy, *Crypto* (2001). The people behind public-key cryptography.

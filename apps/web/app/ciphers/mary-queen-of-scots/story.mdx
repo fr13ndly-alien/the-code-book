@@ -1,0 +1,141 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 1. The wording is ours.
+  The signs are stand-ins: Mary's real signs are not in Unicode.
+*/}
+
+<Standfirst>
+  A captive queen hid a murder plot behind strange symbols. One codebreaker counted them.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## A chair of crimson velvet
+
+On 15 October 1586, Mary Queen of Scots walked into a crowded courtroom at Fotheringhay Castle. She was on trial for treason. The charge was plotting to kill her cousin, Queen Elizabeth of England, and take her crown.
+
+Mary had no lawyer and could call no witnesses. But she had one hope. Every letter she had sent to the plotters was written in cipher, as rows of strange signs. If nobody could read them, nobody could prove what she had said.
+
+Her life now hung on those signs. How do you build a cipher that a codebreaker cannot count his way into?
+
+<Label>Try it</Label>
+
+## Write like a queen
+
+The simulator shows a sentence from Mary's story, turned into signs. Our signs are stand-ins, not Mary's own: hers are not on any keyboard. Guess before you look closely: does every sign stand for a letter?
+
+<Try action="postscript" button="Load the letter">
+  Tap the sign `2` in the message, then find it lit up in the key further down. Do the same for `∴`.
+</Try>
+
+<Check question="What do 2 and ∴ stand for?">
+  `2` stands for the whole word "the". `∴` stands for nothing at all. It is a null, put there only to waste a codebreaker's time.
+</Check>
+
+<Label>How it works</Label>
+
+## Three tricks on one sheet
+
+### A sign for every letter
+
+At its heart, Mary's cipher is a plain substitution. Each letter has its own sign, and the sign never changes. Her alphabet had only 23 letters, with no `J`, `V` or `W`. Writers of her time used `I` for `J` and `U` for `V`. On our simulator a `W` becomes two `U`s.
+
+A sheet listing the signs is the key. Mary and her friends each kept a copy. To write, you look up each letter and copy its sign. To read, you look up each sign and copy its letter.
+
+<Try action="plain" button="Use letter signs only">
+  Type your own name in "Your message". Tap a sign in the message to see which letter of the key it came from.
+</Try>
+
+### Signs that mean nothing
+
+**Nulls** are signs that stand for nothing. Mary's cipher had four. The writer drops them in wherever she likes. The reader knows them and skips them.
+
+To a spy, a null looks like any other sign. It is counted along with the real letters, so the count comes out wrong. A null in the middle of a common word also hides the shape of that word.
+
+<Try action="nulls" button="Sprinkle in a lot of nulls">
+  Look at the top row of the message: every "null" is an extra sign. Press ▲ next to "Null pattern" to scatter them differently. The message itself stays the same.
+</Try>
+
+### Signs for whole words
+
+A **code** swaps whole words for signs or for other words. A **cipher** swaps single letters. Mary's system did both. It had 35 signs for common words, such as "the", "and", "send" and "your". We keep twelve of them.
+
+A system that mixes a cipher alphabet with a short list of code words is called a **nomenclator**. The word signs save time. They also hide the commonest words in English, which a codebreaker looks for first.
+
+One more sign, the "dowbleth", says that the next sign is a double letter. So "accomplish" needs only one `C` sign.
+
+<Try action="postscript" button="Turn every trick on">
+  Find a word sign, a null and the doubling sign `≈` in the message. Then set "Word signs" to "Off" and watch the short signs turn back into letters.
+</Try>
+
+<Label>The story</Label>
+
+## Letters in a beer barrel
+
+By 1586 Mary had been a prisoner in England for eighteen years. Her jailer took every letter she wrote. Then a young Catholic, Gilbert Gifford, offered to smuggle them. A local brewer hid each packet in the hollow bung of a beer barrel bound for Chartley Hall, her prison.
+
+In London, Anthony Babington, aged twenty-four, was planning to free Mary and kill Elizabeth. In July he wrote to Mary in the nomenclator and set out the plan. On 17 July she wrote back and agreed.
+
+Neither knew that Gifford was a double agent. He worked for Sir Francis Walsingham, Elizabeth's spymaster. Every letter went to Walsingham first. His men opened it, copied it and sealed it again so well that nobody noticed.
+
+The barrel was meant to hide the letters. The cipher was meant to protect them if the hiding failed. Now the cipher was the only defence Mary had.
+
+<DigDeeper title="Why Walsingham needed proof">
+  Elizabeth did not want to kill Mary. Mary was a queen of another country, and it was not clear that an English court could execute her. Killing one queen might also make it seem less shocking to kill another. And the two women were cousins.
+
+  So Walsingham needed proof, in Mary's own words, that she had agreed to the murder.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## The man who counted the signs
+
+Walsingham gave the copies to Thomas Phelippes, his cipher secretary. Phelippes spoke French, Italian, Spanish, Latin and German. He was also one of the best codebreakers in Europe.
+
+He used frequency analysis. He counted each sign and tried the commonest letters for the commonest signs. When a guess gave nonsense, he went back and tried another. Bit by bit he found the nulls and set them aside. That left only the word signs, and he could guess those from the words around them.
+
+The tricks slowed him down, but they did not cure the weakness. Most of the message was still one sign for one letter.
+
+<Try action="intercepted" button="Load an intercepted letter">
+  The plain letters are hidden now. Tap the tallest bar in the chart. Which letter does the key say it is?
+</Try>
+
+Phelippes read Babington's plan, and then Mary's reply. On his copy of her letter he drew a gallows.
+
+Walsingham wanted the name of every plotter. So Phelippes, who was also a skilled forger, added a postscript in Mary's own cipher. It asked Babington for the names. The sentence on the simulator is how that postscript begins.
+
+The plotters were caught and executed. The deciphered letters were used against Mary at her trial. She was beheaded on 8 February 1587.
+
+<Label>Challenge</Label>
+
+## A note in the barrel
+
+<Challenge answer="HIDE THE LETTER IN THE BARREL">
+  You are the brewer who carries Mary's letters. Inside an empty barrel you find this note:
+
+  `∞†≠◊ 2 Δ♪◊≈×◊± †∩ 2 #∴○≈±¿◊Δ`
+
+  Look up each sign in the key. Skip the nulls, and remember what `≈` does. What does the note say?
+
+  <Try action="barrel" button="Load the note" />
+</Challenge>
+
+<Check question="Why did nulls and word signs fail to save Mary?">
+  They hid only a small part of each message. Most signs still stood for one letter, the same one every time. So the commonest signs were still the commonest letters, and Phelippes could count them.
+</Check>
+
+<Label>What came next</Label>
+
+## One sign, one letter, one problem
+
+Mary's story has a hard lesson. She wrote freely because she trusted her cipher. A cipher you wrongly trust can be more dangerous than no cipher, because it makes you careless.
+
+Codemakers now knew that patching the old cipher was not enough. As long as one sign always meant one letter, counting would win. They needed a cipher in which the same letter could change into different letters at different places in a message. A French diplomat, building on an Italian idea, made exactly that: [the Vigenère cipher](/ciphers/vigenere).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 1. Figure 7 shows Mary's real nomenclator and Figure 8 the forged postscript.
+- The National Archives (UK), State Papers SP 12/193/54 and SP 53/18/55. "The Babington postscript and cipher, 1586".
+- Antonia Fraser, *Mary Queen of Scots*. A full life of the queen.

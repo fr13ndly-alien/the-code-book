@@ -1,0 +1,84 @@
+/* A sheet of newspaper. Held to the light it goes dark and only the holes glow. */
+.paper {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 34rem;
+  padding: var(--space-4);
+  border-radius: var(--radius);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  transition: background var(--ease);
+}
+
+.paper[data-light="true"] {
+  background: var(--color-surface);
+}
+
+.masthead {
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-paper-edge);
+  font-family: var(--font-story);
+  font-size: var(--text-xl);
+  text-align: center;
+}
+
+.text {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--space-3);
+  font-family: var(--font-cipher);
+  font-size: var(--text-md);
+}
+
+.word {
+  display: inline-flex;
+}
+
+.letter,
+.mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 2.5rem;
+  transition: opacity var(--ease);
+}
+
+.mark {
+  width: 0.75rem;
+}
+
+.letter {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+/* The pinprick: a dot under the letter. */
+.letter[aria-pressed="true"]::after {
+  content: "";
+  position: absolute;
+  bottom: var(--space-1);
+  left: 50%;
+  width: var(--space-1);
+  height: var(--space-1);
+  margin-left: calc(var(--space-1) / -2);
+  border-radius: 50%;
+  background: var(--color-ink-accent);
+}
+
+.paper[data-light="true"] .masthead,
+.paper[data-light="true"] .mark,
+.paper[data-light="true"] .letter[aria-pressed="false"] {
+  color: var(--color-text-muted);
+  opacity: 0.12;
+}
+
+.paper[data-light="true"] .letter[aria-pressed="true"] {
+  color: var(--color-lamp);
+  font-weight: bold;
+}
+
+.paper[data-light="true"] .letter[aria-pressed="true"]::after {
+  background: var(--color-lamp);
+}

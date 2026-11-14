@@ -1,0 +1,113 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 1. The wording is ours.
+*/}
+
+<Standfirst>
+  Julius Caesar slid the alphabet three places along, and his generals read what his enemies could not.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## A letter on a spear
+
+Julius Caesar was fighting in Gaul when one of his officers, Cicero, was surrounded and close to giving up. Caesar had to tell him that help was coming. But the messenger had to pass the enemy, and might be caught.
+
+So Caesar wrote the letter in a way the Gauls could not read. The messenger tied it to a spear and threw it into the camp. It stuck in a tower, unnoticed, for two days. Then a soldier found it. Cicero read it aloud, and his men cheered.
+
+Caesar hid his words so often that a Roman author wrote a whole book about his ciphers. How do you write a letter only your friends can read?
+
+<Label>Try it</Label>
+
+## Slide the alphabet
+
+The simulator shows two alphabets. The top one is for your message. The bottom one is the same alphabet, pushed along. Make a guess first: with a shift of 3, what does `A` turn into?
+
+<Try action="caesar" button="Show Caesar's own cipher">
+  Tap under the `A` in the table. Then press ▲ next to "Shift" a few times and watch the bottom row slide.
+</Try>
+
+<Check question="What does A become with a shift of 3?">
+  `D`. Each letter is swapped for the one three places after it, so `B` becomes `E` and `C` becomes `F`. At the end the alphabet wraps round: `X`, `Y` and `Z` become `A`, `B` and `C`.
+</Check>
+
+<Label>How it works</Label>
+
+## Two alphabets, one number
+
+### Plain and cipher
+
+Codemakers call your original message the **plaintext**, and the scrambled one the **ciphertext**. The **plain alphabet** is the ordinary one. The **cipher alphabet** holds the letters you write instead.
+
+To encipher, find each letter of your message in the top row and write down the letter below it. With Caesar's shift of three, "I came, I saw, I conquered" turns into `L FDPH, L VDZ, L FRQTXHUHG`.
+
+To decipher, go the other way: find each letter in the bottom row and read the one above.
+
+<Try action="blank" button="Clear the message">
+  Type your own name in "Your message". Then change the shift and watch the ciphertext change with it.
+</Try>
+
+### The method and the key
+
+Every cipher has two parts. The **algorithm** is the method: here, "shift the alphabet". The **key** is the detail that makes one use of it different from another: here, how far to shift.
+
+Caesar's enemies might guess the method. That is not enough. To read the message they need the key too. A good cipher stays safe even when the enemy knows exactly how it works, as long as the key is secret.
+
+<Check question="How many different keys does the Caesar shift have?">
+  Only 25. You can shift by 1, 2, 3 and so on up to 25. A shift of 26 brings every letter back to itself, which hides nothing.
+</Check>
+
+<Label>The story</Label>
+
+## Three places down
+
+We know how Caesar's cipher worked because of Suetonius, who wrote about the lives of the Caesars more than a century later. He explains that Caesar swapped each letter for the one three places further down the alphabet.
+
+This is a **substitution cipher**: each letter stays where it is in the message but changes into a different letter. It is the first substitution cipher we know of that an army used. Before this, most secret writing just moved the letters of a message around.
+
+It suited a general. There is nothing to carry and nothing to lose. An officer only has to remember one number.
+
+<Label>How it was broken</Label>
+
+## Twenty-five guesses
+
+That one small number is also the weakness. If your enemy suspects a Caesar shift, they do not need to be clever. They can try every key. This is called a **brute-force attack**.
+
+With 25 keys it takes a few minutes with a pen. Only one of the 25 results will be real words. The rest will be nonsense.
+
+<Try action="intercepted" button="Load an intercepted message">
+  You have caught the message `UXPTKX MAX BWXL HY FTKVA`. Open "Try every shift at once" under the controls and look down the list for the line that makes sense.
+</Try>
+
+A safe cipher needs so many keys that nobody could try them all.
+
+<Label>Challenge</Label>
+
+## Read the warning
+
+<Challenge answer="BEWARE THE IDES OF MARCH">
+  A fortune-teller has a warning for Caesar. It arrives as `UXPTKX MAX BWXL HY FTKVA`, and nobody has told you the shift.
+
+  Find the key. What does the warning say?
+
+  <Try action="intercepted" button="Load the message" />
+</Challenge>
+
+<Check question="Why did trying every key work here?">
+  There are only 25 keys, so checking all of them is quick. And only one key gives English words, so you know when you have found it.
+</Check>
+
+<Label>What came next</Label>
+
+## More keys
+
+The cure is to stop sliding the alphabet and start shuffling it. If the cipher alphabet can be any rearrangement of the 26 letters, there are more than 400,000,000,000,000,000,000,000,000 keys. No one can try them all.
+
+But a shuffled alphabet is hard to remember. The answer was a keyword, and you can try it on the next page: [the keyword cipher](/ciphers/keyword-substitution).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 1.
+- Suetonius, *Lives of the Caesars*, book 1, section 56. The original description of the cipher.

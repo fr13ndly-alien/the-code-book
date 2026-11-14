@@ -1,0 +1,116 @@
+/* The message: a row of small cards, each a number and its letter. */
+.message {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-1);
+  max-width: 40rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  min-height: var(--tap);
+  padding: 0 var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  font-family: var(--font-cipher);
+  line-height: 1.2;
+}
+
+/* When enciphering, the letter is what the reader wrote, so it goes on top. */
+.step[data-number-first="false"] {
+  flex-direction: column-reverse;
+}
+
+.step .number {
+  color: var(--color-lamp);
+}
+
+.step[data-number-first="true"] .letter {
+  color: var(--color-text);
+  font-weight: bold;
+}
+
+.step:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.number {
+  font-family: var(--font-cipher);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.keyText {
+  display: grid;
+  gap: var(--space-2);
+  width: 100%;
+  max-width: 40rem;
+}
+
+.title {
+  font-size: var(--text-sm);
+  font-weight: normal;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* Its own scroll box, so the message above stays in sight while the reader hunts for a word. */
+.words {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  max-height: 14rem;
+  margin: 0;
+  padding: var(--space-2);
+  overflow-y: auto;
+  touch-action: pan-y;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  list-style: none;
+}
+
+.word {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: var(--tap);
+  padding: 0 var(--space-1);
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: transparent;
+  line-height: 1.2;
+}
+
+.word[data-used="true"] {
+  border-color: var(--color-border);
+}
+
+.word[data-used="true"] .number {
+  color: var(--color-lamp);
+}
+
+.step[aria-pressed="true"],
+.word[aria-pressed="true"] {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+.step[aria-pressed="true"] .number,
+.step[aria-pressed="true"] .letter,
+.word[aria-pressed="true"] .number {
+  color: var(--color-accent-ink);
+}

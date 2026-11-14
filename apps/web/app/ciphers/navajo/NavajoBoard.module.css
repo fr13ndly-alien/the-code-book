@@ -1,0 +1,97 @@
+.message {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* One English word or term: its code words sit side by side under it. */
+.group {
+  display: grid;
+  gap: var(--space-1);
+  justify-items: center;
+  padding: var(--space-2);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius);
+}
+
+.english {
+  font-family: var(--font-cipher);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.words {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-1);
+}
+
+.word {
+  display: grid;
+  justify-items: center;
+  min-width: var(--tap);
+  min-height: var(--tap);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface-raised);
+}
+
+.word[aria-pressed="true"] {
+  border-color: var(--color-accent);
+  background: var(--color-surface);
+}
+
+.navajo {
+  font-family: var(--font-cipher);
+  color: var(--color-lamp);
+}
+
+.meaning {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.chain {
+  display: grid;
+  gap: var(--space-2);
+  justify-items: center;
+  max-width: 32rem;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.chain dl {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  margin: 0;
+}
+
+.chain dl > div {
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.chain dd {
+  margin: 0;
+  font-size: var(--text-md);
+  color: var(--color-text);
+}
+
+.chain dd.navajo {
+  color: var(--color-lamp);
+}
+
+.chain dd.stands {
+  font-family: var(--font-cipher);
+  color: var(--color-accent);
+}

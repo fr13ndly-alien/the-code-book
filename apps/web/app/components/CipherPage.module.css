@@ -1,6 +1,7 @@
 /* Phone first: header, simulator, then the story as a sheet across the bottom. */
 .page {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows: var(--header-height) minmax(0, 1fr);
   height: 100dvh;
   overflow: hidden;
@@ -68,6 +69,8 @@
 
 .workbench {
   display: grid;
+  /* A fixed column, so wide content scrolls inside its own box and never widens the page. */
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows: minmax(9rem, 1fr) auto;
   min-height: 0;
 }
@@ -118,8 +121,37 @@
   padding: var(--space-6) var(--space-4) var(--space-8);
 }
 
-.source {
+.neighbours {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
   margin-top: var(--space-8);
+}
+
+.neighbours a {
+  display: grid;
+  align-content: start;
+  min-height: var(--tap);
+  padding: var(--space-3);
+  border: 1px solid var(--color-paper-edge);
+  border-radius: var(--radius);
+  font-family: var(--font-ui);
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.neighbours a[data-next] {
+  grid-column: 2;
+  text-align: right;
+}
+
+.neighbours span {
+  font-size: var(--text-sm);
+  color: var(--color-ink-accent);
+}
+
+.source {
+  margin-top: var(--space-6);
   padding-top: var(--space-4);
   border-top: 1px solid var(--color-paper-edge);
   font-size: var(--text-sm);

@@ -96,9 +96,12 @@ export function Challenge({ answer, children }: { answer: string; children: Reac
         </button>
       </div>
       <p role="status" className={styles.result} data-result={result}>
-        {result === "right" && "Correct. You just read a secret message."}
-        {result === "wrong" && "Not yet. Check the setup, go back to the start and type the message again."}
+        {result === "right" && "Correct. Well done."}
+        {result === "wrong" && "Not yet. Check your setup and try again."}
       </p>
     </form>
   );
 }
+
+/** Every block, ready to hand to a story: <StoryText components={STORY_BLOCKS} />. */
+export const STORY_BLOCKS = { Standfirst, Label, Try, Check, Challenge, DigDeeper };

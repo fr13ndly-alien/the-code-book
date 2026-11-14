@@ -1,0 +1,132 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapters 1 and 3. The code groups, and the story of the
+  copy from Mexico, were checked against the U.S. National Archives. The wording is ours.
+*/}
+
+<Standfirst>
+  One telegram in a secret code, read by the wrong people, pulled America into the First World War.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## A telegram for Mexico
+
+In January 1917 Germany was about to turn its submarines loose on ships sailing to Britain. American ships might be sunk too. That could bring America, still neutral, into the war.
+
+Arthur Zimmermann, the German foreign minister, had a plan for that. On 16 January he sent a telegram for the president of Mexico. If America joined the war, Mexico should attack it. Germany would pay, and Mexico could win back Texas, New Mexico and Arizona.
+
+The telegram travelled as rows of numbers. One day later a copy lay on a desk in London, in a British office called Room 40.
+
+Two men there set to work on it. How do you read a message made only of numbers, with no key to find?
+
+<Label>Try it</Label>
+
+## Send a telegram of your own
+
+The simulator shows a clerk's desk. At the bottom is a small **codebook**: a list of words, each with a group of figures beside it. Make a guess first: how many groups does it take to send "make war together"?
+
+<Try action="offer" button="Show Zimmermann's offer">
+  Read the telegram at the top of the desk. Then tap `PEACE` in the codebook and watch a new group join the end.
+</Try>
+
+<Check question="How many groups does MAKE WAR TOGETHER need?">
+  Three: one for each word. In the real telegram they were `17166`, `5905` and `4458`. A whole word travels as a single number, however long the word is.
+</Check>
+
+<Label>How it works</Label>
+
+## A dictionary of numbers
+
+### Words, not letters
+
+Everything you have met so far in this story of secret writing was a cipher. A **cipher** swaps letters. A **code** swaps whole words or phrases.
+
+To **encode** a message, the clerk looks up each word in the codebook and writes down its group. The receiver owns the same book and looks each group up again. There is no sum to do and no alphabet to slide. The book is the secret.
+
+<Try action="blank" button="Clear the telegram form">
+  Build `WE BEGIN SUBMARINE WAR IN FEBRUARY` by tapping the words in order. Read "The telegram as sent" in the controls.
+</Try>
+
+### Only what is in the book
+
+A cipher can scramble any word, because every word is made of the same 26 letters. A code can only send the words its makers thought of. A real diplomatic codebook therefore ran to thousands of entries, like a dictionary.
+
+Even so, there were gaps. The codebook behind the Zimmermann telegram had no group for Arizona. The clerk had to spell it in four pieces: `AR`, `IZ`, `ON`, `A`.
+
+Our codebook has 25 words. Most of its groups are real ones from the telegram. Four are marked as made up, because we do not know the real ones.
+
+### The same word, the same number
+
+A code has a habit that helps its enemies. A word always becomes the same group. Use the word twice and the group appears twice.
+
+<Try action="repeat" button="Send WAR three times">
+  Look at the telegram on the desk. Find the group that keeps coming back. Anyone listening can see that too, without knowing what it means.
+</Try>
+
+Diplomats and generals repeat themselves a great deal. Over hundreds of telegrams those repeats pile up, and each one is a clue.
+
+<Label>The story</Label>
+
+## The cables on the sea bed
+
+Why did Germany's most secret telegram pass through British hands at all? Before dawn on the first day of the war, a British ship called the *Telconia* hauled up Germany's undersea cables to America and cut them. From then on, German messages had to go by radio or along cables owned by other countries. Zimmermann's telegram took a route that touched England.
+
+So the Germans knew they were overheard, and they relied on their diplomatic code to keep them safe.
+
+Room 40 was the cipher office of the British Admiralty, named after the room where it began. Its staff were language experts, scholars and people who loved puzzles. The telegram went to the Reverend Montgomery, a translator of German religious books, and Nigel de Grey, who had worked for a publisher.
+
+<DigDeeper title="The postcard with an impossible address">
+  Montgomery had a gift for hidden meanings. A blank postcard once arrived from Turkey for a Sir Henry Jones at "184 King's Road" in a Scottish village with no such road. Montgomery read the address as a Bible reference: First Book of Kings, chapter 18, verse 4. The verse speaks of men hidden in a cave and fed. Sir Henry's son, a prisoner, was saying he was well treated.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## Filling the book, one word at a time
+
+You cannot work out a codebook with arithmetic. You have to rebuild it by collecting messages and guessing.
+
+Montgomery and de Grey did not start from nothing. Room 40 had studied earlier telegrams in the same kind of code, so some groups were already understood. Within a few hours the two men could read scattered pieces. Each word they knew made its neighbours easier to guess. After a few days they had the outline of the plan.
+
+<Try action="room40" button="Sit at the codebreaker's desk">
+  Four telegrams have been intercepted. Some groups are already known. Look at the second one: a group marked `?` appears twice. Tap it, then tap the word you think fits.
+</Try>
+
+The head of naval intelligence, Admiral Sir William Hall, then had a problem. If he showed the telegram to the Americans, Germany would learn that Britain could read its code, and would change it. So Hall locked the telegram in his safe.
+
+On 3 February President Wilson announced that America would stay neutral, and Hall had to act. A British agent got hold of the copy that had reached the telegraph office in Mexico City. That copy could be shown to the world as if it had been stolen in Mexico.
+
+On 23 February the telegram was handed to the American ambassador. It was in the newspapers on 1 March. In April 1917 America went to war.
+
+<Label>Challenge</Label>
+
+## Read the last telegram
+
+<Challenge answer="WE MAKE ALLIANCE WITH MEXICO AND JAPAN">
+  You are in Room 40 with four intercepted telegrams. Six groups are still unknown.
+
+  Fill the gaps by guessing from the words around them. The caption tells you how many guesses fit. What does the fourth telegram say?
+
+  <Try action="room40" button="Load the telegrams" />
+</Challenge>
+
+<Check question="Which clue helped you most?">
+  Probably a repeat. A group that turns up in several telegrams can be tested in each one, and only the right word makes sense everywhere. That is the weakness of every code: the same word always gives the same group.
+</Check>
+
+<Label>What came next</Label>
+
+## Too big to change
+
+The telegram shows the two great weaknesses of a code. A codebook is huge, so it is slow to replace. And once enough of it has been rebuilt, every message that uses it can be read.
+
+An embassy can live with a thick book. An army in the field cannot. It needs something a soldier can carry in his head and change in a day, which means a cipher with a key. In 1918 the German army went into its last great attack with a brand-new one: [the ADFGVX cipher](/ciphers/adfgvx).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 3, for Room 40 and the telegram, and chapter 1 for codes and ciphers.
+- U.S. National Archives, "Zimmermann Telegram: Decode Worksheet". The real groups with the German written beside them.
+- U.S. National Archives, *Prologue* magazine, winter 2016: "The Zimmermann Telegram". How the copy from Mexico was obtained and published.
+- Barbara Tuchman, *The Zimmermann Telegram*.

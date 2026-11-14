@@ -1,0 +1,148 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  The Playfair cipher is in the full edition of The Code Book only. Facts were
+  checked against the sources in "Further reading". The wording is ours.
+*/}
+
+<Standfirst>
+  Charles Wheatstone hid letters two at a time in a square that schoolboys could learn.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## Too hard for diplomats
+
+In 1854 the inventor Charles Wheatstone had a new cipher. His friend Lyon Playfair thought the British government should use it. So the idea went to the Foreign Office, where diplomats sent their secret letters.
+
+The Under Secretary there was not keen. It looked far too complicated.
+
+Wheatstone had an answer ready. Fetch some boys from the nearest school, he offered. Three out of four would learn the cipher in fifteen minutes.
+
+The Under Secretary's reply has been retold ever since: "That is very possible, but you could never teach it to attachés." An attaché is a junior diplomat.
+
+Can you learn it faster than a diplomat?
+
+<Label>Try it</Label>
+
+## A square with one letter short
+
+The simulator shows a square of five rows and five columns, built from the keyword `CHARLES`. That makes 25 cells, but the alphabet has 26 letters. Guess first: which letter has no cell of its own?
+
+<Try action="charles" button="Load Wheatstone's square">
+  Look for every letter of the alphabet in the square. Then press ▲ next to "Pair" three times, and watch which cells light up.
+</Try>
+
+<Check question="Which letter has no cell of its own?">
+  `J`. It shares a cell with `I`, and you write `I` for both. The reader of the message can tell which was meant. You also saw that the cipher works on two letters at once, never one.
+</Check>
+
+<Label>How it works</Label>
+
+## Pairs of letters and three rules
+
+### Build the square
+
+Sender and receiver agree on a **keyword**. Write it into the square first, row by row, and leave out any letter you have already used. Then fill the empty cells with the rest of the alphabet in order.
+
+Wheatstone's first name gives `CHARLES` across the top and into the second row. After it come `B`, `D`, `F`, `G` and so on. Anyone who knows the keyword can draw the same square.
+
+<Try action="charles" button="Start with CHARLES">
+  Type your own name in "Keyword" and watch the square rebuild. A letter that appears twice in your name goes in only once.
+</Try>
+
+### Split the message into pairs
+
+Next, break the message into pairs of letters. A pair is called a **digraph**. The two letters of a digraph must be different, so a double letter gets an `X` pushed between its halves. If one letter is left alone at the end, it gets an `X` too.
+
+`HAMMERSMITH` shows why. Split it straight and you get `HA MM`. With the extra letter it becomes `HA MX ME RS MI TH`.
+
+<Try action="doubleLetter" button="Jump to the double M">
+  You are at pair 6, `MX`. Read the caption under the square. Then press ▲ next to "Pair" until you reach the last pair, which needed an `X` as well.
+</Try>
+
+### Same row, or same column
+
+Now find the two letters of a pair in the square. Three rules cover every case.
+
+If both letters are in the same row, swap each for the letter on its right. A letter at the end of a row goes round to the start. So `HA` becomes `AR`.
+
+If both are in the same column, swap each for the letter below it. A letter at the bottom goes round to the top. So `MY` becomes `TR`.
+
+<Try action="sameRow" button="Show a pair in one row">
+  The lit pair is `HA`. Both letters are in the top row, so each moves one cell to the right.
+</Try>
+
+<Try action="sameColumn" button="Show a pair in one column">
+  The message is now `MY TURN`. `M` and `Y` sit in one column, and `Y` is at the bottom. See where it goes.
+</Try>
+
+### Corners of a rectangle
+
+Most pairs share neither a row nor a column. Then the two letters are opposite corners of a rectangle. Swap each letter for the other corner in its own row.
+
+Take `ME`. Go along the row of `M` until you are in the column of `E`: that is `G`. Go along the row of `E` to the column of `M`: that is `D`. So `ME` becomes `GD`.
+
+To decipher, run the rules backwards. Go left in a row and up in a column. The rectangle rule is the same both ways.
+
+<Try action="receive" button="Decipher the message">
+  The ciphertext is loaded, and "I want to" is set to "Decipher". Step through with ▲ and read the plaintext, extra `X`s and all.
+</Try>
+
+<Label>The story</Label>
+
+## Wheatstone's cipher, Playfair's name
+
+Charles Wheatstone was a pioneer of the electric telegraph. He wanted a cipher to keep telegraph messages private. He also loved breaking other people's ciphers. With his friend [Charles Babbage](/ciphers/babbage) he solved the secret love notes that Victorians printed in newspapers.
+
+He described his new cipher in 1854. But it was Lyon Playfair, later Baron Playfair of St Andrews, who pushed it on ministers and officials. So the cipher took Playfair's name, not its inventor's.
+
+The Foreign Office turned it down, but the British army took it up. You need only a pencil, paper and a keyword you can keep in your head. British forces used it in the Second Boer War and again in the First World War.
+
+<Label>How it was broken</Label>
+
+## Counting in twos
+
+Counting single letters does not break Playfair. A letter such as `E` turns into many different letters, depending on its partner.
+
+But the same pair always becomes the same pair. That is the weakness.
+
+<Try action="charles" button="Load the message again">
+  Look along the "Cipher" row above the square. Find `GD`. It appears three times, because `ME` appears three times in the message.
+</Try>
+
+So a codebreaker counts pairs instead of letters. In English, some pairs are far more common than others. `TH` and `HE` lead the list. The most common pairs in the ciphertext probably stand for those.
+
+It is harder work than before. There are 26 letters to count, but about 600 possible pairs. The codebreaker needs a much longer ciphertext before the pattern shows. For a short order on a battlefield, that was often safe enough. An American army officer, Joseph Mauborgne, published the first solution in 1914.
+
+<Label>Challenge</Label>
+
+## Wheatstone's boast
+
+<Challenge answer="ANY BOY CAN LEARN THIS">
+  A note in Playfair cipher reads `PQ AC SL BY OP HP IO QM CN`. The keyword is the name of the man the cipher is named after: `PLAYFAIR`.
+
+  Decipher it, and put the spaces back. What does it say?
+
+  <Try action="schoolboy" button="Load the note" />
+</Challenge>
+
+<Check question="Why does Playfair need more ciphertext to break than a simple substitution?">
+  It swaps pairs, not single letters. There are about 600 possible pairs, so each one turns up rarely. You need a long message before the common pairs stand out.
+</Check>
+
+<Label>What came next</Label>
+
+## A bigger alphabet is still an alphabet
+
+Playfair made the codebreaker count 600 things instead of 26. That bought time, not safety. Any cipher that always swaps the same piece for the same piece leaves a pattern, if you collect enough of it.
+
+By now ciphers had caught the public's imagination. They filled newspapers and adventure stories. The most famous puzzle of the century came in a pamphlet printed in 1885. It told of buried treasure and three ciphers made of numbers. Two of them have never been read: [the Beale ciphers](/ciphers/beale).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book* (full edition), the appendix on the Playfair cipher.
+- Simon Singh, [The Black Chamber: Playfair cipher](https://simonsingh.com/The_Black_Chamber/playfair_cipher.html). The author's own page, with the `CHARLES` example.
+- Wikipedia, [Playfair cipher](https://en.wikipedia.org/wiki/Playfair_cipher). Our check for the dates, the Foreign Office story and the wars.
+- David Kahn, *The Codebreakers*. The fullest history of Wheatstone, Playfair and their cipher.

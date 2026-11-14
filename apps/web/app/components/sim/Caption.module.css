@@ -1,0 +1,23 @@
+.caption {
+  /* Never wider than the board, and it stays in view while a wide table scrolls sideways. */
+  position: sticky;
+  left: 0;
+  justify-self: start;
+  width: min(32rem, 100cqi - var(--space-6));
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* Wide screens have room for the tables, so the caption simply sits centred under them. */
+@media (min-width: 60rem) {
+  .caption {
+    position: static;
+    justify-self: center;
+  }
+}
+
+.letters {
+  font-family: var(--font-cipher);
+  color: var(--color-lamp);
+}
