@@ -1,0 +1,157 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md:
+  Hook, Try it, How it works, The story, How it was broken, Challenge, What came next, Further reading.
+  Facts come from The Code Book, chapter 3. The wording is ours.
+*/}
+
+<Standfirst>
+  A typewriter that changes its cipher after every letter, and the people who broke it anyway.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## The machine nobody could read
+
+In 1926, British codebreakers began picking up German radio messages they could make nothing of. They had read German ciphers all through the First World War. Now every method they knew failed.
+
+The French gave up. So did the Americans. Germany, it seemed, had the safest communications in the world.
+
+The messages came from a wooden box the size of a typewriter, weighing 26 pounds. It was called Enigma. You are looking at one now. How can a box of wheels and wires beat every codebreaker alive?
+
+<Label>Try it</Label>
+
+## Press one key three times
+
+Before you read on, make a guess. If you press `A` three times, will the same lamp light each time?
+
+<Try action="fresh" button="Give me a fresh machine">
+  Press `A` three times, on the model or by typing in the box under it. Watch the lamps and the three rotor windows at the back.
+</Try>
+
+<Check question="What happened?">
+  Three different lamps lit: `B`, then `D`, then `Z`. The right-hand rotor also moved one step each time. The machine used a new cipher alphabet for every letter you typed.
+</Check>
+
+<Label>How it works</Label>
+
+## A keyboard, some wheels and a row of lamps
+
+Enigma has three main parts. You press a letter on the **keyboard**. An electric current runs through the **rotors**, which scramble it. It comes out at the **lampboard**, where one lamp lights. That lamp is your enciphered letter.
+
+Each rotor is a thick wheel with 26 wires inside. A wire goes in at one letter and comes out at a different one. With one fixed rotor, `A` would always become the same letter. That is a simple substitution cipher, and codebreakers had known how to break those for a thousand years by counting letters.
+
+### The rotors turn
+
+The inventor, Arthur Scherbius, added a clever idea. Every time you press a key, the first rotor turns one place. The wiring is now in a new position, so the same key gives a different lamp.
+
+After 26 presses the first rotor is back where it began. So it nudges the second rotor on one place, like the wheels of a car's mileage counter. The second does the same to the third. Three rotors give 26 × 26 × 26 = 17,576 positions before the pattern repeats.
+
+<Try>
+  Use the ▲ button to set the right-hand rotor to `V`, then press any key. The middle rotor moves too.
+</Try>
+
+### The reflector sends the current back
+
+Behind the third rotor is a **reflector**. It sends the current back through all three rotors by a different path.
+
+This gives Enigma a neat property. If `A` lights `B`, then at the same setting `B` lights `A`. So the same machine does both jobs. To read a message, set your rotors to the same start as the sender and type in the scrambled letters. The lamps spell out the original.
+
+The reflector has a side effect: a letter can never become itself. Press `A` as often as you like and the `A` lamp will never light. Remember that. It matters later.
+
+### The plugboard swaps letters
+
+At the front is the **plugboard**. A cable between two sockets swaps those two letters before the current reaches the rotors, and again on the way out. Operators at first used six cables.
+
+<Try>
+  On the front of the model, tap the `A` socket and then the `B` socket to join them. Now type a few letters and compare.
+</Try>
+
+### Counting the keys
+
+The **key** is how the machine is set up before you type. Count the choices:
+
+- 17,576 starting positions of the rotors
+- 6 orders in which the three rotors can sit
+- 100,391,791,500 ways to plug six cables
+
+Multiply them and you get about 10,000,000,000,000,000 keys. Someone testing one key a minute would need longer than the age of the universe to try them all.
+
+<Check question="Most of those keys come from the plugboard. So why bother with rotors?">
+  The plugboard never changes while you type. On its own it is a simple substitution cipher, which falls to letter counting. The rotors add fewer keys, but they change the cipher at every letter, and that is what defeats letter counting. Enigma needs both.
+</Check>
+
+<Label>The story</Label>
+
+## Sold for 10,000 marks
+
+Scherbius took out his first patent in 1918. The German military adopted Enigma in 1926 and went on to buy more than 30,000 machines. Scherbius never saw what became of it. He died in 1929 after a carriage accident.
+
+The first crack came from inside. Hans-Thilo Schmidt was a failed businessman with a job in the Berlin office that ran Germany's ciphers. He was poor, bitter and jealous of his successful brother. On 8 November 1931 he met a French agent in a Belgian hotel and let him photograph the Enigma instruction manuals, for 10,000 marks.
+
+The manuals let the Allies build a copy of the machine. But a copy is not enough. Enigma was designed to stay safe even when the enemy owns one. What matters is the key, and each day had a new one. The French thought the task hopeless and passed the photographs to their allies in Poland.
+
+<DigDeeper title="How the Germans used keys each day">
+  Every operator had a codebook listing one **day key** for each day of the month: the plugboard cables, the rotor order and the rotor start positions.
+
+  To avoid sending too many messages with the same key, the operator picked three new rotor positions for each message, the **message key**. He typed it twice, using the day key, at the start of the message. Then he turned his rotors to the message key and typed the message itself. The repeat was there to catch mistakes. It turned out to be one.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## Repetition is the enemy
+
+Poland sat between Germany and Russia and feared both. Its cipher bureau hired mathematicians. The best was Marian Rejewski, aged twenty-three.
+
+Rejewski went after the repeated message key. Because it was typed twice, the first and fourth letters of every message were the same letter, enciphered three steps apart. Each day he collected these pairs and linked them into chains. Then he saw something wonderful: the lengths of the chains depended only on the rotors, not on the plugboard.
+
+That removed the plugboard from the problem. He no longer faced ten thousand trillion keys, only 105,456 rotor settings. His team spent a year listing the chain lengths for every one. After that they could find a day key before the day was over.
+
+In December 1938 Germany added two more rotors to choose from, and more cables. The work became ten times harder, more than Poland could afford. On 24 July 1939, five weeks before the invasion, the Poles showed their stunned French and British guests everything they knew.
+
+### Turing and the weather
+
+The British set up at Bletchley Park. There Alan Turing found an attack that did not need the repeated key at all. It needed a **crib**: a guess at a word in the message. German weather reports, for example, nearly always contained `WETTER`.
+
+But where in the message is the word? Here the reflector's side effect helps.
+
+<Check question="A message begins ORFEZ MSGNB. Could its first six letters stand for WETTER?">
+  Line them up. `WETTER` under `ORFEZM`: W-O, E-R, T-F, T-E, E-Z, R-M. No letter sits under itself, so yes, it could. If any letter had matched itself, you would know the crib was in the wrong place, because Enigma never turns a letter into itself. Sliding a crib along until nothing matches was a daily job at Bletchley.
+</Check>
+
+Turing designed a machine, the **bombe**, that used a crib to test rotor settings at great speed. By the end of 1941 fifteen bombes were running, and one could find a key in about an hour.
+
+<Label>Challenge</Label>
+
+## Read a message with the day key
+
+<Challenge answer="NOTHING TO REPORT">
+  You are a radio operator. Today's key is: rotors II, III, I, showing `Q` `C` `W`, with cables A–L, P–R, T–D, B–W, K–F and O–Y.
+
+  This message has just arrived: `ORFEZ MSGNB LKMND`
+
+  Set up the machine, or use the button, then type the message in. What does it say?
+
+  <Try action="dayKey" button="Set the day key for me" />
+</Challenge>
+
+<Check question="Why was a message like this one a gift to the codebreakers?">
+  Dull, routine messages use the same words day after day. That makes them easy to guess, and a good guess is a crib.
+</Check>
+
+<Label>What came next</Label>
+
+## Machines to fight machines
+
+The people who broke Enigma were sworn to silence for thirty years. Historians still argue over how much their work shortened the war, but few doubt that it did.
+
+Enigma shows a lesson that keeps coming back in this story. The machine was strong. The way people used it was not: repeated keys, routine phrases, the same weather report every morning.
+
+It also changed who breaks codes. After Enigma, the fight was between machines. Bletchley went on to build Colossus, an electronic codebreaker for a different German cipher, and a forerunner of the computer. More ciphers are on their way to this site; the computer age is where the timeline goes next.
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 3. The full story, told far better than we can here.
+- [Crypto Museum: Enigma](https://www.cryptomuseum.com/crypto/enigma/). Photographs and wiring of every model.
+- [Bletchley Park](https://bletchleypark.org.uk/). The place itself, now a museum.

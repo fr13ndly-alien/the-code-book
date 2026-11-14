@@ -1,0 +1,13 @@
+{
+  "name": "the-code-book",
+  "private": true,
+  "type": "module",
+  "workspaces": ["packages/*", "apps/*"],
+  "scripts": {
+    "dev": "npm run dev -w @codebook/web",
+    "build": "npm run build -w @codebook/web",
+    "preview": "npm run preview -w @codebook/web",
+    "test": "npm run test -w @codebook/cipher-engine",
+    "typecheck": "npm run typecheck --workspaces"
+  }
+}

@@ -1,0 +1,187 @@
+.controls {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+}
+
+.row {
+  display: flex;
+  gap: var(--space-3);
+  align-items: stretch;
+}
+
+.rotors {
+  display: flex;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.stepper {
+  display: grid;
+  width: var(--tap);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-align: center;
+}
+
+.stepper button {
+  height: 1.75rem;
+  border: 0;
+  background: var(--color-surface-raised);
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+}
+
+.stepper output {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-cipher);
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+.tape {
+  flex: 1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 var(--space-3);
+  align-content: center;
+  margin: 0;
+  min-width: 0;
+  font-size: var(--text-sm);
+}
+
+.tape dt {
+  color: var(--color-text-muted);
+}
+
+.tape dd {
+  margin: 0;
+  font-family: var(--font-cipher);
+  font-size: var(--text-md);
+  overflow-wrap: anywhere;
+  max-height: 3em;
+  overflow-y: auto;
+}
+
+.lamps {
+  color: var(--color-lamp);
+}
+
+.typing {
+  flex: 1;
+  min-width: 0;
+}
+
+.typing input {
+  width: 100%;
+  height: var(--tap);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+}
+
+.button {
+  height: var(--tap);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface-raised);
+  white-space: nowrap;
+}
+
+.path {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  align-items: center;
+  font-family: var(--font-cipher);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.pathLabel {
+  font-family: var(--font-ui);
+}
+
+.hop + .hop::before {
+  content: "→";
+  margin-right: var(--space-1);
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.hop:last-child {
+  color: var(--color-lamp);
+  font-weight: 600;
+}
+
+.setup summary {
+  min-height: var(--tap);
+  display: flex;
+  align-items: center;
+  color: var(--color-accent);
+  cursor: pointer;
+}
+
+.setup h3 {
+  margin: var(--space-3) 0 var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.hint {
+  margin-bottom: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.select {
+  display: grid;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+}
+
+.select select {
+  height: var(--tap);
+  padding: 0 var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+}
+
+.sockets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--tap), 1fr));
+  gap: var(--space-1);
+}
+
+.socket {
+  position: relative;
+  height: var(--tap);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  font-family: var(--font-cipher);
+}
+
+.socket[data-wired="true"] {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.socket[aria-pressed="true"] {
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+.socket small {
+  position: absolute;
+  right: 4px;
+  bottom: 1px;
+  font-size: 0.65rem;
+}
