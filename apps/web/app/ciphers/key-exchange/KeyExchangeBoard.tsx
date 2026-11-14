@@ -19,67 +19,85 @@ export function KeyExchangeBoard({ state }: { state: KeyExchangeState }) {
 
   return (
     <Board>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <td />
-            <th scope="col">Alice</th>
-            <th scope="col">In public: Eve sees this</th>
-            <th scope="col">Bob</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1. Agree</th>
-            <td />
-            <td data-kind="public">
-              Y = <b>{base}</b>, P = <b>{modulus}</b>
-              <br />
-              The function is {base}
-              <sup>x</sup> (mod {modulus})
-            </td>
-            <td />
-          </tr>
-          {step >= 2 && (
+      <div className={styles.scroll}>
+        <table className={styles.table}>
+          <thead>
             <tr>
-              <th scope="row">2. Choose a secret</th>
-              <td data-kind="secret">{hidden ? <Hidden /> : <>A = <b>{alice.secret}</b></>}</td>
-              <td data-kind="public">Nothing is sent</td>
-              <td data-kind="secret">{hidden ? <Hidden /> : <>B = <b>{bob.secret}</b></>}</td>
+              <td />
+              <th scope="col">Alice</th>
+              <th scope="col">In public: Eve sees this</th>
+              <th scope="col">Bob</th>
             </tr>
-          )}
-          {step >= 3 && (
+          </thead>
+          <tbody>
             <tr>
-              <th scope="row">3. Swap numbers</th>
-              <td>{sum(base, alice.secret, alice.sends)}</td>
+              <th scope="row">1. Agree</th>
+              <td />
               <td data-kind="public">
-                Alice sends <b>{alice.sends}</b>
+                Y = <b>{base}</b>, P = <b>{modulus}</b>
                 <br />
-                Bob sends <b>{bob.sends}</b>
-              </td>
-              <td>{sum(base, bob.secret, bob.sends)}</td>
-            </tr>
-          )}
-          {step >= 4 && (
-            <tr>
-              <th scope="row">4. Work out the key</th>
-              <td data-kind="secret">{sum(bob.sends, alice.secret, alice.key)}</td>
-              <td data-kind="public">Nothing is sent</td>
-              <td data-kind="secret">{sum(alice.sends, bob.secret, bob.key)}</td>
-            </tr>
-          )}
-          {search && (
-            <tr>
-              <th scope="row">Eve tries</th>
-              <td />
-              <td data-kind="public">
-                <EveGuesses search={search} base={base} modulus={modulus} target={alice.sends} bobSent={bob.sends} />
+                The function is {base}
+                <sup>x</sup> (mod {modulus})
               </td>
               <td />
             </tr>
-          )}
-        </tbody>
-      </table>
+            {step >= 2 && (
+              <tr>
+                <th scope="row">2. Choose a secret</th>
+                <td data-kind="secret">
+                  {hidden ? (
+                    <Hidden />
+                  ) : (
+                    <>
+                      A = <b>{alice.secret}</b>
+                    </>
+                  )}
+                </td>
+                <td data-kind="public">Nothing is sent</td>
+                <td data-kind="secret">
+                  {hidden ? (
+                    <Hidden />
+                  ) : (
+                    <>
+                      B = <b>{bob.secret}</b>
+                    </>
+                  )}
+                </td>
+              </tr>
+            )}
+            {step >= 3 && (
+              <tr>
+                <th scope="row">3. Swap numbers</th>
+                <td>{sum(base, alice.secret, alice.sends)}</td>
+                <td data-kind="public">
+                  Alice sends <b>{alice.sends}</b>
+                  <br />
+                  Bob sends <b>{bob.sends}</b>
+                </td>
+                <td>{sum(base, bob.secret, bob.sends)}</td>
+              </tr>
+            )}
+            {step >= 4 && (
+              <tr>
+                <th scope="row">4. Work out the key</th>
+                <td data-kind="secret">{sum(bob.sends, alice.secret, alice.key)}</td>
+                <td data-kind="public">Nothing is sent</td>
+                <td data-kind="secret">{sum(alice.sends, bob.secret, bob.key)}</td>
+              </tr>
+            )}
+            {search && (
+              <tr>
+                <th scope="row">Eve tries</th>
+                <td />
+                <td data-kind="public">
+                  <EveGuesses search={search} base={base} modulus={modulus} target={alice.sends} bobSent={bob.sends} />
+                </td>
+                <td />
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
       <Caption>{captionFor(state, search)}</Caption>
     </Board>
   );
@@ -92,8 +110,8 @@ function Sum(props: { base: number; exponent: number; modulus: number; result: n
     <>
       {props.base}
       <sup>{props.exponent}</sup>
-      {full <= LONGEST_POWER && full !== props.result && <> = {full.toLocaleString("en")}</>} ={" "}
-      <b>{props.result}</b> (mod {props.modulus})
+      {full <= LONGEST_POWER && full !== props.result && <> = {full.toLocaleString("en")}</>} = <b>{props.result}</b>{" "}
+      (mod {props.modulus})
     </>
   );
 }

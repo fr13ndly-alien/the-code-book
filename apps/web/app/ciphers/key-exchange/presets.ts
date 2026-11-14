@@ -2,7 +2,11 @@ import type { KeyExchangeState } from "./useKeyExchange";
 
 /** Setups that buttons in story.mdx can load, by name. */
 export const PRESETS: Record<string, KeyExchangeState> = {
-  /** The exchange worked in the full edition of the book, before anything has been sent. The page starts here. */
+  /**
+   * The exchange worked in the full edition of the book (chapter 6, Table 26:
+   * Y = 7, P = 11, Alice picks 3, Bob picks 6), before anything has been sent.
+   * The page starts here.
+   */
   book: { base: 7, modulus: 11, aliceSecret: 3, bobSecret: 6, step: 1, eveSearching: false },
 
   /** The full edition's exchange, finished: both sides hold the key 9. */

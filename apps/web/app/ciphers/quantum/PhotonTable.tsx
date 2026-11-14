@@ -66,29 +66,31 @@ export function PhotonTable(props: {
   ];
 
   return (
-    <table className={styles.table}>
-      <tbody>
-        {rows.map((row) => (
-          <tr key={row.label} data-kind={row.kind}>
-            <th scope="row">{row.label}</th>
-            {photons.map((photon, column) => (
-              <td key={column} data-on={column === picked} data-dim={stage >= SIFTED && !photon.kept}>
-                {row.cell(photon, column)}
+    <div className={styles.scroll}>
+      <table className={styles.table}>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.label} data-kind={row.kind}>
+              <th scope="row">{row.label}</th>
+              {photons.map((photon, column) => (
+                <td key={column} data-on={column === picked} data-dim={stage >= SIFTED && !photon.kept}>
+                  {row.cell(photon, column)}
+                </td>
+              ))}
+            </tr>
+          ))}
+          <tr className={styles.pickers}>
+            <th scope="row">Photon number</th>
+            {photons.map((_, column) => (
+              <td key={column}>
+                <button type="button" aria-pressed={column === picked} onClick={() => props.onPick(column)}>
+                  {column + 1}
+                </button>
               </td>
             ))}
           </tr>
-        ))}
-        <tr className={styles.pickers}>
-          <th scope="row">Photon number</th>
-          {photons.map((_, column) => (
-            <td key={column}>
-              <button type="button" aria-pressed={column === picked} onClick={() => props.onPick(column)}>
-                {column + 1}
-              </button>
-            </td>
-          ))}
-        </tr>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   );
 }

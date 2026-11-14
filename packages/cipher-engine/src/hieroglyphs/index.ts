@@ -90,7 +90,16 @@ export const CARTOUCHES = {
     signs: ["slope", "lion", "reed", "lasso", "stool", "vulture", "hand", "mouth", "vulture"],
     greek: ["k", "l", "e", "o", "p", "a", "t", "r", "a"],
   },
-  /** The Code Book, Table 12: a l ? s e ? t r ?, read as alksentrs. */
+  /**
+   * The Code Book, Table 12 (Table 16 in the full edition): a l ? s e ? t r ?,
+   * read as alksentrs. The signs and their order were checked against the
+   * printed table: vulture, lion, basket, folded cloth, reed, water, hand,
+   * mouth, door bolt. We follow the book. Ancient spellings of the name vary:
+   * a common one (Gardiner G1 E23 V31 O34 M17 N35 D46 D21 O34, as listed on
+   * French Wikipedia's "Alexandre le Grand") has the door bolt for both s
+   * sounds. The book's version has the folded cloth for the first s, which is
+   * why that s is already known from Ptolemy and only the last one is new.
+   */
   alexander: {
     name: "Alexander",
     signs: ["vulture", "lion", "basket", "cloth", "reed", "water", "hand", "mouth", "bolt"],

@@ -42,8 +42,9 @@ describe("hieroglyphs", () => {
     expect(check(ptolemy, { stool: "t" })[0]).toBe("clashes");
   });
 
-  // Source: The Code Book, Table 12. With the first two names read, Alexander's
-  // cartouche "seemed to read a-l-?-s-e-?-t-r-?". This is the story's challenge.
+  // Source: The Code Book, Table 12 (Table 16 in the full edition). With the first
+  // two names read, Alexander's cartouche "seemed to read a-l-?-s-e-?-t-r-?". The
+  // sign order was checked against the printed table. This is the story's challenge.
   it("reads the challenge cartouche as far as the book says, then in full", () => {
     const known = valuesFrom([ptolemy, cleopatra]);
     expect(readingText(alexander, known)).toBe("a l ? s e ? t r ?");

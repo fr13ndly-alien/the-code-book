@@ -69,6 +69,10 @@ To decipher, she works out 11<sup>23</sup> (mod 187). Out comes 88.
   The ciphertext 11 is loaded. Follow the squares down the middle panel to the answer, 88, which is `X`.
 </Try>
 
+<DigDeeper title="Why real RSA does not go letter by letter">
+  Our simulator locks one letter at a time. The book warns that this is only for show. Every `X` would become the same number. So RSA would shrink to a monoalphabetic substitution, and [counting](/ciphers/frequency-analysis) would break it. Real RSA locks much larger blocks of bits at once, which leaves nothing to count. The book also names the tool Alice uses to find d quickly: Euclid's algorithm.
+</DigDeeper>
+
 <Label>The story</Label>
 
 ## The least interesting paper
@@ -102,6 +106,10 @@ Now make the primes bigger. The book dares its readers to factor 1,709,023 with 
 </Try>
 
 In August 1977 the magazine *Scientific American* printed an N that was 129 digits long, with a $100 prize. It was factored on 26 April 1994, seventeen years later, by six hundred volunteers and their computers. The hidden message was "The magic words are squeamish ossifrage." Today's keys are far longer.
+
+<DigDeeper title="How big must N be?">
+  The book's chapter uses bigger primes than our toy: 17,159 × 10,247 = 175,828,273. Real ones are vastly bigger. Take two primes of about 65 digits each. Their N has about 130 digits. The book quotes an estimate that one 1990s home computer would need fifty years to factor it. A hundred million of them, working together, would need about fifteen seconds. So banks use an N of over 300 digits. Those same computers would then need more than a thousand years.
+</DigDeeper>
 
 <Label>Challenge</Label>
 

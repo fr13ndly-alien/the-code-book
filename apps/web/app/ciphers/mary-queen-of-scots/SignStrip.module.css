@@ -6,9 +6,11 @@
   max-width: 40rem;
 }
 
-/* The signs of one word stay together on a line. */
+/* The signs of one word stay together on a line, unless the word is wider than the board. */
 .word {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .strip button {

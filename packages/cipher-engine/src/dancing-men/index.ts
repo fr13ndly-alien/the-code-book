@@ -81,6 +81,8 @@ export function describe(pose: Pose): string {
 /**
  * Turns a message into dancing men. There are no spaces: the last figure of each
  * word holds a flag instead. The final word needs none, because the message ends there.
+ * Conan Doyle's story works the same way: Holmes takes NEVER for a single word
+ * "since there was no flag".
  */
 export function encipher(text: string): Figure[] {
   const words = text.toUpperCase().split(/[^A-Z]+/).filter(Boolean);
@@ -142,8 +144,10 @@ export const nextHint = (figures: Figure[], guesses: Guesses): string | undefine
   tally(figures).find(({ letter }) => guesses[letter] !== letter)?.letter;
 
 /**
- * The messages of the story, as Holmes read them.
+ * The messages of the story, as Holmes read them, in the order they appear.
  * Source: Arthur Conan Doyle, "The Adventure of the Dancing Men", The Strand Magazine, December 1903.
+ * Checked against the text in The Return of Sherlock Holmes (Project Gutenberg ebook 108).
+ * COME ELSIE appears twice in the story (on the tool-house door, then on paper); it is listed once.
  * Between them they use 18 letters; the story gives no figure for F, J, K, Q, U, W, X or Z.
  */
 export const DOYLE_MESSAGES = [

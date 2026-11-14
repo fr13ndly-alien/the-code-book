@@ -2,8 +2,9 @@
   Follows the cipher page template in docs/STANDARDS.md.
   The story comes from The Code Book, chapter 5. The abridged edition explains
   one-way functions and 3^x (mod 7), but leaves out the exchange itself. The
-  worked exchange (Y = 7, P = 11, Alice sends 2, Bob sends 4) is from the full
-  edition, chapter 6. The date of publication is from the paper in Further
+  worked exchange (Y = 7, P = 11, Alice picks 3 and sends 2, Bob picks 6 and
+  sends 4, the key is 9) is Table 26 of the full edition, chapter 6, checked
+  against a scan of that edition. The date of publication is from the paper in Further
   reading. The wording is ours.
 */}
 
@@ -141,6 +142,6 @@ He could not find the mathematics to build it. Three men on the other side of Am
 
 ## Go deeper
 
-- Simon Singh, *The Code Book*, chapter 5. The full edition works through the exchange with numbers, in its chapter 6.
+- Simon Singh, *The Code Book*, chapter 5. The full edition works through the exchange with these numbers, in Table 26 of its chapter 6.
 - Whitfield Diffie and Martin Hellman, "New Directions in Cryptography", *IEEE Transactions on Information Theory*, November 1976. The paper that announced the exchange.
 - Steven Levy, *Crypto* (2001). The people behind public-key cryptography.

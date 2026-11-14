@@ -1,0 +1,6 @@
+/* A long message uses up to 40 signs: more bars than a phone can fit, so they scroll in their own strip. */
+.scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: var(--space-1);
+}

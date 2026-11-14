@@ -3,6 +3,7 @@ import { ENGLISH_FREQUENCY } from "@codebook/cipher-engine/text";
 import { Board } from "~/components/sim/Board";
 import { Caption, Letters } from "~/components/sim/Caption";
 import { FrequencyBars } from "~/components/sim/FrequencyBars";
+import styles from "./MaryBoard.module.css";
 import { SignKey } from "./SignKey";
 import { SignStrip } from "./SignStrip";
 import { tokensOf, type MaryState } from "./useMary";
@@ -41,14 +42,16 @@ export function MaryBoard({ state, onPick }: { state: MaryState; onPick: (symbol
           "Each sign sits under what it stands for. Tap a sign to find it in the key."
         )}
       </Caption>
-      <FrequencyBars
-        label="How often each sign appears, most common first, over the letters of normal English"
-        symbols={counts.map(({ symbol }) => symbol)}
-        values={counts.map(({ count }) => count)}
-        compare={ENGLISH_BY_RANK}
-        highlight={at < 0 ? undefined : at}
-        onPick={(index) => onPick(counts[index]!.symbol)}
-      />
+      <div className={styles.scroll}>
+        <FrequencyBars
+          label="How often each sign appears, most common first, over the letters of normal English"
+          symbols={counts.map(({ symbol }) => symbol)}
+          values={counts.map(({ count }) => count)}
+          compare={ENGLISH_BY_RANK}
+          highlight={at < 0 ? undefined : at}
+          onPick={(index) => onPick(counts[index]!.symbol)}
+        />
+      </div>
       <Caption>
         Solid bars count the signs. Outlines show normal English, where E is the tallest. Tap the tallest bar to see
         what it hides.

@@ -34,46 +34,48 @@ export function LuciferBoard({ state, onFlip }: { state: LuciferState; onFlip: (
   return (
     <Board>
       <RoundCaption trace={shown} round={picked} deciphering={state.mode === "decipher"} />
-      <table className={styles.table} aria-label="The two halves after every round">
-        <thead>
-          <tr>
-            <th scope="col">Round</th>
-            <th scope="col">Round key</th>
-            <th scope="col" colSpan={HALF_BITS}>
-              Left half
-            </th>
-            <th scope="col" colSpan={HALF_BITS}>
-              Right half
-            </th>
-            {flipping && <th scope="col">Changed</th>}
-          </tr>
-        </thead>
-        <tbody>
-          {lines.map((line, row) => (
-            <tr key={line.round} data-picked={line.round === picked} data-last={row === lines.length - 1}>
-              <th scope="row">{line.round === 0 ? "Start" : line.round}</th>
-              <td className={styles.key}>{line.roundKey === undefined ? "" : byte(line.roundKey)}</td>
-              {[...line.bits].map((bit, at) => (
-                <td key={at} className={styles.bit} data-on={bit !== original[row]!.bits[at]} data-gap={at === HALF_BITS}>
-                  {line.round === 0 ? (
-                    <button
-                      type="button"
-                      aria-label={`Flip bit ${at + 1}`}
-                      aria-pressed={at === state.flipped}
-                      onClick={() => onFlip(at)}
-                    >
-                      {bit}
-                    </button>
-                  ) : (
-                    bit
-                  )}
-                </td>
-              ))}
-              {flipping && <td className={styles.count}>{changedBits(line, original[row]!)}</td>}
+      <div className={styles.scroll}>
+        <table className={styles.table} aria-label="The two halves after every round">
+          <thead>
+            <tr>
+              <th scope="col">Round</th>
+              <th scope="col">Round key</th>
+              <th scope="col" colSpan={HALF_BITS}>
+                Left half
+              </th>
+              <th scope="col" colSpan={HALF_BITS}>
+                Right half
+              </th>
+              {flipping && <th scope="col">Changed</th>}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {lines.map((line, row) => (
+              <tr key={line.round} data-picked={line.round === picked} data-last={row === lines.length - 1}>
+                <th scope="row">{line.round === 0 ? "Start" : line.round}</th>
+                <td className={styles.key}>{line.roundKey === undefined ? "" : byte(line.roundKey)}</td>
+                {[...line.bits].map((bit, at) => (
+                  <td key={at} className={styles.bit} data-on={bit !== original[row]!.bits[at]} data-gap={at === HALF_BITS}>
+                    {line.round === 0 ? (
+                      <button
+                        type="button"
+                        aria-label={`Flip bit ${at + 1}`}
+                        aria-pressed={at === state.flipped}
+                        onClick={() => onFlip(at)}
+                      >
+                        {bit}
+                      </button>
+                    ) : (
+                      bit
+                    )}
+                  </td>
+                ))}
+                {flipping && <td className={styles.count}>{changedBits(line, original[row]!)}</td>}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <Caption>
         {flipping
           ? `Bit ${state.flipped! + 1} of the top row is flipped. Bright bits differ from the run without the flip. Tap the bit again to put it back.`
