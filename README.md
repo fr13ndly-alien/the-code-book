@@ -17,6 +17,7 @@ Then open http://localhost:5173.
 |---|---|
 | `npm test` | Runs the cipher engine tests |
 | `npm run typecheck` | Type-checks everything |
+| `npm run check:coverage` | Checks `docs/COVERAGE.md` against the pages |
 | `npm run build` | Builds the static site into `apps/web/build/client` |
 | `npm run preview` | Serves the built site |
 

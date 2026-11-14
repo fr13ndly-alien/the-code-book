@@ -11,7 +11,7 @@ import type { Cryptogram, Kind } from "./cryptograms.ts";
  * It also prepares a cryptogram the reader pastes in, such as one of the book's own.
  */
 
-export { BOOK_CAESAR, BOOK_DEDICATION } from "./book.ts";
+export { BOOK_CAESAR, BOOK_DEDICATION, BOOK_SUBSTITUTION, BOOK_VIGENERE } from "./book.ts";
 export { CRYPTOGRAMS } from "./cryptograms.ts";
 export type {
   CaesarCryptogram,

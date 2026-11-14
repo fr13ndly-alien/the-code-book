@@ -7,17 +7,17 @@ How to read it:
 - **Book explains how it works?** "yes" or "partly" means the book gives enough to build from. "named only" means the book mentions it and moves on.
 - **Interactive?** "yes" means the reader can operate it in a simulator. "text" means the story describes it.
 - Everything the book presents has a place on the site. Things it only names are mentioned where they belong, and have a simulator only where the table says so.
-- Where a page first teaches with our own example, the book's own example can be loaded too: the six-letter Enigma model, Rejewski's table and the crib alignment, the BEALE key sentence, the book's frequency cryptogram, Alberti's "hello", the sample code, the book's two Caesar cryptograms and its dedication. The book's two long challenge cryptograms are not stored: the reader pastes them into the "Your own" bench.
+- Where a page first teaches with our own example, the book's own example can be loaded too: the six-letter Enigma model, Rejewski's table and the crib alignment, the BEALE key sentence, the book's frequency cryptogram, Alberti's "hello", the sample code, and the book's four challenge cryptograms and its dedication, which load onto the "Your own" bench of the closing challenge.
 - Some pages go beyond this edition, using the full edition or named sources: Lucifer, digital signatures, ADFGVX, the one-time pad, Playfair, the homophonic cipher, Morse code and Linear B (marked "Full edition" in the menu), and the mechanisms of Purple, Lorenz, quantum cryptography and the key exchange.
 
-Update this file when a page is added or changed.
+Update this file when a page is added or changed, then run `npm run check:coverage`. That command checks that every row names a page that exists, and that every phrase a row puts in quotation marks really appears on that page.
 
 ## Pages 1 to 95, with appendices A to D
 
 | Book item | PDF page(s) | Book explains how it works? | Site page (slug) | Where on the page | Interactive? |
 |---|---|---|---|---|---|
 | Enciphered dedication ("XICYIQKMHR, VOIR RFH LKRQT") | 6 | named only (printed, never explained) | codebreakers-challenge | DigDeeper "Work on the book's own cryptograms": the button "Load the book's dedication" puts it on the "Your own" bench. The book gives no solution, and neither do we. | yes |
-| Demaratus' wax tablets (writing under the wax) | 17-18 | yes | hidden-writing | "Blank, or is it?" and "Under the wax" (presets `tablet`, `waxed`); "The woman who said 'scrape it'". Also hook of rail-fence, DigDeeper in pinprick | yes |
+| Demaratus' wax tablets (writing under the wax) | 17-18 | yes | hidden-writing | "Blank, or is it?" and "Under the wax" (presets `tablet`, `waxed`); the section about the woman who said scrape it. Also hook of rail-fence, DigDeeper in pinprick | yes |
 | Histaiaeus' shaved-head messenger | 18 | yes | hidden-writing | Hook "A message under the hair"; also rail-fence "Two ways to keep a secret", pinprick DigDeeper "Wax, silk and a shaved head" | text |
 | Steganography defined, and its weakness (found = read) | 18-19 | yes | hidden-writing | "Hide the message, not the meaning"; "The guard who checks everything" (preset `searched`, guard set to Thorough) | yes |
 | Chinese silk ball coated in wax and swallowed | 19 | yes | hidden-writing | DigDeeper "Silk, wax and a strong stomach" | text |
@@ -72,7 +72,7 @@ Update this file when a page is added or changed.
 | Babbage's step 1: repeated sequences, spacings and factors give the key length (Figure 12, Table 6) | 73-76 | yes | babbage | "Look for an echo", "Why repeats appear", "The spacing gives the length" (repeats table with ticks; presets `intercept` and `book` = Figure 12) | yes |
 | Babbage's step 2: split into Caesar-shifted columns, match each frequency chart to English (Figures 13-16; keyword EMILY; Tennyson's "The Vision of Sin") | 76-82 | yes | babbage | "Five easy ciphers" (preset `letters`), "One letter at a time"; DigDeeper "The book's own example" (preset `book`) | yes |
 | Kasiski test; why Babbage kept silent (Crimean War) | 82-83 | yes | babbage | "A secret for nine years" | text |
-| Agony-column ciphers; Wheatstone and Babbage deciphering them ("Dear Charlie") | 83-84 | partly (cipher not specified) | babbage; playfair; pinprick | babbage challenge "The agony column" (preset `agony`, our own Vigenere note); playfair "Wheatstone's cipher, Playfair's name"; pinprick "Two thousand years of pins" and "Hide the meaning instead". The "Dear Charlie" exchange is not retold | yes (babbage challenge); text elsewhere |
+| Agony-column ciphers; Wheatstone and Babbage deciphering them ("Dear Charlie") | 83-84 | partly (cipher not specified) | babbage; playfair; pinprick | babbage challenge "The agony column" (preset `agony`, our own Vigenere note); playfair "Wheatstone's cipher, Playfair's name"; pinprick "Two thousand years of pins" and "Hide the meaning instead". The newspaper exchange itself is not retold | yes (babbage challenge); text elsewhere |
 | Pinprick encryption (Aeneas the Tactician; Victorian newspapers sent post-free) | 84-85 | yes | pinprick | "Find the holes" (preset `meeting`, "Held up to the light"), "Pricking in order" (presets `blank`, `hand`), "Two thousand years of pins" | yes |
 | Verne's runic cryptogram in Journey to the Center of the Earth (substitution, then read backwards); Mathias Sandorff | 85 | partly (Sandorff named only) | dancing-men | "Verne's two locks" (preset `verne`, Step control); "When ciphers became entertainment" | yes |
 | Conan Doyle's dancing men (one stick-man pose per letter; Figure 17) | 85-86 | partly | dancing-men | "A stick man for every letter" (presets `slaney`, `blank`, `trap`), "Holmes counts the dancers" (preset `desk`) | yes |
@@ -98,7 +98,7 @@ Update this file when a page is added or changed.
 | Hall hiding the source of the telegram before release | 110-111 | partly | zimmermann | "Filling the book, one word at a time" (Hall's safe, the Mexico copy) | text |
 | Alberti cipher disc used as a Caesar shift (A to B = shift 1, A to F = shift 5) | 112 | yes | cipher-disc | "Turn the inner ring", "Outside plain, inside cipher"; preset `five`; brute force preset `caught` | yes |
 | Cipher disc turned during the message: polyalphabetic, keyword LEON on "goodbye" (g to R, o to S) = Vigenere | 113-114 | yes | cipher-disc | "Turn it as you go", "A keyword says where to turn"; presets `turning`, `leon` | yes |
-| Cipher disc as a "scrambler"; still a Vigenere, broken by Babbage and Kasiski | 113-114 | yes | cipher-disc | "Five centuries of service", "Still a Caesar, still a Vigenere" (links to babbage) | text |
+| Cipher disc as a "scrambler"; still a Vigenere, broken by Babbage and Kasiski | 113-114 | yes | cipher-disc | "Five centuries of service", "Still a Caesar, still a Vigenère" (links to babbage) | text |
 | Enigma basic layout: keyboard, scrambler, lampboard; one fixed scrambler = monoalphabetic (six-letter example, cafe to DBCE) | 114-116 | yes | enigma | "A keyboard, some wheels and a row of lamps" (the 3D model is the full 26-letter machine; the book's six-letter toy and DBCE are not reproduced) | yes |
 | Rotating scrambler: new alphabet each letter (b six times gives ACEBDC) | 116-117 | yes | enigma | "Press one key three times" (preset `fresh`, A three times), "The rotors turn" | yes |
 | Second and third scramblers, odometer stepping, 26 x 26 x 26 = 17,576 | 117-120 | yes | enigma | "The rotors turn" (Try: set right rotor to V, middle rotor steps) | yes |
@@ -128,7 +128,7 @@ Update this file when a page is added or changed.
 | American cipher machines "similar to Enigma", never cracked, too slow for the field | 162 | named only | navajo | "Nothing on paper" (a cipher machine needed every letter typed and written down); machine itself not built: named only | text |
 | Navajo as a code: the language as a barrier (Na-Dene family, verb structure) | 163, 168-169 | yes | navajo | "A language as a wall" | text |
 | Choctaw code talkers of the First World War and their flaw | 164 | yes | navajo | DigDeeper "An earlier try, and its flaw" | text |
-| Navajo lexicon: 274 code words (birds for planes, fish for ships; owl, frog, iron fish) | 164-165 | yes | navajo | "Say submarine in Navajo", "Birds for planes, fish for ships"; presets `start`, `lexicon`; DigDeeper "Owl or hummingbird?" | yes |
+| Navajo lexicon: 274 code words (birds for planes, fish for ships; owl, frog, iron fish) | 164-165 | yes | navajo | the section on saying submarine in Navajo, "Birds for planes, fish for ships"; presets `start`, `lexicon`; DigDeeper "Owl or hummingbird?" | yes |
 | Navajo alphabet code (Table 8); Pacific spelled pig, ant, cat, ice, fox, ice, cat | 165-166 | yes | navajo | "Spelling out the rest"; presets `pacific`, `overheard`; Challenge preset `heard` | yes |
 | Navajo code memorised, no codebook; tested by navy intelligence; never broken | 165, 171 | yes | navajo | "Nothing on paper", "It never was" | text |
 | "White code" mechanical cylinder device raced by a code talker | 167 | named only | navajo | "An idea from childhood" (a code talker raced a cipher machine); device not built: named only | text |
@@ -142,10 +142,10 @@ Update this file when a page is added or changed.
 | Lenoir's supposed complete decipherment | 184 | named only | hieroglyphs | three sentences in "Why nobody had tried" | text |
 | Champollion: Ptolemy and Cleopatra cartouches from the Bankes obelisk (Table 11), two signs for t | 183-184 | yes | hieroglyphs | "A second name tests the first"; preset `ptolemy` (sounds spill into Cleopatra's ring) | yes |
 | Champollion: Alexander cartouche (a-l-?-s-e-?-t-r-?, Table 12), omitted vowels | 184-185 | yes | hieroglyphs | Challenge "Name the conqueror"; preset `alexander` | yes |
-| Champollion: Rameses cartouche from Abu Simbel, Coptic "ra" for the sun | 185-186 | yes | hieroglyphs | "A sun that says ra"; preset `rameses` | yes |
-| Rebus principle (bee + leaf = belief) | 186 | yes | hieroglyphs | "A sun that says ra"; DigDeeper "Three scripts and a picture puzzle" | text |
-| Champollion's four principles (Coptic language, semagrams, rebus, phonetic alphabet) | 187 | yes | hieroglyphs | "A sun that says ra" (Coptic, rebus, sounds), "Why nobody had tried" (semagram, phonogram); not listed as four points | text |
-| Hieroglyphs standing for two or three consonants | 187 | partly | hieroglyphs | ADDED: DigDeeper "Signs worth two or three letters" (in "A sun that says ra") | text |
+| Champollion: Rameses cartouche from Abu Simbel, Coptic "ra" for the sun | 185-186 | yes | hieroglyphs | the section about the sun sign that says ra; preset `rameses` | yes |
+| Rebus principle (bee + leaf = belief) | 186 | yes | hieroglyphs | the section about the sun sign that says ra; DigDeeper "Three scripts and a picture puzzle" | text |
+| Champollion's four principles (Coptic language, semagrams, rebus, phonetic alphabet) | 187 | yes | hieroglyphs | the section about the sun sign that says ra (Coptic, rebus, sounds), "Why nobody had tried" (semagram, phonogram); not listed as four points | text |
+| Hieroglyphs standing for two or three consonants | 187 | partly | hieroglyphs | ADDED: DigDeeper "Signs worth two or three letters" (in the section about the sun sign that says ra) | text |
 | Lorenz cipher (SZ40), "similar to Enigma but far more complicated" | 189 | named only (mechanism not explained in this edition) | lorenz | "Five holes for every letter", "Add a key, hole by hole"; presets `start`, `letter`, `blankTape`, `intercepted` (mechanism taken from museum sources) | yes |
 | Breaking Lorenz: Tiltman and Tutte's discovery; by-hand breaking; Newman's design | 189-190 | partly | lorenz | "The message sent twice", "A machine nobody had seen", "Speed, then a computer" | text |
 | Colossus: 1,500 valves, programmable, built by Flowers, delivered December 1943, plans burned | 189-190 | partly | lorenz | "Speed, then a computer", "A secret computer" | text |

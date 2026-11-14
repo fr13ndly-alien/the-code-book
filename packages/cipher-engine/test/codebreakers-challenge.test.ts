@@ -4,6 +4,8 @@ import { decipher as caesarDecipher, encipher as caesarEncipher, tryAllShifts } 
 import {
   BOOK_CAESAR,
   BOOK_DEDICATION,
+  BOOK_SUBSTITUTION,
+  BOOK_VIGENERE,
   CRYPTOGRAMS,
   MAX_WORD,
   hasLetters,
@@ -165,6 +167,36 @@ describe("The Codebreaker's Challenge", () => {
 
     it("passes the book's Caesar cryptograms through the bench unchanged", () => {
       for (const text of BOOK_CAESAR) expect(prepare(text, "caesar").ciphertext).toBe(text);
+    });
+
+    // Source: The Code Book, abridged edition, p. 244, Cryptogram 3: Monoalphabetic Substitution Cipher.
+    // The cipher alphabet was recovered by breaking the cryptogram. Plain J, Q, X and Z never appear
+    // in the message, so their four cipher letters (Q, Y, J, M) are placed by guess.
+    it("deciphers the book's cryptogram 3 to English with the alphabet recovered from it", () => {
+      const recovered = "EDGARLNPOQSTUVWXYZBCFHIJKM";
+      const reading = substitutionDecipher(BOOK_SUBSTITUTION, recovered);
+      expect(lettersOnly(BOOK_SUBSTITUTION)).toHaveLength(457);
+      expect(reading.split(" ")).toHaveLength(BOOK_SUBSTITUTION.split(" ").length);
+      expect(reading.startsWith("AND YET SAID LEGRAND THE SOLUTION IS BY NO MEANS SO DIFFICULT")).toBe(true);
+      expect(reading).toContain("THESE CHARACTERS AS ANY ONE MIGHT READILY GUESS FORM A CIPHER");
+      expect(reading).toContain("I MADE UP MY MIND AT ONCE THAT THIS WAS OF A SIMPLE SPECIES");
+      expect(reading.endsWith("WITHOUT THE KEY FROM THE GOLD BUG BY EDGAR ALLAN POE")).toBe(true);
+      expect(prepare(BOOK_SUBSTITUTION, "substitution").ciphertext).toBe(BOOK_SUBSTITUTION);
+    });
+
+    // Source: The Code Book, abridged edition, p. 244, Cryptogram 4: Vigenère Cipher.
+    // The repeats fit key lengths 2, 3 and 6 equally, and the engine takes the longest: the keyword twice over.
+    it("finds the key length and keyword of the book's cryptogram 4 with Babbage's method", () => {
+      expect(lettersOnly(BOOK_VIGENERE)).toHaveLength(218);
+      expect(findRepeats(BOOK_VIGENERE).map(({ spacing }) => spacing % 3)).toEqual([0, 0, 0]);
+      expect(likelyKeyLength(findRepeats(BOOK_VIGENERE))).toBe(6);
+      expect(crack(BOOK_VIGENERE)).toBe("ANDAND");
+      const reading = lettersOnly(vigenereDecipher(BOOK_VIGENERE, crack(BOOK_VIGENERE)));
+      expect(reading).toBe(lettersOnly(vigenereDecipher(BOOK_VIGENERE, "AND")));
+      expect(reading.startsWith("CHARLESBABBAGEWASANECCENTRICGENIUS")).toBe(true);
+      expect(reading).toContain("HEWASTHESONOFBENJAMINBABBAGEAWEALTHYLONDONBANKER");
+      expect(reading.endsWith("THESPEEDOMETERANDTHECOWCATCHER")).toBe(true);
+      expect(prepare(BOOK_VIGENERE, "vigenere").ciphertext).toBe(BOOK_VIGENERE);
     });
 
     // Source: The Code Book, abridged edition, dedication page. No key or solution is printed.
