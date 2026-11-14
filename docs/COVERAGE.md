@@ -6,7 +6,8 @@ How to read it:
 
 - **Book explains how it works?** "yes" or "partly" means the book gives enough to build from. "named only" means the book mentions it and moves on.
 - **Interactive?** "yes" means the reader can operate it in a simulator. "text" means the story describes it.
-- Everything the book explains has a place on the site. Things it only names have no simulator unless a page says otherwise.
+- Everything the book presents has a place on the site. Things it only names are mentioned where they belong, and have a simulator only where the table says so.
+- Where a page first teaches with our own example, the book's own example can be loaded too: the six-letter Enigma model, Rejewski's table and the crib alignment, the BEALE key sentence, the book's frequency cryptogram, Alberti's "hello", the sample code, the book's two Caesar cryptograms and its dedication. The book's two long challenge cryptograms are not stored: the reader pastes them into the "Your own" bench.
 - Some pages go beyond this edition, using the full edition or named sources: Lucifer, digital signatures, ADFGVX, the one-time pad, Playfair, the homophonic cipher, Morse code and Linear B (marked "Full edition" in the menu), and the mechanisms of Purple, Lorenz, quantum cryptography and the key exchange.
 
 Update this file when a page is added or changed.
@@ -15,7 +16,7 @@ Update this file when a page is added or changed.
 
 | Book item | PDF page(s) | Book explains how it works? | Site page (slug) | Where on the page | Interactive? |
 |---|---|---|---|---|---|
-| Enciphered dedication ("XICYIQKMHR, VOIR RFH LKRQT") | 6 | named only (printed, never explained) | none | not built: named only | - |
+| Enciphered dedication ("XICYIQKMHR, VOIR RFH LKRQT") | 6 | named only (printed, never explained) | codebreakers-challenge | DigDeeper "Work on the book's own cryptograms": the button "Load the book's dedication" puts it on the "Your own" bench. The book gives no solution, and neither do we. | yes |
 | Demaratus' wax tablets (writing under the wax) | 17-18 | yes | hidden-writing | "Blank, or is it?" and "Under the wax" (presets `tablet`, `waxed`); "The woman who said 'scrape it'". Also hook of rail-fence, DigDeeper in pinprick | yes |
 | Histaiaeus' shaved-head messenger | 18 | yes | hidden-writing | Hook "A message under the hair"; also rail-fence "Two ways to keep a secret", pinprick DigDeeper "Wax, silk and a shaved head" | text |
 | Steganography defined, and its weakness (found = read) | 18-19 | yes | hidden-writing | "Hide the message, not the meaning"; "The guard who checks everything" (preset `searched`, guard set to Thorough) | yes |
@@ -107,7 +108,7 @@ Update this file when a page is added or changed.
 | Interchangeable scramblers (6 orders) | 123 | yes | enigma | "Counting the keys"; rotor order selectors in the controls | yes |
 | Plugboard: six cables swap six pairs | 123-124 | yes | enigma | "The plugboard swaps letters" (tap sockets on the model) | yes |
 | Number of Enigma keys: 17,576 x 6 x 100,391,791,500, about 10^16; why scramblers and plugboard are both needed | 124-126 | yes | enigma | "Counting the keys" and its Check | text |
-| Ring setting | 125 | named only | (none) | not built: named only (engine settings carry `rings`, fixed at 0; no control and no mention in the story) | - |
+| Ring setting | 125 | named only | enigma | "Set up the machine": ring setting of each rotor; DigDeeper "The ring: one more setting" | yes |
 | Hans-Thilo Schmidt's documents; replica machine; security rests on the key, not the machine | 130-132 | yes | enigma | "Sold for 10,000 marks"; also cracking-enigma "Fear, mathematics and a spy" | text |
 | Day key and message key; message key typed twice (PGHPGH to KIVBJE) | 133-135 | yes | cracking-enigma | "The key that was sent twice"; enigma DigDeeper "How the Germans used keys each day"; the reader can type a doubled key on the enigma model with preset `dayKey` | yes |
 | Rejewski: table of 1st/4th-letter relationships and chains (worked example with chains of 3, 9, 7, 7 links) | 136-138 | yes | cracking-enigma | "From pairs to chains"; presets `chains`, `follow`; "Compare letters" 1 and 4 / 2 and 5 / 3 and 6 (engine-made chains for the book's day key, not the book's table) | yes |
@@ -131,14 +132,14 @@ Update this file when a page is added or changed.
 | Navajo alphabet code (Table 8); Pacific spelled pig, ant, cat, ice, fox, ice, cat | 165-166 | yes | navajo | "Spelling out the rest"; presets `pacific`, `overheard`; Challenge preset `heard` | yes |
 | Navajo code memorised, no codebook; tested by navy intelligence; never broken | 165, 171 | yes | navajo | "Nothing on paper", "It never was" | text |
 | "White code" mechanical cylinder device raced by a code talker | 167 | named only | navajo | "An idea from childhood" (a code talker raced a cipher machine); device not built: named only | text |
-| American air force code broken by the Japanese | 171 | named only | (none) | not built: named only | - |
+| American air force code broken by the Japanese | 171 | named only | navajo | one sentence in "It never was" | text |
 | Egyptian scripts: hieroglyphs, hieratic, demotic, Coptic | 173-174 | partly | hieroglyphs | DigDeeper "Three scripts and a picture puzzle"; "Why nobody had tried" | text |
 | Kircher's semagram (picture-writing) readings; semagrams v phonograms | 174, 178 | yes | hieroglyphs | "Why nobody had tried" | text |
 | Rosetta stone as a crib (Greek, demotic, hieroglyphs); the three hurdles | 175-178 | yes | hieroglyphs | "A stone in a wall", "The ring around a king"; DigDeeper "A damaged crib" | text |
 | Young: cartouche of Ptolemaios, sound values sign by sign (Table 9) | 179-180 | yes | hieroglyphs | "One sign, one sound", "The ring around a king"; preset `start`; assign sounds to the top ring | yes |
 | Young: cartouche of Berenika from Karnak, feminine ending (Table 10) | 180-181 | partly | hieroglyphs | ADDED: DigDeeper "Young's second name: Berenika" (in "Why nobody had tried") | text |
 | Young's retreat: sounds only for foreign names (Chinese comparison) | 181-182 | yes | hieroglyphs | "Why nobody had tried" (last paragraph; the Chinese comparison is not given) | text |
-| Lenoir's supposed complete decipherment | 184 | named only | (none) | not built: named only | - |
+| Lenoir's supposed complete decipherment | 184 | named only | hieroglyphs | three sentences in "Why nobody had tried" | text |
 | Champollion: Ptolemy and Cleopatra cartouches from the Bankes obelisk (Table 11), two signs for t | 183-184 | yes | hieroglyphs | "A second name tests the first"; preset `ptolemy` (sounds spill into Cleopatra's ring) | yes |
 | Champollion: Alexander cartouche (a-l-?-s-e-?-t-r-?, Table 12), omitted vowels | 184-185 | yes | hieroglyphs | Challenge "Name the conqueror"; preset `alexander` | yes |
 | Champollion: Rameses cartouche from Abu Simbel, Coptic "ra" for the sun | 185-186 | yes | hieroglyphs | "A sun that says ra"; preset `rameses` | yes |
@@ -184,7 +185,7 @@ Update this file when a page is added or changed.
 | Encryption debate: law enforcers versus civil libertarians and business (Cali cartel, Aum Shinrikyo, Yousef, King wiretap) | 238-243 | partly | key-escrow; pgp | key-escrow hook and "Two camps and a chip"; pgp DigDeeper "Privacy or policing?" | text |
 | Echelon keyword scanning | 240-241 | partly | key-escrow | DigDeeper "The spy network that reads for keywords"; "A toy keyword scanner" in the controls | yes |
 | Public-key encryption of an Internet order form by the browser | 242 | partly | digital-signatures; key-escrow | digital-signatures "Safe, unless somebody learns to factor" (shopping built on RSA and signatures); key-escrow "Two camps and a chip"; mechanism itself is the rsa simulator | text |
-| Encrypting stored company databases | 243 | named only | none | not built: named only | - |
+| Encrypting stored company databases | 243 | named only | key-escrow | one sentence in "Two camps and a chip" | text |
 | Key escrow: copy of the private key held by an escrow agent | 243 | yes | key-escrow | "A middleman holds a copy"; preset `lodged`; warrant switch | yes |
 | Escrowed Encryption Standard: Clipper and Capstone, key split in two halves between two authorities | 243-244 | yes | key-escrow | "Cut the key in two", "Both halves, or nothing", "Two camps and a chip"; presets `oneHalf`, `bothHalves`, `challenge` | yes |
 | Why escrow failed (crooked employee, foreign firms, optional use) and compulsory escrow | 244-245 | partly | key-escrow | "Why almost nobody wanted it" (leak, stolen databases, preset `outlaw`); "Whom do you fear more?" | yes |

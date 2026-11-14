@@ -16,13 +16,15 @@ export function ChainsBoard({ state, onPick }: { state: CrackState; onPick: (col
 
   return (
     <>
-      <ul className={styles.openings} aria-label="The first six letters of today's messages">
-        {openings(state).map((opening) => (
-          <li key={opening}>
-            {[...opening].map((letter, at) => (at % 3 === pair ? <b key={at}>{letter}</b> : letter))}
-          </li>
-        ))}
-      </ul>
+      {!state.table && (
+        <ul className={styles.openings} aria-label="The first six letters of today's messages">
+          {openings(state).map((opening) => (
+            <li key={opening}>
+              {[...opening].map((letter, at) => (at % 3 === pair ? <b key={at}>{letter}</b> : letter))}
+            </li>
+          ))}
+        </ul>
+      )}
       <AlphabetRows
         rows={[
           { label: `${PLACES[pair]} letter`, letters: ALPHABET },
@@ -40,8 +42,11 @@ export function ChainsBoard({ state, onPick }: { state: CrackState; onPick: (col
         ))}
       </ol>
       <Caption>
-        Each chain goes from a top letter to the one below it, then on from there, until it comes home. Pull a cable
-        and the letters change but the lengths stay. Turn a rotor and the lengths change.
+        {state.table
+          ? "This is the finished table printed in the book. The book does not give the day key behind it. Turn a " +
+            "rotor or pull a cable to go back to today's messages."
+          : "Each chain goes from a top letter to the one below it, then on from there, until it comes home. Pull a " +
+            "cable and the letters change but the lengths stay. Turn a rotor and the lengths change."}
       </Caption>
     </>
   );

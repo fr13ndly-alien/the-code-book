@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
+  BOOK_CIPHERTEXT,
+  BOOK_FIRST_FINDS,
   LIPOGRAM_PLAINTEXT,
   SAMPLE_CIPHER_ALPHABET,
   SAMPLE_PLAINTEXT,
@@ -19,12 +21,7 @@ import { countLetters, indexOfLetter, lettersOnly } from "../src/text/index.ts";
 
 // Source: The Code Book, chapter 1, "Cryptanalyzing a ciphertext". The book's own
 // worked example, its Table 2 of letter counts, and the cipher alphabet it recovers.
-const BOOK_CIPHERTEXT =
-  "PCQ VMJYPD LBYK LYSO KBXBJXWXV BXV ZCJPO EYPD KBXBJYUXJ LBJOO KCPK. CP LBO LBCMKXPV XPV IYJKL PYDBL, " +
-  "QBOP KBO BXV OPVOV LBO LXRO CI SX'XJMI, KBO JCKO XPV EYKKOV LBO DJCMPV ZOICJO BYS, KXUYPD: " +
-  '"DJOXL EYPD, ICJ X LBCMKXPV XPV CPO PYDBLK Y BXNO ZOOP JOACMPLYPD LC UCM LBO IXZROK CI FXKL XDOK ' +
-  'XPV LBO RODOPVK CI XPAYOPL EYPDK. SXU Y SXEO KC ZCRV XK LC AJXNO X IXNCMJ CI UCMJ SXGOKLU?" ' +
-  "OFYRCDMO, LXROK IJCS LBO LBCMKXPV XPV CPO PYDBLK";
+// The ciphertext itself (PDF p. 34) lives in the engine, because the page's "book" preset loads it.
 const BOOK_CIPHER_ALPHABET = "XZAVOIDBYGERSPCFHJKLMNQTUW";
 
 const count = (text: string, letter: string) => countLetters(text)[indexOfLetter(letter)];
@@ -39,6 +36,19 @@ describe("frequency analysis", () => {
     expect(count(BOOK_CIPHERTEXT, "T")).toBe(0);
     expect(percentages(BOOK_CIPHERTEXT)[indexOfLetter("O")]).toBeCloseTo(11.2, 1);
     expect(rankLetters(countLetters(BOOK_CIPHERTEXT)).slice(0, 3)).toEqual(["O", "X", "P"]);
+  });
+
+  // Source: The Code Book, PDF pp. 36-37. The data of the "bookStart" preset: the book settles
+  // O = e and X = a (OO appears, XX does not), then Y = i (X and Y are the only one-letter words).
+  it("starts the book's cryptogram with the book's first three finds", () => {
+    expect(BOOK_FIRST_FINDS).toEqual({ O: "E", X: "A", Y: "I" });
+    const words = BOOK_CIPHERTEXT.split(/[^A-Z]+/);
+    expect([...new Set(words.filter((word) => word.length === 1))].sort()).toEqual(["X", "Y"]);
+    // PDF p. 38 prints the text after these three and B = h; without B the first words read:
+    expect(partialText(BOOK_CIPHERTEXT, BOOK_FIRST_FINDS).slice(0, 20)).toBe("PCQ VMJiPD LBiK LiSe");
+    for (const [cipher, plain] of Object.entries(BOOK_FIRST_FINDS)) {
+      expect(BOOK_CIPHER_ALPHABET[indexOfLetter(plain)]).toBe(cipher);
+    }
   });
 
   it("finds the clues the book uses: OO but no XX, and B before O but never after", () => {

@@ -1,6 +1,8 @@
 {/*
   Follows the cipher page template in docs/STANDARDS.md, adapted for a finale.
-  The four cryptograms are ours, enciphered by the engine: none is copied from the book.
+  The four cryptograms are ours, enciphered by the engine.
+  The reader can also load three short cipher texts of the book into "Your own": its Caesar cryptograms 1 and 2
+  and its dedication. Their answers are written nowhere here. The book's long cryptograms 3 and 4 are not copied.
   The book's own challenge is on the last two pages of the abridged edition.
   The Cipher Challenge of the full edition is checked against Simon Singh's own account (see Further reading).
 */}
@@ -17,7 +19,7 @@ Most books end with an answer. *The Code Book* ends with a dare.
 
 After the final chapter, Simon Singh prints four cryptograms. Each is meant to be tougher than the one before. Then he warns you that the solutions are not listed anywhere. All you have is your "ingenuity and determination".
 
-This page does the same. The four cryptograms here are ours, not the book's. We wrote the messages, and the ciphers from the earlier pages scrambled them. The book still has its own four, and it points to simonsingh.com for more.
+This page does the same. The four cryptograms here are ours, not the book's. We wrote the messages, and the ciphers from the earlier pages scrambled them. The book still has its own four, and you can work on those here too.
 
 You have met every cipher used here. Can you break them when nobody gives you the key?
 
@@ -103,6 +105,24 @@ Then test each guess against the words around it. A wrong guess soon makes nonse
   Set "Key length" to 2 and step through every "Shift". The bars stay lumpy and never fit the outlines. That is what a wrong key length looks like.
 </Try>
 
+<DigDeeper title="Work on the book's own cryptograms">
+  The cryptogram picker has a fifth choice, "Your own". Paste any cryptogram into its box and pick the kind of cipher you think it is. The same tools appear. The bench cannot say "solved", because it does not know the answer. You decide when the reading makes sense.
+
+  The book's first two cryptograms are short Caesar shifts, so they are ready to load.
+
+  <Try action="bookFirst" button="Load the book's cryptogram 1" />
+
+  <Try action="bookSecond" button="Load the book's cryptogram 2" />
+
+  Cryptograms 3 and 4 are long, so we have not copied them. The challenge is on pages 243 and 244 of the printed book. Type or paste one into "Your own". Pick "Substitution" for cryptogram 3 and "Vigenère" for cryptogram 4.
+
+  <Try action="own" button="Open your own bench" />
+
+  The book's dedication also ends with a line in cipher. The book never says how to read it, and we do not know either. It is very short, so counting letters will not be enough. Guessing likely words is the way in.
+
+  <Try action="dedication" button="Load the book's dedication" />
+</DigDeeper>
+
 <Label>Challenge</Label>
 
 ## The last three words
@@ -125,7 +145,7 @@ Then test each guess against the words around it. A wrong guess soon makes nonse
 
 This is the last page. You have followed codemakers and codebreakers from Caesar's shifted alphabet to single particles of light. One lesson runs through all of it. A cipher is safe only until somebody patient finds its pattern.
 
-Now open the book at its final two pages and try its own four cryptograms. Nobody will give you those answers either. Or encipher a message on one of the earlier pages, and dare a friend to read it.
+Now open the book at its final two pages and try its own four cryptograms. The "Your own" bench will hold them. Nobody will give you those answers either. Or encipher a message on one of the earlier pages, and dare a friend to read it.
 
 [Go back to the menu](/) and pick a cipher you have not tried.
 

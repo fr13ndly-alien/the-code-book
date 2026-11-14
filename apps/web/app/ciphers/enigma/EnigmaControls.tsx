@@ -1,6 +1,8 @@
 import { ALPHABET, MAX_CABLES, ROTOR_NAMES, plugSwap, type RotorName } from "@codebook/cipher-engine";
-import type { Dispatch } from "react";
-import type { EnigmaAction, EnigmaState, Slot } from "./useEnigma";
+import { useEffect, useRef, type Dispatch } from "react";
+import { ToyScrambler } from "./ToyScrambler";
+import type { EnigmaAction, EnigmaState } from "./useEnigma";
+import type { ToyAction, ToyState } from "./useToyScrambler";
 import styles from "./EnigmaControls.module.css";
 
 const SLOTS = [0, 1, 2] as const;
@@ -15,11 +17,21 @@ interface EnigmaControlsProps {
   dispatch: Dispatch<EnigmaAction>;
   pendingSocket: string | null;
   onPickSocket: (letter: string) => void;
+  toy: ToyState;
+  toyDispatch: Dispatch<ToyAction>;
 }
 
 /** Everything the 3D machine can do, as ordinary HTML controls. */
-export function EnigmaControls({ state, dispatch, pendingSocket, onPickSocket }: EnigmaControlsProps) {
+export function EnigmaControls(props: EnigmaControlsProps) {
+  const { state, dispatch, pendingSocket, onPickSocket, toy, toyDispatch } = props;
   const { settings, positions, typed, lamps, last } = state;
+  const toyPanel = useRef<HTMLDetailsElement>(null);
+
+  // On a phone the controls are a short scrolling strip while the story is open,
+  // so a story button that opens the model must also bring it into view.
+  useEffect(() => {
+    if (toy.open) toyPanel.current?.scrollIntoView({ block: "nearest" });
+  }, [toy.open]);
 
   function typeLetters(text: string) {
     for (const key of text.toUpperCase()) {
@@ -94,6 +106,21 @@ export function EnigmaControls({ state, dispatch, pendingSocket, onPickSocket }:
           ))}
         </div>
 
+        <h3>Ring setting of each rotor</h3>
+        <p className={styles.hint}>
+          Turns a rotor's letters around its wiring. Changing it starts a new message.
+        </p>
+        <div className={styles.row}>
+          {SLOTS.map((slot) => (
+            <RingSelect
+              key={slot}
+              label={SLOT_NAMES[slot]!}
+              value={settings.rings[slot]}
+              onChange={(ring) => dispatch({ type: "ring", slot, ring })}
+            />
+          ))}
+        </div>
+
         <h3>
           Plugboard: {settings.cables.length} of {MAX_CABLES} cables
         </h3>
@@ -117,6 +144,19 @@ export function EnigmaControls({ state, dispatch, pendingSocket, onPickSocket }:
             );
           })}
         </div>
+      </details>
+
+      <details
+        ref={toyPanel}
+        className={styles.setup}
+        open={toy.open}
+        onToggle={(event) => {
+          const { open } = event.currentTarget;
+          if (open !== toy.open) toyDispatch({ type: "show", open });
+        }}
+      >
+        <summary>The book's six-letter model</summary>
+        <ToyScrambler toy={toy} dispatch={toyDispatch} />
       </details>
     </div>
   );
@@ -143,6 +183,25 @@ function RotorSelect(props: { label: string; value: RotorName; onChange: (rotor:
       <select value={props.value} onChange={(event) => props.onChange(event.target.value as RotorName)}>
         {ROTOR_NAMES.map((name) => (
           <option key={name}>{name}</option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
+function RingSelect(props: { label: string; value: number; onChange: (ring: number) => void }) {
+  return (
+    <label className={styles.select}>
+      {props.label}
+      <select
+        aria-label={`Ring, ${props.label.toLowerCase()} rotor`}
+        value={props.value}
+        onChange={(event) => props.onChange(Number(event.target.value))}
+      >
+        {[...ALPHABET].map((letter, ring) => (
+          <option key={letter} value={ring}>
+            {letter}
+          </option>
         ))}
       </select>
     </label>

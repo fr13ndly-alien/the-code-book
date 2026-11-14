@@ -1,12 +1,12 @@
 import { indexOfLetter, lettersOnly } from "../text/index.ts";
-import { KEY_TEXTS, type KeyText } from "./keytexts.ts";
+import { BOOK_EXAMPLE_NUMBERS, BOOK_SENTENCE, KEY_TEXTS, type KeyText } from "./keytexts.ts";
 
 /**
  * The book cipher behind the Beale papers. Every word of a key text is numbered.
  * A number stands for the first letter of its word, so one letter has many numbers.
  */
 
-export { KEY_TEXTS, type KeyText };
+export { BOOK_EXAMPLE_NUMBERS, BOOK_SENTENCE, KEY_TEXTS, type KeyText };
 
 /** One number of a message with the letter it stands for. "?" means no letter. */
 export interface Step {
@@ -15,8 +15,8 @@ export interface Step {
   letter: string;
 }
 
-/** The key text with this id. Falls back to the first one. */
-export const keyText = (id: string) => KEY_TEXTS.find((text) => text.id === id) ?? KEY_TEXTS[0]!;
+/** The key text with this id: one of the choices, or the book's example sentence. Falls back to the first choice. */
+export const keyText = (id: string) => [...KEY_TEXTS, BOOK_SENTENCE].find((text) => text.id === id) ?? KEY_TEXTS[0]!;
 
 /**
  * The words of a text, in order. Word 1 is words[0]. A hyphen splits a word in

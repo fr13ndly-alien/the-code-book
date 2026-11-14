@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { DEFAULT_SETTINGS, encipher, type EnigmaSettings } from "../src/enigma/index.ts";
 import {
+  BOOK_CRIB,
+  BOOK_TABLE,
   chainLengths,
   chains,
   clashes,
@@ -38,6 +40,18 @@ describe("Rejewski's chains", () => {
     expect(table).toBe("???P?????M?RX?????????????");
   });
 
+  // Source: The Code Book, PDF p. 138. The table the "bookTable" preset shows on the chains tool,
+  // with the chains the book lists under it: A-F-W (3 links), B-Q-Z-K-V-E-L-R-I (9),
+  // C-H-G-O-Y-D-P (7) and J-M-X-S-T-N-U (7).
+  it("holds the book's table for the page, with chains of 3, 9, 7 and 7 links", () => {
+    expect(BOOK_TABLE).toBe("FQHPLWOGBMVRXUYCZITNJEASDK");
+    expect([...BOOK_TABLE].sort().join("")).toBe("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+    expect(chains(BOOK_TABLE).map((chain) => chain.length)).toEqual([3, 9, 7, 7]);
+    // PDF pp. 136-137: the four openings the book starts with agree with the finished table.
+    const started = linkTable(["LOKRGM", "MVTXZE", "JKTMPE", "DVYPZX"], 0);
+    [...started].forEach((letter, at) => letter === "?" || expect(BOOK_TABLE[at]).toBe(letter));
+  });
+
   it("types the message key twice, so the receiver can read it back", () => {
     const opening = encipherMessageKey(DAY, "PGH");
     expect(opening).toHaveLength(6);
@@ -73,6 +87,22 @@ describe("Turing's crib", () => {
     expect(clashes(ciphertext, crib, 2)).toEqual([1]);
     expect(clashes(ciphertext, crib, 1)).toContain(10);
     expect(clashes(ciphertext, crib, 3)).toEqual([]);
+  });
+
+  // Source: The Code Book, PDF pp. 155-156. The data the "bookCrib" preset loads into the crib tool.
+  // The book says the crib as printed is misaligned (e under E), fails one place to the left
+  // (s under S) and has "no illegal encipherments" one place to the right.
+  it("holds the book's crib alignment for the page", () => {
+    const { ciphertext, crib, offset } = BOOK_CRIB;
+    expect(ciphertext).toBe("IPRENLWKMJJSXCPLEJWQ");
+    expect(crib).toBe("WETTERNULLSECHS");
+    expect(clashes(ciphertext, crib, offset).map((at) => crib[at])).toEqual(["E"]);
+    // One place to the left the book names the S of "sechs". The c beside it meets a C as well.
+    expect(clashes(ciphertext, crib, offset - 1).map((at) => crib[at])).toEqual(["S", "C"]);
+    expect(clashes(ciphertext, crib, offset + 1)).toEqual([]);
+    // The ciphertext is the book's illustration, not real Enigma output: the page says so and
+    // switches the search off, because no rotor setting of our machine fits it.
+    expect(testRotorSettings(DEFAULT_SETTINGS, ciphertext, crib, offset + 1)).toEqual([]);
   });
 
   // The message the story works through: "today, weather at zero six: rain and fog".

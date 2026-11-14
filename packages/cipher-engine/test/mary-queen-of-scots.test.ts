@@ -1,9 +1,12 @@
 import { describe, expect, it } from "vitest";
 import {
+  BOOK_SAMPLE_CODE,
   MISSING_LETTERS,
   STAND_IN,
   decipher,
   encipher,
+  encodeWords,
+  spareNulls,
   inWords,
   lookUp,
   plainOf,
@@ -103,5 +106,21 @@ describe("the nomenclator of Mary Queen of Scots", () => {
     const tokens = encipher("HIDE THE LETTER IN THE BARREL", { seed: 1586, nullShare: 0.15, useWords: true });
     expect(symbolsOf(tokens)).toBe("∞†≠◊ 2 Δ♪◊≈×◊± †∩ 2 #∴○≈±¿◊Δ");
     expect(plainOf(decipher("∞†≠◊ 2 Δ♪◊≈×◊± †∩ 2 #∴○≈±¿◊Δ"))).toBe("HIDE THE LETTER IN THE BARREL");
+  });
+
+  // Source: The Code Book, chapter 1, PDF pp. 42-43. The book's sample code of nine words turns
+  // "assassinate the king tonight" into D-Ω-28. "The" has no codeword and is left out.
+  // The story shows this worked example in a DigDeeper.
+  it("encodes the book's sample message with the book's sample code", () => {
+    expect(Object.keys(BOOK_SAMPLE_CODE)).toHaveLength(9);
+    expect(new Set(Object.values(BOOK_SAMPLE_CODE)).size).toBe(9);
+    expect(encodeWords("assassinate the king tonight", BOOK_SAMPLE_CODE)).toBe("D-Ω-28");
+    expect(encodeWords("capture the general today", BOOK_SAMPLE_CODE)).toBe("J-Σ-73");
+  });
+
+  // Source: The Code Book, PDF p. 42. Give each plain letter one number from 1 to 99
+  // and 73 numbers are left to act as nulls.
+  it("leaves 73 nulls when 26 letters share the numbers 1 to 99", () => {
+    expect(spareNulls(99)).toBe(73);
   });
 });

@@ -1,4 +1,6 @@
 import {
+  BOOK_CIPHERTEXT,
+  BOOK_FIRST_FINDS,
   LIPOGRAM_PLAINTEXT,
   SAMPLE_CIPHER_ALPHABET,
   SAMPLE_PLAINTEXT,
@@ -23,6 +25,12 @@ export const PRESETS: Record<string, FrequencyAnalysisState> = {
 
   /** The first three letters found: E, T and H. */
   started: { ciphertext: INTERCEPTED, guesses: { O: "E", L: "T", B: "H" }, picked: "X" },
+
+  /** The very cryptogram the book breaks, with nothing solved. */
+  book: { ciphertext: BOOK_CIPHERTEXT, guesses: {} },
+
+  /** The book's cryptogram with the first three letters the book finds: O = e, X = a, Y = i. */
+  bookStart: { ciphertext: BOOK_CIPHERTEXT, guesses: BOOK_FIRST_FINDS, picked: "B" },
 
   /** A message with no E in it, filled in by rank: the tallest bar gets called E and is wrong. */
   lipogram: { ciphertext: LIPOGRAM, guesses: guessByRank(LIPOGRAM), picked: "X" },

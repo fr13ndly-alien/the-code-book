@@ -39,6 +39,14 @@ export function linkTable(openings: readonly string[], pair: Pair): string {
 }
 
 /**
+ * Rejewski's completed table of relationships as the book prints it: entry n is the
+ * 4th letter that goes with the 1st letter n (A first). Its chains have 3, 9, 7 and 7 links.
+ * The book never gives the day key behind it.
+ * Source: The Code Book, chapter 3, PDF p. 138 (the table is begun on pp. 136-137).
+ */
+export const BOOK_TABLE = "FQHPLWOGBMVRXUYCZITNJEASDK";
+
+/**
  * The chains in a table: start at a letter, look up its partner, then the
  * partner's partner, until you are back at the start. "AFW" means A to F to W to A.
  */

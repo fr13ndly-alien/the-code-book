@@ -6,7 +6,13 @@ import { ALPHABET, ENGLISH_FREQUENCY, countLetters, indexOfLetter, lettersOnly, 
  * writing, and guess which letter hides behind which.
  */
 
-export { LIPOGRAM_PLAINTEXT, SAMPLE_CIPHER_ALPHABET, SAMPLE_PLAINTEXT } from "./sample.ts";
+export {
+  BOOK_CIPHERTEXT,
+  BOOK_FIRST_FINDS,
+  LIPOGRAM_PLAINTEXT,
+  SAMPLE_CIPHER_ALPHABET,
+  SAMPLE_PLAINTEXT,
+} from "./sample.ts";
 
 /** The codebreaker's working key: each cipher letter they have guessed, and the plain letter they gave it. */
 export type Guesses = Record<string, string>;

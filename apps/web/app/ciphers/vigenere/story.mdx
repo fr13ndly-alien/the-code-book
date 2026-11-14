@@ -39,6 +39,18 @@ The simulator holds the message `DIVERT TROOPS TO EAST RIDGE` and the keyword `W
 
 Alberti suggested using two cipher alphabets and swapping between them. A Frenchman, Blaise de Vigenère, pushed the idea as far as it goes. His cipher uses 26.
 
+<DigDeeper title="The book's own example: two alphabets">
+  The book shows Alberti's idea with two scrambled cipher alphabets under the plain one:
+
+  `abcdefghijklmnopqrstuvwxyz`
+
+  `FZBVKIXAYMEPLSDHJORGNQCUTW`
+
+  `GOXBFWTHQILAPZJDESVYCRKUHN`
+
+  Use the first row for letters 1, 3 and 5 of "hello", and the second for letters 2 and 4. You get `AFPAD`. The two `l`s become `P` and `A`. The simulator cannot load these rows, because its rows are all Caesar shifts.
+</DigDeeper>
+
 The grid on the simulator is the **Vigenère square**. The top line is the plain alphabet. Under it are 26 cipher alphabets, each pushed one place further along than the one above. Every row is a [Caesar shift](/ciphers/caesar). The letter at the left of a row is its name.
 
 A cipher that uses one cipher alphabet is called **monoalphabetic**. A cipher that switches between several is **polyalphabetic**.

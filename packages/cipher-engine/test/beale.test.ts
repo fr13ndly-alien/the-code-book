@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
   BEALE_TWO_OPENING,
+  BOOK_EXAMPLE_NUMBERS,
+  BOOK_SENTENCE,
   decipher,
   encipher,
   keyText,
@@ -16,16 +18,19 @@ const declaration = numberedWords(keyText("declaration").text);
 const gettysburg = numberedWords(keyText("gettysburg").text);
 
 describe("Beale book cipher", () => {
-  // Source: The Code Book, chapter 2. The book numbers the words of one of its own
-  // sentences and enciphers "beale" as 14-2-8-23-18.
+  // Source: The Code Book, chapter 2, PDF pp. 95-96. The book numbers the 30 words of one of its
+  // own sentences, lists e as 2, 18, 24 or 30 and f as 1, and enciphers "beale" as 14-2-8-23-18.
+  // This is the data the "bookWord" preset loads: the same key text and the same numbers.
   it("deciphers the book's worked example", () => {
-    const sentence = numberedWords(
-      "For example, if the sender and receiver agreed that this sentence was to be the keytext, then every " +
-        "word would be numerically labeled, each number providing the basis for encryption.",
-    );
+    expect(keyText("book")).toBe(BOOK_SENTENCE);
+    const sentence = numberedWords(BOOK_SENTENCE.text);
     expect(sentence).toHaveLength(30);
-    expect(lettersOf(decipher([14, 2, 8, 23, 18], sentence))).toBe("BEALE");
+    expect(BOOK_EXAMPLE_NUMBERS).toEqual([14, 2, 8, 23, 18]);
+    expect(lettersOf(decipher(BOOK_EXAMPLE_NUMBERS, sentence))).toBe("BEALE");
     expect(numbersFor("E", sentence)).toEqual([2, 18, 24, 30]);
+    expect(numbersFor("F", sentence)).toEqual([1, 29]);
+    expect(missingLetters(sentence)).toContain("X");
+    expect(missingLetters(sentence)).toContain("Z");
   });
 
   // Source: The Code Book, chapter 2, figure 22: every tenth word of the Declaration is numbered.

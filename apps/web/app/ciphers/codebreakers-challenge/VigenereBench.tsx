@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import { applyKey, countsAfterShift, findRepeats, slices } from "@codebook/cipher-engine/babbage";
-import type { VigenereCryptogram } from "@codebook/cipher-engine/codebreakers-challenge";
 import { ALPHABET, ENGLISH_FREQUENCY, letterAt } from "@codebook/cipher-engine/text";
 import { LetterBlock } from "~/ciphers/babbage/LetterBlock";
 import { RepeatsTable } from "~/ciphers/babbage/RepeatsTable";
@@ -17,17 +16,16 @@ const GROUP = 5;
 /** Which letter of the message a character of the grouped text is, or -1 for the space after a group. */
 const letterIndex = (at: number) => (at % (GROUP + 1) === GROUP ? -1 : at - Math.floor(at / (GROUP + 1)));
 
-/** The tools for the Vigenère cryptogram: the repeats and their spacings, then one frequency chart per key letter. */
+/** The tools for a Vigenère cryptogram, sent in groups of five: the repeats and their spacings, then one frequency chart per key letter. */
 export function VigenereBench(props: {
-  cryptogram: VigenereCryptogram;
+  ciphertext: string;
   keyLength: number;
   keyShifts: number[];
   position: number;
   repeat?: number;
   onPickRepeat: (row: number) => void;
 }) {
-  const { ciphertext } = props.cryptogram;
-  const { keyLength, keyShifts, position } = props;
+  const { ciphertext, keyLength, keyShifts, position } = props;
   const repeats = useMemo(() => findRepeats(ciphertext).slice(0, ROWS_SHOWN), [ciphertext]);
   const picked = props.repeat === undefined ? undefined : repeats[props.repeat];
   const inCopy = (letter: number, start: number) => letter >= start && letter < start + picked!.sequence.length;
@@ -51,7 +49,9 @@ export function VigenereBench(props: {
             <Letters>{picked.sequence}</Letters> appears twice, {picked.spacing} letters apart.{" "}
           </>
         )}
-        A keyword of {keyLength} letters would explain {fits} of these {repeats.length} repeats.
+        {repeats.length === 0
+          ? "No run of four letters appears twice in this text, so there is no gap to measure."
+          : `A keyword of ${keyLength} letters would explain ${fits} of these ${repeats.length} repeats.`}
       </Caption>
       <Caption>
         Key letter {position + 1} of {keyLength} enciphered {slice.length} of the letters. Trying{" "}

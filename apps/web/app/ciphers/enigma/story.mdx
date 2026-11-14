@@ -40,6 +40,12 @@ Enigma has three main parts. You press a letter on the **keyboard**. An electric
 
 Each rotor is a thick wheel with 26 wires inside. A wire goes in at one letter and comes out at a different one. With one fixed rotor, `A` would always become the same letter. That is a simple substitution cipher, and codebreakers had known how to break those for a thousand years by counting letters.
 
+<Try action="toyCafe" button="Open the book's six-letter model">
+  The book explains this with a toy machine of six letters. Type `c`, `a`, `f`, `e` on it. The lamps spell `DBCE`, as in the book. Then switch on the turning and press `b` six times.
+</Try>
+
+<Try action="toyTurning" button="Switch on the turning for me" />
+
 ### The rotors turn
 
 The inventor, Arthur Scherbius, added a clever idea. Every time you press a key, the first rotor turns one place. The wiring is now in a new position, so the same key gives a different lamp.
@@ -86,7 +92,7 @@ Multiply them and you get about 10,000,000,000,000,000 keys. Someone testing one
 
 Scherbius took out his first patent in 1918. The German military adopted Enigma in 1926 and went on to buy more than 30,000 machines. Scherbius never saw what became of it. He died in 1929 after a carriage accident.
 
-The first crack came from inside. Hans-Thilo Schmidt was a failed businessman with a job in the Berlin office that ran Germany's ciphers. He was poor, bitter and jealous of his successful brother. On 8 November 1931 he met a French agent in a Belgian hotel and let him photograph the Enigma instruction manuals, for 10,000 marks.
+The first crack came from inside. Hans-Thilo Schmidt was a failed businessman with a job in the Berlin office that ran Germany's ciphers. On 8 November 1931 he met a French agent in a Belgian hotel and let him photograph the Enigma instruction manuals, for 10,000 marks.
 
 The manuals let the Allies build a copy of the machine. But a copy is not enough. Enigma was designed to stay safe even when the enemy owns one. What matters is the key, and each day had a new one. The French thought the task hopeless and passed the photographs to their allies in Poland.
 
@@ -94,6 +100,10 @@ The manuals let the Allies build a copy of the machine. But a copy is not enough
   Every operator had a codebook listing one **day key** for each day of the month: the plugboard cables, the rotor order and the rotor start positions.
 
   To avoid sending too many messages with the same key, the operator picked three new rotor positions for each message, the **message key**. He typed it twice, using the day key, at the start of the message. Then he turned his rotors to the message key and typed the message itself. The repeat was there to catch mistakes. It turned out to be one.
+</DigDeeper>
+
+<DigDeeper title="The ring: one more setting">
+  Each rotor's letters, and the notch that nudges its neighbour, sit on a ring that can be turned around the wiring inside. So the same letter in the window can mean different wiring. The book names the ring setting and moves on. To try it, open "Set up the machine", change a ring and type the same letters again.
 </DigDeeper>
 
 <Label>How it was broken</Label>
@@ -115,7 +125,7 @@ The British set up at Bletchley Park. There Alan Turing found an attack that did
 But where in the message is the word? Here the reflector's side effect helps.
 
 <Check question="A message begins ORFEZ MSGNB. Could its first six letters stand for WETTER?">
-  Line them up. `WETTER` under `ORFEZM`: W-O, E-R, T-F, T-E, E-Z, R-M. No letter sits under itself, so yes, it could. If any letter had matched itself, you would know the crib was in the wrong place, because Enigma never turns a letter into itself. Sliding a crib along until nothing matches was a daily job at Bletchley.
+  Line them up. `WETTER` under `ORFEZM`: W-O, E-R, T-F, T-E, E-Z, R-M. No letter sits under itself, so yes, it could. If any letter had matched itself, you would know the crib was in the wrong place, because Enigma never turns a letter into itself.
 </Check>
 
 Turing designed a machine, the **bombe**, that used a crib to test rotor settings at great speed. By the end of 1941 fifteen bombes were running, and one could find a key in about an hour.

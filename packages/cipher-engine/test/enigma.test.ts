@@ -24,6 +24,17 @@ describe("Enigma I", () => {
     expect(encipher(settings, at("AAA"), "AAAAA").output).toBe("EWTYX");
   });
 
+  it("undoes a ring setting when each rotor is turned by the same amount", () => {
+    // Rings BBB with the rotors at BBB put the wiring where rings AAA at AAA put it.
+    const settings: EnigmaSettings = { ...DEFAULT_SETTINGS, rings: [1, 1, 1] };
+    expect(encipher(settings, at("BBB"), "AAAAA").output).toBe("BDZGO");
+  });
+
+  it("keeps the turnover at the same window letter whatever the ring setting", () => {
+    const settings: EnigmaSettings = { ...DEFAULT_SETTINGS, rings: [3, 7, 11] };
+    expect(show(stepRotors(settings, at("AAV")))).toBe("ABW");
+  });
+
   it("double-steps the middle rotor", () => {
     let positions = at("ADU");
     const seen: string[] = [];

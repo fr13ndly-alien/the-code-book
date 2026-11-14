@@ -16,3 +16,12 @@ export const PRESETS: Record<string, { settings: EnigmaSettings; start: Position
     start: [16, 2, 22],
   },
 };
+
+/** Setups of the book's six-letter model that story buttons can load, by name. */
+export const TOY_PRESETS: Record<string, { rotating: boolean }> = {
+  /** Figure 26: a fixed scrambler, ready for the reader to type "cafe". */
+  toyCafe: { rotating: false },
+
+  /** Figure 27: the scrambler turns one place after each letter. */
+  toyTurning: { rotating: true },
+};

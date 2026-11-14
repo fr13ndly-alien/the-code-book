@@ -37,3 +37,21 @@ export const STAND_IN: Nomenclator = {
  * I for J and U for V; writing W as two U's is our own choice.
  */
 export const MISSING_LETTERS: Record<string, string> = { J: "I", V: "U", W: "UU" };
+
+/**
+ * The book's small sample code: nine plain words, each with a codeword. The codewords
+ * were read from the printed page, because the text of the PDF loses the three Greek signs.
+ * Source: The Code Book, chapter 1, PDF p. 42.
+ */
+export const BOOK_SAMPLE_CODE: Record<string, string> = {
+  ASSASSINATE: "D", BLACKMAIL: "P", CAPTURE: "J",
+  GENERAL: "Σ", KING: "Ω", MINISTER: "Ψ",
+  IMMEDIATELY: "08", TODAY: "73", TONIGHT: "28",
+};
+
+/**
+ * How many numbers are left over as nulls when each letter of an alphabet gets one
+ * number out of `numbers`. The book's example: 26 letters and the numbers 1 to 99 leave 73.
+ * Source: The Code Book, chapter 1, PDF p. 42.
+ */
+export const spareNulls = (numbers: number, letters = 26) => numbers - letters;

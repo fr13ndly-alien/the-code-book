@@ -33,6 +33,8 @@ export interface CrackState {
   pair: Pair;
   /** Chains: the letter of the table the reader is following, A = 0. */
   picked?: number;
+  /** Chains: a finished table to show in place of the one made from today's messages. */
+  table?: string;
   /** Crib: the intercepted message. */
   ciphertext: string;
   /** Crib: the word the reader thinks is in the message. */
@@ -41,6 +43,8 @@ export interface CrackState {
   offset: number;
   /** Crib: the rotor settings that fitted at this position. Missing until the reader runs the test. */
   stops?: Stop[];
+  /** Crib: the ciphertext is a picture from the book, not real Enigma output, so the search is switched off. */
+  illustration?: boolean;
 }
 
 export type CrackAction =
@@ -74,13 +78,15 @@ function reduce(state: CrackState, action: CrackAction): CrackState {
     case "use":
       return { ...state, tool: action.tool };
     case "turn":
-      return { ...state, start: turn(state.start, action.slot, action.by) };
+      // Any change to the day key goes back to the table made from today's messages.
+      return { ...state, table: undefined, start: turn(state.start, action.slot, action.by) };
     case "plug": {
       const plugged = state.cables.includes(action.cable);
-      return { ...state, cables: plugged ? state.cables.filter((c) => c !== action.cable) : [...state.cables, action.cable] };
+      const cables = plugged ? state.cables.filter((c) => c !== action.cable) : [...state.cables, action.cable];
+      return { ...state, table: undefined, cables };
     }
     case "compare":
-      return { ...state, pair: action.pair };
+      return { ...state, table: undefined, pair: action.pair };
     case "pick":
       return { ...state, picked: action.column === state.picked ? undefined : action.column };
     case "guess":
@@ -88,6 +94,7 @@ function reduce(state: CrackState, action: CrackAction): CrackState {
     case "slide":
       return place(state, state.offset + action.by);
     case "test":
+      if (state.illustration) return state;
       return { ...state, stops: testRotorSettings(CRIB_SETTINGS, state.ciphertext, state.crib, state.offset) };
     case "load":
       return action.preset;
@@ -98,8 +105,8 @@ function reduce(state: CrackState, action: CrackAction): CrackState {
 export const openings = (state: CrackState) =>
   interceptedOpenings({ settings: { ...DAY_SETTINGS, cables: state.cables }, start: state.start });
 
-/** Rejewski's table for the pair of letters the reader chose. */
-export const table = (state: CrackState) => linkTable(openings(state), state.pair);
+/** Rejewski's table for the pair of letters the reader chose, or the finished table a preset loaded. */
+export const table = (state: CrackState) => state.table ?? linkTable(openings(state), state.pair);
 
 /** The fingerprint of the day's rotor settings, as text: "11, 11, 1, 1, 1, 1". */
 export const fingerprint = (state: CrackState) => chainLengths(table(state)).join(", ");

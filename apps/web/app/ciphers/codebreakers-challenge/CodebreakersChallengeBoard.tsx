@@ -1,13 +1,16 @@
 import type { Dispatch } from "react";
-import type { Kind } from "@codebook/cipher-engine/codebreakers-challenge";
+import { hasLetters, type Kind } from "@codebook/cipher-engine/codebreakers-challenge";
 import { Board } from "~/components/sim/Board";
+import { Caption } from "~/components/sim/Caption";
 import styles from "./Bench.module.css";
 import { CaesarBench } from "./CaesarBench";
 import { SubstitutionBench } from "./SubstitutionBench";
 import { VigenereBench } from "./VigenereBench";
 import {
-  currentCryptogram,
   currentIsSolved,
+  currentWork,
+  isOwn,
+  onBench,
   type ChallengeAction,
   type ChallengeState,
 } from "./useCodebreakersChallenge";
@@ -22,38 +25,53 @@ const KIND_NAMES: Record<Kind, string> = {
 /** The codebreaker's workbench: the cryptogram chosen, and the right tool for its kind of cipher. */
 export function CodebreakersChallengeBoard(props: { state: ChallengeState; dispatch: Dispatch<ChallengeAction> }) {
   const { state, dispatch } = props;
-  const cryptogram = currentCryptogram(state);
+  const { kind, ciphertext, grouped } = onBench(state);
+  const work = currentWork(state);
   const solved = currentIsSolved(state);
+  const name = isOwn(state) ? "Your own cryptogram" : `Cryptogram ${state.current + 1}`;
+
+  if (!hasLetters(ciphertext)) {
+    return (
+      <Board>
+        <p className={styles.title}>{name}</p>
+        <Caption>
+          Nothing is on the bench yet. Paste a cryptogram into the box in the controls, then pick the kind of cipher
+          you think it is.
+        </Caption>
+      </Board>
+    );
+  }
 
   return (
     <Board>
       <p className={styles.title} data-solved={solved}>
-        Cryptogram {cryptogram.number}: {KIND_NAMES[cryptogram.kind]}
+        {name}: {KIND_NAMES[kind]}
         {solved && ". Solved ✓"}
       </p>
-      {cryptogram.kind === "caesar" && (
+      {kind === "caesar" && (
         <CaesarBench
-          cryptogram={cryptogram}
-          shift={state.shifts[state.current]!}
+          ciphertext={ciphertext}
+          grouped={grouped}
+          shift={work.shift}
           onChoose={(shift) => dispatch({ type: "choose", shift })}
         />
       )}
-      {cryptogram.kind === "substitution" && (
+      {kind === "substitution" && (
         <SubstitutionBench
-          cryptogram={cryptogram}
-          guesses={state.guesses}
-          picked={state.picked}
+          ciphertext={ciphertext}
+          guesses={work.guesses}
+          picked={work.picked}
           onPick={(cipher) => dispatch({ type: "pick", cipher })}
           onAssign={(plain) => dispatch({ type: "assign", plain })}
         />
       )}
-      {cryptogram.kind === "vigenere" && (
+      {kind === "vigenere" && (
         <VigenereBench
-          cryptogram={cryptogram}
-          keyLength={state.keyLength}
-          keyShifts={state.keyShifts}
-          position={state.position}
-          repeat={state.repeat}
+          ciphertext={ciphertext}
+          keyLength={work.keyLength}
+          keyShifts={work.keyShifts}
+          position={work.position}
+          repeat={work.repeat}
           onPickRepeat={(row) => dispatch({ type: "pickRepeat", row })}
         />
       )}

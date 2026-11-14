@@ -6,7 +6,7 @@ import { MISSING_LETTERS, STAND_IN, type Nomenclator } from "./nomenclator.ts";
  * for whole words, a sign that doubles a letter, and nulls that mean nothing.
  */
 
-export { MISSING_LETTERS, STAND_IN, type Nomenclator } from "./nomenclator.ts";
+export { BOOK_SAMPLE_CODE, MISSING_LETTERS, STAND_IN, spareNulls, type Nomenclator } from "./nomenclator.ts";
 
 /** What a sign in a message is doing. "other" is a space or punctuation, passed through. */
 export type TokenKind = "letter" | "word" | "null" | "doubler" | "other";
@@ -141,3 +141,11 @@ export function tally(tokens: Token[]): Tally[] {
   }
   return [...counts].map(([symbol, count]) => ({ symbol, count })).sort((a, b) => b.count - a.count);
 }
+
+/**
+ * Encodes a message with a pure code: each word on the list becomes its codeword and
+ * the codewords are joined with dashes. A word that is not on the list is left out,
+ * as the book leaves out "the" in its example (PDF p. 43).
+ */
+export const encodeWords = (message: string, code: Record<string, string>) =>
+  (message.toUpperCase().match(/[A-Z]+/g) ?? []).flatMap((word) => code[word] ?? []).join("-");

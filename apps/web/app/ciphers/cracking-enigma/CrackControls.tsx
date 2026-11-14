@@ -29,7 +29,9 @@ export function CrackControls({ state, dispatch }: Props) {
           ]}
         />
         {chains ? (
-          <Output label="Chain lengths today">{fingerprint(state)}</Output>
+          <Output label={state.table ? "Chain lengths in the book's table" : "Chain lengths today"}>
+            {fingerprint(state)}
+          </Output>
         ) : (
           <Output label="Message">{message(state)}</Output>
         )}
@@ -40,7 +42,8 @@ export function CrackControls({ state, dispatch }: Props) {
 }
 
 /** What the crib search has revealed so far, in words or as the message itself. */
-function message({ stops }: CrackState): string {
+function message({ stops, illustration }: CrackState): string {
+  if (illustration) return "The book's example: nothing to search";
   if (!stops) return "Not tested yet";
   return stops[0]?.plaintext ?? "No rotor setting fits here";
 }
@@ -102,7 +105,7 @@ function CribControls({ state, dispatch }: Props) {
         value={state.crib}
         onChange={(crib) => dispatch({ type: "guess", crib })}
       />
-      <Button primary disabled={clash || state.crib === ""} onClick={() => dispatch({ type: "test" })}>
+      <Button primary disabled={clash || state.crib === "" || state.illustration} onClick={() => dispatch({ type: "test" })}>
         Test {ROTOR_POSITIONS.toLocaleString("en")} rotor settings
       </Button>
     </Row>

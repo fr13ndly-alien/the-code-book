@@ -51,3 +51,18 @@ export function trace(text: string, keyword: string, direction: Direction = "enc
       : { key, plain: shiftBy(letter, key, -1), cipher: letter };
   });
 }
+
+/**
+ * The two cipher alphabets of the book's Alberti example, under the plain alphabet a to z.
+ * Copied as printed: the second has H twice (under h and under y) and no M, so it could
+ * not be used to decipher every message. The example "hello" does not meet that slip.
+ * Source: The Code Book, chapter 2, PDF p. 61.
+ */
+export const ALBERTI_ALPHABETS = ["FZBVKIXAYMEPLSDHJORGNQCUTW", "GOXBFWTHQILAPZJDESVYCRKUHN"];
+
+/**
+ * Alberti's idea before Vigenère tidied it: encipher the 1st letter with the first
+ * cipher alphabet, the 2nd with the second, and so on, going round again.
+ */
+export const encipherInTurn = (text: string, alphabets: readonly string[]) =>
+  mapLetters(text, (letter, count) => alphabets[count % alphabets.length]![indexOfLetter(letter)]!);

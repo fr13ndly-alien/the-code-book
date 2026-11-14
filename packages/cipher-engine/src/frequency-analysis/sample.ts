@@ -26,3 +26,18 @@ export const LIPOGRAM_PLAINTEXT =
   "ALL OUR WINDOWS. MY AUNT LIT A LAMP AND SAT BY IT, CALM AS A CAT. I RAN TO SHUT OUR BARN AND " +
   "BRING IN SIX GOATS. BY NOON THAT STORM WAS FAR AWAY, AND A BRIGHT SUN WAS DRYING OUR MUDDY " +
   "YARD. NOT A THING WAS LOST.";
+
+/**
+ * The 338-letter ciphertext the book breaks step by step, exactly as printed.
+ * The book's first three finds are O = e, X = a and Y = i.
+ * Source: The Code Book, chapter 1, "Cryptanalyzing a ciphertext", PDF p. 34 (worked on pp. 34-40).
+ */
+export const BOOK_CIPHERTEXT =
+  "PCQ VMJYPD LBYK LYSO KBXBJXWXV BXV ZCJPO EYPD KBXBJYUXJ LBJOO KCPK. CP LBO LBCMKXPV XPV IYJKL PYDBL, " +
+  "QBOP KBO BXV OPVOV LBO LXRO CI SX'XJMI, KBO JCKO XPV EYKKOV LBO DJCMPV ZOICJO BYS, KXUYPD: " +
+  '"DJOXL EYPD, ICJ X LBCMKXPV XPV CPO PYDBLK Y BXNO ZOOP JOACMPLYPD LC UCM LBO IXZROK CI FXKL XDOK ' +
+  'XPV LBO RODOPVK CI XPAYOPL EYPDK. SXU Y SXEO KC ZCRV XK LC AJXNO X IXNCMJ CI UCMJ SXGOKLU?" ' +
+  "OFYRCDMO, LXROK IJCS LBO LBCMKXPV XPV CPO PYDBLK";
+
+/** The first three letters the book finds in its ciphertext, cipher letter to plain letter (PDF pp. 36-37). */
+export const BOOK_FIRST_FINDS: Record<string, string> = { O: "E", X: "A", Y: "I" };

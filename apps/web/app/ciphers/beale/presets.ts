@@ -1,4 +1,12 @@
-import { BEALE_TWO_OPENING, encipher, keyText, numberedWords, numbersOf } from "@codebook/cipher-engine/beale";
+import {
+  BEALE_TWO_OPENING,
+  BOOK_EXAMPLE_NUMBERS,
+  BOOK_SENTENCE,
+  encipher,
+  keyText,
+  numberedWords,
+  numbersOf,
+} from "@codebook/cipher-engine/beale";
 import type { BealeState } from "./useBeale";
 
 const sheetTwo = (count: number) => BEALE_TWO_OPENING.slice(0, count).join(", ");
@@ -13,6 +21,9 @@ export const PRESETS: Record<string, BealeState> = {
 
   /** The book's example: the word BEALE turned into numbers. */
   word: { keyId: "declaration", mode: "encipher", text: "BEALE", seed: 1 },
+
+  /** The book's own numbers for BEALE, read with the book's own one-sentence key text. */
+  bookWord: { keyId: BOOK_SENTENCE.id, mode: "decipher", text: BOOK_EXAMPLE_NUMBERS.join(", "), seed: 1 },
 
   /** An empty message, ready for the reader's own words. */
   blank: { keyId: "declaration", mode: "encipher", text: "", seed: 1 },

@@ -33,6 +33,11 @@ export function CribBoard({ state }: { state: CrackState }) {
             <Letters>{cipher[clashing[0]!]}</Letters> sits under <Letters>{cipher[clashing[0]!]}</Letters>. Enigma never
             turns a letter into itself, so the crib cannot be here. Slide it along.
           </>
+        ) : state.illustration ? (
+          <>
+            No letter sits under itself, so the crib could be here. The book stops at this point. Its ciphertext is
+            a made-up example, not real Enigma output, so there is no rotor setting to find.
+          </>
         ) : !stops ? (
           <>No letter sits under itself. The crib could be here. Test the rotor settings to find out.</>
         ) : found ? (

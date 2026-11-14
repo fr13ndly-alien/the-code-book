@@ -1,20 +1,18 @@
-import type { ChallengeState } from "./useCodebreakersChallenge";
+import { BOOK_CAESAR, BOOK_DEDICATION } from "@codebook/cipher-engine/codebreakers-challenge";
+import { FRESH, OWN, type ChallengeState } from "./useCodebreakersChallenge";
 
-/** The page as it opens: cryptogram 1 on the bench and nothing solved. */
+/** The page as it opens: cryptogram 1 on the bench, nothing solved and nothing pasted. */
 export const START: ChallengeState = {
   current: 0,
-  shifts: [0, 0, 0, 0],
-  guesses: {},
-  keyLength: 2,
-  keyShifts: [0, 0],
-  position: 0,
-  repeat: 0,
+  work: [FRESH, FRESH, FRESH, FRESH, FRESH],
+  own: { text: "", kind: "caesar" },
   solved: [false, false, false, false],
 };
 
 /**
- * Setups that buttons in story.mdx can load, by name. Each one only puts a
- * cryptogram on the bench: the reader's work and solved cryptograms are kept.
+ * Setups that buttons in story.mdx can load, by name. The first five only put
+ * a cryptogram on the bench: the reader's work and solved cryptograms are kept.
+ * The last three put a text from the book on the "Your own" bench as a new cryptogram.
  */
 export const PRESETS: Record<string, Partial<ChallengeState>> = {
   /** Cryptogram 1: a Caesar shift with its word spaces. */
@@ -28,4 +26,16 @@ export const PRESETS: Record<string, Partial<ChallengeState>> = {
 
   /** Cryptogram 4: a Vigenère cipher. Its last three words answer the story's challenge. */
   fourth: { current: 3 },
+
+  /** The "Your own" bench, with whatever the reader last pasted. */
+  own: { current: OWN },
+
+  /** The book's Cryptogram 1, a Caesar shift. We give no answer. */
+  bookFirst: { own: { text: BOOK_CAESAR[0], kind: "caesar" } },
+
+  /** The book's Cryptogram 2, a harder Caesar shift. We give no answer. */
+  bookSecond: { own: { text: BOOK_CAESAR[1], kind: "caesar" } },
+
+  /** The book's enciphered dedication. Nobody prints its key: a substitution is our guess. */
+  dedication: { own: { text: BOOK_DEDICATION, kind: "substitution" } },
 };

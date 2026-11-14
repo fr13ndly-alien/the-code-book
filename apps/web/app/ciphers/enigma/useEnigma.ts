@@ -32,6 +32,7 @@ export type EnigmaAction =
   | { type: "press"; key: string }
   | { type: "turn"; slot: Slot; by: 1 | -1 }
   | { type: "fit"; slot: Slot; rotor: RotorName }
+  | { type: "ring"; slot: Slot; ring: number }
   | { type: "plug"; a: string; b: string }
   | { type: "unplug"; letter: string }
   | { type: "rewind" }
@@ -85,6 +86,9 @@ function reduce(state: EnigmaState, action: EnigmaAction): EnigmaState {
       if (from !== -1) rotors = withSlot(rotors, from, settings.rotors[action.slot]);
       return newMessage({ ...settings, rotors }, state.start);
     }
+
+    case "ring":
+      return newMessage({ ...settings, rings: withSlot(settings.rings, action.slot, action.ring) }, state.start);
 
     case "plug":
       return newMessage({ ...settings, cables: addCable(settings.cables, action.a, action.b) }, state.start);

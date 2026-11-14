@@ -22,6 +22,15 @@ export function clashes(ciphertext: string, crib: string, offset: number): numbe
   return [...lettersOnly(crib)].flatMap((letter, at) => (cipher[offset + at] === letter ? [at] : []));
 }
 
+/**
+ * The book's picture of a crib laid against a ciphertext. As printed, the crib starts
+ * under the third cipher letter (offset 2), where its first E meets an E. One place to
+ * the left an S meets an S; one place to the right nothing clashes. The ciphertext is
+ * an illustration, not real Enigma output, so no rotor setting produces it.
+ * Source: The Code Book, chapter 3, PDF pp. 155-156.
+ */
+export const BOOK_CRIB = { ciphertext: "IPRENLWKMJJSXCPLEJWQ", crib: "WETTERNULLSECHS", offset: 2 };
+
 /** Every position where the crib fits inside the ciphertext without a clash. */
 export function possibleOffsets(ciphertext: string, crib: string): number[] {
   const last = lettersOnly(ciphertext).length - lettersOnly(crib).length;

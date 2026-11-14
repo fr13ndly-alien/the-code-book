@@ -66,6 +66,23 @@ const CONSTITUTION_TEXT =
   "of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States " +
   "of America.";
 
+/**
+ * The one-sentence key text of the book's own worked example. The book numbers its
+ * 30 words and enciphers "beale" as 14-2-8-23-18. Kept as data only: it is the single
+ * short quotation the Beale page takes from the book.
+ * Source: The Code Book, chapter 2, PDF pp. 95-96.
+ */
+export const BOOK_SENTENCE: KeyText = {
+  id: "book",
+  title: "The book's example sentence",
+  text:
+    "For example, if the sender and receiver agreed that this sentence was to be the keytext, then every " +
+    "word would be numerically labeled, each number providing the basis for encryption.",
+};
+
+/** The numbers the book gives for the word BEALE with its example sentence (PDF p. 96). */
+export const BOOK_EXAMPLE_NUMBERS = [14, 2, 8, 23, 18];
+
 /** The key texts a reader can choose between. */
 export const KEY_TEXTS: KeyText[] = [
   { id: "declaration", title: "Declaration of Independence", text: DECLARATION_TEXT },
