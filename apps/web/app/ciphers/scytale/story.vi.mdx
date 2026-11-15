@@ -1,0 +1,124 @@
+{/*
+  Retold from Mật mã: Từ cổ điển đến lượng tử (Simon Singh; Phạm Văn Thiều và Phạm Thu Hằng dịch, NXB Trẻ),
+  pages 25–29 and 32. Terms and names follow docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md. The wording is ours.
+*/}
+
+<Standfirst>
+  Một dải da, một khúc gỗ, và một bức thư chỉ hiện ra khi khúc gỗ to vừa đúng.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Chiếc thắt lưng của người đưa thư
+
+Năm 404 TCN, một người đưa thư lảo đảo tìm tới Lysander, vị tướng của Sparta. Anh bị đánh đập, người bê bết máu. Năm người đã lên đường trở về từ Ba Tư, và chỉ mình anh sống sót tới nơi.
+
+Anh không mang lá thư nào. Anh chỉ tháo thắt lưng ra, đưa cho Lysander. Mặt trong dải da có một hàng chữ cái chẳng ghép thành từ nào.
+
+Lysander quấn chiếc thắt lưng quanh khúc gỗ ông luôn giữ bên mình. Thế là các chữ xếp thẳng hàng thành câu. Chúng báo rằng Pharnabazus của Ba Tư sắp tấn công ông. Lysander kịp chuẩn bị và đẩy lùi được trận đánh.
+
+Làm sao một khúc gỗ lại biến mớ chữ vô nghĩa thành lời cảnh báo?
+
+<Label>Thử xem</Label>
+
+## Tháo dải da ra
+
+Mô hình cho thấy một dải da quấn quanh khúc gỗ. Bức thư “send more troops to southern flank and” (gửi thêm quân tới cánh phía nam và…) được viết dọc theo nó thành bốn dòng. Bạn đoán trước nhé: tháo dải da ra, bốn chữ nào đứng đầu?
+
+<Try action="book" button="Xem khúc gỗ của cuốn sách">
+  Nhấn ▲ cạnh “Xoay khúc gỗ” để xem lần lượt từng dòng. Rồi tìm ô “Dải da đã tháo ra” ở phần điều khiển và đọc nhóm đầu tiên.
+</Try>
+
+<Check question="Những chữ nào đứng đầu dải da đã tháo ra?">
+  `STSF`. Vòng quấn đầu tiên chạm vào mỗi dòng đúng một lần, nên nó mang chữ đầu của từng dòng: `S` của “send”, `T` của “troops”, `S` của “southern” và `F` của “flank”.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Khúc gỗ làm thay việc đảo chữ
+
+### Viết dọc, đọc vòng
+
+**Cây scytale** là một khúc gỗ đúng một cỡ đã định, có dải da hoặc giấy da quấn vòng quanh. Người gửi viết dọc theo chiều dài khúc gỗ, mỗi vòng dải da một chữ. Hết chiều dài, họ xoay khúc gỗ một chút rồi viết dòng mới.
+
+Sau đó họ tháo dải da ra. Mỗi vòng quấn giữ một chữ của mọi dòng, nên bây giờ dải da đọc xuyên qua các dòng chứ không đọc dọc theo dòng. Các từ biến mất. Còn lại chỉ là một dãy chữ trông như ngẫu nhiên.
+
+<Try action="short" button="Quấn một bức thư ngắn">
+  Khúc gỗ này mang ba dòng: `HELP`, `ISCO` và `MING`. Đọc dải da đã tháo ra ở phần điều khiển. Sau đó gõ bức thư của bạn và xem dải da thay đổi.
+</Try>
+
+### Chỉ thứ tự là đổi
+
+Nhìn kỹ dải da xem. Mọi chữ của bức thư vẫn còn đủ. Không chữ nào biến thành chữ khác. Chúng chỉ đổi chỗ cho nhau. Kiểu mật mã này gọi là **chuyển vị**, và mật mã hàng rào ở trang trước cũng là một kiểu như vậy.
+
+Cây scytale làm việc đổi chỗ trở nên dễ dàng. Không ai phải đếm hay nhớ quy luật nào. Khúc gỗ làm hết.
+
+### Độ to của khúc gỗ là chìa khóa
+
+Để đọc dải da, người nhận quấn nó quanh một cây scytale khác, cỡ y như của người gửi. Sách nói rõ hai cây phải “có đường kính tương ứng”. Khúc gỗ to hơn hay nhỏ hơn sẽ ôm số chữ khác đi trên mỗi vòng. Khi đó các chữ của cùng một dòng không còn nằm cạnh nhau, và khúc gỗ chỉ hiện ra chữ vô nghĩa.
+
+Vậy bí mật mà người gửi và người nhận cùng giữ, tức **chìa khóa**, chính là cỡ của khúc gỗ.
+
+<Try action="wrongStaff" button="Quấn dải da quanh khúc gỗ sai">
+  Đây là dải da của cuốn sách, quấn quanh một khúc gỗ quá nhỏ. Nhấn ▲ cạnh “Độ dày” từng nấc một. Theo dõi mô hình và ô “Các dòng trên khúc gỗ” cho tới khi chữ hiện ra.
+</Try>
+
+<Check question="Vì sao khúc gỗ sai cỡ chỉ cho ra chữ vô nghĩa?">
+  Các chữ trên dải da có thứ tự cố định. Độ dày quyết định bao nhiêu chữ đi hết một vòng trước khi vòng sau bắt đầu. Đổi con số đó là mỗi chữ rơi sang một dòng khác, nằm cạnh những chữ không phải hàng xóm của nó.
+</Check>
+
+<Label>Câu chuyện</Label>
+
+## Khúc gỗ bí mật của Sparta
+
+Cây scytale có từ thế kỷ 5 TCN. Nó là dụng cụ mã hóa sớm nhất mà ta biết được làm ra cho quân đội. Nó rất hợp với lính tráng. Một khúc gỗ thì dễ mang theo, lại tự đảo chữ giùm bạn.
+
+Người Sparta còn thêm một mẹo nữa. Người đưa thư có thể đeo dải da làm thắt lưng, mặt có chữ quay vào trong. Lính gác nhìn vào chỉ thấy cái thắt lưng. Thế là bức thư được bảo vệ hai lớp: trước hết là giấu đi, rồi lỡ bị tìm ra thì chữ cũng đã bị đảo lộn.
+
+Bạn để ý xem dụng cụ này không làm được gì. Nó dời chỗ các chữ, nhưng không bao giờ thay hình đổi dạng chúng. Mọi mật mã chuyển vị đều như thế.
+
+<Label>Bị phá như thế nào</Label>
+
+## Thử khúc gỗ khác
+
+Chìa khóa chỉ là một con số nhỏ: bao nhiêu chữ quấn vừa một vòng. Vậy nên có rất ít chìa khóa. Đối phương biết cách làm thì chẳng cần khúc gỗ của người Sparta. Họ cứ thử một que mảnh, rồi một que to hơn, cứ thế. Thử hết mọi chìa khóa như vậy, cuốn sách gọi là **tấn công hùng hục** (tấn công vét cạn).
+
+Trên giấy còn nhanh hơn. Chép dải da thành từng hàng hai chữ, rồi ba chữ, rồi bốn chữ. Đúng con số thì bức thư đọc được theo cột từ trên xuống.
+
+<Try action="belt" button="Mở chiếc thắt lưng bắt được">
+  Dải da ghi `PUAHSTAPTRLANACANKBSYATOZOU`. Mở mục “Thử mọi khúc gỗ cùng lúc” bên dưới phần điều khiển. Dò xuống danh sách tìm dòng bạn đọc được.
+</Try>
+
+Một mật mã chỉ có dăm ba chìa khóa thì chỉ an toàn chừng nào chính cách làm còn được giữ kín.
+
+<Label>Thử thách</Label>
+
+## Lời cảnh báo gửi Lysander
+
+<Challenge answer="PHARNABAZUS PLANS TO ATTACK YOU">
+  Bạn hãy tưởng tượng mình là Lysander. Chiếc thắt lưng trong tay ghi `PUAHSTAPTRLANACANKBSYATOZOU`, mà khúc gỗ của bạn lại bị mất.
+
+  Hãy tìm độ dày đúng. Chiếc thắt lưng nói gì? (Câu trả lời là tiếng Anh.)
+
+  <Try action="belt" button="Mở chiếc thắt lưng" />
+</Challenge>
+
+<Check question="Khi bức thư đi qua cây scytale, cái gì giữ nguyên?">
+  Chính các chữ cái. Dải da mang đúng những chữ của bức thư, không chữ nào bị đổi. Chỉ thứ tự của chúng khác đi, và vì thế nó là mật mã chuyển vị.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Đổi chữ thay vì đổi chỗ
+
+Mật mã hàng rào và cây scytale đều giữ nguyên các chữ và dời chỗ chúng. Còn một cách biến đổi bức thư nữa, ngược hẳn lại. Để mỗi chữ yên ở chỗ của nó, nhưng thay nó bằng một chữ khác. Cách này gọi là **thay thế**.
+
+Có một mô tả rất sớm về nó đến từ Ấn Độ, trong một cuốn sách vốn nổi tiếng vì những lời khuyên khác. Nó ghép các chữ cái thành từng cặp và đổi mỗi chữ thành chữ cùng cặp: [mật mã Kāma-Sūtra](/ciphers/kama-sutra).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử* (Phạm Văn Thiều và Phạm Thu Hằng dịch, NXB Trẻ), chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland. Tiếng Anh: *The Code Book*.
+- Plutarch, *Cuộc đời Lysander* (*Life of Lysander*), chương 19. Một mô tả thời cổ về cách người Sparta dùng cây scytale.

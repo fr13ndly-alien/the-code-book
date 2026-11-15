@@ -1,0 +1,142 @@
+{/*
+  Bản tiếng Việt của story.mdx, kể lại theo Mật mã: Từ cổ điển đến lượng tử
+  (NXB Trẻ, Phạm Văn Thiều và Phạm Thu Hằng dịch), chương 7: Riêng tư tốt đẹp,
+  trang 423–436, 452–455, và chương 8, trang 458. Theo docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md. The wording is ours.
+*/}
+
+<Standfirst>
+  Phil Zimmermann bỏ hai loại mật mã vào cùng một phong bì, rồi tặng cho mọi người một cách giữ bí mật thật mạnh, miễn phí.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Thả lên mạng internet
+
+Tháng 6 năm 1991, Phil Zimmermann làm một việc liều lĩnh. Ông là một lập trình viên sống ở Boulder, bang Colorado. Suốt nhiều năm, ông ngồi ở nhà viết một chương trình để người bình thường mã hóa được thư điện tử của mình. Ông vốn định bán nó.
+
+Rồi Thượng viện Mỹ đưa ra một dự luật chống tội phạm. Một điều khoản trong đó buộc các hệ thống liên lạc phải để chính phủ đọc được nội dung. Nghe thì có vẻ như mọi cách mã hóa an toàn đều sẽ bị cấm. Điều khoản ấy bị gạt đi, nhưng Zimmermann sợ nó sẽ quay lại. Vì thế ông nhờ một người bạn đưa chương trình lên một bảng tin của Usenet. Ai cũng tải về được, không mất đồng nào.
+
+Mật mã bên trong là RSA, nổi tiếng là chậm. Vào thập niên 1980, muốn chạy nó thì cần máy tính lớn, loại chỉ chính phủ, quân đội hay hãng lớn mới sắm nổi. Vậy Zimmermann làm thế nào để nó chạy trên một máy tính cá nhân?
+
+<Label>Thử xem</Label>
+
+## Hai lớp mã, một phong bì
+
+Alice định gửi Bob một bức thư. Bạn đoán trước nhé: cô phải bỏ vào phong bì mấy thứ riêng biệt?
+
+<Try action="start" button="Bắt đầu với bức thư của Alice">
+  Nhấn “Bước tiếp” bốn lần. Xem bàn của Alice đầy dần các phép tính, và xem phong bì ở giữa đầy lên.
+</Try>
+
+<Check question="Alice đã gửi mấy thứ?">
+  Hai thứ. Phần 1 là bức thư, mã hóa bằng một chìa khóa nhỏ chọn ngẫu nhiên. Phần 2 là chính chìa khóa nhỏ ấy, được mã hóa bằng chìa khóa công khai mà Bob đưa cho mọi người. Bob cần cả hai phần, và anh phải giải mã phần 2 trước.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Mật mã nhanh lo bức thư, mật mã chậm lo chìa khóa
+
+### Mật mã nhanh
+
+Có những mật mã mà người gửi và người nhận dùng chung một chìa khóa. Chúng gọi là mật mã **đối xứng**. Chúng chạy nhanh, kể cả với một bức thư dài, và vẫn có thể an toàn ngang RSA. Zimmermann chọn một mật mã đối xứng tên là IDEA, khá giống DES.
+
+Với mỗi bức thư, máy tính của Alice nghĩ ra một chìa khóa mới. Nó gọi là **khóa phiên**, vì chỉ dùng cho một lần gửi rồi bỏ.
+
+Mô hình dùng một mật mã đồ chơi thay cho IDEA. Mỗi chữ của bức thư được dịch dọc bảng chữ cái, theo một chữ của khóa phiên. Cách này quá yếu để dùng thật, nhưng đủ để bạn thấy ý tưởng.
+
+<Try action="lockedMessage" button="Xem mật mã nhanh">
+  Đọc từ trên xuống một cột của bảng trên bàn Alice: chữ của bức thư, chữ của khóa, chữ đã dịch. Rồi nhấn “Khóa phiên mới” và xem mọi chữ đã dịch đều đổi.
+</Try>
+
+### Mật mã chậm
+
+Mật mã đối xứng vướng một chuyện cũ: **vấn đề phân phối chìa khóa mã**. Bob cần đúng chìa khóa ấy. Nhưng Alice không thể cứ thế gửi nó đi, vì Eve đang nghe lén.
+
+Đến đây RSA ra tay. Bob có hai chìa khóa. **Chìa khóa công khai** dùng để mã hóa, và anh đưa nó cho mọi người. **Chìa khóa riêng** dùng để giải mã, và anh giữ cho riêng mình. Alice mã hóa khóa phiên bằng chìa khóa công khai của Bob.
+
+RSA chậm vì phải tính với những con số khổng lồ. Nhưng khóa phiên chỉ là một mẩu nhỏ, còn bức thư thì có thể rất dài. Mã hóa riêng mẩu nhỏ ấy thì gần như không tốn thời gian.
+
+<Try action="lockedKey" button="Xem mật mã chậm">
+  Nhìn bảng thứ hai trên bàn Alice. Mỗi chữ của khóa phiên thành một con số. Mỗi số được nâng lên lũy thừa 7 rồi chia cho 187. Chỉ giữ lại số dư.
+</Try>
+
+### Bob làm ngược lại
+
+Bob nhận hai phần đã mã hóa. Anh dùng chìa khóa riêng giải mã phần 2, và có lại khóa phiên. Rồi anh dùng khóa phiên giải mã phần 1, và đọc được bức thư.
+
+Nghe thì vòng vèo, nhưng Alice và Bob chẳng phải nghĩ tới bước nào. Họ chỉ chọn một mục trên màn hình, và chương trình tự làm hết. Zimmermann đặt tên nó là **Pretty Good Privacy** (Riêng tư tốt đẹp), gọi tắt là PGP. Cái tên lấy từ “Hàng tạp phẩm tốt đẹp của Ralph”, một cửa hàng bịa ra trong chương trình radio *Prairie Home Companion* mà ông rất thích.
+
+<Try action="sent" button="Gửi phong bì">
+  Nhấn “Bước tiếp” hai lần và xem bàn của Bob. Đầu tiên, bốn con số trở lại thành khóa phiên. Sau đó khóa phiên biến các chữ trở lại thành bức thư.
+</Try>
+
+<Check question="Sao không mã hóa cả bức thư bằng RSA?">
+  Vì quá lâu. Vào thập niên 1980, mã hóa một bức thư dài bằng RSA có thể mất vài phút trên máy tính cá nhân. Ai gửi một trăm bức thư mỗi ngày thì làm sao kịp. Chỉ mã hóa khóa phiên ngắn bằng RSA thì vẫn an toàn như thế, mà nhanh hơn rất nhiều.
+</Check>
+
+<Label>Câu chuyện</Label>
+
+## Người lập trình và cuộc điều tra lớn
+
+Zimmermann học vật lý rồi tin học. Đầu thập niên 1980, ông lo sợ chiến tranh hạt nhân và trở thành một người hoạt động chống vũ khí hạt nhân. Có lần ông bị bắt ở bãi thử hạt nhân Nevada, cùng 400 người biểu tình khác. Về sau, mối quan tâm của ông chuyển sang thư điện tử và sự riêng tư.
+
+Ông nghĩ thế này. Muốn đọc trộm thư giấy, người ta phải bóc từng phong bì, như câu cá từng con một. Thư điện tử thì khác. Máy có thể chặn và quét tìm từ khóa trong hàng triệu bức cùng lúc, mà không ai hay biết.
+
+Khi đã lên internet, PGP lan đi khắp thế giới. Các nhóm nhân quyền dùng nó để mã hóa tài liệu của họ. Zimmermann nhận được thư kể rằng các nhóm chống đối ở Myanmar dùng nó trong những trại giữa rừng sâu.
+
+Ở quê nhà thì ông gặp rắc rối. Theo luật Mỹ, phần mềm mã hóa bị tính là vũ khí, chẳng khác gì tên lửa, súng cối hay súng máy. Muốn đưa ra nước ngoài thì phải có giấy phép của Bộ Ngoại giao. Tháng 2 năm 1993, hai điều tra viên của chính phủ tới gặp ông. Suốt ba năm sau đó, một cuộc điều tra xét xử lớn nhắm vào ông: liệu ông có phải là kẻ buôn vũ khí, vì đã “xuất khẩu” PGP qua internet?
+
+<DigDeeper title="Riêng tư hay giữ trật tự?">
+  Vụ PGP mở ra một cuộc tranh cãi đến nay vẫn chưa xong. Một bên là cảnh sát. Họ nói nghe lén giúp họ bắt các băng đảng và những kẻ khủng bố, và mã hóa mạnh sẽ bịt mất cách đó. Bên kia là những người bảo vệ quyền tự do công dân. Họ nói riêng tư là một quyền con người, và nhắc rằng các chính phủ từng nghe lén cả những người vô tội. Các hãng kinh doanh đứng về phía họ, vì không ai dám mua bán trên mạng nếu thiếu mã hóa. Theo tác giả, rốt cuộc mọi chuyện tùy vào việc xã hội sợ ai hơn: tội phạm, hay chính phủ.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Không ai phá được, nên người ta tranh cãi
+
+Năm 1996, chính phủ bỏ vụ việc. PGP đã ở khắp nơi, nên đưa Zimmermann ra tòa cũng chẳng thay đổi được gì. Và cũng chưa ai tìm ra cách phá nó.
+
+Bí mật nằm ở chìa khóa công khai của Bob. Số N là tích của hai số nguyên tố bí mật. Ai phân tích được N ra hai thừa số nguyên tố ấy thì tính được chìa khóa riêng của Bob. Khi đó cả hai lớp mã đều đổ.
+
+Số N đồ chơi của Bob là 187. Eve tách nó trong chớp mắt.
+
+<Try action="eve" button="Nhìn qua mắt Eve">
+  Bàn của Eve chỉ có những gì được gửi đi: chìa khóa công khai và hai phần đã mã hóa. Nhấn “Eve: tách N thành các số nguyên tố”. Cô thử chia cho 2, rồi 3, rồi 4, tới khi gặp một số chia hết. Sau đó cô đọc được tất cả.
+</Try>
+
+Một số N thật dài hàng trăm chữ số. Không ai biết cách nào nhanh để phân tích một số lớn như thế. William Crowell, phó giám đốc Cơ quan An ninh Quốc gia Mỹ (NSA), từng ước tính thử. Giả sử mọi máy tính cá nhân trên thế giới, khoảng 260 triệu chiếc, cùng xử lý một bức thư PGP. Trung bình chúng sẽ cần khoảng mười hai triệu lần tuổi của vũ trụ.
+
+<Label>Thử thách</Label>
+
+## Làm Eve một ngày
+
+<Challenge answer="IT IS OUT ON THE NET">
+  Bây giờ là tháng 6 năm 1991, và bạn là Eve. Bạn chép được một phong bì đang trên đường tới chỗ Bob. Phần 1 ghi `HF ZC NGK YM FYO MQK`. Phần 2 ghi `95 121 91 114`. Bob vẫn dùng chìa khóa công khai đồ chơi của anh: N là 187 và e là 7.
+
+  Hãy phá nó. Bức thư nói gì?
+
+  <Try action="intercepted" button="Mở phong bì" />
+</Challenge>
+
+<Check question="Eve đã có khóa phiên. Cô có đọc được bức thư sau của Alice bằng nó không?">
+  Không. Mỗi bức thư có một khóa phiên ngẫu nhiên mới. Nhưng Eve còn tìm ra chìa khóa riêng của Bob, và thế thì tệ hơn nhiều. Có nó, cô giải mã được khóa phiên của mọi bức thư mà bất kỳ ai gửi cho anh.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Ai thật sự gửi bức thư này?
+
+PGP trao cho mọi người một cách mã hóa mà không gián điệp nào phá nổi. Lần đầu tiên, những mật mã mạnh nhất không còn là của riêng quân đội và vua chúa.
+
+Nhưng mã hóa không cho biết ai đã viết thư. Chìa khóa công khai của Bob thì ai cũng có. Thử tưởng tượng Bob nhận một bức thư tình ký tên Alice. Biết đâu Eve viết nó rồi gõ tên Alice ở cuối? Thư điện tử đâu có chữ ký bằng mực.
+
+Lời giải dùng chính hai chìa khóa ấy, nhưng theo chiều ngược lại. Alice dùng chìa khóa riêng của cô để mã hóa, và ai cũng kiểm tra được bằng chìa khóa công khai của cô. PGP làm được cả việc này. Xem cách làm ở trang sau: [chữ ký số hóa](/ciphers/digital-signatures).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử* (Phạm Văn Thiều và Phạm Thu Hằng dịch, NXB Trẻ), chương 7: Riêng tư tốt đẹp.
+- Philip Zimmermann, “Why I Wrote PGP” (Vì sao tôi viết PGP, 1991, cập nhật năm 1999). Lý do của chính ông, bằng lời của ông.
+- D. Atkins, W. Stallings và P. Zimmermann, *PGP Message Exchange Formats* (Các định dạng trao đổi thư PGP, RFC 1991, năm 1996). Hai phần của phong bì thật sự được sắp xếp ra sao.

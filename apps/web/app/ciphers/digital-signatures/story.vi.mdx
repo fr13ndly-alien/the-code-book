@@ -1,0 +1,149 @@
+{/*
+  Bản tiếng Việt của story.mdx, kể lại theo Mật mã: Từ cổ điển đến lượng tử
+  (NXB Trẻ, Phạm Văn Thiều và Phạm Thu Hằng dịch), chương 7: Riêng tư tốt đẹp,
+  trang 430–432 và 450, và chương 8, trang 476. Theo docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md.
+  The abridged edition leaves signatures out. The full edition covers them in
+  its chapter "Pretty Good Privacy". Facts were checked against the sources in
+  Further reading. The toy key is the worked example in Wikipedia, "RSA cryptosystem".
+  The wording is ours.
+*/}
+
+<Standfirst>
+  Dùng mật mã chìa khóa công khai theo chiều ngược lại, và nó chứng minh được ai đã viết một bức thư.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Một chữ ký làm bằng những con số
+
+Năm 1976, Whitfield Diffie và Martin Hellman, hai nhà nghiên cứu ở Đại học Stanford, bang California, đang nghĩ về chuyện làm ăn qua máy tính. Họ thấy một vấn đề chẳng dính dáng gì tới việc giữ bí mật.
+
+Một bản hợp đồng giấy có chữ ký bằng mực. Ai cũng nhận ra chữ ký ấy, mà chỉ một bàn tay ký được nó. Còn thư điện tử chỉ là một dãy số. Ai cũng gõ được “Alice gửi” ở cuối thư. Thử nghĩ: một ngân hàng nhận thư điện tử “của khách hàng”, bảo chuyển hết tiền sang một tài khoản ở quần đảo Cayman. Làm sao ngân hàng biết đó không phải là một tên lừa đảo?
+
+Vì thế họ cần một thứ nghe như không thể có: một chữ ký mà ai cũng kiểm tra được, nhưng không ai giả được. Một con số thì làm chữ ký kiểu gì?
+
+<Label>Thử xem</Label>
+
+## Đổi một chữ
+
+Alice đã ký một mẩu giấy ghi rằng cô nợ Bob 19 bảng Anh. Mẩu giấy và chữ ký đã tới tay Bob, và phép kiểm tra của anh báo “Thật”. Bạn đoán trước nhé: nếu một ký tự của mẩu giấy bị đổi dọc đường thì sao?
+
+<Try action="signed" button="Xem mẩu giấy Alice đã ký">
+  Trong ô “Tin nhắn đến nơi”, đổi `19` thành `99`. Hãy xem kết luận trên bàn của Bob.
+</Try>
+
+<Check question="Vì sao phép kiểm tra của Bob báo sai?">
+  Chữ ký được làm từ mẩu giấy cũ. Bob tính một con số từ mẩu giấy đang nằm trước mặt, và được 1.106. Chữ ký thì vẫn cho ra 1.098. Hai số khác nhau, nên anh biết đã có gì bị sửa.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Vẫn hai chìa khóa ấy, nhưng dùng theo chiều ngược lại
+
+### Mã hóa bằng chìa khóa riêng
+
+Với RSA, Alice có hai chìa khóa. **Chìa khóa công khai** thì ai cũng biết. **Chìa khóa riêng** thì chỉ mình cô biết. Thường thì ai muốn viết cho cô sẽ dùng chìa khóa công khai để mã hóa, còn cô dùng chìa khóa riêng để giải mã.
+
+Nhưng hai chìa khóa cũng đổi vai cho nhau được. Nếu Alice mã hóa một con số bằng chìa khóa riêng, thì chìa khóa công khai của cô sẽ giải mã nó. Làm vậy chẳng giấu được gì, vì chìa khóa công khai của Alice ai cũng có. Nhưng nó chứng minh một điều. Chỉ chìa khóa riêng của Alice mới tạo ra được một con số mà chìa khóa công khai của cô giải mã đúng.
+
+Một con số được mã hóa theo cách này là một **chữ ký số hóa**.
+
+<Try action="unsigned" button="Đưa Alice một mẩu giấy chưa ký">
+  Bàn của Bob nói mẩu giấy này có thể là của bất kỳ ai. Nhấn “Ký và gửi”. Bàn của Alice cho thấy phép tính cô làm với con số bí mật của mình, 413.
+</Try>
+
+### Ký vào dấu vân tay, không ký vào cả bức thư
+
+RSA chậm, nên ký cả một bức thư dài sẽ quá lâu. Vì vậy máy tính của Alice nén bức thư lại thành một con số ngắn trước đã. Con số này gọi là **bản tóm tắt** (giá trị băm). Nó giống dấu vân tay: nhỏ thôi, nhưng mỗi bức thư một khác.
+
+Alice chỉ ký vào bản tóm tắt.
+
+Bản tóm tắt trong mô hình là đồ chơi. Nó đổi mỗi chữ cái và chữ số thành một con số, cộng tất cả lại, rồi giữ số dư khi chia cho 3.233. PGP dùng một hàm băm thật tên là MD5. Bức thư dài hay ngắn thì bản tóm tắt MD5 cũng luôn dài 128 chữ số nhị phân.
+
+<Try action="signed" button="Xem lại mẩu giấy đã ký">
+  Gõ một mẩu giấy dài hơn vào ô “Tin nhắn của Alice” và xem bảng trên bàn cô dài ra. Bản tóm tắt vẫn chỉ là một con số nhỏ. Nhấn “Ký và gửi” để ký mẩu giấy mới.
+</Try>
+
+### Ai cũng kiểm tra được
+
+Bob không cần bí mật nào để kiểm tra chữ ký. Anh làm hai phép tính. Trước hết, anh tính bản tóm tắt của bức thư vừa đến. Sau đó, anh giải mã chữ ký bằng chìa khóa công khai của Alice. Kết quả chính là bản tóm tắt mà Alice đã ký.
+
+Nếu hai số khớp nhau, anh biết được hai điều một lúc. Bức thư đúng là của Alice. Và từ lúc ký tới giờ, chưa ai sửa nó.
+
+<Check question="Sau này Alice có chối được là mình chưa từng ký mẩu giấy không?">
+  Khó lắm. Chỉ chìa khóa riêng của cô mới làm ra được chữ ký đó, và chỉ cô có nó. Vì thế chữ ký số hóa có thể thay cho chữ ký bằng mực.
+</Check>
+
+<Label>Câu chuyện</Label>
+
+## Từ một ý tưởng đến mọi bức thư điện tử
+
+Chính Diffie và Hellman là những người đầu tiên thấy nguyên lý này. Khi nghĩ ra chuyện tách chìa khóa công khai khỏi chìa khóa riêng, họ nhận ra phát minh ấy còn cho cách ký thư điện tử. Họ tả được một chữ ký số hóa phải làm gì, nhưng chưa có cách làm ra nó. Cách ấy đến một năm sau, năm 1977, cùng với RSA.
+
+Ba người tạo ra RSA là Ron Rivest, Adi Shamir và Leonard Adleman. Họ biết mật mã của mình vừa giấu được thư, vừa ký được thư. Bài báo nổi tiếng của họ tên là “A Method for Obtaining Digital Signatures and Public-Key Cryptosystems” (Một phương pháp tạo chữ ký số hóa và hệ mật mã chìa khóa công khai). Chữ ký đứng trước trong tên bài.
+
+Phil Zimmermann đưa chữ ký vào PGP. Chương trình tạo bản tóm tắt MD5 của bức thư, rồi mã hóa nó bằng chìa khóa riêng của bạn.
+
+PGP làm được cả hai việc với cùng một bức thư. Hãy hình dung bức thư được bọc trong hai lớp vỏ ốc. Lớp trong mỏng: Alice ký bằng chìa khóa riêng của cô. Lớp ngoài cứng: cô mã hóa kết quả bằng chìa khóa công khai của Bob, như ở trang trước. Chỉ Bob phá được lớp vỏ ngoài. Lớp vỏ trong không giữ bí mật gì, nó chỉ chứng minh người gửi là Alice. Năm 1998, Tổng thống Mỹ Bill Clinton và Thủ tướng Ireland Bertie Ahern đã cùng ký một thông cáo chung ở Dublin bằng chữ ký số hóa.
+
+<Label>Bị phá như thế nào</Label>
+
+## Hai cách lừa một món đồ chơi
+
+Kẻ giả mạo tên Eve không có chìa khóa riêng nào. Cô có hai cách tấn công.
+
+Cách thứ nhất là đoán. Chìa khóa đồ chơi của Alice chỉ cho phép 3.233 chữ ký khác nhau, nên Eve thử hết được.
+
+<Try action="forger" button="Cho kẻ giả mạo viết một mẩu giấy">
+  Mẩu giấy của Eve nói Alice nợ cô 500 bảng Anh, và chữ ký bịa ra của cô không qua được. Nhấn “Kẻ giả mạo: đoán một chữ ký” vài lần. Rồi nhấn “Kẻ giả mạo: thử mọi con số”.
+</Try>
+
+Chìa khóa thật chặn được cách này. Những con số của nó dài hàng trăm chữ số, và không máy tính nào thử hết được.
+
+Cách thứ hai là tấn công bản tóm tắt. Hai bức thư khác nhau mà có cùng bản tóm tắt thì cũng có cùng chữ ký. Với bản tóm tắt đồ chơi, việc này dễ ợt, vì phép cộng không quan tâm thứ tự các ký tự.
+
+<Try action="signed" button="Xem mẩu giấy Alice đã ký">
+  Trong ô “Tin nhắn đến nơi”, đổi chỗ hai chữ số, để `19` thành `91`. Phép kiểm tra của Bob vẫn báo “Thật”.
+</Try>
+
+Một hàm băm thật được làm sao cho không ai tìm ra được hai bức thư trùng nhau. Làm được vậy là rất khó. Tháng 8 năm 2004, một nhóm do nhà toán học Trung Quốc Xiaoyun Wang dẫn đầu đã đưa ra hai dữ liệu khác nhau có cùng bản tóm tắt MD5. Từ đó, chữ ký làm bằng MD5 không còn đáng tin, và những hàm băm mới hơn đã thế chỗ nó.
+
+<Label>Thử thách</Label>
+
+## Ba mẩu giấy, một chữ ký
+
+<Challenge answer="NOON">
+  Bob tìm thấy ba mẩu giấy, mẩu nào cũng nói là của Alice. Chúng ghi `MEET AT DAWN` (gặp lúc bình minh), `MEET AT NOON` (gặp lúc giữa trưa) và `MEET AT DUSK` (gặp lúc chạng vạng). Cả ba mang cùng một chữ ký, `1519`. Một kẻ giả mạo đã chép nó từ mẩu giấy thật của Alice sang hai mẩu giả.
+
+  Hãy kiểm tra từng mẩu. Bob nên tới vào lúc nào?
+
+  <Try action="noteDawn" button="Mở mẩu giấy bình minh" />
+  <Try action="noteNoon" button="Mở mẩu giấy giữa trưa" />
+  <Try action="noteDusk" button="Mở mẩu giấy chạng vạng" />
+</Challenge>
+
+<Check question="Vì sao kẻ giả mạo không thể chuyển một chữ ký thật sang bức thư mới?">
+  Mỗi chữ ký được làm từ bản tóm tắt của đúng một bức thư. Bức thư khác thì có bản tóm tắt khác, nên phép kiểm tra sẽ báo sai. Chép chữ ký chỉ có tác dụng khi kẻ giả mạo tìm được hai bức thư có cùng bản tóm tắt.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## An toàn, trừ khi có ai học được cách phân tích ra thừa số
+
+Có RSA để giữ bí mật và chữ ký để tạo lòng tin, các nhà tạo mã đã có đủ thứ họ muốn. Bạn có thể mã hóa một bức thư gửi cho người lạ. Bạn có thể chứng minh mình là ai với người lạ. Mua sắm và giao dịch ngân hàng trên mạng đều dựa trên hai mẹo này.
+
+Cả hai cùng dựa trên một niềm tin: không ai phân tích được một số khổng lồ ra hai thừa số nguyên tố của nó. Chưa ai chứng minh được điều đó. Và năm 1994, nhà toán học Peter Shor ở Phòng thí nghiệm AT&T Bell chỉ ra rằng một loại máy mới, máy tính lượng tử, có thể phân tích rất nhanh, nếu một ngày nào đó người ta chế tạo được nó.
+
+Vì thế một số nhà tạo mã đi tìm một kiểu khóa không dựa vào bài toán khó nào cả. Họ tìm thấy nó cũng trong ngành vật lý kỳ lạ ấy: [mật mã lượng tử](/ciphers/quantum).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử* (Phạm Văn Thiều và Phạm Thu Hằng dịch, NXB Trẻ), chương 7: Riêng tư tốt đẹp. Bản rút gọn tiếng Anh bỏ phần chữ ký.
+- Whitfield Diffie và Martin Hellman, “New Directions in Cryptography” (Những hướng đi mới trong khoa học mật mã), *IEEE Transactions on Information Theory*, tháng 11 năm 1976. Bài báo đầu tiên đặt ra yêu cầu về chữ ký số hóa.
+- Ron Rivest, Adi Shamir và Leonard Adleman, “A Method for Obtaining Digital Signatures and Public-Key Cryptosystems”, *Communications of the ACM*, tháng 2 năm 1978. Bài báo về RSA.
+- D. Atkins, W. Stallings và P. Zimmermann, *PGP Message Exchange Formats* (Các định dạng trao đổi thư PGP, RFC 1991, năm 1996). PGP đã ký một bản tóm tắt MD5 như thế nào.
+- Xiaoyun Wang, Dengguo Feng, Xuejia Lai và Hongbo Yu, “Collisions for Hash Functions MD4, MD5, HAVAL-128 and RIPEMD”, Cryptology ePrint Archive, bài 2004/199, tháng 8 năm 2004. Hai dữ liệu có cùng một bản tóm tắt MD5.
+- Peter Shor, “Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer”, *SIAM Journal on Computing*, năm 1997. Bản dài hơn của bài báo ông công bố tháng 11 năm 1994.

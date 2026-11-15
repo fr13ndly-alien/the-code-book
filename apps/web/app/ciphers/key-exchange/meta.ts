@@ -1,0 +1,19 @@
+import type { CipherMeta } from "../types";
+
+export const meta: CipherMeta = {
+  slug: "key-exchange",
+  title: "The key exchange",
+  era: "1976",
+  chapter: 5,
+  order: 4,
+  hook: "Two strangers agree on a secret key while an eavesdropper hears every word they say.",
+  firstStep: "Press “Next step” and follow the numbers across.",
+  source: "The Code Book, chapter 5: Alice and Bob Go Public",
+  vi: {
+    title: "Trao đổi chìa khóa mã",
+    era: "1976",
+    hook: "Hai người lạ thống nhất được một chìa khóa mã bí mật, dù có người nghe lén từng lời họ nói.",
+    firstStep: "Nhấn “Bước tiếp” và lần theo các con số qua từng cột.",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 6: Alice và Bob ra công khai",
+  },
+};

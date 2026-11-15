@@ -1,0 +1,152 @@
+{/*
+  Vietnamese page, retold from Mật mã: Từ cổ điển đến lượng tử (NXB Trẻ),
+  chương 2: Le chiffre indéchiffrable, page 129, and Phụ lục E: Mật mã Playfair,
+  pages 533–536. Follows docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md.
+  The keyword CHARLES and the Hammersmith message are the book's example. Facts
+  were checked against the sources in "Further reading". The wording is ours.
+*/}
+
+<Standfirst>
+  Charles Wheatstone giấu chữ theo từng cặp trong một hình vuông mà học trò cũng học được.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Quá khó với các tùy viên
+
+Năm 1854, nhà phát minh Charles Wheatstone có một mật mã mới. Bạn ông, Lyon Playfair, muốn chính phủ Anh dùng nó. Playfair kể về nó trong một bữa tối, trước mặt Hoàng tử Albert và Palmerston, người sau này làm Thủ tướng. Rồi ông dẫn Wheatstone tới gặp Thứ trưởng Bộ Ngoại giao, nơi gửi đi những bức thư bí mật của nước Anh.
+
+Ông Thứ trưởng chẳng mặn mà gì. Ông chê cách này rắc rối quá, thời chiến thì dùng sao nổi.
+
+Wheatstone có sẵn câu trả lời. Cứ gọi vài cậu bé ở trường tiểu học gần nhất tới đây, ông nói. Bốn cậu thì ba cậu sẽ học được trong mười lăm phút.
+
+Câu đáp của ông Thứ trưởng được kể lại mãi tới giờ: “Rất có thể, nhưng ông chẳng bao giờ dạy nổi nó cho các tùy viên.” Tùy viên là nhà ngoại giao cấp thấp nhất.
+
+Liệu bạn có học nhanh hơn một tùy viên không?
+
+<Label>Thử xem</Label>
+
+## Hình vuông thiếu một chữ
+
+Bộ mô phỏng cho thấy một hình vuông năm hàng, năm cột, dựng từ từ khóa `CHARLES`. Bức thư trong đó là ví dụ của sách, hẹn gặp ở cầu Hammersmith tối nay. Hình vuông có 25 ô, nhưng bảng chữ cái tiếng Anh có 26 chữ. Bạn đoán trước nhé: chữ nào không có ô riêng?
+
+<Try action="charles" button="Mở hình vuông của Wheatstone">
+  Tìm từng chữ cái của bảng chữ cái trong hình vuông. Rồi nhấn ▲ cạnh “Cặp” ba lần, và xem ô nào sáng lên.
+</Try>
+
+<Check question="Chữ nào không có ô riêng?">
+  Chữ `J`. Nó ở chung ô với `I`, và bạn viết `I` cho cả hai. Người đọc tự hiểu chữ nào mới đúng. Bạn cũng thấy mật mã này luôn xử lý hai chữ một lúc, không bao giờ chỉ một chữ.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Cặp chữ cái và ba quy tắc
+
+### Dựng hình vuông
+
+Trước hết, người gửi và người nhận thống nhất một **từ khóa**. Viết từ khóa vào hình vuông, lần lượt từng hàng, bỏ qua chữ nào đã viết rồi. Sau đó điền các ô trống bằng những chữ còn lại, đúng thứ tự bảng chữ cái.
+
+Sách lấy luôn tên của Wheatstone làm từ khóa. `CHARLES` chạy hết hàng trên cùng rồi tràn sang hàng thứ hai. Tiếp theo là `B`, `D`, `F`, `G` và cứ thế. Ai biết từ khóa cũng vẽ ra được đúng hình vuông ấy.
+
+<Try action="charles" button="Bắt đầu với CHARLES">
+  Gõ tên của bạn vào ô “Từ khóa” và xem hình vuông dựng lại. Chữ nào có hai lần trong tên bạn thì chỉ được viết một lần.
+</Try>
+
+### Chia bức thư thành từng cặp
+
+Kế đến, chia bức thư thành từng **cặp chữ cái** (sách còn gọi là chữ ghép). Hai chữ trong một cặp phải khác nhau. Gặp chữ đôi thì chèn một chữ `X` vào giữa. Nếu cuối cùng còn lẻ một chữ, nó cũng được ghép với một chữ `X`.
+
+`HAMMERSMITH` cho bạn thấy vì sao. Chia thẳng thì ra `HA MM`. Chèn thêm chữ thì thành `HA MX ME RS MI TH`.
+
+<Try action="doubleLetter" button="Nhảy tới chữ M đôi">
+  Bạn đang ở cặp thứ 6, `MX`. Đọc dòng chú thích dưới hình vuông. Rồi nhấn ▲ cạnh “Cặp” tới cặp cuối cùng, cặp này cũng phải thêm một chữ `X`.
+</Try>
+
+### Cùng hàng, hay cùng cột
+
+Giờ tìm hai chữ của một cặp trong hình vuông. Mọi cặp đều rơi vào một trong ba trường hợp.
+
+Hai chữ cùng một hàng: đổi mỗi chữ thành chữ ngay bên phải nó. Chữ ở cuối hàng thì quay về đầu hàng. Vậy `HA` thành `AR`.
+
+Hai chữ cùng một cột: đổi mỗi chữ thành chữ ngay bên dưới nó. Chữ ở đáy cột thì quay lên đỉnh cột. Vậy `MY` thành `TR`.
+
+<Try action="sameRow" button="Xem một cặp trên cùng hàng">
+  Cặp đang sáng là `HA`. Hai chữ đều ở hàng trên cùng, nên mỗi chữ dịch sang phải một ô.
+</Try>
+
+<Try action="sameColumn" button="Xem một cặp trên cùng cột">
+  Bức thư bây giờ là `MY TURN` (tới lượt tôi). `M` và `Y` cùng một cột, và `Y` nằm ở đáy. Xem nó đi đâu nhé.
+</Try>
+
+### Các góc của hình chữ nhật
+
+Phần lớn các cặp không chung hàng, cũng chẳng chung cột. Khi đó, hai chữ là hai góc đối nhau của một hình chữ nhật. Mỗi chữ đổi thành góc kia nằm trên hàng của chính nó.
+
+Lấy `ME` làm ví dụ. Từ `M`, đi theo hàng của nó tới cột của `E`: gặp `G`. Từ `E`, đi theo hàng của nó tới cột của `M`: gặp `D`. Vậy `ME` thành `GD`.
+
+Người nhận cũng biết từ khóa, nên giải mã rất dễ: chỉ việc làm ngược lại. Trong một hàng thì đi sang trái, trong một cột thì đi lên. Quy tắc hình chữ nhật thì chiều nào cũng như nhau.
+
+<Try action="receive" button="Giải mã bức thư">
+  Bản mật mã đã được nạp, và ô “Tôi muốn” đã chọn “Giải mã”. Nhấn ▲ để đi từng bước và đọc văn bản thường, kể cả những chữ `X` thừa.
+</Try>
+
+<Label>Câu chuyện</Label>
+
+## Mật mã của Wheatstone, mang tên Playfair
+
+Charles Wheatstone là một trong những người tiên phong của điện tín. Ông muốn có một mật mã để giữ kín các bức điện. Ông cũng mê phá mật mã của người khác. Thời Victoria, các đôi trẻ yêu nhau gửi thư mã hóa cho nhau qua cột nhắn tin trên báo. Wheatstone cùng bạn là [Charles Babbage](/ciphers/babbage) săn lùng và đọc trộm những lời nhắn ấy.
+
+Wheatstone và Playfair sống gần nhau, mỗi người một bên cầu Hammersmith. Họ hay gặp nhau để bàn chuyện mật mã. Wheatstone ghi lại mật mã mới vào tháng 3 năm 1854. Nhưng chính Lyon Playfair, về sau được phong Nam tước Playfair xứ St Andrews, mới là người đem nó đi giới thiệu với các bộ trưởng và quan chức. Vì thế mật mã mang tên Playfair, chứ không mang tên người nghĩ ra nó.
+
+Bộ Ngoại giao từ chối, nhưng quân đội Anh thì nhận. Bạn chỉ cần bút chì, giấy và một từ khóa nhớ trong đầu. Quân Anh dùng nó trong Chiến tranh Boer lần thứ hai và trong cả hai cuộc chiến tranh thế giới.
+
+<Label>Bị phá như thế nào</Label>
+
+## Đếm theo từng cặp
+
+Đếm từng chữ một thì không phá được Playfair. Một chữ như `E` có thể thành nhiều chữ khác nhau, tùy vào chữ đi cặp với nó.
+
+Nhưng cùng một cặp thì luôn thành cùng một cặp. Đó chính là điểm yếu.
+
+<Try action="charles" button="Mở lại bức thư">
+  Nhìn dọc hàng “Mật mã” phía trên hình vuông. Tìm `GD`. Nó có mặt ba lần, vì `ME` có mặt ba lần trong bức thư.
+</Try>
+
+Vậy nhà giải mã đếm cặp chữ cái thay vì đếm từng chữ. Trong tiếng Anh, vài cặp gặp nhiều hơn hẳn. `TH` và `HE` đứng đầu danh sách. Cặp nào hay gặp nhất trong bản mật mã thì có lẽ đang thay cho những cặp ấy.
+
+Việc này khó hơn trước nhiều. Chữ cái chỉ có 26, còn cặp chữ cái có tới khoảng 600. Nhà giải mã cần một bản mật mã dài hơn hẳn thì quy luật mới lộ ra. Với một mệnh lệnh ngắn ngoài chiến trường, vậy thường là đủ an toàn. Năm 1914, một sĩ quan quân đội Mỹ là Joseph Mauborgne công bố cách phá đầu tiên.
+
+<Label>Thử thách</Label>
+
+## Lời khoe của Wheatstone
+
+<Challenge answer="ANY BOY CAN LEARN THIS">
+  Một mẩu giấy viết bằng mật mã Playfair ghi `PQ AC SL BY OP HP IO QM CN`. Từ khóa là tên người mà mật mã được đặt theo: `PLAYFAIR`.
+
+  Bạn hãy giải mã nó, rồi đặt lại dấu cách. Mẩu giấy nói gì?
+
+  <Try action="schoolboy" button="Mở mẩu giấy" />
+</Challenge>
+
+<Check question="Vì sao muốn phá Playfair lại cần nhiều bản mật mã hơn một phép thay thế đơn giản?">
+  Nó đổi từng cặp chữ cái, chứ không đổi từng chữ. Có khoảng 600 cặp, nên mỗi cặp hiếm khi xuất hiện. Phải có một bức thư dài thì các cặp hay gặp mới nổi lên.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Bảng chữ lớn hơn vẫn là một bảng chữ
+
+Playfair bắt nhà giải mã đếm 600 thứ thay vì 26. Như vậy chỉ thêm thời gian, chứ không thêm an toàn. Mật mã nào luôn đổi cùng một mẩu thành cùng một mẩu đều để lại quy luật, nếu bạn gom đủ nhiều.
+
+Lúc này, mật mã đã làm công chúng say mê. Nó có mặt khắp trên báo và trong truyện phiêu lưu. Câu đố nổi tiếng nhất thế kỷ nằm trong một cuốn sách mỏng in năm 1885. Sách kể về một kho báu bị chôn giấu và ba bản mật mã toàn là con số. Hai bản trong đó tới nay chưa ai đọc được: [các bản mật mã của Beale](/ciphers/beale).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử* (NXB Trẻ, Phạm Văn Thiều và Phạm Thu Hằng dịch), Phụ lục E, “Mật mã Playfair”, tr. 533–536. Ở đó có ví dụ `CHARLES` và câu chuyện ở Bộ Ngoại giao. Chương 2, tr. 129, kể chuyện các cột nhắn tin trên báo.
+- Simon Singh, [The Black Chamber: Playfair cipher](https://simonsingh.net/The_Black_Chamber/playfair_cipher.html). Trang riêng của tác giả, có ví dụ `CHARLES`.
+- Wikipedia, [Playfair cipher](https://en.wikipedia.org/wiki/Playfair_cipher). Chúng tôi dùng nó để kiểm tra các mốc thời gian, câu chuyện ở Bộ Ngoại giao, các cuộc chiến và cách phá của Mauborgne.
+- Wemyss Reid, *Memoirs and Correspondence of Lyon Playfair* (Hồi ký và thư từ của Lyon Playfair, 1899). Lần đầu tiên câu chuyện ở Bộ Ngoại giao được kể lại.
+- David Kahn, *The Codebreakers: The Story of Secret Writing* (Các nhà giải mã: câu chuyện về thư bí mật, 1967; bản sửa đổi năm 1996). Cuốn sử đầy đủ nhất về Wheatstone, Playfair và mật mã của họ.

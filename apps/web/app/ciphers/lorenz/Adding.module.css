@@ -1,0 +1,61 @@
+.table {
+  border-collapse: collapse;
+  font-family: var(--font-cipher);
+}
+
+.table caption {
+  padding-bottom: var(--space-2);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.table th {
+  padding: var(--space-1) var(--space-2);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: normal;
+  color: var(--color-text-muted);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.table td {
+  min-width: var(--tap);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.key {
+  color: var(--color-accent);
+}
+
+.out {
+  color: var(--color-lamp);
+  font-weight: bold;
+}
+
+.pins {
+  display: inline-flex;
+  gap: 2px;
+  margin-left: var(--space-1);
+  vertical-align: middle;
+}
+
+/* A lowered pin is a low stub, a raised pin a tall one. The pin in use is brass. */
+.pins span {
+  align-self: end;
+  width: var(--space-1);
+  height: var(--space-1);
+  background: var(--color-border);
+}
+
+.pins span[data-up="true"] {
+  height: var(--space-3);
+  background: var(--color-text-muted);
+}
+
+.pins span[data-now="true"] {
+  background: var(--color-accent);
+}

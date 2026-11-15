@@ -1,0 +1,150 @@
+{/*
+  Vietnamese page, retold from Mật mã: Từ cổ điển đến lượng tử (NXB Trẻ),
+  chương 3: Cơ giới hóa việc giữ bí mật, pages 176–189, and Phụ lục G: Điểm yếu của
+  sự quay vòng sổ tay dùng một lần, pages 540–541. Follows docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md.
+  The "attack the valley at dawn" example, its key and the second key are the book's.
+  Dates and names were checked against the sources in Further reading. The wording is ours.
+*/}
+
+<Standfirst>
+  Một tờ giấy đầy chữ ngẫu nhiên, dùng một lần rồi đốt đi, tạo nên loại mật mã duy nhất không bao giờ phá được.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Đường dây giữa hai kẻ thù
+
+Tháng 10 năm 1962, Mỹ và Liên Xô suýt lao vào chiến tranh hạt nhân vì những tên lửa đặt ở Cuba. Thư từ giữa hai nhà lãnh đạo đi rất chậm. Mỗi lần chậm trễ lại khiến một sai lầm chết người dễ xảy ra hơn.
+
+Vì thế năm 1963, hai nước nối một đường dây thẳng giữa Washington và Moscow, về sau quen gọi là đường dây nóng. Nó truyền chữ đánh máy, không truyền giọng nói. Bức điện trên đường dây ấy phải được giữ kín, không nhà giải mã nào trên đời được phép đọc.
+
+Họ không chọn một máy mã mới tinh xảo. Họ chọn một ý tưởng từ thời Chiến tranh thế giới thứ nhất, đơn giản tới mức làm bằng bút chì cũng được. Mỗi bên trao cho bên kia những cuộn băng đục lỗ ngẫu nhiên.
+
+Làm sao một mớ lộn xộn vô nghĩa lại tạo nên một mật mã không ai phá được?
+
+<Label>Thử xem</Label>
+
+## Xé một tờ
+
+Bộ mô phỏng có sẵn bức thư `ATTACK THE VALLEY AT DAWN` (tấn công thung lũng lúc bình minh). Phía trên là một tờ đầy chữ cái ngẫu nhiên, gọi là **tờ khóa**. Bạn đoán trước nhé: bức thư có năm chữ `A`. Cả năm chữ ấy có thành cùng một chữ mật mã không?
+
+<Try action="book" button="Mở bức thư">
+  Nhìn dọc hàng “Bản mật mã” dưới mỗi chữ `A`. Rồi nhấn “Xé tờ này đi” ba lần và xem cả bản mật mã đổi khác.
+</Try>
+
+<Check question="Năm chữ A có giống nhau không?">
+  Không. Chúng thành `P`, `O`, `L`, `V` và `C`. Mỗi chữ của bức thư được mã hóa bằng một chữ riêng trên tờ khóa, nên cùng một chữ mà lần nào ra cũng khác. Tờ mới thì ra một bản mật mã hoàn toàn mới.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Chìa khóa dài bằng bức thư
+
+### Cộng các chữ
+
+Đánh số bảng chữ cái từ `A` = 0 tới `Z` = 25. Muốn mã hóa một chữ, cộng thêm số của chữ trên tờ khóa nằm ngay phía trên nó. Tổng vượt quá 25 thì trừ đi 26, tức là quay vòng lại từ `A`.
+
+Đây chính là [mật mã Vigenère](/ciphers/vigenere) quen thuộc, chỉ khác một điều. Chìa khóa của Vigenère là một từ ngắn, dùng đi dùng lại. Điểm yếu của nó nằm ở chính sự quay vòng ấy. Ở đây, **chìa khóa** dài bằng cả bức thư và không bao giờ lặp lại.
+
+Muốn giải mã, người nhận dùng một tờ giống hệt, rồi trừ các chữ trên tờ khóa đi.
+
+<Try action="book" button="Mở bức thư">
+  Chạm vào dưới chữ `T` đầu tiên của bức thư. Đọc phép cộng ở dòng chú thích. Rồi chạm vào dưới chữ `T` thứ hai: một chữ khóa khác cho ra một kết quả khác.
+</Try>
+
+### Ngẫu nhiên nghĩa là không có quy luật
+
+Nhà giải mã sống nhờ quy luật. Babbage và Kasiski phá được Vigenère vì tìm ra chỗ từ khóa lặp lại. Nhưng chìa khóa dài bằng bức thư thôi thì chưa đủ. Nếu chìa khóa là những từ có nghĩa, như một chuỗi tên nước, nhà giải mã vẫn đoán dần ra được. Còn một tờ chữ ngẫu nhiên thì không lặp lại, không có từ nào, cũng chẳng có chữ nào hay gặp hơn chữ nào.
+
+<Try action="blank" button="Xóa bức thư">
+  Gõ `AAAAAAAAAA`. Bản mật mã chính là mười chữ đầu của tờ khóa. Bức thư nhàm chán nhất cũng ra một chuỗi trông như ngẫu nhiên.
+</Try>
+
+### Bức thư nào cũng có thể
+
+Đây là phần làm cho mật mã không thể phá. Giả sử nhà giải mã thử hết mọi tờ khóa có thể có. Với 21 chữ, số tờ khóa là khoảng 500 nghìn tỷ tỷ tỷ, nhiều tới mức không người hay máy nào thử xuể. Nhưng cứ cho là thử được đi. Một tờ khóa biến bản mật mã thành “attack the valley at dawn”. Một tờ khác biến nó thành “defend the hill at sunset” (phòng thủ ngọn đồi lúc hoàng hôn). Những tờ khác cho ra mọi câu 21 chữ có trên đời.
+
+Mọi tờ khóa ấy đều có khả năng đúng như nhau, vì tờ thật được chọn ngẫu nhiên. Vậy nhà giải mã không thể biết bức thư nào là thật.
+
+<Try action="other" button="Xem bức thư kia">
+  Nhìn bảng thứ hai. Nó cho thấy một tờ khóa làm cùng bản mật mã ấy nói điều ngược lại. Giờ hãy tự gõ một bức thư 21 chữ bất kỳ vào ô “Một tin nhắn khác mà nó có thể là”.
+</Try>
+
+<Check question="Vì sao nhà giải mã không thể cứ chọn bức thư nào có nghĩa?">
+  Vì có hàng nghìn bức thư có nghĩa, và bức nào cũng có một tờ khóa khớp với nó. Với mật mã thường, chỉ một chìa khóa cho ra từ thật. Ở đây, mọi bức thư có nghĩa, và cả mọi bức thư ngớ ngẩn, đều có khả năng như nhau.
+</Check>
+
+### Chỉ một lần
+
+Sổ tay là một xấp tờ, mỗi tờ (sách gọi là trang) có những chữ ngẫu nhiên khác nhau. Người gửi và người nhận giữ hai bản giống hệt nhau. Bạn dùng tờ trên cùng cho một bức thư, rồi xé ra và hủy đi. Bức thư sau dùng tờ kế tiếp. Vì thế nó có tên là **sổ tay dùng một lần**.
+
+<Label>Câu chuyện</Label>
+
+## Hoàn hảo, mà gần như vô dụng
+
+Năm 1917, Gilbert Vernam là kỹ sư ở AT&T, công ty điện thoại của Mỹ. Ông làm ra một cái máy trộn mỗi ký tự của bức thư với một ký tự trên băng khóa. Thiếu tá Joseph Mauborgne, người đứng đầu bộ phận nghiên cứu mật mã trong quân đội Mỹ, nhận ra chìa khóa phải thế nào: hoàn toàn ngẫu nhiên, và không bao giờ dùng lại.
+
+Họ chưa hẳn là người đầu tiên. Năm 1882, một người Mỹ tên là Frank Miller đã tả gần đúng ý tưởng ấy, rồi bị lãng quên.
+
+Về sau, nhà toán học Claude Shannon chứng minh điều mà Vernam và Mauborgne đã ngờ tới. Chứng minh của ông, công bố năm 1949, cho thấy mật mã này chẳng để lại cho nhà giải mã chút gì để bám vào.
+
+Vậy sao quân đội không chuyển sang dùng nó? Bạn thử tính cái giá xem. Một đội quân gửi hàng trăm bức điện mỗi ngày, mỗi bức hàng nghìn chữ. Bức nào cũng cần một tờ chữ ngẫu nhiên mới. Phải có người làm ra hết chỗ ấy, tức là hàng triệu chữ ngẫu nhiên mỗi ngày. Phải có người mang những sổ tay giống hệt nhau tới tay từng điện báo viên, kể cả ngoài chiến trường. Nếu một cuốn sổ bị bắt, mọi bức điện dùng nó đều mất.
+
+Sổ tay dùng một lần chỉ hợp với số ít người có thời gian chuẩn bị, như điệp viên, sứ quán, và hai nhà lãnh đạo có đường dây nóng.
+
+<DigDeeper title="Tạo chữ ngẫu nhiên rất khó">
+  Con người ngẫu nhiên rất dở. Người đánh máy gõ phím “bừa” thường cứ tay trái rồi tay phải, đều đều như nhịp. Gõ chữ D bên trái bàn phím xong, chữ sau gần như chắc chắn nằm bên phải. Đó là một quy luật. Tờ khóa tốt phải lấy từ những hiện tượng tự nhiên, như phóng xạ đo bằng máy đếm Geiger, hay tiếng rè của dòng điện. Trang này xin thiết bị của bạn những con số ngẫu nhiên tốt nhất mà nó có.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Hai lần là quá nhiều
+
+Chưa ai phá được một sổ tay dùng một lần được dùng đúng cách. Cũng sẽ không ai phá được. Mọi lần thắng nó đều đến từ chỗ người dùng phạm luật.
+
+Luật tệ nhất để phạm là “chỉ một lần”. Năm 1942, khi Liên Xô đang chống trả cuộc xâm lược của Đức, những người in sổ tay của Liên Xô đã in hàng nghìn tờ hơn một lần. Các nhà giải mã Mỹ bắt tay vào những bức điện ấy từ năm 1943, trong một dự án về sau mang tên Venona. Tháng 12 năm 1946, Meredith Gardner lần đầu đọc được nội dung các bức điện. Dần dần, khoảng 3.000 bức điện được đọc, toàn bộ hay một phần. Chúng lật mặt những điệp viên Liên Xô như nhà khoa học nguyên tử Klaus Fuchs.
+
+<Try action="reuse" button="Gửi hai bức thư trên một tờ">
+  Giờ hai bản mật mã dùng chung một tờ khóa. Bạn đóng vai nhà giải mã: trong ô “Một tin nhắn khác mà nó có thể là”, gõ `ATTACK`. Xem hàng “Đọc thành”. Rồi thử `DEFEND`.
+</Try>
+
+Với một bức thư, đoán gì cũng khớp, nên bạn không kiểm tra được. Với hai bức, đoán đúng thì bức kia hiện ra thành chữ. Bức thứ hai chính là phép thử. Cứ thế, mỗi mẩu đoán được ở bức này lại mở thêm một mẩu ở bức kia, cho tới khi đọc được cả hai.
+
+<Try action="guess" button="Xem một phỏng đoán dài hơn" />
+
+<Label>Thử thách</Label>
+
+## Tờ cuối cùng của điệp viên
+
+<Challenge answer="BURN THIS SHEET NOW">
+  Bạn là một điệp viên ở nước ngoài. Tờ trên cùng trong sổ tay của bạn bắt đầu bằng `QXJTM ZKWPL HRVBD NGYCF`.
+
+  Bức điện vô tuyến tối nay là `RRAGFGSOHSLVOORJ`.
+
+  Chọn “Giải mã”, rồi gõ tờ khóa và bức điện vào, hoặc dùng nút bên dưới. Mệnh lệnh của bạn là gì?
+
+  <Try action="intercepted" button="Mở tờ khóa và bức điện" />
+</Challenge>
+
+<Check question="Vì sao điệp viên phải tuân theo mệnh lệnh này?">
+  Tờ khóa nào còn giữ lại thì có thể bị tìm thấy, và nó mở được bức điện đã dùng nó. Tệ hơn nữa, một tờ còn giữ có thể bị dùng lại do nhầm lẫn, mà sổ tay dùng hai lần thì phá được.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Bí mật trong tầm tay
+
+Sổ tay dùng một lần chứng minh rằng bí mật tuyệt đối là có thật. Nó cũng cho thấy cái giá. Chìa khóa phải dài bằng mọi điều bạn sẽ nói, và bạn phải đưa nó tới nơi an toàn trước đã. Chuyện đưa chìa khóa ấy còn ám ảnh khoa học mật mã tới tận cuối câu chuyện này.
+
+Quân đội cần một thứ khác: một mật mã gần mạnh bằng, chạy bằng một chìa khóa nhỏ, và đủ nhanh cho hàng nghìn bức điện mỗi ngày. Lời giải là để máy móc làm việc xáo trộn. Chiếc máy đầu tiên như thế đã có từ khoảng 450 năm trước, làm bằng hai cái đĩa: [đĩa mã hóa](/ciphers/cipher-disc).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử* (NXB Trẻ, Phạm Văn Thiều và Phạm Thu Hằng dịch), chương 3: *Cơ giới hóa việc giữ bí mật*, tr. 176–189, nơi có ví dụ “attack the valley at dawn”; và Phụ lục G, tr. 540–541, về chuyện dùng một tờ khóa hai lần.
+- [Wikipedia: One-time pad](https://en.wikipedia.org/wiki/One-time_pad). Về Miller, Vernam, Mauborgne và chứng minh của Shannon.
+- [Wikipedia: Moscow–Washington hotline](https://en.wikipedia.org/wiki/Moscow%E2%80%93Washington_hotline) (Đường dây nóng Moscow–Washington). Đường dây năm 1963 và các cuộn băng khóa của nó.
+- [Wikipedia: Venona project](https://en.wikipedia.org/wiki/Venona_project) (Dự án Venona). Chuyện gì xảy ra khi sổ tay bị in hai lần.
+- Claude Shannon, “Communication Theory of Secrecy Systems” (Lý thuyết truyền tin của các hệ thống bí mật), *Bell System Technical Journal*, tập 28, 1949. Chính bản chứng minh ấy.

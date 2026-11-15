@@ -1,0 +1,146 @@
+{/*
+  Vietnamese page, retold from Mật mã: Từ cổ điển đến lượng tử (NXB Trẻ),
+  chương 3: Cơ giới hóa việc giữ bí mật, pages 160–162, and Phụ lục F: Mật mã ADFGVX,
+  pages 537–539. Follows docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md.
+  The grid, the keyword MARK and the message "attack at 10 pm" are the book's example.
+  Dates and names were checked against the sources in Further reading. The wording is ours.
+*/}
+
+<Standfirst>
+  Sáu chữ cái, một cái lưới và một từ khóa đã giấu mệnh lệnh của quân đội Đức năm 1918, cho tới khi một người Pháp nhìn thấu chúng.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Sáu chữ cái trên sóng vô tuyến
+
+Tháng 6 năm 1918, mùa hè cuối cùng của Chiến tranh thế giới thứ nhất. Pháo binh Đức chỉ còn cách Paris chừng 100 km. Người Pháp biết sắp có thêm một đòn nữa. Nhưng đòn ấy đánh vào đâu thì họ không biết.
+
+Các điện báo viên Pháp nghe sóng vô tuyến của Đức suốt ngày đêm. Thứ họ nghe được thật lạ. Bức điện nào cũng chỉ dùng sáu chữ cái: `A`, `D`, `F`, `G`, `V` và `X`.
+
+Các bức điện ấy tới bàn của Georges Painvin, một nhà giải mã ở Phòng mật mã Pháp. Đêm ngày 2 tháng 6, ông đọc được một bức. Nó ra lệnh chở gấp đạn dược tới các khẩu pháo, “kể cả ban ngày nếu không bị phát hiện”. Giờ người Pháp đã biết phải chờ ở đâu.
+
+Làm sao cả một ngôn ngữ lại trốn được trong sáu chữ cái?
+
+<Label>Thử xem</Label>
+
+## Lần theo một chữ
+
+Bộ mô phỏng có sẵn bức thư `ATTACK AT 10 PM` (tấn công lúc 10 giờ tối) và từ khóa `MARK`. Bạn đoán trước nhé: bức thư có 12 chữ cái và chữ số. Bản mật mã sẽ có bao nhiêu chữ?
+
+<Try action="book" button="Mở bức thư">
+  Chạm vào chữ `T` trong cái lưới lớn. Nhìn chữ ở đầu hàng và chữ ở đầu cột của nó. Rồi tìm các chữ đang sáng trong ba bảng nhỏ.
+</Try>
+
+<Check question="Bản mật mã dài bao nhiêu?">
+  24 chữ, dài gấp đôi bức thư. Mỗi chữ cái hay chữ số thành hai chữ: tên hàng của nó, rồi tên cột. Chữ `T` nằm ở hàng `D`, cột `D`, nên nó thành `DD`.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Thay thế, rồi chuyển vị
+
+ADFGVX là hai mật mã, cái này nối tiếp cái kia. Bước đầu thay thế. Bước sau đổi chỗ.
+
+### Bước 1: cái lưới
+
+Cái lưới (sách gọi là bảng kẻ ô vuông) có sáu hàng, sáu cột. Vậy là 36 ô: vừa đủ cho 26 chữ cái và mười chữ số. Chúng được rải vào theo một thứ tự mà chỉ người gửi và người nhận biết. Cách sắp xếp ấy là một phần của chìa khóa mã.
+
+Muốn mã hóa một chữ, bạn tìm nó trong lưới. Ghi chữ ở đầu hàng của nó, rồi chữ ở đầu cột. Vậy `A` thành `DV`, còn `1` thành `AV`. Đây là một **phép thay thế**: mỗi ký hiệu được đổi thành một thứ khác.
+
+Nếu chỉ có bước 1 thì yếu lắm. Nó chỉ là kiểu mật mã thay thế dùng một bảng chữ cái: `A` lúc nào cũng là `DV`. Nhà giải mã cứ đếm các cặp, y như đếm chữ cái, là phá được.
+
+<Try action="book" button="Mở bức thư">
+  Chạm vào chữ `A` trong lưới, rồi nhìn ô “Bước 1”. Đếm xem cặp `DV` xuất hiện mấy lần.
+</Try>
+
+### Bước 2: từ khóa
+
+Giờ các cặp bị tách ra. Viết mọi chữ của bước 1 thành từng hàng dưới từ khóa, ở đây là `MARK`. Rồi đổi chỗ các cột, để các chữ của từ khóa đứng theo thứ tự bảng chữ cái: `A`, `K`, `M`, `R`. Mỗi cột di chuyển nguyên khối.
+
+Cuối cùng, đọc từ trên xuống cột thứ nhất, rồi cột thứ hai, cứ thế. Chuỗi chữ đó là bản mật mã. Bước này là một **phép chuyển vị**: giữ nguyên các chữ, chỉ đổi chỗ của chúng.
+
+<Try>
+  Đổi ô “Từ khóa” từ `MARK` thành `MARKS`. Bảng có thêm cột thứ năm và bản mật mã thay đổi, nhưng các cặp ở bước 1 thì vẫn y nguyên.
+</Try>
+
+### Vì sao hai bước hơn một
+
+Chạm lại vào chữ `T` và nhìn bảng đã xếp. Hai nửa của mỗi cặp `DD` đã rơi vào hai cột khác nhau. Trong bản mật mã, chúng nằm cách xa nhau, lẫn với nửa của những chữ khác.
+
+Tách một chữ thành nhiều mảnh rồi rải các mảnh ra gọi là **chia nhỏ chữ** (phân đoạn). Nhà giải mã không đếm cặp được nữa, vì hai nửa của một cặp không còn đứng cạnh nhau. Mà không có từ khóa thì cũng không ghép lại được.
+
+Muốn giải mã, bạn làm ngược lại. Điền bản mật mã vào các cột đã xếp, rồi đặt các cột về lại thứ tự của từ khóa. Sau đó đọc ngang theo từng cặp, và tra từng cặp trong lưới.
+
+<Check question="Vì sao lại là sáu chữ này, chứ không phải từ A đến F?">
+  Các bức điện được gửi qua sóng vô tuyến bằng mã Morse. Đổi sang chấm và gạch, `A`, `D`, `F`, `G`, `V` và `X` nghe khác hẳn nhau. Điện báo viên dù mệt cũng khó nhầm.
+</Check>
+
+<Label>Câu chuyện</Label>
+
+## Làm ra cho trận tấn công cuối cùng
+
+Người nghĩ ra mật mã này là Fritz Nebel, một sĩ quan thông tin của Đức. Nó được dùng lần đầu vào tháng 3 năm 1918, ngay trước trận tấn công lớn mùa xuân của Đức. Lúc ấy nó chỉ có năm chữ, `ADFGX`, với một cái lưới 25 ô.
+
+Đầu tháng 6 năm 1918 xuất hiện chữ thứ sáu: `V`. Lưới lớn hơn có chỗ cho chữ số, nên giờ giấc và số hiệu trên bản đồ không phải đánh vần ra nữa. Bức điện ngắn đi.
+
+Cả hai phần chìa khóa, cái lưới và từ khóa, đổi mỗi ngày. Từ khóa thật dài hơn `MARK` nhiều, chừng hai chục chữ. Một hội đồng các nhà tạo mã Đức đã chọn nó giữa nhiều mật mã khác, vì tin rằng nó an toàn nhất. Họ chắc mẩm không ai phá nổi.
+
+<DigDeeper title="Vì sao lính tráng ưa nó">
+  Mật mã dùng ngoài mặt trận phải đơn giản. ADFGVX không cần máy móc, cũng chẳng cần sổ mã dày cộp. Người lính chỉ cần bút chì, giấy kẻ ô và hai phần chìa khóa của ngày hôm đó.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Những đêm dài của Painvin
+
+Georges Painvin đã phá được bản năm chữ từ đầu tháng 4. Ông lách vào nhờ một thói quen của quân đội. Nhiều bức điện trong cùng một ngày mở đầu bằng cùng mấy chữ, chẳng hạn một địa chỉ hay một cấp bậc.
+
+Hai bức điện mở đầu giống nhau thì cho ra các cặp ở bước 1 cũng mở đầu giống nhau. Sau khi chuyển vị, những chữ trùng nhau nằm ở đầu mỗi cột. So những bức điện như thế với nhau, Painvin tính ra được từ khóa dài bao nhiêu và các cột đã đổi chỗ ra sao.
+
+Khi các cột về đúng chỗ, các cặp lại đứng cạnh nhau. Phần còn lại là bước 1, một phép thay thế đơn giản. Mà phép thay thế thì thua phép đếm.
+
+<Try action="book" button="Mở bức thư">
+  Bạn tự làm bước cuối nhé. Trong ô “Bước 1”, đếm từng cặp. `DV` và `DD` mỗi cặp có mặt ba lần. Trong một bức thư tiếng Anh dài, cặp hay gặp nhất sẽ thay cho chữ `E`.
+</Try>
+
+Ông làm việc ngày đêm tới kiệt sức. Mùa xuân ấy, nghe nói Painvin sụt mất 15 kg. Nhưng ngày 2 tháng 6, chỉ một ngày sau khi người Pháp lần đầu nghe thấy chữ `V`, ông đọc được lệnh chở gấp đạn dược. Bức điện được gửi từ mặt trận giữa Montdidier và Compiègne, cách Paris chừng 80 km về phía bắc. Ngày 9 tháng 6, khi quân Đức tấn công ở đó, quân Pháp đã chờ sẵn.
+
+Các nhà sử học vẫn còn tranh cãi xem riêng bức điện này quan trọng tới đâu. Người Pháp còn có những lời cảnh báo khác, chẳng hạn từ tù binh bắt được.
+
+<Label>Thử thách</Label>
+
+## Đọc mệnh lệnh
+
+<Challenge answer="RUSH MUNITIONS">
+  Bạn đang ở Phòng mật mã Pháp. Sau nhiều ngày làm việc, bạn đã có cái lưới của hôm nay (chính là lưới trên trang này) và từ khóa của hôm nay: `PARIS`.
+
+  Bức điện này vừa tới: `VDDDGDGXVXVDGGDDGXADAVXVGV`
+
+  Đặt từ khóa, chọn “Giải mã” rồi gõ nó vào, hoặc dùng nút bên dưới. Bức điện nói gì?
+
+  <Try action="intercepted" button="Mở bức điện" />
+</Challenge>
+
+<Check question="Từ khóa PARIS có năm chữ. Cột nào của bảng được đọc trước tiên?">
+  Cột dưới chữ `A`. Các cột được đọc theo thứ tự bảng chữ cái của các chữ trong từ khóa: `A`, `I`, `P`, `R`, `S`.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Khó chưa chắc đã an toàn
+
+ADFGVX chồng một mật mã lên một mật mã khác, và nổi tiếng bậc nhất trong số các mật mã của cuộc chiến. Vậy mà nó vẫn bị phá, vì người ta dùng nó theo lối mòn, và vì có một người không chịu bỏ cuộc.
+
+Tới năm 1918, mọi mật mã từng được nghĩ ra, sớm hay muộn, đều đã bị phá. Các nhà tạo mã muốn một thứ hơn cả “khó hơn”. Họ muốn một mật mã được chứng minh là không thể phá. Thứ ấy đã có sẵn, và nó chẳng dùng gì ngoài các chữ cái ngẫu nhiên: [sổ tay dùng một lần](/ciphers/one-time-pad).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử* (NXB Trẻ, Phạm Văn Thiều và Phạm Thu Hằng dịch), chương 3: *Cơ giới hóa việc giữ bí mật*, tr. 160–162, và Phụ lục F, “Mật mã ADFGVX”, tr. 537–539. Phụ lục làm từng bước với `ATTACK AT 10 PM` và từ khóa `MARK`.
+- [Wikipedia: ADFGVX cipher](https://en.wikipedia.org/wiki/ADFGVX_cipher). Các mốc thời gian, Fritz Nebel, một ví dụ làm từng bước khác, và cuộc tranh cãi xem việc phá mã quan trọng tới đâu.
+- [Wikipedia: Georges Painvin](https://en.wikipedia.org/wiki/Georges_Painvin). Con người ông và bức điện ngày 2 tháng 6 năm 1918.
+- [Wikipedia: German spring offensive](https://en.wikipedia.org/wiki/German_spring_offensive) (Cuộc tấn công mùa xuân của Đức). Trận tấn công ngày 9 tháng 6 năm 1918.
+- David Kahn, *The Codebreakers: The Story of Secret Writing* (Các nhà giải mã: câu chuyện về thư bí mật, 1967; bản sửa đổi năm 1996). Câu chuyện kinh điển về cách Painvin phá mã.

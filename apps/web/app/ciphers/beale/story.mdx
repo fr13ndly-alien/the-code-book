@@ -1,0 +1,150 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 2. The wording is ours.
+*/}
+
+<Standfirst>
+  Three sheets of numbers point to a buried fortune. Only one of them has ever been read.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## The box in the hotel safe
+
+In 1822 a traveller named Thomas Beale left a locked iron box with Robert Morriss, who ran the Washington Hotel in Lynchburg, Virginia. A letter followed. If nobody came for the box within ten years, Morriss was to open it. A friend would then send him a key to the papers inside.
+
+Beale never came back. The key never arrived. Morriss waited far longer than ten years, and in 1845 he finally broke the lock.
+
+Inside lay a note in plain English and three sheets covered in numbers. The note spoke of gold and silver, buried somewhere nearby. The sheets said where.
+
+How can a page of numbers hold a message, when there are only 26 letters?
+
+<Label>Try it</Label>
+
+## What does 115 mean?
+
+The simulator shows the first numbers of Beale's second sheet. Below them is a famous text with every word numbered. Make a guess first: the sheet begins with `115`. Which letter is that?
+
+<Try action="beale" button="Show Beale's second sheet">
+  Tap the first card, `115`. Watch the key text jump to word 115. Then tap `73`, the second card.
+</Try>
+
+<Check question="Which letters do 115 and 73 stand for?">
+  `I` and `H`. Word 115 is "instituted" and word 73 is "hold". Each number stands for the first letter of its word. The sheet begins "I have deposited".
+</Check>
+
+<Label>How it works</Label>
+
+## A book for a key
+
+### Number every word
+
+This is a **book cipher**. The sender and the receiver agree on a piece of writing, called the **key text**. It could be a book, a speech or a letter.
+
+Next you number its words: 1, 2, 3 and so on. Now every number stands for one letter, the first letter of its word. To read a message, you look up each number and write down that first letter.
+
+The receiver needs nothing but a copy of the same text. Anyone without it sees only numbers.
+
+<Try action="beale" button="Load the sheet again">
+  Tap the cards one by one and read the letters under them. Then tap any word in the key text to see its number.
+</Try>
+
+### Many numbers for one letter
+
+To encipher, you go the other way. For each letter of your message, find a word that starts with it and write down that word's number.
+
+Many words start with the same letter. So you have a choice, and you can pick a different number each time. The book enciphers `BEALE` this way with a short key text of its own. Both of its `E`s get different numbers.
+
+That choice is the strength of the cipher. Counting how often each symbol appears no longer works, because a common letter such as `E` is spread across dozens of numbers.
+
+<Try action="word" button="Encipher BEALE">
+  Look at the two `E` cards: they carry different numbers. Press "Pick different numbers" a few times. The numbers change, yet the message stays `BEALE`.
+</Try>
+
+<DigDeeper title="The book's own example">
+  The book's key text is a single sentence of 30 words. With it, the book writes `BEALE` as `14, 2, 8, 23, 18`. Load both and check each number against its word. The book says `E` could be 2, 18, 24 or 30.
+
+  <Try action="bookWord" button="Load the book's key text">
+    Tap each card and read the word it points at. Then find the two words the book did not use for `E`.
+  </Try>
+</DigDeeper>
+
+### Gaps and slips
+
+A key text can only give you the letters its words begin with. The opening of the Declaration of Independence has no word that starts with `V` or `Y`. Beale found those further on, at words 807 and 811. Our copy stops at word 342, so they show as `?`.
+
+The copy matters too. Further into the sheet, number `95` should give the `U` of "four". In this copy, word 95 is "inalienable". Some printings of Beale's day read "unalienable" instead.
+
+<Try action="slips" button="Read further into the sheet">
+  The cards now spell "I have deposited in the county of Bedford about four miles". Find the letters that are wrong. Card `95` is already picked for you.
+</Try>
+
+A miscount by one word spoils a letter as well. That is why "Bedford" starts with a `G` here.
+
+<Label>The story</Label>
+
+## Twenty years of failure
+
+Beale first rode into Lynchburg in January 1820, stayed the winter and left. He returned in January 1822, and that spring he handed Morriss the box. His letter, sent from St. Louis in May, promised the key for June 1832.
+
+According to the note in the box, the three sheets held three things. The first gave the place where the treasure lay. The second described the treasure. The third named the families who should share it.
+
+Morriss worked on the numbers for about twenty years and got nowhere. In 1862, aged eighty-four, he passed the secret to a friend. In 1885 that friend published everything in a pamphlet of twenty-three pages. He kept his own name out of it.
+
+<DigDeeper title="Where the gold came from">
+  The note said that Beale and twenty-nine others set out across America in April 1817. While hunting buffalo north of Santa Fe, one of them spotted gold in a crack in the rocks. They mined it for eighteen months, found silver too, and agreed to hide it all back in Virginia.
+</DigDeeper>
+
+<DigDeeper title="Was it all a hoax?">
+  Some people think the pamphlet's author made up the whole tale to sell copies. One study found that his writing style closely matches the letters said to be Beale's. Others have searched old records and found men named Thomas Beale who fit the story. Nobody knows.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## Try every book you own
+
+The pamphlet's author saw that the numbers ran far higher than 26. He guessed that several numbers stood for each letter, and that pointed to a book cipher.
+
+A book cipher has one weak spot: the key text. If it is something famous, a patient codebreaker can find it. The author tried every book he could get hold of. Each gave nonsense. Then he numbered the words of the Declaration of Independence, and the second sheet turned into English.
+
+<Try action="hunt" button="Try the wrong book first">
+  The second sheet is loaded, but the key text is a different famous speech. Read the plaintext: nonsense. Now pick "Declaration" under "Key text".
+</Try>
+
+The sheet listed gold, silver and jewels, packed in iron pots in a stone-lined vault. The book puts their value at about $20 million.
+
+But the second sheet does not say where. That is on the first sheet, and the Declaration does not unlock it. Nor does any other text anyone has tried. Perhaps Beale wrote a key text himself, and the only copy was the one that never reached Morriss.
+
+Treasure hunters have dug, and at least once used dynamite. Nobody has found the gold.
+
+<Label>Challenge</Label>
+
+## A note from a treasure hunter
+
+<Challenge answer="THE GOLD IS IN IRON POTS">
+  A rival treasure hunter has dropped a note. It reads `140, 184, 54, 37, 63, 150, 174, 18, 154, 94, 115, 165, 233, 44, 268, 266, 58, 213, 130`.
+
+  You do not know which key text was used. Do what the pamphlet's author did. What does the note say?
+
+  <Try action="note" button="Load the note" />
+</Challenge>
+
+<Check question="Why did the note give nonsense with the wrong key text?">
+  A number only means "the first letter of this word". Change the text and every number points at a different word. Without the right key text, the numbers carry no message at all.
+</Check>
+
+<Label>What came next</Label>
+
+## A key too big to use every day
+
+The Beale papers show how strong a cipher becomes when its key is long, private and used only once. They also show the price. Beale had months to prepare one message. An army or a business sends hundreds of messages a day, and cannot write a new secret book for each.
+
+So by the end of the 1800s codemakers were in trouble. Their best everyday cipher had been broken, and the world was starting to send its secrets down a wire. See how those messages travelled on the next page: [Morse code](/ciphers/morse).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 2. It prints all three sheets in full.
+- *The Beale Papers* (1885), the pamphlet that began the hunt.
+- Peter Viemeister, *The Beale Treasure: History of a Mystery*. A local historian checks the story against the records.

@@ -1,0 +1,131 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 1. The wording is ours.
+*/}
+
+<Standfirst>
+  Shuffle the whole alphabet with one word you can remember, and nobody can try all the keys.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## The key in your pocket
+
+Imagine you are a spy with the best cipher of your age. Your cipher alphabet is the 26 letters in a jumbled order that only you and your chief know. No enemy could ever guess it.
+
+But 26 jumbled letters are hard to remember, so you keep them on a scrap of paper. One night a guard searches you and finds the scrap. Now the enemy holds your key. They can read every message you have sent with it.
+
+The cipher was strong. The paper was the weak point. How could you carry a jumbled alphabet in your head instead?
+
+<Label>Try it</Label>
+
+## One phrase, one alphabet
+
+The simulator has built a cipher alphabet from the keyphrase `JULIUS CAESAR`. Guess first: the phrase has twelve letters, but some of them repeat. How many letters of the cipher alphabet does it fill?
+
+<Try action="julius" button="Show the book's keyphrase">
+  Read along the cipher row from the left and find where the keyphrase stops. Then tap under plain `B` to see what it becomes.
+</Try>
+
+<Check question="How many letters does JULIUS CAESAR fill?">
+  Nine. A letter can appear only once in a cipher alphabet, so the repeats of `U`, `S` and `A` are dropped. What is left is `JULISCAER`.
+</Check>
+
+<Label>How it works</Label>
+
+## Any order you like
+
+### A truly jumbled alphabet
+
+The Caesar shift slides the alphabet along, so it has only 25 keys. The general **substitution cipher** removes that limit. Its cipher alphabet may be any rearrangement of the 26 letters.
+
+That gives about 400,000,000,000,000,000,000,000,000 possible keys. Suppose an enemy checked one key every second. The book reckons the job would take "a billion times the lifetime of the universe". A **brute-force attack**, trying every key, is hopeless.
+
+You use it just like Caesar's cipher. Find each letter of your message in the plain row and write the letter below it.
+
+<Try action="julius" button="Load the message">
+  Type your own message in "Your message". Tap under some of its letters and check them against the ciphertext.
+</Try>
+
+### Building it from a keyword
+
+A **keyword** or **keyphrase** makes the jumble easy to remember. Take `JULIUS CAESAR`. Remove the space and every repeated letter, which leaves `JULISCAER`. Write that at the start of the cipher alphabet.
+
+Then add the letters you have not used, in their usual order. Begin just after the last letter of the keyphrase. Here that is `R`, so you carry on with `T`, `V`, `W` and so on, and wrap round to `B` at the end.
+
+<Try action="blank" button="Start with no keyword">
+  Type a word into "Keyword or keyphrase", one letter at a time. Watch each new letter jump to the front of the cipher row.
+</Try>
+
+### Reading it back
+
+Your friend knows the keyphrase, so they can build the same cipher alphabet. To decipher, they find each letter of the ciphertext in the bottom row and read the plain letter above it.
+
+<Try action="reply" button="Load a ciphertext">
+  The message `USNJFS HES RISG ZC XJFLE` was made with the book's keyphrase. Read the plaintext in the controls. Then change one letter of the keyphrase and see it fall apart.
+</Try>
+
+<Check question="Why is a keyphrase safer than a written-out alphabet?">
+  You can keep a phrase in your memory, so there is no paper for an enemy to capture. A keyphrase gives slightly fewer possible keys than a free jumble, but still far too many to try.
+</Check>
+
+<Label>The story</Label>
+
+## A thousand years on top
+
+This cipher is simple to use and has a vast number of keys. That mix made substitution the main form of secret writing all through the first millennium AD. Codemakers saw no need to invent anything better.
+
+It was everyday office equipment, too. Officials in the Arab world enciphered affairs of state and even tax records. A tenth-century handbook for secretaries, the *Adab al-Kuttāb*, has sections on how to do it.
+
+Any cipher of this kind, with one cipher alphabet used for the whole message, is called a **monoalphabetic substitution cipher**. The Kama Sutra pairs and the Caesar shift belong to the same family.
+
+<DigDeeper title="Two twists on the cipher alphabet">
+  The keyphrase need not sit at the front. In one example the book uses `A VOID BY GEORGES PEREC` and starts it at the fourth place of the cipher alphabet. Perhaps the codemaker did not want plain `a` to become cipher `A`. You can see that alphabet at work on the [frequency analysis](/ciphers/frequency-analysis) page.
+
+  The bottom row need not hold letters either. Arab officials sometimes used symbols, so `a` might become `#` and `b` might become `+`. It is still one fixed swap for each letter.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## Count, don't guess
+
+For centuries scholars believed this cipher could not be broken. They were thinking about the number of keys. But there is a shortcut, and it ignores the keys completely.
+
+One cipher alphabet is used from start to finish. So a plain letter always turns into the same cipher letter. A letter that is common in the message is just as common in the ciphertext, wearing a disguise.
+
+<Try action="caught" button="Load a captured message">
+  No key is loaded. Look at "The commonest letter in the ciphertext" in the controls. In English the commonest letter is `E`, so that cipher letter is probably `E`. Now type the keyphrase `JULIUS CAESAR` and tap under plain `E` to check.
+</Try>
+
+One letter is only a start. But each letter you unmask helps you guess the words around it. The shortcut was first found by Arab scholars, and it reads a message in minutes, not billions of years.
+
+<Label>Challenge</Label>
+
+## A sealed letter
+
+<Challenge answer="NEVER WRITE THE KEY DOWN">
+  A letter arrives reading `VQIQB JBOGQ GNQ SQL YWJV`. Your chief once whispered the keyphrase to you: `MARY QUEEN OF SCOTS`.
+
+  Build the cipher alphabet. What does the letter say?
+
+  <Try action="sealed" button="Load the letter" />
+</Challenge>
+
+<Check question="How do you turn a keyphrase into a cipher alphabet?">
+  Drop the spaces and repeated letters and write what is left first. Then add the unused letters in alphabetical order, starting after the keyphrase's last letter and wrapping round at `Z`.
+</Check>
+
+<Label>What came next</Label>
+
+## The codebreakers arrive
+
+A huge number of keys is not the same as safety. The substitution cipher hides which letter is which, but it cannot hide how often each one appears. Language has habits, and the habits show through.
+
+The people who noticed were scholars in the Arab world. They invented the science of breaking ciphers without the key. Their tool was nothing more than careful counting, and you can use it yourself on the next page: [frequency analysis](/ciphers/frequency-analysis).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 1.
+- Auguste Kerckhoffs, *La Cryptographie militaire* (1883). The book quotes its rule that a cipher's safety must rest on the key, not on a secret method.

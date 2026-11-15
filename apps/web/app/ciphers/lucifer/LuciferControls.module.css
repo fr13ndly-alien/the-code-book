@@ -1,0 +1,22 @@
+.attack summary {
+  display: flex;
+  align-items: center;
+  min-height: var(--tap);
+  color: var(--color-accent);
+  cursor: pointer;
+}
+
+.attack ol {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(4.5rem, 1fr));
+  gap: var(--space-1) var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-cipher);
+  color: var(--color-text-muted);
+}
+
+.attack li[data-on="true"] {
+  color: var(--color-lamp);
+}

@@ -1,0 +1,146 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 5 and Appendix E. The wording is ours.
+*/}
+
+<Standfirst>
+  Publish a padlock that anyone can snap shut, and keep the only key that opens it.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## A sleepless night
+
+In April 1977, three researchers from MIT went to a Passover dinner and came home around midnight. Ron Rivest could not sleep. He lay on his couch with a mathematics textbook, turning over a puzzle that had beaten him for a year.
+
+Whitfield Diffie had dreamed up a new kind of cipher, with one key for locking and a different key for unlocking. Nobody knew how to build it. Rivest and Adi Shamir kept inventing ways. Their colleague Leonard Adleman kept finding the holes.
+
+That night the answer came. By daybreak Rivest had written a whole scientific paper. How can a key that everyone knows keep a secret?
+
+<Label>Try it</Label>
+
+## Send a kiss
+
+Bob wants to send Alice a kiss: the letter `X`. A computer stores `X` as the number 88. Alice has published two numbers, N = 187 and e = 7. Make a guess first: will the scrambled number look anything like 88?
+
+<Try action="book" button="Load the book's example">
+  Read "Ciphertext C" in the controls. Then type a different letter in "Message" and watch the working change.
+</Try>
+
+<Check question="What does 88 become?">
+  It becomes 11. Bob worked out 88<sup>7</sup> (mod 187). That means multiplying seven 88s together, dividing by 187 and keeping the remainder. Nothing about 11 hints at 88.
+</Check>
+
+<Label>How it works</Label>
+
+## Two primes and a padlock
+
+### One key to lock, another to open
+
+Every cipher before this was **symmetric**: the same key locked and unlocked. So the key had to be delivered in secret.
+
+An **asymmetric** cipher has two keys. Alice's **public key** only locks. She can print it on her business card. Her **private key** unlocks, and it never leaves her.
+
+Think of Alice handing out thousands of open padlocks. Anyone can snap one shut on a box. Only Alice has the key that opens them. Even Bob cannot reopen the box he has just locked.
+
+### Two primes make N
+
+A **prime number** is one that nothing divides exactly, except 1 and itself. Alice picks two primes in secret. The book calls them p and q, and uses 17 and 11.
+
+She multiplies them to get N = 187. She also picks a number e, here 7. Then she publishes N and e. That pair is her public key. The primes stay hidden.
+
+<Try action="book" button="Show Alice's keys">
+  Press ▲ next to "Prime p". Watch N, and the private number d, change in the top panel.
+</Try>
+
+### Locking with N and e
+
+To encipher a message M, Bob works out M<sup>e</sup> (mod N). This is a one-way function, like the one in [the key exchange](/ciphers/key-exchange).
+
+The numbers get huge if you multiply first and divide last. So the book uses a trick. Since 7 = 4 + 2 + 1, Bob only needs 88<sup>1</sup>, 88<sup>2</sup> and 88<sup>4</sup>, each kept small by taking the remainder as he goes. Those are 88, 77 and 132. Multiplied together, in mod 187, they make 11.
+
+### Opening with d
+
+Alice knows p and q, so she can do something nobody else can. She takes 16 × 10 = 160, which is one less than each prime, multiplied. Then she finds the number d that makes e × d leave a remainder of 1 when divided by 160. Here d = 23, because 7 × 23 = 161.
+
+To decipher, she works out 11<sup>23</sup> (mod 187). Out comes 88.
+
+<Try action="open" button="Open the message with d">
+  The ciphertext 11 is loaded. Follow the squares down the middle panel to the answer, 88, which is `X`.
+</Try>
+
+<DigDeeper title="Why real RSA does not go letter by letter">
+  Our simulator locks one letter at a time. The book warns that this is only for show. Every `X` would become the same number. So RSA would shrink to a monoalphabetic substitution, and [counting](/ciphers/frequency-analysis) would break it. Real RSA locks much larger blocks of bits at once, which leaves nothing to count. The book also names the tool Alice uses to find d quickly: Euclid's algorithm.
+</DigDeeper>
+
+<Label>The story</Label>
+
+## The least interesting paper
+
+Rivest, Shamir and Adleman worked on the eighth floor of a computer laboratory at MIT. For a year the first two had ideas and the third shot them down. All that failure steered them toward the answer.
+
+The morning after his sleepless night, Rivest handed Adleman the paper. This time Adleman found no fault. He only asked for his name to be removed, as the idea was Rivest's. Rivest refused. Adleman agreed to be listed third, expecting it to be the least interesting paper he ever signed.
+
+So the cipher is called **RSA**. It became the most influential cipher of modern times.
+
+<DigDeeper title="The British got there first, in secret">
+  In 1969 James Ellis, at Britain's secret GCHQ, proved that a cipher with a public key was possible. His spark was a wartime Bell Telephone report. It suggested that the person receiving a call could add noise to the line. Only they knew the noise, so only they could subtract it and hear the speech. The receiver, not the sender, did the locking. But Ellis could not find the mathematics. In 1973 a new recruit, Clifford Cocks, heard about the problem. He found what we now call RSA in about half an hour. In 1974 his friend Malcolm Williamson found the key exchange. All three had to stay silent. GCHQ let Cocks tell the story on 18 December 1997. Ellis had died a month before.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## Find the two primes
+
+RSA has one way in. If Eve can split N back into p and q, she can work out d just as Alice did. Splitting a number like this is called **factoring**.
+
+Multiplying two primes takes a moment. Undoing it means trying one divisor after another. With N = 187, that is quick.
+
+<Try action="attack" button="Let Eve factor 187">
+  Read the bottom panel. Eve needs only 6 tries to find 11 and 17, and then d.
+</Try>
+
+Now make the primes bigger. The book dares its readers to factor 1,709,023 with a calculator, and warns that it will take most of an afternoon.
+
+<Try action="dare" button="Let Eve factor 1,709,023">
+  Eve needs 601 tries. Alice's work hardly grew at all: she still multiplied just two numbers.
+</Try>
+
+In August 1977 the magazine *Scientific American* printed an N that was 129 digits long, with a $100 prize. It was factored on 26 April 1994, seventeen years later, by six hundred volunteers and their computers. The hidden message was "The magic words are squeamish ossifrage." Today's keys are far longer.
+
+<DigDeeper title="How big must N be?">
+  The book's chapter uses bigger primes than our toy: 17,159 × 10,247 = 175,828,273. Real ones are vastly bigger. Take two primes of about 65 digits each. Their N has about 130 digits. The book quotes an estimate that one 1990s home computer would need fifty years to factor it. A hundred million of them, working together, would need about fifteen seconds. So banks use an N of over 300 digits. Those same computers would then need more than a thousand years.
+</DigDeeper>
+
+<Label>Challenge</Label>
+
+## Steal a private key
+
+<Challenge answer="SPY">
+  You are Eve. A public key reads N = 247, e = 5. You catch three numbers sent to its owner: `239`, `188` and `33`. Each is one letter.
+
+  Press "Let Eve factor N" to get d. Then decipher the three numbers, one at a time. What is the word?
+
+  <Try action="intercepted" button="Load the public key" />
+</Challenge>
+
+<Check question="Why is it safe for Alice to tell everyone N?">
+  N alone only locks. To unlock you need d, and to find d you need the two primes inside N. For a big enough N, nobody can find them in a lifetime.
+</Check>
+
+<Label>What came next</Label>
+
+## Privacy for everyone?
+
+RSA ended the problem of delivering keys. Alice does not care who sees her public key. The more people, the better.
+
+But RSA has a cost. All that arithmetic with giant numbers needs far more computing power than an old-style cipher. In the 1970s, that kept it out of ordinary hands.
+
+Then home computers became fast and cheap. One man decided that everybody deserved this kind of secrecy, not only governments and big businesses. His program, and the trouble it caused him, open the last chapter: [Pretty Good Privacy](/ciphers/pgp).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 5 and Appendix E.
+- Martin Gardner, "A New Kind of Cipher that Would Take Millions of Years to Break", *Scientific American*, August 1977. The article that announced RSA.
+- R. L. Rivest, A. Shamir and L. Adleman, "A Method for Obtaining Digital Signatures and Public-Key Cryptosystems", *Communications of the ACM*, February 1978. The paper itself.

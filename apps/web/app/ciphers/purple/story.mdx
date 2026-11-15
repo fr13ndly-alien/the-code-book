@@ -1,0 +1,162 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  The Code Book (abridged) only names Purple, in chapter 4. How the machine worked and
+  how it was broken were checked against "PURPLE Revealed" (Freeman, Sullivan and Weierud,
+  Cryptologia, 2003), the NSA's Hall of Honor, two US Army history articles and Wikipedia
+  (see Further reading). The times of 7 December 1941 are from the report of the
+  Congressional Pearl Harbor committee (1946) and the State Department's record of the
+  meeting. The switch wiring and the message of 7 December 1941 are real. The wording is ours.
+*/}
+
+<Standfirst>
+  Japan's best cipher machine was rebuilt by Americans who never saw it, from telephone switches.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## A Friday afternoon in September
+
+Genevieve Grotjan had hoped to teach maths. Instead she took an office job working with figures. Then in 1939 she joined a small team of US Army codebreakers in Washington.
+
+Since early 1939 the team had stared at telegrams between Tokyo and Japan's embassies. A new machine had scrambled them, and no American had ever seen it. They called it **Purple**.
+
+On Friday 20 September 1940, Grotjan, aged 27, was comparing rows of letters on her worksheets. She saw something repeat. Then she saw it again, at the same spacing.
+
+What kind of machine leaves a pattern like that?
+
+<Label>Try it</Label>
+
+## Vowels in, vowels out
+
+The codebreakers' first find was simpler, and you can make it too. The simulator has the six letters `AEIOUY` plugged in as a group.
+
+Guess first: if you encipher only vowels, what kind of letters come out?
+
+<Try action="vowels" button="Encipher only vowels">
+  Read the ciphertext in the controls. Then tap a few letters on the strip at the top of the board and watch the plugboard.
+</Try>
+
+<Check question="What came out?">
+  Only vowels. Every letter kept changing, but none ever left the group of six. A vowel can only become one of the same six letters. That is the crack in the machine.
+</Check>
+
+<Label>How it works</Label>
+
+## Two machines in one box
+
+### A plugboard splits the alphabet
+
+Purple had no rotors. You typed on an electric typewriter, and a second typewriter printed the result. Between them sat a **plugboard**, a panel of sockets and cables.
+
+The plugboard split the alphabet into two unequal groups. Six letters, the **sixes**, went one way. The other twenty, the **twenties**, went another. The clerks could pick any six letters, and they changed the plugs every day.
+
+<Try action="start" button="Load a real phrase">
+  Tap letters on the strip. A brass line under a letter marks a six. Watch which group lights up on the plugboard.
+</Try>
+
+### Six letters, one switch
+
+Each group met a **stepping switch**, a part taken from automatic telephone exchanges. Think of an arm that clicks round 25 sets of contacts. Each set is wired differently.
+
+The sixes went through one switch. Each of its 25 positions shuffled the six wires. After every letter the arm clicked on one place. After 25 letters it was back at the start.
+
+<Try action="sixes" button="Follow a vowel">
+  The table shows this moment's shuffle of the six. Press ▲ next to "Sixes switch" and watch the bottom row change. Twenty-five presses bring it home.
+</Try>
+
+### Twenty letters, three switches
+
+The twenties had a harder road: three switches in a row, each with 25 positions. Together they made 25 × 25 × 25 = 15,625 shuffles of the twenty letters.
+
+Only one of the three stepped after each letter. Usually it was the **fast** switch. When the sixes switch stood on its last position, the **medium** switch stepped instead. Once in 625 letters, the **slow** switch took a turn. The clerks chose which switch played which part.
+
+<Try action="stepping" button="Catch all three stepping">
+  Each switch says "steps next" or "stays". Press ▲ next to "Letter shown" four times. You will see fast, then slow, then medium, then fast again.
+</Try>
+
+To decipher, the receiver set the same plugs and switch positions and ran the current the other way.
+
+<Try action="start" button="Load the phrase again">
+  Press "Feed the output back in". The page switches to "Decipher", and the plain message returns.
+</Try>
+
+<Check question="How many shuffles did a vowel meet, and how many did a consonant meet?">
+  With the vowels as the sixes, a vowel met only 25 shuffles of six letters, round and round. A consonant met 15,625 shuffles of twenty. One half of the machine was far weaker than the other.
+</Check>
+
+<Label>The story</Label>
+
+## The diplomats' machine
+
+Purple belonged to Japan's Foreign Office. From 1939 it carried the most secret telegrams between Tokyo and its ambassadors. It replaced an older machine, which the Americans called Red. Red had also treated the vowels `AEIOUY` apart from the other letters.
+
+The US Army's Signal Intelligence Service set out to break it. William Friedman was its chief codebreaker. Frank Rowlett led the team that worked on Purple day by day. The secrets it produced were called **Magic**.
+
+The Code Book names Purple in the same breath as the victory at Midway in June 1942. They were different systems. Purple was for diplomats. The Midway orders went out in a naval code, JN-25, which US Navy codebreakers broke.
+
+The switch wiring on this page is the real wiring, as the codebreakers recovered it.
+
+<Try action="intercept" button="Load a real intercept">
+  This is the real ciphertext of 7 December 1941, with that day's settings. Read the strip: `THEGOVE-NMENTOFJAPAN`. The `-` is a letter lost on the radio.
+</Try>
+
+<DigDeeper title="The message that arrived too late">
+  That intercept is part 1 of a note in fourteen parts. Tokyo told its ambassador to hand it to the American government at 1 p.m. on 7 December 1941. The Americans deciphered it before the embassy's own clerks had finished. The ambassador delivered it at 2.20 p.m. By then the attack on Pearl Harbor had begun. The note broke off talks, but it said nothing about where or when Japan would strike.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## Count, split, then solve
+
+The attack began with counting. In English the six vowels do about four tenths of all the work. The machine spreads that evenly over six cipher letters. The other twenty letters share what is left, so their bars are about half as tall.
+
+<Try action="counted" button="Count a long ciphertext">
+  This is the same real message, enciphered here with the vowels as the sixes. Six bars stand tall. Pick "Sixes first" under "Order of the bars" to check your eye.
+</Try>
+
+Once the six were known, the codebreakers could lift them out and study them alone. Six letters and 25 shuffles is a small puzzle. The team had solved it by April 1939.
+
+The twenties took far longer. Grotjan's repeats were the key: they showed that the twenties ran in cycles too. From that the team worked out the three switches and their wiring. By 27 September 1940 they had read two more messages.
+
+Leo Rosen, an engineer on the team, built a copy of the machine from stepping switches. At the end of the war, a piece of a real Purple machine was found in Japan's embassy in Berlin. Its switches were almost the same as the ones Rosen had picked.
+
+<Try action="interceptCount" button="Count the real intercept">
+  That day the sixes were `NOKTYU`. Real traffic is messier, but four of the six are still the tallest bars.
+</Try>
+
+<Label>Challenge</Label>
+
+## Read the Magic
+
+<Challenge answer="MAGIC">
+  An intercept reads `LUDOT`. The vowels are the sixes. The switches start at 9, 1, 24 and 6, and the fast, medium, slow order is II, III, I.
+
+  Set the four switches and the order. What is the word?
+
+  <Try action="challenge" button="Load the intercept" />
+</Challenge>
+
+<Check question="Before you set anything, what could you already say about the second and fourth letters?">
+  They had to be vowels. `U` and `O` are sixes letters, and a six can only come from a six. That one leak, repeated over thousands of letters, is what let the codebreakers split the machine in two.
+</Check>
+
+<Label>What came next</Label>
+
+## No machine at all
+
+Purple's designers kept a habit from the older machine, the split into six and twenty. The habit gave the new machine away.
+
+Cipher machines had another fault on a battlefield: they were slow. Every message had to be typed in and noted down letter by letter, at both ends. Soldiers under fire could not wait.
+
+In 1942 the US Marines tried something with no switches, no wiring and no code books. It was a language almost no outsider could speak: [the Navajo code](/ciphers/navajo).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 4. The book names Purple; the rest of this page comes from the sources below.
+- Wes Freeman, Geoff Sullivan and Frode Weierud, ["PURPLE Revealed"](https://cryptocellar.org/pubs/purple-revealed.pdf), *Cryptologia*, 2003. The wiring tables and stepping rule used by our simulator, and the message of 7 December 1941.
+- National Security Agency, ["Genevieve Grotjan Feinstein"](https://www.nsa.gov/Press-Room/Digital-Media-Center/Biographies/Biography-View-Page/Article/1621585/genevieve-grotjan-feinstein/). Her Hall of Honor biography and the discovery of September 1940.
+- Michael E. Bigelow, ["SIS Makes Breakthrough Against Japanese Code (20 SEP 1940)"](https://www.dvidshub.net/news/454045/sis-makes-breakthrough-against-japanese-code-20-sep-1940), US Army Intelligence Center of Excellence, 2023. An army historian's account of the breakthrough and of Rowlett's team.
+- Yale Law School, The Avalon Project, ["Japanese Note to the United States December 7, 1941"](https://avalon.law.yale.edu/wwii/p3.asp). The State Department's record of the meeting at 2.20 p.m., with the full text of the note.
+- Wikipedia, ["Type B Cipher Machine"](https://en.wikipedia.org/wiki/Type_B_Cipher_Machine). The design, the dates and the American copies.

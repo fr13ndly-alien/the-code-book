@@ -1,0 +1,63 @@
+.cartouche {
+  display: grid;
+  gap: var(--space-1);
+  justify-items: center;
+  max-width: 100%;
+}
+
+.cartouche h3 {
+  font-size: var(--text-sm);
+  font-weight: normal;
+  color: var(--color-text-muted);
+}
+
+/* The rope loop that marks a royal name. */
+.ring {
+  display: flex;
+  padding: var(--space-1) var(--space-2);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--space-8);
+}
+
+.sign {
+  display: grid;
+  justify-items: center;
+  /* Nine signs must fit a phone, so a sign is narrower than a normal tap target but much taller. */
+  width: calc(var(--tap) * 0.75);
+  padding: var(--space-1) 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-cipher);
+}
+
+.sign[data-same="true"] {
+  background: var(--color-surface-raised);
+  color: var(--color-accent);
+}
+
+.sign[aria-pressed="true"] {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+
+.greek {
+  min-height: 1.5em;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.sound {
+  min-height: 1.5em;
+  color: var(--color-lamp);
+}
+
+.sign[data-verdict="clashes"] .sound {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.sign[data-verdict="fits"] .greek {
+  color: var(--color-lamp);
+}

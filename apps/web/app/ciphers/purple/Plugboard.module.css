@@ -1,0 +1,50 @@
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+  max-width: 100%;
+}
+
+.group {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.name {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.letters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  /* Ten letters to a line, so the twenties make two rows on a phone. */
+  max-width: calc(10 * (var(--space-6) + 2px));
+  font-family: var(--font-cipher);
+}
+
+.letters span {
+  display: grid;
+  place-items: center;
+  width: var(--space-6);
+  height: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--space-1);
+  background: var(--color-surface);
+}
+
+/* The sixes are brass, the twenties plain: the same two colours as on the message strip. */
+.group[data-kind="sixes"] .letters span {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.letters span[data-on="true"],
+.group[data-kind="sixes"] .letters span[data-on="true"] {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+  font-weight: bold;
+}

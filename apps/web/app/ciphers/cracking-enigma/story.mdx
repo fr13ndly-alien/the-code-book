@@ -1,0 +1,180 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 3 ("Cracking the Enigma" and "The Geese that Never Cackled").
+  The Enigma page tells the outline of this story. This page is about doing the attacks. The wording is ours.
+*/}
+
+<Standfirst>
+  Ten thousand trillion keys, a new one every midnight, and two tricks that made the number not matter.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## The man at the window
+
+Warsaw, 1934. Hermann Göring, one of the most powerful men in Germany, is in town. He and his party lay a wreath at the Tomb of the Unknown Soldier.
+
+From an office window next door, a quiet young mathematician looks down at them. His name is Marian Rejewski. The Germans below trust their Enigma machines completely. Rejewski can read their most secret messages.
+
+He has never seen a real army Enigma. He has not tried even a tiny share of its keys. So how do you pick one key out of 10,000,000,000,000,000 before the day ends?
+
+<Label>Try it</Label>
+
+## Pull out a cable
+
+The simulator shows what Rejewski saw each morning: the first six letters of the day's messages. Under them is a table, and under that, some chains of letters with their lengths. Guess first: if you pull out one plugboard cable, will the chain lengths change?
+
+<Try action="chains" button="Load today's messages">
+  Under "Plugboard cables", press `A–L` to pull that cable out. Watch the chains, and watch "Chain lengths today".
+</Try>
+
+<Check question="What changed, and what did not?">
+  The letters inside the chains moved about. The lengths did not: still two chains of 11 links and four of 1. Most of Enigma's keys come from the plugboard, and you have just found something the plugboard cannot touch.
+</Check>
+
+<Label>How it works</Label>
+
+## Two ways in
+
+### The key that was sent twice
+
+Every Enigma operator set his machine to the **day key** from a codebook. But he did not use it for his whole message. He chose three letters of his own, the **message key**, and typed them twice at the day's setting: `PGHPGH`. Then he turned his rotors to `PGH` and typed the message.
+
+The repeat was a check against radio noise. It was also a gift. In every message that day, the 1st and 4th cipher letters stand for the same plain letter, typed three key presses apart.
+
+<Try action="chains" button="Load today's messages">
+  Look at the block of six-letter groups. In each, the 1st and 4th letters are lit. Press "2 and 5" under "Compare letters" to light the next pair.
+</Try>
+
+### From pairs to chains
+
+Rejewski wrote the pairs in a table: each 1st letter on top, its 4th letter below. With enough messages, the table fills up.
+
+Then he played a game with it. Start at `A`. Look below it, and find that letter in the top row. Look below again. Keep going until you are back at `A`. That loop is a **chain**. Start again from an unused letter until every letter is in a chain.
+
+<Try action="follow" button="Follow the letter A">
+  Tap under the letter that sits below `A`, then under the letter below that one. You are walking along the lit chain in the list.
+</Try>
+
+<DigDeeper title="The book's own table">
+  The book prints one finished table and draws four chains from it, starting `A` to `F` to `W` and home again. You can load that exact table. The book never says which day key made it, so the rotors and cables do not belong to it.
+
+  <Try action="bookTable" button="Load the book's table">
+    Count the links in each chain: 3, 9, 7 and 7. Tap under `A` and follow the shortest chain yourself.
+  </Try>
+</DigDeeper>
+
+### A fingerprint of the rotors
+
+The chains changed every day. Rejewski's great discovery was the thing you saw at the start. A plugboard cable swaps two letters, so it renames letters in the chains. It cannot make a chain longer or shorter. The lengths depend only on the rotors.
+
+So the lengths are a fingerprint of the rotor settings. There are 6 rotor orders and 17,576 rotor positions: 105,456 settings in all. His team spent a year listing the chain lengths for each one. After that, finding the day's rotor settings meant looking up a fingerprint in a catalogue.
+
+<Try action="chains" button="Load today's messages">
+  Press ▲ next to "Right rotor" once. The chain lengths change completely. Press ▼ to go back, and they return.
+</Try>
+
+<Check question="The catalogue gave the rotor settings. How did Rejewski then find the cables?">
+  He set his copy of Enigma to those rotor settings with no cables at all, and typed in a message. Out came near-German, such as `ALLIVEINBELRIN`. That should be "arrive in Berlin", so `R` and `L` must be joined by a cable.
+</Check>
+
+### A guessed word
+
+In time the Germans would surely stop repeating the message key. At Bletchley Park in England, Alan Turing looked for an attack that did not need it. He used a **crib**: a word you can guess is in the message. A weather report sent just after six each morning was almost sure to contain `WETTER`.
+
+But where? One rule helps. Because of its reflector, Enigma never turns a letter into itself.
+
+<Try action="weather" button="Load the weather report">
+  The crib `WETTER` lies under the start of the message, and one column is lit: a `T` under a `T`. That position is impossible. Press ▲ next to "Crib starts at letter" and count the positions you can cross out.
+</Try>
+
+<DigDeeper title="The book's own crib">
+  The book shows a longer guess, `WETTERNULLSECHS`, under twenty cipher letters. It then slides the guess one place each way. Its cipher letters are a made-up example, not real Enigma output. So the search is switched off here.
+
+  <Try action="bookCrib" button="Load the book's crib">
+    The crib starts at letter 3, and an `E` sits under an `E`. Press ▼ once: now an `S` sits under an `S`. Press ▲ twice to reach letter 4, where nothing clashes.
+  </Try>
+</DigDeeper>
+
+### Testing every setting
+
+At letter 6 nothing clashes. That does not prove the crib belongs there. It only earns the position a test: try every rotor setting and see whether any turns those six cipher letters into `WETTER`.
+
+<Try>
+  With the crib at letter 6, press "Test 17,576 rotor settings". Read the rotor windows in the caption and the message in the bottom row. Then slide to letter 7 and test again.
+</Try>
+
+Your device ran that search in a blink. Turing had to build a machine for it, the **bombe**. Here the plugboard is empty and the rotor order is known, to keep the search small. The real bombe had to beat both.
+
+<Label>The story</Label>
+
+## Fear, mathematics and a spy
+
+The book gives three reasons the Poles succeeded. Fear: Poland sat between Germany and Russia. Mathematics: the cipher bureau hired mathematicians from Poznań, who spoke German. And a spy: Hans-Thilo Schmidt, code-named Asche, sold the documents that revealed the rotor wirings.
+
+When the Germans changed their routine, Rejewski's catalogue was useless. So he built machines to search the 17,576 positions for him, one for each of the six rotor orders. These first bombes found a day key in about two hours.
+
+In December 1938 the Germans gave every operator two extra rotors. Six rotor orders became sixty. A month later the plugboard went from six cables to ten. Poland could not afford ten times as many bombes. On 24 July 1939 the Poles showed everything to the French and British.
+
+<DigDeeper title="The keys in the desk drawer">
+  Schmidt went on selling secrets for seven years, including codebooks with 38 months of day keys. Rejewski's chief, Major Gwido Langer, kept them locked away and never told him. He wanted his codebreakers ready for the day the spy fell silent. It came just before the new rotors arrived.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## A hut full of knitting needles
+
+Bletchley Park began with two hundred people and grew to seven thousand. Its codebreakers also learned to bet on human laziness. Tired operators picked message keys from letters side by side on the keyboard, such as `QWE`. Others used the same three letters again and again, perhaps a girlfriend's initials. Such keys were nicknamed **cillies**, and the codebreakers tried them first.
+
+Turing's bombes did the heavy work. By the end of 1941 fifteen were running, "clattering like a million knitting needles". On a good day one found a key within an hour, and every message sent that day could then be read.
+
+A bombe was useless without a good crib, in the right place. That part stayed human.
+
+<Check question="The message you read says HEUTE WETTER NULL SECHS REGEN UND NEBEL. Why was a report like this so valuable?">
+  It means "Today, weather at zero six: rain and fog". Nobody cared about the fog. But the report came at the same hour each day with the same words, so it was easy to guess. One guessed word gave the day's key, and the key opened every other message.
+</Check>
+
+<DigDeeper title="How the bombe beat the plugboard">
+  The full edition of the book explains Turing's answer. Inside a long crib he looked for loops: one letter leads to a second, the second to a third, and the third back to the first. Like Rejewski's chains, such loops can be tested in a way that cancels the cables out.
+</DigDeeper>
+
+<DigDeeper title="Keeping the break a secret">
+  The news that came from Enigma messages had a codename: **Ultra**. It was only useful while Germany believed Enigma was safe. So the Allies hid what they knew. They let some U-boats go. Before attacking others they sent a spotter plane first, so the attack looked like luck. Sometimes they sent fake reports of a sighting. A German inquiry blamed bad luck or a spy. It called a broken Enigma impossible.
+</DigDeeper>
+
+<Label>Challenge</Label>
+
+## The night report
+
+<Challenge answer="JMP">
+  This message was sent at night: `DMTTITMTWYQADJCXFRNLZDFXDWEP`
+
+  You are sure it contains `WETTER`. Slide the crib to the first position with no clash, then test the rotor settings.
+
+  Which three letters were in the rotor windows?
+
+  <Try action="night" button="Load the night report" />
+</Challenge>
+
+<Check question="Why did you not need to test the first six positions?">
+  At each of them a letter of `WETTER` sits under the same letter in the ciphertext. Enigma cannot turn a letter into itself, so those positions are ruled out without any search.
+</Check>
+
+<Label>What came next</Label>
+
+## Rules leave patterns
+
+The codebreakers kept their secret for thirty years. Turing, who did as much as anyone, died in 1954 with his work still unknown.
+
+Both attacks worked for the same reason. Enigma's weak points were its habits: a key typed twice, a weather report every morning, a letter that could never be itself. A machine follows rules, and rules leave patterns.
+
+On the other side of the world, American codebreakers faced a machine of their own, built in Japan from telephone switches: [the Purple machine](/ciphers/purple).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 3. Rejewski's chains and Turing's cribs, with the tables this page is built on.
+- [The Enigma machine](/ciphers/enigma). The machine itself, on this site.
+- [Bletchley Park](https://bletchleypark.org.uk/). The huts are now a museum.
+- [Crypto Museum: Enigma](https://www.cryptomuseum.com/crypto/enigma/). The rotor wirings used by our simulator.

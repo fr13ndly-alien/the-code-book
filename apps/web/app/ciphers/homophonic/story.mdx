@@ -1,0 +1,140 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  This cipher is in the full edition of The Code Book only (chapter 2).
+  Dates and numbers for the Great Cipher and the Mantua cipher were checked
+  against the sources in Further reading. The wording is ours.
+*/}
+
+<Standfirst>
+  Give the busy letters more disguises, and the tall bars of the frequency chart melt away.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## The count that found nothing
+
+Picture a codebreaker at his desk, some years after Mary Queen of Scots lost her head. A captured letter lies in front of him. It is all numbers, from `00` to `99`.
+
+He knows what to do. He counts every number and waits for one to stand out, the way `E` always does. Nothing stands out. Every number turns up about one time in a hundred. There is no tall bar to grab, and no rare letter either.
+
+Somebody has ironed the language flat. How can a cipher make every symbol equally common, when the letters behind them are not?
+
+<Label>Try it</Label>
+
+## Watch the tall bar vanish
+
+The simulator has two charts. The top one counts the letters of a message. The bottom one counts the numbers that replace them. Guess first: `E` is the tallest bar on top. What happens to it underneath?
+
+<Try action="duke" button="Load the duke's message">
+  Tap the tall `E` bar in the top chart. Its numbers light up in the table and in the bottom chart. Count the lit bars.
+</Try>
+
+<Check question="Where did the tall E bar go?">
+  It was cut into twelve. `E` has twelve different numbers, and the sender picks among them. Each number does only a twelfth of the work, so each makes a short bar.
+</Check>
+
+<Label>How it works</Label>
+
+## Many masks for busy letters
+
+### A hundred numbers to share
+
+In a **homophonic substitution cipher**, one letter can have several symbols. The name comes from Greek words meaning "same sound". The clever part is how many symbols each letter gets.
+
+`A` makes up about 8 per cent of English, so it gets eight numbers. `E` is about 12 per cent, so it gets twelve. Rare letters such as `Q` and `Z` get one each. Between them, the 26 letters use every number from `00` to `99`.
+
+The table on the simulator is the key. The sender and the receiver must both hold the same table.
+
+<Try>
+  Press ▲ next to "Table" to deal the numbers out afresh. Every letter keeps its share, but the numbers move. Press ▼ to come back to table 1.
+</Try>
+
+### Pick any one
+
+To encipher a letter, look down its column and write any one of its numbers. The next time that letter comes up, pick again.
+
+Now think about the count. `A` fills 8 per cent of a message, and that is split between eight numbers. So each of those numbers fills about 1 per cent. The same sum works for every letter. Every number ends up filling about 1 per cent of the ciphertext.
+
+A short message is never perfectly flat. By luck, some numbers appear twice and some not at all. What matters is that no number towers over the rest.
+
+<Try action="blank" button="Clear the message">
+  Type `SEE THE BEES` and look at the number under each `E`. Then press ▲ next to "Roll the picks again". The numbers change, and the message does not.
+</Try>
+
+### One way back
+
+Reading the message is easy for the receiver. A letter has many numbers, but each number belongs to only one letter. So there is exactly one way back.
+
+Remember that fact. It makes life simple for a friend with the table. It will also help an enemy without one.
+
+<Try action="duke" button="Load the duke's message again">
+  Set "I want to" to "Decipher". The numbers move into the box and the letters come back. Tap any number in the message to see its one letter in the table.
+</Try>
+
+<Label>The story</Label>
+
+## A halfway house
+
+After Mary's death, everyone knew that plain substitution was unsafe. A much stronger cipher, the Vigenère cipher, already existed. But it was slow and fiddly to use, and a busy clerk with a pile of letters could easily make mistakes.
+
+So codemakers looked for something in between. The homophonic cipher was nearly as quick as plain substitution, and simple counting could not touch it.
+
+The idea was old. The oldest one we know was made in Mantua, in Italy, in 1401. It already gave each vowel several symbols. Later ciphers stretched the trick to more letters, and then to parts of words.
+
+<DigDeeper title="The Great Cipher of Louis XIV">
+  The grandest relative of this cipher was made in France. Antoine Rossignol and his son Bonaventure built the Great Cipher for King Louis XIV. It used 587 numbers, and they stood for syllables, not single letters. It also had traps: one number told the reader to ignore the number before it.
+
+  After the cipher fell out of use, nobody could read the king's secret letters. In 1890 some of them were handed to a French army codebreaker named Étienne Bazeries. He broke the cipher around 1893, after about three years of work. His way in was a guess that one repeated run of numbers, `124-22-125-46-345`, spelled *les ennemis*, "the enemies".
+
+  One letter he read was about a disgraced general, Bulonde. Bazeries guessed that he was the famous prisoner called the Man in the Iron Mask. Later historians doubt it.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## Q gives the game away
+
+Flattening the count hides how often each letter appears. It does not hide which letters stand next to each other. Every letter has habits. The most famous one is that in English `Q` is almost always followed by `U`.
+
+`Q` is rare, so it has only one number. `U` has three. So somewhere in a long ciphertext there is a number that is only ever followed by the same three numbers. Find it, and you have `Q` and every `U` at once. Other habits give more letters, and each letter found makes the next one easier.
+
+<Try action="queen" button="Load a message full of Qs">
+  The number `84` is picked. Read the caption: which numbers come after it? Now tap a number in the `E` column of the table and compare.
+</Try>
+
+There is a deeper reason too. Each number stands for one letter and never changes. So this is still a monoalphabetic cipher, in a clever coat. Patient codebreakers beat it with their old tools: pairs of letters, patterns and guessed words.
+
+<Label>Challenge</Label>
+
+## Fifteen numbers
+
+<Challenge answer="NO BAR STANDS TALL">
+  A spy hands you a strip of paper. It was written with table 1:
+
+  `72 09 97 98 85 15 35 82 58 87 22 32 20 34 11`
+
+  Find each number in the table, or set up the deciphering desk and type the numbers in. What does the strip say?
+
+  <Try action="desk" button="Set up the deciphering desk" />
+</Challenge>
+
+<Check question="Why does E get more numbers than Q?">
+  Because `E` does far more work. With one number each, the number for `E` would turn up about a hundred times as often as the number for `Q`. Twelve numbers for `E` and one for `Q` make every number about equally common.
+</Check>
+
+<Label>What came next</Label>
+
+## Hiding one habit is not enough
+
+The homophonic cipher shows how codemakers think. They found the tool their enemy used and took it away. But they left the other habits of the language in place, and that was enough for a patient codebreaker.
+
+Not everyone wanted the extra strength anyway. Plain substitution was so easy that people kept using it for centuries, dressed up in new symbols. In the 1700s the Freemasons kept their records in a cipher made of nothing but lines and dots: [the pigpen cipher](/ciphers/pigpen).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book* (full edition, 1999), chapter 2. The homophonic cipher, the `Q` and `U` weakness and the Great Cipher.
+- Simon Singh, [The Black Chamber: Homophonic cipher](https://simonsingh.net/The_Black_Chamber/homophonic_cipher.html). The author's own page, with a cipher to try.
+- David Kahn, *The Codebreakers: The Story of Secret Writing* (1967; revised edition 1996). The Mantua cipher of 1401 and the Rossignols.
+- Wikipedia, [Great Cipher](https://en.wikipedia.org/wiki/Great_Cipher). The 587 numbers, Bazeries and the Bulonde letter, with references.
+- Wikipedia, [Substitution cipher](https://en.wikipedia.org/wiki/Substitution_cipher). The Mantua cipher as the earliest known homophonic cipher.

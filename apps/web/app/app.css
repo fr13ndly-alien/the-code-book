@@ -1,0 +1,118 @@
+/*
+ * Global styles: design tokens and element defaults only.
+ * Component styles live next to the component in a *.module.css file.
+ */
+
+:root {
+  /* Colour: a dark workshop for the machines, cream paper for reading. */
+  --color-bg: #15120f;
+  --color-surface: #211c17;
+  --color-surface-raised: #2e2720;
+  --color-border: #4a3f33;
+  --color-text: #f1e9da;
+  --color-text-muted: #b5a892;
+  --color-accent: #e0b04a; /* brass */
+  --color-accent-ink: #1c1509; /* text on brass */
+  --color-lamp: #ffd76a;
+  --color-paper: #f5eedf;
+  --color-paper-edge: #d9cdb4;
+  --color-ink: #2a231b;
+  --color-ink-muted: #645848;
+  --color-ink-accent: #8a4b12;
+
+  /* Type */
+  --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-story: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-cipher: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+
+  /* Space: multiples of 4px */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  --radius: 0.5rem;
+  --tap: 2.75rem; /* smallest touch target, 44px */
+  --header-height: 3rem;
+  --story-width: 30rem;
+  --ease: 220ms ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-ui);
+  font-size: var(--text-md);
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--color-accent);
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.message-page {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+  padding: var(--space-8) var(--space-4);
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

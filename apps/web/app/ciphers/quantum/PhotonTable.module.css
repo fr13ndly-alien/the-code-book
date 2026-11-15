@@ -1,0 +1,72 @@
+/* The table is wider than a phone, so it scrolls sideways in its own strip and the caption stays put. */
+.scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: var(--space-1);
+}
+
+.table {
+  border-collapse: collapse;
+  font-family: var(--font-cipher);
+  font-size: var(--text-md);
+}
+
+.table th {
+  padding-right: var(--space-3);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: normal;
+  color: var(--color-text-muted);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.table td {
+  width: var(--space-8);
+  min-width: var(--space-8);
+  height: var(--space-8);
+  padding: 0;
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.table tr[data-kind="photon"] td,
+.table tr[data-kind="key"] td {
+  color: var(--color-lamp);
+}
+
+.table tr[data-kind="eve"] th,
+.table tr[data-kind="eve"] td {
+  color: var(--color-accent);
+}
+
+/* Photons that Alice and Bob throw away fade once the matches are known. */
+.table td[data-dim="true"] {
+  color: var(--color-border);
+}
+
+.table td[data-on="true"] {
+  background: var(--color-surface-raised);
+  font-weight: bold;
+}
+
+/* A row of buttons under the table, one per photon, tall enough to tap. */
+.pickers td {
+  height: var(--tap);
+  border: 0;
+}
+
+.pickers button {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0 0 var(--radius) var(--radius);
+  background: transparent;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.pickers button[aria-pressed="true"] {
+  color: var(--color-accent);
+  font-weight: bold;
+}

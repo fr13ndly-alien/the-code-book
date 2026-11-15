@@ -1,0 +1,80 @@
+/* The three columns are narrow on a phone. If they still do not fit, only the table scrolls. */
+.scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.table th {
+  padding: var(--space-2) var(--space-1);
+  font-weight: normal;
+  color: var(--color-text-muted);
+  text-align: left;
+}
+
+.table thead th {
+  color: var(--color-accent);
+  font-weight: bold;
+  text-align: center;
+}
+
+.table td {
+  min-width: 4.5rem;
+  padding: var(--space-2) var(--space-1);
+  overflow-wrap: anywhere;
+  border: 1px solid var(--color-border);
+  font-family: var(--font-cipher);
+  text-align: center;
+  vertical-align: top;
+}
+
+.table thead td,
+.table td:empty {
+  min-width: 0;
+  border-color: transparent;
+}
+
+.table b {
+  color: var(--color-lamp);
+}
+
+/* What travels on the open line is on a raised surface; what stays private is not. */
+.table td[data-kind="public"] {
+  background: var(--color-surface-raised);
+}
+
+.table td[data-kind="secret"] {
+  border-style: dashed;
+}
+
+.table p {
+  margin-top: var(--space-2);
+}
+
+.guesses {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-1) var(--space-3);
+  max-width: 16rem;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  color: var(--color-text-muted);
+}
+
+.guesses li[data-on="true"] {
+  color: var(--color-lamp);
+  font-weight: bold;
+}
+
+@media (min-width: 60rem) {
+  .table td {
+    min-width: 8.5rem;
+    padding: var(--space-2) var(--space-3);
+  }
+}

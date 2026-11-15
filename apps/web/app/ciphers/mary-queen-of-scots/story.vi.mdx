@@ -1,0 +1,154 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Retold from Mật mã: Từ cổ điển đến lượng tử, chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland
+  (pages 17–20, 58–62 and 66–80). Follows docs/i18n/vi-glossary.md. The wording is ours.
+  The signs are stand-ins: Mary's real signs are not in Unicode.
+*/}
+
+<Standfirst>
+  Một nữ hoàng bị giam cầm giấu âm mưu ám sát sau những ký hiệu lạ. Một nhà giải mã đã ngồi đếm chúng.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Chiếc ghế bọc nhung đỏ thẫm
+
+Ngày 15 tháng 10 năm 1586, Nữ hoàng Mary xứ Scotland bước vào phòng xử án đông nghẹt người ở Lâu đài Fotheringhay. Bà tưởng chiếc ngai giữa phòng là dành cho mình. Không phải. Chỗ của bà là một chiếc ghế bọc nhung đỏ thẫm, ghế của bị cáo. Bà bị buộc tội phản nghịch: âm mưu giết người chị họ, Nữ hoàng Elizabeth của nước Anh, để cướp ngôi.
+
+Mary không được có người bào chữa, cũng không được gọi nhân chứng. Nhưng bà vẫn còn một hy vọng. Mọi lá thư bà gửi cho nhóm mưu phản đều viết bằng mật mã, thành những dãy ký hiệu lạ. Nếu không ai đọc được, sẽ không ai chứng minh được bà đã viết gì.
+
+Mạng sống của bà giờ treo trên những ký hiệu ấy. Làm sao tạo ra một mật mã mà nhà giải mã không thể cứ đếm là lần ra?
+
+<Label>Thử xem</Label>
+
+## Viết như một nữ hoàng
+
+Trình mô phỏng cho thấy một câu trong câu chuyện của Mary, đã đổi thành ký hiệu. Các ký hiệu ở đây chỉ là đồ thay thế, không phải ký hiệu thật của Mary: ký hiệu của bà không có trên bàn phím nào. Đoán trước khi nhìn kỹ nhé: có phải ký hiệu nào cũng thay cho một chữ cái?
+
+<Try action="postscript" button="Mở bức thư">
+  Chạm vào ký hiệu `2` trong bức thư, rồi tìm nó đang sáng trong bảng chìa khóa ở dưới. Làm tương tự với `∴`.
+</Try>
+
+<Check question="2 và ∴ thay cho cái gì?">
+  `2` thay cho nguyên một từ: mạo từ hay gặp nhất của tiếng Anh. `∴` chẳng thay cho gì cả. Nó là một ký tự không, đặt vào chỉ để nhà giải mã mất thời gian.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Ba mẹo trên một tờ giấy
+
+### Mỗi chữ một ký hiệu
+
+Cốt lõi của mật mã Mary là một mật mã thay thế, chỉ với một bảng chữ cái mật mã. Chữ nào cũng có ký hiệu riêng, và ký hiệu ấy không bao giờ đổi. Bảng chữ cái của bà chỉ có 23 ký hiệu, không có `J`, `V` và `W`. Người thời ấy viết `I` thay cho `J`, `U` thay cho `V`. Trên trình mô phỏng, một chữ `W` thành hai chữ `U`.
+
+Tờ giấy ghi các ký hiệu ấy chính là chìa khóa. Mary và những người bạn của bà, mỗi người giữ một bản. Muốn viết, bạn tra từng chữ rồi chép ký hiệu của nó. Muốn đọc, bạn tra từng ký hiệu rồi chép chữ của nó.
+
+<Try action="plain" button="Chỉ dùng ký hiệu chữ cái">
+  Gõ tên bạn vào ô “Tin nhắn của bạn”. Chạm vào một ký hiệu trong bức thư để xem nó ứng với chữ nào trong bảng chìa khóa.
+</Try>
+
+### Những ký hiệu chẳng có nghĩa
+
+**Ký tự không** là những ký hiệu không thay cho chữ nào cả. Mật mã của Mary có bốn ký tự như thế. Người viết rải chúng vào đâu tùy thích. Người nhận biết trước nên cứ thế bỏ qua.
+
+Với kẻ do thám, ký tự không trông chẳng khác gì các ký hiệu khác. Nó bị đếm lẫn với chữ thật, nên phép đếm sai lệch. Một ký tự không chen vào giữa một từ quen thuộc còn che mất hình dạng của từ đó.
+
+<Try action="nulls" button="Rắc thật nhiều ký tự không">
+  Nhìn hàng trên cùng của bức thư: chỗ nào ghi “không” là một ký hiệu thêm vào. Nhấn ▲ cạnh “Kiểu rải ký tự không” để rải chúng theo cách khác. Bức thư thì vẫn y nguyên.
+</Try>
+
+### Ký hiệu cho cả một từ
+
+**Mã từ** thay cả một từ bằng một ký hiệu hay một từ khác. **Mã chữ cái** thay từng chữ cái một. Hệ thống của Mary dùng cả hai. Nó có 35 ký hiệu cho những từ hay gặp, như “the” (mạo từ), “and” (và), “send” (gửi) và “your” (của bạn). Ở đây chúng tôi giữ lại mười hai ký hiệu.
+
+Hệ thống trộn một bảng chữ cái mật mã với một danh sách ngắn các **từ mã** gọi là **mã hỗn hợp**. Cuốn sổ của nó có thể chỉ gồm hai trang: một trang bảng chữ cái mật mã, một trang từ mã. Từ mã giúp viết nhanh hơn. Chúng còn giấu đi những từ hay gặp nhất của tiếng Anh, thứ nhà giải mã tìm trước tiên.
+
+<DigDeeper title="Ví dụ trong chính cuốn sách">
+  Sách đưa ra một bộ mã từ nhỏ gồm chín từ. Ba trong số đó: “assassinate” (ám sát) là `D`, “king” (vua) là `Ω` và “tonight” (đêm nay) là `28`. Vậy “assassinate the king tonight” (ám sát nhà vua đêm nay) thành `D-Ω-28`. Mạo từ ở giữa câu không có từ mã nên bị bỏ luôn.
+
+  Còn với ký tự không, sách cho mỗi chữ cái một con số từ 1 đến 99. Thế là dùng hết 26 số, còn dư 73 số chẳng thay cho gì.
+</DigDeeper>
+
+<DigDeeper title="Sao không dùng mã từ cho mọi thứ?">
+  Mã từ thoạt nhìn có vẻ mạnh hơn. Nhà giải mã phải đoán hàng trăm từ chứ không chỉ 26 chữ cái. Nhưng mã từ cần một **sổ mã** dày như cuốn từ điển, có mục cho mọi từ bạn có thể cần. Soạn nó thì mệt, mang theo thì vướng.
+
+  Tệ hơn, chỉ cần kẻ thù lấy được một cuốn là mọi bức thư đều lộ. Khi đó phải soạn sổ mới và đưa tới tận tay từng người. Còn chìa khóa của mã chữ cái thì ngắn. Bạn dễ đổi nó và dễ học thuộc.
+</DigDeeper>
+
+Còn một ký hiệu nữa, gọi là “dowbleth” (chữ cái kép): nó báo rằng ký hiệu theo sau là một chữ cái viết đôi. Nhờ vậy, “accomplish” (hoàn thành) chỉ cần một ký hiệu `C`.
+
+<Try action="postscript" button="Bật mọi mẹo">
+  Tìm trong bức thư một từ mã, một ký tự không và ký hiệu chữ cái kép `≈`. Rồi đặt “Ký hiệu từ” thành “Tắt” và xem các ký hiệu ngắn trở lại thành chữ cái.
+</Try>
+
+<Label>Câu chuyện</Label>
+
+## Những lá thư trong thùng bia
+
+Tới năm 1586, Mary đã bị giam ở Anh mười tám năm. Bà bị nhốt ở Lâu đài Chartley, và mọi lá thư bà viết đều bị người giám ngục giữ lại. Rồi một người Công giáo trẻ tên là Gilbert Gifford nhận lén đưa thư cho bà. Một người làm bia trong vùng bọc từng gói thư trong túi da, nhét vào cái nắp rỗng đậy thùng bia, rồi chở thùng tới lâu đài.
+
+Ở London, Anthony Babington mới 24 tuổi đang lập kế hoạch giải thoát Mary và giết Elizabeth. Tháng 7, anh ta viết cho Mary bằng mã hỗn hợp, kể rõ kế hoạch. Ngày 17 tháng 7, bà viết thư trả lời và đồng ý.
+
+Cả hai không hề biết Gifford là điệp viên hai mang. Anh ta làm việc cho Ngài Francis Walsingham, quan Thượng thư và trùm mật thám của Elizabeth. Lá thư nào cũng tới tay Walsingham trước. Người của ông bóc dấu xi, chép lại một bản, rồi gắn xi lại bằng con dấu giả, khéo đến mức không ai hay.
+
+Thùng bia là để giấu thư. Mật mã là để giữ thư an toàn nếu bị lộ chỗ giấu. Giờ đây mật mã là tấm khiên cuối cùng của Mary.
+
+<DigDeeper title="Vì sao Walsingham cần bằng chứng">
+  Elizabeth không muốn giết Mary. Mary là nữ hoàng của một nước khác, và nhiều người sẽ hỏi một tòa án Anh có quyền xử tử bà không. Giết một nữ hoàng cũng có thể khiến kẻ nổi loạn bớt e dè khi nhắm tới nữ hoàng kế tiếp. Hơn nữa, hai người là chị em họ.
+
+  Vì vậy Walsingham cần bằng chứng, bằng chính lời của Mary, rằng bà đã đồng ý với vụ ám sát.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Người đếm các ký hiệu
+
+Walsingham giao các bản chép cho Thomas Phelippes, thư ký về mật mã của ông. Phelippes thạo tiếng Pháp, tiếng Ý, tiếng Tây Ban Nha, tiếng Latin và tiếng Đức. Quan trọng hơn, ông là một trong những nhà giải mã giỏi nhất châu Âu.
+
+Ông dùng phân tích tần suất. Ông đếm từng ký hiệu, rồi thử gán những chữ hay gặp nhất cho những ký hiệu hay gặp nhất. Khi một hướng đoán cho ra chữ vô nghĩa, ông quay lại thử hướng khác. Dần dần ông nhận ra các ký tự không và gạt chúng sang bên. Cuối cùng chỉ còn vài từ mã, và ông đoán được chúng nhờ những chữ xung quanh.
+
+Các mẹo làm ông chậm lại, nhưng không chữa được chỗ yếu. Phần lớn bức thư vẫn là một ký hiệu cho một chữ.
+
+<Try action="intercepted" button="Mở một lá thư bị chặn">
+  Giờ các chữ của văn bản thường đã bị ẩn. Chạm vào cột cao nhất trong biểu đồ. Bảng chìa khóa nói đó là chữ nào?
+</Try>
+
+Phelippes đọc được kế hoạch của Babington, rồi tới thư trả lời của Mary. Đọc xong, ông vẽ lên bản chép thư của bà một dấu hình giá treo cổ.
+
+Walsingham muốn có tên của mọi kẻ chủ mưu. Phelippes lại còn giỏi giả chữ viết. Ông viết thêm một đoạn tái bút bằng chính mật mã của Mary, hỏi Babington tên những người kia. Câu trên trình mô phỏng là phần đầu của đoạn tái bút ấy.
+
+Nhóm mưu phản bị bắt và bị xử tử. Những lá thư đã giải mã được đưa ra làm bằng chứng tại phiên tòa xử Mary. Bà bị chém đầu ngày 8 tháng 2 năm 1587.
+
+<Label>Thử thách</Label>
+
+## Mảnh giấy trong thùng bia
+
+<Challenge answer="HIDE THE LETTER IN THE BARREL">
+  Bạn là người làm bia chuyên chở thư cho Mary. Trong một thùng bia rỗng, bạn thấy mảnh giấy này:
+
+  `∞†≠◊ 2 Δ♪◊≈×◊± †∩ 2 #∴○≈±¿◊Δ`
+
+  Tra từng ký hiệu trong bảng chìa khóa. Bỏ qua ký tự không, và nhớ `≈` làm gì. Mảnh giấy nói gì?
+
+  <Try action="barrel" button="Mở mảnh giấy" />
+</Challenge>
+
+<Check question="Vì sao ký tự không và từ mã không cứu được Mary?">
+  Chúng chỉ che được một phần nhỏ của mỗi bức thư. Phần lớn ký hiệu vẫn thay cho một chữ, lần nào cũng đúng chữ ấy. Vậy ký hiệu hay gặp nhất vẫn là chữ hay gặp nhất, và Phelippes cứ thế mà đếm.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Một ký hiệu, một chữ, một rắc rối
+
+Câu chuyện của Mary để lại một bài học đắt giá. Một mật mã yếu còn tệ hơn không có mật mã nào. Mary và Babington viết rất thẳng vì tin rằng thư của họ an toàn. Cũng vì quá tin, họ không ngờ kẻ thù có thể chen một đoạn thư giả vào.
+
+Giờ các nhà tạo mã đã hiểu: vá víu mật mã cũ là chưa đủ. Chừng nào một ký hiệu còn luôn chỉ một chữ, phép đếm vẫn sẽ thắng. Họ cần một mật mã trong đó cùng một chữ có thể biến thành những chữ khác nhau ở những chỗ khác nhau. Một nhà ngoại giao Pháp, dựa trên ý tưởng của người Ý, đã làm ra đúng thứ đó: [mật mã Vigenère](/ciphers/vigenere).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử* (Phạm Văn Thiều và Phạm Thu Hằng dịch, NXB Trẻ), chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland. Hình 8 là bảng mã hỗn hợp thật của Mary, hình 9 là đoạn tái bút giả mạo.
+- The National Archives (Cơ quan Lưu trữ Quốc gia Anh), hồ sơ State Papers SP 12/193/54 và SP 53/18/55. “The Babington postscript and cipher, 1586” (Đoạn tái bút Babington và mật mã, 1586).
+- Antonia Fraser, *Mary Queen of Scots* (Nữ hoàng Mary xứ Scotland). Cuốn tiểu sử đầy đủ về nữ hoàng.

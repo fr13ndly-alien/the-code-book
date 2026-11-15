@@ -1,0 +1,61 @@
+.sums {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Two columns: the character, then its seven digits. Three rows: input, key, sum. */
+.sum {
+  display: grid;
+  grid-template-columns: var(--space-6) auto;
+  align-items: center;
+  font-family: var(--font-cipher);
+}
+
+.char {
+  color: var(--color-text-muted);
+}
+
+.bits {
+  display: flex;
+}
+
+.bits > * {
+  display: grid;
+  place-items: center;
+  width: var(--space-8);
+  height: var(--space-8);
+  border: 1px solid var(--color-border);
+}
+
+.bits[data-kind="key"] > button {
+  height: var(--tap);
+  padding: 0;
+  background: var(--color-surface-raised);
+  color: var(--color-accent);
+}
+
+.bits[data-kind="key"] > button[aria-pressed="true"] {
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+  font-weight: bold;
+}
+
+.char[data-kind="key"] {
+  color: var(--color-accent);
+}
+
+.char[data-kind="out"],
+.bits[data-kind="out"] {
+  color: var(--color-lamp);
+}
+
+/* A digit of the sum that the key changed. */
+.bits[data-kind="out"] > [data-changed="true"] {
+  background: var(--color-surface-raised);
+  font-weight: bold;
+}

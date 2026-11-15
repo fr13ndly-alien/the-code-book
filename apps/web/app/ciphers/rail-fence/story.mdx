@@ -1,0 +1,123 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 1. The wording is ours.
+*/}
+
+<Standfirst>
+  Keep every letter of your message, but shuffle their order with a zig-zag only your friend knows.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## The blank tablets
+
+In 480 BC a Greek exile called Demaratus was living in the Persian city of Susa. He watched King Xerxes gather a huge army to attack Greece by surprise. Demaratus wanted to warn Sparta, but Persian guards searched travellers on the road.
+
+So he scraped the wax off a pair of wooden writing tablets, wrote on the bare wood, and covered it with fresh wax. The guards saw blank tablets and let them pass. In Sparta, a woman called Gorgo guessed the trick. The Greeks scraped the wax away, read the warning and built 200 warships.
+
+Hiding worked that time. But what if a guard had scraped the wax? How could you write a message that is safe even when it is found?
+
+<Label>Try it</Label>
+
+## Write on two lines
+
+The simulator shows the message "scrape off the wax" written on two rails. The letters take turns: one on the top rail, the next on the bottom. Guess first: which letters end up on the top rail?
+
+<Try action="wax" button="Show the two rails">
+  Tap rail 1 on the fence, then rail 2. Watch which letters light up, and find them in the ciphertext below.
+</Try>
+
+<Check question="Which letters sit on the top rail?">
+  Every second letter, starting with the first: `S`, `R`, `P`, `O` and so on. The letters in between drop to the bottom rail. Read the top rail, then the bottom, and you get `SRPOFHWXCAEFTEA`.
+</Check>
+
+<Label>How it works</Label>
+
+## Same letters, new order
+
+### Moving, not changing
+
+Hiding a message, as Demaratus did, is called **steganography**. Its weakness is plain: once the message is found, anyone can read it. **Cryptography** is different. It does not hide the message. It hides the meaning.
+
+One way to do that is **transposition**: you keep every letter but move it somewhere else. The result is a giant anagram. Count the letters in the ciphertext and you will find the same ones as in the message, only out of order.
+
+<Try action="book" button="Load the book's example">
+  This is the sentence the book enciphers. Tap rail 1 and compare its letters with the start of the ciphertext in the controls.
+</Try>
+
+### Why a pattern is needed
+
+You could jumble the letters at random. A sentence of just 35 letters can be arranged in more than 50,000,000,000,000,000,000,000,000,000,000 ways, so no enemy could try them all. But your friend could not un-jumble it either.
+
+So sender and receiver agree on a simple pattern in advance. The **rail fence** is one such pattern. Write the letters down and up across the rails in a zig-zag. Then read off each rail in turn. The number of rails is the **key**: the secret detail the two of you share.
+
+<Try action="zigzag" button="Use three rails">
+  Follow the letters down and up the three rails. Then press ▲ next to "Rails" and watch the same message make a new ciphertext.
+</Try>
+
+### Reading it back
+
+To decipher, your friend works backwards. They know the number of rails, so they know how many letters belong on each one. They cut the ciphertext into those pieces, lay each piece along its rail, and read the zig-zag.
+
+<Try action="caught" button="Put a ciphertext back on the fence">
+  The simulator has cut `SRPOFHWXCAEFTEA` into two rails for you. Read down and up the fence, one column at a time.
+</Try>
+
+<Check question="Why must your friend know the number of rails?">
+  The number of rails decides where the ciphertext is cut and how the pieces zig-zag together. With the wrong number, the letters land in the wrong columns and the fence spells nonsense.
+</Check>
+
+<Label>The story</Label>
+
+## Two ways to keep a secret
+
+Our account of Demaratus comes from Herodotus, who wrote about the wars between Greece and Persia. He tells of another man who shaved a messenger's head, wrote on the scalp, and waited for the hair to grow back. People kept inventing ways to hide messages for two thousand years.
+
+But a careful guard can search everyone. So alongside hiding, people learned to scramble. Cryptography has two branches. Transposition, on this page, moves the letters. **Substitution** swaps each letter for a different one, and you will meet it soon.
+
+The rail fence is transposition at its simplest. The book shows it with two rails, "alternating letters" on an upper and a lower line. You need no tools: only a pen and one number.
+
+<Label>How it was broken</Label>
+
+## Too few fences
+
+That one number is the weak point. Suppose an enemy catches a message and suspects a rail fence. The ciphertext is only so long, so there are only a few sensible numbers of rails. The enemy can simply try each one. Trying every key like this is called a **brute-force attack**.
+
+Most tries give nonsense. One gives real words, and the enemy knows at once that it is right.
+
+<Try action="intercepted" button="Load an intercepted message">
+  You have caught `XSOCESAFREEREISGEXLR`. Open "Try every number of rails at once" under the controls. Look down the list for the line you can read.
+</Try>
+
+The lesson: a pattern simple enough to remember may be simple enough to guess. A strong cipher needs far more keys than anyone could try.
+
+<Label>Challenge</Label>
+
+## News from Susa
+
+<Challenge answer="XERXES SAILS FOR GREECE">
+  A messenger from Susa brings a strip of letters: `XSOCESAFREEREISGEXLR`. Nobody has told you the number of rails.
+
+  Find the key. What does the message say?
+
+  <Try action="intercepted" button="Load the message" />
+</Challenge>
+
+<Check question="What is the difference between steganography and cryptography?">
+  Steganography hides the message itself, like writing under wax. Cryptography leaves the message in view but hides its meaning. A found steganographic message can be read at once; a found ciphertext still has to be broken.
+</Check>
+
+<Label>What came next</Label>
+
+## A cipher you can hold
+
+The rail fence needs nothing but paper, and you must do all the shuffling yourself. The soldiers of Sparta went one step further. They built a transposition into an object: a wooden staff with a strip of leather wound round it. It was the first military cipher device we know of.
+
+The staff did the shuffling for them, and its thickness was the key. You can wind one yourself on the next page: [the Spartan scytale](/ciphers/scytale).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 1.
+- Herodotus, *The Histories*, book 7. The story of Demaratus and the wax tablets.

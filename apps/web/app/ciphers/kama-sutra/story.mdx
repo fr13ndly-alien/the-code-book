@@ -1,0 +1,123 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 1. The wording is ours.
+*/}
+
+<Standfirst>
+  Pair off the letters of the alphabet at random, then swap every letter for its partner.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## Art number forty-five
+
+In the fourth century AD an Indian scholar called Vātsyāyana wrote a book of advice, the Kama Sutra. One part lists sixty-four arts that a woman should study. Cooking is on the list. So are chess, carpentry, conjuring and making perfume.
+
+Number forty-five is different. It is called mlecchita-vikalpa: the art of secret writing. The book recommends it so that women can keep the details of their love lives private.
+
+Picture a note passed across a busy courtyard. Anyone might pick it up. Yet it must tell only one person where and when to meet. How do you write a note like that?
+
+<Label>Try it</Label>
+
+## Find the partner
+
+The simulator shows the alphabet split into thirteen pairs. Under them is the message "meet at midnight". Guess first: the message starts with `M`. Find `M` in the pairs. What will it be written as?
+
+<Try action="book" button="Show the book's pairs">
+  Tap `M` in the pairs and see which letter lights up with it. Then tap `E`, and find both partners in the bottom line of the message.
+</Try>
+
+<Check question="What does M become?">
+  `C`. In these pairs `M` and `C` are partners, so every `M` in the message is written as `C`. In the same way `E` becomes `U`, which is why "meet" starts `CUU`.
+</Check>
+
+<Label>How it works</Label>
+
+## Thirteen pairs, one swap
+
+### Swap each letter for its partner
+
+The message you start with is called the **plaintext**. The scrambled message you send is the **ciphertext**.
+
+One method in the Kama Sutra is to pair up the letters of the alphabet "at random". To encipher, take each letter of the plaintext and write its partner instead. With the book's pairs, "meet at midnight" becomes `CUUZ VZ CGXSGIBZ`.
+
+This is a **substitution cipher**. A transposition, like the scytale, keeps each letter and moves it. A substitution does the reverse: every letter stays in its place but changes into a different letter.
+
+<Try action="book" button="Start again">
+  Type your own name in "Your message, or a ciphertext". Read the swapped version in the controls, and check two letters of it against the pairs.
+</Try>
+
+### The same swap reads it back
+
+Partners work both ways. If `M` turns into `C`, then `C` turns into `M`. So your friend does not need a separate way to decipher. They put the ciphertext through the very same swap, and the plaintext comes out.
+
+<Try action="reply" button="Load the ciphertext">
+  The message box now holds `CUUZ VZ CGXSGIBZ`. Look at the bottom line of the grid. The swap has turned it back into words.
+</Try>
+
+### The pairs are the key
+
+Everyone may know that you swap partners. What they must not know is which letter goes with which. That list of pairs is the **key**, and both people must hold the same one.
+
+There are plenty to choose from. Twenty-six letters can be paired off in 7,905,853,580,625 different ways.
+
+<Try action="book" button="Show the book's pairs">
+  Press "Shuffle the pairs" a few times. The message stays the same, but each new set of pairs gives a different ciphertext.
+</Try>
+
+<Check question="Why can the same swap both encipher and decipher?">
+  Each letter has exactly one partner, and the partnership runs both ways. Swapping twice takes you from a letter to its partner and straight back again.
+</Check>
+
+<Label>The story</Label>
+
+## Older than it looks
+
+Vātsyāyana wrote in the fourth century AD, but he drew on manuscripts from as far back as the fourth century BC. That makes this one of the earliest descriptions of substitution anywhere.
+
+It also shows that secret writing was never only for generals. The scytale carried battle orders. This cipher was for private life, taught beside cooking and chess as a useful skill.
+
+The idea needs no equipment. Two people agree on thirteen pairs, and after that a pen is enough. Because one swap does both jobs, there is only one rule to learn.
+
+<Label>How it was broken</Label>
+
+## The pattern shows through
+
+Nearly eight trillion keys is far too many to try one by one. But an enemy does not have to. The cipher changes the letters and leaves everything else alone. Word lengths, double letters and common letters all survive.
+
+<Try action="pattern" button="Look for a pattern">
+  Every `U` in the ciphertext is lit. Two of them stand side by side in the first word. Few letters double in the middle of a short English word, so `U` is probably `E` or `O`. The line below shows which.
+</Try>
+
+Each good guess gives away two letters at once, because partners swap both ways. A handful of guesses can unravel a whole message. Later, codebreakers turned this kind of guessing into a method by counting letters.
+
+<Label>Challenge</Label>
+
+## A note in the courtyard
+
+<Challenge answer="MEET ME BY THE RIVER AT DAWN">
+  A folded note reads `CUUZ CU HP ZBU LGAUL VZ XVFS`. It was written with the pairs from the book, but someone has shuffled the pairs on your board.
+
+  Put the right pairs back. What does the note say?
+
+  <Try action="note" button="Load the note" />
+</Challenge>
+
+<Check question="How is substitution different from transposition?">
+  In a transposition every letter keeps its identity but moves to a new position. In a substitution every letter keeps its position but takes a new identity.
+</Check>
+
+<Label>What came next</Label>
+
+## From lovers to legions
+
+Thirteen random pairs are hard to remember and risky to write down. An army needs a key that a tired officer can hold in his head.
+
+About four hundred years before Vātsyāyana wrote, a Roman general had found one. He did not pair the letters at all. He slid the whole alphabet along by a fixed number of places, so the key was a single number. He is the first commander we know of to use substitution in war. Meet [the Caesar shift](/ciphers/caesar).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 1.
+- Vātsyāyana, *Kama Sutra*, book 1, chapter 3. The list of the sixty-four arts.

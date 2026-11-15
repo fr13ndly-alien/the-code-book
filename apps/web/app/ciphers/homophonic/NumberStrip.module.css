@@ -1,0 +1,37 @@
+.strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-1) 2px;
+  max-width: 40rem;
+}
+
+.strip button {
+  display: grid;
+  justify-items: center;
+  min-width: 1.75rem;
+  padding: 2px;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  font-family: var(--font-cipher);
+}
+
+.plain {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+}
+
+.number {
+  font-size: var(--text-md);
+  color: var(--color-lamp);
+}
+
+.strip button[aria-pressed="true"] {
+  background: var(--color-accent);
+}
+
+.strip button[aria-pressed="true"] .plain,
+.strip button[aria-pressed="true"] .number {
+  color: var(--color-accent-ink);
+}

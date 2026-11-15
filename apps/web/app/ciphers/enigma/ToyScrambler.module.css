@@ -1,0 +1,137 @@
+.toy {
+  display: grid;
+  gap: var(--space-2);
+  /* Narrow enough for the smallest phone; the drawing scales down with it. */
+  max-width: 22rem;
+}
+
+.hint {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.wiring {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--font-cipher);
+}
+
+.scrambler {
+  fill: var(--color-surface-raised);
+  stroke: var(--color-border);
+}
+
+.wire {
+  fill: none;
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+}
+
+/* The lit wire is drawn thicker as well as brighter, so it does not rely on colour alone. */
+.wire[data-lit="true"] {
+  stroke: var(--color-lamp);
+  stroke-width: 3;
+}
+
+.wiring text {
+  text-anchor: middle;
+  dominant-baseline: central;
+  fill: var(--color-text);
+}
+
+.keyLetter[data-lit="true"] {
+  fill: var(--color-lamp);
+  font-weight: 700;
+}
+
+.lamp circle {
+  fill: var(--color-bg);
+  stroke: var(--color-border);
+}
+
+.lamp[data-lit="true"] circle {
+  fill: var(--color-lamp);
+  stroke: var(--color-lamp);
+}
+
+.lamp[data-lit="true"] text {
+  fill: var(--color-accent-ink);
+  font-weight: 700;
+}
+
+.table {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  font-family: var(--font-cipher);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.table [data-lit="true"] {
+  color: var(--color-lamp);
+  font-weight: 600;
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, var(--tap)));
+  gap: var(--space-1);
+}
+
+.keys button {
+  height: var(--tap);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  font-family: var(--font-cipher);
+  font-size: var(--text-md);
+}
+
+.tape {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 var(--space-3);
+  margin: 0;
+  font-size: var(--text-sm);
+}
+
+.tape dt {
+  color: var(--color-text-muted);
+}
+
+.tape dd {
+  margin: 0;
+  font-family: var(--font-cipher);
+  font-size: var(--text-md);
+  overflow-wrap: anywhere;
+}
+
+.lamps {
+  color: var(--color-lamp);
+}
+
+.turning {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  min-height: var(--tap);
+  font-size: var(--text-sm);
+}
+
+.turning input {
+  flex: none;
+  width: var(--space-6);
+  height: var(--space-6);
+  accent-color: var(--color-accent);
+}
+
+.button {
+  justify-self: start;
+  height: var(--tap);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface-raised);
+}

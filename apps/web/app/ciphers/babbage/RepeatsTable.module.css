@@ -1,0 +1,47 @@
+.table {
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.table th,
+.table td {
+  min-width: 1.5rem;
+  height: 2rem;
+  padding: 0 var(--space-1);
+  border: 1px solid var(--color-border);
+  text-align: center;
+  font-weight: normal;
+}
+
+.table thead th,
+.table tfoot th {
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.table tbody th {
+  padding: 0;
+}
+
+.table [data-on="true"] {
+  background: var(--color-surface-raised);
+  color: var(--color-accent);
+  font-weight: bold;
+}
+
+.table button {
+  width: 100%;
+  min-height: var(--tap);
+  padding: 0 var(--space-2);
+  border: 0;
+  background: transparent;
+  font-family: var(--font-cipher);
+  color: var(--color-lamp);
+  text-align: left;
+}
+
+.table button[aria-pressed="true"] {
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+  font-weight: bold;
+}

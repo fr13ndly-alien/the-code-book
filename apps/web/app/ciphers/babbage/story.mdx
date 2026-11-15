@@ -1,0 +1,150 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 2. The wording is ours.
+*/}
+
+<Standfirst>
+  A dentist dared Charles Babbage to crack the unbreakable cipher. So he did, and told nobody.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## The dentist's dare
+
+In 1854 a dentist from Bristol, John Hall Brock Thwaites, wrote to a journal about a new cipher he had invented. He hoped to patent it.
+
+Charles Babbage read the letter and wrote in too. The cipher was not new at all, he said. It was very old, and you could find it in most books. Thwaites had reinvented [the Vigenère cipher](/ciphers/vigenere), nearly three hundred years late.
+
+Thwaites did not say sorry. He dared Babbage to break it instead. That was a bold dare. People called this cipher unbreakable, and most codebreakers had given up on it.
+
+Babbage could not resist. Where do you even start on a cipher that hides how often each letter is used?
+
+<Label>Try it</Label>
+
+## Look for an echo
+
+The simulator shows a message of 499 letters, enciphered with a keyword you do not know. Guess first: would nine letters in a row turn up twice just by luck?
+
+<Try action="intercept" button="Load the intercepted message">
+  The table lists runs of letters that appear twice. Tap `XHQUBTHQJ`, then `NSUFASW`, and find both copies of each in the ciphertext. Read the "Spacing" column as you go.
+</Try>
+
+<Check question="Is a repeat like XHQUBTHQJ an accident?">
+  Almost certainly not. The same plain words were enciphered by the same part of the keyword, twice. That can only happen when the keyword has come round a whole number of times in between.
+</Check>
+
+<Label>How it works</Label>
+
+## From an echo to the keyword
+
+### Why repeats appear
+
+In a Vigenère cipher, the keyword is written over the message again and again. A keyword of five letters can line up with a word in only five ways. So a common word can be enciphered in only five ways.
+
+In a long message, the same word will sooner or later meet the same part of the keyword. Then the same cipher letters come out. Babbage saw that these echoes were his way in.
+
+The **spacing** is the number of letters from the start of one copy to the start of the next. The keyword must fit into the spacing exactly, with nothing left over.
+
+<Try>
+  Tap each row of the table in turn. The caption under the ciphertext tells you the spacing. Short repeats of three letters are left out, because those often are accidents.
+</Try>
+
+### The spacing gives the length
+
+Take a spacing of 40. A keyword of 2, 4, 5, 8, 10 or 20 letters would fit into it exactly. These numbers are the **factors** of 40. One repeat cannot tell you which is right.
+
+But the keyword has to fit *every* spacing. The table puts a tick under each length that fits a row. You are looking for a column that is ticked all the way down.
+
+<Try>
+  Press ▲ next to "Key length" and watch the bottom line of the table. Stop at the length that explains all eight repeats.
+</Try>
+
+<Check question="How long is the keyword?">
+  Five letters. Every spacing in the table divides by 5: 65, 95, 105, 145, 195, 40, 255 and 305. No other length fits more than three of them.
+</Check>
+
+### Five easy ciphers
+
+Now comes the clever part. If the keyword has five letters, then letters 1, 6, 11, 16 and so on were all enciphered with the same key letter. They all used one row of the Vigenère square. One row is just a [Caesar shift](/ciphers/caesar).
+
+So the unbreakable cipher is five Caesar shifts taking turns. And a Caesar shift cannot hide how often letters are used. Pull out every fifth letter, count them, and the shape of English is there. It has only been slid along.
+
+<Try action="letters" button="Go to step 2">
+  The solid bars count every fifth letter. The outlines show ordinary English. Press ▼ next to "Shift" eight times, to `S`. The tall bar lands on `E`, and the rare letters `J`, `Q`, `X` and `Z` fall empty.
+</Try>
+
+### One letter at a time
+
+The first key letter is `S`. Do the same for the other four. English has a tall `E`, three strong bars at `R`, `S` and `T`, and then a long dip from `U` to `Z`. Slide each chart until those features line up.
+
+<Try>
+  Press ▲ next to "Key letter" to move to letter 2, and slide its shift until the bars fit. Watch "Plaintext so far" in the controls. If you get stuck, press "Find this shift for me".
+</Try>
+
+<Label>The story</Label>
+
+## The man who wanted steam to do sums
+
+Charles Babbage was born in 1791, the son of a rich London banker. He is best known for designing calculating machines, the ancestors of the computer. The idea came in 1821, when he found page after page of mistakes in printed tables of numbers. He wished the sums had been "executed by steam".
+
+He had loved ciphers since school. Older boys made up their own, and he worked out the keys. Sometimes they beat him for it.
+
+His attack on the Vigenère cipher needed no machine, only patience and counting. He probably finished it in 1854, soon after the dare.
+
+<DigDeeper title="The book's own example">
+  The book breaks a different ciphertext with the same steps. Its plaintext is from a poem by Alfred Tennyson, and the keyword is the first name of Tennyson's wife.
+
+  Babbage once wrote to the poet about that poem. It said a man dies every moment and one is born. Babbage pointed out that the world's population would then never grow.
+
+  <Try action="book" button="Load the book's ciphertext" />
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## A secret for nine years
+
+The weakness is the repeating keyword. It turns one strong cipher into a few weak ones, and the repeats tell you how many.
+
+Guessing the wrong length shows why the first step matters.
+
+<Try action="intercept" button="Start again">
+  Set "Key length" to 4. Pick "2 Key letters" and slide the shift. The bars stay flat and lumpy, and no shift looks like English.
+</Try>
+
+Babbage never published his method. Nobody knew he had done it until scholars read through his notes in the twentieth century.
+
+Why keep quiet? He often left work unfinished. But there is another possible reason. The Crimean War had just begun, and Britain was fighting Russia. The British army may have asked him to keep the secret.
+
+Meanwhile a retired Prussian army officer, Friedrich Wilhelm Kasiski, found the same method by himself. He published it in 1863. Ever since, hunting for repeats has been called the **Kasiski test**, and Kasiski got the credit.
+
+<Label>Challenge</Label>
+
+## The agony column
+
+<Challenge answer="HEART">
+  Victorian sweethearts sent each other secret notes through the small ads of newspapers. Babbage enjoyed breaking them. This one is ours, not a real one, and it uses a Vigenère keyword.
+
+  Find the key length, then each key letter. What is the keyword?
+
+  <Try action="agony" button="Load the newspaper message" />
+</Challenge>
+
+<Check question="Why did Babbage have to find the key length before anything else?">
+  Counting letters only works on letters that share one cipher alphabet. Until you know the length, you cannot tell which letters belong together.
+</Check>
+
+<Label>What came next</Label>
+
+## Secrets in the newspaper
+
+The lesson is that a key must not repeat. A short keyword used again and again leaves echoes, and echoes can be measured. Later codemakers would try keys as long as the message itself.
+
+By now ciphers were no longer just for kings and generals. The telegraph had made ordinary people think about who might read their messages. Some hid notes in newspapers, in ciphers or in something even simpler: tiny holes. See [the pinprick message](/ciphers/pinprick).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 2.
+- Friedrich Kasiski, *Die Geheimschriften und die Dechiffrirkunst* (1863). The first published account of the method.
+- Charles Babbage, *Passages from the Life of a Philosopher* (1864). His autobiography, in which he calls deciphering a fascinating art.

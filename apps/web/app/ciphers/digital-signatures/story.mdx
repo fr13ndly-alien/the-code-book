@@ -1,0 +1,146 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  The abridged edition leaves signatures out. The full edition covers them in
+  its chapter "Pretty Good Privacy". Facts were checked against the sources in
+  Further reading. The toy key is the worked example in Wikipedia, "RSA cryptosystem".
+  The wording is ours.
+*/}
+
+<Standfirst>
+  Turn a public-key cipher back to front, and it proves who wrote a message.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## A signature made of numbers
+
+In 1976 two researchers at Stanford University in California, Whitfield Diffie and Martin Hellman, were thinking about business done by computer. They saw a problem that had nothing to do with secrecy.
+
+A paper contract carries a signature in ink. Everyone can recognise it, and only one hand can make it. But a computer message is only a row of numbers. Anyone can type "from Alice" at the top. And a computer can copy any number perfectly.
+
+So they asked for something that sounded impossible: a signature that everybody can check and nobody can fake. How can a number be a signature?
+
+<Label>Try it</Label>
+
+## Change one letter
+
+Alice has signed a note that says she owes Bob 19 pounds. The note and its signature have reached Bob, and his check says "Genuine". Make a guess first: what happens if one symbol of the note changes on the way?
+
+<Try action="signed" button="Show Alice's signed note">
+  In "Message that arrives", change the `19` to `99`. Watch the verdict on Bob's desk.
+</Try>
+
+<Check question="Why did Bob's check fail?">
+  The signature was made from the old note. Bob works out a number from the note in front of him, and gets 1,106. The signature still says 1,098. The numbers differ, so he knows something was changed.
+</Check>
+
+<Label>How it works</Label>
+
+## The same keys, used the other way round
+
+### Lock with the private key
+
+In RSA, Alice has two keys. Her **public key** is known to everyone. Her **private key** is known only to her. Normally people lock messages with her public key, and she unlocks them with her private key.
+
+The keys also work in the other order. If Alice locks a number with her private key, her public key unlocks it. That hides nothing, because everybody has her public key. But it proves something. Only Alice's private key could have made a number that her public key opens correctly.
+
+A number locked this way is a **digital signature**.
+
+<Try action="unsigned" button="Give Alice an unsigned note">
+  Bob's desk says the note could be from anyone. Press "Sign and send". Alice's desk shows the sum she does with her private number, 413.
+</Try>
+
+### Sign a fingerprint, not the letter
+
+RSA is slow, so signing a whole long message would take too long. Instead Alice's computer first squeezes the message into one short number. It is called a **digest**, or a hash. It works like a fingerprint: small, but different for every message.
+
+Alice signs only the digest.
+
+The simulator's digest is a toy. It turns each letter and digit into a number, adds them up, and keeps the remainder after dividing by 3,233. PGP used a real one called MD5. Its digests were 128 binary digits long, whatever the size of the message.
+
+<Try action="signed" button="Show the signed note again">
+  Type a longer note in "Alice's message" and watch the table on her desk grow. The digest stays one small number. Press "Sign and send" to sign the new note.
+</Try>
+
+### Anyone can check
+
+Bob needs no secret to check a signature. He does two sums. First he works out the digest of the message that arrived. Then he unlocks the signature with Alice's public key. That gives the digest Alice signed.
+
+If the two numbers match, he has learned two things at once. The message came from Alice. And nobody has changed it since.
+
+<Check question="Could Alice later claim she never signed the note?">
+  Not easily. Only her private key could have made that signature, and only she has it. This is why a digital signature can stand in for one written in ink.
+</Check>
+
+<Label>The story</Label>
+
+## From an idea to every e-mail
+
+Diffie and Hellman described what a digital signature should do, but they had no way to make one. The way arrived a year later, in 1977, with RSA.
+
+Its three inventors, Ron Rivest, Adi Shamir and Leonard Adleman, knew their cipher could sign as well as hide. They named their famous paper "A Method for Obtaining Digital Signatures and Public-Key Cryptosystems". Signatures came first in the title.
+
+Phil Zimmermann built signatures into PGP. The program made an MD5 digest of your message and locked it with your private key.
+
+PGP could do both jobs on one message. Alice signs with her own private key. Then she locks the result for Bob, as on the page before. Bob knows that nobody else has read it, and that only Alice could have sent it.
+
+<Label>How it was broken</Label>
+
+## Two ways to cheat a toy
+
+A forger called Eve has no private key. She has two ways to attack.
+
+The first is to guess. Alice's toy key allows only 3,233 possible signatures, so Eve can try them all.
+
+<Try action="forger" button="Let a forger write a note">
+  Eve's note says Alice owes her 500 pounds, and her made-up signature fails. Press "Forger: guess a signature" a few times. Then press "Forger: try every number".
+</Try>
+
+Real keys stop this. Their numbers are hundreds of digits long, and no computer could try them all.
+
+The second way is to attack the digest. Two different messages with the same digest share the same signature. With the toy digest this is easy, because adding up ignores the order of the symbols.
+
+<Try action="signed" button="Show Alice's signed note">
+  In "Message that arrives", swap the two digits, so `19` becomes `91`. Bob's check still says "Genuine".
+</Try>
+
+A real hash function is built so that nobody can find two messages that match. That is hard to get right. In August 2004 a team led by the Chinese mathematician Xiaoyun Wang showed two different inputs with the same MD5 digest. Signatures made with MD5 could no longer be trusted, and newer hash functions took its place.
+
+<Label>Challenge</Label>
+
+## Three notes, one signature
+
+<Challenge answer="NOON">
+  Bob finds three notes, and each one claims to come from Alice. They say `MEET AT DAWN`, `MEET AT NOON` and `MEET AT DUSK`. All three carry the same signature, `1519`. A forger has copied it from Alice's real note onto two fakes.
+
+  Check each note. When should Bob turn up?
+
+  <Try action="noteDawn" button="Load the dawn note" />
+  <Try action="noteNoon" button="Load the noon note" />
+  <Try action="noteDusk" button="Load the dusk note" />
+</Challenge>
+
+<Check question="Why can't a forger move a real signature onto a new message?">
+  A signature is made from the digest of one message. A different message has a different digest, so the check fails. Copying only works when the forger can find two messages with the same digest.
+</Check>
+
+<Label>What came next</Label>
+
+## Safe, unless somebody learns to factor
+
+With RSA for secrecy and signatures for trust, the codemakers had everything they wanted. You can lock a message for a stranger. You can prove who you are to a stranger. Online shopping and banking are built on these two tricks.
+
+Both rest on one belief: that nobody can split a huge number into its two primes. Nobody has proved it. And in 1994 the mathematician Peter Shor showed that a new kind of machine, a quantum computer, could do the splitting quickly, if one could ever be built.
+
+So some codemakers looked for a lock that depends on no hard sum at all. They found one in the same strange physics: [quantum cryptography](/ciphers/quantum).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book* (full edition), the chapter "Pretty Good Privacy". The shorter edition leaves signatures out.
+- Whitfield Diffie and Martin Hellman, "New Directions in Cryptography", *IEEE Transactions on Information Theory*, November 1976. The paper that first asked for a digital signature.
+- Ron Rivest, Adi Shamir and Leonard Adleman, "A Method for Obtaining Digital Signatures and Public-Key Cryptosystems", *Communications of the ACM*, February 1978. The RSA paper.
+- D. Atkins, W. Stallings and P. Zimmermann, *PGP Message Exchange Formats* (RFC 1991, 1996). How PGP signed an MD5 digest.
+- Xiaoyun Wang, Dengguo Feng, Xuejia Lai and Hongbo Yu, "Collisions for Hash Functions MD4, MD5, HAVAL-128 and RIPEMD", Cryptology ePrint Archive, paper 2004/199, August 2004. The two inputs with one MD5 digest.
+- Peter Shor, "Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer", *SIAM Journal on Computing*, 1997. The longer version of his paper of November 1994.

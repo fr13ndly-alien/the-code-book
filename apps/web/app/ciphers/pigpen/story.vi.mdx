@@ -1,0 +1,121 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Retold from Mật mã: Từ cổ điển đến lượng tử, Phụ lục D (pages 531–532), and chương 2
+  (pages 92 and 103–108) for what came next. Follows docs/i18n/vi-glossary.md. The wording is ours.
+  The grids follow the layout printed in the appendix.
+*/}
+
+<Standfirst>
+  Hội Tam điểm viết bí mật bằng những góc, ô vuông và dấu chấm. Chìa khóa là bốn cái lưới nhỏ.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Một trang giấy đầy góc và chấm
+
+Hãy tưởng tượng một chi hội Tam điểm vào những năm 1700. Hội Tam điểm là một hội có những buổi họp kín, và chi hội này giữ một cuốn sổ ghi chép. Người thư ký không muốn người ngoài đọc được.
+
+Vì thế ông viết mà chẳng dùng chữ cái nào. Trang giấy kín những góc nhỏ, những ô vuông hở và những đầu mũi tên, có cái có dấu chấm bên trong. Người lạ nhìn vào chỉ thấy như mấy nét vẽ bậy của một bác thợ xây.
+
+Hội viên nào cũng đọc được trong nháy mắt, và viết cũng nhanh y như vậy. Chẳng ai phải mang theo tờ giấy ghi 26 ký hiệu lạ. Mọi thứ cần biết nằm gọn trong bốn hình vẽ tí hon. Làm sao bốn cái lưới chứa nổi cả một bảng chữ cái?
+
+<Label>Thử xem</Label>
+
+## Vẽ một chữ
+
+Trình mô phỏng cho thấy bốn cái lưới, trong đó có viết bảng chữ cái. Bạn đoán trước nhé: bạn sẽ vẽ gì cho `E`, chữ nằm giữa lưới thứ nhất?
+
+<Try action="masons" button="Mở bức thư đầu tiên">
+  Chạm vào `E` ở lưới thứ nhất. Xem nét nào sáng lên, rồi tìm đúng hình ấy trong bức thư.
+</Try>
+
+<Check question="Ký hiệu của E là gì?">
+  Một ô vuông kín. `E` nằm ở ô giữa, nên bốn phía đều có nét lưới. Chữ nằm ở góc, như `A`, chỉ chạm hai nét, nên ký hiệu của nó là một cái góc.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Nét, góc và chấm
+
+### Mỗi chữ một ô
+
+Lưới thứ nhất trông như bàn cờ ca-rô ba nhân ba. Nó chứa từ `A` đến `I`, mỗi ô một chữ. Muốn viết một chữ, bạn tìm ô của nó, rồi chỉ vẽ những nét bao quanh ô ấy, không vẽ gì thêm.
+
+Chín ô được rào theo chín kiểu khác nhau. Ô góc có hai nét, ô cạnh có ba nét, ô giữa có bốn nét. Vậy chữ nào cũng có hình riêng. `A` là một cái góc. `B` là một cái hộp không nắp. `E` là nguyên một ô vuông.
+
+<Try action="blank" button="Xóa bức thư">
+  Gõ `BAD` (tệ) vào ô “Tin nhắn của bạn”. Chạm vào từng ký hiệu và xem nó đến từ ô nào của lưới thứ nhất.
+</Try>
+
+### Thêm dấu chấm, rồi thêm chữ X
+
+Chín ô không đủ cho 26 chữ. Nên lưới thứ hai cũng y hình ấy, nhưng ô nào cũng có một dấu chấm. Nó chứa từ `J` đến `R`. Ký hiệu của chúng vẫn là chín hình cũ, mỗi hình thêm một dấu chấm.
+
+Lưới thứ ba là một chữ X lớn. Bốn khoảng trống của nó chứa `S`, `T`, `U` và `V`. Mỗi ký hiệu là một hình chữ V, quay về một hướng. Lưới thứ tư là chữ X có dấu chấm, dành cho `W`, `X`, `Y` và `Z`.
+
+Chín, chín, bốn và bốn cộng lại là 26.
+
+<Try action="masons" button="Mở lại bức thư">
+  Chạm vào `N` ở lưới thứ hai, rồi `E` ở lưới thứ nhất, và so sánh. Sau đó chạm vào `S` và `T` ở lưới thứ ba và xem chữ V quay ra sao.
+</Try>
+
+<Check question="Hai chữ nào được vẽ thành ô vuông kín?">
+  `E` và `N`. Cả hai đều nằm giữa một lưới cờ ca-rô. `N` thuộc lưới có dấu chấm, nên ô vuông của nó có chấm bên trong.
+</Check>
+
+<Label>Câu chuyện</Label>
+
+## Một mật mã sống dai
+
+Tới những năm 1700, các nhà giải mã đã biết cách hạ một mật mã như thế này từ lâu. Vậy mà Hội Tam điểm vẫn dùng mật mã chuồng heo để giữ kín sổ sách. Tới nay, nhiều học sinh vẫn còn dùng nó.
+
+Sao lại chọn một mật mã yếu? Vì nó dễ. Bốn cái lưới dễ nhớ, vẽ lại nhanh, nên chẳng có tờ chìa khóa nào phải giấu hay sợ mất. Mà hội viên Tam điểm đâu cần thắng nhà giải mã của một ông vua. Họ chỉ muốn ngăn kẻ tò mò lỡ cầm cuốn sổ lên.
+
+Mật mã chuồng heo không thay chữ cái bằng chữ cái, mà thay mỗi chữ bằng một ký hiệu. Vì thế nó trông lạ hơn mã Caesar nhiều. Nhưng hãy xem cái gì vẫn giữ nguyên. Chữ `E` nào cũng thành cùng một ô vuông, lần nào cũng vậy. Nên mật mã chuồng heo vẫn là mật mã **thay thế dùng một bảng chữ cái**: mỗi chữ chỉ có một lớp hóa trang cố định. Đổi chữ thành hình vẽ làm bí mật trông khác đi. Nó không làm bí mật được giữ kỹ hơn.
+
+<Label>Bị phá như thế nào</Label>
+
+## Đếm các ô vuông
+
+Phụ lục về mật mã chuồng heo kết thúc bằng một câu đố. Sách bảo: biết chìa khóa thì giải rất dễ, còn không biết thì mật mã này vẫn dễ dàng bị phá bằng một thứ. Rồi sách viết thứ ấy bằng chính mật mã chuồng heo.
+
+<Try action="riddle" button="Mở câu đố của cuốn sách">
+  Các chữ đã bị ẩn. Chạm vào một ký hiệu, tìm những nét sáng trong lưới, rồi đọc chữ trong ô ấy. Hai từ đó là gì?
+</Try>
+
+Lời giải là cách tấn công ở [trang phân tích tần suất](/ciphers/frequency-analysis). Nhà giải mã chẳng cần biết các lưới. Cô ấy đếm xem mỗi hình xuất hiện bao nhiêu lần. Trong một bức thư tiếng Anh dài, hình hay gặp nhất có lẽ là `E`. Mấy hình kế tiếp có lẽ là `T` và `A`. Các từ ngắn và những hình đứng đôi cho thêm manh mối. Chẳng mấy chốc cô đọc được bức thư, rồi mới suy ra các lưới.
+
+Hàng số đếm bên dưới bức thư đếm giúp bạn việc đó. Vài từ thì quá ngắn để tin vào phép đếm, nhưng một trang sổ ghi chép thì thừa đủ.
+
+Mật mã chuồng heo còn chỗ yếu thứ hai. Bí mật duy nhất của nó là cách xếp chữ vào lưới. Ai đã biết điều ấy thì mọi bức thư từng viết bằng nó đều phơi ra hết.
+
+<Label>Thử thách</Label>
+
+## Mảnh giấy trên cửa chi hội
+
+<Challenge answer="THE LODGE MEETS AT MIDNIGHT">
+  Một mảnh giấy gấp đôi được ghim ở mặt trong cánh cửa chi hội. Nó có năm từ, tất cả viết bằng mật mã chuồng heo.
+
+  Dùng các lưới để đọc nó. Mảnh giấy nói gì?
+
+  <Try action="lodge" button="Mở mảnh giấy" />
+</Challenge>
+
+<Check question="Vì sao mật mã chuồng heo không an toàn hơn việc đổi chữ lấy chữ?">
+  Mỗi chữ vẫn chỉ có một ký hiệu cố định. Tần suất và khuôn mẫu của tiếng Anh cứ thế lọt qua. Nên phân tích tần suất dùng với hình vẽ cũng tốt như với chữ cái.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Trông bí mật chưa chắc đã bí mật
+
+Mật mã chuồng heo dạy một bài học người ta cứ hay quên. Ký hiệu lạ làm bức thư trông bí ẩn. Nó không làm bức thư an toàn.
+
+Các nhà tạo mã nghiêm túc đã đi tiếp từ lâu. Mật mã Vigenère đổi bảng chữ cái mật mã từ chữ này sang chữ khác, nên phép đếm đơn giản bó tay. Trong thế kỷ 17 và 18, nó dần lan rộng, nhất là khi các Phòng Đen của châu Âu đã phá được mọi kiểu thay thế cũ. Người ta gọi nó là *le chiffre indéchiffrable*, mật mã không thể phá nổi. Rồi một nhà phát minh người Anh quyết định thử cái tên ấy. Gặp ông ở trang sau: [Babbage đấu với mật mã Vigenère](/ciphers/babbage).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử* (Phạm Văn Thiều và Phạm Thu Hằng dịch, NXB Trẻ), Phụ lục D, “Mật mã chuồng heo”. Các lưới trên trang này theo đúng hình vẽ trong đó.
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử*, chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland. Phân tích tần suất, cách tấn công phá được mật mã chuồng heo.

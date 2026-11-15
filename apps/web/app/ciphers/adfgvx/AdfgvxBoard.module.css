@@ -1,0 +1,23 @@
+/* The stages of the cipher sit side by side on a wide screen and stack on a phone. */
+.stages {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: center;
+  gap: var(--space-6);
+  max-width: 100%;
+}
+
+.stage {
+  display: grid;
+  gap: var(--space-2);
+  justify-items: center;
+  max-width: 100%;
+  margin: 0;
+  overflow-x: auto;
+}
+
+.stage figcaption {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}

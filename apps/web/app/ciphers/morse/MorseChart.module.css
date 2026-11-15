@@ -1,0 +1,41 @@
+.chart {
+  display: grid;
+  /* A column holds the longest sign, a figure of five dashes. Two columns fit a phone. */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 10.5rem), 1fr));
+  gap: var(--space-1);
+  width: 100%;
+  /* As wide as the board, never as wide as its own columns would like. */
+  min-width: 0;
+  max-width: 40rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chart li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.char {
+  width: 1ch;
+  font-family: var(--font-cipher);
+  font-weight: bold;
+}
+
+.chart li[data-on="true"] {
+  border-color: var(--color-accent);
+  background: var(--color-surface-raised);
+}
+
+.chart li[data-on="true"] .char {
+  color: var(--color-lamp);
+}
+
+.chart li[data-dim="true"] {
+  opacity: 0.35;
+}

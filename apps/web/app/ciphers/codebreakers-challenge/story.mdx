@@ -1,0 +1,159 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md, adapted for a finale.
+  The four cryptograms are ours, enciphered by the engine.
+  The reader can also load the book's own cipher texts into "Your own": its four cryptograms and its dedication.
+  Their answers are written nowhere here.
+  The book's own challenge is on the last two pages of the abridged edition.
+  The Cipher Challenge of the full edition is checked against Simon Singh's own account (see Further reading).
+*/}
+
+<Standfirst>
+  The book ends with a dare: four cryptograms and no answers. Here are four of ours.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## The last page is a dare
+
+Most books end with an answer. *The Code Book* ends with a dare.
+
+After the final chapter, Simon Singh prints four cryptograms. Each is meant to be tougher than the one before. Then he warns you that the solutions are not listed anywhere. All you have is your "ingenuity and determination".
+
+This page does the same. The four cryptograms here are ours, not the book's. We wrote the messages, and the ciphers from the earlier pages scrambled them. The book still has its own four, and you can work on those here too.
+
+You have met every cipher used here. Can you break them when nobody gives you the key?
+
+<Label>Try it</Label>
+
+## Start with the easy one
+
+Cryptogram 1 is a Caesar shift, and its word spaces are still there. Guess first: which word in it could give the key away?
+
+<Try action="first" button="Load cryptogram 1">
+  Press ▲ next to "Shift" and watch the reading under the alphabets. Stop when it turns into English. The controls then say "solved".
+</Try>
+
+<Check question="Which word gives the key away?">
+  The one-letter word `L`. English has only two such words, "a" and "I". So only two shifts are worth trying, and one of them works.
+</Check>
+
+<Label>How it works</Label>
+
+## Three ciphers, three tools
+
+### Caesar: try every key
+
+A Caesar shift has only 25 keys, so you can simply try them all. Cryptogram 2 is the same cipher made harder. It is short, and its spaces are gone. The letters arrive in groups of five, so no little words give it away.
+
+<Try action="second" button="Load cryptogram 2">
+  Open "Try every shift at once" on the board. Read down the list for a line that begins with a real word, then tap it. Stuck? Go back to [the Caesar shift](/ciphers/caesar).
+</Try>
+
+### Substitution: count the letters
+
+Cryptogram 3 swaps each letter for another, using a shuffled alphabet. It has far too many keys to try. But every plain letter always turns into the same cipher letter, so the habits of English show through.
+
+The solid bars count the cipher letters, tallest first. The outlines show normal English.
+
+<Try action="third" button="Load cryptogram 3">
+  Tap the tallest bar, `A`, then tap `e` in the row of plain letters. Next find the three-letter word that keeps coming back. Guess it, and carry on word by word. Stuck? Go back to [frequency analysis](/ciphers/frequency-analysis).
+</Try>
+
+### Vigenère: measure the keyword
+
+Cryptogram 4 uses a keyword, so one plain letter becomes several different cipher letters. A simple count tells you nothing.
+
+Look for groups of letters that appear twice instead. The keyword must fit exactly into the gap between the two copies. Once you know its length, each key letter is only a Caesar shift.
+
+<Try action="fourth" button="Load cryptogram 4">
+  Press ▲ next to "Key length" until one column of the table is ticked all the way down. Then press ▼ next to "Shift" until the solid bars fit the outlines. Move to the next "Key letter" and do it again. Stuck? Go back to [Babbage's attack](/ciphers/babbage).
+</Try>
+
+<Check question="Why must you find the key length before you count any letters?">
+  Counting only works on letters that share one cipher alphabet. Until you know the length, you cannot tell which letters belong together.
+</Check>
+
+<Label>The story</Label>
+
+## Ten stages and £10,000
+
+This site follows the shorter edition of the book. The full edition came out in September 1999, and it ended with something bigger: the **Cipher Challenge**.
+
+It had ten stages, and Singh offered £10,000 to the first person to solve them all. The stages followed the history in the book. Early ones used old ciphers, such as a Caesar shift and a Vigenère cipher. Stage 8 was an Enigma message. Stage 10 used RSA with a 512-bit key.
+
+It took more than a year. The winners were five researchers from Sweden: Fredrik Almgren, Gunnar Andersson, Torbjörn Granlund, Lars Ivansson and Staffan Ulfberg. Their claim arrived by post on 7 October 2000. They had broken the last stage without a supercomputer.
+
+<DigDeeper title="A prize for being ahead">
+  Singh had promised £1,000 to whoever was in the lead on 1 October 2000. It went to the team of Jim Gillogly, John Palagyi and the Electronic Frontier Foundation, who had solved nine stages. A few days later, a fax arrived from Sweden.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## Breaking a message you know nothing about
+
+On this page we told you each kind of cipher. A real codebreaker has to work that out first. Three habits do most of the work.
+
+**Guess the cipher.** Count the letters. If a few stand tall and others hardly appear, as in English, each letter was probably swapped for one other. If the bars are nearly level, several alphabets are taking turns, as in a Vigenère cipher.
+
+**Count.** In a swap cipher, the tall bars are probably `E`, `T` and `A`. Treat every match as a guess, not a fact.
+
+**Look for patterns.** Short words, doubled letters and repeated groups all survive enciphering. A group that repeats in a Vigenère message measures the keyword. A three-letter word that keeps returning is probably "the".
+
+Then test each guess against the words around it. A wrong guess soon makes nonsense, and you rub it out.
+
+<Try action="fourth" button="Load cryptogram 4">
+  Set "Key length" to 2 and step through every "Shift". The bars stay lumpy and never fit the outlines. That is what a wrong key length looks like.
+</Try>
+
+<DigDeeper title="Work on the book's own cryptograms">
+  The cryptogram picker has a fifth choice, "Your own". Paste any cryptogram into its box and pick the kind of cipher you think it is. The same tools appear. The bench cannot say "solved", because it does not know the answer. You decide when the reading makes sense.
+
+  The book's four cryptograms are ready to load. They are on pages 243 and 244 of the printed book. The first two are Caesar shifts, the third is a substitution and the fourth is a Vigenère cipher.
+
+  <Try action="bookFirst" button="Load the book's cryptogram 1" />
+
+  <Try action="bookSecond" button="Load the book's cryptogram 2" />
+
+  <Try action="bookThird" button="Load the book's cryptogram 3" />
+
+  <Try action="bookFourth" button="Load the book's cryptogram 4" />
+
+  The book's dedication also ends with a line in cipher. The book never says how to read it, and we do not know either. It is very short, so counting letters will not be enough. Guessing likely words is the way in.
+
+  <Try action="dedication" button="Load the book's dedication" />
+</DigDeeper>
+
+<Label>Challenge</Label>
+
+## The last three words
+
+<Challenge answer="NEVER STOP COUNTING">
+  Cryptogram 4 ends with a password. Break the cipher and read to the end. The spaces are missing, so you must split the words yourself.
+
+  What are the last three words of cryptogram 4?
+
+  <Try action="fourth" button="Load cryptogram 4" />
+</Challenge>
+
+<Check question="Why is cryptogram 2 harder than cryptogram 1, when the cipher is the same?">
+  It gives you less to hold on to. With no spaces there are no one-letter words to guess, and a short message has few letters to count. Trying all 25 keys still works, because the cipher has so few.
+</Check>
+
+<Label>What came next</Label>
+
+## Your turn
+
+This is the last page. You have followed codemakers and codebreakers from Caesar's shifted alphabet to single particles of light. One lesson runs through all of it. A cipher is safe only until somebody patient finds its pattern.
+
+Now open the book at its final two pages and try its own four cryptograms. The "Your own" bench will hold them. Nobody will give you those answers either. Or encipher a message on one of the earlier pages, and dare a friend to read it.
+
+[Go back to the menu](/) and pick a cipher you have not tried.
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, "The Codebreaker's Challenge". The book's own four cryptograms, on its last two pages.
+- Simon Singh, "Cipher Challenge", simonsingh.net/cryptography/cipher-challenge. His own account of the ten stages, the prize and the winners.
+- Fredrik Almgren, Gunnar Andersson, Torbjörn Granlund, Lars Ivansson and Staffan Ulfberg, "How We Cracked the Code Book Ciphers" (2000). The winning team's report.
+- "Cipher challenge cracked", *Plus* magazine, plus.maths.org (2001). A short account for general readers.

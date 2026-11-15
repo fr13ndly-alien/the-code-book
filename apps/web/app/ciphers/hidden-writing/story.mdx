@@ -1,0 +1,144 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 1. The wording is ours.
+*/}
+
+<Standfirst>
+  The oldest trick in secret writing: hide the message so well that nobody looks for it.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## A message under the hair
+
+Histaiaeus had a dangerous message to send. He wanted his ally Aristagoras, in the city of Miletus, to rise up against the king of Persia. A letter like that must never be found on the road.
+
+So Histaiaeus picked a messenger and shaved the man's head. He wrote the message on the bare scalp. Then he waited for the hair to grow back.
+
+The messenger set off with nothing in his hands and nothing in his bag. Nobody on the road troubled him. When he reached Miletus he shaved his head again and bowed it towards Aristagoras.
+
+Not one word of that message was scrambled. Anyone who saw it could read it. So what kept it secret?
+
+<Label>Try it</Label>
+
+## Blank, or is it?
+
+The simulator shows a wooden writing tablet. Greeks filled such tablets with wax and scratched their words into the wax. This one has a warning written on the wood itself. Guess first: once you cover it with fresh wax, what will a guard see?
+
+<Try action="tablet" button="Show the tablet">
+  Press "Cover with wax". Then press "Send it past the guard" and read what the guard says.
+</Try>
+
+<Check question="What did the guard see?">
+  A blank tablet, the kind any traveller might carry. The warning is still there under the wax. The guard lets it through because he has no reason to look for it.
+</Check>
+
+<Label>How it works</Label>
+
+## Hide the message, not the meaning
+
+### Under the wax
+
+Hiding the fact that a message exists is called **steganography**. The name comes from two Greek words: *steganos*, "covered", and *graphein*, "to write".
+
+Notice what is missing. There is no secret alphabet and nothing to work out. The message sits there in plain words. Its only protection is that nobody thinks to look.
+
+The person at the other end needs just one piece of knowledge: where to look.
+
+<Try action="waxed" button="Receive the blank tablet">
+  The tablet has arrived, covered in wax. Tap a strip of wax on the tablet, or press "Scrape the next strip". Watch "What anyone can read now" grow, strip by strip.
+</Try>
+
+### Ink that waits for heat
+
+You can also hide writing in the ink itself. In the first century AD, the Roman writer Pliny the Elder described an invisible ink made from the "milk" of the tithymalus plant. Once dry, it is transparent. The page looks empty.
+
+Gentle heat brings the words back. The dried sap chars and turns brown. Many fluids from living things behave the same way, because they are rich in carbon.
+
+<Try action="letter" button="Write in invisible ink">
+  Press "Let the ink dry" and the note vanishes. Now press "Warm the page" once, then again. Watch the letters darken a little with each press.
+</Try>
+
+<Check question="What must the receiver know to read a hidden message?">
+  Only the trick: scrape the wax, or warm the page. There is no key to remember and no puzzle to solve. That makes hidden writing easy to use, and it is also the reason it is fragile.
+</Check>
+
+<Label>The story</Label>
+
+## The woman who said "scrape it"
+
+In 480 BC a pair of writing tablets reached Sparta from the Persian city of Susa. They were blank. Nobody could think why anyone would send them.
+
+Then Gorgo spoke up. She was the daughter of Cleomenes and the wife of Leonidas. She told the others to scrape off the wax. On the wood underneath was a warning from Demaratus, a Greek living in exile in Susa. Xerxes, king of Persia, had spent five years secretly gathering a vast force to invade Greece.
+
+The Greeks had been defenceless. Now they spent the profits of their silver mines on warships. On 23 September 480 BC they lured the Persian fleet into the narrow Bay of Salamis and beat it in a single day.
+
+We know both stories from Herodotus, the Greek historian who recorded these wars.
+
+<DigDeeper title="Silk, wax and a strong stomach">
+  People kept inventing hiding places for two thousand years. In ancient China a message was written on fine silk and scrunched into a tiny ball. The ball was coated in wax, and the messenger swallowed it.
+
+  Invisible ink lasted too. The book notes that modern spies who ran out of proper ink have been known to use their own urine. It chars in the heat just as Pliny's plant sap did.
+</DigDeeper>
+
+<DigDeeper title="A belt and a beer barrel">
+  Hiding and scrambling can work together. Spartan messengers sometimes wore the leather strip from a [scytale](/ciphers/scytale) as a belt. The scrambled letters faced inwards, against the body.
+
+  In 1586 Gilbert Gifford carried letters for the captive Mary Queen of Scots. A brewer sealed each one in a leather packet inside the hollow bung of a beer barrel. The book counts that as steganography too. Mary's letters were also in [cipher](/ciphers/mary-queen-of-scots).
+</DigDeeper>
+
+<DigDeeper title="The postcard with nothing on it">
+  During the First World War, Sir Henry Jones received a postcard from Turkey. His son was a prisoner there. The card was blank. The address was odd too: `184 King's Road`, Tighnabruaich. That Scottish village had no King's Road and no house numbers.
+
+  <Check question="The message is in the address. Where would you look up Kings 18:4?">
+    In the Bible. The First Book of Kings, chapter 18, verse 4, tells of a hundred prophets hidden in a cave and fed with bread and water. The son was saying he was safe and being fed. The Reverend Montgomery, a British codebreaker, spotted it.
+  </Check>
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## The guard who checks everything
+
+Hidden writing has one great weakness. If the message is found, it is read at once. Nothing stands between the finder and the words.
+
+And finding it takes no cleverness, only patience. Picture a guard at a border who trusts nobody. He scrapes every wax tablet. He holds every blank sheet over a flame. He shaves the head of anyone who looks nervous. Most days he finds nothing. Sooner or later he finds something.
+
+<Try action="searched" button="Meet a thorough guard">
+  The tablet is under wax again, but this time the guard is set to "Thorough". Press "Send it past the guard". Then pick "Invisible ink", let the ink dry and send that past him too.
+</Try>
+
+The guards on the road from Susa only looked. A sender cannot count on that. Hiding offers some safety, which is why it lasted so long. But a secret that matters needs a second line of defence.
+
+<Label>Challenge</Label>
+
+## The blank sheet
+
+<Challenge answer="THE GUARD IS ASLEEP">
+  A prisoner is handed a sheet of paper from a friend outside. There is nothing on it, and the guard who searched it found nothing either.
+
+  Do what the prisoner did. What does the sheet say?
+
+  <Try action="sheet" button="Load the blank sheet" />
+</Challenge>
+
+<Check question="Why is a hidden message so easy to read once it is found?">
+  Because its words were never changed. All of its safety came from nobody looking. The moment someone scrapes the wax or warms the page, the plain message is in front of them.
+</Check>
+
+<Label>What came next</Label>
+
+## Hide the meaning instead
+
+So a second art grew up beside the first. **Cryptography** takes its name from the Greek *kryptos*, "hidden". It does not hide the message. It hides what the message means, by scrambling it in a way that sender and receiver have agreed in advance. This scrambling is called **encryption**.
+
+Now the thorough guard can scrape and heat all he likes. He finds the message, and still cannot read it.
+
+The simplest way to scramble is to keep every letter and change the order. Try it on the next page: [the rail fence](/ciphers/rail-fence).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 1.
+- Herodotus, *The Histories*. Book 5 has the shaved messenger, and book 7 has the wax tablets.
+- Pliny the Elder, *Natural History*, book 26. The source for the invisible ink made from tithymalus.

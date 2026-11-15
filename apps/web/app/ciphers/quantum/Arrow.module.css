@@ -1,0 +1,6 @@
+.arrow {
+  display: block;
+  width: var(--space-6);
+  height: var(--space-6);
+  margin: auto;
+}

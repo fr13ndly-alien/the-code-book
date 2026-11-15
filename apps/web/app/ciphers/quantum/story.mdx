@@ -1,0 +1,148 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 6. The abridged edition is brief here,
+  so the details of the scheme were checked against the sources in Further reading.
+  The wording is ours.
+*/}
+
+<Standfirst>
+  Send a key one particle of light at a time, and nobody can listen without leaving a mark.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## Twelve inches
+
+In 1988 two computers sat on a bench at an IBM laboratory in New York. They were twelve inches apart. Charles Bennett, a researcher there, was about to send a secret from one to the other.
+
+It was the shortest secret journey in this whole story, and the strangest. The message did not travel as ink, or radio waves, or pulses in a wire. It travelled as single particles of light, one after another.
+
+Bennett claimed something no codemaker had dared to claim before. If a spy looked at those particles on the way, the two computers would know. How can light tell you that somebody has been watching it?
+
+<Label>Try it</Label>
+
+## Bob has to guess
+
+Alice has sent Bob 16 particles of light, called **photons**. Each one carries a 0 or a 1. To read each photon, Bob had to choose one of two detectors, and he chose blindly. Make a guess first: how many times did he choose well?
+
+<Try action="measured" button="Show Alice's 16 photons">
+  Press "Next step: They keep the matches". Count the ticks in the row "Same scheme?".
+</Try>
+
+<Check question="How many photons did Bob read with the right detector?">
+  Eight, which is half. He had two detectors to choose from, so he was right about one time in two. Those eight photons are the only ones Alice and Bob keep.
+</Check>
+
+<Label>How it works</Label>
+
+## A key made of light
+
+### Two ways to tilt a photon
+
+A photon vibrates as it flies, and the direction of that vibration is its **polarisation**. Alice can set it. She has two schemes.
+
+In the `+` scheme, an upright photon means 1 and a flat one means 0. In the `×` scheme, a photon leaning right means 1 and one leaning left means 0.
+
+A `+` detector reads a `+` photon perfectly. But show it a leaning photon, and it must still answer "upright" or "flat". It answers by pure chance. The same goes for the `×` detector with a `+` photon. This is a law of quantum physics: measuring something this small changes it.
+
+<Try action="sent" button="Show only Alice's photons">
+  Read down the first column: Alice's bit, her scheme, and the arrow she sends. Tap a few numbers under the table to read about other photons.
+</Try>
+
+### Keep the matches
+
+Bob cannot know which scheme Alice used for each photon. So he picks a detector at random and writes down what it says.
+
+Afterwards Alice phones him on an ordinary line. For each photon they say which scheme they used, but never the bit. Where the schemes match, Bob's bit must equal Alice's. They keep those bits. Where the schemes differ, Bob's bit is worthless, and they throw it away.
+
+Eve can hear the whole call. It does not help her. She learns which photons counted, but not what they said.
+
+<Try action="sifted" button="Show the matches">
+  Look at the faded columns: those photons are thrown away. In every column with a tick, compare "Alice's bit" with "Bob's bit".
+</Try>
+
+### Eve cannot look without touching
+
+Eve wants the bits, so she must measure the photons as they fly past. But she is in the same position as Bob. She has to guess a detector.
+
+When she guesses wrong, she reads rubbish. Worse for her, she has destroyed the photon. She must send Bob a new one, and it is polarised in her scheme, not Alice's. Now Bob's detector may give the wrong answer, even when his scheme matches Alice's.
+
+Eve guesses wrong half the time, and each wrong guess spoils Bob's bit half the time. So about a quarter of the kept bits go wrong.
+
+To find out, Alice and Bob read some of their kept bits aloud and compare them. Then they throw those bits away. One mismatch means somebody is listening.
+
+<Try action="tapped" button="Let Eve listen">
+  Three new rows show what Eve did. Tap number 1 under the table and read the caption. Then find the ✗ marks in the row "Read out to compare".
+</Try>
+
+<Check question="Alice and Bob found mismatches. What should they do?">
+  Throw the whole key away and start again, perhaps on another line. No message has been sent yet, only random bits. So Eve has learned nothing useful.
+</Check>
+
+<Label>The story</Label>
+
+## From banknotes to keys
+
+The idea began with money. Around 1970 Stephen Wiesner, a student at Columbia University in New York, imagined banknotes with photons trapped inside. A forger would have to measure the photons to copy them, and measuring would change them. A journal turned his paper down. It was not printed until 1983.
+
+Charles Bennett knew of Wiesner's idea and kept thinking about it. With Gilles Brassard, a computer scientist at the Université de Montréal, he turned the trick from banknotes to keys. They published their scheme in 1984, and it is known as BB84 after their initials and the year.
+
+The key it makes is random and secret. Use it once, as a [one-time pad](/ciphers/one-time-pad), and the message cannot be broken.
+
+The date and distance in our opening are the ones the shorter edition of the book gives. Other accounts differ a little. The full edition says Bennett began building in 1988 and needed a year. Brassard remembers the first key crossing in late October 1989, over 32.5 centimetres, which is just under thirteen inches.
+
+After that first test, the distances grew. In 1995 researchers at the University of Geneva sent a quantum key to the town of Nyon, a little over fourteen miles away.
+
+<Label>How it was broken</Label>
+
+## It has not been
+
+Every cipher before this one was safe only because it was hard to break. Sooner or later, somebody clever enough came along. This one is different. It rests on a law of physics, not on a hard sum. If it failed, the book says, physicists would have to rethink how the universe works.
+
+Eve's only hope is luck. Try being her.
+
+<Try action="lucky" button="Load Eve's lucky day">
+  Eve listened to all 16 photons, yet all four compared bits agree. Now look at the key: Alice has `1110`, but Bob holds `0101`. Then pick 64 under "Send new photons" a few times and see how often Eve escapes.
+</Try>
+
+Each compared bit gives Eve three chances in four of staying hidden. With four bits she escapes about one time in three. With 72 bits her chance is less than one in a billion. So Alice and Bob simply send more photons.
+
+<Label>Challenge</Label>
+
+## Which line is safe?
+
+<Challenge answer="SOUTH">
+  Alice can reach Bob along three glass fibres, called `NORTH`, `SOUTH` and `WEST`. Eve has tapped two of them. Alice sends 16 photons down each.
+
+  Load each line and press "Next step" until the bits are compared. Which line can they trust?
+
+  <Try action="north" button="Load north" />
+  <Try action="south" button="Load south" />
+  <Try action="west" button="Load west" />
+</Challenge>
+
+<Check question="Why can't Eve copy each photon and measure her copy later?">
+  To copy a photon she would first have to find out how it is polarised. That means measuring it, and measuring with the wrong detector changes it. She cannot look without touching.
+</Check>
+
+<Label>What came next</Label>
+
+## The end of the race, for now
+
+You have followed a race that is two thousand years old. Codemakers hid letters, swapped them, and built machines to scramble them. Codebreakers counted letters, found patterns, and built machines of their own. Each side led for a while.
+
+Today the codemakers are ahead. RSA guards the world's messages, and no known attack can touch a long key. If a quantum computer ever threatens it, quantum cryptography is waiting. The book calls it "absolutely unbreakable".
+
+Codemakers have said that before. Then a Babbage or a Turing arrived. Perhaps the next one is reading this page.
+
+There is nothing after this cipher, yet. [Go back to the menu](/) and choose one you have not tried.
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 6. The abridged edition gives only the idea. The full edition tells the story at greater length in its chapter 8, and the steps on this page follow the 1984 paper below.
+- Charles Bennett and Gilles Brassard, "Quantum cryptography: Public key distribution and coin tossing", 1984. The paper that gave BB84 its name.
+- Stephen Wiesner, "Conjugate Coding", *SIGACT News*, 1983. The quantum money paper, written around 1970.
+- Charles Bennett, Gilles Brassard and Artur Ekert, "Quantum Cryptography", *Scientific American*, October 1992. Written for general readers.
+- Gilles Brassard, "Brief History of Quantum Cryptography: A Personal Perspective", 2006 (arXiv:quant-ph/0604072). His own account of the first experiment in October 1989.

@@ -1,0 +1,144 @@
+{/*
+  Kể lại theo Mật mã: Từ cổ điển đến lượng tử, chương 6: Alice và Bob ra công khai (tr. 349–351),
+  phần mở đầu chương về mật mã Lorenz và Colossus. Theo docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md. The book says little about how the
+  Lorenz machine worked: those facts were checked against The National Museum of Computing and
+  the Crypto Museum (see Further reading), as on the English page. The wording is ours.
+*/}
+
+<Standfirst>
+  Máy mã của chính Hitler đã thua một cỗ máy được chế tạo trong vòng bí mật: chiếc máy tính lập trình được đầu tiên.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Bức điện gửi hai lần
+
+Ngày 30 tháng 8 năm 1941, một nhân viên điện báo Đức đánh đi một bức điện dài chừng bốn nghìn ký tự, qua một đường vô tuyến mới. Nó được mã hóa bằng một cỗ máy người Anh chưa thấy bao giờ. Đầu bên kia nhận không trọn, nên báo anh ta gửi lại.
+
+Lẽ ra anh ta phải đặt máy về một vị trí ban đầu mới. Anh ta lười, và bỏ qua bước ấy. Anh ta gõ lại bức điện từ đúng vị trí cũ, lại còn viết tắt vài từ trong lúc gõ.
+
+Người Anh nghe lén được, và ghi lại cả hai bản. Ở Bletchley Park, John Tiltman hiểu ngay lần gửi lại vụng về ấy đã tặng ông thứ gì.
+
+Cỗ máy này làm gì với bức điện? Và vì sao gửi lại một lần thôi mà nguy hiểm đến vậy?
+
+<Label>Thử xem</Label>
+
+## Năm lỗ cho mỗi chữ
+
+Cỗ máy ấy dùng **mật mã Lorenz**. Hitler và các tướng lĩnh của ông ta liên lạc với nhau bằng nó. Nó chạy trên một **máy điện báo đánh chữ**, một kiểu máy chữ gửi chữ đi theo đường dây. Máy biến mỗi chữ thành một cột năm vị trí trên băng giấy. Ở mỗi vị trí, băng có lỗ hoặc không.
+
+Đoán trước nhé: với năm vị trí, có thể có bao nhiêu cột khác nhau?
+
+<Try action="letter" button="Đục một chữ A">
+  Nhìn vào băng vào. Chữ `A` là hai lỗ, rồi ba chỗ trống. Trong bảng, có lỗ là `1`, trống là `0`. Giờ gõ thêm `B` sau chữ `A` ở ô “Băng vào” rồi so sánh.
+</Try>
+
+<Check question="Năm vị trí có thể tạo ra bao nhiêu cột khác nhau?">
+  Ba mươi hai, vì 2 × 2 × 2 × 2 × 2 = 32. Đủ cho 26 chữ cái, còn dư sáu. Các cột dư dùng cho những việc như "dấu cách" hay "xuống dòng". Trên trang này, dấu cách viết là `9`, như các nhà giải mã ngày ấy vẫn viết.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Cộng chìa khóa vào, từng lỗ một
+
+### Cộng mà không nhớ
+
+Với mỗi chữ, máy Lorenz tạo thêm một cột thứ hai, bí mật: đó là **chìa khóa mã**. Rồi nó cộng hai cột lại, từng vị trí một, theo một luật rất gọn. Hai vị trí giống nhau thì được `0`. Khác nhau thì được `1`.
+
+Như vậy có lỗ cộng trống thành có lỗ. Có lỗ cộng có lỗ thành trống. Người làm máy tính gọi luật này là **XOR** (cộng không nhớ).
+
+<Try action="start" button="Mở một mệnh lệnh ngắn">
+  Chữ đầu tiên đang được chọn. Đọc bảng từng hàng: “Băng” cộng “Chìa khóa” cho ra “Ra”. Rồi nhấn ▲ cạnh “Chữ đang xem” để thấy một chìa khóa mới gặp chữ tiếp theo.
+</Try>
+
+### Bánh xe tạo ra chìa khóa
+
+Chìa khóa đến từ những bánh xe có chốt quanh vành. Chốt dựng lên là `1`, chốt hạ xuống là `0`. Cứ xong một chữ, các bánh xe lại quay thêm một chốt, nên chữ nào cũng gặp một chìa khóa mới.
+
+Mỗi bánh xe có một số chốt riêng. Ở đây là 41, 31, 29, 26 và 23, như năm bánh xe của máy thật. Các số này không có ước chung, nên các bánh xe lệch nhịp ngay từ đầu. Phải qua 22.041.682 chữ chúng mới thẳng hàng lại như lúc đầu.
+
+Trang này chỉ là mô hình đơn giản. Máy Lorenz thật giống Enigma ở chỗ cũng dùng bánh xe quay, nhưng phức tạp hơn nhiều: nó có mười hai bánh xe. Năm bánh xe chìa khóa nữa thì lúc chạy lúc dừng, và hai bánh xe khác điều khiển chúng. Cách xếp chốt ở đây là do chúng tôi đặt ra.
+
+<Try>
+  Nhấn ▲ cạnh “Bánh xe 1” vài lần. Một hàng trong bảng đổi đi, và cả băng ra cũng đổi theo.
+</Try>
+
+### Cộng hai lần thì như chưa cộng
+
+Cộng chìa khóa hai lần cũng như chưa cộng lần nào. Giống nhau thì được `0`, nên chìa khóa nào cộng với chính nó cũng biến mất.
+
+Vì vậy người nhận không cần một cỗ máy khác. Anh ta đặt bánh xe về cùng vị trí ban đầu, cho bản mật mã chạy qua, và bức điện gốc hiện ra.
+
+<Try action="start" button="Mở lại mệnh lệnh">
+  Nhấn “Đưa băng ra vào lại máy”. Băng ra thành băng vào, và băng ra mới đọc là `ATTACK9AT9DAWN` (tấn công lúc bình minh).
+</Try>
+
+<Check question="Vì sao người gửi và người nhận phải đặt bánh xe ở cùng một chỗ?">
+  Người nhận phải cộng đúng chìa khóa ấy, từng chữ một. Chỉ một bánh xe lệch một chốt là cứ năm vị trí lại sai một, suốt cả cuộn băng. Bức điện thành vô nghĩa.
+</Check>
+
+<Label>Câu chuyện</Label>
+
+## Cỗ máy chưa ai từng thấy
+
+Máy Lorenz khó hơn Enigma rất nhiều. Vậy mà chưa ai ở Bletchley từng được tận mắt thấy nó.
+
+Bức điện gửi hai lần đã đổi tất cả. Hai bản dùng chung một chìa khóa, nên Tiltman đem bản này đối chiếu với bản kia. Ông lấy lại được cả bức điện lẫn chìa khóa. Rồi một nhà toán học trẻ, Bill Tutte, ngồi nghiền ngẫm đoạn chìa khóa dài ấy. Chỉ từ những quy luật trong đó, ông suy ra được các bánh xe nằm bên trong cỗ máy. Hai người đã tìm ra lỗ hổng trong cách người Đức dùng mật mã Lorenz.
+
+Từ đó Bletchley đọc được thư tín của Hitler, nhưng chỉ bằng tay. Việc này cần tìm kiếm, so sánh, đếm thống kê và đoán khéo, quá sức của máy bom. Mỗi bức điện ngốn hàng tuần trời, và xong thì tin đã cũ.
+
+<DigDeeper title="Vì sao chìa khóa quý hơn bức điện">
+  Một bức điện chỉ dùng một lần. Còn một đoạn chìa khóa thì cho thấy cỗ máy chạy ra sao. Đến đầu năm 1942, nhóm của Tutte đã dựng lại toàn bộ thiết kế từ chừng bốn nghìn ký tự chìa khóa. Người Anh liền làm một bản sao, gọi là Tunny, dù chưa từng thấy máy gốc.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Tốc độ, rồi một chiếc máy tính
+
+Điểm yếu nằm ngay ở phép cộng. Bạn tự xem nhé.
+
+<Try action="blankTape" button="Cho băng trống chạy qua">
+  Băng vào không có lỗ nào. Nhìn băng ra: đó chính là chìa khóa, lộ ra không che đậy gì. Biết được gì về một bức điện, bạn trừ phần đó đi là thấy chìa khóa.
+</Try>
+
+Hai bức điện cộng cùng một chìa khóa còn tệ hơn nữa. Cộng hai bản mật mã với nhau là chìa khóa triệt tiêu. Còn lại là bức điện này cộng với bức điện kia, và một nhà giải mã kiên nhẫn có thể gỡ chúng ra. Bức điện gửi lại đã để lộ đúng điều ấy.
+
+Với bức điện hằng ngày, muốn tìm vị trí ban đầu của các bánh xe thì phải đếm và so sánh hàng triệu lần. Một nhà toán học của Bletchley, Max Newman, nghĩ ra cách giao việc đó cho máy. Ông dựa vào ý tưởng của Alan Turing về một cỗ máy vạn năng. Cấp trên cho rằng không thể chế tạo nổi, và gác dự án lại. Tommy Flowers, một kỹ sư của ngành Bưu điện, vẫn bắt tay làm. Ở phòng thí nghiệm Dollis Hill, phía bắc London, ông mất mười tháng để hoàn thành nó.
+
+**Colossus** đến Bletchley Park vào tháng 12 năm 1943. Nó dùng khoảng 1.500 đèn điện tử, nhanh hơn hẳn những công tắc rơle lách cách trong máy bom. Nhưng điều lớn hơn cả tốc độ là nó lập trình được: có thể đổi việc cho nó làm. Đó là tổ tiên của máy tính ngày nay.
+
+<Label>Thử thách</Label>
+
+## Đọc cuộn băng
+
+<Challenge answer="COLOSSUS">
+  Một cuộn băng chặn được đọc là `HWOOI8W3`. Một nhân viên điện báo bất cẩn đã để lộ vị trí ban đầu của các bánh xe: 5, 4, 3, 2, 1.
+
+  Đặt năm bánh xe rồi đọc băng ra. Đó là từ gì?
+
+  <Try action="intercepted" button="Mở cuộn băng" />
+</Challenge>
+
+<Check question="Vì sao chính cỗ máy đã mã hóa từ đó cũng giải mã được nó?">
+  Vì cộng cùng một chìa khóa hai lần thì nó triệt tiêu. Đặt bánh xe ở cùng vị trí ban đầu, máy cộng đúng chìa khóa ấy vào bản mật mã, và chỉ còn lại bức điện.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Một chiếc máy tính bí mật
+
+Hết chiến tranh, Colossus bị phá bỏ như mọi thứ khác ở Bletchley Park. Flowers nhận lệnh hủy bản thiết kế, và ông mang nó xuống bếp đốt đi. Ai từng làm với cỗ máy đều phải giữ kín miệng.
+
+Năm 1945, hai người Mỹ là Eckert và Mauchly hoàn thành ENIAC. Nó có 18.000 đèn điện tử và làm được 5.000 phép tính mỗi giây. Không ai biết tới Colossus, nên cả thế giới coi ENIAC là chiếc máy tính đầu tiên. Nó giữ danh hiệu ấy suốt mấy chục năm.
+
+Giờ máy tính đã vào cuộc. Nhà giải mã dùng nó để thử chìa khóa thật nhanh. Rồi nhà tạo mã cũng dùng nó để tạo mật mã khó hơn. Mà máy tính không làm việc với chữ cái, cũng không với năm lỗ. Nó làm việc với con số: [chữ cái thành số nhị phân](/ciphers/binary).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử*, chương 6: Alice và Bob ra công khai (bản tiếng Việt, NXB Trẻ). Sách kể chuyện Colossus nhưng không nói cỗ máy Lorenz hoạt động ra sao. Các bánh xe và cách tấn công trên trang này lấy từ hai bảo tàng dưới đây.
+- Bảo tàng Máy tính Quốc gia Anh, Bletchley Park, "Tunny and Heath Robinson" (tnmoc.org). Về bức điện gửi lại ngày 30 tháng 8 năm 1941 và những cỗ máy được dựng lại.
+- Crypto Museum, "Lorenz SZ-40/42" (cryptomuseum.com). Về cỗ máy, các bánh xe của nó và cách nó bị phá.
+- Bảng chữ điện báo quốc tế số 2 (ITA2), mã điện báo năm lỗ dùng trên trang này.

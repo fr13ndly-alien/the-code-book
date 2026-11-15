@@ -1,0 +1,45 @@
+.grid {
+  border-collapse: collapse;
+  font-family: var(--font-cipher);
+}
+
+.grid th {
+  padding: var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: normal;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* The sound of a row or column, once a guess has found it. */
+.found {
+  display: block;
+  min-height: 1.5em;
+  color: var(--color-lamp);
+}
+
+.grid tbody td {
+  width: var(--tap);
+  height: calc(var(--tap) * 1.5);
+  padding: var(--space-1);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  text-align: center;
+  vertical-align: top;
+}
+
+.grid td[data-marked="true"] {
+  background: var(--color-surface-raised);
+  color: var(--color-accent);
+}
+
+.grid td[data-bridge="true"] {
+  outline: 2px solid var(--color-lamp);
+  outline-offset: -2px;
+}
+
+.sound {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--color-lamp);
+}

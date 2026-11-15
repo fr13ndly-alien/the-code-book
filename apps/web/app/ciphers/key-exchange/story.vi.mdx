@@ -1,0 +1,145 @@
+{/*
+  Kể lại theo Mật mã: Từ cổ điển đến lượng tử, chương 6: Alice và Bob ra công khai, mục
+  "Thánh nhân đãi kẻ khù khờ" (tr. 360–384). Ví dụ trao đổi (Y = 7, P = 11, Alice chọn 3 và gửi 2,
+  Bob chọn 6 và gửi 4, chìa khóa là 9) là Bảng 26 của sách (tr. 380). Theo docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md. The date of publication is from the paper
+  in Further reading. Facts agree with story.mdx; the wording is ours.
+*/}
+
+<Standfirst>
+  Hai người lạ thống nhất được một chìa khóa mã bí mật, dù có người nghe lén từng lời họ nói.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Những người đưa thư xách vali khóa móc
+
+Vào thập niên 1970, ngân hàng đã dùng máy tính để mã hóa thư tín. Nhưng khách hàng chỉ giải mã được nếu có đúng chìa khóa ấy. Thế là ngân hàng cử những nhân viên tin cẩn nhất đi khắp thế giới, xách theo vali có khóa móc đựng chìa khóa. Ngân hàng càng lớn, việc giao chìa khóa càng thành cơn ác mộng về tiền bạc.
+
+Mọi mật mã trước đó đều vướng cùng một cái vòng luẩn quẩn. Muốn trao cho nhau một bí mật, trước hết hai người phải trao cho nhau chìa khóa. Mà chìa khóa cũng là một bí mật.
+
+Năm 1974, Whitfield Diffie nghe nói có một giáo sư ở Đại học Stanford, Martin Hellman, cũng đang vật lộn với đúng bài toán này. Ông lái xe khoảng 4.800 km (3.000 dặm) xuyên nước Mỹ để gặp Hellman. Liệu hai người có thống nhất được một chìa khóa mà không cần gặp mặt, trong khi kẻ thù nghe hết?
+
+<Label>Thử xem</Label>
+
+## Ba bước đến một bí mật
+
+Bảng mô phỏng có ba cột. Alice và Bob là hai người muốn nói chuyện kín. Mọi thứ ở cột giữa đều nói công khai, và Eve, người nghe lén, nghe được hết. Đoán trước nhé: Alice và Bob có thể có chung một con số mà Eve không có không?
+
+<Try action="book" button="Bắt đầu ví dụ trong sách">
+  Nhấn “Bước tiếp” ba lần. Để ý những gì đi qua cột giữa, và những gì không bao giờ đi qua.
+</Try>
+
+<Check question="Alice và Bob mỗi người ra chìa khóa nào?">
+  Cả hai đều ra `9`. Alice tính 4<sup>3</sup>, còn Bob tính 2<sup>6</sup>. Cả hai đều bằng 64, tức là 9 theo mod 11. Bản thân chìa khóa chưa bao giờ đi qua cột giữa.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Khóa móc làm bằng số học
+
+### Chiếc hộp có hai khóa móc
+
+Hãy tưởng tượng một nước có bưu điện chẳng đáng tin chút nào: nhân viên đọc trộm mọi lá thư. Alice bỏ thư vào một hộp sắt, khóa bằng khóa móc của cô, rồi gửi đi. Bob nhận hộp nhưng không mở được. Anh bèn móc thêm khóa móc của mình vào và gửi trả lại.
+
+Alice mở khóa của cô ra, rồi gửi hộp đi lần thứ ba. Giờ trên hộp chỉ còn khóa của Bob, và anh có chìa. Không chiếc chìa khóa nào phải đi đường cả.
+
+Câu chuyện nhỏ này cho thấy hai người có thể trao bí mật mà không cần trao chìa khóa. Nhưng mật mã khó tính hơn khóa móc. Thường thì lớp mã hóa nào làm sau cùng phải được gỡ ra trước tiên, theo luật "vào sau ra trước". Cũng như buổi tối bạn phải cởi giày rồi mới cởi được tất. Với khóa móc thì thứ tự không quan trọng. Nhóm nghiên cứu cần một thứ toán học cũng không quan tâm tới thứ tự như thế.
+
+<Try action="agreed" button="Hiện cuộc trao đổi đã xong">
+  Nhìn bước 4. Alice dùng số của Bob với số bí mật của cô. Bob dùng số của Alice với số bí mật của anh. Thứ tự chẳng làm gì khác đi.
+</Try>
+
+### Hàm số một chiều
+
+Diffie và Hellman tìm hiểu các **hàm số**: những phép tính biến một số thành một số khác. "Nhân đôi" là một hàm số, và nó dễ làm ngược: biết 26 thì đoán ra ngay 13. Họ lại đi tìm thứ ngược hẳn: dễ làm mà khó gỡ. Trộn sơn vàng với sơn xanh da trời thành xanh lá thì dễ, tách ra lại thì chịu. Đập vỡ quả trứng cũng thế. Kiểu phép tính ấy gọi là **hàm số một chiều**.
+
+Họ tìm thấy hàm của mình trong **số học môđun**, còn gọi là số học đồng hồ. Ở đó các con số xếp thành vòng tròn như trên mặt đồng hồ. Theo mod 7 chỉ có các số từ 0 đến 6. Muốn tính, bạn làm phép tính như thường, chia cho 7 rồi giữ lại số dư.
+
+Trong số học bình thường, lũy thừa của 3 tăng đều: 3, 9, 27, 81. Đoán sai thì bạn biết mình đang "nóng" hay "lạnh". Theo mod 7, chúng nhảy lung tung: 3, 2, 6, 4, 5, 1. Biết kết quả, bạn chẳng có manh mối nào về lũy thừa đã tạo ra nó.
+
+<Try action="clock" button="Hiện các lũy thừa của 3 theo mod 7">
+  Đọc hàng “Eve thử”. Nó liệt kê từ 3<sup>1</sup> đến 3<sup>6</sup> theo mod 7. Rồi nhấn ▲ cạnh “Số nguyên tố công khai P” và xem quy luật đổi đi.
+</Try>
+
+### Cuộc trao đổi
+
+Mùa xuân năm 1976, Hellman tìm ra lời giải. Alice và Bob công khai thống nhất hai số, Y và P. Sách lấy ví dụ Y = 7 và P = 11, nên hàm số một chiều của họ là 7<sup>x</sup> (mod 11). Eve nghe được cũng chẳng sao.
+
+Alice chọn một số bí mật, 3. Cô tính 7<sup>3</sup> (mod 11), được 2, rồi gửi số 2 cho Bob. Bob chọn 6, tính 7<sup>6</sup> (mod 11), được 4, rồi gửi số 4 cho Alice.
+
+Rồi mỗi người lấy số vừa nhận, nâng lên lũy thừa bằng số bí mật của mình. Alice tính 4<sup>3</sup> (mod 11). Bob tính 2<sup>6</sup> (mod 11). Cả hai đều ra 9. Đó chính là chìa khóa mã.
+
+<Try action="book" button="Bắt đầu lại từ bước 1">
+  Đổi “Số bí mật của Alice” và “Số bí mật của Bob” bằng các nút ▲. Đi lại từng bước. Hai chìa khóa lúc nào cũng khớp nhau.
+</Try>
+
+### Eve đã nghe được gì
+
+Eve biết 7 và 11. Cô thấy số 2 và số 4 đi qua. Nhưng cô không biết số 3 hay số 6, mà muốn có chìa khóa thì cô cần một trong hai số đó.
+
+Muốn tìm số bí mật của Alice, Eve phải gỡ ngược hàm số một chiều. Lũy thừa nào của 7 cho ra 2 theo mod 11? Không có lối tắt. Cô chỉ có thể lập bảng, thử từng số một.
+
+<Label>Câu chuyện</Label>
+
+## Ba kẻ khù khờ ở Stanford
+
+Đồng nghiệp bảo Hellman là điên. Cơ quan An ninh Quốc gia Mỹ (NSA) có ngân sách hàng tỷ đô la, hẳn đã thử từ lâu rồi. Hellman không có tiền thuê Diffie, nên Diffie đăng ký làm nghiên cứu sinh ở Stanford. Rồi Ralph Merkle tới. Ông bỏ một nhóm khác, nơi vị giáo sư coi giấc mơ ấy là chuyện viển vông.
+
+Suốt hai năm, ý tưởng nào cũng đổ bể. Hellman có một câu cho chuyện đó, và sách tiếng Việt dịch là "Thánh nhân đãi kẻ khù khờ". Theo ông, chỉ kẻ khù khờ mới còn hăng hái sau chín mươi chín lần thất bại.
+
+Rồi một đêm, ở nhà, Hellman tìm ra cuộc trao đổi mà bạn vừa chạy. Sáng hôm sau ông mới kể cho Diffie và Merkle. Ngày nay nó mang tên cả ba người: **trao đổi chìa khóa mã Diffie-Hellman-Merkle**. Tháng 6 năm 1976, ba người trình bày nó ở một hội nghị máy tính lớn, và giới mật mã sững sờ. Diffie và Hellman đăng bài báo về nó vào tháng 11 năm 1976. Suốt hai nghìn năm, ai cũng tin chìa khóa phải được trao tận tay. Họ đã sai.
+
+<DigDeeper title="Lần khám phá đầu tiên, trong bí mật">
+  Năm 1974, Malcolm Williamson, làm việc ở GCHQ, cơ quan mật mã bí mật của Anh, đã tìm ra đúng cuộc trao đổi này. Lúc ấy ông đang cố chứng minh ý tưởng của một người bạn là sai. Công việc của ông là tuyệt mật, nên ông đành im lặng trong khi mấy người Mỹ nổi tiếng. Bạn có thể đọc câu chuyện ấy ở [trang RSA](/ciphers/rsa).
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Thử hết mọi số bí mật
+
+Chưa ai tìm ra cách nhanh để gỡ ngược hàm số một chiều. Cách tấn công duy nhất là cách chậm: thử mọi số bí mật cho tới khi gặp số đúng. Với P nhỏ, việc ấy chẳng tốn chút thời gian nào.
+
+<Try action="eve" button="Để Eve tấn công ví dụ trong sách">
+  Đọc các lần đoán của Eve. Lần thứ ba cho ra 2, đúng số Alice đã gửi. Eve có chìa khóa rồi. Giờ nhấn ▲ cạnh “Số nguyên tố công khai P” và xem danh sách của cô thay đổi.
+</Try>
+
+Vậy sự an toàn nằm hết ở độ lớn của P. Với P = 11, Eve chỉ cần nhiều nhất mười lần đoán. Các cuộc trao đổi thật dùng số P dài hàng trăm chữ số. Khi đó, thử hết mọi số bí mật sẽ lâu hơn cả tuổi của vũ trụ.
+
+<Try action="bigger" button="Cho P lớn hơn một chút">
+  Với P = 101, Eve cần 73 lần đoán. Còn Alice và Bob gần như chẳng phải làm thêm gì.
+</Try>
+
+<Label>Thử thách</Label>
+
+## Bạn là Eve
+
+<Challenge answer="DAWN">
+  Alice và Bob đã thống nhất Y = 5 và P = 23. Bạn thấy Alice gửi 21 và Bob gửi 14. Họ sẽ dùng chìa khóa làm độ dịch cho [mật mã dịch chuyển Caesar](/ciphers/caesar), và bức thư của Alice là `OLHY`.
+
+  Hãy tìm chìa khóa. Rồi dịch mỗi chữ lùi lại đúng ngần ấy chỗ. Cuộc đột kích bắt đầu lúc nào? (Gõ từ tiếng Anh.)
+
+  <Try action="intercepted" button="Nghe lén" />
+</Challenge>
+
+<Check question="Vì sao Alice tạo ra chìa khóa nhanh chóng, còn Eve thì không?">
+  Alice biết số bí mật của mình, nên cô chỉ làm một phép tính. Eve phải tìm ra số bí mật ấy trước, và hàm số một chiều không cho cô manh mối nào. Cô phải thử từng con số.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Thôi không phải gửi qua gửi lại
+
+Cuộc trao đổi đã giải được bài toán hai nghìn năm tuổi. Nhưng nó vẫn bất tiện. Alice và Bob phải trao số qua lại trước khi gửi được chữ nào. Giả sử Alice ở Hawaii muốn gửi thư cho Bob ở Istanbul, mà Bob đang ngủ. Alice đành phải chờ anh dậy.
+
+Ngay từ năm 1975, Diffie đã nghĩ ra một cách hay hơn. Giả sử khóa lại và mở ra dùng hai chìa khóa khác nhau. Alice có thể công bố chìa khóa dùng để khóa cho ai dùng cũng được, như phát cho mọi người những chiếc khóa móc đang mở. Ai cũng bấm khóa được, nhưng chỉ mình cô giữ chiếc chìa mở ra.
+
+Ông chưa tìm được thứ toán học để làm điều đó. Ba người ở bờ bên kia nước Mỹ đã tìm ra: [RSA](/ciphers/rsa).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử*, chương 6: Alice và Bob ra công khai (bản tiếng Việt, NXB Trẻ). Cuộc trao đổi với chính những con số này nằm ở Bảng 26 (tr. 380). Bản tiếng Anh: *The Code Book*, chương 5; bản đầy đủ, chương 6.
+- Whitfield Diffie và Martin Hellman, "New Directions in Cryptography" (Những hướng đi mới trong khoa học mật mã), *IEEE Transactions on Information Theory*, tháng 11 năm 1976. Bài báo công bố cuộc trao đổi này.
+- Steven Levy, *Crypto* (2001). Về những con người đứng sau mật mã chìa khóa công khai.

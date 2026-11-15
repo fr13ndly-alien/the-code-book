@@ -1,0 +1,119 @@
+.page {
+  display: grid;
+  gap: var(--space-8);
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.title {
+  font-family: var(--font-story);
+  font-size: var(--text-2xl);
+  line-height: 1.2;
+}
+
+.intro {
+  margin-top: var(--space-2);
+  color: var(--color-text-muted);
+}
+
+.contents {
+  display: grid;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+.contents a {
+  display: flex;
+  align-items: center;
+  min-height: var(--tap);
+  font-family: var(--font-story);
+  text-decoration: none;
+}
+
+.chapter {
+  display: grid;
+  gap: var(--space-2);
+  /* Keeps the heading clear of the top edge when a contents link jumps here. */
+  scroll-margin-top: var(--space-4);
+}
+
+.number {
+  font-size: var(--text-sm);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.chapterTitle {
+  font-family: var(--font-story);
+  font-size: var(--text-xl);
+  line-height: 1.2;
+}
+
+.summary {
+  color: var(--color-text-muted);
+}
+
+.ciphers {
+  display: grid;
+  gap: var(--space-3);
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-accent);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: inherit;
+  text-decoration: none;
+  transition: background var(--ease);
+}
+
+.card:hover {
+  background: var(--color-surface-raised);
+}
+
+.era {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+}
+
+.badge {
+  padding: 0 var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text-muted);
+}
+
+.name {
+  font-family: var(--font-story);
+  font-size: var(--text-lg);
+}
+
+.hook,
+.note {
+  color: var(--color-text-muted);
+}
+
+.note {
+  font-size: var(--text-sm);
+}

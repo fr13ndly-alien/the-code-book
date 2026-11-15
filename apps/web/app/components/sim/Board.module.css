@@ -1,0 +1,20 @@
+.board {
+  display: flex;
+  height: 100%;
+  overflow: auto;
+  /* The stage switches touch scrolling off for 3D models. A 2D board needs it back. */
+  touch-action: pan-x pan-y;
+  /* Room at the top for the "first step" hint that CipherPage lays over the stage: up to two lines. */
+  padding: 3.5rem var(--space-3) var(--space-3);
+  /* Lets a caption size itself to the board, not to a wide table beside it. */
+  container-type: inline-size;
+}
+
+/* Auto margins centre the content, and still let it scroll when it is too big. */
+.content {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: center;
+  margin: auto;
+  max-width: 100%;
+}

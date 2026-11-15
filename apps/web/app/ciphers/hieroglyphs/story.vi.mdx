@@ -1,0 +1,152 @@
+{/*
+  Retold in Vietnamese from Mật mã: Từ cổ điển đến lượng tử (NXB Trẻ), chương 5: Rào cản ngôn ngữ,
+  section "Giải mã những ngôn ngữ đã biến mất và văn tự cổ", pages 294–315. Follows docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md. The wording is ours.
+  This page is about breaking a lost script, not a cipher, so "How it works" is the codebreakers' method.
+*/}
+
+<Standfirst>
+  Suốt mười bốn thế kỷ không ai đọc được chữ tượng hình, cho tới khi hai học giả coi tên các pharaon như một bản mật mã.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Phiến đá trong bức tường
+
+Năm 1799, một toán lính Pháp đóng ở đồn Julien, thị trấn Rosetta bên châu thổ sông Nile, được lệnh phá một bức tường cũ để nới rộng đồn. Gắn trong tường là một tấm đá sẫm màu, kín đặc chữ.
+
+Napoleon mang theo đoàn quân cả một nhóm học giả, và họ hiểu ngay giá trị của nó. Trên đá có cùng một đoạn văn được khắc ba lần: bằng chữ Hy Lạp, bằng chữ viết bình dân (demotic) của Ai Cập, và bằng chữ tượng hình. Phần Hy Lạp thì học giả nào cũng đọc được. Hai phần kia thì không ai trên đời đọc nổi.
+
+Những người cuối cùng biết đọc chữ tượng hình đã mất từ lâu lắm. Không thầy, không từ điển, không một người nào còn nói thứ tiếng ấy.
+
+Làm sao đọc được một thứ chữ khi không còn ai để hỏi một ký hiệu nghĩa là gì?
+
+<Label>Thử xem</Label>
+
+## Một ký hiệu, một âm
+
+Bạn đoán trước nhé. Mỗi chữ tượng hình là hình vẽ của một ý, hay là một chữ cái có âm đọc?
+
+Cartouche trên cùng chứa tên một vị vua. Phần chữ Hy Lạp cho biết đó là Ptolemy, mà “Ptolemy” bắt đầu bằng âm `p`. Vậy ký hiệu đầu tiên, hình vuông, hẳn phải đọc là `p`.
+
+<Try action="start" button="Hiện bước đầu tiên">
+  Hình vuông trong cartouche trên cùng đã được chọn sẵn. Nhấn `p` trong hàng âm dưới bảng. Rồi nhìn cartouche ở giữa: một chữ `p` cũng vừa hiện ra ở đó.
+</Try>
+
+<Check question="Vì sao hình vuông trong cartouche thứ hai cũng đổi theo?">
+  Vì đó là cùng một ký hiệu, nên phải có cùng một âm. Cả phương pháp nằm ở đó: một âm tìm được trong tên này có thể đem thử trong mọi tên khác.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Những cái tên là lối vào
+
+### Vòng kín quanh tên pharaon
+
+Mùa hè năm 1814, nhà khoa học người Anh Thomas Young mang theo bản chép ba văn tự trên phiến đá Rosetta đi nghỉ ở bờ biển Worthing. Ông chú ý tới những nhóm chữ tượng hình được bao trong một vòng kín. Vòng ấy gọi là **cartouche**.
+
+Young linh cảm rằng thứ được khoanh lại phải quan trọng, có lẽ là tên pharaon. Phần chữ Hy Lạp có nhắc tới vua Ptolemy, theo tiếng Hy Lạp là Ptolemaios. Mà tên một vị vua thì đọc gần như nhau dù trong ngôn ngữ nào.
+
+Thế là Young có trong tay một **crib**: một mẩu lời giải biết trước, như các nhà giải mã ở Bletchley Park về sau dùng để phá Enigma. Cuốn sách còn gọi cả phiến đá Rosetta là một crib khổng lồ. Ông ghép các ký hiệu trong vòng với các âm của cái tên, theo đúng thứ tự.
+
+<Try>
+  Đọc nốt cartouche trên cùng. Lần lượt chạm vào từng ký hiệu và cho nó chữ Hy Lạp in phía trên: `t`, `o`, `l`, `m`, `e`, `s`.
+</Try>
+
+### Cái tên thứ hai thử lại cái tên thứ nhất
+
+Một cái tên chưa chứng minh được bao nhiêu. Có thể ghép khớp chỉ là ăn may. Năm 1822, nhà ngôn ngữ học trẻ người Pháp Jean-François Champollion có trong tay bản in một tháp bia khắc cả chữ Hy Lạp lẫn chữ tượng hình. Trên đó có hai cartouche: lại là Ptolemy, và nữ hoàng Cleopatra.
+
+Hai tên có chung các âm p, t, o, l và e. Nếu Young nghĩ đúng, các ký hiệu cho những âm này trong tên Ptolemy phải hiện ra đúng chỗ trong tên Cleopatra.
+
+<Try action="ptolemy" button="Tải tên Ptolemy đã đọc xong">
+  Nhìn vào cartouche ở giữa. Ba âm đã hiện ra dưới đúng chữ Hy Lạp: `l`, `o` và `p`. Giờ hãy cho các ký hiệu còn lại chữ Hy Lạp của chúng. Cây sậy đơn là âm `e` của đôi cây sậy ở cartouche trên.
+</Try>
+
+Chỉ có âm t là không khớp. Tên Ptolemy viết nó bằng nửa hình tròn, tên Cleopatra viết bằng một bàn tay. Champollion cho rằng hai ký hiệu có thể chung một âm, như `c` và `k` trong hai từ tiếng Anh “cat” (con mèo) và “kid” (đứa trẻ).
+
+<Check question="Vì sao việc khớp với tên Cleopatra là bằng chứng mạnh đến thế?">
+  Không ai chọn các ký hiệu ấy cho vừa. Sư tử, dây thòng lọng và hình vuông nhận âm chỉ từ tên Ptolemy. Thế mà chúng rơi đúng vào L, O và P trong một tên khác. Ăn may không thể trúng tới ba lần.
+</Check>
+
+<Label>Câu chuyện</Label>
+
+## Vì sao không ai thử
+
+Người Ai Cập viết chữ tượng hình suốt hơn ba nghìn năm. Rồi đến cuối thế kỷ 4 Sau Công nguyên, Nhà thờ Thiên chúa cấm các thứ chữ cổ để cắt đứt mọi dây nối với quá khứ ngoại giáo. Thay vào đó là chữ Coptic. Chỉ ít đời người sau, không ai còn đọc được tường các đền thờ.
+
+Các học giả về sau đoán sai, rồi cứ thế bám lấy cái sai. Họ cho rằng mỗi chữ tượng hình là một **ký hiệu biểu ý**: một bức tranh thay cho cả một ý. Năm 1652, tu sĩ dòng Tên Athanasius Kircher in ra những “bản dịch” dựa trên niềm tin ấy. Toàn là tưởng tượng. Nhưng ông là học giả được kính nể nhất thời mình, nên người ta tin theo.
+
+Vì vậy phiến đá Rosetta, khắc năm 196 TCN, nằm ở Bảo tàng Anh từ năm 1802 với phần Hy Lạp đã dịch trọn vẹn. Vậy mà rất ít người dám coi các ký hiệu là **ký âm**: ký hiệu ghi âm thanh, như chữ cái của chúng ta.
+
+Kircher không phải người cuối cùng. Năm 1808, Champollion nghe tin nhà Ai Cập học nổi tiếng Alexandre Lenoir vừa công bố bản giải mã trọn vẹn chữ tượng hình. Chàng trai trẻ ngã xỉu ngay giữa phố. May cho anh, các cách đọc của Lenoir cũng kỳ quặc chẳng kém Kircher.
+
+Ngay cả Young cũng chùn bước. Ông cho rằng người Ai Cập chỉ ghi âm khi viết tên người nước ngoài, như dòng họ Ptolemy gốc Hy Lạp. Rồi ông buông chữ tượng hình.
+
+<DigDeeper title="Cái tên thứ hai của Young: Berenika">
+  Sau Ptolemy, Young tìm thấy một cartouche khác, chép từ đền Karnak ở Thebes. Ông đoán trong đó là Berenika, một hoàng hậu nhà Ptolemy, và lại ghép ký hiệu với âm. Một ký hiệu đọc là `i` trong cả hai tên, dấu hiệu cho thấy ông đi đúng hướng. Ông cũng nhận ra ký hiệu đứng cuối tên các nữ hoàng và nữ thần. Trong 13 chữ tượng hình của cả hai cartouche, ông đọc đúng hẳn khoảng một nửa.
+</DigDeeper>
+
+<DigDeeper title="Ba thứ chữ và một câu đố bằng tranh">
+  Chữ tượng hình vẽ rất công phu, hợp với tường đền thờ hơn là việc hằng ngày. Vì vậy song song với nó có chữ hieratic, viết nhanh hơn. Khoảng năm 600 TCN, một thứ chữ còn đơn giản hơn, chữ viết bình dân (demotic), thay chỗ chữ hieratic. Cả ba về cơ bản là một, gần như ba phông chữ khác nhau. Chữ Coptic, thứ thay thế chúng, gồm 24 chữ cái Hy Lạp và thêm sáu ký hiệu bình dân.
+
+  Có thể bạn đã gặp lối đố bằng tranh trong sách đố của trẻ em. Để viết từ tiếng Anh “belief” (niềm tin), bạn vẽ một con ong (bee) rồi một chiếc lá (leaf). Các hình vẽ thay cho âm thanh, chứ không phải cho côn trùng hay cây cối.
+</DigDeeper>
+
+<DigDeeper title="Một crib bị sứt mẻ">
+  Phiến đá không phải tờ đáp án dễ dàng. Phần chữ tượng hình hư hại nặng nhất: một nửa số dòng mất hẳn, các dòng còn lại cũng sứt mẻ. Tệ hơn, tiếng Ai Cập cổ đã không còn ai nói ít nhất tám thế kỷ. Ghép ký hiệu với từ Hy Lạp có thể cho ra nghĩa, nhưng không cho ra cách đọc.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Mặt trời đọc là “ra”
+
+Champollion đọc thêm nhiều tên nước ngoài, nhưng chúng không chứng minh được gì mới. Rồi ngày 14 tháng 9 năm 1822, ông nhận được bản vẽ các hình chạm ở đền Abu Simbel. Các cartouche ở đó có từ trước khi người Hy Lạp và La Mã cai trị Ai Cập.
+
+Một cartouche chỉ có bốn ký hiệu. Hai ký hiệu cuối đã biết: `s` và `s`. Ký hiệu đầu là một vòng tròn như mặt trời. Champollion học tiếng Coptic, hậu duệ của tiếng Ai Cập cổ, từ hồi thiếu niên, thạo đến mức dùng nó để viết nhật ký. Trong tiếng Coptic, mặt trời là “ra”.
+
+Vậy cái tên là ra, một âm chưa biết, s, s. Chỉ một pharaon hợp: Rameses. Ký hiệu còn thiếu phải là `m`.
+
+<Try action="rameses" button="Tải cartouche ở Abu Simbel">
+  Cartouche dưới cùng đọc là `? ? s s`. Ký hiệu mặt trời đã được chọn. Nhấn `ra`. Rồi chạm vào ký hiệu thứ hai và nhấn `m`.
+</Try>
+
+Đây là bước đột phá. Một cái tên Ai Cập, cổ hơn người Hy Lạp rất nhiều, cũng được ghi bằng âm. Mặt trời còn cho thấy mẹo thứ hai, lối **đố bằng tranh** (rebus): một hình vẽ được dùng để ghi âm của chính từ chỉ nó. Nó còn chỉ ra ngôn ngữ đứng sau các ký hiệu: ông tổ của tiếng Coptic, vì nếu người viết nói tiếng Hy Lạp, tên kia phải đọc là “helios-meses”. Champollion lao vào phòng anh trai báo tin, rồi ngất lịm và nằm liệt năm ngày.
+
+<DigDeeper title="Những ký hiệu bằng hai, ba chữ cái">
+  Có tiếng Coptic dẫn đường, Champollion đọc ra cả những chữ tượng hình bên ngoài cartouche. Trong hai năm, ông tìm được âm của phần lớn chữ tượng hình. Ông thấy có những ký hiệu ghi hai, thậm chí ba phụ âm một lúc. Vì thế thư lại có thể viết một từ bằng nhiều ký hiệu đơn, hoặc chỉ bằng vài ký hiệu lớn như thế.
+</DigDeeper>
+
+<Label>Thử thách</Label>
+
+## Gọi tên nhà chinh phục
+
+<Challenge answer="ALEXANDER">
+  Cartouche bí ẩn đầu tiên Champollion đọc mà không có bản dịch kèm theo là tên một nhân vật lừng lẫy nhất thời cổ đại. Dùng các âm lấy từ Ptolemy và Cleopatra, nó đọc là `a l ? s e ? t r ?`.
+
+  Thư lại hay bỏ bớt nguyên âm. Bạn hãy đoán cái tên, kiểm tra bằng cách cho ba ký hiệu chưa biết âm của chúng, rồi gõ cái tên bằng tiếng Anh.
+
+  <Try action="alexander" button="Tải cartouche" />
+</Challenge>
+
+<Check question="Ba ký hiệu chưa biết hóa ra đọc là ba âm nào?">
+  `k`, `n` và `s`: cái tên được viết là alksentrs. Mỗi tên mới cho Champollion thêm ký hiệu mới, và mỗi ký hiệu mới lại giúp ông đọc tên kế tiếp. Chìa khóa lớn dần lên trong lúc ông dùng nó.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Vì tò mò, không vì thù địch
+
+Năm 1824, Champollion công bố toàn bộ hệ thống của mình. Năm 1828, cuối cùng ông được tận mắt thấy Ai Cập. Ông mất năm 1832, mới bốn mươi mốt tuổi.
+
+Chẳng ai cố giấu điều gì trong chữ tượng hình: ở đây có nhà giải mã mà không có nhà tạo mã. Cuốn sách nói người ta lao vào những câu đố này vì tò mò chứ không vì thù địch. Thế nhưng để đọc chúng, vẫn cần đồ nghề của nhà giải mã: một crib, một phỏng đoán, và một văn bản thứ hai để thử phỏng đoán ấy.
+
+Champollion có một phiến đá nói cùng một điều bằng tiếng Hy Lạp. Thứ chữ bị lãng quên tiếp theo thì chẳng có chỗ dựa nào như thế: một thứ chữ chưa biết, ghi một ngôn ngữ chưa biết. Xem người ta đã đọc nó ra sao: [Linear B](/ciphers/linear-b).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử* (NXB Trẻ, Phạm Văn Thiều và Phạm Thu Hằng dịch), chương 5: Rào cản ngôn ngữ, phần “Giải mã những ngôn ngữ đã biến mất và văn tự cổ”.
+- Maurice Pope, *The Story of Decipherment: From Egyptian Hieroglyphs to Maya Script* (cuốn sách nhắc tới với tên *Câu chuyện về giải mã*; bản sửa đổi, Thames & Hudson, 1999). Cách người ta đọc được thứ chữ này và những thứ chữ bị lãng quên khác.
+- Phiến đá Rosetta đang được trưng bày ở Bảo tàng Anh tại London, nơi nó nằm từ năm 1802.

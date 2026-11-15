@@ -1,0 +1,164 @@
+{/*
+  Retold in Vietnamese from Mật mã: Từ cổ điển đến lượng tử (NXB Trẻ), chương 5: Rào cản ngôn ngữ,
+  pages 279–281, which name Purple (Màu tím) and Midway. Follows docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md.
+  The Code Book (abridged) only names Purple, in chapter 4. How the machine worked and
+  how it was broken were checked against "PURPLE Revealed" (Freeman, Sullivan and Weierud,
+  Cryptologia, 2003), the NSA's Hall of Honor, two US Army history articles and Wikipedia
+  (see Further reading). The times of 7 December 1941 are from the report of the
+  Congressional Pearl Harbor committee (1946) and the State Department's record of the
+  meeting. The switch wiring and the message of 7 December 1941 are real. The wording is ours.
+*/}
+
+<Standfirst>
+  Máy mã tốt nhất của Nhật Bản bị người Mỹ dựng lại từ công tắc điện thoại, dù họ chưa từng nhìn thấy nó.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Một buổi chiều thứ Sáu tháng 9
+
+Genevieve Grotjan từng mong được đi dạy toán. Nhưng rồi cô nhận một công việc văn phòng, làm với những con số. Đến năm 1939, cô gia nhập một nhóm nhỏ các nhà giải mã của Lục quân Mỹ ở Washington.
+
+Từ đầu năm 1939, cả nhóm cứ dán mắt vào những bức điện qua lại giữa Tokyo và các đại sứ quán Nhật Bản. Chúng được mã hóa bằng một máy mã mới mà chưa người Mỹ nào nhìn thấy. Họ đặt tên nó là **Purple** (Màu tím).
+
+Thứ Sáu, ngày 20 tháng 9 năm 1940, Grotjan, khi ấy 27 tuổi, đang so sánh những hàng chữ trên giấy nháp. Cô thấy một thứ lặp lại. Rồi cô lại thấy nó lần nữa, với đúng khoảng cách như cũ.
+
+Loại máy nào lại để lại một khuôn mẫu như thế?
+
+<Label>Thử xem</Label>
+
+## Nguyên âm vào, nguyên âm ra
+
+Phát hiện đầu tiên của các nhà giải mã đơn giản hơn, và bạn cũng có thể tự tìm ra. Trong mô phỏng, sáu chữ `AEIOUY` được nối thành một nhóm.
+
+Bạn hãy đoán trước: nếu chỉ mã hóa nguyên âm, những chữ đi ra sẽ là loại chữ gì?
+
+<Try action="vowels" button="Chỉ mã hóa nguyên âm">
+  Đọc bản mật mã trong phần điều khiển. Rồi chạm vào vài chữ trên dải chữ ở đầu bảng mô phỏng và nhìn bảng ổ nối.
+</Try>
+
+<Check question="Cái gì đi ra?">
+  Chỉ có nguyên âm. Chữ nào cũng liên tục thay đổi, nhưng không chữ nào rời khỏi nhóm sáu chữ ấy. Một nguyên âm chỉ có thể biến thành một trong sáu chữ đó. Đó chính là vết nứt của cỗ máy.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Hai cỗ máy trong một chiếc hộp
+
+### Bảng ổ nối chia đôi bảng chữ cái
+
+Purple không có đĩa mã hóa nào. Bạn gõ trên một máy đánh chữ điện, và một máy đánh chữ thứ hai in ra kết quả. Ở giữa là một **bảng ổ nối**: một tấm đầy ổ nối và dây cáp.
+
+Bảng ổ nối chia bảng chữ cái thành hai nhóm không đều nhau. Sáu chữ, gọi là **nhóm sáu**, đi theo một đường. Hai mươi chữ còn lại, gọi là **nhóm hai mươi**, đi theo đường khác. Nhân viên mật mã có thể chọn sáu chữ bất kỳ, và họ đổi cách nối cáp mỗi ngày.
+
+<Try action="start" button="Tải một câu có thật">
+  Chạm vào các chữ trên dải chữ. Một vạch màu đồng dưới chữ cho biết chữ đó thuộc nhóm sáu. Hãy xem nhóm nào sáng lên trên bảng ổ nối.
+</Try>
+
+### Sáu chữ, một công tắc
+
+Mỗi nhóm đi vào một **công tắc bước**, một bộ phận lấy từ tổng đài điện thoại tự động. Hãy hình dung một cánh tay quay lách cách qua 25 bộ tiếp điểm. Mỗi bộ được đi dây theo một kiểu khác nhau.
+
+Nhóm sáu đi qua một công tắc. Mỗi vị trí trong 25 vị trí của nó xáo trộn sáu sợi dây theo một cách. Sau mỗi chữ, cánh tay nhích sang một vị trí. Sau 25 chữ, nó quay về chỗ xuất phát.
+
+<Try action="sixes" button="Đi theo một nguyên âm">
+  Bảng cho thấy cách xáo trộn nhóm sáu ở thời điểm này. Nhấn ▲ cạnh “Công tắc nhóm sáu” và nhìn hàng dưới thay đổi. Nhấn đủ hai mươi lăm lần thì nó về chỗ cũ.
+</Try>
+
+### Hai mươi chữ, ba công tắc
+
+Nhóm hai mươi đi một con đường khó hơn: ba công tắc nối tiếp nhau, mỗi công tắc có 25 vị trí. Gộp lại, chúng tạo ra 25 × 25 × 25 = 15.625 cách xáo trộn hai mươi chữ.
+
+Sau mỗi chữ, chỉ một trong ba công tắc bước. Thường đó là công tắc **nhanh**. Khi công tắc nhóm sáu đứng ở vị trí cuối cùng, công tắc **vừa** sẽ bước thay. Cứ 625 chữ một lần, đến lượt công tắc **chậm**. Nhân viên mật mã chọn công tắc nào giữ vai trò nào.
+
+<Try action="stepping" button="Bắt gặp cả ba công tắc bước">
+  Mỗi công tắc ghi “bước tiếp” hoặc “đứng yên”. Nhấn ▲ cạnh “Chữ đang xem” bốn lần. Bạn sẽ thấy công tắc nhanh, rồi chậm, rồi vừa, rồi lại nhanh.
+</Try>
+
+Để giải mã, người nhận nối cáp và đặt công tắc giống hệt, rồi cho dòng điện chạy theo chiều ngược lại.
+
+<Try action="start" button="Tải lại câu đó">
+  Nhấn “Đưa kết quả trở lại máy”. Trang chuyển sang “Giải mã”, và bức điện gốc hiện ra trở lại.
+</Try>
+
+<Check question="Một nguyên âm gặp bao nhiêu cách xáo trộn, còn một phụ âm gặp bao nhiêu?">
+  Khi nguyên âm là nhóm sáu, một nguyên âm chỉ gặp 25 cách xáo trộn sáu chữ, lặp đi lặp lại. Một phụ âm gặp 15.625 cách xáo trộn hai mươi chữ. Một nửa cỗ máy yếu hơn hẳn nửa kia.
+</Check>
+
+<Label>Câu chuyện</Label>
+
+## Cỗ máy của các nhà ngoại giao
+
+Purple thuộc về Bộ Ngoại giao Nhật Bản. Từ năm 1939, nó chuyển những bức điện tối mật nhất giữa Tokyo và các đại sứ. Nó thay cho một cỗ máy cũ hơn mà người Mỹ gọi là Red (màu đỏ). Máy Red cũng xử lý riêng các nguyên âm `AEIOUY`, tách khỏi những chữ khác.
+
+Cục Tình báo Tín hiệu (Signal Intelligence Service) của Lục quân Mỹ bắt tay vào phá nó. William Friedman là nhà giải mã đứng đầu. Frank Rowlett dẫn dắt nhóm làm việc với Purple hằng ngày. Những bí mật thu được từ đó có tên là **Magic** (phép màu).
+
+Cuốn sách mở đầu chương “Rào cản ngôn ngữ” bằng Purple và chiến thắng ở Midway vào tháng 6 năm 1942, mà Đô đốc Chester Nimitz gọi là một chiến thắng của tình báo. Thật ra đó là hai hệ thống khác nhau. Purple dành cho các nhà ngoại giao. Còn mệnh lệnh ở Midway được gửi bằng một mật mã của hải quân, JN-25, và các nhà giải mã của Hải quân Mỹ đã phá được nó.
+
+Cách đi dây của các công tắc trên trang này là cách đi dây thật, đúng như các nhà giải mã đã tìm lại được.
+
+<Try action="intercept" button="Tải một bức điện chặn được có thật">
+  Đây là bản mật mã thật của ngày 7 tháng 12 năm 1941, với cách đặt máy của ngày hôm đó. Hãy đọc dải chữ: `THEGOVE-NMENTOFJAPAN` (chính phủ Nhật Bản). Dấu `-` là một chữ bị mất trên đường truyền vô tuyến.
+</Try>
+
+<DigDeeper title="Bức điện đến quá muộn">
+  Bức điện chặn được ấy là phần 1 của một công hàm gồm mười bốn phần. Tokyo dặn đại sứ của mình trao nó cho chính phủ Mỹ lúc 1 giờ chiều ngày 7 tháng 12 năm 1941. Người Mỹ giải mã xong trước cả khi nhân viên của chính đại sứ quán làm xong. Ngài đại sứ trao công hàm lúc 2 giờ 20 chiều. Khi đó cuộc tấn công Trân Châu Cảng đã bắt đầu. Công hàm cắt đứt đàm phán, nhưng không hề nói Nhật Bản sẽ tấn công ở đâu hay khi nào.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Đếm, tách ra, rồi giải
+
+Cuộc tấn công bắt đầu bằng việc đếm. Trong tiếng Anh, sáu nguyên âm gánh khoảng bốn phần mười tổng số chữ. Cỗ máy rải đều phần đó lên sáu chữ mật mã. Hai mươi chữ còn lại chia nhau phần còn lại, nên các cột của chúng chỉ cao khoảng một nửa.
+
+<Try action="counted" button="Đếm một bản mật mã dài">
+  Đây vẫn là bức điện thật ấy, ở đây được mã hóa với nguyên âm làm nhóm sáu. Có sáu cột cao vượt lên. Chọn “Nhóm sáu trước” ở mục “Thứ tự các cột” để kiểm tra mắt mình.
+</Try>
+
+Khi đã biết sáu chữ ấy, các nhà giải mã có thể nhấc chúng ra và nghiên cứu riêng. Sáu chữ với 25 cách xáo trộn là một câu đố nhỏ. Cả nhóm đã giải xong nó trước tháng 4 năm 1939.
+
+Nhóm hai mươi thì mất lâu hơn nhiều. Những chỗ lặp lại mà Grotjan tìm thấy chính là chìa khóa: chúng cho thấy nhóm hai mươi cũng chạy theo chu kỳ. Từ đó cả nhóm tìm ra ba công tắc và cách đi dây của chúng. Đến ngày 27 tháng 9 năm 1940, họ đã đọc được thêm hai bức điện.
+
+Leo Rosen, một kỹ sư trong nhóm, chế tạo một bản sao của cỗ máy bằng các công tắc bước. Cuối chiến tranh, người ta tìm thấy một mảnh của chiếc máy Purple thật trong đại sứ quán Nhật Bản ở Berlin. Các công tắc của nó gần như giống hệt những công tắc mà Rosen đã chọn.
+
+<Try action="interceptCount" button="Đếm bức điện chặn được có thật">
+  Hôm đó nhóm sáu là `NOKTYU`. Điện thật thì lộn xộn hơn, nhưng bốn trong sáu chữ ấy vẫn là những cột cao nhất.
+</Try>
+
+<Label>Thử thách</Label>
+
+## Đọc Magic
+
+<Challenge answer="MAGIC">
+  Một bức điện chặn được ghi `LUDOT`. Các nguyên âm là nhóm sáu. Các công tắc bắt đầu ở 9, 1, 24 và 6, và thứ tự nhanh, vừa, chậm là II, III, I.
+
+  Hãy đặt bốn công tắc và thứ tự đó. Từ ấy là gì?
+
+  <Try action="challenge" button="Tải bức điện chặn được" />
+</Challenge>
+
+<Check question="Trước khi đặt bất cứ thứ gì, bạn đã có thể nói gì về chữ thứ hai và chữ thứ tư?">
+  Chúng phải là nguyên âm. `U` và `O` là chữ của nhóm sáu, và một chữ nhóm sáu chỉ có thể đến từ một chữ nhóm sáu. Chỉ một chỗ rò rỉ ấy, lặp lại qua hàng nghìn chữ, đã giúp các nhà giải mã tách cỗ máy làm đôi.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Không cần máy móc gì cả
+
+Những người thiết kế Purple giữ lại một thói quen của cỗ máy cũ: chia thành nhóm sáu và nhóm hai mươi. Chính thói quen ấy đã làm lộ cỗ máy mới.
+
+Cuốn sách kể rằng trên chiến trường Thái Bình Dương, máy mã còn một nhược điểm khác: chúng chậm khủng khiếp. Bức điện nào cũng phải gõ vào và chép ra từng chữ một, ở cả hai đầu. Người lính giữa làn đạn thì không chờ nổi.
+
+Năm 1942, Quân đoàn Hải quân Mỹ thử một thứ không có công tắc, không có dây điện và không có sổ mã. Đó là một ngôn ngữ mà gần như không người ngoài nào nói được: [mật mã Navajo](/ciphers/navajo).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử* (NXB Trẻ, Phạm Văn Thiều và Phạm Thu Hằng dịch), chương 5: Rào cản ngôn ngữ. Sách nhắc tên Purple; phần còn lại của trang này lấy từ các nguồn dưới đây.
+- Wes Freeman, Geoff Sullivan và Frode Weierud, ["PURPLE Revealed"](https://cryptocellar.org/pubs/purple-revealed.pdf), *Cryptologia*, 2003. Các bảng đi dây và quy tắc bước mà mô phỏng của chúng tôi dùng, cùng bức điện ngày 7 tháng 12 năm 1941.
+- Cơ quan An ninh Quốc gia Mỹ (NSA), ["Genevieve Grotjan Feinstein"](https://www.nsa.gov/Press-Room/Digital-Media-Center/Biographies/Biography-View-Page/Article/1621585/genevieve-grotjan-feinstein/). Tiểu sử của cô trong Hall of Honor (Sảnh Vinh danh) và phát hiện tháng 9 năm 1940.
+- Michael E. Bigelow, ["SIS Makes Breakthrough Against Japanese Code (20 SEP 1940)"](https://www.dvidshub.net/news/454045/sis-makes-breakthrough-against-japanese-code-20-sep-1940), US Army Intelligence Center of Excellence, 2023. Lời kể của một nhà sử học quân đội về bước đột phá và về nhóm của Rowlett.
+- Yale Law School, The Avalon Project, ["Japanese Note to the United States December 7, 1941"](https://avalon.law.yale.edu/wwii/p3.asp). Biên bản của Bộ Ngoại giao Mỹ về cuộc gặp lúc 2 giờ 20 chiều, kèm toàn văn công hàm.
+- Wikipedia, ["Type B Cipher Machine"](https://en.wikipedia.org/wiki/Type_B_Cipher_Machine). Thiết kế, các mốc thời gian và những bản sao của người Mỹ.

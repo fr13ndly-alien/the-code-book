@@ -1,0 +1,35 @@
+.text {
+  max-width: 34rem;
+  font-family: var(--font-cipher);
+  font-size: var(--text-md);
+  line-height: 2;
+}
+
+/* A word never breaks across two lines. */
+.word {
+  display: inline-block;
+  margin-right: var(--space-2);
+  white-space: nowrap;
+}
+
+.text button {
+  min-width: 1.125rem;
+  height: 1.75rem;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid var(--color-border);
+  background: transparent;
+  font-weight: bold;
+  color: var(--color-lamp);
+}
+
+.text button[data-solved="true"] {
+  border-bottom-color: transparent;
+  font-weight: normal;
+  color: var(--color-text);
+}
+
+.text button[aria-pressed="true"] {
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+}

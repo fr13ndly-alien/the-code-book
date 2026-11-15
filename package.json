@@ -1,0 +1,19 @@
+{
+  "name": "the-code-book",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @codebook/web",
+    "build": "npm run build -w @codebook/web",
+    "preview": "npm run preview -w @codebook/web",
+    "test": "npm run test -w @codebook/cipher-engine",
+    "typecheck": "npm run typecheck --workspaces",
+    "check:coverage": "node scripts/check-coverage.mjs",
+    "check:i18n": "node scripts/check-i18n.mjs",
+    "check:vi-copy": "node scripts/check-vi-copy.mjs"
+  }
+}

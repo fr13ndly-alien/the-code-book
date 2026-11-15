@@ -1,0 +1,75 @@
+/* The table is wider than a phone, so it scrolls sideways in its own strip and the captions stay put. */
+.scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: var(--space-1);
+}
+
+.table {
+  border-collapse: collapse;
+  font-family: var(--font-cipher);
+  font-size: var(--text-md);
+}
+
+.table th {
+  padding: 0 var(--space-2);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: normal;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.table tbody th {
+  text-align: right;
+}
+
+.table tr[data-picked="true"] th {
+  color: var(--color-accent);
+  font-weight: bold;
+}
+
+.key {
+  padding: 0 var(--space-3);
+  color: var(--color-text-muted);
+}
+
+.bit {
+  width: 1.25rem;
+  min-width: 1.25rem;
+  height: 1.75rem;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+
+/* A wider line between the left half and the right half. */
+.bit[data-gap="true"] {
+  border-left: var(--space-1) solid var(--color-border);
+}
+
+.table tr[data-last="true"] .bit {
+  color: var(--color-lamp);
+  font-weight: bold;
+}
+
+.table .bit[data-on="true"] {
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+  font-weight: bold;
+}
+
+/* The top row is the one the reader taps, so it is as tall as a touch target. */
+.bit button {
+  width: 100%;
+  height: var(--tap);
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.count {
+  padding: 0 var(--space-3);
+  color: var(--color-accent);
+  text-align: right;
+}

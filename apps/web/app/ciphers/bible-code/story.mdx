@@ -1,0 +1,124 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, Appendix C and chapter 1. The wording is ours.
+*/}
+
+<Standfirst>
+  Jump through any long text in equal steps and words appear. Do they mean anything?
+</Standfirst>
+
+<Label>The hook</Label>
+
+## A prophecy in the headlines
+
+In 1997 a book called *The Bible Code* made headlines around the world. Its author, Michael Drosnin, claimed that the Bible holds hidden messages.
+
+You could not see them by reading in the usual way. Instead you picked one letter to start from. Then you jumped ahead a fixed number of letters, again and again, and wrote down each letter you landed on. Sometimes those letters spelled a word. Drosnin reported an astonishing number of words found like this, and even whole sentences.
+
+It sounds like a cipher with a secret key. But if you find a word by jumping through a text, did somebody put it there?
+
+<Label>Try it</Label>
+
+## Find the rain
+
+The simulator holds the opening of the novel *Moby-Dick* with the spaces taken out. Each row of the grid is eight letters wide. Guess first: if you jump eight letters at a time, where on the grid does each jump land?
+
+<Try action="rain" button="Show a hidden word">
+  Read down the lit column. Then find the same letters under "The letters read" in the controls.
+</Try>
+
+<Check question="Where does a jump of eight land?">
+  Directly below. Each row holds eight letters, so eight letters further on is the same column, one row down. The lit column spells `RAIN`. Herman Melville, who wrote the novel, did not hide it there.
+</Check>
+
+<Label>How it works</Label>
+
+## Start, skip, read
+
+### Equal jumps
+
+The proper name for this is an **equidistant letter sequence**: a run of letters that sit the same distance apart. You need two numbers to make one. The **start** is the letter you begin on. The **skip** is how far you jump each time.
+
+The Code Book tries it on one of its own paragraphs. It begins at the `M` of "Michael" and notes every fifth letter. The result starts `MESAHIRT`, which means nothing at all. Most sequences are like that.
+
+<Try action="fifth" button="Take every fifth letter">
+  The grid now starts at the first letter of the novel, with a skip of 5. Press ▲ next to "Start at letter" a few times and watch "The letters read". Do you get a word?
+</Try>
+
+### Let the machine look
+
+Hunting by hand is slow, so let the simulator search. It tries every start with every skip, reading both forwards and backwards. For a four-letter word in this short passage, that makes 259,602 sequences.
+
+<Try action="shot" button="Search for SHOT">
+  The controls say how many times `SHOT` hides in the passage. Press ▲ next to "Hit" to see each one lit on the grid. Then type a short word of your own in "Word to find".
+</Try>
+
+Three-letter words turn up by the dozen. Four-letter words turn up a few times each. Longer words are rarer, but a longer text gives the search far more places to look.
+
+<Check question="Why are short words easier to find than long ones?">
+  Every letter of the word has to land right by luck. A three-letter word needs three lucky landings, and a six-letter word needs six. So long words need many more tries, and a huge text supplies them.
+</Check>
+
+### Any text will do
+
+Perhaps a great novel is special. So try a text that is not. The second passage is a notice about a car park, written for this page to be as dull as possible. Nobody hid anything in it.
+
+<Try action="notice" button="Search a car park notice">
+  The search finds `FIRE` four times. Step through the hits. Then switch between "Moby-Dick" and "A car park notice" under "Search in" and try other words in both.
+</Try>
+
+<Label>The story</Label>
+
+## An old hunt, a new book
+
+Looking for secrets inside the Bible is an old habit. In the Dark Ages, Europe knew almost nothing about ciphers. The only places that encouraged the study of secret writing were the monasteries, where monks combed the Bible for hidden meanings.
+
+Drosnin's book carried that fascination into modern times. Its method needs no key from the past and no instructions from the author. You choose where to start and how far to jump.
+
+That freedom is the problem, said the sceptics. The Bible is very long. Change both the start and the skip, and a long text offers a vast number of sequences. Some of them are bound to spell something.
+
+<Label>How it was broken</Label>
+
+## The whale that predicted murders
+
+Brendan McKay, of the Australian National University, put the idea to the test. He did not argue about the Bible. He ran the same kind of search on *Moby-Dick*, a novel about hunting a whale.
+
+He found thirteen statements about the assassinations of famous people. Trotsky, Gandhi and Robert Kennedy were among them. Nobody believes the novel foresaw those deaths. So the method "finds" messages wherever it is pointed, and a find proves nothing.
+
+Notice who is doing the work. The searcher picks the word, the start and the skip, and keeps only the results that look meaningful. Thousands of nonsense sequences are thrown away without a mention.
+
+<Try>
+  Pick "A car park notice" and type `DOOM` in "Word to find". It hides exactly once. Is the car park doomed, or did you simply look in 170,170 places?
+</Try>
+
+<Label>Challenge</Label>
+
+## The car park's warning
+
+<Challenge answer="DEAD">
+  A prophet says the car park notice hides a second warning. It starts at letter 434, a `D`. He has forgotten the skip, but it is a little more than 50.
+
+  Press ▲ next to "Skip" until the four letters make a word. What is the word?
+
+  <Try action="warning" button="Load the notice" />
+</Challenge>
+
+<Check question="Does finding that word prove someone hid it?">
+  No. You changed the skip until a word appeared, and ignored the nonsense on the way. With enough starts and skips to choose from, some word nearly always turns up. That is chance, not a message.
+</Check>
+
+<Label>What came next</Label>
+
+## A real secret has a sender
+
+A real cipher works the other way round. The sender chooses a method and a key before writing. The receiver uses that same key and gets one message, not whichever message suits them.
+
+While monks searched for codes that were not there, real ones were on the way. By the fifteenth century, the book says, European cryptography was "a growing industry", fed by plots between rival courts. Soon a queen would trust her life to a cipher. Meet her on the next page: [the cipher of Mary Queen of Scots](/ciphers/mary-queen-of-scots).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, Appendix C, "The So-Called Bible Code".
+- Brendan McKay and others, "Solving the Bible Code Puzzle", *Statistical Science*, 1999. The sceptics' full reply.
+- Herman Melville, *Moby-Dick*, 1851. The novel is long out of copyright, so anyone may search it.

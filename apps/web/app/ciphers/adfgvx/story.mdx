@@ -1,0 +1,144 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  This cipher is only in the full edition of The Code Book (chapter 3 and Appendix F).
+  The grid, the keyword MARK and the message "attack at 10 pm" are the book's example.
+  Dates and names were checked against the sources in Further reading. The wording is ours.
+*/}
+
+<Standfirst>
+  Six letters, a grid and a keyword hid the German army's orders in 1918, until one Frenchman saw through them.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## Six letters over the radio
+
+It is June 1918, the last summer of the First World War. The German army is pushing towards Paris. The French know another blow is coming. They do not know where.
+
+French radio operators listen to the German signals day and night. What they hear is odd. Every message uses only six letters: `A`, `D`, `F`, `G`, `V` and `X`.
+
+The messages land on the desk of Georges Painvin, a codebreaker in the French cipher office. On the night of 2 June he reads one. It orders shells to be rushed to the guns, "even by day if not seen". Now the French know where to wait.
+
+How can a whole language hide inside six letters?
+
+<Label>Try it</Label>
+
+## Follow one letter
+
+The simulator holds the message `ATTACK AT 10 PM` and the keyword `MARK`. Guess first: the message has 12 letters and digits. How many letters will the ciphertext have?
+
+<Try action="book" button="Load the message">
+  Tap `T` in the big grid. Look at the head of its row and the head of its column. Then find the lit letters in the three small tables.
+</Try>
+
+<Check question="How long is the ciphertext?">
+  24 letters, twice as long as the message. Every letter or digit turns into two letters: the name of its row, then the name of its column. `T` sits in row `D`, column `D`, so it becomes `DD`.
+</Check>
+
+<Label>How it works</Label>
+
+## Swap, then shuffle
+
+ADFGVX is two ciphers, one after the other. The first swaps. The second shuffles.
+
+### Stage 1: the grid
+
+The grid has six rows and six columns. That makes 36 squares: enough for 26 letters and the ten digits. They are scattered in an order that only the sender and receiver know.
+
+To encipher a letter, find it in the grid. Write the letter at the start of its row, then the letter at the top of its column. So `A` becomes `DV` and `1` becomes `AV`. This is a **substitution**: each symbol is swapped for something else.
+
+On its own, stage 1 is weak. `A` is always `DV`. A codebreaker could count the pairs, just as they count letters.
+
+<Try action="book" button="Load the message">
+  Tap `A` in the grid, then look at "Stage 1". Count how many times the pair `DV` appears.
+</Try>
+
+### Stage 2: the keyword
+
+Now the pairs are broken up. Write all the letters from stage 1 in rows under the keyword, here `MARK`. Then sort the columns so the keyword's letters are in alphabetical order: `A`, `K`, `M`, `R`. Each column moves as one piece.
+
+Last, read down the first column, then the second, and so on. That string of letters is the ciphertext. This stage is a **transposition**: the letters stay the same but change places.
+
+<Try>
+  Change "Keyword" from `MARK` to `MARKS`. The table gets a fifth column and the ciphertext changes, but the pairs in stage 1 do not.
+</Try>
+
+### Why two stages beat one
+
+Tap `T` again and look at the sorted table. The two halves of each `DD` have landed in different columns. In the ciphertext they are far apart, mixed with halves of other letters.
+
+Splitting a letter into parts and then scattering the parts is called **fractionation**. The codebreaker cannot count pairs, because the pairs no longer sit together. And they cannot put the pairs back without the keyword.
+
+To decipher, you work backwards. Fill the sorted columns with the ciphertext and put the columns back in keyword order. Then read across in pairs, and look each pair up in the grid.
+
+<Check question="Why these six letters, and not A to F?">
+  The messages went by radio in Morse code. `A`, `D`, `F`, `G`, `V` and `X` sound very different from each other in dots and dashes. A tired operator was less likely to mix them up.
+</Check>
+
+<Label>The story</Label>
+
+## Built for the last offensive
+
+The cipher was the work of Fritz Nebel, a German signals officer. It was first used in March 1918, just before Germany's great spring attack. Then it had only five letters, `ADFGX`, and a grid of 25 squares.
+
+At the start of June 1918 a sixth letter appeared: `V`. The bigger grid had room for digits, so times and map numbers no longer had to be spelled out. Messages got shorter.
+
+Both keys, the grid and the keyword, changed every day. Real keywords were much longer than `MARK`, about two dozen letters. The Germans were sure the cipher could not be broken.
+
+<DigDeeper title="Why soldiers liked it">
+  A front-line cipher has to be simple. ADFGVX needs no machine and no thick codebook. A clerk needs a pencil, squared paper and the two keys for the day.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## Painvin's long nights
+
+Georges Painvin had already broken the five-letter version in early April. His way in was a habit of the army. Many messages on the same day began with the same words, such as an address or a rank.
+
+Two messages that start alike give stage 1 pairs that start alike. After the shuffle, the matching letters sit at the top of each column. By comparing such messages, Painvin could work out how long the keyword was and how the columns had moved.
+
+With the columns back in order, the pairs are side by side again. What is left is stage 1, a simple substitution. And those fall to counting.
+
+<Try action="book" button="Load the message">
+  Do the last step yourself. In "Stage 1", count each pair. `DV` and `DD` appear three times each. In a long English message the most common pair would stand for `E`.
+</Try>
+
+The work wore him out. Painvin is said to have lost 15 kilograms that spring. But on 2 June, one day after the French first heard the `V`, he read the order to rush munitions. It came from the front between Montdidier and Compiègne. When the Germans attacked there on 9 June, the French were waiting.
+
+Historians still argue about how much this one message mattered. The French had other warnings too, such as captured soldiers.
+
+<Label>Challenge</Label>
+
+## Read the order
+
+<Challenge answer="RUSH MUNITIONS">
+  You are in the French cipher office. After days of work you have today's grid (the one on this page) and today's keyword: `PARIS`.
+
+  This message has just come in: `VDDDGDGXVXVDGGDDGXADAVXVGV`
+
+  Set the keyword, pick "Decipher" and type it in, or use the button. What does it say?
+
+  <Try action="intercepted" button="Load the message" />
+</Challenge>
+
+<Check question="The keyword PARIS has five letters. Which column of the table is read first?">
+  The one under `A`. The columns are read in the alphabetical order of the keyword's letters: `A`, `I`, `P`, `R`, `S`.
+</Check>
+
+<Label>What came next</Label>
+
+## Hard is not the same as safe
+
+ADFGVX stacked one cipher on top of another, and it became one of the most famous ciphers of the war. It still fell, because people used it in a routine way and one man refused to give up.
+
+By 1918 every cipher ever invented had been broken sooner or later. Codemakers wanted something better than "harder". They wanted a cipher that could be proved unbreakable. It already existed, and it used nothing but random letters: [the one-time pad](/ciphers/one-time-pad).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book* (full edition, 1999), chapter 3 and Appendix F. The appendix works through `ATTACK AT 10 PM` with the keyword `MARK`.
+- [Wikipedia: ADFGVX cipher](https://en.wikipedia.org/wiki/ADFGVX_cipher). Dates, Fritz Nebel, a second worked example, and the argument about how much the break mattered.
+- [Wikipedia: Georges Painvin](https://en.wikipedia.org/wiki/Georges_Painvin). The man and the message of 2 June 1918.
+- [Wikipedia: German spring offensive](https://en.wikipedia.org/wiki/German_spring_offensive). The attack of 9 June 1918.
+- David Kahn, *The Codebreakers: The Story of Secret Writing* (1967; revised edition 1996). The classic account of Painvin's attack.

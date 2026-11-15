@@ -1,0 +1,6 @@
+/* The strip of pairs scrolls sideways inside itself, so the square stays in view. */
+.scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: var(--space-1);
+}

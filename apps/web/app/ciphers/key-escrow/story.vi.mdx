@@ -1,0 +1,150 @@
+{/*
+  Bản tiếng Việt của story.mdx, kể lại theo Mật mã: Từ cổ điển đến lượng tử
+  (NXB Trẻ, Phạm Văn Thiều và Phạm Thu Hằng dịch), chương 7: Riêng tư tốt đẹp,
+  trang 437–448 và 451–452. Theo docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md. The wording is ours.
+  Three facts are not in the book and were checked against the sources in Further reading:
+  the Clipper announcement of April 1993, Matt Blaze's paper of 1994 and the end of the
+  Clipper plan by 1996 (no formal withdrawal was found, so the page gives no exact date).
+  The four-letter key and its split are a toy of ours, not the real chip.
+*/}
+
+<Standfirst>
+  Một bản sao dự phòng của mọi chìa khóa, cắt làm đôi, để cảnh sát mượn khi cần.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Chiếc máy tính xách tay không ai đọc được
+
+Năm 1993, một quả bom nổ dưới tòa Trung tâm Thương mại Thế giới ở New York. Ramsey Yousef, một trong những kẻ dính líu, cất kế hoạch cho các vụ khủng bố tiếp theo trong máy tính xách tay. Hắn đã mã hóa chúng.
+
+Từ lâu, cảnh sát bắt tội phạm bằng cách nghe các cuộc điện thoại của chúng. Việc này gọi là **nghe lén**. Ở Mỹ, từ năm 1967, cảnh sát được nghe lén nếu có phép của tòa án. Nhưng giờ ai cũng có thể có một mật mã mà không lực lượng cảnh sát nào phá nổi. PGP lại còn miễn phí.
+
+Có điều, chính mật mã ấy cũng che chở người lương thiện trước gián điệp và kẻ gian. Vì vậy các chính phủ phải tự hỏi một câu khó. Có làm được một cái khóa móc chặn được tất cả, chỉ trừ viên cảnh sát mà thẩm phán cho phép?
+
+<Label>Thử xem</Label>
+
+## Xin một nửa chìa khóa
+
+Alice đã để lại bản sao chìa khóa của mình ở hai cơ quan chính phủ. Mỗi nơi giữ một nửa. Bạn đoán trước nhé: nếu cảnh sát có một nửa, họ biết được bao nhiêu về chìa khóa của cô?
+
+<Try action="lodged" button="Xem chìa khóa Alice đã gửi giao kèo">
+  Đặt “Lệnh của tòa án” thành Có. Nhấn “Cơ quan một: giao nửa của mình”. Rồi đọc bàn của cảnh sát trong mô hình.
+</Try>
+
+<Check question="Một nửa cho cảnh sát biết được bao nhiêu?">
+  Chẳng biết gì. Nửa thứ nhất là bốn chữ chọn ngẫu nhiên. Mỗi chữ của chìa khóa vẫn có thể là bất kỳ chữ nào trong 26 chữ. Bàn của cảnh sát cho thấy rất nhiều chìa khóa đều khớp với nửa ấy.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Một chìa khóa dự phòng và hai người lạ
+
+### Một người trung gian giữ bản sao
+
+**Giao kèo** là một cách làm cũ trong buôn bán. Một người đưa tiền cho bên thứ ba giữ hộ, và bên ấy chỉ chuyển tiền đi khi đủ điều kiện. Chẳng hạn, người thuê nhà gửi luật sư một khoản đặt cọc. Nếu căn nhà bị hư hỏng, luật sư mới giao khoản đó cho chủ nhà.
+
+**Giao kèo chìa khóa mã** làm y như vậy, chỉ thay tiền bằng chìa khóa. Alice đưa một bản sao chìa khóa riêng của mình cho một **đại lý giao kèo**. Đó là một bên đứng giữa, không thuộc phe nào, và được mọi người tin cậy. Đại lý giữ kín bản sao. Nếu có đủ bằng chứng rằng Alice dính vào tội phạm, đại lý mới giao nó cho cảnh sát.
+
+<Try action="lodged" button="Làm lại khi chưa có lệnh">
+  Nhìn hai nút của hai cơ quan. Khi chưa có lệnh, chúng không giao gì cả. Chỉ Alice và Bob đọc được bức thư.
+</Try>
+
+### Cắt chìa khóa làm đôi
+
+Để một đại lý giữ chìa khóa của cả nước thì phải tin họ nhiều quá. Vì thế kế hoạch của Mỹ cắt mỗi chìa khóa làm hai phần. Mỗi phần được gửi tới một cơ quan liên bang riêng.
+
+Mô hình làm việc này với một chìa khóa đồ chơi bốn chữ. Hãy coi `A` là 0 và `Z` là 25. Nửa thứ nhất là bốn chữ chọn ngẫu nhiên. Nửa thứ hai là chìa khóa trừ đi nửa thứ nhất, từng chữ một. Chìa khóa của Alice bắt đầu bằng `L`, còn nửa thứ nhất bắt đầu bằng `Q`. Lấy 11 trừ 16 thì được âm 5, tức là xuống dưới 0. Cộng thêm 26 thì được 21, tức là `V`.
+
+<Try action="lodged" button="Xem cách chia">
+  Nhấn “Gửi lại chìa khóa với hai nửa mới” vài lần. Trên bàn Alice, cả hai nửa đổi mỗi lần. Chìa khóa của cô thì không đổi.
+</Try>
+
+### Đủ hai nửa, hoặc chẳng có gì
+
+Muốn dựng lại chìa khóa, hãy cộng hai nửa, từng chữ một. Tổng nào vượt quá 25 thì trừ đi 26. Cảnh sát phải có lệnh của tòa án trước đã. Rồi cả hai cơ quan đều phải giao phần của mình.
+
+<Try action="oneHalf" button="Đưa cảnh sát một nửa">
+  Nhấn “Cơ quan hai: giao nửa của mình”. Bàn của cảnh sát cộng hai nửa, được `LOCK`, và đọc được bức thư.
+</Try>
+
+<Label>Câu chuyện</Label>
+
+## Hai phe và một con chip
+
+Sau PGP, người ta chia làm hai phe. Phe thứ nhất là các nhà hành pháp. Họ nói nghe lén giữ cho xã hội có trật tự, mà mã hóa mạnh thì làm nghe lén vô dụng. Họ có ví dụ hẳn hoi. Các carten ma túy ở Cali bàn chuyện mua bán qua đường liên lạc đã mã hóa. Giáo phái Aum Shinrikyo, thủ phạm vụ thả khí độc trong tàu điện ngầm ở Nhật năm 1995, có tài liệu mã hóa bằng RSA.
+
+Phe thứ hai là những người bảo vệ quyền tự do công dân. Với họ, được sống riêng tư là quyền con người, ai cũng phải có. Họ cũng có ví dụ. Nhiều năm liền, FBI nghe lén điện thoại của Martin Luther King Jr., rồi dùng những gì nghe được để bôi nhọ ông. Các hãng kinh doanh về phe này. Nếu kẻ gian đọc được số thẻ tín dụng thì ai dám mua hàng trên Internet. Các hãng còn mã hóa kho dữ liệu của mình, để tin tặc có lọt vào cũng không đọc được gì.
+
+Giao kèo chìa khóa mã được đưa ra như một cách dung hòa. Năm 1994, Mỹ thông qua Tiêu chuẩn mã hóa giao kèo (Escrowed Encryption Standard). Nó gồm hai hệ thống: **Clipper** cho điện thoại và **Capstone** cho máy tính. Mỗi chiếc điện thoại Clipper có một con chip giữ chìa khóa bí mật của nó. Khi bạn mua máy, một bản sao chìa khóa ấy được cắt làm hai, gửi cho hai cơ quan liên bang cất giữ.
+
+<DigDeeper title="Mạng lưới gián điệp đọc tìm từ khóa">
+  Cơ quan An ninh Quốc gia Mỹ (NSA) nghe ngóng khắp thế giới, cùng bốn nước bạn: Anh, Australia, Canada và New Zealand. Hệ thống Echelon của họ quét thư điện tử, fax và các cuộc gọi, tìm những từ trong một danh sách, như “assassin” (kẻ ám sát) và “Pentagon” (Lầu Năm Góc). Bức thư nào có những từ ấy sẽ bị để riêng ra cho người xem kỹ.
+
+  Mã hóa mạnh sẽ khiến Echelon thành mù. Phe này nói thế là phải hạn chế mật mã. Phe kia nói chính vì thế mà phải dùng mật mã, bởi Echelon đọc cả thư của người vô tội.
+
+  <Try>
+    Mở “Máy quét từ khóa đồ chơi” ở cuối phần điều khiển. Một chuyến đi chơi của trường bị để riêng ra. Còn âm mưu đã mã hóa thì lọt qua.
+  </Try>
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Vì sao gần như không ai muốn nó
+
+Chẳng ai cần phá mật mã của Clipper. Kế hoạch đổ vì người ta không tin nó.
+
+Những người bảo vệ quyền tự do công dân hỏi lại: bạn thấy sao nếu chính phủ giữ chìa khóa cửa mọi ngôi nhà? Các chuyên gia mật mã nhắc rằng chỉ cần một nhân viên gian dối là đủ. Người đó có thể đem chìa khóa giao kèo bán cho ai trả giá cao nhất. Còn các hãng nước ngoài làm ăn ở Mỹ thì sợ quan chức thương mại Mỹ đọc trộm bí mật của mình.
+
+<Try action="lodged" button="Đóng vai người phản đối">
+  Nhấn “Người trong cơ quan một làm lộ một nửa”. Cách chia vẫn đứng vững: kẻ trộm có một nửa thì chẳng đọc được gì. Giờ nhấn “Cả hai cơ sở dữ liệu bị đánh cắp”. Kẻ trộm đọc được tất cả, chẳng cần lệnh nào.
+</Try>
+
+Còn một chỗ hở đơn giản hơn. Chỉ các hãng làm việc cho chính phủ mới buộc phải theo tiêu chuẩn này. Những người khác được tự do dùng bất kỳ mật mã nào họ thích.
+
+<Try action="outlaw" button="Cho người gửi đổi mật mã">
+  Cảnh sát có lệnh và có cả hai nửa. Họ dựng lại được `LOCK`, nhưng người gửi đã dùng một chìa khóa chưa ai gửi giao kèo. Bức thư vẫn kín bưng.
+</Try>
+
+Chính phủ từng mong Clipper sẽ thành loại mật mã cả nước ưa dùng. Nhưng bên ngoài chính phủ, nó có rất ít người ủng hộ, và chính phủ phải lùi. Đến năm 1996, con chip Clipper đã bị bỏ.
+
+<DigDeeper title="Một lỗi ngay trong con chip">
+  Kế hoạch Clipper được công bố lần đầu vào tháng 4 năm 1993. Năm 1994, Matt Blaze, một nhà nghiên cứu ở Phòng thí nghiệm AT&T Bell, mổ xẻ các con chip. Mỗi cuộc gọi mang theo một trường dữ liệu nhỏ, giúp cảnh sát tìm đúng chìa khóa giao kèo. Blaze chỉ ra những cách nói chuyện bằng mật mã mà không cần gửi một trường hợp lệ.
+</DigDeeper>
+
+<Label>Thử thách</Label>
+
+## Dựng lại chìa khóa
+
+<Challenge answer="THE MONEY IS UNDER THE BRIDGE">
+  Bạn là viên cảnh sát. Bạn bắt được bức thư `VOM BQUMN KZ CCFLZ IJL JGKKOT`. Một thẩm phán đã xem bằng chứng của bạn. Cơ quan một giữ nửa `WTGB`, còn cơ quan hai giữ nửa `GOCO`.
+
+  Hãy tìm ra chìa khóa. Bức thư nói gì?
+
+  <Try action="challenge" button="Mở hồ sơ vụ việc" />
+</Challenge>
+
+<Check question="Bạn cần hai thứ gì thì mới đọc được bức thư?">
+  Một lệnh của tòa án, và cả hai nửa. Lệnh là hàng rào của pháp luật: một thẩm phán phải đồng ý. Hai nửa là hàng rào của toán học: không cơ quan nào tự mình đọc được bức thư.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Bạn sợ ai hơn?
+
+Cuộc tranh cãi chưa ngã ngũ. Simon Singh đoán rằng thoạt đầu phe mã hóa mạnh sẽ thắng. Lý do chính: không nước nào muốn có luật cản trở việc mua bán trên Internet.
+
+Nhưng con lắc có thể đảo chiều. Sau một loạt vụ khủng bố, người ta có thể chấp nhận giao kèo chìa khóa mã. Rồi nếu chính phủ lạm dụng nó, dân chúng lại đòi quyền tự do mã hóa. Điều quyết định là xã hội sợ ai nhất: tội phạm, hay chính phủ.
+
+Có điều, các cửa hàng trên Internet cần nhiều hơn là giữ bí mật. Họ cần biết ai thật sự đã gửi một đơn hàng. Chính những chìa khóa ấy chứng minh được điều đó: [chữ ký số hóa](/ciphers/digital-signatures).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử* (Phạm Văn Thiều và Phạm Thu Hằng dịch, NXB Trẻ), chương 7: Riêng tư tốt đẹp.
+- Viện Tiêu chuẩn và Công nghệ Quốc gia Mỹ (NIST), *Escrowed Encryption Standard* (Tiêu chuẩn mã hóa giao kèo, FIPS 185, tháng 2 năm 1994). Chính văn bản của tiêu chuẩn.
+- Nhà Trắng, “Statement by the Press Secretary” (Tuyên bố của Thư ký báo chí), ngày 16 tháng 4 năm 1993. Lần đầu công bố con chip Clipper.
+- Matt Blaze, “Protocol Failure in the Escrowed Encryption Standard” (Lỗi giao thức trong Tiêu chuẩn mã hóa giao kèo, 1994). Lỗ hổng trong trường giao kèo của con chip.
+- Parker Higgins, “On the Clipper Chip’s Birthday, Looking Back on Decades of Key Escrow Failures” (Nhân sinh nhật con chip Clipper, nhìn lại mấy chục năm giao kèo chìa khóa thất bại), Electronic Frontier Foundation, ngày 16 tháng 4 năm 2015. Sự kết thúc của kế hoạch Clipper vào năm 1996.

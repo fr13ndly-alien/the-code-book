@@ -1,0 +1,130 @@
+{/*
+  Vietnamese page, retold from Mật mã: Từ cổ điển đến lượng tử (NXB Trẻ),
+  chương 2: Le chiffre indéchiffrable, pages 130–132. Follows docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md.
+  The details of the two stories were checked against the Project Gutenberg texts
+  (ebooks 108 and 2147). The wording is ours.
+*/}
+
+<Standfirst>
+  Sherlock Holmes đọc được một hàng hình nhân nhảy múa nhờ đếm xem hình nào nhảy nhiều nhất.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Bức vẽ trẻ con làm một người phụ nữ ngất xỉu
+
+Trên bàn của Sherlock Holmes có một tờ giấy. Hilton Cubitt, một điền chủ vùng Norfolk, đã gửi nó qua bưu điện tới trước. Trên giấy là một hàng người hình que nho nhỏ. Có hình vẫy tay. Có hình co chân. Vài hình cầm cờ.
+
+Bác sĩ Watson bảo đó là tranh trẻ con. Nhưng lúc Cubitt tới, ông chẳng cười chút nào. Những hình như thế từng được vẽ bằng phấn lên bậu cửa sổ nhà ông. Rồi tờ giấy này hiện ra trên chiếc đồng hồ mặt trời ngoài vườn. Elsie, vợ ông, vừa nhìn thấy đã ngất đi. Bà nhất định không nói vì sao.
+
+Holmes ngắm tờ giấy rất lâu. Ông tin chắc các hình nhân kia là chữ viết. Nhưng một hàng người hình que thì làm sao thành một bức thư được?
+
+<Label>Thử xem</Label>
+
+## Tìm hình nhân nhảy nhiều nhất
+
+Bộ mô phỏng cho thấy bức thư đầu tiên Holmes đọc được: `AM HERE ABE SLANEY` (tôi ở đây, Abe Slaney). Nó có 15 hình nhân. Bạn đoán trước nhé: chữ nào nhảy nhiều nhất, và mấy lần?
+
+<Try action="slaney" button="Hiện bức thư đầu tiên">
+  Một hình nhân đang sáng, kèm theo mọi hình giống hệt nó. Hãy đếm chúng. Rồi chạm vào một hình nhân khác và xem những hình giống nó sáng lên.
+</Try>
+
+<Check question="Chữ nào nhảy nhiều nhất trong AM HERE ABE SLANEY?">
+  Chữ `E`, bốn lần trên mười lăm. Không phải tình cờ đâu. Trong tiếng Anh, `E` là chữ hay gặp nhất, nên trong một bức thư nhảy múa dài, nó thường là hình nhân hay gặp nhất.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Mỗi chữ cái một hình nhân
+
+### Một tư thế, một chữ
+
+Mỗi chữ cái có một hình nhân của riêng nó. Cái quan trọng là tư thế: hai tay và hai chân chỉ về hướng nào. Cùng một chữ thì luôn cùng một tư thế. Đây là kiểu **mật mã thay thế dùng một bảng chữ cái**: mỗi chữ được đổi thành một ký hiệu, lúc nào cũng là ký hiệu ấy. Danh sách các phép đổi là **chìa khóa**.
+
+Chìa khóa bên dưới bức thư có đủ 26 tư thế. Nhưng bạn nhớ cho: chúng do chúng tôi tự vẽ. Các bức thư trong truyện của Conan Doyle chỉ dùng tới 18 chữ cái, nên tám chữ còn lại không có hình nhân nào. Chúng tôi vẽ một bộ mới, theo đúng tinh thần ấy.
+
+<Try action="blank" button="Xóa tin nhắn">
+  Gõ tên bạn vào ô “Tin nhắn của bạn”. Chạm vào một hình nhân của bạn, rồi tìm hình giống hệt nó đang sáng trong chìa khóa.
+</Try>
+
+### Lá cờ thay cho dấu cách
+
+Các hình nhân đứng sát nhau, không có khoảng trống. Thay vào đó, hình nhân cuối của mỗi từ cầm một lá cờ nhỏ. Lá cờ không đổi gì thêm: chữ `E` cầm cờ vẫn là chữ `E`.
+
+<Try action="trap" button="Mở COME HERE AT ONCE">
+  Đếm các lá cờ xem. Có ba lá, mỗi lá ở cuối một từ, trừ từ sau cùng. Bức thư dừng ở đó rồi, nên từ cuối khỏi cần cờ. Conan Doyle cũng làm thế: Holmes biết có một bức thư chỉ gồm một từ, vì nó không có lá cờ nào.
+</Try>
+
+### Hai lớp khóa của Verne
+
+Jules Verne giấu một câu đố khác trong cuốn *Hành trình tới tâm Trái đất*. Các nhân vật của ông tìm thấy một cuộn da kín đặc chữ rune, thứ chữ Đức cổ. Việc đầu tiên là đổi mỗi chữ rune thành một chữ cái thường. Ra một đoạn tiếng Latin vẫn chẳng có nghĩa gì. Phải đọc các chữ theo chiều ngược lại thì mới hiểu được.
+
+Vậy là Verne dùng hai bước: một phép thay thế, rồi một phép đảo ngược. Muốn gỡ, bạn làm theo thứ tự ngược lại.
+
+<Try action="verne" button="Mở cuộn da của Verne">
+  Nhấn ▲ cạnh “Bước” hai lần để giấu `DESCEND THE CRATER` (hãy xuống miệng núi lửa). Nhấn thêm hai lần nữa để gỡ từng bước. Bảng chữ dùng để đổi là của chúng tôi.
+</Try>
+
+<Label>Câu chuyện</Label>
+
+## Khi mật mã bước vào văn học
+
+Vào thế kỷ 19, người dân thường ngày càng mê mật mã. Báo chí đăng đầy những đoạn tin mã hóa, và chẳng bao lâu các nhà văn cũng đưa mật mã vào truyện. Tiểu thuyết của Verne ra đời năm 1864. Năm 1885, ông lại lấy một mật mã làm mấu chốt cho cuốn *Mathias Sandorff*.
+
+Bên kia Đại Tây Dương, Edgar Allan Poe viết bài cho một tờ báo ở Philadelphia, tờ *Người đưa thư hàng tuần Alexander*. Ông thách độc giả: cứ gửi mật mã thay thế dùng một bảng chữ cái tới, loại nào ông cũng giải được. Hàng trăm bản mật mã gửi về. Ông giải được tất cả. Năm 1843, ông viết truyện ngắn “Con bọ bằng vàng”, về những chỉ dẫn bằng mật mã dẫn tới kho báu của cướp biển.
+
+Ở Anh, Ngài Arthur Conan Doyle cho vị thám tử của mình thành chuyên gia mật mã. Holmes khoe với bác sĩ Watson rằng ông đã viết một chuyên khảo nhỏ về “một trăm sáu mươi loại mật mã khác nhau”. Truyện “Cuộc phiêu lưu của những hình nhân nhảy múa” được in vào tháng 12 năm 1903.
+
+<DigDeeper title="Mực vô hình bên lò sưởi">
+  Trong “Con bọ bằng vàng”, William Legrand bắt được một con bọ lạ, ánh lên như vàng. Anh nhặt nó bằng một mẩu giấy da cũ nằm gần đó. Tối hôm ấy, anh vẽ con bọ lên chính mẩu giấy, rồi đưa lại gần lửa lò sưởi cho dễ nhìn. Hơi nóng làm hiện ra một chiếc đầu lâu vẽ bằng mực vô hình. Hơ thêm thì hiện ra những hàng ký hiệu. Đó là mật mã của tên cướp biển, Thuyền trưởng Kidd. Legrand phá nó bằng cách đếm các ký hiệu, và tìm ra kho báu.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Holmes đếm các hình nhân
+
+Các nhà văn này không ăn gian. Nhân vật của họ phá mật mã y như những nhà giải mã thật, bằng **phân tích tần suất**: đếm các ký hiệu, rồi khớp chúng với các chữ cái của ngôn ngữ.
+
+Holmes bắt đầu bằng việc đếm. Trong bức thư đầu tiên, bốn trên mười lăm hình nhân giống nhau. Ông cho hình đó là `E`. Kế đến, ông để ý vài hình nhân cầm cờ, và đoán lá cờ đánh dấu chỗ hết một từ. Thế là ông biết mỗi từ dài bao nhiêu.
+
+Có một bức thư không có lá cờ nào, vậy nó chỉ là một từ. Từ ấy có năm chữ, chữ thứ hai và thứ tư là `E`. Holmes đọc ra `NEVER` (không bao giờ), và có thêm `N`, `V`, `R`. Rồi ông tìm tên người vợ, `ELSIE`: hai hình `E`, kẹp giữa là ba hình khác. Từ đứng trước nó có bốn chữ, tận cùng là `E`, nên đó là `COME` (hãy đến). Mỗi chữ mới lại mở thêm nhiều từ nữa. Cuối cùng, Holmes tự viết một bức thư bằng hình nhân nhảy múa, và kẻ xấu bước thẳng vào bẫy.
+
+Legrand trong truyện của Poe cũng làm đúng như thế. Ký hiệu hay gặp nhất của anh là số `8`, xuất hiện 33 lần, và anh cũng đoán nó là `E`.
+
+<Try action="desk" button="Ngồi vào bàn của Holmes">
+  Chạm vào hình nhân đầu tiên trong bảng đếm, hình hay gặp nhất. Chọn `E` trong các chữ cái. Giờ hãy tìm một từ ngắn tận cùng bằng `E` mà cứ xuất hiện hoài. Gọi tên các hình nhân còn lại của nó. Bí quá à? Nhấn “Cho tôi một chữ”.
+</Try>
+
+<Label>Thử thách</Label>
+
+## Bức thư trên đồng hồ mặt trời
+
+<Challenge answer="COME TO THE GARDEN WALL AT SEVEN">
+  Trên đồng hồ mặt trời có một mẩu giấy. Trên đó có 26 hình nhân nhảy múa, sáu hình cầm cờ.
+
+  Bạn đọc nó bằng chìa khóa, hoặc bằng những gì đã tìm ra ở bàn của Holmes. Bức thư nói gì?
+
+  <Try action="garden" button="Mở bức thư" />
+</Challenge>
+
+<Check question="Vì sao các lá cờ giúp ích cho nhà giải mã?">
+  Chúng cho biết mỗi từ kết thúc ở đâu, tức là làm đúng việc của dấu cách. Từ ngắn thì dễ đoán. Trong tiếng Anh, một từ ba chữ tận cùng bằng hình nhân hay gặp nhất thường chính là `THE`.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Giấu thói quen, chứ không chỉ giấu chữ
+
+Hình nhân que, chữ rune và ký hiệu của Poe có chung một điểm yếu. Mỗi chữ luôn khoác cùng một lớp áo, nên chữ hay gặp nhất vẫn là ký hiệu hay gặp nhất. Đến thế kỷ 19, một truyện trinh thám đã có thể giảng cách phá này, và độc giả theo kịp từng bước.
+
+Ai có bí mật thật thì cần một mật mã làm nhòe phép đếm. Một cách là đổi chữ theo từng cặp, vì cặp chữ cái khó đếm hơn nhiều. Bạn thử ở trang sau: [mật mã Playfair](/ciphers/playfair).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử* (NXB Trẻ, Phạm Văn Thiều và Phạm Thu Hằng dịch), chương 2: *Le chiffre indéchiffrable*, tr. 130–132, về Verne, Conan Doyle và Poe.
+- Arthur Conan Doyle, “The Adventure of the Dancing Men” (Cuộc phiêu lưu của những hình nhân nhảy múa), tạp chí *The Strand Magazine*, tháng 12 năm 1903. Trang *The Arthur Conan Doyle Encyclopedia* có 18 hình nhân gốc ở mục “Dancing Men Alphabet”.
+- Edgar Allan Poe, “The Gold-Bug” (Con bọ bằng vàng), báo *Dollar Newspaper*, Philadelphia, tháng 6 năm 1843. Hội *The Edgar Allan Poe Society of Baltimore* có ghi lại các lần in của truyện.
+- Jules Verne, *Journey to the Center of the Earth* (Hành trình tới tâm Trái đất), 1864.

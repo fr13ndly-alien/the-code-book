@@ -1,0 +1,136 @@
+{/*
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapters 1 and 2. The wording is ours.
+*/}
+
+<Standfirst>
+  Victorians sent secret letters for nothing, hidden as tiny holes in yesterday's newspaper.
+</Standfirst>
+
+<Label>The hook</Label>
+
+## A letter that costs nothing
+
+Picture a young man in Britain in the early 1800s. He has found work far from home, and his mother is waiting for news. A letter costs about a shilling for every hundred miles it travels. He cannot afford that.
+
+But the post office carries newspapers for free. So he takes an old newspaper and a pin. He pushes the pin through the front page a few dozen times, folds the paper, and posts it home.
+
+His mother pays nothing. She unfolds the page and holds it up to the window. A minute later she knows he is well.
+
+How can a pin write a letter on a page that is already full of words?
+
+<Label>Try it</Label>
+
+## Find the holes
+
+The simulator shows a page from a made-up newspaper. Someone has hidden `MEET ME AT SIX` in it. Make a guess first: how many holes did that take?
+
+<Try action="meeting" button="Show the pricked page">
+  Look for the small dots under some letters. Then pick "Held up to the light" in the controls and watch the page.
+</Try>
+
+<Check question="How many holes hide MEET ME AT SIX?">
+  Eleven: one for each letter of the secret. Spaces need no hole. Against the light, only the letters above the holes show, and they read `MEETMEATSIX`.
+</Check>
+
+<Label>How it works</Label>
+
+## One hole for each letter
+
+### Pricking in order
+
+To hide a message, you spell it out with letters that are already on the page. Start at the top. Find the first letter of your secret and prick a hole under it. Then read on from there until you meet your second letter, and prick that.
+
+You never go backwards. The reader will collect the pricked letters from top to bottom, so the holes must come in the same order as your message.
+
+The innocent text that carries the holes is called the **cover text**. Any page will do, as long as it has the letters you need.
+
+<Try action="blank" button="Clear the secret">
+  Type a short message in "Your secret". Watch a dot appear under one letter of the newspaper for each letter you type.
+</Try>
+
+### When the page runs out
+
+A cover text can only carry what it contains. Our newspaper has just one `Z`, in the word "zest". So it cannot hide a word with two.
+
+There is a second trap. Each hole must come after the one before. A page may hold the letter you want, but too early to be of use.
+
+<Try action="stuck" button="Try to hide PUZZLE">
+  Read the caption under the newspaper. It tells you which letters found no place. Now change the secret to `PUZLE` and see it fit.
+</Try>
+
+A longer cover text solves both problems. That is why a whole front page worked so well.
+
+### Hidden, not scrambled
+
+Nothing here is scrambled. Every pricked letter is the real letter of the message. The trick is that nobody knows a message is there at all.
+
+Hiding the existence of a message is called **steganography**, from Greek words meaning "covered writing". A cipher is different. It belongs to **cryptography**, which hides the meaning of a message and lets everyone see that it exists.
+
+<Try action="hand" button="Give me a clean page">
+  Prick your own message by hand. Tap letters from the top down to spell `FISH`, and check "The holes spell" in the controls.
+</Try>
+
+<Label>The story</Label>
+
+## Two thousand years of pins
+
+The idea is ancient. A Greek writer on warfare, Aeneas the Tactician, suggested pricking tiny holes under chosen letters of a harmless text. A guard who glanced at the page would see nothing strange.
+
+About two thousand years later, people in Britain used the same trick for a new reason. They were not hiding from an enemy. They were dodging the cost of the post. Before the postal system was reformed in the middle of the 1800s, a letter cost far more than most people could spare. Newspapers travelled free. A pin and an old front page made a free letter.
+
+By then the public knew a good deal about secret writing. Young couples even sent each other enciphered notes through newspaper advertisements.
+
+<DigDeeper title="Wax, silk and a shaved head">
+  Pinpricks are one of many ways to hide a message. The Greek historian Herodotus tells of Demaratus, who warned Sparta of a Persian invasion. He scraped the wax off a pair of writing tablets, wrote on the wood, and covered it with fresh wax.
+
+  Another Greek shaved a messenger's head, wrote on the scalp, and waited for the hair to grow back. In ancient China, messages were written on silk, rolled into a ball, coated in wax and swallowed.
+</DigDeeper>
+
+<Label>How it was broken</Label>
+
+## Anyone can hold it to the light
+
+Steganography has one great weakness. If somebody finds the hidden message, they can read it straight away. There is nothing left to work out.
+
+A pricked newspaper passes a quick look. It does not pass a careful search. A suspicious guard only has to do what the true reader does: lift the page to a window. No key is needed and no cleverness.
+
+<Try action="caught" button="Search the newspaper">
+  You are the guard. The page is against the light. Read the bright letters from the top down. The secret took you a few seconds.
+</Try>
+
+Compare that with a cipher. A guard who catches an enciphered letter knows it is a secret, but still cannot read it. That is why cryptography grew up beside steganography: one hides the message, the other protects it when hiding fails.
+
+Careful people use both. They scramble the message first and hide it afterwards.
+
+<Label>Challenge</Label>
+
+## Read the newspaper from home
+
+<Challenge answer="COME HOME SOON">
+  A newspaper arrives in the post. Nobody in your family buys the Harbour Gazette, so you look closer and find twelve tiny holes.
+
+  What does the sender want to tell you?
+
+  <Try action="posted" button="Load the newspaper" />
+</Challenge>
+
+<Check question="Why was this secret so easy to read?">
+  Because it was only hidden, not scrambled. Once you knew to look for holes, the letters were plain English in the right order. A hidden message is safe only until someone finds it.
+</Check>
+
+<Label>What came next</Label>
+
+## Hide the meaning instead
+
+Pinpricks kept a message cheap and out of sight, but they could not keep it safe from a careful search. For real secrets the Victorians went back to ciphers.
+
+They needed a strong one, because amateur codebreakers were reading the newspapers too. Charles Babbage and his friend Sir Charles Wheatstone enjoyed cracking the enciphered love notes printed there. Wheatstone went on to design a cipher of his own, which swaps letters two at a time. Try it on the next page: [the Playfair cipher](/ciphers/playfair).
+
+<Label>Further reading</Label>
+
+## Go deeper
+
+- Simon Singh, *The Code Book*, chapter 2, for pinpricks and the penny-saving Victorians.
+- Simon Singh, *The Code Book*, chapter 1, for steganography and how it differs from cryptography.
+- Herodotus, *The Histories*, book 7. The story of Demaratus and the wax tablets.
