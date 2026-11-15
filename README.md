@@ -25,6 +25,11 @@ Then open http://localhost:5173.
 
 - `packages/cipher-engine/`: the cipher logic, in pure TypeScript.
 - `apps/web/`: the website.
-- `docs/STANDARDS.md`: the coding, content and UI rules every cipher page follows. Read this before adding a cipher.
-- `docs/COVERAGE.md`: everything the book presents, page by page, and where the site covers it.
 - `reports/`: the research behind the tech stack and the page template.
+
+## Documents
+
+- [Design](docs/DESIGN.md): what the site is for, how a page is laid out, and why it looks the way it does.
+- [Architecture](docs/ARCHITECTURE.md): how the code is organised, how pages register themselves, and how the site is built and checked.
+- [Standards](docs/STANDARDS.md): the coding, content and UI rules every cipher page follows. Read this before adding a cipher.
+- [Coverage](docs/COVERAGE.md): everything the book presents, page by page, and where the site covers it.
