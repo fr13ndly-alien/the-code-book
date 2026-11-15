@@ -97,7 +97,7 @@ export function VigenereBench(props: {
         />
       </div>
       <LetterBlock
-        label={t({ en: "The plaintext so far", vi: "Bản rõ tới giờ" })}
+        label={t({ en: "The plaintext so far", vi: "Văn bản thường tới giờ" })}
         letters={applyKey(ciphertext, keyShifts)}
         lit={(at) => letterIndex(at) >= 0 && letterIndex(at) % keyLength === position}
         tone="lamp"

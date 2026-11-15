@@ -15,7 +15,7 @@ export function WorkingText(props: {
 }) {
   const t = useT();
   return (
-    <p className={styles.text} aria-label={t({ en: "The message so far", vi: "Tin nhắn tới giờ" })}>
+    <p className={styles.text} aria-label={t({ en: "The message so far", vi: "Bức thư tới giờ" })}>
       {props.ciphertext.split(/\s+/).map((word, at) => (
         <span key={at} className={styles.word}>
           {read(word, props.guesses).map(({ cipher, plain }, i) =>
@@ -29,8 +29,8 @@ export function WorkingText(props: {
                 aria-pressed={cipher === props.picked}
                 aria-label={
                   plain
-                    ? t({ en: `Cipher ${cipher}, read as ${plain}`, vi: `Chữ mã ${cipher}, đọc là ${plain}` })
-                    : t({ en: `Cipher ${cipher}, not solved`, vi: `Chữ mã ${cipher}, chưa giải` })
+                    ? t({ en: `Cipher ${cipher}, read as ${plain}`, vi: `Chữ mật mã ${cipher}, đọc là ${plain}` })
+                    : t({ en: `Cipher ${cipher}, not solved`, vi: `Chữ mật mã ${cipher}, chưa giải` })
                 }
                 onClick={() => props.onPick(cipher)}
               >

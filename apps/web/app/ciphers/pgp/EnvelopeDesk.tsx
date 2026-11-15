@@ -16,10 +16,10 @@ export function EnvelopeDesk({ state }: { state: PgpState }) {
           : t({ en: "not sent yet", vi: "chưa gửi" })
       }
     >
-      <Line label={t({ en: "Part 1, the locked message", vi: "Phần 1, tin nhắn đã khóa" })} secret>
+      <Line label={t({ en: "Part 1, the locked message", vi: "Phần 1, bức thư đã mã hóa" })} secret>
         {state.stage >= 2 ? ciphertext : t({ en: "empty", vi: "trống" })}
       </Line>
-      <Line label={t({ en: "Part 2, the locked session key", vi: "Phần 2, khóa phiên đã khóa" })} secret>
+      <Line label={t({ en: "Part 2, the locked session key", vi: "Phần 2, khóa phiên đã mã hóa" })} secret>
         {state.stage >= 3 ? lockedKey.join(" ") : t({ en: "empty", vi: "trống" })}
       </Line>
     </Desk>

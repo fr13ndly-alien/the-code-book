@@ -20,7 +20,7 @@ export function PigpenMessage(props: {
     <div
       className={styles.message}
       role="group"
-      aria-label={t({ en: "The message in pigpen symbols", vi: "Tin nhắn bằng ký hiệu chuồng heo" })}
+      aria-label={t({ en: "The message in pigpen symbols", vi: "Bức thư bằng ký hiệu chuồng heo" })}
     >
       {encipher(props.text).map((word, at) => (
         <span key={at} className={styles.word}>

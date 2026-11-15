@@ -11,10 +11,10 @@ export const meta: CipherMeta = {
   source: "The Code Book (full edition): Pretty Good Privacy",
   fullEditionOnly: true,
   vi: {
-    title: "Chữ ký số",
+    title: "Chữ ký số hóa",
     era: "Từ năm 1976",
-    hook: "Dùng mật mã khóa công khai theo chiều ngược lại, và nó chứng minh được ai đã viết một tin nhắn.",
-    firstStep: "Đổi một chữ của tin nhắn đến nơi. Hãy xem phép kiểm tra của Bob.",
-    source: "The Code Book (bản đầy đủ): Riêng tư tốt đẹp",
+    hook: "Dùng mật mã chìa khóa công khai theo chiều ngược lại, và nó chứng minh được ai đã viết một bức thư.",
+    firstStep: "Đổi một chữ của bức thư đến nơi. Hãy xem phép kiểm tra của Bob.",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 7: Riêng tư tốt đẹp",
   },
 };

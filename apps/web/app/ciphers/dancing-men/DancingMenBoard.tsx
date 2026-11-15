@@ -54,7 +54,7 @@ function DanceBoard({ state, onPick }: BoardProps) {
       <FigureTiles
         title={t({
           en: "The key: our own 26 poses, in the spirit of the story. They are not Conan Doyle's drawings.",
-          vi: "Khóa: 26 tư thế do chúng tôi tự vẽ, theo tinh thần câu chuyện. Đây không phải hình vẽ của Conan Doyle.",
+          vi: "Chìa khóa: 26 tư thế do chúng tôi tự vẽ, theo tinh thần câu chuyện. Đây không phải hình vẽ của Conan Doyle.",
         })}
         tiles={KEY_TILES}
         picked={state.picked}

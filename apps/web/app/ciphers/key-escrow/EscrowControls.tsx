@@ -26,7 +26,7 @@ function AskAgency(props: { state: EscrowPageState; agency: Agency; onAsk: () =>
   return (
     <Button primary={!state.released[agency]} disabled={state.released[agency]} onClick={props.onAsk}>
       {state.released[agency]
-        ? t({ en: `${name}: half released`, vi: `${name}: đã giao nửa khóa` })
+        ? t({ en: `${name}: half released`, vi: `${name}: đã giao nửa chìa khóa` })
         : t({ en: `${name}: release your half`, vi: `${name}: giao nửa của mình` })}
     </Button>
   );
@@ -72,22 +72,22 @@ export function EscrowControls({ state, dispatch }: { state: EscrowPageState; di
           value={state.escrowed ? "lodged" : "own"}
           onChange={(value) => dispatch({ type: "outlaw", on: value === "own" })}
           options={[
-            { value: "lodged", label: t({ en: "The escrowed cipher", vi: "Mật mã có ký gửi khóa" }) },
-            { value: "own", label: t({ en: "A cipher that is not escrowed", vi: "Một mật mã không ký gửi khóa" }) },
+            { value: "lodged", label: t({ en: "The escrowed cipher", vi: "Mật mã có giao kèo chìa khóa mã" }) },
+            { value: "own", label: t({ en: "A cipher that is not escrowed", vi: "Một mật mã không có giao kèo" }) },
           ]}
         />
       </Row>
       {!state.sealed && (
         <Row>
           <TextField
-            label={t({ en: "Alice's key, 4 letters (a new key starts again)", vi: "Khóa của Alice, 4 chữ (khóa mới thì làm lại từ đầu)" })}
+            label={t({ en: "Alice's key, 4 letters (a new key starts again)", vi: "Chìa khóa của Alice, 4 chữ (chìa khóa mới thì làm lại từ đầu)" })}
             width="short"
             value={state.key}
             onChange={(text) => dispatch({ type: "rekey", text })}
           />
           <TextField label={t({ en: "Alice's message", vi: "Tin nhắn của Alice" })} value={state.message} onChange={(text) => dispatch({ type: "write", text })} />
           <Button onClick={() => dispatch({ type: "lodge", random: randomHalf() })}>
-            {t({ en: "Lodge the key again with new halves", vi: "Ký gửi lại khóa với hai nửa mới" })}
+            {t({ en: "Lodge the key again with new halves", vi: "Gửi lại chìa khóa với hai nửa mới" })}
           </Button>
         </Row>
       )}

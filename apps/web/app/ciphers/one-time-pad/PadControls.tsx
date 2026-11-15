@@ -21,7 +21,7 @@ export function PadControls({ state, dispatch }: { state: PadState; dispatch: Di
     <Controls>
       <Row>
         <TextField label={t({ en: "Pad (this sheet)", vi: "Tờ khóa (tờ này)" })} value={state.pad} onChange={(pad) => dispatch({ type: "write", pad })} />
-        <Output label={enciphering ? t({ en: "Ciphertext", vi: "Bản mật mã" }) : t({ en: "Plaintext", vi: "Bản rõ" })}>{output(state)}</Output>
+        <Output label={enciphering ? t({ en: "Ciphertext", vi: "Bản mật mã" }) : t({ en: "Plaintext", vi: "Văn bản thường" })}>{output(state)}</Output>
       </Row>
       <Row>
         <TextField

@@ -23,7 +23,7 @@ export function RepeatsTable(props: {
       className={styles.table}
       aria-label={t({
         en: "Repeated sequences, their spacings and the key lengths that fit",
-        vi: "Các chuỗi chữ lặp lại, khoảng cách của chúng và những độ dài khóa khớp với chúng",
+        vi: "Các chuỗi chữ lặp lại, khoảng cách của chúng và những độ dài từ khóa khớp với chúng",
       })}
     >
       <thead>

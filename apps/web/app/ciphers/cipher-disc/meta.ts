@@ -10,10 +10,10 @@ export const meta: CipherMeta = {
   firstStep: "Tap a letter on the inner ring to turn it.",
   source: "The Code Book, chapter 3: The Mechanization of Secrecy",
   vi: {
-    title: "Đĩa mật mã",
+    title: "Đĩa mã hóa",
     era: "Thập niên 1460 đến thập niên 1860",
-    hook: "Hai vòng đồng xuyên chung một chiếc ghim: cỗ máy mật mã đầu tiên, và mầm mống của mọi cỗ máy về sau.",
+    hook: "Hai chiếc đĩa đồng ghim chung một trục: chiếc máy mã đầu tiên, và hạt giống của mọi máy mã về sau.",
     firstStep: "Chạm một chữ trên vòng trong để xoay nó.",
-    source: "The Code Book, chương 3: Cơ giới hóa việc giữ bí mật",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 3: Cơ giới hóa việc giữ bí mật",
   },
 };

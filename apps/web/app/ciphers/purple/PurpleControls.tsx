@@ -33,7 +33,7 @@ export function PurpleControls({ state, dispatch }: { state: PurpleState; dispat
     <Controls>
       <Row>
         <Output label={t({ en: "Switches start at (sixes, I, II, III)", vi: "Công tắc bắt đầu ở (nhóm sáu, I, II, III)" })}>{state.start.map((at) => at + 1).join(" ")}</Output>
-        <Output label={enciphering ? t({ en: "Ciphertext", vi: "Bản mật mã" }) : t({ en: "Plaintext", vi: "Bản rõ" })}>
+        <Output label={enciphering ? t({ en: "Ciphertext", vi: "Bản mật mã" }) : t({ en: "Plaintext", vi: "Văn bản thường" })}>
           {inGroups(result.slice(0, SHORT_OUTPUT))}
           {long && t({ en: ` … ${result.length} letters`, vi: ` … ${result.length} chữ` })}
         </Output>
@@ -91,7 +91,7 @@ export function PurpleControls({ state, dispatch }: { state: PurpleState; dispat
           onStep={(by) => dispatch({ type: "reorder", by })}
         />
         <Choice
-          label={t({ en: "Plugboard", vi: "Bảng cắm dây" })}
+          label={t({ en: "Plugboard", vi: "Bảng ổ nối" })}
           value={state.plugboard}
           onChange={(plugboard) => dispatch({ type: "plug", plugboard })}
           options={t(PLUGBOARDS)}

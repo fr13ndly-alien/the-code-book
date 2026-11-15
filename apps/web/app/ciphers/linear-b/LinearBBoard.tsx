@@ -116,14 +116,14 @@ function wordsCaption(state: LinearBState, locale: Locale): string {
         : "One sign you marked is missing from a word. Tap it again to unmark it.";
     }
     return vi
-      ? "Ba từ trên các tấm bảng ở Knossos. Chạm vào từng ký hiệu có mặt trong cả ba từ."
+      ? "Ba từ trên các tấm đất sét ở Knossos. Chạm vào từng ký hiệu có mặt trong cả ba từ."
       : "Three words from the Knossos tablets. Tap each sign that appears in all three.";
   }
   const clash = shown(state).flatMap((id) => solution(state).clashes[id] ?? [])[0];
   if (clash) return vi ? `${clashText(clash, locale)} Hãy chọn tên khác.` : `${clashText(clash, locale)} Pick another name.`;
   if (state.view === "tripod") {
     return vi
-      ? "Từ đầu tiên trên tấm bảng có hình vạc ba chân, đọc bằng các âm lấy từ những địa danh của bạn. Hình vẽ và con số 2 là do chính người chép ghi."
+      ? "Từ đầu tiên trên tấm đất sét có hình vạc ba chân, đọc bằng các âm lấy từ những địa danh của bạn. Hình vẽ và con số 2 là do chính người chép ghi."
       : "The first word of the tripod tablet, read with the sounds from your place names. The drawing and the number 2 are the scribe's own.";
   }
   return vi

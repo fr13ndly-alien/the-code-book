@@ -19,7 +19,7 @@ import {
 /** What each kind of cipher is called on the bench. */
 const KIND_NAMES: Record<Kind, Bilingual> = {
   caesar: { en: "Caesar shift", vi: "mã Caesar" },
-  substitution: { en: "monoalphabetic substitution", vi: "mật mã thay thế đơn bảng" },
+  substitution: { en: "monoalphabetic substitution", vi: "mật mã thay thế dùng một bảng chữ cái" },
   vigenere: { en: "Vigenère cipher", vi: "mật mã Vigenère" },
 };
 
@@ -31,8 +31,8 @@ export function CodebreakersChallengeBoard(props: { state: ChallengeState; dispa
   const work = currentWork(state);
   const solved = currentIsSolved(state);
   const name = isOwn(state)
-    ? t({ en: "Your own cryptogram", vi: "Bức mật thư của riêng bạn" })
-    : t({ en: `Cryptogram ${state.current + 1}`, vi: `Bức mật thư ${state.current + 1}` });
+    ? t({ en: "Your own cryptogram", vi: "Bản mật mã của riêng bạn" })
+    : t({ en: `Cryptogram ${state.current + 1}`, vi: `Bản mật mã ${state.current + 1}` });
 
   if (!hasLetters(ciphertext)) {
     return (
@@ -41,7 +41,7 @@ export function CodebreakersChallengeBoard(props: { state: ChallengeState; dispa
         <Caption>
           {t({
             en: "Nothing is on the bench yet. Paste a cryptogram into the box in the controls, then pick the kind of cipher you think it is.",
-            vi: "Trên bàn chưa có gì. Hãy dán một bức mật thư vào ô trong phần điều khiển, rồi chọn loại mật mã mà bạn nghĩ nó dùng.",
+            vi: "Trên bàn chưa có gì. Hãy dán một bản mật mã vào ô trong phần điều khiển, rồi chọn loại mật mã mà bạn nghĩ nó dùng.",
           })}
         </Caption>
       </Board>

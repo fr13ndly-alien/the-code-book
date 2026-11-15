@@ -11,10 +11,10 @@ export const meta: CipherMeta = {
   source: "The Code Book (full edition)",
   fullEditionOnly: true,
   vi: {
-    title: "Câu đố chữ Linear B",
+    title: "Bí mật của Linear B",
     era: "1900 đến 1953",
-    hook: "Một hệ chữ lạ, ghi một thứ tiếng lạ, không có bản dịch nào: vậy mà một kiến trúc sư vẫn đọc được.",
+    hook: "Một thứ chữ chưa ai đọc, ghi một thứ tiếng chưa ai biết, không kèm bản dịch nào. Vậy mà một kiến trúc sư đã giải mã được nó.",
     firstStep: "Chạm vào từng ký hiệu mà cả ba từ cùng có.",
-    source: "The Code Book (bản đầy đủ)",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 5: Rào cản ngôn ngữ",
   },
 };

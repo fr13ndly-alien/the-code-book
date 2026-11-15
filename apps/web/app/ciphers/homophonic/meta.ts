@@ -13,8 +13,8 @@ export const meta: CipherMeta = {
   vi: {
     title: "Mật mã thay thế đồng âm",
     era: "Thế kỷ 15 đến thế kỷ 18",
-    hook: "Cho những chữ bận rộn thêm nhiều lớp hóa trang, và các cột cao của biểu đồ tần suất tan biến.",
+    hook: "Cho những chữ hay gặp thêm nhiều lớp hóa trang, và các cột cao của biểu đồ tần suất tan biến.",
     firstStep: "Chạm vào cột E cao trong biểu đồ phía trên.",
-    source: "The Code Book (bản đầy đủ), chương 2",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 2: Le chiffre indéchiffrable",
   },
 };

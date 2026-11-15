@@ -25,7 +25,7 @@ function Sum(props: { column: Column; keyRow: number; flips: number[]; onFlip: (
           <button
             key={at}
             type="button"
-            aria-label={t({ en: `Key digit ${bit}. Flip it`, vi: `Chữ số khóa ${bit}. Lật nó` })}
+            aria-label={t({ en: `Key digit ${bit}. Flip it`, vi: `Chữ số của chìa khóa ${bit}. Lật nó` })}
             aria-pressed={props.flips.includes(keyRow * BITS + at)}
             disabled={keyRow < 0}
             onClick={() => props.onFlip(keyRow * BITS + at)}
@@ -73,7 +73,7 @@ export function BinaryBoard({ state, onFlip }: { state: BinaryState; onFlip: (di
           ? t({ en: "Type below to fill the board.", vi: "Gõ ở dưới để điền vào bảng." })
           : t({
               en: `Each block is one character. Top row: the ${enciphering ? "message" : "ciphertext"}. Middle row: the key. Bottom row: their sum, where a digit is 1 only if the two above it differ. A dot is a number with no printable character.`,
-              vi: `Mỗi khối là một ký tự. Hàng trên: ${enciphering ? "tin nhắn" : "bản mật mã"}. Hàng giữa: khóa. Hàng dưới: tổng của chúng, trong đó một chữ số là 1 chỉ khi hai chữ số phía trên nó khác nhau. Dấu chấm là một con số không ứng với ký tự in được nào.`,
+              vi: `Mỗi khối là một ký tự. Hàng trên: ${enciphering ? "tin nhắn" : "bản mật mã"}. Hàng giữa: chìa khóa. Hàng dưới: tổng của chúng, trong đó một chữ số là 1 chỉ khi hai chữ số phía trên nó khác nhau. Dấu chấm là một con số không ứng với ký tự in được nào.`,
             })}
       </Caption>
     </Board>

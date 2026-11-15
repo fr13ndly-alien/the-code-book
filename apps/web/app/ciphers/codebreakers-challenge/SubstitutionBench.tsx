@@ -49,14 +49,14 @@ export function SubstitutionBench(props: {
               ),
               vi: (
                 <>
-                  Chữ mã <Letters>{picked}</Letters> xuất hiện {counts[indexOfLetter(picked)]} lần.{" "}
-                  {plain ? `Bạn đọc nó là ${plain.toLowerCase()}.` : "Hãy chọn chữ rõ mà bạn nghĩ nó đang che giấu."}
+                  Chữ mật mã <Letters>{picked}</Letters> xuất hiện {counts[indexOfLetter(picked)]} lần.{" "}
+                  {plain ? `Bạn đọc nó là ${plain.toLowerCase()}.` : "Hãy chọn chữ thường mà bạn nghĩ nó đang che giấu."}
                 </>
               ),
             })
           : t({
               en: "Solid bars count the cipher letters. Outlines show normal English. Tap a bar or a letter of the message to work on it.",
-              vi: "Cột đặc đếm các chữ mã. Cột viền cho thấy tiếng Anh bình thường. Chạm vào một cột hoặc một chữ của tin nhắn để làm việc với nó.",
+              vi: "Cột đặc đếm các chữ mật mã. Cột viền cho thấy tiếng Anh bình thường. Chạm vào một cột hoặc một chữ của tin nhắn để làm việc với nó.",
             })}
       </Caption>
     </>

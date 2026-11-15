@@ -31,7 +31,7 @@ export function ScytaleControls({ state, dispatch }: { state: ScytaleState; disp
         <Output label={
             enciphering
               ? t({ en: "Ciphertext: the unwound strip", vi: "Bản mật mã: dải da đã tháo ra" })
-              : t({ en: "Plaintext: read along the staff", vi: "Bản rõ: đọc dọc theo cây gậy" })
+              : t({ en: "Plaintext: read along the staff", vi: "Văn bản thường: đọc dọc theo khúc gỗ" })
           }>
           {output(state)}
         </Output>
@@ -58,18 +58,18 @@ export function ScytaleControls({ state, dispatch }: { state: ScytaleState; disp
       </Row>
       <Row>
         <Stepper
-          label={t({ en: "Turn the staff", vi: "Xoay cây gậy" })}
+          label={t({ en: "Turn the staff", vi: "Xoay khúc gỗ" })}
           value={t({ en: `Line ${state.facing + 1}`, vi: `Dòng ${state.facing + 1}` })}
           onStep={(by) => dispatch({ type: "roll", by })}
         />
-        <Output label={t({ en: "The lines on the staff", vi: "Các dòng trên cây gậy" })}>{linesOnStaff(state).join("\n")}</Output>
+        <Output label={t({ en: "The lines on the staff", vi: "Các dòng trên khúc gỗ" })}>{linesOnStaff(state).join("\n")}</Output>
       </Row>
       <Row>
         <Output label={t({ en: "The unwound strip, one group for each turn", vi: "Dải da đã tháo ra, mỗi vòng một nhóm" })}>{stripTurns(state).join(" ")}</Output>
       </Row>
       {!enciphering && (
         <details className={styles.attack}>
-          <summary>{t({ en: "Try every staff at once", vi: "Thử mọi cây gậy cùng lúc" })}</summary>
+          <summary>{t({ en: "Try every staff at once", vi: "Thử mọi khúc gỗ cùng lúc" })}</summary>
           <ol start={MIN_PER_TURN}>
             {tryAllStaffs(state.text, MAX_PER_TURN).map((reading, index) => (
               <li key={index} data-on={index + MIN_PER_TURN === state.perTurn}>

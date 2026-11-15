@@ -49,7 +49,7 @@ export function FrequencyAnalysisBoard(props: {
 
 const NOTHING_PICKED: Bilingual = {
   en: "Solid bars count the cipher letters. Outlines show normal English. Tap a bar or a letter of the message to work on it.",
-  vi: "Cột tô đặc đếm các chữ mã. Viền rỗng cho thấy tiếng Anh thông thường. Chạm vào một cột hoặc một chữ của tin nhắn để xử lý nó.",
+  vi: "Cột tô đặc đếm các chữ mật mã. Viền rỗng cho thấy tiếng Anh thông thường. Chạm vào một cột hoặc một chữ của bức thư để xử lý nó.",
 };
 
 /** What the counts say about the cipher letter being worked on. */
@@ -69,9 +69,9 @@ function PickedNote({ state, picked }: { state: FrequencyAnalysisState; picked: 
     ),
     vi: (
       <>
-        Chữ mã <Letters>{picked}</Letters> xuất hiện {count} lần ({percent.toFixed(1).replace(".", ",")}%) và đứng cạnh{" "}
+        Chữ mật mã <Letters>{picked}</Letters> xuất hiện {count} lần ({percent.toFixed(1).replace(".", ",")}%) và đứng cạnh{" "}
         {different} chữ khác nhau.{" "}
-        {plain ? `Bạn đọc nó là ${plain.toLowerCase()}.` : "Hãy chọn chữ rõ mà bạn nghĩ nó đang che giấu."}
+        {plain ? `Bạn đọc nó là ${plain.toLowerCase()}.` : "Hãy chọn chữ thường mà bạn nghĩ nó đang che giấu."}
       </>
     ),
   });

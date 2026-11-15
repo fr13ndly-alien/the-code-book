@@ -94,7 +94,7 @@ export function KeyExchangeBoard({ state }: { state: KeyExchangeState }) {
             )}
             {step >= 4 && (
               <tr>
-                <th scope="row">{t({ en: "4. Work out the key", vi: "4. Tính ra khóa" })}</th>
+                <th scope="row">{t({ en: "4. Work out the key", vi: "4. Tính ra chìa khóa" })}</th>
                 <td data-kind="secret">{sum(bob.sends, alice.secret, alice.key)}</td>
                 <td data-kind="public">{t({ en: "Nothing is sent", vi: "Không gửi gì cả" })}</td>
                 <td data-kind="secret">{sum(alice.sends, bob.secret, bob.key)}</td>
@@ -162,7 +162,7 @@ function EveGuesses(props: { search: Search; base: number; modulus: number; targ
             ),
             vi: (
               <>
-                Lần đoán {search.found} cho ra {props.target}, nên khóa là{" "}
+                Lần đoán {search.found} cho ra {props.target}, nên chìa khóa là{" "}
               </>
             ),
           })}
@@ -202,8 +202,8 @@ function captionForVi(state: KeyExchangeState, search: Search | undefined): stri
     case 2:
       return "Mỗi người chọn một số bí mật và không nói cho ai, kể cả người kia.";
     case 3:
-      return "Mỗi người đưa số bí mật của mình vào hàm một chiều rồi gửi kết quả đi. Eve thấy cả hai kết quả.";
+      return "Mỗi người đưa số bí mật của mình vào hàm số một chiều rồi gửi kết quả đi. Eve thấy cả hai kết quả.";
     default:
-      return "Mỗi người lấy số mình nhận được, nâng lên lũy thừa bằng số bí mật của chính mình. Hai người ra cùng một khóa, mà khóa ấy chưa bao giờ được gửi đi.";
+      return "Mỗi người lấy số mình nhận được, nâng lên lũy thừa bằng số bí mật của chính mình. Hai người ra cùng một chìa khóa, mà chìa khóa ấy chưa bao giờ được gửi đi.";
   }
 }

@@ -21,12 +21,12 @@ export function CribBoard({ state }: { state: CrackState }) {
   return (
     <>
       <LetterGrid
-        label={t({ en: "The crib under the ciphertext", vi: "Từ mồi đặt dưới bản mật mã" })}
+        label={t({ en: "The crib under the ciphertext", vi: "Crib đặt dưới bản mật mã" })}
         size="small"
         rowHeads={
           found
-            ? t({ en: ["Ciphertext", "Crib", "Message"], vi: ["Bản mật mã", "Từ mồi", "Bức điện"] })
-            : t({ en: ["Ciphertext", "Crib"], vi: ["Bản mật mã", "Từ mồi"] })
+            ? t({ en: ["Ciphertext", "Crib", "Message"], vi: ["Bản mật mã", "Crib", "Bức điện"] })
+            : t({ en: ["Ciphertext", "Crib"], vi: ["Bản mật mã", "Crib"] })
         }
         cells={found ? [...rows, [...found.plaintext]] : rows}
         mark={(row, column) => {
@@ -46,7 +46,7 @@ export function CribBoard({ state }: { state: CrackState }) {
               vi: (
                 <>
                   Chữ <Letters>{cipher[clashing[0]!]}</Letters> nằm dưới chữ <Letters>{cipher[clashing[0]!]}</Letters>.
-                  Enigma không bao giờ biến một chữ thành chính nó, nên từ mồi không thể nằm ở đây. Hãy trượt nó đi.
+                  Enigma không bao giờ biến một chữ thành chính nó, nên crib không thể nằm ở đây. Hãy trượt nó đi.
                 </>
               ),
             })
@@ -60,9 +60,9 @@ export function CribBoard({ state }: { state: CrackState }) {
                 ),
                 vi: (
                   <>
-                    Không chữ nào nằm dưới chính nó, nên từ mồi có thể nằm ở đây. Sách dừng lại ở bước này. Bản mật mã
-                    của sách chỉ là ví dụ bịa ra, không phải do máy Enigma thật tạo ra, nên không có vị trí rôto nào để
-                    tìm.
+                    Không chữ nào nằm dưới chính nó, nên crib có thể nằm ở đây. Sách dừng lại ở bước này. Bản mật mã
+                    của sách chỉ là ví dụ bịa ra, không phải do máy Enigma thật tạo ra, nên không có vị trí đĩa mã hóa nào
+                    để tìm.
                   </>
                 ),
               })
@@ -71,7 +71,7 @@ export function CribBoard({ state }: { state: CrackState }) {
                   en: <>No letter sits under itself. The crib could be here. Test the rotor settings to find out.</>,
                   vi: (
                     <>
-                      Không chữ nào nằm dưới chính nó. Từ mồi có thể nằm ở đây. Hãy thử các vị trí rôto để biết chắc.
+                      Không chữ nào nằm dưới chính nó. Crib có thể nằm ở đây. Hãy thử các vị trí đĩa mã hóa để biết chắc.
                     </>
                   ),
                 })
@@ -86,7 +86,7 @@ export function CribBoard({ state }: { state: CrackState }) {
                     ),
                     vi: (
                       <>
-                        Đã thử {tested} vị trí rôto. Khi các ô cửa sổ hiện{" "}
+                        Đã thử {tested} vị trí đĩa mã hóa. Khi các ô cửa sổ hiện{" "}
                         <Letters>{found.start.map(letterAt).join(" ")}</Letters>, máy biến những chữ này thành{" "}
                         <Letters>{crib}</Letters>. Hãy đọc cả bức điện ở hàng dưới cùng.
                       </>
@@ -101,8 +101,8 @@ export function CribBoard({ state }: { state: CrackState }) {
                     ),
                     vi: (
                       <>
-                        Đã thử {tested} vị trí rôto. Không vị trí nào biến những chữ này thành{" "}
-                        <Letters>{crib}</Letters>. Từ mồi đang nằm sai chỗ. Hãy trượt nó đi.
+                        Đã thử {tested} vị trí đĩa mã hóa. Không vị trí nào biến những chữ này thành{" "}
+                        <Letters>{crib}</Letters>. Crib đang nằm sai chỗ. Hãy trượt nó đi.
                       </>
                     ),
                   })}

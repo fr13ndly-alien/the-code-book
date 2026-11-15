@@ -13,7 +13,7 @@ export const meta: CipherMeta = {
     title: "Những hình nhân nhảy múa và các mật mã trong truyện",
     era: "1843 đến 1903",
     hook: "Sherlock Holmes đọc được một hàng hình nhân nhảy múa nhờ đếm xem hình nào nhảy nhiều nhất.",
-    firstStep: "Chạm vào một hình nhân để xem chữ của nó. Gõ tin nhắn của riêng bạn ở bên dưới.",
-    source: "The Code Book, chương 2: Nhà giải mã vô danh",
+    firstStep: "Chạm vào một hình nhân để xem chữ của nó. Gõ bức thư của riêng bạn ở bên dưới.",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 2: Le chiffre indéchiffrable",
   },
 };

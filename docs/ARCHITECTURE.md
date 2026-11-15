@@ -147,13 +147,16 @@ The site is in English and Vietnamese. English pages live at `/…` and Vietname
 | Page frame, menu, story blocks, shared fields | `UI` in `app/i18n.ts` |
 | A cipher's title, era, hook, first step, source | The `vi` field of its `meta.ts` |
 | Chapter titles and summaries | The `vi` field in `chapters.ts`; titles follow the Vietnamese edition of the book |
-| The story | `story.vi.mdx` beside `story.mdx`. Same parts, same button actions, same challenge answers. |
+| The story | `story.vi.mdx` beside `story.mdx`. Same parts, same button actions, same challenge answers. Retold from the Vietnamese edition, not translated from our English (see below). |
 | Labels and captions in a cipher's board and controls | Inline, as `t({ en: "…", vi: "…" })` with `const t = useT()` |
 
 - **Cipher data is not translated.** Example messages, keys and challenge answers stay as the book gives them, in A to Z. The Vietnamese text explains what they mean.
 - **Links in a story stay in its language.** `<Story>` turns `/ciphers/…` links into `/vi/ciphers/…` on Vietnamese pages.
 
-`npm run check:i18n` checks that every page has a Vietnamese story with the same shape as the English one. The wording rules are in [i18n/vi-glossary.md](i18n/vi-glossary.md).
+- **The Vietnamese follows the Vietnamese edition.** Each Vietnamese story is retold from *Mật mã: Từ cổ điển đến lượng tử* (NXB Trẻ), the way the English stories are retold from the English book: its terms, its spelling of names, its examples and details, in our own sentences. Each `meta.ts` cites the edition's chapter or appendix. Where the edition's facts differ from our English, the page keeps our English fact; the differences are listed in [i18n/vi-edition-differences.md](i18n/vi-edition-differences.md).
+- **No copied sentences.** The edition is copyrighted and this repository is public. `npm run check:vi-copy` compares the Vietnamese text with the edition's text and fails on any run of 10 or more words in common. The edition's text is kept out of the repository: extract it to `resource/vi-book/full.txt` (git-ignored) to run the check; without it the check is skipped.
+
+`npm run check:i18n` checks that every page has a Vietnamese story with the same shape as the English one. The wording rules, taken from the edition, are in [i18n/vi-glossary.md](i18n/vi-glossary.md); the brief the writers worked from is [i18n/WRITER-BRIEF.md](i18n/WRITER-BRIEF.md).
 
 ## The build
 
@@ -172,6 +175,7 @@ The site is in English and Vietnamese. English pages live at `/…` and Vietname
 | Engine tests | `npm test` | Each cipher matches a published example, and each page's challenge has the stated answer |
 | Types | `npm run typecheck` | Engine and site agree on every call |
 | Translation | `npm run check:i18n` | Every page has a Vietnamese story with the same parts, buttons, answers and links as the English one |
+| Own words | `npm run check:vi-copy` | No run of 10 or more words is copied from the Vietnamese edition (needs the edition's text in `resource/vi-book/`) |
 | Coverage | `npm run check:coverage` | Every item in [COVERAGE.md](COVERAGE.md) names a page that exists and contains the quoted words |
 | Build | `npm run build` | Every page renders to HTML |
 

@@ -19,7 +19,7 @@ export function PlainLetters(props: {
     <div
       className={styles.picker}
       role="group"
-      aria-label={t({ en: "Plain letters, most common in English first", vi: "Các chữ rõ, chữ hay gặp nhất trong tiếng Anh đứng đầu" })}
+      aria-label={t({ en: "Plain letters, most common in English first", vi: "Các chữ thường, chữ hay gặp nhất trong tiếng Anh đứng đầu" })}
     >
       <span className={styles.label}>{t({ en: "English, most common first", vi: "Tiếng Anh, chữ hay gặp nhất đứng đầu" })}</span>
       <div className={styles.letters}>
@@ -30,7 +30,7 @@ export function PlainLetters(props: {
             disabled={props.disabled}
             data-used={props.used.includes(letter)}
             aria-pressed={letter === props.current}
-            aria-label={t({ en: `Plain ${letter}`, vi: `Chữ rõ ${letter}` })}
+            aria-label={t({ en: `Plain ${letter}`, vi: `Chữ thường ${letter}` })}
             onClick={() => props.onAssign(letter)}
           >
             {letter.toLowerCase()}

@@ -22,7 +22,7 @@ export function BinaryControls({ state, dispatch }: { state: BinaryState; dispat
           ]}
         />
         <Output
-          label={enciphering ? t({ en: "Ciphertext", vi: "Bản mật mã" }) : t({ en: "Plaintext", vi: "Bản rõ" })}
+          label={enciphering ? t({ en: "Ciphertext", vi: "Bản mật mã" }) : t({ en: "Plaintext", vi: "Văn bản thường" })}
         >{output(state)}</Output>
       </Row>
       <Row>
@@ -36,7 +36,7 @@ export function BinaryControls({ state, dispatch }: { state: BinaryState; dispat
           onChange={(text) => dispatch({ type: "type", text })}
         />
         <TextField
-          label={t({ en: "Key", vi: "Khóa" })}
+          label={t({ en: "Key", vi: "Chìa khóa" })}
           width="short"
           value={state.key}
           onChange={(key) => dispatch({ type: "rekey", key })}

@@ -23,8 +23,8 @@ export function CaesarBench(props: {
       </p>
       <AlphabetRows
         rows={[
-          { label: t({ en: "Cipher", vi: "Mã" }), letters: ALPHABET, kind: "cipher" },
-          { label: t({ en: "Plain", vi: "Rõ" }), letters: shiftedAlphabet(-shift) },
+          { label: t({ en: "Cipher", vi: "Mật mã" }), letters: ALPHABET, kind: "cipher" },
+          { label: t({ en: "Plain", vi: "Thường" }), letters: shiftedAlphabet(-shift) },
         ]}
       />
       <Caption>

@@ -1,125 +1,127 @@
 {/*
-  Bản tiếng Việt của story.mdx. Theo docs/i18n/vi-glossary.md.
+  Bản tiếng Việt của story.mdx, kể lại theo Mật mã: Từ cổ điển đến lượng tử
+  (NXB Trẻ, Phạm Văn Thiều và Phạm Thu Hằng dịch), phần “Một thách thức giải mã:
+  mười bước tiến đến 15 ngàn đôla”, trang 505–523. Theo docs/i18n/vi-glossary.md.
   Follows the cipher page template in docs/STANDARDS.md, adapted for a finale.
   The four cryptograms are ours, enciphered by the engine.
   The reader can also load the book's own cipher texts into "Your own": its four cryptograms and its dedication.
   Their answers are written nowhere here.
-  The book's own challenge is on the last two pages of the abridged edition.
+  The four cryptograms and the dedication are in the abridged English edition, not in the Vietnamese one.
   The Cipher Challenge of the full edition is checked against Simon Singh's own account (see Further reading).
 */}
 
 <Standfirst>
-  Cuốn sách kết thúc bằng một lời thách đố: bốn bức mật thư và không có lời giải. Đây là bốn bức của riêng chúng tôi.
+  Cuốn sách kết thúc bằng một lời thách đố: bốn bản mật mã và không có lời giải. Đây là bốn bản của riêng chúng tôi.
 </Standfirst>
 
 <Label>Mở đầu</Label>
 
 ## Trang cuối là một lời thách đố
 
-Phần lớn sách kết thúc bằng một câu trả lời. Cuốn *The Code Book* thì kết thúc bằng một lời thách đố.
+Phần lớn sách khép lại bằng một câu trả lời. Cuốn sách của Simon Singh thì khép lại bằng một lời thách đố.
 
-Sau chương cuối, Simon Singh in bốn bức mật thư. Bức sau được làm để khó hơn bức trước. Rồi ông báo trước rằng lời giải không được in ở đâu cả. Bạn chỉ có “sự khéo léo và lòng quyết tâm” của mình.
+Trong bản tiếng Anh rút gọn mà trang web này theo, sau chương cuối, Singh in bốn bản mật mã. Bản sau được làm để khó hơn bản trước. Rồi ông báo trước rằng lời giải không được in ở đâu cả. Bạn chỉ có “sự khéo léo và lòng quyết tâm” của mình.
 
-Trang này cũng làm như vậy. Bốn bức mật thư ở đây là của chúng tôi, không phải của cuốn sách. Chúng tôi viết các tin nhắn, rồi các mật mã ở những trang trước xáo trộn chúng. Cuốn sách vẫn có bốn bức của riêng nó, và bạn cũng có thể thử sức với chúng ở đây.
+Trang này cũng làm như vậy. Bốn bản mật mã ở đây là của chúng tôi, không phải của cuốn sách. Chúng tôi viết các bức thư, rồi để các mật mã ở những trang trước xáo trộn chúng. Bốn bản của cuốn sách vẫn còn đó, và bạn cũng thử sức với chúng ở đây được.
 
-Bạn đã gặp mọi loại mật mã dùng ở đây rồi. Liệu bạn có phá được chúng khi không ai đưa cho bạn khóa?
+Bạn đã gặp mọi loại mật mã dùng ở đây rồi. Liệu bạn có phá được chúng khi không ai đưa chìa khóa cho bạn?
 
 <Label>Thử xem</Label>
 
-## Bắt đầu với bức dễ nhất
+## Bắt đầu với bản dễ nhất
 
-Bức mật thư 1 là một mã Caesar, và nó vẫn còn khoảng trống giữa các từ. Bạn hãy đoán trước: từ nào trong đó có thể làm lộ khóa?
+Bản mật mã 1 là một mã Caesar, và nó vẫn còn khoảng trống giữa các từ. Bạn đoán trước nhé: từ nào trong đó có thể làm lộ chìa khóa?
 
-<Try action="first" button="Mở bức mật thư 1">
+<Try action="first" button="Mở bản mật mã 1">
   Nhấn ▲ cạnh “Độ dịch” và xem dòng đọc được dưới hai bảng chữ cái. Dừng lại khi nó thành tiếng Anh. Lúc đó phần điều khiển sẽ báo “đã giải được”.
 </Try>
 
-<Check question="Từ nào làm lộ khóa?">
+<Check question="Từ nào làm lộ chìa khóa?">
   Từ một chữ cái `L`. Tiếng Anh chỉ có hai từ như vậy, “a” và “I”. Vì thế chỉ có hai độ dịch đáng thử, và một trong hai sẽ đúng.
 </Check>
 
 <Label>Cách hoạt động</Label>
 
-## Ba loại mật mã, ba công cụ
+## Ba loại mật mã, ba món đồ nghề
 
-### Caesar: thử mọi khóa
+### Mã Caesar: thử mọi chìa khóa
 
-Mã Caesar chỉ có 25 khóa, nên bạn cứ việc thử hết. Bức mật thư 2 vẫn là mật mã ấy nhưng khó hơn. Nó ngắn, và các khoảng trống đã bị bỏ đi. Các chữ đi theo nhóm năm chữ, nên không có từ ngắn nào làm lộ nó.
+Mã Caesar chỉ có 25 chìa khóa, nên bạn cứ việc thử hết. Bản mật mã 2 vẫn là mật mã ấy, nhưng khó hơn. Nó ngắn, và các khoảng trống đã bị bỏ. Các chữ được chia thành từng nhóm năm chữ, nên chẳng có từ ngắn nào làm lộ nó.
 
-<Try action="second" button="Mở bức mật thư 2">
-  Mở “Thử mọi độ dịch cùng lúc” trên bảng mô hình. Đọc dọc danh sách để tìm một dòng bắt đầu bằng một từ có nghĩa, rồi chạm vào dòng đó. Bí quá? Hãy quay lại [mật mã dịch chuyển Caesar](/ciphers/caesar).
+<Try action="second" button="Mở bản mật mã 2">
+  Mở “Thử mọi độ dịch cùng lúc” trên bảng mô hình. Đọc dọc danh sách để tìm một dòng bắt đầu bằng một từ có nghĩa, rồi chạm vào dòng đó. Bí quá? Quay lại [mật mã dịch chuyển Caesar](/ciphers/caesar).
 </Try>
 
-### Thay thế: đếm các chữ
+### Mật mã thay thế: đếm chữ
 
-Bức mật thư 3 đổi mỗi chữ thành một chữ khác, theo một bảng chữ cái đã xáo trộn. Nó có quá nhiều khóa để thử. Nhưng mỗi chữ rõ luôn biến thành cùng một chữ mã, nên thói quen của tiếng Anh vẫn lộ ra.
+Bản mật mã 3 thay mỗi chữ bằng một chữ khác. Chìa khóa của nó là một bảng chữ cái mật mã đã xáo trộn. Đây là mật mã thay thế dùng một bảng chữ cái. Số chìa khóa của nó nhiều tới mức không thể thử hết. Nhưng một chữ thường bao giờ cũng biến thành cùng một chữ mật mã, nên thói quen của tiếng Anh vẫn lộ ra.
 
-Các cột đặc đếm các chữ mã, cột cao nhất đứng đầu. Các cột viền cho thấy tiếng Anh bình thường.
+Các cột đặc đếm số lần xuất hiện của mỗi chữ mật mã, cột cao nhất đứng đầu. Các cột viền cho thấy tiếng Anh bình thường.
 
-<Try action="third" button="Mở bức mật thư 3">
-  Chạm vào cột cao nhất, `A`, rồi chạm vào `e` ở hàng chữ rõ. Tiếp theo, tìm từ ba chữ cái cứ lặp đi lặp lại. Hãy đoán nó, rồi đi tiếp từng từ một. Bí quá? Hãy quay lại [phân tích tần suất](/ciphers/frequency-analysis).
+<Try action="third" button="Mở bản mật mã 3">
+  Chạm vào cột cao nhất, `A`, rồi chạm vào `e` ở hàng chữ thường. Tiếp theo, tìm từ ba chữ cái cứ xuất hiện đi xuất hiện lại. Đoán nó, rồi đi tiếp từng từ một. Bí quá? Quay lại [phân tích tần suất](/ciphers/frequency-analysis).
 </Try>
 
-### Vigenère: đo từ khóa
+### Mật mã Vigenère: đo từ khóa
 
-Bức mật thư 4 dùng một từ khóa, nên một chữ rõ biến thành nhiều chữ mã khác nhau. Đếm chữ đơn giản chẳng cho bạn biết gì.
+Bản mật mã 4 dùng một từ khóa, nên một chữ thường có thể thành nhiều chữ mật mã khác nhau. Đếm chữ đơn thuần không cho bạn biết gì.
 
-Thay vào đó, hãy tìm những nhóm chữ xuất hiện hai lần. Từ khóa phải vừa khít trong khoảng cách giữa hai bản lặp. Khi đã biết độ dài của nó, mỗi chữ khóa chỉ còn là một mã Caesar.
+Thay vào đó, hãy tìm những nhóm chữ xuất hiện hai lần. Từ khóa phải vừa khít với khoảng cách giữa hai lần ấy. Biết độ dài rồi thì mỗi chữ khóa chỉ là một mã Caesar.
 
-<Try action="fourth" button="Mở bức mật thư 4">
-  Nhấn ▲ cạnh “Độ dài khóa” cho tới khi một cột của bảng được đánh dấu tích từ trên xuống dưới. Rồi nhấn ▼ cạnh “Độ dịch” cho tới khi các cột đặc khớp với các cột viền. Chuyển sang “Chữ khóa” tiếp theo và làm lại. Bí quá? Hãy quay lại [cách phá mã của Babbage](/ciphers/babbage).
+<Try action="fourth" button="Mở bản mật mã 4">
+  Nhấn ▲ cạnh “Độ dài từ khóa” cho tới khi một cột của bảng được đánh dấu tích từ trên xuống dưới. Rồi nhấn ▼ cạnh “Độ dịch” cho tới khi các cột đặc khớp với các cột viền. Chuyển sang “Chữ khóa” tiếp theo và làm lại. Bí quá? Quay lại [Babbage phá mật mã Vigenère](/ciphers/babbage).
 </Try>
 
-<Check question="Vì sao phải tìm độ dài khóa trước khi đếm chữ?">
-  Đếm chữ chỉ có tác dụng với những chữ dùng chung một bảng chữ mã. Chưa biết độ dài thì bạn không thể biết những chữ nào đi với nhau.
+<Check question="Vì sao phải tìm độ dài từ khóa trước khi đếm chữ?">
+  Đếm chữ chỉ có tác dụng với những chữ cùng dùng một bảng chữ cái mật mã. Chưa biết độ dài thì bạn không thể biết những chữ nào đi với nhau.
 </Check>
 
 <Label>Câu chuyện</Label>
 
-## Mười vòng và 10.000 bảng Anh
+## Mười bước và 10.000 bảng Anh
 
-Trang web này theo bản rút gọn của cuốn sách. Bản đầy đủ ra đời vào tháng 9 năm 1999, và nó kết thúc bằng một thứ lớn hơn: **Cipher Challenge** (Cuộc thi mật mã).
+Trang web này theo bản rút gọn tiếng Anh của cuốn sách. Bản đầy đủ ra đời tháng 9 năm 1999, và nó khép lại bằng một thứ lớn hơn nhiều: **Thách thức Giải mã**. Bản tiếng Việt, *Mật mã: Từ cổ điển đến lượng tử*, được dịch từ bản đầy đủ này, nên cũng in Thách thức ấy ở cuối sách.
 
-Cuộc thi có mười vòng, và Singh treo giải 10.000 bảng Anh cho người đầu tiên giải được tất cả. Các vòng đi theo lịch sử kể trong sách. Những vòng đầu dùng mật mã cổ, như mã Caesar và mật mã Vigenère. Vòng 8 là một bức điện Enigma. Vòng 10 dùng RSA với khóa 512 bit.
+Thách thức có mười bước, và Singh treo giải 10.000 bảng Anh cho người đầu tiên giải hết. Bản tiếng Việt in theo bản phát hành ở Mỹ, nên ghi giải thưởng là 15.000 đôla. Các bước đi theo dòng lịch sử trong sách. Bước 1 khá dễ: mỗi chữ được thay bằng một chữ khác, như bản mật mã 3 ở trên. Những bước đầu dùng các mật mã cổ, như mã Caesar và mật mã Vigenère. Bước 8 là một bức điện Enigma. Bước 10 dùng RSA với chìa khóa dài 512 bit. Giải mỗi bước, bạn sẽ đọc ra một **từ mã**. Phải có đủ mười từ mã mới thắng.
 
-Phải mất hơn một năm. Người thắng cuộc là năm nhà nghiên cứu Thụy Điển: Fredrik Almgren, Gunnar Andersson, Torbjörn Granlund, Lars Ivansson và Staffan Ulfberg. Lời báo đã giải của họ đến qua đường bưu điện ngày 7 tháng 10 năm 2000. Họ phá vòng cuối mà không cần siêu máy tính.
+Phải hơn một năm mới có người làm được. Đội thắng là năm nhà nghiên cứu Thụy Điển: Fredrik Almgren, Gunnar Andersson, Torbjörn Granlund, Lars Ivansson và Staffan Ulfberg. Lời giải của họ tới qua bưu điện ngày 7 tháng 10 năm 2000. Họ phá bước cuối mà không cần siêu máy tính.
 
-<DigDeeper title="Một giải thưởng cho người dẫn đầu">
-  Singh đã hứa tặng 1.000 bảng Anh cho người dẫn đầu vào ngày 1 tháng 10 năm 2000. Giải này về tay đội của Jim Gillogly, John Palagyi và Electronic Frontier Foundation, những người đã giải được chín vòng. Vài ngày sau, một bản fax từ Thụy Điển gửi tới.
+<DigDeeper title="Một giải cho người dẫn đầu">
+  Singh còn hứa 1.000 bảng Anh (bản tiếng Việt ghi 1.500 đôla) cho người dẫn đầu vào ngày 1 tháng 10 năm 2000. Giải ấy về tay đội của Jim Gillogly, John Palagyi và Electronic Frontier Foundation, những người đã giải được chín bước. Vài ngày sau, một bản fax từ Thụy Điển gửi tới.
 </DigDeeper>
 
 <Label>Bị phá như thế nào</Label>
 
-## Phá một bức thư bạn chẳng biết gì về nó
+## Phá một bức thư mà bạn chẳng biết gì về nó
 
-Ở trang này, chúng tôi đã cho bạn biết từng loại mật mã. Một nhà giải mã thật phải tự tìm ra điều đó trước. Ba thói quen làm được phần lớn công việc.
+Ở trang này, chúng tôi nói trước cho bạn từng loại mật mã. Một nhà giải mã thật thì phải tự tìm ra điều đó trước tiên. Ba thói quen làm được phần lớn công việc.
 
-**Đoán loại mật mã.** Hãy đếm các chữ. Nếu vài chữ nổi cao còn những chữ khác hầu như không có, giống như tiếng Anh, thì có lẽ mỗi chữ đã được đổi thành một chữ khác. Nếu các cột gần như bằng nhau, thì nhiều bảng chữ cái đang thay phiên nhau, như trong mật mã Vigenère.
+**Đoán loại mật mã.** Đếm chữ. Nếu vài chữ vọt lên cao còn những chữ khác hầu như không có, giống tiếng Anh, thì có lẽ mỗi chữ đã được thay bằng một chữ khác. Nếu các cột gần như bằng nhau, thì nhiều bảng chữ cái đang thay phiên nhau, như trong mật mã Vigenère.
 
-**Đếm.** Trong mật mã thay thế, các cột cao có lẽ là `E`, `T` và `A`. Hãy coi mỗi lần khớp là một phỏng đoán, không phải sự thật.
+**Đếm.** Trong mật mã thay thế, các cột cao có lẽ là `E`, `T` và `A`. Hãy coi mỗi lần ghép là một phỏng đoán, chưa phải sự thật.
 
 **Tìm quy luật.** Từ ngắn, chữ đôi và các nhóm lặp lại đều sống sót qua việc mã hóa. Một nhóm lặp lại trong bức thư Vigenère đo được từ khóa. Một từ ba chữ cái cứ quay lại thì có lẽ là “the”.
 
-Sau đó hãy thử từng phỏng đoán với các từ xung quanh. Đoán sai thì chẳng mấy chốc ra chữ vô nghĩa, và bạn xóa nó đi.
+Rồi đem từng phỏng đoán thử với các từ chung quanh. Đoán sai thì chẳng mấy chốc sẽ ra chữ vô nghĩa, và bạn xóa nó đi.
 
-<Try action="fourth" button="Mở bức mật thư 4">
-  Đặt “Độ dài khóa” là 2 và đi qua mọi “Độ dịch”. Các cột vẫn lởm chởm và không bao giờ khớp với các cột viền. Một độ dài khóa sai trông như thế đấy.
+<Try action="fourth" button="Mở bản mật mã 4">
+  Đặt “Độ dài từ khóa” là 2 và đi qua mọi “Độ dịch”. Các cột vẫn lởm chởm và không bao giờ khớp với các cột viền. Một độ dài từ khóa sai trông như thế đấy.
 </Try>
 
-<DigDeeper title="Thử sức với các bức mật thư của chính cuốn sách">
-  Ô chọn bức mật thư có lựa chọn thứ năm, “Của riêng bạn”. Dán bất kỳ bức mật thư nào vào ô của nó và chọn loại mật mã bạn nghĩ nó dùng. Các công cụ quen thuộc sẽ hiện ra. Bàn làm việc không thể báo “đã giải được”, vì nó không biết lời giải. Chính bạn quyết định lúc nào dòng đọc được có nghĩa.
+<DigDeeper title="Thử sức với các bản mật mã của chính cuốn sách">
+  Ô chọn bản mật mã có lựa chọn thứ năm, “Của riêng bạn”. Dán bất kỳ bản mật mã nào vào ô của nó và chọn loại mật mã bạn nghĩ nó dùng. Các món đồ nghề quen thuộc sẽ hiện ra. Bàn làm việc không thể báo “đã giải được”, vì nó không biết lời giải. Chính bạn quyết định lúc nào dòng đọc được có nghĩa.
 
-  Bốn bức mật thư của cuốn sách đã sẵn sàng để mở. Chúng nằm ở trang 243 và 244 của sách in. Hai bức đầu là mã Caesar, bức thứ ba là mật mã thay thế, còn bức thứ tư là mật mã Vigenère.
+  Bốn bản mật mã của cuốn sách đã được nạp sẵn. Chúng nằm ở trang 243 và 244 của bản in tiếng Anh rút gọn. Hai bản đầu là mã Caesar, bản thứ ba là mật mã thay thế, và bản thứ tư là mật mã Vigenère.
 
-  <Try action="bookFirst" button="Mở bức mật thư 1 của cuốn sách" />
+  <Try action="bookFirst" button="Mở bản mật mã 1 của cuốn sách" />
 
-  <Try action="bookSecond" button="Mở bức mật thư 2 của cuốn sách" />
+  <Try action="bookSecond" button="Mở bản mật mã 2 của cuốn sách" />
 
-  <Try action="bookThird" button="Mở bức mật thư 3 của cuốn sách" />
+  <Try action="bookThird" button="Mở bản mật mã 3 của cuốn sách" />
 
-  <Try action="bookFourth" button="Mở bức mật thư 4 của cuốn sách" />
+  <Try action="bookFourth" button="Mở bản mật mã 4 của cuốn sách" />
 
-  Lời đề tặng của cuốn sách cũng kết thúc bằng một dòng mật mã. Cuốn sách không bao giờ nói cách đọc nó, và chúng tôi cũng không biết. Dòng này rất ngắn, nên đếm chữ sẽ không đủ. Đoán những từ có khả năng xuất hiện mới là lối vào.
+  Lời đề tặng của bản tiếng Anh cũng kết thúc bằng một dòng mật mã. Sách không hề nói cách đọc nó, và chúng tôi cũng không biết. Nó rất ngắn, nên đếm chữ sẽ không đủ. Đoán những từ có khả năng xuất hiện mới là lối vào.
 
   <Try action="dedication" button="Mở lời đề tặng của cuốn sách" />
 </DigDeeper>
@@ -129,32 +131,32 @@ Sau đó hãy thử từng phỏng đoán với các từ xung quanh. Đoán sai
 ## Ba từ cuối cùng
 
 <Challenge answer="NEVER STOP COUNTING">
-  Bức mật thư 4 kết thúc bằng một mật khẩu. Hãy phá mật mã và đọc tới cuối. Các khoảng trống đã mất, nên bạn phải tự tách các từ.
+  Bản mật mã 4 kết thúc bằng một mật khẩu. Hãy phá mật mã và đọc tới cuối. Các khoảng trống đã mất, nên bạn phải tự tách các từ.
 
-  Ba từ cuối cùng của bức mật thư 4 là gì?
+  Ba từ cuối cùng của bản mật mã 4 là gì?
 
-  <Try action="fourth" button="Mở bức mật thư 4" />
+  <Try action="fourth" button="Mở bản mật mã 4" />
 </Challenge>
 
-<Check question="Vì sao bức mật thư 2 khó hơn bức 1, khi mật mã vẫn là một?">
-  Nó cho bạn ít chỗ bám hơn. Không có khoảng trống thì không có từ một chữ cái để đoán, và một tin nhắn ngắn thì có ít chữ để đếm. Thử cả 25 khóa vẫn được, vì mật mã này có quá ít khóa.
+<Check question="Vì sao bản mật mã 2 khó hơn bản 1, dù cùng một mật mã?">
+  Nó cho bạn ít chỗ để bám vào hơn. Không có khoảng trống thì không có từ một chữ cái nào để đoán, và một bức thư ngắn có ít chữ để đếm. Thử cả 25 chìa khóa thì vẫn được, vì mật mã này có quá ít chìa khóa.
 </Check>
 
 <Label>Chuyện gì đến tiếp theo</Label>
 
 ## Đến lượt bạn
 
-Đây là trang cuối cùng. Bạn đã đi theo những người lập mã và các nhà giải mã, từ bảng chữ cái dịch chuyển của Caesar tới từng hạt ánh sáng riêng lẻ. Có một bài học xuyên suốt tất cả. Một mật mã chỉ an toàn cho tới khi có người đủ kiên nhẫn tìm ra quy luật của nó.
+Đây là trang cuối. Bạn đã theo chân các nhà tạo mã và nhà giải mã, từ bảng chữ cái dịch chuyển của Caesar tới từng hạt ánh sáng. Có một bài học chạy suốt chặng đường ấy. Một mật mã chỉ an toàn cho tới khi có người đủ kiên nhẫn tìm ra quy luật của nó.
 
-Giờ hãy mở hai trang cuối của cuốn sách và thử bốn bức mật thư của chính nó. Bàn “Của riêng bạn” sẽ chứa được chúng. Cũng chẳng ai cho bạn lời giải của những bức đó. Hoặc hãy mã hóa một tin nhắn ở một trong những trang trước, rồi thách một người bạn đọc nó.
+Giờ hãy thử bốn bản mật mã của chính cuốn sách. Bàn “Của riêng bạn” sẽ chứa được chúng. Cũng chẳng ai cho bạn lời giải của chúng đâu. Có trong tay bản tiếng Việt? Mười bước của Thách thức Giải mã đang chờ bạn ở cuối sách. Hoặc hãy mã hóa một bức thư ở một trong những trang trước, rồi thách một người bạn đọc nó.
 
-[Về trang mục lục](/) và chọn một mật mã bạn chưa thử.
+[Về mục lục](/) và chọn một mật mã bạn chưa thử.
 
 <Label>Đọc thêm</Label>
 
 ## Tìm hiểu thêm
 
-- Simon Singh, *The Code Book*, phần “The Codebreaker's Challenge” (Thách thức giải mã). Bốn bức mật thư của chính cuốn sách, ở hai trang cuối.
-- Simon Singh, “Cipher Challenge” (Cuộc thi mật mã), simonsingh.net/cryptography/cipher-challenge. Lời kể của chính ông về mười vòng thi, giải thưởng và những người thắng cuộc.
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử* (Phạm Văn Thiều và Phạm Thu Hằng dịch, NXB Trẻ), phần *Một thách thức giải mã: mười bước tiến đến 15 ngàn đôla*, trang 505–523. Mười bước của Thách thức Giải mã. Bốn bản mật mã ngắn ở trên thì nằm ở hai trang cuối của bản tiếng Anh rút gọn, *The Code Book*.
+- Simon Singh, “Cipher Challenge” (Thách thức Giải mã), simonsingh.net/cryptography/cipher-challenge. Lời kể của chính ông về mười bước, giải thưởng và những người thắng cuộc.
 - Fredrik Almgren, Gunnar Andersson, Torbjörn Granlund, Lars Ivansson và Staffan Ulfberg, “How We Cracked the Code Book Ciphers” (Chúng tôi đã phá các mật mã của The Code Book như thế nào, năm 2000). Báo cáo của đội thắng cuộc.
-- “Cipher challenge cracked” (Cuộc thi mật mã đã bị phá), tạp chí *Plus*, plus.maths.org (năm 2001). Một bài ngắn cho bạn đọc phổ thông.
+- “Cipher challenge cracked” (Thách thức Giải mã đã bị phá), tạp chí *Plus*, plus.maths.org (năm 2001). Một bài ngắn cho bạn đọc phổ thông.

@@ -12,14 +12,14 @@ interface Part {
 const fromTable = (table: Record<string, string>) =>
   Object.entries(table).map(([meaning, symbol]) => ({ symbol, meaning: { en: meaning, vi: meaning } }));
 
-const NULL = { en: "null", vi: "đệm" };
+const NULL = { en: "null", vi: "không" };
 const DOUBLE = { en: "double", vi: "kép" };
 
 /** The stand-in nomenclator, laid out like the sheet Mary and her friends each kept. */
 const PARTS: Part[] = [
   { title: { en: "A sign for each letter", vi: "Mỗi chữ một ký hiệu" }, entries: fromTable(STAND_IN.letters) },
   {
-    title: { en: "Nulls: they mean nothing", vi: "Chữ đệm: chúng không có nghĩa gì" },
+    title: { en: "Nulls: they mean nothing", vi: "Ký tự không: chúng chẳng có nghĩa gì" },
     entries: STAND_IN.nulls.map((symbol) => ({ symbol, meaning: NULL })),
   },
   {
@@ -37,7 +37,7 @@ export function SignKey({ picked, onPick }: { picked?: string; onPick: (symbol: 
       <p className={styles.note}>
         {t({
           en: "The key. These signs are our stand-ins, not Mary's own.",
-          vi: "Khóa. Đây là các ký hiệu thay thế của chúng tôi, không phải ký hiệu thật của Mary.",
+          vi: "Chìa khóa. Đây là các ký hiệu thay thế của chúng tôi, không phải ký hiệu thật của Mary.",
         })}
       </p>
       {PARTS.map((part) => (

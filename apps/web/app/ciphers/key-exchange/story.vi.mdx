@@ -1,116 +1,113 @@
 {/*
-  Bản dịch tiếng Việt của story.mdx. Theo docs/i18n/vi-glossary.md.
-  Follows the cipher page template in docs/STANDARDS.md.
-  The story comes from The Code Book, chapter 5. The abridged edition explains
-  one-way functions and 3^x (mod 7), but leaves out the exchange itself. The
-  worked exchange (Y = 7, P = 11, Alice picks 3 and sends 2, Bob picks 6 and
-  sends 4, the key is 9) is Table 26 of the full edition, chapter 6, checked
-  against a scan of that edition. The date of publication is from the paper in Further
-  reading. The wording is ours.
+  Kể lại theo Mật mã: Từ cổ điển đến lượng tử, chương 6: Alice và Bob ra công khai, mục
+  "Thánh nhân đãi kẻ khù khờ" (tr. 360–384). Ví dụ trao đổi (Y = 7, P = 11, Alice chọn 3 và gửi 2,
+  Bob chọn 6 và gửi 4, chìa khóa là 9) là Bảng 26 của sách (tr. 380). Theo docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md. The date of publication is from the paper
+  in Further reading. Facts agree with story.mdx; the wording is ours.
 */}
 
 <Standfirst>
-  Hai người lạ thống nhất một khóa bí mật, trong khi một kẻ nghe lén nghe được từng lời họ nói.
+  Hai người lạ thống nhất được một chìa khóa mã bí mật, dù có người nghe lén từng lời họ nói.
 </Standfirst>
 
 <Label>Mở đầu</Label>
 
-## Những người đưa thư xách cặp khóa kín
+## Những người đưa thư xách vali khóa móc
 
-Vào thập niên 1970, các ngân hàng dùng máy tính để xáo trộn tin nhắn. Nhưng khách hàng chỉ gỡ được tin nhắn nếu có cùng một khóa. Vì vậy các ngân hàng cử những người đưa thư tin cẩn đi khắp thế giới, mang khóa trong những chiếc cặp khóa bằng ổ khóa móc. Ngân hàng càng lớn, chi phí càng thành ác mộng.
+Vào thập niên 1970, ngân hàng đã dùng máy tính để mã hóa thư tín. Nhưng khách hàng chỉ giải mã được nếu có đúng chìa khóa ấy. Thế là ngân hàng cử những nhân viên tin cẩn nhất đi khắp thế giới, xách theo vali có khóa móc đựng chìa khóa. Ngân hàng càng lớn, việc giao chìa khóa càng thành cơn ác mộng về tiền bạc.
 
-Mọi mật mã trước đó đều vướng cùng một chỗ. Muốn chia sẻ một bí mật, trước hết bạn phải chia sẻ một khóa, mà khóa cũng là một bí mật.
+Mọi mật mã trước đó đều vướng cùng một cái vòng luẩn quẩn. Muốn trao cho nhau một bí mật, trước hết hai người phải trao cho nhau chìa khóa. Mà chìa khóa cũng là một bí mật.
 
-Năm 1974, Whitfield Diffie nghe nói có một giáo sư tên Martin Hellman đang nghiên cứu đúng vấn đề này. Ông lái xe khoảng 4.800 km (3.000 dặm) băng qua nước Mỹ để gặp Hellman. Liệu hai người có thể thống nhất một khóa mà không cần gặp nhau, trong khi kẻ thù đang nghe?
+Năm 1974, Whitfield Diffie nghe nói có một giáo sư ở Đại học Stanford, Martin Hellman, cũng đang vật lộn với đúng bài toán này. Ông lái xe khoảng 4.800 km (3.000 dặm) xuyên nước Mỹ để gặp Hellman. Liệu hai người có thống nhất được một chìa khóa mà không cần gặp mặt, trong khi kẻ thù nghe hết?
 
 <Label>Thử xem</Label>
 
 ## Ba bước đến một bí mật
 
-Bảng mô phỏng có ba cột. Alice và Bob là hai người. Mọi thứ ở cột giữa đều được nói công khai, nơi Eve, kẻ nghe lén, nghe thấy hết. Hãy đoán trước: liệu Alice và Bob có thể có được một con số mà Eve không có?
+Bảng mô phỏng có ba cột. Alice và Bob là hai người muốn nói chuyện kín. Mọi thứ ở cột giữa đều nói công khai, và Eve, người nghe lén, nghe được hết. Đoán trước nhé: Alice và Bob có thể có chung một con số mà Eve không có không?
 
 <Try action="book" button="Bắt đầu ví dụ trong sách">
   Nhấn “Bước tiếp” ba lần. Để ý những gì đi qua cột giữa, và những gì không bao giờ đi qua.
 </Try>
 
-<Check question="Alice và Bob mỗi người ra khóa nào?">
-  Cả hai đều ra `9`. Alice tính 4<sup>3</sup> còn Bob tính 2<sup>6</sup>. Mỗi kết quả là 64, tức là 9 trong mod 11. Bản thân khóa chưa bao giờ đi qua cột giữa.
+<Check question="Alice và Bob mỗi người ra chìa khóa nào?">
+  Cả hai đều ra `9`. Alice tính 4<sup>3</sup>, còn Bob tính 2<sup>6</sup>. Cả hai đều bằng 64, tức là 9 theo mod 11. Bản thân chìa khóa chưa bao giờ đi qua cột giữa.
 </Check>
 
 <Label>Cách hoạt động</Label>
 
-## Ổ khóa làm bằng số học
+## Khóa móc làm bằng số học
 
-### Chiếc hộp có hai ổ khóa móc
+### Chiếc hộp có hai khóa móc
 
-Hãy tưởng tượng một bưu điện đọc trộm mọi lá thư. Alice bỏ một bức thư vào hộp sắt, khóa bằng ổ khóa móc của mình, rồi gửi đi. Bob không mở được hộp. Thay vào đó, anh lắp thêm ổ khóa móc của mình rồi gửi trả lại.
+Hãy tưởng tượng một nước có bưu điện chẳng đáng tin chút nào: nhân viên đọc trộm mọi lá thư. Alice bỏ thư vào một hộp sắt, khóa bằng khóa móc của cô, rồi gửi đi. Bob nhận hộp nhưng không mở được. Anh bèn móc thêm khóa móc của mình vào và gửi trả lại.
 
-Giờ Alice tháo ổ khóa của cô ra và gửi chiếc hộp đi lần thứ ba. Chỉ còn ổ khóa của Bob, và anh có chìa khóa của nó. Không chìa khóa nào phải đi đường cả.
+Alice mở khóa của cô ra, rồi gửi hộp đi lần thứ ba. Giờ trên hộp chỉ còn khóa của Bob, và anh có chìa. Không chiếc chìa khóa nào phải đi đường cả.
 
-Điều này cho thấy có thể chia sẻ một bí mật mà không cần chia sẻ khóa. Nhưng mật mã khó tính hơn ổ khóa móc. Thường thì bạn phải gỡ chúng theo thứ tự ngược lại: khóa nào lắp sau cùng thì gỡ trước tiên. Giống như phải cởi giày trước rồi mới cởi tất. Nhóm nghiên cứu cần một thứ toán học không quan tâm đến thứ tự.
+Câu chuyện nhỏ này cho thấy hai người có thể trao bí mật mà không cần trao chìa khóa. Nhưng mật mã khó tính hơn khóa móc. Thường thì lớp mã hóa nào làm sau cùng phải được gỡ ra trước tiên, theo luật "vào sau ra trước". Cũng như buổi tối bạn phải cởi giày rồi mới cởi được tất. Với khóa móc thì thứ tự không quan trọng. Nhóm nghiên cứu cần một thứ toán học cũng không quan tâm tới thứ tự như thế.
 
 <Try action="agreed" button="Hiện cuộc trao đổi đã xong">
-  Nhìn bước 4. Alice dùng số của Bob với số bí mật của cô. Bob dùng số của Alice với số bí mật của anh. Thứ tự chẳng hề quan trọng.
+  Nhìn bước 4. Alice dùng số của Bob với số bí mật của cô. Bob dùng số của Alice với số bí mật của anh. Thứ tự chẳng làm gì khác đi.
 </Try>
 
-### Hàm một chiều
+### Hàm số một chiều
 
-Có những việc làm thì dễ mà gỡ thì khó. Trộn sơn vàng với sơn xanh dương thì dễ. Tách màu xanh lá ra lại thì không. Một phép tính như thế gọi là **hàm một chiều**.
+Diffie và Hellman tìm hiểu các **hàm số**: những phép tính biến một số thành một số khác. "Nhân đôi" là một hàm số, và nó dễ làm ngược: biết 26 thì đoán ra ngay 13. Họ lại đi tìm thứ ngược hẳn: dễ làm mà khó gỡ. Trộn sơn vàng với sơn xanh da trời thành xanh lá thì dễ, tách ra lại thì chịu. Đập vỡ quả trứng cũng thế. Kiểu phép tính ấy gọi là **hàm số một chiều**.
 
-Nhóm tìm ra hàm của mình trong **số học mô-đun**, nơi các con số chạy vòng quanh như giờ trên mặt đồng hồ. Trong mod 7 chỉ có các số từ 0 đến 6. Muốn tính, bạn làm phép tính như bình thường, chia cho 7 rồi lấy số dư.
+Họ tìm thấy hàm của mình trong **số học môđun**, còn gọi là số học đồng hồ. Ở đó các con số xếp thành vòng tròn như trên mặt đồng hồ. Theo mod 7 chỉ có các số từ 0 đến 6. Muốn tính, bạn làm phép tính như thường, chia cho 7 rồi giữ lại số dư.
 
-Trong số học bình thường, các lũy thừa của 3 tăng đều: 3, 9, 27, 81. Trong mod 7, chúng nhảy lung tung: 3, 2, 6, 4, 5, 1. Nếu chỉ được cho biết kết quả, chẳng có gì gợi ý xem lũy thừa nào đã tạo ra nó.
+Trong số học bình thường, lũy thừa của 3 tăng đều: 3, 9, 27, 81. Đoán sai thì bạn biết mình đang "nóng" hay "lạnh". Theo mod 7, chúng nhảy lung tung: 3, 2, 6, 4, 5, 1. Biết kết quả, bạn chẳng có manh mối nào về lũy thừa đã tạo ra nó.
 
-<Try action="clock" button="Hiện các lũy thừa của 3 trong mod 7">
-  Đọc hàng “Eve thử”. Nó liệt kê từ 3<sup>1</sup> đến 3<sup>6</sup> trong mod 7. Rồi nhấn ▲ cạnh “Số nguyên tố công khai P” và xem quy luật thay đổi.
+<Try action="clock" button="Hiện các lũy thừa của 3 theo mod 7">
+  Đọc hàng “Eve thử”. Nó liệt kê từ 3<sup>1</sup> đến 3<sup>6</sup> theo mod 7. Rồi nhấn ▲ cạnh “Số nguyên tố công khai P” và xem quy luật đổi đi.
 </Try>
 
 ### Cuộc trao đổi
 
-Alice và Bob công khai thống nhất hai con số, Y và P. Bản rút gọn của cuốn sách có nhắc tên cuộc trao đổi này nhưng không làm ví dụ. Bản đầy đủ thì có, với Y = 7 và P = 11. Hàm một chiều của họ là 7<sup>x</sup> (mod 11).
+Mùa xuân năm 1976, Hellman tìm ra lời giải. Alice và Bob công khai thống nhất hai số, Y và P. Sách lấy ví dụ Y = 7 và P = 11, nên hàm số một chiều của họ là 7<sup>x</sup> (mod 11). Eve nghe được cũng chẳng sao.
 
-Alice chọn một số bí mật, 3. Cô tính 7<sup>3</sup> (mod 11), được 2, và gửi số 2 cho Bob. Bob chọn 6, tính 7<sup>6</sup> (mod 11), được 4, và gửi số 4 cho Alice.
+Alice chọn một số bí mật, 3. Cô tính 7<sup>3</sup> (mod 11), được 2, rồi gửi số 2 cho Bob. Bob chọn 6, tính 7<sup>6</sup> (mod 11), được 4, rồi gửi số 4 cho Alice.
 
-Rồi mỗi người lấy số mình nhận được và nâng lên lũy thừa bằng số bí mật của chính mình. Alice được 4<sup>3</sup> (mod 11). Bob được 2<sup>6</sup> (mod 11). Cả hai đều là 9.
+Rồi mỗi người lấy số vừa nhận, nâng lên lũy thừa bằng số bí mật của mình. Alice tính 4<sup>3</sup> (mod 11). Bob tính 2<sup>6</sup> (mod 11). Cả hai đều ra 9. Đó chính là chìa khóa mã.
 
 <Try action="book" button="Bắt đầu lại từ bước 1">
-  Đổi “Số bí mật của Alice” và “Số bí mật của Bob” bằng các nút ▲. Đi lại từng bước. Hai khóa lúc nào cũng khớp nhau.
+  Đổi “Số bí mật của Alice” và “Số bí mật của Bob” bằng các nút ▲. Đi lại từng bước. Hai chìa khóa lúc nào cũng khớp nhau.
 </Try>
 
 ### Eve đã nghe được gì
 
-Eve biết 7 và 11. Cô thấy số 2 và số 4 đi qua. Cô không biết số 3 hay số 6, mà cô cần một trong hai số đó để tạo ra khóa.
+Eve biết 7 và 11. Cô thấy số 2 và số 4 đi qua. Nhưng cô không biết số 3 hay số 6, mà muốn có chìa khóa thì cô cần một trong hai số đó.
 
-Muốn tìm số bí mật của Alice, cô phải gỡ ngược hàm một chiều. Lũy thừa nào của 7 cho ra 2 trong mod 11? Không có đường tắt nào. Cô chỉ có thể thử từng số một.
+Muốn tìm số bí mật của Alice, Eve phải gỡ ngược hàm số một chiều. Lũy thừa nào của 7 cho ra 2 theo mod 11? Không có lối tắt. Cô chỉ có thể lập bảng, thử từng số một.
 
 <Label>Câu chuyện</Label>
 
-## Ba gã khờ ở Stanford
+## Ba kẻ khù khờ ở Stanford
 
-Các đồng nghiệp bảo Hellman là ông điên rồi. Cơ quan An ninh Quốc gia Mỹ (NSA) có ngân sách khổng lồ và chắc hẳn đã thử từ lâu. Hellman có ít tiền, nên Diffie đến làm việc với ông ở Đại học Stanford dưới danh nghĩa sinh viên. Tiếp theo là Ralph Merkle, đến từ một nhóm mà vị giáo sư chẳng có chút kiên nhẫn nào với ý tưởng này.
+Đồng nghiệp bảo Hellman là điên. Cơ quan An ninh Quốc gia Mỹ (NSA) có ngân sách hàng tỷ đô la, hẳn đã thử từ lâu rồi. Hellman không có tiền thuê Diffie, nên Diffie đăng ký làm nghiên cứu sinh ở Stanford. Rồi Ralph Merkle tới. Ông bỏ một nhóm khác, nơi vị giáo sư coi giấc mơ ấy là chuyện viển vông.
 
-Suốt hai năm, gần như mọi ý tưởng đều thất bại. Hellman có một câu cho chuyện đó: "Thánh nhân đãi kẻ khù khờ." Ông nói chỉ có kẻ khờ mới còn hào hứng sau chín mươi chín lần thất bại.
+Suốt hai năm, ý tưởng nào cũng đổ bể. Hellman có một câu cho chuyện đó, và sách tiếng Việt dịch là "Thánh nhân đãi kẻ khù khờ". Theo ông, chỉ kẻ khù khờ mới còn hăng hái sau chín mươi chín lần thất bại.
 
-Cuối cùng một ý tưởng đã thành công: chính cuộc trao đổi bạn vừa chạy. Diffie và Hellman công bố nó vào tháng 11 năm 1976. Suốt hai nghìn năm, ai cũng tin rằng khóa phải được mang đến tận tay. Họ đã sai.
+Rồi một đêm, ở nhà, Hellman tìm ra cuộc trao đổi mà bạn vừa chạy. Sáng hôm sau ông mới kể cho Diffie và Merkle. Ngày nay nó mang tên cả ba người: **trao đổi chìa khóa mã Diffie-Hellman-Merkle**. Tháng 6 năm 1976, ba người trình bày nó ở một hội nghị máy tính lớn, và giới mật mã sững sờ. Diffie và Hellman đăng bài báo về nó vào tháng 11 năm 1976. Suốt hai nghìn năm, ai cũng tin chìa khóa phải được trao tận tay. Họ đã sai.
 
-<DigDeeper title="Lần khám phá đầu tiên trong bí mật">
-  Năm 1974, Malcolm Williamson, làm việc ở GCHQ, cơ quan tình báo bí mật của Anh, đã tìm ra cùng cuộc trao đổi này. Ông đang cố chứng minh ý tưởng của một người bạn là sai. Công việc của ông là bí mật, nên ông im lặng trong khi những người Mỹ trở nên nổi tiếng. Bạn có thể đọc câu chuyện ấy ở [trang RSA](/ciphers/rsa).
+<DigDeeper title="Lần khám phá đầu tiên, trong bí mật">
+  Năm 1974, Malcolm Williamson, làm việc ở GCHQ, cơ quan mật mã bí mật của Anh, đã tìm ra đúng cuộc trao đổi này. Lúc ấy ông đang cố chứng minh ý tưởng của một người bạn là sai. Công việc của ông là tuyệt mật, nên ông đành im lặng trong khi mấy người Mỹ nổi tiếng. Bạn có thể đọc câu chuyện ấy ở [trang RSA](/ciphers/rsa).
 </DigDeeper>
 
 <Label>Bị phá như thế nào</Label>
 
 ## Thử hết mọi số bí mật
 
-Chưa ai tìm ra cách nhanh để gỡ ngược hàm một chiều. Cách tấn công duy nhất là cách chậm: thử mọi số bí mật cho đến khi có một số khớp. Với P nhỏ, việc đó chẳng tốn chút thời gian nào.
+Chưa ai tìm ra cách nhanh để gỡ ngược hàm số một chiều. Cách tấn công duy nhất là cách chậm: thử mọi số bí mật cho tới khi gặp số đúng. Với P nhỏ, việc ấy chẳng tốn chút thời gian nào.
 
 <Try action="eve" button="Để Eve tấn công ví dụ trong sách">
-  Đọc các lần đoán của Eve. Lần đoán thứ ba cho ra 2, đúng số mà Alice đã gửi. Giờ Eve có khóa. Rồi nhấn ▲ cạnh “Số nguyên tố công khai P” và xem danh sách của cô thay đổi.
+  Đọc các lần đoán của Eve. Lần thứ ba cho ra 2, đúng số Alice đã gửi. Eve có chìa khóa rồi. Giờ nhấn ▲ cạnh “Số nguyên tố công khai P” và xem danh sách của cô thay đổi.
 </Try>
 
-Vậy toàn bộ sự an toàn nằm ở độ lớn của P. Với P = 11, Eve cần nhiều nhất mười lần đoán. Các cuộc trao đổi thật dùng một số P dài hàng trăm chữ số. Khi đó, thử hết mọi số bí mật sẽ mất lâu hơn cả tuổi của vũ trụ.
+Vậy sự an toàn nằm hết ở độ lớn của P. Với P = 11, Eve chỉ cần nhiều nhất mười lần đoán. Các cuộc trao đổi thật dùng số P dài hàng trăm chữ số. Khi đó, thử hết mọi số bí mật sẽ lâu hơn cả tuổi của vũ trụ.
 
 <Try action="bigger" button="Cho P lớn hơn một chút">
-  Với P = 101, Eve cần 73 lần đoán. Alice và Bob thì gần như chẳng phải làm thêm gì so với trước.
+  Với P = 101, Eve cần 73 lần đoán. Còn Alice và Bob gần như chẳng phải làm thêm gì.
 </Try>
 
 <Label>Thử thách</Label>
@@ -118,31 +115,31 @@ Vậy toàn bộ sự an toàn nằm ở độ lớn của P. Với P = 11, Eve 
 ## Bạn là Eve
 
 <Challenge answer="DAWN">
-  Alice và Bob đã thống nhất Y = 5 và P = 23. Bạn thấy Alice gửi 21 và Bob gửi 14. Họ sẽ dùng khóa của mình làm độ dịch cho [mật mã dịch chuyển Caesar](/ciphers/caesar), và tin nhắn của Alice là `OLHY`.
+  Alice và Bob đã thống nhất Y = 5 và P = 23. Bạn thấy Alice gửi 21 và Bob gửi 14. Họ sẽ dùng chìa khóa làm độ dịch cho [mật mã dịch chuyển Caesar](/ciphers/caesar), và bức thư của Alice là `OLHY`.
 
-  Hãy tìm khóa. Rồi dịch mỗi chữ lùi lại đúng ngần ấy vị trí. Cuộc đột kích bắt đầu lúc nào? (Gõ từ tiếng Anh.)
+  Hãy tìm chìa khóa. Rồi dịch mỗi chữ lùi lại đúng ngần ấy chỗ. Cuộc đột kích bắt đầu lúc nào? (Gõ từ tiếng Anh.)
 
   <Try action="intercepted" button="Nghe lén" />
 </Challenge>
 
-<Check question="Vì sao Alice tạo ra khóa nhanh chóng, còn Eve thì không?">
-  Alice biết số bí mật của chính mình, nên cô chỉ làm một phép tính. Eve phải tìm ra số bí mật ấy trước đã, và hàm một chiều chẳng cho cô manh mối nào. Cô phải thử mọi con số.
+<Check question="Vì sao Alice tạo ra chìa khóa nhanh chóng, còn Eve thì không?">
+  Alice biết số bí mật của mình, nên cô chỉ làm một phép tính. Eve phải tìm ra số bí mật ấy trước, và hàm số một chiều không cho cô manh mối nào. Cô phải thử từng con số.
 </Check>
 
 <Label>Chuyện gì đến tiếp theo</Label>
 
 ## Thôi không phải gửi qua gửi lại
 
-Cuộc trao đổi đã giải được một bài toán hai nghìn năm tuổi. Nhưng nó bất tiện. Alice và Bob phải trao đổi số trước khi ai đó gửi được một chữ nào. Nếu Bob đang ngủ, Alice phải chờ.
+Cuộc trao đổi đã giải được bài toán hai nghìn năm tuổi. Nhưng nó vẫn bất tiện. Alice và Bob phải trao số qua lại trước khi gửi được chữ nào. Giả sử Alice ở Hawaii muốn gửi thư cho Bob ở Istanbul, mà Bob đang ngủ. Alice đành phải chờ anh dậy.
 
-Ngay từ năm 1975, Diffie đã hình dung ra một cách tốt hơn. Giả sử việc khóa lại và việc mở ra dùng hai chìa khóa khác nhau. Alice có thể công bố chìa dùng để khóa cho ai dùng cũng được, giống như phát cho mọi người những ổ khóa móc đang mở. Chỉ mình cô giữ chìa khóa mở được chúng.
+Ngay từ năm 1975, Diffie đã nghĩ ra một cách hay hơn. Giả sử khóa lại và mở ra dùng hai chìa khóa khác nhau. Alice có thể công bố chìa khóa dùng để khóa cho ai dùng cũng được, như phát cho mọi người những chiếc khóa móc đang mở. Ai cũng bấm khóa được, nhưng chỉ mình cô giữ chiếc chìa mở ra.
 
-Ông không tìm ra được thứ toán học để làm điều đó. Ba người ở bờ bên kia nước Mỹ đã tìm ra: [RSA](/ciphers/rsa).
+Ông chưa tìm được thứ toán học để làm điều đó. Ba người ở bờ bên kia nước Mỹ đã tìm ra: [RSA](/ciphers/rsa).
 
 <Label>Đọc thêm</Label>
 
 ## Tìm hiểu thêm
 
-- Simon Singh, *The Code Book*, chương 5. Bản đầy đủ làm chi tiết cuộc trao đổi với chính những con số này, ở Bảng 26 trong chương 6 của nó.
-- Whitfield Diffie và Martin Hellman, "New Directions in Cryptography" (Những hướng đi mới trong mật mã học), *IEEE Transactions on Information Theory*, tháng 11 năm 1976. Bài báo công bố cuộc trao đổi này.
-- Steven Levy, *Crypto* (2001). Về những con người đứng sau mật mã khóa công khai.
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử*, chương 6: Alice và Bob ra công khai (bản tiếng Việt, NXB Trẻ). Cuộc trao đổi với chính những con số này nằm ở Bảng 26 (tr. 380). Bản tiếng Anh: *The Code Book*, chương 5; bản đầy đủ, chương 6.
+- Whitfield Diffie và Martin Hellman, "New Directions in Cryptography" (Những hướng đi mới trong khoa học mật mã), *IEEE Transactions on Information Theory*, tháng 11 năm 1976. Bài báo công bố cuộc trao đổi này.
+- Steven Levy, *Crypto* (2001). Về những con người đứng sau mật mã chìa khóa công khai.

@@ -3,9 +3,9 @@ import styles from "./Arrow.module.css";
 
 const NAMES: Record<number, Bilingual> = {
   0: { en: "flat", vi: "nằm ngang" },
-  90: { en: "upright", vi: "dựng đứng" },
-  45: { en: "leaning right", vi: "nghiêng phải" },
-  135: { en: "leaning left", vi: "nghiêng trái" },
+  90: { en: "upright", vi: "thẳng đứng" },
+  45: { en: "leaning right", vi: "chéo sang phải" },
+  135: { en: "leaning left", vi: "chéo sang trái" },
 };
 
 /** A photon's polarisation, drawn as a two-headed arrow at the given angle in degrees. */

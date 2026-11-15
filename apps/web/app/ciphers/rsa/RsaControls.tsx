@@ -14,7 +14,7 @@ export function RsaControls({ state, dispatch }: { state: RsaState; dispatch: Di
   return (
     <Controls>
       <Row>
-        <Output label={t({ en: "Public key", vi: "Khóa công khai" })}>
+        <Output label={t({ en: "Public key", vi: "Chìa khóa công khai" })}>
           N = {keys.n}, e = {keys.e}
         </Output>
         <Output

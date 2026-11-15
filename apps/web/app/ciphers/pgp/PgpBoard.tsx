@@ -11,37 +11,37 @@ import type { PgpState } from "./usePgp";
 const CAPTIONS: Bilingual[] = [
   {
     en: "Alice has written a message for Bob. Nothing is locked yet.",
-    vi: "Alice đã viết một tin nhắn cho Bob. Chưa có gì bị khóa.",
+    vi: "Alice đã viết một bức thư cho Bob. Chưa có gì được mã hóa.",
   },
   {
     en: "Alice's computer picks a session key at random. It will be used for this message only.",
-    vi: "Máy tính của Alice chọn ngẫu nhiên một khóa phiên. Khóa này chỉ dùng cho tin nhắn này.",
+    vi: "Máy tính của Alice chọn ngẫu nhiên một khóa phiên. Khóa này chỉ dùng cho bức thư này.",
   },
   {
     en: "The fast lock: each letter of the message is shifted by a letter of the session key.",
-    vi: "Ổ khóa nhanh: mỗi chữ của tin nhắn được dịch theo một chữ của khóa phiên.",
+    vi: "Mật mã nhanh: mỗi chữ của bức thư được dịch theo một chữ của khóa phiên.",
   },
   {
     en: "The slow lock: each letter of the session key becomes a number, locked with Bob's public key.",
-    vi: "Ổ khóa chậm: mỗi chữ của khóa phiên thành một con số, khóa bằng khóa công khai của Bob.",
+    vi: "Mật mã chậm: mỗi chữ của khóa phiên thành một con số, dùng chìa khóa công khai của Bob để mã hóa.",
   },
   {
     en: "Both locked parts travel together. Bob's private key stays at home.",
-    vi: "Hai phần đã khóa được gửi đi cùng nhau. Khóa riêng của Bob vẫn ở nhà.",
+    vi: "Hai phần đã mã hóa được gửi đi cùng nhau. Chìa khóa riêng của Bob vẫn ở nhà.",
   },
   {
     en: "Bob's private key turns part 2 back into the session key.",
-    vi: "Khóa riêng của Bob biến phần 2 trở lại thành khóa phiên.",
+    vi: "Chìa khóa riêng của Bob biến phần 2 trở lại thành khóa phiên.",
   },
   {
     en: "The session key turns part 1 back into the message. Only Bob could do both steps.",
-    vi: "Khóa phiên biến phần 1 trở lại thành tin nhắn. Chỉ Bob làm được cả hai bước.",
+    vi: "Khóa phiên biến phần 1 trở lại thành bức thư. Chỉ Bob làm được cả hai bước.",
   },
 ];
 
 const EVE_CAPTION: Bilingual = {
   en: "Eve can copy everything that travels. Without d she cannot unlock part 2, so she cannot unlock part 1.",
-  vi: "Eve chép được mọi thứ được gửi đi. Không có d, cô không mở được phần 2, nên cũng không mở được phần 1.",
+  vi: "Eve chép được mọi thứ được gửi đi. Không có d, cô không giải mã được phần 2, nên cũng không giải mã được phần 1.",
 };
 const CRACKED_CAPTION: Bilingual = {
   en: "A toy N is easy to split. A real one is hundreds of digits long, and nobody knows a quick way.",
@@ -68,7 +68,7 @@ export function PgpBoard({ state }: { state: PgpState }) {
         {t(CAPTIONS[state.stage]!)}{" "}
         {t({
           en: "These are toy locks: real PGP used a cipher called IDEA and far bigger numbers.",
-          vi: "Đây là những ổ khóa đồ chơi: PGP thật dùng một mật mã tên là IDEA và những con số lớn hơn nhiều.",
+          vi: "Đây chỉ là mật mã đồ chơi: PGP thật dùng một mật mã tên là IDEA và những con số lớn hơn nhiều.",
         })}
       </Caption>
     </Board>

@@ -16,7 +16,7 @@ export function HomophonicControls(props: { state: HomophonicState; dispatch: Di
     <Controls>
       <Row>
         <Stepper label={t({ en: "Table", vi: "Bảng" })} value={state.table} onStep={(by) => dispatch({ type: "deal", by })} />
-        <Output label={enciphering ? t({ en: "Ciphertext", vi: "Bản mật mã" }) : t({ en: "Plaintext", vi: "Bản rõ" })}>
+        <Output label={enciphering ? t({ en: "Ciphertext", vi: "Bản mật mã" }) : t({ en: "Plaintext", vi: "Văn bản thường" })}>
           {enciphering ? numbersOf(steps) : plainOf(steps)}
         </Output>
       </Row>

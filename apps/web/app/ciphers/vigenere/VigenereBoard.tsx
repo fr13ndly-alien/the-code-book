@@ -31,9 +31,9 @@ export function VigenereBoard({ state, onPick }: { state: VigenereState; onPick:
         <div className={styles.scroll}>
           <AlphabetRows
             rows={[
-              { label: t({ en: "Key", vi: "Khóa" }), letters: all.map((each) => each.key) },
-              { label: t({ en: "Plain", vi: "Rõ" }), letters: all.map((each) => each.plain) },
-              { label: t({ en: "Cipher", vi: "Mã" }), letters: all.map((each) => each.cipher), kind: "cipher" },
+              { label: t({ en: "Key", vi: "Chìa khóa" }), letters: all.map((each) => each.key) },
+              { label: t({ en: "Plain", vi: "Thường" }), letters: all.map((each) => each.plain) },
+              { label: t({ en: "Cipher", vi: "Mật mã" }), letters: all.map((each) => each.cipher), kind: "cipher" },
             ]}
             highlight={state.position}
             onPick={onPick}
@@ -54,7 +54,7 @@ export function VigenereBoard({ state, onPick }: { state: VigenereState; onPick:
         <LetterGrid
           label={t({
             en: "Vigenère square: one row for each key letter, one column for each plain letter",
-            vi: "Hình vuông Vigenère: mỗi chữ khóa một hàng, mỗi chữ rõ một cột",
+            vi: "Hình vuông Vigenère: mỗi chữ khóa một dòng, mỗi chữ thường một cột",
           })}
           cells={SQUARE_CELLS}
           columnHeads={[...ALPHABET]}
@@ -81,8 +81,8 @@ function StepCaption({ state }: { state: VigenereState }) {
       ),
       vi: (
         <>
-          Chữ khóa <Letters>{step.key}</Letters> chọn hàng. Chữ rõ <Letters>{step.plain}</Letters> chọn cột. Chúng gặp
-          nhau ở chữ mã <Letters>{step.cipher}</Letters>.
+          Chữ khóa <Letters>{step.key}</Letters> chọn dòng. Chữ thường <Letters>{step.plain}</Letters> chọn cột. Chúng
+          gặp nhau ở chữ mật mã <Letters>{step.cipher}</Letters>.
         </>
       ),
     });
@@ -96,8 +96,8 @@ function StepCaption({ state }: { state: VigenereState }) {
     ),
     vi: (
       <>
-        Chữ khóa <Letters>{step.key}</Letters> chọn hàng. Tìm chữ mã <Letters>{step.cipher}</Letters> trong hàng đó.
-        Đầu cột của nó là chữ rõ <Letters>{step.plain}</Letters>.
+        Chữ khóa <Letters>{step.key}</Letters> chọn dòng. Tìm chữ mật mã <Letters>{step.cipher}</Letters> trên dòng
+        đó. Đầu cột của nó là chữ thường <Letters>{step.plain}</Letters>.
       </>
     ),
   });

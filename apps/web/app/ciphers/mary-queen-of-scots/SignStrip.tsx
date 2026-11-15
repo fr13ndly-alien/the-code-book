@@ -4,7 +4,7 @@ import styles from "./SignStrip.module.css";
 
 /** What to write above a sign that stands for no letter. */
 const NOTE: Partial<Record<Token["kind"], Bilingual>> = {
-  null: { en: "null", vi: "đệm" },
+  null: { en: "null", vi: "không" },
   doubler: { en: "double", vi: "kép" },
 };
 

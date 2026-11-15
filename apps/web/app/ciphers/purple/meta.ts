@@ -10,10 +10,10 @@ export const meta: CipherMeta = {
   firstStep: "Tap a letter of the message to follow it through the switches.",
   source: "The Code Book, chapter 4: The Language Barrier",
   vi: {
-    title: "Purple, cỗ máy không có rôto",
+    title: "Purple, máy mã không có đĩa mã hóa",
     era: "1939–1945",
-    hook: "Cỗ máy mật mã tốt nhất của Nhật Bản bị người Mỹ dựng lại bằng công tắc điện thoại, dù họ chưa từng nhìn thấy nó.",
-    firstStep: "Chạm vào một chữ của tin nhắn để theo nó đi qua các công tắc.",
-    source: "The Code Book, chương 4: Rào cản ngôn ngữ",
+    hook: "Máy mã tốt nhất của Nhật Bản bị người Mỹ dựng lại từ công tắc điện thoại, dù họ chưa từng nhìn thấy nó.",
+    firstStep: "Chạm vào một chữ của bức điện để theo nó đi qua các công tắc.",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 5: Rào cản ngôn ngữ",
   },
 };

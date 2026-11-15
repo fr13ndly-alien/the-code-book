@@ -90,7 +90,7 @@ export function LuciferBoard({ state, onFlip }: { state: LuciferState; onFlip: (
             })}{" "}
         {t({
           en: "This is a toy with 16-bit blocks and an 8-bit key. Real DES uses 64-bit blocks and a 56-bit key.",
-          vi: "Đây là một mô hình đồ chơi với khối 16 bit và khóa 8 bit. DES thật dùng khối 64 bit và khóa 56 bit.",
+          vi: "Đây là một mô hình đồ chơi với khối 16 bit và chìa khóa 8 bit. DES thật dùng khối 64 bit và chìa khóa 56 bit.",
         })}
       </Caption>
     </Board>

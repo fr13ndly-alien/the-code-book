@@ -46,7 +46,7 @@ export const UI = {
   siteName: { en: "The Code Book, interactive", vi: "Mật mã, bản tương tác" },
   siteDescription: {
     en: "Try every cipher from Simon Singh's The Code Book, chapter by chapter.",
-    vi: "Thử tay mọi loại mật mã trong cuốn The Code Book của Simon Singh, theo từng chương.",
+    vi: "Thử tay mọi loại mật mã trong cuốn Mật mã: Từ cổ điển đến lượng tử của Simon Singh, theo từng chương.",
   },
   intro: {
     en: "Every cipher in Simon Singh's book, chapter by chapter. Pick one, read its story and try it yourself.",

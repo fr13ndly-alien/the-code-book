@@ -70,15 +70,15 @@ function Stages({ stages, picked }: { stages: Working; picked?: string }) {
 
   return (
     <div className={styles.stages}>
-      <Stage title={t({ en: "Stage 1: each symbol becomes a pair", vi: "Giai đoạn 1: mỗi ký hiệu thành một cặp" })}>
+      <Stage title={t({ en: "Stage 1: each symbol becomes a pair", vi: "Bước 1: mỗi ký hiệu thành một cặp" })}>
         <LetterGrid
-          label={t({ en: "The message and its pairs", vi: "Tin nhắn và các cặp của nó" })}
+          label={t({ en: "The message and its pairs", vi: "Bức thư và các cặp của nó" })}
           size="small"
           cells={[[...symbols], pairs]}
           mark={(row, column) => (symbols[column] !== picked ? undefined : row === 0 ? "on" : "cipher")}
         />
       </Stage>
-      <Stage title={t({ en: "Stage 2: written under the keyword", vi: "Giai đoạn 2: viết dưới từ khóa" })}>
+      <Stage title={t({ en: "Stage 2: written under the keyword", vi: "Bước 2: viết dưới từ khóa" })}>
         <LetterGrid
           label={t({ en: "The pairs written in rows under the keyword", vi: "Các cặp viết thành hàng dưới từ khóa" })}
           size="small"

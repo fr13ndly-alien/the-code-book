@@ -15,6 +15,6 @@ export const meta: CipherMeta = {
     era: "1918",
     hook: "Sáu chữ cái, một cái lưới và một từ khóa đã giấu mệnh lệnh của quân đội Đức năm 1918, cho tới khi một người Pháp nhìn thấu chúng.",
     firstStep: "Chạm vào một ô trong lưới. Lần theo cặp chữ của nó.",
-    source: "The Code Book (bản đầy đủ), chương 3 và Phụ lục F",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 3: Cơ giới hóa việc giữ bí mật, và phụ lục F",
   },
 };

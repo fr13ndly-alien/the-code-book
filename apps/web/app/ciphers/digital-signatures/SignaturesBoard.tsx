@@ -11,7 +11,7 @@ function AliceDesk({ message }: { message: string }) {
   const working = digestWorking(message, ALICE.n);
   return (
     <Desk title={t({ en: "Alice", vi: "Alice" })} note={t({ en: "signs", vi: "ký" })}>
-      <Line label={t({ en: "Private key, which only Alice knows", vi: "Khóa riêng, chỉ Alice biết" })} secret>
+      <Line label={t({ en: "Private key, which only Alice knows", vi: "Chìa khóa riêng, chỉ Alice biết" })} secret>
         d = {ALICE.d}
       </Line>
       <Working
@@ -68,7 +68,7 @@ function BobDesk({ state }: { state: SignaturesState }) {
   const result = check(state);
   return (
     <Desk title={t({ en: "Bob", vi: "Bob" })} note={t({ en: "checks", vi: "kiểm tra" })}>
-      <Line label={t({ en: "Alice's public key, which everyone has", vi: "Khóa công khai của Alice, ai cũng có" })}>
+      <Line label={t({ en: "Alice's public key, which everyone has", vi: "Chìa khóa công khai của Alice, ai cũng có" })}>
         N = {ALICE.n}, e = {ALICE.e}
       </Line>
       <Line label={t({ en: "Toy digest of the message that arrived", vi: "Bản tóm tắt đồ chơi của tin nhắn đến nơi" })}>
@@ -95,7 +95,7 @@ export function SignaturesBoard({ state }: { state: SignaturesState }) {
       <Caption>
         {t({
           en: "Everything here is a toy. A real digest comes from a hash function, and real keys are hundreds of digits long.",
-          vi: "Mọi thứ ở đây chỉ là đồ chơi. Bản tóm tắt thật do một hàm băm tạo ra, và khóa thật dài hàng trăm chữ số.",
+          vi: "Mọi thứ ở đây chỉ là đồ chơi. Bản tóm tắt thật do một hàm băm tạo ra, và chìa khóa thật dài hàng trăm chữ số.",
         })}
       </Caption>
     </Board>

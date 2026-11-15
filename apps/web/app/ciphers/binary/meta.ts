@@ -12,8 +12,8 @@ export const meta: CipherMeta = {
   vi: {
     title: "Mật mã cho máy tính",
     era: "Thập niên 1950 đến thập niên 1970",
-    hook: "Máy tính không xáo trộn được chữ cái. Nó biến chữ thành các số 1 và số 0, rồi xáo trộn chúng.",
-    firstStep: "Chạm vào một chữ số của khóa để lật nó.",
-    source: "The Code Book, chương 5: Alice và Bob ra công khai",
+    hook: "Máy tính không xáo trộn chữ cái. Nó đổi chữ thành những số 1 và số 0, rồi xáo trộn các con số ấy.",
+    firstStep: "Chạm vào một chữ số của chìa khóa để lật nó.",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 6: Alice và Bob ra công khai",
   },
 };

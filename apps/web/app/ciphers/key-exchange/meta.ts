@@ -10,10 +10,10 @@ export const meta: CipherMeta = {
   firstStep: "Press “Next step” and follow the numbers across.",
   source: "The Code Book, chapter 5: Alice and Bob Go Public",
   vi: {
-    title: "Trao đổi khóa",
+    title: "Trao đổi chìa khóa mã",
     era: "1976",
-    hook: "Hai người lạ thống nhất một khóa bí mật, trong khi một kẻ nghe lén nghe được từng lời họ nói.",
+    hook: "Hai người lạ thống nhất được một chìa khóa mã bí mật, dù có người nghe lén từng lời họ nói.",
     firstStep: "Nhấn “Bước tiếp” và lần theo các con số qua từng cột.",
-    source: "The Code Book, chương 5: Alice và Bob ra công khai",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 6: Alice và Bob ra công khai",
   },
 };

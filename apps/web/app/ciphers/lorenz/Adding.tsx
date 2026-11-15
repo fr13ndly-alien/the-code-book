@@ -32,7 +32,7 @@ export function Adding({ step }: { step: Step }) {
           ),
           vi: (
             <>
-              Cộng khóa vào <b>{step.input}</b>. Giống nhau cho 0, khác nhau cho 1.
+              Cộng chìa khóa vào <b>{step.input}</b>. Giống nhau cho 0, khác nhau cho 1.
             </>
           ),
         })}
@@ -41,7 +41,7 @@ export function Adding({ step }: { step: Step }) {
         <tr>
           <th scope="col">{t({ en: "Wheel, pin in use", vi: "Bánh xe, chốt đang dùng" })}</th>
           <th scope="col">{t({ en: "Tape", vi: "Băng" })}</th>
-          <th scope="col">{t({ en: "+ Key", vi: "+ Khóa" })}</th>
+          <th scope="col">{t({ en: "+ Key", vi: "+ Chìa khóa" })}</th>
           <th scope="col">{t({ en: "= Out", vi: "= Ra" })}</th>
         </tr>
       </thead>

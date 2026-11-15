@@ -1,124 +1,124 @@
 {/*
-  Bản dịch tiếng Việt của story.mdx. Theo docs/i18n/vi-glossary.md.
-  Follows the cipher page template in docs/STANDARDS.md.
-  Facts come from The Code Book, chapter 1. The wording is ours.
+  Retold from Mật mã: Từ cổ điển đến lượng tử (Simon Singh; Phạm Văn Thiều và Phạm Thu Hằng dịch, NXB Trẻ),
+  pages 20–27 and 33. Terms and names follow docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md. The wording is ours.
 */}
 
 <Standfirst>
-  Giữ nguyên mọi chữ trong tin nhắn, chỉ xáo thứ tự của chúng theo một đường zíc zắc mà chỉ bạn của bạn biết.
+  Giữ nguyên mọi chữ cái trong bức thư, chỉ đảo thứ tự của chúng theo một đường zíc zắc mà chỉ bạn bè bạn biết.
 </Standfirst>
 
 <Label>Mở đầu</Label>
 
-## Những tấm bảng trống
+## Hai thanh gỗ trống trơn
 
-Năm 480 TCN, một người Hy Lạp lưu vong tên là Demaratus đang sống ở thành Susa của Ba Tư. Ông thấy vua Xerxes gom một đạo quân khổng lồ để đánh úp Hy Lạp. Demaratus muốn báo tin cho Sparta, nhưng lính gác Ba Tư khám xét khách đi đường.
+Năm 480 TCN, Demaratus, một người Hy Lạp bị đuổi khỏi quê nhà, đang sống ở Susa, một thành phố của Ba Tư. Ông thấy vua Xerxes gom một đạo quân khổng lồ để đánh úp Hy Lạp. Demaratus muốn báo cho người Sparta. Khổ nỗi lính gác Ba Tư soát người đi đường rất gắt.
 
-Vì vậy ông cạo lớp sáp khỏi một cặp bảng viết bằng gỗ, viết lên mặt gỗ trần, rồi phủ lại một lớp sáp mới. Lính gác chỉ thấy những tấm bảng trống và cho qua. Ở Sparta, một người phụ nữ tên là Gorgo đoán ra mẹo này. Người Hy Lạp cạo lớp sáp đi, đọc lời cảnh báo và đóng 200 chiến thuyền.
+Thế là ông cạo lớp sáp trên hai thanh gỗ để viết, ghi lời báo lên mặt gỗ trần, rồi phủ sáp mới lên. Lính gác chỉ thấy hai thanh gỗ trống nên cho qua. Tới Sparta, một người phụ nữ tên Gorgo đoán ra mẹo. Người Hy Lạp cạo sáp, đọc lời báo và đóng 200 tàu chiến.
 
-Lần đó cách giấu đã thành công. Nhưng nếu lính gác cạo lớp sáp thì sao? Làm sao viết được một tin nhắn vẫn an toàn ngay cả khi bị tìm thấy?
+Lần ấy, giấu thư đã thành công. Nhưng nếu lính gác cạo sáp thì sao? Làm thế nào để viết một bức thư vẫn an toàn ngay cả khi bị tìm thấy?
 
 <Label>Thử xem</Label>
 
-## Viết trên hai dòng
+## Viết trên hai hàng
 
-Mô phỏng cho thấy tin nhắn “scrape off the wax” (cạo lớp sáp đi) viết trên hai thanh rào. Các chữ thay phiên nhau: một chữ ở thanh trên, chữ tiếp theo ở thanh dưới. Hãy đoán trước: những chữ nào sẽ nằm ở thanh trên?
+Mô phỏng cho thấy bức thư “scrape off the wax” (cạo sáp đi) viết trên hai thanh rào. Các chữ thay phiên nhau: một chữ ở hàng trên, chữ kế tiếp ở hàng dưới. Bạn đoán trước nhé: những chữ nào sẽ nằm ở hàng trên?
 
 <Try action="wax" button="Xem hai thanh rào">
   Chạm vào thanh 1 trên hàng rào, rồi thanh 2. Xem chữ nào sáng lên, và tìm chúng trong bản mật mã bên dưới.
 </Try>
 
-<Check question="Những chữ nào nằm ở thanh trên?">
-  Cứ cách một chữ lấy một chữ, bắt đầu từ chữ đầu tiên: `S`, `R`, `P`, `O`, và cứ thế. Các chữ ở giữa rơi xuống thanh dưới. Đọc thanh trên, rồi thanh dưới, bạn được `SRPOFHWXCAEFTEA`.
+<Check question="Những chữ nào nằm ở hàng trên?">
+  Cứ cách một chữ lại có một chữ, bắt đầu từ chữ đầu tiên: `S`, `R`, `P`, `O`, cứ thế. Các chữ xen giữa rơi xuống hàng dưới. Đọc hàng trên, rồi tới hàng dưới, bạn được `SRPOFHWXCAEFTEA`.
 </Check>
 
 <Label>Cách hoạt động</Label>
 
-## Chữ vẫn thế, thứ tự mới
+## Vẫn những chữ ấy, chỉ khác thứ tự
 
-### Dời chỗ, không đổi chữ
+### Đổi chỗ, không đổi chữ
 
-Giấu một tin nhắn, như Demaratus đã làm, gọi là **giấu thư**. Điểm yếu của nó rất rõ: một khi tin nhắn bị tìm thấy, ai cũng đọc được. **Mật mã học** thì khác. Nó không giấu tin nhắn. Nó giấu ý nghĩa.
+Giấu bức thư đi như Demaratus gọi là **kỹ thuật giấu thư**. Điểm yếu của nó rất rõ: bức thư mà bị tìm thấy thì ai cũng đọc được. **Khoa học mật mã** thì khác. Nó không giấu bức thư. Nó giấu cái nghĩa.
 
-Một cách làm điều đó là **mã chuyển vị**: bạn giữ nguyên mọi chữ nhưng dời chúng sang chỗ khác. Kết quả là một trò đảo chữ khổng lồ. Đếm các chữ trong bản mật mã, bạn sẽ thấy đúng những chữ có trong tin nhắn, chỉ là sai thứ tự.
+Một cách làm điều đó là **chuyển vị**: giữ nguyên các chữ cái, chỉ đổi chỗ của chúng. Kết quả giống một trò đảo chữ khổng lồ. Đếm các chữ trong bản mật mã, bạn sẽ thấy đúng những chữ của bức thư, chỉ là lộn xộn thứ tự.
 
 <Try action="book" button="Mở ví dụ của cuốn sách">
-  Đây là câu mà cuốn sách đem mã hóa. Chạm vào thanh 1 và so các chữ của nó với phần đầu bản mật mã trong ô bên dưới.
+  Đây là câu cuốn sách đem ra mã hóa: “thy secret is thy prisoner…” (bí mật của bạn là tù nhân của bạn; thả nó ra thì bạn thành tù nhân của nó). Chạm vào thanh 1 và so các chữ của nó với phần đầu bản mật mã ở ô bên dưới.
 </Try>
 
 ### Vì sao cần một quy luật
 
-Bạn có thể xáo các chữ một cách ngẫu nhiên. Một câu chỉ có 35 chữ cái đã có thể sắp xếp theo hơn 50.000.000.000.000.000.000.000.000.000.000 cách, nên không kẻ thù nào thử hết được. Nhưng bạn của bạn cũng không thể sắp lại được.
+Bạn có thể xáo các chữ hoàn toàn ngẫu nhiên. Một câu chỉ 35 chữ cái đã có hơn 50.000.000.000.000.000.000.000.000.000.000 cách sắp xếp. Cho dù mọi người trên Trái Đất cùng thử, mỗi giây một cách, cũng phải mất thời gian dài gấp hàng nghìn lần tuổi của vũ trụ. Nhưng như thế thì bạn của bạn cũng chẳng xếp lại được.
 
-Vì vậy người gửi và người nhận thỏa thuận trước một quy luật đơn giản. **Mật mã hàng rào** là một quy luật như thế. Viết các chữ đi xuống rồi đi lên qua các thanh rào theo đường zíc zắc. Rồi đọc lần lượt từng thanh. Số thanh rào chính là **khóa**: chi tiết bí mật mà hai bạn cùng biết.
+Vì vậy người gửi và người nhận hẹn trước với nhau một quy luật đơn giản. **Mật mã hàng rào** là một quy luật như thế. Viết các chữ đi xuống rồi đi lên qua các thanh rào, theo hình zíc zắc. Sau đó đọc lần lượt từng thanh. Số thanh rào chính là **chìa khóa**: chi tiết bí mật mà chỉ hai bạn biết.
 
 <Try action="zigzag" button="Dùng ba thanh rào">
-  Lần theo các chữ đi xuống rồi đi lên qua ba thanh rào. Rồi nhấn ▲ cạnh “Thanh rào” và xem cùng một tin nhắn tạo ra bản mật mã mới.
+  Dõi theo các chữ đi xuống rồi đi lên qua ba thanh rào. Sau đó nhấn ▲ cạnh “Thanh rào” và xem cùng bức thư ấy cho ra một bản mật mã mới.
 </Try>
 
 ### Đọc ngược lại
 
-Để giải mã, bạn của bạn làm ngược lại. Bạn ấy biết số thanh rào, nên biết mỗi thanh có bao nhiêu chữ. Bạn ấy cắt bản mật mã thành những đoạn đó, đặt mỗi đoạn dọc theo thanh của nó, rồi đọc theo đường zíc zắc.
+Để giải mã, bạn của bạn làm ngược lại. Biết số thanh rào, người ấy biết mỗi thanh có bao nhiêu chữ. Người ấy cắt bản mật mã thành từng khúc như vậy, đặt mỗi khúc lên thanh của nó, rồi đọc theo đường zíc zắc.
 
 <Try action="caught" button="Đặt bản mật mã lại lên hàng rào">
-  Mô phỏng đã cắt `SRPOFHWXCAEFTEA` thành hai thanh giúp bạn. Đọc xuống rồi lên theo hàng rào, từng cột một.
+  Mô phỏng đã cắt `SRPOFHWXCAEFTEA` thành hai thanh giúp bạn. Hãy đọc đi xuống rồi đi lên theo hàng rào, từng cột một.
 </Try>
 
 <Check question="Vì sao bạn của bạn phải biết số thanh rào?">
-  Số thanh rào quyết định bản mật mã bị cắt ở đâu và các đoạn đan zíc zắc với nhau thế nào. Nếu sai số, các chữ rơi vào sai cột và hàng rào chỉ ra một chuỗi vô nghĩa.
+  Số thanh rào quyết định bản mật mã bị cắt ở đâu và các khúc đan vào nhau ra sao. Sai số thanh, các chữ rơi vào sai cột, và hàng rào chỉ cho ra những chữ vô nghĩa.
 </Check>
 
 <Label>Câu chuyện</Label>
 
 ## Hai cách giữ bí mật
 
-Câu chuyện về Demaratus đến từ Herodotus, người đã viết về các cuộc chiến giữa Hy Lạp và Ba Tư. Ông còn kể về một người khác đã cạo đầu người đưa tin, viết lên da đầu, rồi chờ tóc mọc lại. Suốt hai nghìn năm, người ta không ngừng nghĩ ra cách giấu tin nhắn.
+Chuyện Demaratus đến với chúng ta nhờ Herodotus, người đã chép lại các cuộc chiến giữa Hy Lạp và Ba Tư. Ông còn kể về một người cạo đầu người đưa tin, viết thư lên da đầu, rồi đợi tóc mọc lại. Suốt hai nghìn năm, người ta cứ nghĩ thêm cách giấu thư mới.
 
-Nhưng một lính gác cẩn thận có thể khám xét tất cả mọi người. Vì vậy, bên cạnh việc giấu, người ta học cách xáo trộn. Mật mã học có hai nhánh. Mã chuyển vị, ở trang này, dời chỗ các chữ. **Mật mã thay thế** đổi mỗi chữ thành một chữ khác, và bạn sẽ sớm gặp nó.
+Nhưng một lính gác cẩn thận có thể soát hết mọi người. Vì vậy, song song với giấu thư, người ta học cách biến đổi bức thư. Mật mã chia làm hai nhánh. **Chuyển vị**, ở trang này, đổi chỗ các chữ. **Thay thế** đổi mỗi chữ thành một chữ khác, và bạn sẽ sớm gặp nó.
 
-Mật mã hàng rào là mã chuyển vị ở dạng đơn giản nhất. Cuốn sách minh họa nó với hai thanh, các chữ “xen kẽ nhau” trên một dòng trên và một dòng dưới. Bạn không cần dụng cụ gì: chỉ cần một cây bút và một con số.
+Mật mã hàng rào là chuyển vị ở dạng giản dị nhất. Sách kể rằng học sinh đôi khi dùng nó để chuyền thư cho nhau: các chữ lần lượt thay phiên ở hàng trên và hàng dưới, rồi nối hàng dưới vào sau hàng trên. Người ta cũng có thể viết trên ba hàng thay vì hai. Bạn chẳng cần dụng cụ gì: chỉ một cây bút và một con số.
 
 <Label>Bị phá như thế nào</Label>
 
-## Quá ít hàng rào
+## Quá ít kiểu hàng rào
 
-Chính con số ấy là điểm yếu. Giả sử kẻ thù bắt được một tin nhắn và nghi đó là mật mã hàng rào. Bản mật mã chỉ dài có vậy, nên chỉ có vài số thanh rào hợp lý. Kẻ thù cứ việc thử từng số một. Thử mọi khóa như thế gọi là **tấn công vét cạn**.
+Con số ấy chính là chỗ yếu. Giả sử đối phương bắt được một bức thư và ngờ rằng nó dùng mật mã hàng rào. Bản mật mã chỉ dài có hạn, nên số thanh rào hợp lý cũng chỉ có vài con số. Đối phương cứ việc thử lần lượt từng số. Thử hết mọi chìa khóa như vậy, cuốn sách gọi là **tấn công hùng hục** (còn gọi là tấn công vét cạn, tiếng Anh: *brute-force attack*).
 
-Phần lớn các lần thử cho ra chuỗi vô nghĩa. Một lần cho ra những từ thật, và kẻ thù biết ngay đó là đáp án đúng.
+Phần lớn các lần thử cho ra chữ vô nghĩa. Có một lần cho ra những từ thật, và đối phương biết ngay là đã trúng.
 
-<Try action="intercepted" button="Mở một tin nhắn bị chặn được">
+<Try action="intercepted" button="Mở một bức thư bị chặn">
   Bạn đã bắt được `XSOCESAFREEREISGEXLR`. Mở mục “Thử mọi số thanh rào cùng lúc” bên dưới các ô điều khiển. Dò xuống danh sách tìm dòng bạn đọc được.
 </Try>
 
-Bài học: một quy luật đủ đơn giản để nhớ có thể cũng đủ đơn giản để đoán. Một mật mã mạnh cần nhiều khóa hơn hẳn số mà bất kỳ ai thử nổi.
+Bài học: một quy luật đủ dễ để nhớ thì có khi cũng đủ dễ để đoán. Một mật mã mạnh cần số chìa khóa nhiều hơn hẳn sức thử của bất kỳ ai.
 
 <Label>Thử thách</Label>
 
 ## Tin từ Susa
 
 <Challenge answer="XERXES SAILS FOR GREECE">
-  Một người đưa tin từ Susa mang tới một dải chữ: `XSOCESAFREEREISGEXLR`. Không ai cho bạn biết số thanh rào.
+  Một người đưa tin từ Susa mang đến một dải chữ: `XSOCESAFREEREISGEXLR`. Không ai cho bạn biết số thanh rào.
 
-  Hãy tìm khóa. Tin nhắn nói gì?
+  Hãy tìm chìa khóa. Bức thư nói gì? (Câu trả lời là tiếng Anh.)
 
-  <Try action="intercepted" button="Mở tin nhắn" />
+  <Try action="intercepted" button="Mở bức thư" />
 </Challenge>
 
-<Check question="Giấu thư và mật mã học khác nhau thế nào?">
-  Giấu thư giấu chính tin nhắn, như viết dưới lớp sáp. Mật mã học để tin nhắn ở ngay trước mắt nhưng giấu ý nghĩa của nó. Một tin nhắn giấu thư bị tìm thấy thì đọc được ngay; một bản mật mã bị tìm thấy thì vẫn còn phải phá.
+<Check question="Giấu thư khác khoa học mật mã ở chỗ nào?">
+  Giấu thư giấu chính bức thư, như viết dưới lớp sáp. Khoa học mật mã để bức thư lộ ra nhưng giấu cái nghĩa. Thư giấu mà bị tìm thấy thì đọc được ngay; còn bản mật mã bị tìm thấy thì vẫn phải phá mới đọc được.
 </Check>
 
 <Label>Chuyện gì đến tiếp theo</Label>
 
-## Một mật mã cầm được trong tay
+## Một mật mã cầm được trên tay
 
-Mật mã hàng rào chỉ cần giấy, và bạn phải tự tay xáo hết. Binh lính Sparta tiến thêm một bước. Họ đưa mã chuyển vị vào một đồ vật: một cây gậy gỗ có dải da quấn quanh. Đó là dụng cụ mật mã quân sự đầu tiên mà chúng ta biết.
+Mật mã hàng rào chỉ cần giấy, và bạn phải tự tay đảo chữ. Người Sparta tiến thêm một bước. Họ gói phép chuyển vị vào một đồ vật: một khúc gỗ có dải da quấn quanh. Đó là dụng cụ mã hóa dùng trong quân đội sớm nhất mà ta biết.
 
-Cây gậy làm thay việc xáo chữ, và độ dày của nó là khóa. Bạn có thể tự quấn một cây ở trang tiếp theo: [gậy scytale của Sparta](/ciphers/scytale).
+Khúc gỗ làm việc đảo chữ thay họ, và độ to của nó là chìa khóa. Bạn có thể tự quấn một cái ở trang sau: [cây scytale của Sparta](/ciphers/scytale).
 
 <Label>Đọc thêm</Label>
 
 ## Tìm hiểu thêm
 
-- Simon Singh, *The Code Book*, chương 1.
-- Herodotus, *Lịch sử* (*The Histories*), quyển 7. Câu chuyện về Demaratus và những tấm bảng sáp.
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử* (Phạm Văn Thiều và Phạm Thu Hằng dịch, NXB Trẻ), chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland. Tiếng Anh: *The Code Book*.
+- Herodotus, *Lịch sử* (*The Histories*), quyển 7. Chuyện Demaratus và những thanh gỗ phủ sáp.

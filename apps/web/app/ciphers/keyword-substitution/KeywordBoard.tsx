@@ -15,7 +15,7 @@ function KeywordCaption({ keyword }: { keyword: string }) {
       <Caption>
         {t({
           en: "No keyword yet, so the cipher alphabet is the plain one. Type a keyword.",
-          vi: "Chưa có từ khóa, nên bảng chữ mã giống hệt bảng chữ rõ. Hãy gõ một từ khóa.",
+          vi: "Chưa có từ khóa, nên bảng chữ cái mật mã giống hệt bảng chữ cái thường. Hãy gõ một từ khóa.",
         })}
       </Caption>
     );
@@ -30,7 +30,7 @@ function KeywordCaption({ keyword }: { keyword: string }) {
         ),
         vi: (
           <>
-            Bỏ dấu cách và các chữ lặp lại, từ khóa còn <Letters>{start}</Letters>. Nó đứng đầu bảng chữ mã. Các chữ chưa
+            Bỏ dấu cách và các chữ lặp lại, từ khóa còn <Letters>{start}</Letters>. Nó đứng đầu bảng chữ cái mật mã. Các chữ chưa
             dùng nối theo thứ tự, bắt đầu từ sau chữ <Letters>{start.at(-1)}</Letters>.
           </>
         ),
@@ -49,8 +49,8 @@ export function KeywordBoard({ state, onPick }: { state: KeywordState; onPick: (
     <Board>
       <AlphabetRows
         rows={[
-          { label: t({ en: "Plain", vi: "Rõ" }), letters: ALPHABET },
-          { label: t({ en: "Cipher", vi: "Mã" }), letters: cipher, kind: "cipher" },
+          { label: t({ en: "Plain", vi: "Thường" }), letters: ALPHABET },
+          { label: t({ en: "Cipher", vi: "Mật mã" }), letters: cipher, kind: "cipher" },
         ]}
         highlight={state.picked}
         onPick={onPick}
@@ -65,7 +65,7 @@ export function KeywordBoard({ state, onPick }: { state: KeywordState; onPick: (
           ),
           vi: (
             <>
-              Chữ rõ <Letters>{ALPHABET[column]}</Letters> thành chữ mã <Letters>{cipher[column]}</Letters>. Chạm vào ô
+              Chữ thường <Letters>{ALPHABET[column]}</Letters> thành chữ mật mã <Letters>{cipher[column]}</Letters>. Chạm vào ô
               dưới một chữ để lần theo nó.
             </>
           ),
@@ -75,7 +75,7 @@ export function KeywordBoard({ state, onPick }: { state: KeywordState; onPick: (
       <Caption>
         {t({
           en: <>This is one of {KEY_COUNT} possible cipher alphabets.</>,
-          vi: <>Đây là một trong {KEY_COUNT.replaceAll(",", ".")} bảng chữ mã có thể có.</>,
+          vi: <>Đây là một trong {KEY_COUNT.replaceAll(",", ".")} bảng chữ cái mật mã có thể có.</>,
         })}
       </Caption>
     </Board>

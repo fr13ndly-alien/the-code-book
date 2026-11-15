@@ -37,7 +37,7 @@ function Ring(props: { id: CartoucheId; state: HieroglyphsState; onTap: (cartouc
   return (
     <section className={styles.cartouche} aria-label={t({
         en: `Cartouche: ${heading(cartouche, false, locale)}`,
-        vi: `Khung tên: ${heading(cartouche, false, locale)}`,
+        vi: `Cartouche: ${heading(cartouche, false, locale)}`,
       })}>
       <h3>{heading(cartouche, isRead(cartouche, state.assignment), locale)}</h3>
       <div className={styles.ring}>
@@ -108,7 +108,7 @@ export function HieroglyphsBoard(props: {
         ) : (
           t({
             en: "Top row of each ring: the name in Greek letters. Bottom row: your sounds. Tap a sign to start.",
-            vi: "Hàng trên của mỗi khung: tên viết bằng chữ Hy Lạp. Hàng dưới: các âm bạn chọn. Chạm vào một ký hiệu để bắt đầu.",
+            vi: "Hàng trên của mỗi cartouche: tên viết bằng chữ Hy Lạp. Hàng dưới: các âm bạn chọn. Chạm vào một ký hiệu để bắt đầu.",
           })
         )}
       </Caption>

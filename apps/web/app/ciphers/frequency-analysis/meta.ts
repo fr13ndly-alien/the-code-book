@@ -12,8 +12,8 @@ export const meta: CipherMeta = {
   vi: {
     title: "Phân tích tần suất",
     era: "Thế kỷ 9",
-    hook: "Ngôn ngữ nào cũng có những chữ cái được ưa dùng. Một học giả ở Baghdad đã dựa vào chúng để phá loại mật mã được cho là không thể phá.",
-    firstStep: "Chạm vào cột cao nhất. Rồi chọn chữ rõ mà nó đang che giấu.",
-    source: "The Code Book, chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland",
+    hook: "Ngôn ngữ nào cũng có những chữ cái nó ưa dùng. Một học giả ở Baghdad đã dựa vào chúng để phá loại mật mã tưởng như không ai phá nổi.",
+    firstStep: "Chạm vào cột cao nhất. Rồi chọn chữ thường mà nó đang che giấu.",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland",
   },
 };

@@ -1,8 +1,9 @@
 {/*
-  Translates story.mdx into Vietnamese, following docs/i18n/vi-glossary.md.
+  Retold in Vietnamese from Mật mã: Từ cổ điển đến lượng tử (NXB Trẻ), chương 3, pages 193–211,
+  and chương 4: Công phá Enigma, pages 213–260 and 275–276. Follows docs/i18n/vi-glossary.md.
   Follows the cipher page template in docs/STANDARDS.md:
   Hook, Try it, How it works, The story, How it was broken, Challenge, What came next, Further reading.
-  Facts come from The Code Book, chapter 3. The wording is ours.
+  The wording is ours.
 */}
 
 <Standfirst>
@@ -11,158 +12,158 @@
 
 <Label>Mở đầu</Label>
 
-## Cỗ máy không ai đọc nổi
+## Chiếc máy không ai đọc nổi
 
-Năm 1926, các nhà giải mã người Anh bắt đầu thu được những bức điện vô tuyến của Đức mà họ không hiểu nổi. Suốt Chiến tranh thế giới thứ nhất, họ đã đọc được mật mã của Đức. Giờ thì mọi cách họ biết đều thất bại.
+Năm 1926, các nhà giải mã của Phòng 40 bên Anh bắt đầu chặn được những bức điện vô tuyến của Đức mà họ không sao hiểu nổi. Suốt Chiến tranh thế giới thứ nhất, họ đọc mật mã Đức như đọc báo. Giờ thì mọi cách quen thuộc đều vô dụng.
 
-Người Pháp bỏ cuộc. Người Mỹ cũng vậy. Có vẻ như nước Đức đang có đường liên lạc an toàn nhất thế giới.
+Người Pháp thử rồi bỏ cuộc. Người Mỹ cũng thế. Nước Đức, có vẻ như, đang có đường liên lạc an toàn nhất thế giới.
 
-Những bức điện ấy đến từ một chiếc hộp gỗ to bằng chiếc máy đánh chữ, nặng khoảng 12 kg (26 pound). Nó tên là Enigma. Bạn đang nhìn thấy một chiếc ngay lúc này. Làm sao một chiếc hộp đầy bánh xe và dây điện lại thắng được mọi nhà giải mã trên đời?
+Những bức điện ấy đến từ một chiếc hộp gỗ cỡ chiếc máy đánh chữ, chỉ khoảng 34 × 28 × 15 cm nhưng nặng tới 12 kg (26 pound). Nó tên là Enigma, và bạn đang nhìn thấy một chiếc. Làm sao một chiếc hộp đầy bánh xe và dây điện lại thắng được mọi nhà giải mã trên đời?
 
 <Label>Thử xem</Label>
 
 ## Nhấn một phím ba lần
 
-Trước khi đọc tiếp, bạn hãy đoán thử. Nếu bạn nhấn `A` ba lần, liệu lần nào cũng sáng cùng một bóng đèn?
+Trước khi đọc tiếp, bạn đoán thử nhé. Nếu bạn nhấn `A` ba lần, có phải lần nào cũng cùng một bóng đèn sáng?
 
 <Try action="fresh" button="Cho tôi một chiếc máy mới">
-  Nhấn `A` ba lần, trên mô hình hoặc bằng cách gõ vào ô bên dưới nó. Xem các bóng đèn và ba ô cửa sổ rôto ở phía sau.
+  Nhấn `A` ba lần, trên mô hình hoặc bằng cách gõ vào ô bên dưới. Xem các bóng đèn và ba ô cửa sổ của đĩa mã hóa ở phía sau.
 </Try>
 
 <Check question="Chuyện gì đã xảy ra?">
-  Ba bóng đèn khác nhau đã sáng: `B`, rồi `D`, rồi `Z`. Rôto bên phải cũng xoay một nấc mỗi lần. Cỗ máy đã dùng một bảng chữ mã mới cho mỗi chữ bạn gõ.
+  Ba bóng đèn khác nhau đã sáng: `B`, rồi `D`, rồi `Z`. Đĩa mã hóa bên phải cũng quay một nấc sau mỗi lần nhấn. Với mỗi chữ bạn gõ, chiếc máy dùng một bảng chữ cái mật mã mới.
 </Check>
 
 <Label>Cách hoạt động</Label>
 
-## Một bàn phím, vài bánh xe và một hàng đèn
+## Bàn phím, vài chiếc đĩa và một bảng đèn
 
-Enigma có ba phần chính. Bạn nhấn một chữ trên **bàn phím**. Một dòng điện chạy qua các **rôto** (đĩa mã hóa), và chúng xáo trộn nó. Dòng điện đi ra ở **bảng đèn**, nơi một bóng đèn sáng lên. Bóng đèn đó là chữ đã được mã hóa của bạn.
+Ở dạng đơn giản nhất, Enigma có ba phần nối với nhau bằng dây điện. Bạn gõ một chữ trên **bàn phím**. Dòng điện chạy qua **bộ phận mã hóa**, nơi nó bị đổi sang chữ khác. Rồi nó tới **bảng đèn** và làm sáng một bóng. Bóng đèn đó là chữ mật mã của bạn.
 
-Mỗi rôto là một bánh xe dày, bên trong có 26 sợi dây. Một sợi dây đi vào ở một chữ và đi ra ở một chữ khác. Nếu chỉ có một rôto đứng yên, `A` sẽ luôn thành cùng một chữ. Đó là một mật mã thay thế đơn giản. Các nhà giải mã đã biết cách phá loại này từ một nghìn năm trước, bằng cách đếm chữ.
+Trái tim của bộ phận mã hóa là **đĩa mã hóa** (còn gọi là rôto): một chiếc đĩa cao su dày, bên trong chằng chịt 26 sợi dây. Mỗi sợi đi vào ở một chữ và đi ra ở một chữ khác. Nếu đĩa đứng yên, `A` sẽ luôn thành cùng một chữ. Đó chỉ là mật mã thay thế dùng một bảng chữ cái. Các nhà giải mã đã phá loại này bằng cách đếm chữ từ cả nghìn năm trước.
 
 <Try action="toyCafe" button="Mở mô hình sáu chữ của cuốn sách">
-  Cuốn sách giải thích điều này bằng một cỗ máy đồ chơi chỉ có sáu chữ. Hãy gõ `c`, `a`, `f`, `e` trên đó. Các bóng đèn đánh vần ra `DBCE`, đúng như trong sách. Sau đó bật chế độ xoay và nhấn `b` sáu lần.
+  Cuốn sách giải thích bằng một chiếc máy tí hon chỉ có sáu chữ. Gõ `c`, `a`, `f`, `e` trên đó: các bóng đèn hiện `DBCE`, đúng như trong sách. Sau đó bật chế độ quay và nhấn `b` sáu lần.
 </Try>
 
-<Try action="toyTurning" button="Bật chế độ xoay giúp tôi" />
+<Try action="toyTurning" button="Bật chế độ quay giúp tôi" />
 
-### Các rôto xoay
+### Các đĩa mã hóa quay
 
-Nhà phát minh Arthur Scherbius đã thêm một ý tưởng khéo léo. Mỗi lần bạn nhấn một phím, rôto thứ nhất xoay một nấc. Phần dây bên trong giờ nằm ở vị trí mới, nên cùng một phím sẽ làm sáng một bóng đèn khác.
+Ý tưởng hay nhất của nhà phát minh Arthur Scherbius là cho đĩa mã hóa tự quay. Mỗi lần bạn gõ một chữ, đĩa thứ nhất quay đi một nấc, tức 1/26 vòng. Các sợi dây bên trong đổi chỗ, nên cùng một phím sẽ làm sáng một bóng đèn khác.
 
-Sau 26 lần nhấn, rôto thứ nhất quay về chỗ cũ. Khi đó nó đẩy rôto thứ hai tiến một nấc, giống các bánh xe số trên đồng hồ đo quãng đường của ô tô. Rôto thứ hai cũng làm thế với rôto thứ ba. Ba rôto cho 26 × 26 × 26 = 17.576 vị trí trước khi kiểu xoay lặp lại.
+Quay đủ 26 nấc, đĩa thứ nhất về lại chỗ cũ. Lúc đó một cái răng trên nó đẩy đĩa thứ hai tiến một nấc, giống đồng hồ đo quãng đường trên ô tô: hàng đơn vị quay hết vòng thì đẩy hàng chục lên một số. Đĩa thứ hai cũng làm thế với đĩa thứ ba. Ba đĩa cho 26 × 26 × 26 = 17.576 vị trí trước khi kiểu mã hóa lặp lại.
 
 <Try>
-  Dùng nút ▲ để đặt rôto bên phải ở chữ `V`, rồi nhấn một phím bất kỳ. Rôto ở giữa cũng xoay theo.
+  Dùng nút ▲ để đặt đĩa mã hóa bên phải ở chữ `V`, rồi nhấn một phím bất kỳ. Đĩa ở giữa cũng nhích theo.
 </Try>
 
-### Đĩa phản xạ đưa dòng điện quay lại
+### Đĩa phản xạ gửi dòng điện quay lại
 
-Phía sau rôto thứ ba là một **đĩa phản xạ**. Nó đưa dòng điện quay ngược qua cả ba rôto theo một đường khác.
+Sau đĩa thứ ba là **đĩa phản xạ**. Nó cũng là một đĩa cao su đầy dây, nhưng không quay, và dây đi vào rồi đi ra ở cùng một mặt. Nó gửi dòng điện ngược lại qua cả ba đĩa mã hóa, theo một đường khác.
 
-Nhờ vậy Enigma có một tính chất rất gọn. Nếu `A` làm sáng `B`, thì ở cùng vị trí ấy, `B` làm sáng `A`. Vì vậy cùng một cỗ máy làm được cả hai việc. Để đọc một bức điện, bạn đặt các rôto giống hệt vị trí xuất phát của người gửi rồi gõ các chữ đã bị xáo trộn vào. Các bóng đèn sẽ đánh vần ra bản gốc.
+Thoạt nhìn, đĩa phản xạ chẳng thêm được gì. Nhưng nhờ nó, Enigma có một tính chất rất gọn: nếu `A` làm sáng `B`, thì ở cùng vị trí ấy, `B` làm sáng `A`. Người gửi gõ chữ thường để ra chữ mật mã. Người nhận đặt máy giống hệt, gõ chữ mật mã vào và đọc ra chữ thường, như soi gương. Một chiếc máy làm được cả hai việc.
 
-Đĩa phản xạ có một tác dụng phụ: một chữ không bao giờ thành chính nó. Bạn nhấn `A` bao nhiêu lần cũng được, đèn `A` sẽ không bao giờ sáng. Hãy nhớ điều này. Về sau nó rất quan trọng.
+Đĩa phản xạ còn có một tác dụng phụ: một chữ không bao giờ thành chính nó. Bạn nhấn `A` bao nhiêu lần cũng được, đèn `A` sẽ không bao giờ sáng. Hãy nhớ điều này. Về sau nó rất quan trọng.
 
-### Bảng cắm dây đổi chỗ các chữ
+### Bảng ổ nối đổi chỗ các chữ
 
-Ở mặt trước là **bảng cắm dây**. Một sợi dây nối giữa hai ổ cắm sẽ đổi chỗ hai chữ đó trước khi dòng điện tới các rôto, và đổi thêm một lần nữa trên đường ra. Lúc đầu, người vận hành dùng sáu sợi dây.
+Ở mặt trước có **bảng ổ nối**. Dòng điện từ bàn phím đi qua nó trước khi tới đĩa mã hóa thứ nhất. Một **dây cáp** cắm vào hai ổ nối sẽ đổi chỗ hai chữ đó, trước khi dòng điện tới các đĩa và một lần nữa trên đường ra. Lúc đầu, người dùng Enigma có sáu dây cáp, tức là đổi được sáu cặp chữ.
 
 <Try>
-  Ở mặt trước mô hình, chạm vào ổ cắm `A` rồi chạm vào ổ cắm `B` để nối chúng. Giờ hãy gõ vài chữ và so sánh.
+  Ở mặt trước mô hình, chạm ổ nối `A` rồi chạm ổ nối `B` để nối chúng. Giờ gõ vài chữ và so sánh.
 </Try>
 
-### Đếm số khóa
+### Đếm số chìa khóa mã
 
-**Khóa** là cách cỗ máy được cài đặt trước khi bạn gõ. Hãy đếm các lựa chọn:
+**Chìa khóa mã** là cách đặt máy trước khi bạn gõ. Cuốn sách đếm các lựa chọn như sau:
 
-- 17.576 vị trí xuất phát của các rôto
-- 6 thứ tự có thể xếp ba rôto
-- 100.391.791.500 cách cắm sáu sợi dây
+- 17.576 vị trí ban đầu của ba đĩa mã hóa
+- 6 cách sắp đặt ba đĩa vào ba khe
+- 100.391.791.500 cách nối sáu dây cáp trên bảng ổ nối
 
-Nhân chúng lại, bạn được khoảng 10 triệu tỷ (10.000.000.000.000.000) khóa. Một người cứ mỗi phút thử một khóa sẽ cần lâu hơn cả tuổi của vũ trụ mới thử hết được.
+Nhân lại, bạn được khoảng 10 triệu tỷ (10.000.000.000.000.000) chìa khóa. Một nhà giải mã kiên nhẫn, mỗi phút thử một chìa khóa, sẽ cần lâu hơn cả tuổi của vũ trụ mới thử hết.
 
-<Check question="Phần lớn số khóa đó đến từ bảng cắm dây. Vậy cần rôto làm gì?">
-  Bảng cắm dây không bao giờ thay đổi trong lúc bạn gõ. Nếu chỉ có nó, đó là một mật mã thay thế đơn giản, và đếm chữ là phá được. Các rôto thêm ít khóa hơn, nhưng chúng đổi mật mã ở mỗi chữ. Chính điều đó đánh bại cách đếm chữ. Enigma cần cả hai.
+<Check question="Phần lớn số chìa khóa đó đến từ bảng ổ nối. Vậy cần đĩa mã hóa làm gì?">
+  Bảng ổ nối không đổi trong lúc bạn gõ. Đứng một mình, nó chỉ thay mỗi chữ theo một bảng cố định, nên phân tích tần suất phá được ngay. Các đĩa mã hóa thêm ít chìa khóa hơn, nhưng chúng đổi cách mã hóa ở từng chữ, và chính điều đó làm phân tích tần suất bó tay. Enigma cần cả hai.
 </Check>
 
 <Label>Câu chuyện</Label>
 
 ## Bán với giá 10.000 mác
 
-Scherbius lấy bằng sáng chế đầu tiên vào năm 1918. Quân đội Đức đưa Enigma vào dùng năm 1926 và về sau mua hơn 30.000 chiếc. Scherbius không được thấy số phận của nó. Ông mất năm 1929 sau một tai nạn xe ngựa.
+Scherbius nhận bằng sáng chế năm 1918. Lúc đầu, cả giới kinh doanh lẫn quân đội đều chê máy đắt. Phải đến khi người Đức biết rằng người Anh từng đọc mật mã của họ suốt Thế chiến Thứ nhất, quân đội mới đổi ý. Họ đưa Enigma vào dùng năm 1926 và về sau mua hơn 30.000 chiếc. Scherbius không kịp thấy kết cục của nó: năm 1929, ông mất lái chiếc xe ngựa, đâm vào tường và qua đời.
 
-Vết nứt đầu tiên đến từ bên trong. Hans-Thilo Schmidt là một doanh nhân làm ăn thất bại, có chân trong văn phòng ở Berlin lo việc mật mã của nước Đức. Ngày 8 tháng 11 năm 1931, ông gặp một điệp viên Pháp ở một khách sạn tại Bỉ. Ông để người kia chụp ảnh các cuốn hướng dẫn dùng Enigma, đổi lấy 10.000 mác.
+Vết nứt đầu tiên đến từ bên trong. Hans-Thilo Schmidt là một người Đức làm ăn thất bại, nhà máy xà phòng của ông phải đóng cửa. Anh trai ông nhờ quen biết xin cho ông một chân ở Chiffrierstelle, văn phòng ở Berlin quản lý thông tin mã hóa của Đức. Ngày 8 tháng 11 năm 1931, tại một khách sạn ở Verviers, nước Bỉ, Schmidt gặp một điệp viên Pháp có bí danh Rex. Với 10.000 mác, ông để Rex chụp lại hai tài liệu hướng dẫn dùng Enigma.
 
-Nhờ các cuốn hướng dẫn, phe Đồng minh làm được một bản sao của cỗ máy. Nhưng một bản sao là chưa đủ. Enigma được thiết kế để vẫn an toàn ngay cả khi kẻ thù có một chiếc. Điều quan trọng là khóa, và mỗi ngày lại có một khóa mới. Người Pháp cho rằng việc này vô vọng, nên họ chuyển các bức ảnh cho đồng minh của mình ở Ba Lan.
+Nhờ chúng, phe Đồng minh có thể dựng một bản sao đúng của máy quân sự. Nhưng có máy thôi thì chưa đủ. Enigma được làm ra để vẫn an toàn khi kẻ thù có trong tay một chiếc. Cái phải giữ kín là chìa khóa mã, và mỗi ngày lại có chìa khóa mới. Các nhà giải mã Pháp cho là vô vọng, nên họ chuyển các bản chụp sang cho đồng minh của mình là Ba Lan.
 
-<DigDeeper title="Người Đức dùng khóa mỗi ngày ra sao">
-  Mỗi người vận hành có một sổ mã ghi một **khóa ngày** cho từng ngày trong tháng: cách cắm dây trên bảng cắm dây, thứ tự rôto và vị trí xuất phát của các rôto.
+<DigDeeper title="Người Đức dùng chìa khóa mã mỗi ngày ra sao">
+  Mỗi tháng, người điều khiển máy nhận một sổ mã mới, ghi một **khóa mã ngày** cho từng ngày: cách nối cáp trên bảng ổ nối, vị trí ban đầu của từng đĩa, và cách sắp đặt các đĩa mã hóa.
 
-  Để không gửi quá nhiều bức điện cùng một khóa, với mỗi bức điện, người vận hành chọn ba vị trí rôto mới. Đó là **khóa bức điện**. Anh ta gõ nó hai lần bằng khóa ngày, ở đầu bức điện. Sau đó anh ta xoay các rôto về khóa bức điện và gõ phần nội dung. Việc gõ lặp lại là để bắt lỗi. Hóa ra chính nó lại là một lỗi.
+  Nếu cả trăm bức điện trong ngày đều dùng chung khóa mã ngày, nhà giải mã sẽ có quá nhiều chất liệu. Vì vậy, với mỗi bức điện, người gửi tự chọn ba vị trí đĩa mới, gọi là **khóa mã thư**. Anh ta đặt máy theo khóa mã ngày rồi gõ khóa mã thư hai lần ở đầu bức điện. Sau đó anh quay các đĩa về khóa mã thư và gõ phần nội dung. Việc gõ hai lần là để bắt lỗi. Hóa ra nó lại chính là lỗi.
 </DigDeeper>
 
-<DigDeeper title="Vòng chữ: thêm một chỗ để cài đặt">
-  Các chữ của mỗi rôto, cùng cái khấc đẩy rôto bên cạnh, nằm trên một vòng xoay được quanh phần dây bên trong. Vì vậy cùng một chữ hiện ở cửa sổ có thể ứng với cách nối dây khác nhau. Cuốn sách chỉ nhắc tên vị trí vòng chữ rồi đi tiếp. Để thử, bạn mở “Cài đặt máy”, đổi một vòng chữ rồi gõ lại đúng những chữ cũ.
+<DigDeeper title="Vòng chữ: thêm một chỗ để đặt">
+  Chữ cái trên mỗi đĩa mã hóa, cùng cái khấc đẩy đĩa bên cạnh, nằm trên một **vòng** (ring) xoay được quanh phần dây bên trong. Vì vậy cùng một chữ hiện ở cửa sổ có thể ứng với cách nối dây khác nhau. Cuốn sách nói vòng là bộ phận ít quan trọng nhất của Enigma và cố ý bỏ qua nó. Muốn thử, bạn mở “Cài đặt máy”, đổi một vòng chữ rồi gõ lại đúng những chữ cũ.
 </DigDeeper>
 
 <Label>Bị phá như thế nào</Label>
 
 ## Lặp lại là kẻ thù
 
-Ba Lan sợ nước Đức, nên họ thuê các nhà toán học. Giỏi nhất là Marian Rejewski, khi ấy hai mươi ba tuổi.
+Ba Lan nằm kẹp giữa Nga và Đức, nên rất sợ bị xâm lược. Văn phòng mật mã của họ, Biuro Szyfrów, mời các nhà toán học đến học về mật mã. Giỏi nhất trong số đó là Marian Rejewski, một chàng trai 23 tuổi, nhút nhát và cận thị.
 
-Rejewski nhắm vào khóa bức điện bị lặp lại. Vì nó được gõ hai lần, chữ thứ nhất và chữ thứ tư của mọi bức điện là cùng một chữ, được mã hóa cách nhau ba nấc. Ông nối các cặp này thành những chuỗi. Độ dài của các chuỗi chỉ phụ thuộc vào các rôto, không phụ thuộc vào bảng cắm dây.
+Rejewski nhắm vào khóa mã thư bị lặp lại. Vì nó được gõ hai lần, chữ thứ nhất và chữ thứ tư của mọi bức điện là mã hóa của cùng một chữ, cách nhau ba nấc đĩa. Ông nối các cặp chữ ấy thành những **vòng liên kết**. Số liên kết trong mỗi vòng chỉ phụ thuộc vào các đĩa mã hóa, không dính gì đến bảng ổ nối.
 
-Như vậy chỉ còn 105.456 cách đặt rôto, chứ không phải mười triệu tỷ khóa. Nhóm của ông lập danh sách các chuỗi cho từng cách đặt một. Sau đó họ có thể tìm ra khóa ngày ngay trong ngày.
+Thế là chỉ còn 105.456 cách đặt đĩa mã hóa, chứ không phải 10 triệu tỷ chìa khóa. Nhóm của ông mất ròng rã một năm để ghi lại độ dài các vòng cho từng cách đặt. Sau đó, họ tìm ra khóa mã ngày trước khi ngày ấy trôi qua.
 
-Tháng 12 năm 1938, Đức thêm hai rôto nữa, và công việc khó gấp mười lần. Ngày 24 tháng 7 năm 1939, năm tuần trước cuộc xâm lược, người Ba Lan cho người Pháp và người Anh xem mọi điều họ biết.
+Tháng 12 năm 1938, Đức phát thêm hai đĩa mã hóa nữa, và công việc khó lên gấp mười lần. Ngày 24 tháng 7 năm 1939, năm tuần trước khi Đức tấn công Ba Lan, người Ba Lan mời các nhà giải mã Anh và Pháp đến Vácsava và cho họ xem mọi thứ.
 
 ### Turing và bản tin thời tiết
 
-Người Anh lập căn cứ ở Bletchley Park. Tại đó, Alan Turing tìm ra một cách tấn công không cần đến khóa lặp lại. Nó chỉ cần một **từ mồi (crib)**: một từ đoán trước là có trong bức điện. Ví dụ, các bản tin thời tiết của Đức gần như lúc nào cũng có từ `WETTER` (thời tiết).
+Người Anh đặt trung tâm giải mã ở Bletchley Park. Ở đó, Alan Turing tìm ra một cách tấn công không cần đến khóa mã thư lặp lại. Nó cần một **crib**: một đoạn văn bản thường đoán trước là có trong bức điện. Chẳng hạn, ngay sau 6 giờ sáng mỗi ngày người Đức gửi một bản tin thời tiết, và nó gần như chắc chắn có từ `WETTER` (tiếng Đức là “thời tiết”).
 
-Nhưng từ đó nằm ở chỗ nào trong bức điện? Tác dụng phụ của đĩa phản xạ sẽ giúp bạn.
+Nhưng từ ấy nằm ở đâu trong bức điện? Tác dụng phụ của đĩa phản xạ sẽ giúp bạn.
 
 <Check question="Một bức điện bắt đầu bằng ORFEZ MSGNB. Sáu chữ đầu của nó có thể là WETTER không?">
-  Hãy xếp chúng thẳng hàng. `WETTER` dưới `ORFEZM`: W-O, E-R, T-F, T-E, E-Z, R-M. Không chữ nào nằm dưới chính nó, nên có, nó có thể là vậy. Nếu có một chữ trùng với chính nó, bạn sẽ biết từ mồi đặt sai chỗ, vì Enigma không bao giờ biến một chữ thành chính nó.
+  Xếp chúng thẳng hàng. `WETTER` dưới `ORFEZM`: W-O, E-R, T-F, T-E, E-Z, R-M. Không chữ nào nằm dưới chính nó, nên có, nó có thể là vậy. Nếu có một chữ trùng với chính nó, bạn biết ngay crib đặt sai chỗ, vì Enigma không bao giờ biến một chữ thành chính nó.
 </Check>
 
-Turing thiết kế một cỗ máy gọi là **máy bombe**. Nó dùng một từ mồi để thử các cách đặt rôto thật nhanh. Đến cuối năm 1941, đã có mười lăm chiếc chạy.
+Turing thiết kế một cỗ máy dùng crib để thử các cách đặt đĩa mã hóa thật nhanh. Nó được gọi là **máy bom**, theo tên chiếc máy trước đó của Rejewski. Đó không phải vũ khí: cái tên được cho là từ tiếng lách cách nó phát ra khi chạy. Đến cuối năm 1941, đã có mười lăm máy bom làm việc.
 
 <Label>Thử thách</Label>
 
-## Đọc một bức điện bằng khóa ngày
+## Đọc một bức điện bằng khóa mã ngày
 
 <Challenge answer="NOTHING TO REPORT">
-  Bạn là một người vận hành điện đài. Khóa hôm nay là: các rôto II, III, I, hiện các chữ `Q` `C` `W`, với các dây cắm A–L, P–R, T–D, B–W, K–F và O–Y.
+  Bạn là một người điều khiển máy. Khóa mã ngày hôm nay, lấy từ ví dụ trong sách, là: các đĩa mã hóa II, III, I, hiện các chữ `Q` `C` `W`, với các dây cáp A–L, P–R, T–D, B–W, K–F và O–Y.
 
   Bức điện này vừa tới: `ORFEZ MSGNB LKMND`
 
   Hãy cài đặt máy, hoặc dùng nút bên dưới, rồi gõ bức điện vào. Nó nói gì?
 
-  <Try action="dayKey" button="Đặt khóa ngày giúp tôi" />
+  <Try action="dayKey" button="Đặt khóa mã ngày giúp tôi" />
 </Challenge>
 
 <Check question="Vì sao một bức điện như thế này lại là món quà cho các nhà giải mã?">
-  Những bức điện nhàm chán, thường lệ dùng cùng những từ ngữ ngày này qua ngày khác. Vì vậy chúng dễ đoán. Mà một lần đoán trúng chính là một từ mồi.
+  Những bức điện nhàm chán, thường lệ cứ lặp lại cùng những chữ ngày này qua ngày khác. Vì vậy chúng dễ đoán. Mà một lần đoán trúng chính là một crib.
 </Check>
 
 <Label>Chuyện gì đến tiếp theo</Label>
 
 ## Dùng máy để đấu với máy
 
-Những người phá được Enigma phải thề giữ im lặng suốt ba mươi năm.
+Sau chiến tranh, những người ở Bletchley phải thề giữ bí mật. Phải ba thập kỷ sau, năm 1974, câu chuyện mới được kể ra.
 
-Enigma cho thấy một bài học cứ quay lại mãi trong câu chuyện này. Cỗ máy thì mạnh. Còn cách con người dùng nó thì không: khóa bị lặp lại, câu chữ thường lệ, cùng một bản tin thời tiết mỗi sáng.
+Enigma để lại một bài học cứ quay lại mãi trong câu chuyện này. Chiếc máy thì mạnh. Còn cách con người dùng nó thì không: khóa mã thư gõ lặp, những câu chữ thường lệ, cùng một bản tin thời tiết mỗi sáng.
 
-Sau Enigma, cuộc đấu là giữa các cỗ máy với nhau. Bletchley về sau chế tạo Colossus, tiền thân của máy tính. Nhưng trước hết, bạn hãy tự mình thử các cách tấn công: [công phá Enigma](/ciphers/cracking-enigma).
+Sau Enigma, cuộc đấu là giữa các cỗ máy. Bletchley về sau còn chế tạo Colossus, tiền thân của máy tính. Nhưng trước hết, bạn hãy tự tay thử các cách tấn công: [công phá Enigma](/ciphers/cracking-enigma).
 
 <Label>Đọc thêm</Label>
 
 ## Tìm hiểu thêm
 
-- Simon Singh, *The Code Book*, chương 3. Toàn bộ câu chuyện, được kể hay hơn chúng tôi nhiều.
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử* (NXB Trẻ, Phạm Văn Thiều và Phạm Thu Hằng dịch), chương 3: Cơ giới hóa việc giữ bí mật, và chương 4: Công phá Enigma. Toàn bộ câu chuyện, kể hay hơn chúng tôi nhiều.
 - [Crypto Museum: Enigma](https://www.cryptomuseum.com/crypto/enigma/) (Bảo tàng Mật mã). Ảnh chụp và sơ đồ dây của mọi mẫu máy.
 - [Bletchley Park](https://bletchleypark.org.uk/). Chính nơi ấy, nay là một viện bảo tàng.

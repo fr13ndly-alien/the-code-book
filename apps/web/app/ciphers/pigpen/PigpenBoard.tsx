@@ -35,7 +35,7 @@ export function PigpenBoard({ state, onPick }: { state: PigpenState; onPick: (le
             })
           : t({
               en: "Tap a letter in a grid, or a symbol in the message. The bright lines around the letter are its symbol.",
-              vi: "Chạm vào một chữ trong lưới, hoặc một ký hiệu trong tin nhắn. Các nét sáng quanh chữ đó là ký hiệu của nó.",
+              vi: "Chạm vào một chữ trong lưới, hoặc một ký hiệu trong bức thư. Các nét sáng quanh chữ đó là ký hiệu của nó.",
             })}
       </Caption>
       <PigpenMessage text={state.text} hidden={state.hidden} picked={state.picked} onPick={onPick} />

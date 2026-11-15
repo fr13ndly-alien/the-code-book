@@ -34,7 +34,7 @@ export function LinearBControls(props: { state: LinearBState; dispatch: Dispatch
           options={[
             { value: "triplet", label: t({ en: "Kober's words", vi: "Các từ của Kober" }) },
             { value: "places", label: t({ en: "Place names", vi: "Địa danh" }) },
-            { value: "tripod", label: t({ en: "Tripod tablet", vi: "Tấm bảng vạc ba chân" }) },
+            { value: "tripod", label: t({ en: "Tripod tablet", vi: "Tấm đất sét vạc ba chân" }) },
           ]}
         />
         <Output label={t({ en: "The words read", vi: "Các từ đọc là" })}>{output(state)}</Output>

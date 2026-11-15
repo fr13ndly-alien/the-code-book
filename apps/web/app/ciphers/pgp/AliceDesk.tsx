@@ -9,7 +9,7 @@ export function AliceDesk({ state }: { state: PgpState }) {
   const t = useT();
   const { message, sessionKey, stage } = state;
   const title = t({ en: "Alice", vi: "Alice" });
-  const note = t({ en: "writes and locks", vi: "viết và khóa" });
+  const note = t({ en: "writes and locks", vi: "viết và mã hóa" });
   if (state.sealed) {
     return (
       <Desk title={title} note={note}>
@@ -24,13 +24,13 @@ export function AliceDesk({ state }: { state: PgpState }) {
     <Desk title={title} note={note}>
       <Line label={t({ en: "Message", vi: "Tin nhắn" })}>{message || t({ en: "nothing yet", vi: "chưa có gì" })}</Line>
       {stage >= 1 && (
-        <Line label={t({ en: "Session key, picked at random for this message", vi: "Khóa phiên, chọn ngẫu nhiên cho riêng tin nhắn này" })} secret>
+        <Line label={t({ en: "Session key, picked at random for this message", vi: "Khóa phiên, chọn ngẫu nhiên cho riêng bức thư này" })} secret>
           {sessionKey}
         </Line>
       )}
       {stage >= 2 && (
         <Working
-          label={t({ en: "Locking the message with the session key", vi: "Khóa tin nhắn bằng khóa phiên" })}
+          label={t({ en: "Locking the message with the session key", vi: "Mã hóa bức thư bằng khóa phiên" })}
           rows={[
             { label: t({ en: "Message", vi: "Tin nhắn" }), cells: [...letters] },
             { label: t({ en: "Session key", vi: "Khóa phiên" }), cells: [...keyUnder(message, sessionKey)] },
@@ -40,7 +40,7 @@ export function AliceDesk({ state }: { state: PgpState }) {
       )}
       {stage >= 3 && (
         <Working
-          label={t({ en: "Locking the session key with Bob's public key", vi: "Khóa khóa phiên bằng khóa công khai của Bob" })}
+          label={t({ en: "Locking the session key with Bob's public key", vi: "Mã hóa khóa phiên bằng chìa khóa công khai của Bob" })}
           rows={[
             { label: t({ en: "Session key", vi: "Khóa phiên" }), cells: [...sessionKey] },
             { label: t({ en: "As a number", vi: "Đổi thành số" }), cells: keyNumbers(sessionKey) },

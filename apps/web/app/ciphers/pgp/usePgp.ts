@@ -8,11 +8,11 @@ export const BOB = BOOK_KEY;
 /** What each step does, in order. The stage number in the state counts how many are done. */
 export const STEPS: Bilingual[] = [
   { en: "Make a session key", vi: "Tạo khóa phiên" },
-  { en: "Lock the message", vi: "Khóa tin nhắn" },
-  { en: "Lock the session key", vi: "Khóa khóa phiên" },
+  { en: "Lock the message", vi: "Mã hóa bức thư" },
+  { en: "Lock the session key", vi: "Mã hóa khóa phiên" },
   { en: "Send the envelope", vi: "Gửi phong bì" },
-  { en: "Bob unlocks the session key", vi: "Bob mở khóa phiên" },
-  { en: "Bob unlocks the message", vi: "Bob mở tin nhắn" },
+  { en: "Bob unlocks the session key", vi: "Bob giải mã khóa phiên" },
+  { en: "Bob unlocks the message", vi: "Bob giải mã bức thư" },
 ];
 
 /** The stage at which the envelope has left Alice. */
@@ -76,7 +76,7 @@ export function evesLoot(state: PgpState) {
 export function travelling(state: PgpState, locale: Locale): string {
   if (state.stage < SENT) return locale === "vi" ? "Chưa có gì" : "Nothing yet";
   const { ciphertext, lockedKey } = envelope(state);
-  return locale === "vi" ? `${ciphertext} + khóa ${lockedKey.join(" ")}` : `${ciphertext} + key ${lockedKey.join(" ")}`;
+  return locale === "vi" ? `${ciphertext} + khóa phiên ${lockedKey.join(" ")}` : `${ciphertext} + key ${lockedKey.join(" ")}`;
 }
 
 /** The state of the PGP page and the way to change it. */

@@ -64,9 +64,9 @@ export function DiscBoard({ state, onTurn }: { state: DiscState; onTurn: (by: nu
       {plain !== "" && (
         <AlphabetRows
           rows={[
-            { label: t({ en: "Plain (outer)", vi: "Rõ (vòng ngoài)" }), letters: plain },
+            { label: t({ en: "Plain (outer)", vi: "Thường (vòng ngoài)" }), letters: plain },
             { label: t({ en: "Inner letter at A", vi: "Chữ vòng trong ở A" }), letters: settingsUsed(state, typed).map(letterAt) },
-            { label: t({ en: "Cipher (inner)", vi: "Mã (vòng trong)" }), letters: cipher, kind: "cipher" },
+            { label: t({ en: "Cipher (inner)", vi: "Mật mã (vòng trong)" }), letters: cipher, kind: "cipher" },
           ]}
           highlight={plain.length - 1}
         />

@@ -12,8 +12,8 @@ export const meta: CipherMeta = {
   vi: {
     title: "Công phá Enigma",
     era: "1931–1945",
-    hook: "Mười triệu tỷ khóa, mỗi nửa đêm lại đổi khóa mới, và hai mẹo khiến con số ấy chẳng còn đáng sợ.",
-    firstStep: "Rút một dây cắm ra. Xem độ dài các chuỗi.",
-    source: "The Code Book, chương 3: Cơ giới hóa việc giữ bí mật",
+    hook: "Mười triệu tỷ chìa khóa mã, mỗi nửa đêm lại đổi, và hai mẹo khiến con số ấy chẳng còn đáng sợ.",
+    firstStep: "Rút một dây cáp ra. Xem độ dài các vòng liên kết.",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 4: Công phá Enigma",
   },
 };

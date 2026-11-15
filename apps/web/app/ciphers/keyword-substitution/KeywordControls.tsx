@@ -14,12 +14,12 @@ export function KeywordControls({ state, dispatch }: { state: KeywordState; disp
     <Controls>
       <Row>
         <TextField
-          label={t({ en: "Keyword or keyphrase", vi: "Từ khóa hoặc cụm từ khóa" })}
+          label={t({ en: "Keyword or keyphrase", vi: "Từ khóa hoặc cụm từ khóa mã" })}
           width="short"
           value={state.keyword}
           onChange={(keyword) => dispatch({ type: "rekey", keyword })}
         />
-        <Output label={enciphering ? t({ en: "Ciphertext", vi: "Bản mật mã" }) : t({ en: "Plaintext", vi: "Bản rõ" })}>{output(state)}</Output>
+        <Output label={enciphering ? t({ en: "Ciphertext", vi: "Bản mật mã" }) : t({ en: "Plaintext", vi: "Văn bản thường" })}>{output(state)}</Output>
       </Row>
       <Row>
         <TextField

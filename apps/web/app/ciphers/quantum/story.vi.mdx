@@ -1,119 +1,120 @@
 {/*
-  Bản tiếng Việt của story.mdx. Theo docs/i18n/vi-glossary.md.
+  Bản tiếng Việt của story.mdx, kể lại theo Mật mã: Từ cổ điển đến lượng tử
+  (NXB Trẻ, Phạm Văn Thiều và Phạm Thu Hằng dịch), chương 8: Bước nhảy lượng tử
+  vào tương lai, trang 476–503. Theo docs/i18n/vi-glossary.md.
   Follows the cipher page template in docs/STANDARDS.md.
-  Facts come from The Code Book, chapter 6. The abridged edition is brief here,
-  so the details of the scheme were checked against the sources in Further reading.
+  The details of the scheme were also checked against the sources in Further reading.
   The wording is ours.
 */}
 
 <Standfirst>
-  Gửi một chiếc khóa đi bằng từng hạt ánh sáng một, và không ai nghe lén được mà không để lại dấu vết.
+  Gửi một chìa khóa đi bằng từng hạt ánh sáng một, và không ai nghe lén được mà không để lại dấu vết.
 </Standfirst>
 
 <Label>Mở đầu</Label>
 
 ## Cách nhau 30 cm
 
-Năm 1988, hai chiếc máy tính đặt trên một chiếc bàn trong phòng thí nghiệm của IBM ở New York. Chúng cách nhau khoảng 30 cm (12 inch). Charles Bennett, một nhà nghiên cứu ở đó, sắp gửi một bí mật từ máy này sang máy kia.
+Năm 1988, hai chiếc máy tính nằm trên một chiếc bàn trong phòng thí nghiệm của IBM ở New York. Chúng cách nhau khoảng 30 cm (12 inch). Một máy tên là Alice, máy kia tên là Bob. Charles Bennett, nhà nghiên cứu ở đó, sắp gửi một bí mật từ máy này sang máy kia.
 
-Đó là chuyến đi bí mật ngắn nhất trong cả câu chuyện này, và cũng kỳ lạ nhất. Tin nhắn không đi bằng mực, bằng sóng radio hay bằng xung điện trong dây. Nó đi bằng từng hạt ánh sáng riêng lẻ, hạt này nối tiếp hạt kia.
+Đây là chuyến đi bí mật ngắn nhất trong cả câu chuyện, và cũng lạ lùng nhất. Bức thư không đi bằng mực, bằng sóng radio hay bằng dòng điện trong dây. Nó đi bằng từng hạt ánh sáng, hết hạt này đến hạt khác.
 
-Bennett khẳng định một điều chưa người lập mã nào dám nói. Nếu một gián điệp nhìn trộm những hạt ấy dọc đường, hai máy tính sẽ biết. Làm sao ánh sáng lại báo được cho bạn rằng có ai đó đã nhìn nó?
+Bennett dám nói một điều chưa nhà tạo mã nào dám nói. Nếu có gián điệp nhìn trộm những hạt ấy dọc đường, hai máy tính sẽ biết ngay. Ánh sáng làm sao mách được cho bạn rằng có kẻ đã nhìn nó?
 
 <Label>Thử xem</Label>
 
 ## Bob phải đoán
 
-Alice đã gửi cho Bob 16 hạt ánh sáng, gọi là **photon**. Mỗi hạt mang một số 0 hoặc 1. Để đọc mỗi photon, Bob phải chọn một trong hai máy dò, và anh chọn mò. Bạn hãy đoán trước: anh chọn đúng bao nhiêu lần?
+Alice đã gửi cho Bob 16 hạt ánh sáng, gọi là **phôtôn**. Mỗi hạt mang một số 0 hoặc 1. Muốn đọc một phôtôn, Bob phải chọn một trong hai máy dò, và anh chọn bừa. Bạn đoán trước nhé: anh chọn đúng mấy lần?
 
-<Try action="measured" button="Xem 16 photon của Alice">
-  Nhấn “Bước tiếp: Họ giữ chỗ khớp nhau”. Đếm các dấu tích ở hàng “Cùng kiểu đo?”.
+<Try action="measured" button="Xem 16 phôtôn của Alice">
+  Nhấn “Bước tiếp: Họ giữ chỗ khớp nhau”. Đếm các dấu tích ở hàng “Cùng sơ đồ?”.
 </Try>
 
-<Check question="Bob đọc bao nhiêu photon bằng đúng máy dò?">
-  Tám, tức là một nửa. Anh có hai máy dò để chọn, nên cứ hai lần thì anh đúng khoảng một lần. Tám photon đó là những photon duy nhất Alice và Bob giữ lại.
+<Check question="Bob đọc đúng máy dò được mấy phôtôn?">
+  Tám, tức là một nửa. Có hai máy dò để chọn, nên cứ hai lần anh đúng một. Tám phôtôn ấy là những phôtôn duy nhất Alice và Bob giữ lại.
 </Check>
 
 <Label>Cách hoạt động</Label>
 
-## Chiếc khóa làm bằng ánh sáng
+## Chìa khóa làm bằng ánh sáng
 
-### Hai cách làm nghiêng một photon
+### Hai cách cho phôtôn dao động
 
-Photon rung khi bay, và hướng rung ấy gọi là **sự phân cực** của nó. Alice chỉnh được hướng này. Cô có hai kiểu đo.
+Một phôtôn vừa bay vừa dao động. Góc dao động ấy gọi là **sự phân cực** của nó. Alice đặt được góc này. Cô có hai sơ đồ.
 
-Với kiểu `+` (kiểu thẳng), photon dựng đứng nghĩa là 1, photon nằm ngang nghĩa là 0. Với kiểu `×` (kiểu chéo), photon nghiêng phải nghĩa là 1, nghiêng trái nghĩa là 0.
+Trong **sơ đồ thẳng**, ký hiệu `+`, một phôtôn phân cực thẳng đứng nghĩa là 1, phân cực nằm ngang nghĩa là 0. Trong **sơ đồ chéo**, ký hiệu `×`, phôtôn chéo sang phải nghĩa là 1, chéo sang trái nghĩa là 0.
 
-Máy dò `+` đọc hoàn hảo một photon kiểu `+`. Nhưng đưa cho nó một photon nghiêng, nó vẫn phải trả lời “đứng” hoặc “ngang”. Nó trả lời hoàn toàn may rủi. Máy dò `×` gặp photon kiểu `+` cũng vậy. Đây là một định luật của vật lý lượng tử: đo một thứ nhỏ đến thế sẽ làm nó thay đổi.
+Máy dò `+` đọc không sai một phôtôn của sơ đồ `+`. Nhưng gặp một phôtôn chéo, nó vẫn buộc phải trả lời “thẳng đứng” hoặc “nằm ngang”. Câu trả lời khi ấy hoàn toàn do may rủi. Máy dò `×` gặp phôtôn của sơ đồ `+` cũng vậy. Đây là luật của vật lý lượng tử, một mặt của **nguyên lý bất định** mà Werner Heisenberg nêu ra từ thập niên 1920: đo một vật nhỏ đến thế là làm nó thay đổi.
 
-<Try action="sent" button="Chỉ xem các photon của Alice">
-  Đọc từ trên xuống cột đầu tiên: bit của Alice, kiểu đo của cô, và mũi tên cô gửi đi. Chạm vào vài con số dưới bảng để đọc về các photon khác.
+<Try action="sent" button="Chỉ xem các phôtôn của Alice">
+  Đọc từ trên xuống cột đầu tiên: bit của Alice, sơ đồ của cô, và mũi tên cô gửi đi. Chạm vào vài con số dưới bảng để đọc về các phôtôn khác.
 </Try>
 
 ### Giữ lại chỗ khớp nhau
 
-Bob không thể biết Alice dùng kiểu đo nào cho mỗi photon. Vì vậy anh chọn đại một máy dò và ghi lại điều nó báo.
+Bob không biết Alice đã dùng sơ đồ nào cho từng phôtôn. Nên với mỗi hạt, anh chọn bừa một máy dò và ghi lại kết quả.
 
-Sau đó Alice gọi điện cho anh qua một đường dây bình thường. Với mỗi photon, họ nói mình đã dùng kiểu đo nào, nhưng không bao giờ nói bit. Chỗ nào hai kiểu đo khớp nhau, bit của Bob chắc chắn bằng bit của Alice. Họ giữ những bit đó. Chỗ nào hai kiểu đo khác nhau, bit của Bob chẳng có giá trị gì, và họ bỏ nó đi.
+Xong xuôi, Alice gọi cho Bob qua một đường điện thoại bình thường, không cần an toàn. Với từng phôtôn, họ nói cho nhau mình đã dùng sơ đồ nào, nhưng không bao giờ nói bit. Chỗ nào hai sơ đồ trùng nhau, bit của Bob chắc chắn giống bit của Alice. Họ giữ những bit đó. Chỗ nào khác nhau, bit của Bob chẳng có giá trị gì, và họ bỏ đi.
 
-Eve nghe được cả cuộc gọi. Nhưng việc đó không giúp gì cho cô. Cô biết photon nào được tính, nhưng không biết chúng mang gì.
+Eve nghe được trọn cuộc gọi. Nhưng chẳng ích gì cho cô. Cô biết phôtôn nào được giữ, chứ không biết nó mang số mấy.
 
 <Try action="sifted" button="Xem chỗ khớp nhau">
-  Nhìn các cột bị mờ: những photon đó đã bị bỏ đi. Ở mỗi cột có dấu tích, hãy so “Bit của Alice” với “Bit của Bob”.
+  Nhìn các cột bị mờ: những phôtôn ấy đã bị bỏ. Ở mỗi cột có dấu tích, hãy so “Bit của Alice” với “Bit của Bob”.
 </Try>
 
 ### Eve không thể nhìn mà không chạm
 
-Eve muốn có các bit, nên cô phải đo các photon khi chúng bay qua. Nhưng cô ở vào đúng tình thế của Bob. Cô phải đoán một máy dò.
+Eve muốn có các bit, nên cô phải đo các phôtôn khi chúng bay ngang qua. Nhưng cô cũng chẳng hơn gì Bob. Cô phải đoán máy dò.
 
-Khi đoán sai, cô đọc ra thứ vô nghĩa. Tệ hơn cho cô, cô đã phá hủy photon. Cô phải gửi cho Bob một photon mới, và photon này phân cực theo kiểu của cô, không phải của Alice. Giờ máy dò của Bob có thể trả lời sai, kể cả khi kiểu đo của anh khớp với Alice.
+Đoán sai thì cô đọc ra số bậy. Tệ hơn nữa, cô đã làm hỏng phôtôn. Cô phải gửi cho Bob một hạt mới, phân cực theo sơ đồ của cô chứ không phải của Alice. Lúc ấy máy dò của Bob có thể cho kết quả sai, ngay cả khi anh chọn đúng sơ đồ của Alice.
 
-Eve đoán sai một nửa số lần, và mỗi lần đoán sai lại làm hỏng bit của Bob một nửa số lần. Vì vậy khoảng một phần tư số bit được giữ lại sẽ bị sai.
+Eve đoán sai một nửa số lần, và mỗi lần sai lại làm hỏng bit của Bob một nửa số lần. Vậy khoảng một phần tư số bit được giữ sẽ bị sai.
 
-Để tìm ra điều đó, Alice và Bob đọc to một số bit đã giữ và so với nhau. Rồi họ bỏ những bit ấy đi. Chỉ một chỗ không khớp cũng có nghĩa là có người đang nghe lén.
+Để phát hiện, Alice và Bob đọc to một ít bit đã giữ và so với nhau. Rồi họ bỏ luôn những bit đó. Chỉ cần một chỗ không khớp là biết có người đang nghe lén.
 
 <Try action="tapped" button="Cho Eve nghe lén">
   Ba hàng mới cho thấy Eve đã làm gì. Chạm vào số 1 dưới bảng và đọc lời chú thích. Rồi tìm các dấu ✗ ở hàng “Đọc to để so”.
 </Try>
 
 <Check question="Alice và Bob thấy có chỗ không khớp. Họ nên làm gì?">
-  Bỏ cả chiếc khóa đi và làm lại, có lẽ trên một đường dây khác. Chưa có tin nhắn nào được gửi, mới chỉ có các bit ngẫu nhiên. Nên Eve chẳng biết được gì có ích.
+  Bỏ cả chìa khóa và làm lại từ đầu, có thể trên một đường dây khác. Họ chưa gửi bức thư nào, mới chỉ gửi các bit ngẫu nhiên. Nên Eve chẳng biết được gì có ích.
 </Check>
 
 <Label>Câu chuyện</Label>
 
-## Từ tờ tiền tới chiếc khóa
+## Từ tờ giấy bạc đến chìa khóa
 
-Ý tưởng bắt đầu từ tiền. Khoảng năm 1970, Stephen Wiesner, một sinh viên ở Đại học Columbia tại New York, nghĩ ra những tờ tiền có photon nhốt bên trong. Kẻ làm tiền giả sẽ phải đo các photon để sao chép, mà đo thì làm chúng thay đổi. Một tạp chí từ chối bài báo của anh. Mãi tới năm 1983 nó mới được in.
+Ý tưởng bắt đầu từ chuyện tiền. Khoảng năm 1970, Stephen Wiesner, một nghiên cứu sinh ở Đại học Columbia, New York, nghĩ ra **tiền lượng tử**. Mỗi tờ đô la sẽ có 20 cái bẫy ánh sáng nhỏ xíu, mỗi bẫy giữ một phôtôn. Kẻ làm tiền giả muốn sao chép thì phải đo các phôtôn, mà đo là làm chúng thay đổi. Chẳng ai coi trọng ý tưởng ấy. Bài báo của ông bị các tạp chí từ chối, và mãi đến năm 1983 mới được in.
 
-Charles Bennett biết ý tưởng của Wiesner và cứ nghĩ mãi về nó. Cùng với Gilles Brassard, một nhà khoa học máy tính ở Đại học Montréal, ông chuyển mẹo này từ tờ tiền sang chiếc khóa. Họ công bố cách làm của mình năm 1984. Nó được gọi là BB84, theo chữ cái đầu tên hai người và năm công bố.
+Charles Bennett là bạn cũ của Wiesner, và là người hiếm hoi thấy ý tưởng đó tuyệt vời. Suốt nhiều năm, anh cứ đọc đi đọc lại bản thảo. Rồi anh kể về nó với Gilles Brassard, một nhà khoa học máy tính ở Đại học Montréal. Hai người cùng nhau chuyển mẹo ấy từ tờ tiền sang chìa khóa. Theo sách, ý tưởng chốt hạ đến với họ năm 1984, khi đang đứng chờ tàu ở sân ga Croton-Harmon. Họ công bố sơ đồ của mình cũng năm đó. Nó mang tên BB84, theo chữ cái đầu tên hai người và năm ra đời.
 
-Chiếc khóa nó tạo ra là ngẫu nhiên và bí mật. Dùng nó một lần thôi, như một [sổ tay dùng một lần](/ciphers/one-time-pad), thì tin nhắn không thể bị phá.
+Chìa khóa làm ra theo cách này vừa ngẫu nhiên, vừa bí mật. Dùng nó một lần, như một [sổ tay dùng một lần](/ciphers/one-time-pad), thì bức thư không thể bị phá.
 
-Năm tháng và khoảng cách ở phần mở đầu là theo bản rút gọn của cuốn sách. Những nguồn khác kể hơi khác một chút. Bản đầy đủ nói Bennett bắt đầu chế tạo năm 1988 và mất một năm. Brassard nhớ rằng chiếc khóa đầu tiên đi qua vào cuối tháng 10 năm 1989, trên quãng đường 32,5 cm, tức là chưa tới 13 inch.
+Ngày tháng và khoảng cách ở phần mở đầu là theo bản rút gọn tiếng Anh của cuốn sách. Các nguồn khác kể hơi khác. Bản đầy đủ nói Bennett bắt đầu lắp thiết bị năm 1988, cùng một nghiên cứu sinh tên John Smolin, và mất một năm. Brassard nhớ rằng chìa khóa đầu tiên đi qua vào cuối tháng 10 năm 1989, trên quãng đường 32,5 cm, tức là gần 13 inch.
 
-Sau lần thử đầu tiên ấy, khoảng cách tăng dần. Năm 1995, các nhà nghiên cứu ở Đại học Genève gửi một chiếc khóa lượng tử tới thị trấn Nyon, cách đó hơn 14 dặm một chút (khoảng 23 km).
+Sau lần thử đầu tiên ấy, quãng đường dài dần. Năm 1995, các nhà nghiên cứu ở Đại học Geneva gửi một chìa khóa lượng tử qua cáp quang tới thị trấn Nyon, cách đó khoảng 23 km (hơn 14 dặm).
 
 <Label>Bị phá như thế nào</Label>
 
-## Nó chưa bị phá
+## Chưa ai phá được
 
-Mọi mật mã trước nó chỉ an toàn vì chúng khó phá. Sớm hay muộn, cũng có một người đủ giỏi xuất hiện. Mật mã này thì khác. Nó dựa trên một định luật vật lý, chứ không dựa trên một phép tính khó. Theo cuốn sách, nếu nó thất bại, các nhà vật lý sẽ phải nghĩ lại về cách vũ trụ vận hành.
+Mọi mật mã trước đây chỉ an toàn vì chúng khó phá. Sớm hay muộn, cũng có người đủ giỏi xuất hiện. Mật mã này thì khác. Nó dựa vào một định luật vật lý, chứ không dựa vào một bài toán khó. Sách nói rằng nếu nó bị phá, thì các nhà vật lý sẽ phải nghĩ lại từ đầu xem vũ trụ vận hành ra sao.
 
-Hy vọng duy nhất của Eve là sự may mắn. Hãy thử làm cô xem.
+Hy vọng duy nhất của Eve là gặp may. Bạn thử làm Eve xem.
 
 <Try action="lucky" button="Mở ngày may mắn của Eve">
-  Eve đã nghe lén cả 16 photon, vậy mà cả bốn bit được so đều khớp. Giờ hãy nhìn chiếc khóa: Alice có `1110`, nhưng Bob lại giữ `0101`. Rồi chọn 64 ở “Gửi photon mới” vài lần, và xem Eve thoát được bao nhiêu lần.
+  Eve đã nghe lén cả 16 phôtôn, vậy mà cả bốn bit được so đều khớp. Giờ nhìn chìa khóa: Alice có `1110`, còn Bob lại giữ `0101`. Rồi chọn 64 ở “Gửi phôtôn mới” vài lần, và xem Eve thoát được bao nhiêu lần.
 </Try>
 
-Mỗi bit được so cho Eve ba phần tư cơ hội để không bị lộ. Với bốn bit, cô thoát được khoảng một lần trong ba. Với 72 bit, cơ hội của cô chưa tới một phần tỷ. Vì vậy Alice và Bob chỉ cần gửi thêm photon.
+Mỗi bit được so cho Eve ba phần tư cơ hội để không bị lộ. Với bốn bit, cô thoát được khoảng một lần trong ba. Với 72 bit, cơ hội của cô chưa tới một phần tỷ. Vì vậy Alice và Bob chỉ cần gửi thêm phôtôn.
 
 <Label>Thử thách</Label>
 
 ## Đường dây nào an toàn?
 
 <Challenge answer="SOUTH">
-  Alice có thể liên lạc với Bob qua ba sợi cáp quang, tên là `NORTH` (bắc), `SOUTH` (nam) và `WEST` (tây). Eve đã nghe trộm hai sợi trong số đó. Alice gửi 16 photon qua mỗi sợi.
+  Alice có thể liên lạc với Bob qua ba sợi cáp quang, tên là `NORTH` (bắc), `SOUTH` (nam) và `WEST` (tây). Eve đã nghe lén hai sợi trong số đó. Alice gửi 16 phôtôn qua mỗi sợi.
 
   Mở từng đường dây và nhấn “Bước tiếp” cho tới khi các bit được so. Họ có thể tin đường dây nào? Hãy trả lời bằng tên tiếng Anh của nó.
 
@@ -122,28 +123,28 @@ Mỗi bit được so cho Eve ba phần tư cơ hội để không bị lộ. V�
   <Try action="west" button="Mở đường tây" />
 </Challenge>
 
-<Check question="Sao Eve không sao chép mỗi photon rồi đo bản sao sau?">
-  Muốn sao chép một photon, trước hết cô phải biết nó phân cực thế nào. Tức là phải đo nó, và đo bằng máy dò sai thì làm nó thay đổi. Cô không thể nhìn mà không chạm.
+<Check question="Sao Eve không sao chép từng phôtôn rồi đo bản sao sau?">
+  Muốn sao chép một phôtôn, trước hết cô phải biết nó phân cực thế nào. Tức là phải đo nó, mà đo bằng sai máy dò thì phôtôn thay đổi. Cô không thể nhìn mà không chạm.
 </Check>
 
 <Label>Chuyện gì đến tiếp theo</Label>
 
-## Cuộc đua kết thúc, ít ra là lúc này
+## Cuộc đua kết thúc, ít nhất là lúc này
 
-Bạn đã theo dõi một cuộc đua kéo dài hai nghìn năm. Những người lập mã giấu chữ, đổi chữ, rồi chế tạo máy để xáo trộn chữ. Các nhà giải mã đếm chữ, tìm ra quy luật, và cũng chế tạo máy của riêng mình. Mỗi bên lần lượt dẫn trước một thời gian.
+Bạn vừa theo dõi một cuộc đua đã kéo dài hai nghìn năm. Các nhà tạo mã giấu chữ, đổi chỗ chữ, rồi chế ra máy để xáo trộn chữ. Các nhà giải mã đếm chữ, tìm quy luật, rồi cũng chế ra máy của riêng mình. Mỗi bên đều có lúc dẫn trước.
 
-Ngày nay những người lập mã đang dẫn trước. RSA canh giữ tin nhắn của cả thế giới, và chưa cách tấn công nào được biết đến chạm được vào một khóa dài. Nếu có ngày máy tính lượng tử đe dọa nó, mật mã lượng tử đã chờ sẵn. Cuốn sách gọi nó là “tuyệt đối không thể phá”.
+Hiện nay các nhà tạo mã đang dẫn. RSA canh giữ thư từ của cả thế giới, và chưa cách tấn công nào được biết đụng tới được một chìa khóa dài. Nếu có ngày máy tính lượng tử đe dọa RSA, mật mã lượng tử đã chờ sẵn. Cuốn sách gọi nó là “tuyệt đối không thể phá vỡ nổi”.
 
-Những người lập mã từng nói thế rồi. Sau đó một Babbage hay một Turing lại xuất hiện. Biết đâu người tiếp theo đang đọc trang này.
+Các nhà tạo mã từng nói vậy rồi, về mật mã Vigenère, về máy Enigma. Rồi một Babbage hay một Turing xuất hiện. Biết đâu người tiếp theo đang đọc trang này.
 
-Chưa có gì sau mật mã này cả. [Về trang mục lục](/) và chọn một loại bạn chưa thử.
+Sau mật mã này thì chưa có gì nữa. [Về mục lục](/) và chọn một mật mã bạn chưa thử.
 
 <Label>Đọc thêm</Label>
 
 ## Tìm hiểu thêm
 
-- Simon Singh, *The Code Book*, chương 6. Bản rút gọn chỉ nêu ý tưởng. Bản đầy đủ kể câu chuyện dài hơn ở chương 8, còn các bước trên trang này theo bài báo năm 1984 ở dưới.
-- Charles Bennett và Gilles Brassard, “Quantum cryptography: Public key distribution and coin tossing” (Mật mã lượng tử: phân phối khóa công khai và tung đồng xu), năm 1984. Bài báo đã đặt tên cho BB84.
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử* (Phạm Văn Thiều và Phạm Thu Hằng dịch, NXB Trẻ), chương 8: Bước nhảy lượng tử vào tương lai. Bản rút gọn tiếng Anh chỉ nêu ý chính. Các bước trên trang này theo bài báo năm 1984 dưới đây.
+- Charles Bennett và Gilles Brassard, “Quantum cryptography: Public key distribution and coin tossing” (Mật mã lượng tử: phân phối chìa khóa công khai và tung đồng xu), năm 1984. Bài báo đã đặt tên cho BB84.
 - Stephen Wiesner, “Conjugate Coding” (Mã hóa liên hợp), *SIGACT News*, năm 1983. Bài báo về tiền lượng tử, viết vào khoảng năm 1970.
 - Charles Bennett, Gilles Brassard và Artur Ekert, “Quantum Cryptography” (Mật mã lượng tử), *Scientific American*, tháng 10 năm 1992. Viết cho bạn đọc phổ thông.
 - Gilles Brassard, “Brief History of Quantum Cryptography: A Personal Perspective” (Lược sử mật mã lượng tử: góc nhìn cá nhân), năm 2006 (arXiv:quant-ph/0604072). Lời kể của chính ông về thí nghiệm đầu tiên vào tháng 10 năm 1989.

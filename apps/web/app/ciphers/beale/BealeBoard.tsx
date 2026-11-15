@@ -56,7 +56,7 @@ function captionFor(picked: number | undefined, words: string[], locale: Locale)
   const word = words[picked - 1];
   if (word === undefined)
     return vi
-      ? `Ở đây văn bản khóa này chỉ có ${words.length} từ, nên số ${picked} không chỉ vào từ nào cả.`
+      ? `Ở đây văn bản khóa mã này chỉ có ${words.length} từ, nên số ${picked} không chỉ vào từ nào cả.`
       : `This key text has only ${words.length} words here, so ${picked} points at nothing.`;
   if (vi)
     return (
@@ -93,9 +93,9 @@ function KeyTextBox(props: {
   }, [props.picked, props.words]);
 
   return (
-    <section className={styles.keyText} aria-label={t({ en: `Key text: ${props.title}`, vi: `Văn bản khóa: ${props.title}` })}>
+    <section className={styles.keyText} aria-label={t({ en: `Key text: ${props.title}`, vi: `Văn bản khóa mã: ${props.title}` })}>
       <h2 className={styles.title}>
-        {t({ en: "Key text:", vi: "Văn bản khóa:" })} {props.title}
+        {t({ en: "Key text:", vi: "Văn bản khóa mã:" })} {props.title}
       </h2>
       <ol ref={box} className={styles.words}>
         {props.words.map((word, index) => (

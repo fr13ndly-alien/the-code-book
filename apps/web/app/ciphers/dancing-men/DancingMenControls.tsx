@@ -31,7 +31,7 @@ export function DancingMenControls({ state, dispatch }: ControlsProps) {
           options={[
             { value: "dance", label: t({ en: "Dance a message", vi: "Cho tin nhắn nhảy múa" }) },
             { value: "desk", label: t({ en: "Holmes's desk", vi: "Bàn làm việc của Holmes" }) },
-            { value: "verne", label: t({ en: "Verne's parchment", vi: "Tấm da cổ của Verne" }) },
+            { value: "verne", label: t({ en: "Verne's parchment", vi: "Cuộn da của Verne" }) },
           ]}
         />
       </Row>

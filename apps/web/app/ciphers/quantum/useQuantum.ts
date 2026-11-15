@@ -4,7 +4,7 @@ import type { Bilingual, Locale } from "~/i18n";
 
 /** What each step does, in order. The stage in the state is the number of steps done, 1 to 4. */
 export const STEPS: Bilingual[] = [
-  { en: "Alice sends photons", vi: "Alice gửi photon" },
+  { en: "Alice sends photons", vi: "Alice gửi phôtôn" },
   { en: "Bob measures them", vi: "Bob đo chúng" },
   { en: "They keep the matches", vi: "Họ giữ chỗ khớp nhau" },
   { en: "They compare a sample", vi: "Họ so một phần mẫu" },

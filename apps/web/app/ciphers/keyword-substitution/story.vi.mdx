@@ -1,132 +1,132 @@
 {/*
-  Bản dịch tiếng Việt của story.mdx. Theo docs/i18n/vi-glossary.md.
-  Follows the cipher page template in docs/STANDARDS.md.
-  Facts come from The Code Book, chapter 1. The wording is ours.
+  Retold from Mật mã: Từ cổ điển đến lượng tử (Simon Singh; Phạm Văn Thiều và Phạm Thu Hằng dịch, NXB Trẻ),
+  pages 30–38 and 51–52. Terms and names follow docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md. The wording is ours.
 */}
 
 <Standfirst>
-  Xáo cả bảng chữ cái chỉ bằng một từ dễ nhớ, và không ai thử hết được mọi khóa.
+  Xáo cả bảng chữ cái chỉ bằng một từ dễ nhớ, và không ai thử hết được mọi chìa khóa.
 </Standfirst>
 
 <Label>Mở đầu</Label>
 
-## Chiếc khóa trong túi áo
+## Chìa khóa trong túi áo
 
-Hãy tưởng tượng bạn là một điệp viên nắm trong tay mật mã tốt nhất thời đại. Bảng chữ mã của bạn là 26 chữ cái xếp theo một thứ tự lộn xộn mà chỉ bạn và cấp trên biết. Không kẻ thù nào đoán ra được.
+Bạn thử tưởng tượng mình là một điệp viên, nắm trong tay mật mã tốt nhất thời đó. Bảng chữ cái mật mã của bạn là 26 chữ xếp lộn xộn, theo một thứ tự mà chỉ bạn và cấp trên biết. Kẻ thù không đời nào đoán ra.
 
-Nhưng 26 chữ lộn xộn thì khó nhớ, nên bạn ghi chúng vào một mẩu giấy. Một đêm, lính gác khám người bạn và tìm thấy mẩu giấy. Giờ kẻ thù đã nắm khóa của bạn. Họ đọc được mọi tin nhắn bạn từng gửi bằng nó.
+Nhưng 26 chữ lộn xộn thì khó nhớ, nên bạn chép chúng vào một mẩu giấy. Một đêm, lính gác khám người bạn và tìm thấy mẩu giấy. Thế là kẻ thù có chìa khóa của bạn. Họ đọc được mọi bức thư bạn đã gửi bằng nó.
 
-Mật mã thì mạnh. Mẩu giấy mới là điểm yếu. Làm sao bạn mang một bảng chữ cái lộn xộn trong đầu thay vì trên giấy?
+Mật mã thì mạnh. Mẩu giấy mới là chỗ yếu. Làm sao mang một bảng chữ cái lộn xộn trong đầu thay vì trong túi?
 
 <Label>Thử xem</Label>
 
 ## Một cụm từ, một bảng chữ cái
 
-Mô phỏng đã dựng một bảng chữ mã từ cụm từ khóa `JULIUS CAESAR`. Hãy đoán trước: cụm từ này có mười hai chữ cái, nhưng vài chữ bị lặp lại. Nó lấp được bao nhiêu chữ của bảng chữ mã?
+Mô phỏng đã dựng một bảng chữ cái mật mã từ cụm từ khóa mã `JULIUS CAESAR`. Bạn đoán trước nhé: cụm này có mười hai chữ, nhưng vài chữ bị lặp. Nó lấp được bao nhiêu chữ của bảng chữ cái mật mã?
 
-<Try action="julius" button="Xem cụm từ khóa của cuốn sách">
-  Đọc hàng mã từ trái sang và tìm chỗ cụm từ khóa kết thúc. Rồi chạm vào ô dưới chữ rõ `B` để xem nó thành chữ gì.
+<Try action="julius" button="Xem cụm từ khóa mã của cuốn sách">
+  Đọc hàng mật mã từ trái sang và tìm chỗ cụm từ khóa mã kết thúc. Rồi chạm vào ô dưới chữ thường `B` để xem nó thành chữ gì.
 </Try>
 
 <Check question="JULIUS CAESAR lấp được bao nhiêu chữ?">
-  Chín. Mỗi chữ chỉ được xuất hiện một lần trong bảng chữ mã, nên các chữ `U`, `S` và `A` lặp lại bị bỏ đi. Phần còn lại là `JULISCAER`.
+  Chín. Mỗi chữ chỉ được xuất hiện một lần trong bảng chữ cái mật mã, nên các chữ `U`, `S` và `A` lặp lại bị bỏ đi. Còn lại `JULISCAER`.
 </Check>
 
 <Label>Cách hoạt động</Label>
 
 ## Thứ tự nào cũng được
 
-### Một bảng chữ cái thực sự lộn xộn
+### Một bảng chữ cái xáo thật sự
 
-Mật mã dịch chuyển Caesar trượt bảng chữ cái đi, nên nó chỉ có 25 khóa. **Mật mã thay thế** tổng quát xóa bỏ giới hạn đó. Bảng chữ mã của nó có thể là bất kỳ cách sắp xếp nào của 26 chữ cái.
+Mã Caesar chỉ trượt bảng chữ cái, nên chỉ có 25 chìa khóa. **Mật mã thay thế** tổng quát bỏ đi giới hạn ấy. Bảng chữ cái mật mã của nó có thể là bất kỳ cách xếp lại nào của 26 chữ.
 
-Như vậy có khoảng 400.000.000.000.000.000.000.000.000 khóa. Giả sử kẻ thù kiểm tra mỗi giây một khóa. Cuốn sách tính rằng việc đó sẽ mất “một tỷ lần tuổi thọ của vũ trụ”. **Tấn công vét cạn**, tức là thử mọi khóa, là vô vọng.
+Như vậy có khoảng 400.000.000.000.000.000.000.000.000 chìa khóa. Giả sử kẻ thù mỗi giây kiểm tra được một chìa khóa. Sách tính rằng việc ấy sẽ tốn thời gian “gấp 1 tỉ lần tuổi của vũ trụ”. **Tấn công hùng hục** (tấn công vét cạn), tức là thử hết mọi chìa khóa, chẳng có chút hy vọng nào.
 
-Bạn dùng nó y như mật mã của Caesar. Tìm từng chữ của tin nhắn ở hàng rõ và viết ra chữ nằm ngay dưới nó.
+Cách dùng thì y như mã Caesar. Tìm từng chữ của bức thư ở hàng thường và chép chữ nằm bên dưới nó.
 
-<Try action="julius" button="Mở tin nhắn">
-  Gõ tin nhắn của riêng bạn vào ô “Tin nhắn của bạn”. Chạm vào ô dưới vài chữ của nó và so với bản mật mã.
+<Try action="julius" button="Mở bức thư">
+  Gõ bức thư của bạn vào ô “Tin nhắn của bạn”. Chạm vào ô dưới vài chữ trong đó và đối chiếu với bản mật mã.
 </Try>
 
-### Dựng bảng từ một từ khóa
+### Dựng nó từ một từ khóa
 
-Một **từ khóa** hay **cụm từ khóa** giúp bảng chữ lộn xộn trở nên dễ nhớ. Lấy `JULIUS CAESAR`. Bỏ dấu cách và mọi chữ lặp lại, còn lại `JULISCAER`. Viết nó vào đầu bảng chữ mã.
+Một **từ khóa** hay **cụm từ khóa mã** giúp bảng chữ lộn xộn trở nên dễ nhớ. Lấy `JULIUS CAESAR`. Bỏ dấu cách và mọi chữ lặp lại, ta còn `JULISCAER`. Viết cụm ấy vào đầu bảng chữ cái mật mã.
 
-Rồi thêm các chữ bạn chưa dùng, theo thứ tự quen thuộc. Bắt đầu ngay sau chữ cuối cùng của cụm từ khóa. Ở đây đó là `R`, nên bạn viết tiếp `T`, `V`, `W`, cứ thế, rồi vòng lại tới `B` ở cuối.
+Sau đó thêm những chữ chưa dùng, theo đúng thứ tự quen thuộc. Bắt đầu ngay sau chữ cuối của cụm từ khóa mã. Ở đây chữ cuối là `R`, nên bạn viết tiếp `T`, `V`, `W`, cứ thế, rồi vòng lại `B` ở cuối.
 
 <Try action="blank" button="Bắt đầu khi chưa có từ khóa">
-  Gõ một từ vào ô “Từ khóa hoặc cụm từ khóa”, từng chữ một. Xem mỗi chữ mới nhảy lên đầu hàng mã.
+  Gõ một từ vào ô “Từ khóa hoặc cụm từ khóa mã”, từng chữ một. Xem mỗi chữ mới nhảy lên đầu hàng mật mã.
 </Try>
 
 ### Đọc ngược lại
 
-Bạn của bạn biết cụm từ khóa, nên dựng được đúng bảng chữ mã ấy. Để giải mã, bạn ấy tìm từng chữ của bản mật mã ở hàng dưới và đọc chữ rõ nằm ngay trên nó.
+Bạn của bạn biết cụm từ khóa mã, nên dựng được đúng bảng chữ cái mật mã ấy. Để giải mã, người ấy tìm từng chữ của bản mật mã ở hàng dưới và đọc chữ thường ở phía trên.
 
 <Try action="reply" button="Mở một bản mật mã">
-  Tin nhắn `USNJFS HES RISG ZC XJFLE` được tạo bằng cụm từ khóa của cuốn sách. Đọc bản rõ ở ô bên dưới. Rồi đổi một chữ của cụm từ khóa và xem nó vỡ vụn.
+  Bức thư `USNJFS HES RISG ZC XJFLE` được làm bằng cụm từ khóa mã của cuốn sách. Đọc văn bản thường ở phần điều khiển. Rồi đổi một chữ trong cụm từ khóa mã và xem nó vỡ vụn ra sao.
 </Try>
 
-<Check question="Vì sao cụm từ khóa an toàn hơn một bảng chữ cái viết ra giấy?">
-  Bạn có thể giữ một cụm từ trong trí nhớ, nên chẳng có tờ giấy nào cho kẻ thù thu được. Cụm từ khóa cho ít khóa hơn một chút so với xáo tự do, nhưng vẫn quá nhiều để thử hết.
+<Check question="Vì sao cụm từ khóa mã an toàn hơn một bảng chữ cái chép ra giấy?">
+  Một cụm từ thì bạn giữ trong trí nhớ được, nên chẳng có mẩu giấy nào cho kẻ thù bắt. Cụm từ khóa mã cho ít chìa khóa hơn một chút so với xáo tùy ý, nhưng vẫn nhiều quá sức thử.
 </Check>
 
 <Label>Câu chuyện</Label>
 
 ## Một nghìn năm đứng đầu
 
-Mật mã này dễ dùng mà lại có vô số khóa. Nhờ vậy, mật mã thay thế trở thành dạng thư bí mật chủ yếu suốt thiên niên kỷ thứ nhất sau Công nguyên. Người lập mã thấy chẳng cần nghĩ ra thứ gì tốt hơn.
+Mật mã này dễ dùng mà số chìa khóa lại khổng lồ. Nhờ cả hai điều đó, mã thay thế giữ ngôi vị số một của thư bí mật suốt thiên niên kỷ thứ nhất sau Công nguyên. Các nhà tạo mã thấy chẳng cần nghĩ ra cái gì hay hơn.
 
-Nó còn là công cụ văn phòng hằng ngày. Các quan chức ở thế giới Ả Rập mã hóa việc triều chính, thậm chí cả sổ sách thuế. Một cuốn cẩm nang cho thư ký từ thế kỷ 10, cuốn *Adab al-Kuttāb*, có những phần dạy cách làm việc này.
+Nó còn là công cụ quen thuộc ở chốn công đường. Quan lại trong thế giới Ả Rập mã hóa việc hệ trọng của đất nước, thậm chí cả số liệu thuế. Một cuốn cẩm nang cho người làm thư ký ở thế kỷ 10, cuốn *Adab al-Kutāb*, có hẳn những phần dạy cách mã hóa.
 
-Mọi mật mã kiểu này, dùng một bảng chữ mã cho cả tin nhắn, gọi là **mật mã thay thế đơn bảng** (chỉ dùng một bảng chữ mã). Các cặp chữ của Kama Sutra và mã Caesar cũng thuộc cùng một họ.
+Mọi mật mã kiểu này, dùng đúng một bảng chữ cái mật mã cho cả bức thư, đều gọi là **mật mã thay thế dùng một bảng chữ cái**. Các cặp chữ của Kāma-Sūtra và mã Caesar đều thuộc chung họ ấy.
 
-<DigDeeper title="Hai biến thể của bảng chữ mã">
-  Cụm từ khóa không nhất thiết phải đứng đầu. Trong một ví dụ, cuốn sách dùng `A VOID BY GEORGES PEREC` và bắt đầu nó từ vị trí thứ tư của bảng chữ mã. Có lẽ người lập mã không muốn chữ rõ `a` thành chữ mã `A`. Bạn có thể xem bảng chữ cái đó hoạt động ở trang [phân tích tần suất](/ciphers/frequency-analysis).
+<DigDeeper title="Hai biến tấu của bảng chữ cái mật mã">
+  Cụm từ khóa mã không nhất thiết phải đứng đầu. Ở một ví dụ, sách dùng `A VOID BY GEORGES PEREC` và đặt nó bắt đầu từ vị trí thứ tư của bảng chữ cái mật mã. Có lẽ nhà tạo mã không muốn chữ thường `a` thành chữ mật mã `A`. Bạn có thể xem bảng chữ cái ấy hoạt động ở trang [phân tích tần suất](/ciphers/frequency-analysis).
 
-  Hàng dưới cũng không nhất thiết phải là chữ cái. Các quan chức Ả Rập đôi khi dùng ký hiệu, nên `a` có thể thành `#` và `b` có thể thành `+`. Đó vẫn là một phép đổi cố định cho mỗi chữ.
+  Hàng dưới cũng không nhất thiết phải là chữ cái. Quan lại Ả Rập đôi khi dùng ký hiệu, nên `a` có thể thành `#` và `b` thành `+`. Vẫn là mỗi chữ đổi theo một cách cố định.
 </DigDeeper>
 
 <Label>Bị phá như thế nào</Label>
 
-## Đếm, đừng đoán
+## Đếm chứ đừng đoán
 
-Suốt nhiều thế kỷ, các học giả tin rằng mật mã này không thể bị phá. Họ chỉ nghĩ tới số lượng khóa. Nhưng có một lối tắt, và nó bỏ qua hoàn toàn chuyện khóa.
+Suốt nhiều thế kỷ, các học giả tin rằng không ai phá nổi mật mã này. Họ chỉ nghĩ tới số chìa khóa. Nhưng có một lối tắt, và nó chẳng thèm để ý tới chìa khóa.
 
-Chỉ một bảng chữ mã được dùng từ đầu tới cuối. Vì vậy một chữ rõ luôn biến thành cùng một chữ mã. Một chữ hay gặp trong tin nhắn cũng hay gặp y như thế trong bản mật mã, chỉ là đã cải trang.
+Cả bức thư chỉ dùng một bảng chữ cái mật mã, từ đầu tới cuối. Vì vậy một chữ thường luôn biến thành cùng một chữ mật mã. Chữ nào hay gặp trong bức thư thì cũng hay gặp y như thế trong bản mật mã, chỉ là đã đổi lốt.
 
-<Try action="caught" button="Mở một tin nhắn bị thu được">
-  Chưa có khóa nào. Nhìn ô “Chữ hay gặp nhất trong bản mật mã” bên dưới. Trong tiếng Anh, chữ hay gặp nhất là `E`, nên chữ mã ấy có lẽ là `E`. Giờ gõ cụm từ khóa `JULIUS CAESAR` và chạm vào ô dưới chữ rõ `E` để kiểm tra.
+<Try action="caught" button="Mở một bức thư bắt được">
+  Chưa có chìa khóa nào. Nhìn ô “Chữ hay gặp nhất trong bản mật mã” ở phần điều khiển. Trong tiếng Anh, chữ hay gặp nhất là `E`, nên chữ mật mã ấy nhiều khả năng là `E`. Giờ gõ cụm từ khóa mã `JULIUS CAESAR` và chạm vào ô dưới chữ thường `E` để kiểm tra.
 </Try>
 
-Một chữ mới chỉ là khởi đầu. Nhưng mỗi chữ bạn lột mặt nạ được sẽ giúp bạn đoán các từ xung quanh nó. Lối tắt này do các học giả Ả Rập tìm ra đầu tiên, và nó đọc được một tin nhắn trong vài phút, chứ không phải hàng tỷ năm.
+Một chữ mới chỉ là khởi đầu. Nhưng mỗi chữ lột được lốt lại giúp bạn đoán những từ quanh nó. Các học giả Ả Rập là những người tìm ra lối tắt này trước tiên. Nó đọc được bức thư trong vài phút, chứ không phải hàng tỉ năm.
 
 <Label>Thử thách</Label>
 
-## Một bức thư niêm phong
+## Lá thư niêm phong
 
 <Challenge answer="NEVER WRITE THE KEY DOWN">
-  Một bức thư tới, ghi `VQIQB JBOGQ GNQ SQL YWJV`. Cấp trên của bạn từng thì thầm cho bạn cụm từ khóa: `MARY QUEEN OF SCOTS`.
+  Một lá thư tới tay bạn, ghi `VQIQB JBOGQ GNQ SQL YWJV`. Cấp trên từng thì thầm cho bạn cụm từ khóa mã: `MARY QUEEN OF SCOTS`.
 
-  Hãy dựng bảng chữ mã. Bức thư nói gì?
+  Hãy dựng bảng chữ cái mật mã. Lá thư nói gì? (Câu trả lời là tiếng Anh.)
 
-  <Try action="sealed" button="Mở bức thư" />
+  <Try action="sealed" button="Mở lá thư" />
 </Challenge>
 
-<Check question="Làm sao biến một cụm từ khóa thành bảng chữ mã?">
-  Bỏ dấu cách và các chữ lặp lại, rồi viết phần còn lại lên đầu. Sau đó thêm các chữ chưa dùng theo thứ tự bảng chữ cái, bắt đầu sau chữ cuối của cụm từ khóa và vòng lại khi tới `Z`.
+<Check question="Biến một cụm từ khóa mã thành bảng chữ cái mật mã thế nào?">
+  Bỏ dấu cách và các chữ lặp, viết phần còn lại lên đầu. Sau đó thêm các chữ chưa dùng theo thứ tự bảng chữ cái, bắt đầu sau chữ cuối của cụm từ khóa mã và vòng lại khi tới `Z`.
 </Check>
 
 <Label>Chuyện gì đến tiếp theo</Label>
 
 ## Các nhà giải mã xuất hiện
 
-Có cực nhiều khóa không có nghĩa là an toàn. Mật mã thay thế giấu được chữ nào là chữ nào, nhưng không giấu được mỗi chữ xuất hiện thường xuyên ra sao. Ngôn ngữ có những thói quen, và các thói quen ấy lộ ra.
+Rất nhiều chìa khóa chưa chắc đã là an toàn. Mật mã thay thế giấu được chữ nào là chữ nào, nhưng không giấu được mỗi chữ xuất hiện bao nhiêu lần. Ngôn ngữ có thói quen riêng, và thói quen ấy lộ ra.
 
-Những người nhận ra điều này là các học giả ở thế giới Ả Rập. Họ sáng lập ra môn khoa học phá mật mã mà không cần khóa. Công cụ của họ chẳng gì hơn là đếm thật cẩn thận, và bạn có thể tự dùng nó ở trang tiếp theo: [phân tích tần suất](/ciphers/frequency-analysis).
+Những người nhận ra điều đó là các học giả trong thế giới Ả Rập. Họ đã sáng tạo ra **phép phân tích mã**, môn phá mật mã khi không có chìa khóa. Công cụ của họ chỉ là đếm thật cẩn thận, và bạn có thể tự dùng nó ở trang sau: [phân tích tần suất](/ciphers/frequency-analysis).
 
 <Label>Đọc thêm</Label>
 
 ## Tìm hiểu thêm
 
-- Simon Singh, *The Code Book*, chương 1.
-- Auguste Kerckhoffs, *La Cryptographie militaire* (*Mật mã quân sự*, 1883). Cuốn sách trích quy tắc của ông: sự an toàn của một mật mã phải dựa vào khóa, chứ không dựa vào một cách làm bí mật.
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử* (Phạm Văn Thiều và Phạm Thu Hằng dịch, NXB Trẻ), chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland. Tiếng Anh: *The Code Book*.
+- Auguste Kerckhoffs, *La Cryptographie militaire* (*Mật mã quân sự*, 1883). Sách trích quy tắc của ông: sự an toàn của một mật mã phải dựa vào chìa khóa, chứ không dựa vào việc giấu cách làm.

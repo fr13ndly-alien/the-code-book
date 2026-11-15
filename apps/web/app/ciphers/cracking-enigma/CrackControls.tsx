@@ -14,7 +14,7 @@ interface Props {
 
 const ROTOR_LABELS: Bilingual<string[]> = {
   en: ["Left rotor", "Middle rotor", "Right rotor"],
-  vi: ["Rôto trái", "Rôto giữa", "Rôto phải"],
+  vi: ["Đĩa trái", "Đĩa giữa", "Đĩa phải"],
 };
 
 /** The HTML controls of the page: a choice of attack, then the controls of that attack. */
@@ -30,16 +30,16 @@ export function CrackControls({ state, dispatch }: Props) {
           value={state.tool}
           onChange={(tool) => dispatch({ type: "use", tool })}
           options={[
-            { value: "chains", label: t({ en: "Rejewski's chains", vi: "Chuỗi của Rejewski" }) },
-            { value: "crib", label: t({ en: "Turing's crib", vi: "Từ mồi của Turing" }) },
+            { value: "chains", label: t({ en: "Rejewski's chains", vi: "Vòng liên kết của Rejewski" }) },
+            { value: "crib", label: t({ en: "Turing's crib", vi: "Crib của Turing" }) },
           ]}
         />
         {chains ? (
           <Output
             label={
               state.table
-                ? t({ en: "Chain lengths in the book's table", vi: "Độ dài chuỗi trong bảng của sách" })
-                : t({ en: "Chain lengths today", vi: "Độ dài chuỗi hôm nay" })
+                ? t({ en: "Chain lengths in the book's table", vi: "Độ dài các vòng trong bảng của sách" })
+                : t({ en: "Chain lengths today", vi: "Độ dài các vòng hôm nay" })
             }
           >
             {fingerprint(state)}
@@ -58,7 +58,7 @@ function message({ stops, illustration }: CrackState, locale: Locale): string {
   const vi = locale === "vi";
   if (illustration) return vi ? "Ví dụ của sách: không có gì để tìm" : "The book's example: nothing to search";
   if (!stops) return vi ? "Chưa thử" : "Not tested yet";
-  return stops[0]?.plaintext ?? (vi ? "Không vị trí rôto nào hợp ở đây" : "No rotor setting fits here");
+  return stops[0]?.plaintext ?? (vi ? "Không vị trí đĩa mã hóa nào hợp ở đây" : "No rotor setting fits here");
 }
 
 /** The day key the reader can change: three rotor starts, six cables, and which letters to compare. */
@@ -77,11 +77,11 @@ function ChainControls({ state, dispatch }: Props) {
         ))}
       </Row>
       <Row>
-        <div className={styles.cables} role="group" aria-label={t({ en: "Plugboard cables", vi: "Dây cắm" })}>
+        <div className={styles.cables} role="group" aria-label={t({ en: "Plugboard cables", vi: "Dây cáp" })}>
           <span>
             {t({
               en: "Plugboard cables (press to pull out or put back)",
-              vi: "Dây cắm (nhấn để rút ra hoặc cắm lại)",
+              vi: "Dây cáp (nhấn để rút ra hoặc cắm lại)",
             })}
           </span>
           <div>
@@ -118,9 +118,9 @@ function CribControls({ state, dispatch }: Props) {
   const clash = clashes(state.ciphertext, state.crib, state.offset).length > 0;
   return (
     <Row>
-      <Stepper label={t({ en: "Crib starts at letter", vi: "Từ mồi bắt đầu ở chữ thứ" })} value={state.offset + 1} onStep={(by) => dispatch({ type: "slide", by })} />
+      <Stepper label={t({ en: "Crib starts at letter", vi: "Crib bắt đầu ở chữ thứ" })} value={state.offset + 1} onStep={(by) => dispatch({ type: "slide", by })} />
       <TextField
-        label={t({ en: "Crib (your guess)", vi: "Từ mồi (bạn đoán)" })}
+        label={t({ en: "Crib (your guess)", vi: "Crib (bạn đoán)" })}
         width="short"
         value={state.crib}
         onChange={(crib) => dispatch({ type: "guess", crib })}
@@ -128,7 +128,7 @@ function CribControls({ state, dispatch }: Props) {
       <Button primary disabled={clash || state.crib === "" || state.illustration} onClick={() => dispatch({ type: "test" })}>
         {t({
           en: `Test ${ROTOR_POSITIONS.toLocaleString("en")} rotor settings`,
-          vi: `Thử ${ROTOR_POSITIONS.toLocaleString("vi")} vị trí rôto`,
+          vi: `Thử ${ROTOR_POSITIONS.toLocaleString("vi")} vị trí đĩa mã hóa`,
         })}
       </Button>
     </Row>

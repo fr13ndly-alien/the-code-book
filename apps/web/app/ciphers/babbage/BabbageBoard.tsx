@@ -112,7 +112,7 @@ function LettersStage({ state }: { state: BabbageState }) {
         />
       </div>
       <LetterBlock
-        label={t({ en: "The plaintext so far", vi: "Bản rõ tới giờ" })}
+        label={t({ en: "The plaintext so far", vi: "Văn bản thường tới giờ" })}
         letters={plaintext(state)}
         lit={(index) => index % state.keyLength === state.position}
         tone="lamp"

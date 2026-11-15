@@ -15,6 +15,6 @@ export const meta: CipherMeta = {
     era: "1854",
     hook: "Charles Wheatstone giấu chữ theo từng cặp trong một hình vuông mà học trò cũng học được.",
     firstStep: "Nhấn ▲ cạnh “Cặp” để mã hóa hai chữ một lần.",
-    source: "The Code Book (bản đầy đủ), Phụ lục E",
+    source: "Mật mã: Từ cổ điển đến lượng tử, phụ lục E: Mật mã Playfair",
   },
 };

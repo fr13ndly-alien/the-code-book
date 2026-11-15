@@ -28,7 +28,7 @@ export function HomophonicBoard({ state, onPick }: { state: HomophonicState; onP
   return (
     <Board>
       <LetterGrid
-        label={t({ en: "The key: the numbers that may stand for each letter", vi: "Khóa: các con số có thể thay cho mỗi chữ" })}
+        label={t({ en: "The key: the numbers that may stand for each letter", vi: "Chìa khóa: các con số có thể thay cho mỗi chữ" })}
         size="small"
         columnHeads={[...ALPHABET]}
         cells={cells}
@@ -36,7 +36,7 @@ export function HomophonicBoard({ state, onPick }: { state: HomophonicState; onP
         onPick={(row, col) => onPick(cells[row]![col]!)}
       />
       <FrequencyBars
-        label={t({ en: "How often each letter appears in the plaintext", vi: "Số lần mỗi chữ xuất hiện trong bản rõ" })}
+        label={t({ en: "How often each letter appears in the plaintext", vi: "Số lần mỗi chữ xuất hiện trong văn bản thường" })}
         symbols={[...ALPHABET]}
         values={letterCounts}
         highlight={column < 0 ? undefined : column}

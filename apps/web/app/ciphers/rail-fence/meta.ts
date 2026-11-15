@@ -12,8 +12,8 @@ export const meta: CipherMeta = {
   vi: {
     title: "Mật mã hàng rào",
     era: "Thế giới cổ đại",
-    hook: "Giữ nguyên mọi chữ trong tin nhắn, chỉ xáo thứ tự của chúng theo một đường zíc zắc mà chỉ bạn của bạn biết.",
+    hook: "Giữ nguyên mọi chữ cái trong bức thư, chỉ đảo thứ tự của chúng theo một đường zíc zắc mà chỉ bạn bè bạn biết.",
     firstStep: "Chạm vào một thanh rào để xem các chữ của nó đi đâu.",
-    source: "The Code Book, chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland",
   },
 };

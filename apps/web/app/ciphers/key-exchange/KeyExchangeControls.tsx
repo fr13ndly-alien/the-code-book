@@ -19,8 +19,8 @@ export function KeyExchangeControls(props: { state: KeyExchangeState; dispatch: 
         <Output
           label={
             state.youAreEve
-              ? t({ en: "The key, if Eve can find it", vi: "Khóa, nếu Eve tìm ra được" })
-              : t({ en: "Shared key", vi: "Khóa chung" })
+              ? t({ en: "The key, if Eve can find it", vi: "Chìa khóa, nếu Eve tìm ra được" })
+              : t({ en: "Shared key", vi: "Chìa khóa chung" })
           }
         >
           {keyText(state, locale)}

@@ -12,8 +12,8 @@ export const meta: CipherMeta = {
   vi: {
     title: "Mật mã dịch chuyển Caesar",
     era: "Khoảng năm 50 TCN",
-    hook: "Julius Caesar dịch bảng chữ cái đi ba chỗ, và các tướng của ông đọc được điều mà kẻ thù không đọc nổi.",
-    firstStep: "Gõ một tin nhắn bên dưới. Đổi độ dịch.",
-    source: "The Code Book, chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland",
+    hook: "Julius Caesar dịch bảng chữ cái đi ba vị trí, và các tướng của ông đọc được điều mà kẻ thù không đọc nổi.",
+    firstStep: "Gõ một bức thư bên dưới. Đổi độ dịch.",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland",
   },
 };

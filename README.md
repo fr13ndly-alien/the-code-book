@@ -19,6 +19,7 @@ Then open http://localhost:5173.
 | `npm run typecheck` | Type-checks everything |
 | `npm run check:coverage` | Checks `docs/COVERAGE.md` against the pages |
 | `npm run check:i18n` | Checks every page has a matching Vietnamese story |
+| `npm run check:vi-copy` | Checks the Vietnamese pages copy no sentences from the Vietnamese edition (needs its text in `resource/vi-book/`) |
 | `npm run build` | Builds the static site into `apps/web/build/client` |
 | `npm run preview` | Serves the built site |
 

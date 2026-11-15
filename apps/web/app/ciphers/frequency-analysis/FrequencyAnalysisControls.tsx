@@ -27,7 +27,7 @@ export function FrequencyAnalysisControls(props: {
   return (
     <Controls>
       <Row>
-        <Output label={t({ en: `Key so far: ${solved} of ${inUse} cipher letters`, vi: `Khóa tới giờ: ${solved} trên ${inUse} chữ mã` })}>{keySoFar(state)}</Output>
+        <Output label={t({ en: `Key so far: ${solved} of ${inUse} cipher letters`, vi: `Chìa khóa tới giờ: ${solved} trên ${inUse} chữ mật mã` })}>{keySoFar(state)}</Output>
         <Button primary onClick={() => dispatch({ type: "guessByRank" })}>
           {t({ en: "Guess every letter by rank", vi: "Đoán mọi chữ theo thứ hạng" })}
         </Button>
@@ -44,7 +44,7 @@ export function FrequencyAnalysisControls(props: {
         </Button>
       </Row>
       <Row>
-        <Output label={t({ en: "The message so far (small letters are your guesses)", vi: "Tin nhắn tới giờ (chữ thường là phỏng đoán của bạn)" })}>
+        <Output label={t({ en: "The message so far (small letters are your guesses)", vi: "Bức thư tới giờ (chữ in thường là phỏng đoán của bạn)" })}>
           {partialText(state.ciphertext, state.guesses)}
         </Output>
       </Row>

@@ -74,8 +74,8 @@ export function PlayfairBoard({ state, onPick }: { state: PlayfairState; onPick:
         <div className={styles.scroll}>
           <AlphabetRows
             rows={[
-              { label: t({ en: "Plain", vi: "Rõ" }), letters: all.map((each) => each.plain) },
-              { label: t({ en: "Cipher", vi: "Mã" }), letters: all.map((each) => each.cipher), kind: "cipher" },
+              { label: t({ en: "Plain", vi: "Thường" }), letters: all.map((each) => each.plain) },
+              { label: t({ en: "Cipher", vi: "Mật mã" }), letters: all.map((each) => each.cipher), kind: "cipher" },
             ]}
             highlight={state.position}
             onPick={onPick}

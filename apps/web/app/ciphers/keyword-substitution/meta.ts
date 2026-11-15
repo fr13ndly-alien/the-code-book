@@ -12,8 +12,8 @@ export const meta: CipherMeta = {
   vi: {
     title: "Mật mã từ khóa",
     era: "Thiên niên kỷ thứ nhất sau Công nguyên",
-    hook: "Xáo cả bảng chữ cái chỉ bằng một từ dễ nhớ, và không ai thử hết được mọi khóa.",
+    hook: "Xáo cả bảng chữ cái chỉ bằng một từ dễ nhớ, và không ai thử hết được mọi chìa khóa.",
     firstStep: "Đổi từ khóa. Chạm vào ô dưới một chữ để lần theo nó.",
-    source: "The Code Book, chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland",
   },
 };

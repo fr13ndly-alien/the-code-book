@@ -32,7 +32,7 @@ export function ToyScrambler({ toy, dispatch }: ToyScramblerProps) {
       <p className={styles.hint}>
         {t({
           en: "The book explains Enigma with six letters and one scrambler. Each key has a wire through the scrambler to one lamp.",
-          vi: "Cuốn sách giải thích Enigma bằng sáu chữ và một bộ xáo trộn. Mỗi phím có một sợi dây đi qua bộ xáo trộn tới một bóng đèn.",
+          vi: "Cuốn sách giải thích Enigma bằng sáu chữ và một đĩa mã hóa. Mỗi phím có một sợi dây đi qua đĩa mã hóa tới một bóng đèn.",
         })}
       </p>
 
@@ -73,7 +73,7 @@ export function ToyScrambler({ toy, dispatch }: ToyScramblerProps) {
         />
         {t({
           en: "The scrambler turns after each letter (starts again)",
-          vi: "Bộ xáo trộn xoay sau mỗi chữ (bắt đầu lại)",
+          vi: "Đĩa mã hóa quay sau mỗi chữ (bắt đầu lại)",
         })}
       </label>
 
@@ -89,8 +89,8 @@ function describe({ last, rotating }: ToyState, locale: Locale): string {
   if (locale === "vi") {
     if (!last) return "Nhấn một phím để lần theo sợi dây của nó.";
     const lit = `${last.key} làm sáng đèn ${last.output}.`;
-    if (!rotating) return `${lit} Bộ xáo trộn đứng yên, nên ${last.key} luôn làm sáng đèn ${last.output}.`;
-    return `${lit} Rồi bộ xáo trộn xoay một nấc, nên với chữ tiếp theo, mọi sợi dây đều thấp xuống một hàng.`;
+    if (!rotating) return `${lit} Đĩa mã hóa đứng yên, nên ${last.key} luôn làm sáng đèn ${last.output}.`;
+    return `${lit} Rồi đĩa mã hóa quay một nấc, nên với chữ tiếp theo, mọi sợi dây đều thấp xuống một hàng.`;
   }
   if (!last) return "Press a key to follow its wire.";
   const lit = `${last.key} lit ${last.output}.`;

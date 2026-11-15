@@ -14,6 +14,6 @@ export const meta: CipherMeta = {
     era: "1991",
     hook: "Phil Zimmermann bỏ hai loại mật mã vào cùng một phong bì, rồi tặng cho mọi người một cách giữ bí mật thật mạnh, miễn phí.",
     firstStep: "Nhấn “Bước tiếp” để xem Bob mở phong bì.",
-    source: "The Code Book, chương 6: Riêng tư tốt đẹp",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 7: Riêng tư tốt đẹp",
   },
 };

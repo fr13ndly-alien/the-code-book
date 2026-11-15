@@ -26,7 +26,7 @@ export function LuciferControls({ state, dispatch }: { state: LuciferState; disp
         <Stepper label={t({ en: "Rounds", vi: "Số vòng" })} value={state.rounds} onStep={(by) => dispatch({ type: "step", by })} />
         <Output
           label={
-            enciphering ? t({ en: "Ciphertext, in hex", vi: "Bản mật mã, hệ thập lục phân" }) : t({ en: "Plaintext", vi: "Bản rõ" })
+            enciphering ? t({ en: "Ciphertext, in hex", vi: "Bản mật mã, hệ thập lục phân" }) : t({ en: "Plaintext", vi: "Văn bản thường" })
           }
         >{output(state)}</Output>
         {flipped && (

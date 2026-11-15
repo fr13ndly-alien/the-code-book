@@ -12,8 +12,8 @@ export const meta: CipherMeta = {
   vi: {
     title: "Colossus và mật mã Lorenz",
     era: "1941 đến 1945",
-    hook: "Cỗ máy mật mã riêng của Hitler đã bị đánh bại bởi một cỗ máy chế tạo trong bí mật: chiếc máy tính lập trình được đầu tiên.",
-    firstStep: "Chạm vào một chữ trên băng để xem các lỗ của nó được cộng với khóa.",
-    source: "The Code Book, chương 5: Alice và Bob ra công khai",
+    hook: "Máy mã của chính Hitler đã thua một cỗ máy được chế tạo trong vòng bí mật: chiếc máy tính lập trình được đầu tiên.",
+    firstStep: "Chạm vào một chữ trên băng để xem các lỗ của nó được cộng với chìa khóa.",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 6: Alice và Bob ra công khai",
   },
 };

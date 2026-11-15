@@ -12,8 +12,8 @@ export const meta: CipherMeta = {
   vi: {
     title: "Mật mã Vigenère",
     era: "1586",
-    hook: "Một từ khóa, hai mươi sáu bảng chữ cái, và một mật mã mạnh đến mức người ta gọi nó là không thể phá.",
+    hook: "Một từ khóa, 26 bảng chữ cái mật mã, và một mật mã mạnh tới mức người ta gọi nó là không thể phá nổi.",
     firstStep: "Nhấn ▲ cạnh “Chữ” để mã hóa từng chữ một.",
-    source: "The Code Book, chương 2: Nhà giải mã vô danh",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 2: Le chiffre indéchiffrable",
   },
 };

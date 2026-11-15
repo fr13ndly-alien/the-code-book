@@ -87,8 +87,8 @@ export function policeView(state: EscrowPageState, locale: Locale): string {
   const view = whatPoliceCanRead(state);
   if (view.canRead) return view.text;
   if (locale === "vi") {
-    if (view.key !== null) return `${view.text} (vô nghĩa: người gửi đã dùng một khóa chưa bao giờ được ký gửi)`;
-    return `${view.text} (${view.one ?? view.two ? "vô nghĩa: một nửa không phải là khóa" : "vẫn còn mã hóa"})`;
+    if (view.key !== null) return `${view.text} (vô nghĩa: người gửi đã dùng một chìa khóa chưa bao giờ gửi giao kèo)`;
+    return `${view.text} (${view.one ?? view.two ? "vô nghĩa: một nửa không phải là chìa khóa" : "vẫn còn mã hóa"})`;
   }
   if (view.key !== null) return `${view.text} (nonsense: the sender used a key that was never lodged)`;
   return `${view.text} (${view.one ?? view.two ? "nonsense: one half is not a key" : "still enciphered"})`;

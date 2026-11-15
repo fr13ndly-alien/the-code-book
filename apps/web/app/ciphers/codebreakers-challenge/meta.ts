@@ -12,8 +12,8 @@ export const meta: CipherMeta = {
   vi: {
     title: "Thách thức giải mã",
     era: "Đến lượt bạn",
-    hook: "Cuốn sách kết thúc bằng một lời thách đố: bốn bức mật thư và không có lời giải. Đây là bốn bức của riêng chúng tôi.",
-    firstStep: "Nhấn ▲ cạnh “Độ dịch” cho tới khi tin nhắn thành tiếng Anh.",
-    source: "The Code Book, Thách thức giải mã",
+    hook: "Cuốn sách kết thúc bằng một lời thách đố: bốn bản mật mã và không có lời giải. Đây là bốn bản của riêng chúng tôi.",
+    firstStep: "Nhấn ▲ cạnh “Độ dịch” cho tới khi bức thư thành tiếng Anh.",
+    source: "Mật mã: Từ cổ điển đến lượng tử, phần Thách thức Giải mã (trang 505–523)",
   },
 };

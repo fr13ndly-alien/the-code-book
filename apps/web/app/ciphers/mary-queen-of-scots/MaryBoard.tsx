@@ -17,9 +17,9 @@ function meaningOf({ kind, plain }: Token, locale: Locale): string {
   if (locale === "vi") {
     if (kind === "letter") return `là ký hiệu của chữ ${plain}`;
     if (kind === "word") return `thay cho cả từ ${plain}`;
-    if (kind === "null") return "là một chữ đệm. Nó không có nghĩa gì, nên người đọc bỏ qua nó";
-    if (kind === "doubler") return "cho biết ký hiệu tiếp theo là một chữ kép";
-    return "không có trong khóa";
+    if (kind === "null") return "là một ký tự không. Nó chẳng thay cho chữ nào, nên người đọc bỏ qua nó";
+    if (kind === "doubler") return "cho biết ký hiệu tiếp theo là một chữ cái kép";
+    return "không có trong bảng chìa khóa";
   }
   if (kind === "letter") return `is the sign for the letter ${plain}`;
   if (kind === "word") return `stands for the whole word ${plain}`;
@@ -59,11 +59,11 @@ export function MaryBoard({ state, onPick }: { state: MaryState; onPick: (symbol
           : reading
             ? t({
                 en: "Only the signs are showing. Tap a sign to look it up in the key.",
-                vi: "Chỉ có các ký hiệu đang hiện. Chạm vào một ký hiệu để tra nó trong khóa.",
+                vi: "Chỉ có các ký hiệu đang hiện. Chạm vào một ký hiệu để tra nó trong bảng chìa khóa.",
               })
             : t({
                 en: "Each sign sits under what it stands for. Tap a sign to find it in the key.",
-                vi: "Mỗi ký hiệu nằm dưới điều nó thay thế. Chạm vào một ký hiệu để tìm nó trong khóa.",
+                vi: "Mỗi ký hiệu nằm dưới điều nó thay thế. Chạm vào một ký hiệu để tìm nó trong bảng chìa khóa.",
               })}
       </Caption>
       <div className={styles.scroll}>

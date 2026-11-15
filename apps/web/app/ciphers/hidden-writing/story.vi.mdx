@@ -1,145 +1,147 @@
 {/*
-  Bản dịch tiếng Việt của story.mdx. Theo docs/i18n/vi-glossary.md.
-  Follows the cipher page template in docs/STANDARDS.md.
-  Facts come from The Code Book, chapter 1. The wording is ours.
+  Retold from Mật mã: Từ cổ điển đến lượng tử (Simon Singh; Phạm Văn Thiều và Phạm Thu Hằng dịch, NXB Trẻ),
+  pages 20–25, 68–69 and 170. Terms and names follow docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md. The wording is ours.
 */}
 
 <Standfirst>
-  Mẹo cổ xưa nhất của thư bí mật: giấu tin nhắn kỹ đến mức không ai nghĩ tới việc đi tìm.
+  Mẹo lâu đời nhất của thư bí mật: giấu bức thư khéo đến mức chẳng ai nghĩ tới việc đi tìm.
 </Standfirst>
 
 <Label>Mở đầu</Label>
 
-## Tin nhắn dưới mái tóc
+## Bức thư dưới mái tóc
 
-Histaiaeus có một tin nhắn nguy hiểm cần gửi. Ông muốn người đồng minh Aristagoras, ở thành Miletus, nổi dậy chống lại vua Ba Tư. Một bức thư như thế tuyệt đối không được để ai bắt gặp trên đường.
+Histaiaeus cần gửi một bức thư rất nguy hiểm. Ông muốn ủng hộ Aristagoras ở xứ Miletus đứng lên chống vua Ba Tư. Một bức thư như thế mà bị bắt trên đường thì coi như xong.
 
-Vì vậy Histaiaeus chọn một người đưa tin và cạo trọc đầu anh ta. Ông viết tin nhắn lên da đầu trọc. Rồi ông chờ cho tóc mọc lại.
+Vậy là Histaiaeus cạo trọc đầu một người đưa tin. Ông viết thư lên da đầu người ấy. Rồi ông kiên nhẫn đợi tóc mọc lại.
 
-Người đưa tin lên đường, tay không, túi cũng không. Suốt dọc đường chẳng ai làm khó anh. Tới Miletus, anh cạo đầu lần nữa và cúi đầu trước Aristagoras.
+Người đưa tin lên đường, chẳng mang theo thứ gì đáng ngờ. Không ai làm phiền anh. Tới nơi, anh cạo tóc thêm lần nữa và cúi đầu cho người nhận đọc.
 
-Không một chữ nào trong tin nhắn bị xáo trộn. Ai nhìn thấy cũng đọc được. Vậy điều gì đã giữ bí mật cho nó?
+Bức thư không hề bị xáo trộn chữ nào. Ai nhìn thấy cũng đọc được ngay. Vậy cái gì đã giữ bí mật cho nó?
 
 <Label>Thử xem</Label>
 
-## Trống trơn, hay không?
+## Trống trơn, thật không?
 
-Mô phỏng cho bạn thấy một tấm bảng viết bằng gỗ. Người Hy Lạp phủ sáp lên những tấm bảng như vậy rồi khắc chữ vào lớp sáp. Tấm này có một lời cảnh báo viết thẳng lên mặt gỗ. Hãy đoán trước: khi bạn phủ lên một lớp sáp mới, lính gác sẽ thấy gì?
+Mô phỏng có một tấm bảng gỗ để viết. Người Hy Lạp thường phủ sáp lên những tấm như vậy và vạch chữ vào lớp sáp. Nhưng tấm này có một lời cảnh báo viết thẳng lên gỗ. Bạn đoán thử: phủ một lớp sáp mới lên rồi, lính gác sẽ thấy gì?
 
 <Try action="tablet" button="Xem tấm bảng">
-  Nhấn “Phủ sáp”. Rồi nhấn “Gửi qua trạm gác” và đọc xem lính gác nói gì.
+  Nhấn “Phủ sáp”. Sau đó nhấn “Gửi qua trạm gác” và đọc xem lính gác nói gì.
 </Try>
 
 <Check question="Lính gác đã thấy gì?">
-  Một tấm bảng trống, loại mà khách đi đường nào cũng có thể mang theo. Lời cảnh báo vẫn nằm dưới lớp sáp. Lính gác cho qua vì anh ta chẳng có lý do gì để tìm nó.
+  Một tấm bảng trống, thứ mà người đi đường nào cũng có thể mang. Lời cảnh báo vẫn nằm nguyên dưới lớp sáp. Lính gác cho qua, vì anh chẳng có lý do gì để tìm.
 </Check>
 
 <Label>Cách hoạt động</Label>
 
-## Giấu tin nhắn, không giấu ý nghĩa
+## Giấu bức thư, không giấu nghĩa
 
 ### Dưới lớp sáp
 
-Giấu đi việc có một tin nhắn tồn tại gọi là **giấu thư** (kỹ thuật giấu thư, tiếng Anh là *steganography*). Cái tên này ghép từ hai từ Hy Lạp: *steganos*, nghĩa là “được che phủ”, và *graphein*, nghĩa là “viết”.
+Cách giữ bí mật bằng việc giấu luôn sự có mặt của bức thư gọi là **kỹ thuật giấu thư**, hay gọn là giấu thư (tiếng Anh: *steganography*). Tên này lấy từ hai chữ Hy Lạp: *steganos* là “che đậy”, *graphein* là “viết”.
 
-Hãy để ý điều còn thiếu. Không có bảng chữ cái bí mật nào, cũng chẳng có gì phải giải. Tin nhắn nằm đó bằng chữ thường. Thứ duy nhất bảo vệ nó là không ai nghĩ tới việc tìm.
+Bạn để ý xem thiếu cái gì. Không có bảng chữ cái bí mật, cũng không có gì phải giải. Bức thư vẫn là chữ bình thường. Thứ duy nhất che chở cho nó là không ai nghĩ tới việc tìm.
 
-Người nhận ở đầu bên kia chỉ cần biết một điều: tìm ở đâu.
+Người nhận chỉ cần biết đúng một điều: tìm ở chỗ nào.
 
 <Try action="waxed" button="Nhận tấm bảng trống">
-  Tấm bảng đã tới, phủ kín sáp. Chạm vào một dải sáp trên bảng, hoặc nhấn “Cạo dải tiếp theo”. Xem ô “Điều ai cũng đọc được lúc này” dài ra, từng dải một.
+  Tấm bảng đã tới, phủ kín sáp. Chạm vào một dải sáp trên bảng, hoặc nhấn “Cạo dải tiếp theo”. Nhìn ô “Điều ai cũng đọc được lúc này” dài ra theo từng dải.
 </Try>
 
 ### Mực chờ hơi nóng
 
-Bạn cũng có thể giấu chữ ngay trong mực. Vào thế kỷ 1 sau Công nguyên, nhà văn La Mã Pliny Già đã tả một loại mực vô hình làm từ “sữa” của cây tithymalus. Khi khô, nó trong suốt. Trang giấy trông như để trắng.
+Chữ cũng có thể trốn ngay trong mực. Vào thế kỷ 1 sau Công nguyên, Pliny the Elder, một học giả La Mã, đã kể cách làm mực vô hình từ nhựa trắng của cây tithymalus. Mực khô rồi thì trong suốt. Trang giấy trông như chưa ai viết gì.
 
-Hơi nóng nhẹ làm chữ hiện lại. Nhựa cây đã khô bị cháy sém và chuyển sang màu nâu. Nhiều chất lỏng từ sinh vật sống cũng như vậy, vì chúng chứa nhiều cacbon.
+Chỉ cần hơ nóng nhẹ là chữ hiện về. Nhựa khô bị cháy sém và ngả sang màu nâu. Nhiều chất lỏng lấy từ cây cỏ, con vật cũng thế, vì chúng có nhiều cacbon nên dễ cháy.
 
 <Try action="letter" button="Viết bằng mực vô hình">
-  Nhấn “Để mực khô” và mẩu tin biến mất. Giờ nhấn “Hơ nóng tờ giấy” một lần, rồi thêm lần nữa. Xem các chữ sẫm dần sau mỗi lần nhấn.
+  Nhấn “Để mực khô” là dòng chữ biến mất. Giờ nhấn “Hơ nóng tờ giấy” một lần, rồi lần nữa. Các chữ sẽ sẫm dần sau mỗi lần nhấn.
 </Try>
 
-<Check question="Người nhận cần biết gì để đọc một tin nhắn được giấu?">
-  Chỉ cần biết mẹo: cạo lớp sáp, hoặc hơ nóng tờ giấy. Không có khóa nào phải nhớ, cũng chẳng có câu đố nào phải giải. Vì thế giấu thư rất dễ dùng, và đó cũng chính là lý do nó mong manh.
+<Check question="Người nhận cần biết gì để đọc một bức thư bị giấu?">
+  Chỉ cần biết mẹo: cạo lớp sáp, hay hơ nóng tờ giấy. Chẳng có chìa khóa nào phải nhớ, chẳng có câu đố nào phải giải. Vì vậy giấu thư rất dễ dùng. Cũng vì vậy mà nó mong manh.
 </Check>
 
 <Label>Câu chuyện</Label>
 
-## Người phụ nữ bảo “cạo nó đi”
+## Người phụ nữ bảo “cạo sáp đi”
 
-Năm 480 TCN, một cặp bảng viết từ thành Susa của Ba Tư được gửi tới Sparta. Chúng trống trơn. Không ai hiểu vì sao lại có người gửi chúng.
+Năm 480 TCN, có hai thanh gỗ từ thành Susa của Ba Tư được gửi về Sparta. Mặt sáp trên đó trơn bóng, không một chữ. Chẳng ai hiểu gửi chúng đi để làm gì.
 
-Rồi Gorgo lên tiếng. Bà là con gái của Cleomenes và là vợ của Leonidas. Bà bảo mọi người cạo lớp sáp đi. Trên mặt gỗ bên dưới là lời cảnh báo của Demaratus, một người Hy Lạp sống lưu vong ở Susa. Xerxes, vua Ba Tư, đã dành năm năm bí mật gom một đạo quân khổng lồ để xâm lược Hy Lạp.
+Rồi Gorgo lên tiếng. Bà là con gái của Cleomenes và vợ của Leonidas. Bà bảo mọi người thử cạo lớp sáp. Bên dưới, trên mặt gỗ, là lời báo tin của Demaratus. Ông là một người Hy Lạp bị đuổi khỏi quê nhà, đang sống ở Susa, nhưng lòng vẫn hướng về Hy Lạp. Ông báo rằng Xerxes, vua Ba Tư, đã mất năm năm lặng lẽ gom một đạo quân khổng lồ để đánh Hy Lạp.
 
-Người Hy Lạp vốn không có gì để tự vệ. Giờ họ dùng tiền lời từ các mỏ bạc để đóng chiến thuyền. Ngày 23 tháng 9 năm 480 TCN, họ dụ hạm đội Ba Tư vào vịnh Salamis chật hẹp và đánh bại nó chỉ trong một ngày.
+Người Hy Lạp lúc ấy chưa hề phòng bị. Giờ họ lấy tiền lời từ các mỏ bạc để đóng hai trăm tàu chiến. Ngày 23 tháng 9 năm 480 TCN, họ nhử hạm đội Ba Tư vào vịnh Salamis chật hẹp, gần Athens. Chỉ trong một ngày, quân Ba Tư thua tan tác.
 
-Chúng ta biết cả hai câu chuyện nhờ Herodotus, nhà sử học Hy Lạp đã ghi chép lại những cuộc chiến này.
+Cả hai câu chuyện đến với chúng ta nhờ Herodotus, người được gọi là “cha đẻ của lịch sử”. Ông đã chép lại các cuộc chiến giữa Hy Lạp và Ba Tư.
 
-<DigDeeper title="Lụa, sáp và một cái dạ dày khỏe">
-  Suốt hai nghìn năm, người ta không ngừng nghĩ ra chỗ giấu mới. Ở Trung Quốc thời xưa, tin nhắn được viết trên lụa mỏng rồi vo lại thành một viên tròn bé xíu. Viên lụa được bọc sáp, và người đưa tin nuốt nó vào bụng.
+<DigDeeper title="Lụa, sáp và một cái bụng gan dạ">
+  Suốt hai nghìn năm sau Herodotus, người ta cứ nghĩ ra chỗ giấu mới. Ở Trung Quốc thời xưa, thư được viết lên lụa mỏng rồi vo thành một viên bé xíu. Viên lụa được bọc sáp, và người đưa thư nuốt luôn vào bụng.
 
-  Mực vô hình cũng tồn tại rất lâu. Cuốn sách kể rằng có những điệp viên thời nay, khi hết mực chuyên dụng, đã dùng chính nước tiểu của mình. Nó cũng cháy sém khi gặp nóng, y như nhựa cây của Pliny.
+  Ở thế kỷ 16, nhà khoa học Ý Giovanni Porta còn bày cách viết thư lên vỏ một quả trứng luộc, bằng thứ mực pha từ phèn và giấm. Mực ngấm qua vỏ và in chữ lên lòng trắng. Phải bóc vỏ mới đọc được.
+
+  Mực vô hình cũng sống rất lâu. Sách kể rằng có những điệp viên thời nay hết mực chuyên dụng thì dùng luôn nước tiểu của mình. Gặp nóng, nó cũng cháy sém y như nhựa cây của Pliny.
 </DigDeeper>
 
 <DigDeeper title="Một chiếc thắt lưng và một thùng bia">
-  Giấu và xáo trộn có thể đi cùng nhau. Người đưa tin Sparta đôi khi đeo dải da của [gậy scytale](/ciphers/scytale) làm thắt lưng. Các chữ đã xáo trộn quay vào trong, áp sát người.
+  Giấu và xáo trộn có thể đi chung. Người đưa thư Sparta đôi khi đeo dải da của [cây scytale](/ciphers/scytale) làm thắt lưng. Mặt có chữ đã xáo trộn thì quay vào trong, sát người.
 
-  Năm 1586, Gilbert Gifford mang thư cho Nữ hoàng Mary xứ Scotland, lúc ấy đang bị giam cầm. Một người nấu bia niêm mỗi bức thư trong một túi da, nhét vào nút gỗ rỗng của thùng bia. Cuốn sách coi đó cũng là giấu thư. Thư của bà Mary còn được viết bằng [mật mã](/ciphers/mary-queen-of-scots).
+  Năm 1586, Gilbert Gifford lén chuyển thư cho Nữ hoàng Mary xứ Scotland, lúc ấy đang bị giam. Ông đưa thư cho một người làm bia. Người này bọc thư trong túi da rồi nhét vào cái nắp rỗng đậy thùng bia. Sách xếp mẹo đó vào kỹ thuật giấu thư. Thư của bà Mary còn được viết bằng [mật mã](/ciphers/mary-queen-of-scots).
 </DigDeeper>
 
-<DigDeeper title="Tấm bưu thiếp không có chữ nào">
-  Trong Chiến tranh thế giới thứ nhất, ngài Henry Jones nhận được một tấm bưu thiếp gửi từ Thổ Nhĩ Kỳ. Con trai ông đang bị giam ở đó. Tấm bưu thiếp để trống. Địa chỉ cũng lạ: `184 King's Road`, Tighnabruaich. Ngôi làng Scotland ấy chẳng có đường King's Road nào, và nhà cũng không đánh số.
+<DigDeeper title="Tấm bưu thiếp để trắng">
+  Trong Chiến tranh thế giới thứ nhất, Ngài Henry Jones nhận một tấm bưu thiếp gửi từ Thổ Nhĩ Kỳ, nơi con trai ông đang bị giam. Tấm thiếp không có chữ nào. Địa chỉ thì lạ: `184 King's Road`, Tighnabruaich. Làng Tighnabruaich ở Scotland bé tới mức nhà không đánh số, và cũng chẳng có đường King's Road nào.
 
-  <Check question="Tin nhắn nằm trong địa chỉ. Bạn sẽ tra Các Vua 18:4 ở đâu?">
-    Trong Kinh Thánh. Sách Các Vua thứ nhất, chương 18, câu 4, kể về một trăm nhà tiên tri được giấu trong hang và được nuôi bằng bánh và nước. Người con muốn nói rằng anh vẫn an toàn và có ăn. Mục sư Montgomery, một nhà giải mã người Anh, đã nhận ra điều đó.
+  <Check question="Bức thư nằm trong địa chỉ. Bạn sẽ tra “Kings 18:4” ở đâu?">
+    Trong Kinh thánh, ở câu 4 thuộc chương 18 của Sách thứ nhất về các Vua. Câu ấy kể chuyện một trăm nhà tiên tri được giấu trong hang và được nuôi bằng bánh và nước. Người con muốn báo cho nhà biết anh vẫn ổn và được cho ăn. Reverend Montgomery, một nhà giải mã của Anh, đã nhận ra điều đó.
   </Check>
 </DigDeeper>
 
 <Label>Bị phá như thế nào</Label>
 
-## Lính gác kiểm tra mọi thứ
+## Người lính gác soát mọi thứ
 
-Giấu thư có một điểm yếu lớn. Nếu tin nhắn bị tìm thấy, nó bị đọc ngay lập tức. Không có gì ngăn giữa người tìm thấy và những dòng chữ.
+Giấu thư có một điểm yếu rất lớn. Bức thư mà bị tìm thấy thì bị đọc ngay. Giữa người tìm và nội dung chẳng còn gì ngăn cách.
 
-Mà muốn tìm thấy thì không cần thông minh, chỉ cần kiên nhẫn. Hãy hình dung một lính gác ở biên giới chẳng tin ai. Anh ta cạo mọi tấm bảng sáp. Anh ta hơ mọi tờ giấy trắng trên ngọn lửa. Anh ta cạo đầu bất cứ ai trông có vẻ lo lắng. Phần lớn các ngày anh ta chẳng tìm thấy gì. Nhưng sớm muộn gì anh ta cũng sẽ tìm ra một thứ.
+Mà muốn tìm thì không cần giỏi, chỉ cần chịu khó. Thử hình dung một lính gác biên giới không tin ai cả. Anh cạo mọi tấm bảng sáp. Anh hơ lửa mọi tờ giấy trắng. Anh bóc vỏ trứng luộc, cạo đầu bất cứ ai trông có vẻ hồi hộp. Phần lớn các ngày anh chẳng thấy gì. Nhưng sớm muộn anh sẽ thấy.
 
 <Try action="searched" button="Gặp một lính gác kỹ tính">
-  Tấm bảng lại nằm dưới lớp sáp, nhưng lần này lính gác được đặt là “Kỹ tính”. Nhấn “Gửi qua trạm gác”. Rồi chọn “Mực vô hình”, để mực khô và gửi nó qua anh ta luôn.
+  Tấm bảng lại nằm dưới lớp sáp, nhưng lần này lính gác được đặt là “Kỹ tính”. Nhấn “Gửi qua trạm gác”. Sau đó chọn “Mực vô hình”, để mực khô và gửi qua anh ta lần nữa.
 </Try>
 
-Lính gác trên đường từ Susa chỉ nhìn qua. Người gửi không thể trông chờ vào điều đó. Giấu thư mang lại chút an toàn, nên nó mới tồn tại lâu đến vậy. Nhưng một bí mật quan trọng cần thêm một lớp phòng thủ thứ hai.
+Đám lính gác trên đường từ Susa chỉ nhìn qua loa. Người gửi thư đâu thể lúc nào cũng gặp may như thế. Giấu thư có cho một chút an toàn, nên nó mới tồn tại lâu đến vậy. Nhưng một bí mật hệ trọng cần thêm một lớp bảo vệ nữa.
 
 <Label>Thử thách</Label>
 
 ## Tờ giấy trắng
 
 <Challenge answer="THE GUARD IS ASLEEP">
-  Một tù nhân nhận được tờ giấy từ một người bạn ở bên ngoài. Trên đó không có gì, và lính gác đã khám nó cũng không thấy gì.
+  Một người tù nhận được tờ giấy của bạn mình gửi từ bên ngoài. Trên giấy không có gì, và lính gác soát nó cũng chẳng thấy gì.
 
-  Hãy làm như người tù đã làm. Tờ giấy viết gì? (Câu trả lời là tiếng Anh.)
+  Bạn hãy làm như người tù. Tờ giấy viết gì? (Câu trả lời là tiếng Anh.)
 
   <Try action="sheet" button="Mở tờ giấy trắng" />
 </Challenge>
 
-<Check question="Vì sao một tin nhắn được giấu lại dễ đọc đến thế khi đã bị tìm thấy?">
-  Vì chữ của nó chưa bao giờ bị thay đổi. Mọi sự an toàn của nó đến từ việc không ai tìm. Ngay khi có người cạo lớp sáp hay hơ nóng tờ giấy, tin nhắn gốc hiện ra trước mắt họ.
+<Check question="Vì sao bức thư bị giấu lại dễ đọc đến thế, một khi đã bị tìm ra?">
+  Vì chữ của nó chưa bao giờ bị thay đổi. Toàn bộ sự an toàn của nó chỉ nhờ không ai tìm. Ai đó cạo sáp hay hơ nóng tờ giấy là bức thư gốc hiện ra trước mắt.
 </Check>
 
 <Label>Chuyện gì đến tiếp theo</Label>
 
-## Giấu ý nghĩa thay vì giấu tin nhắn
+## Giấu cái nghĩa thay vì giấu bức thư
 
-Vì vậy một môn thứ hai ra đời bên cạnh môn thứ nhất. **Mật mã học** (tiếng Anh là *cryptography*) lấy tên từ chữ Hy Lạp *kryptos*, nghĩa là “được giấu kín”. Nó không giấu tin nhắn. Nó giấu ý nghĩa của tin nhắn, bằng cách xáo trộn chữ theo một cách mà người gửi và người nhận đã thỏa thuận từ trước. Việc xáo trộn này gọi là **mã hóa**.
+Vì thế, song song với giấu thư, một môn thứ hai lớn dần lên. Đó là **khoa học mật mã** (tiếng Anh: *cryptography*), lấy tên từ chữ Hy Lạp *kryptos*, “giấu kín”. Nó không giấu bức thư đi. Nó giấu cái nghĩa, bằng cách biến đổi bức thư theo một cách mà người gửi và người nhận đã hẹn với nhau từ trước. Việc biến đổi ấy gọi là **mã hóa**.
 
-Giờ thì lính gác kỹ tính cứ việc cạo và hơ tùy thích. Anh ta tìm thấy tin nhắn, nhưng vẫn không đọc được.
+Giờ thì anh lính gác kỹ tính cứ cạo và hơ thoải mái. Anh tìm thấy bức thư, nhưng vẫn không đọc nổi.
 
-Cách xáo trộn đơn giản nhất là giữ nguyên mọi chữ cái và chỉ đổi thứ tự. Hãy thử ở trang tiếp theo: [mật mã hàng rào](/ciphers/rail-fence).
+Cách mã hóa đơn giản nhất là giữ nguyên mọi chữ cái, chỉ đổi chỗ của chúng. Bạn thử ở trang sau nhé: [mật mã hàng rào](/ciphers/rail-fence).
 
 <Label>Đọc thêm</Label>
 
 ## Tìm hiểu thêm
 
-- Simon Singh, *The Code Book*, chương 1.
-- Herodotus, *Lịch sử* (*The Histories*). Quyển 5 kể về người đưa tin bị cạo đầu, quyển 7 kể về những tấm bảng sáp.
-- Pliny Già, *Lịch sử tự nhiên* (*Natural History*), quyển 26. Đây là nguồn nói về mực vô hình làm từ cây tithymalus.
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử* (Phạm Văn Thiều và Phạm Thu Hằng dịch, NXB Trẻ), chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland. Tiếng Anh: *The Code Book*.
+- Herodotus, *Lịch sử* (*The Histories*). Quyển 5 kể chuyện người đưa tin bị cạo đầu, quyển 7 kể chuyện những thanh gỗ phủ sáp.
+- Pliny the Elder, *Lịch sử tự nhiên* (*Natural History*), quyển 26. Đây là nơi ông viết về mực vô hình làm từ cây tithymalus.

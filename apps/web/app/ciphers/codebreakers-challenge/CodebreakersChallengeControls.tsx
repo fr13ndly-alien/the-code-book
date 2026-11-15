@@ -43,12 +43,12 @@ const keySoFar = (state: ChallengeState) =>
 /** What the first row calls the reading: we can only judge our own cryptograms. */
 function readingLabel(state: ChallengeState): Bilingual {
   if (isOwn(state)) {
-    return { en: "Your own cryptogram: the reading so far", vi: "Bức mật thư của riêng bạn: cách đọc tới giờ" };
+    return { en: "Your own cryptogram: the reading so far", vi: "Bản mật mã của riêng bạn: cách đọc tới giờ" };
   }
   const solved = currentIsSolved(state);
   return {
     en: `Cryptogram ${state.current + 1}: ${solved ? "solved" : "not solved yet"}`,
-    vi: `Bức mật thư ${state.current + 1}: ${solved ? "đã giải được" : "chưa giải được"}`,
+    vi: `Bản mật mã ${state.current + 1}: ${solved ? "đã giải được" : "chưa giải được"}`,
   };
 }
 
@@ -61,7 +61,7 @@ export function CodebreakersChallengeControls({ state, dispatch }: Props) {
     <Controls>
       <Row>
         <Choice
-          label={t({ en: "Cryptogram (✓ is solved)", vi: "Bức mật thư (✓ là đã giải được)" })}
+          label={t({ en: "Cryptogram (✓ is solved)", vi: "Bản mật mã (✓ là đã giải được)" })}
           value={String(state.current)}
           onChange={(value) => dispatch({ type: "open", cryptogram: Number(value) })}
           options={[
@@ -88,7 +88,7 @@ function OwnTools({ state, dispatch }: Props) {
   return (
     <Row>
       <TextField
-        label={t({ en: "Paste a cryptogram (a change starts again)", vi: "Dán một bức mật thư (thay đổi thì làm lại từ đầu)" })}
+        label={t({ en: "Paste a cryptogram (a change starts again)", vi: "Dán một bản mật mã (thay đổi thì làm lại từ đầu)" })}
         value={state.own.text}
         rows={PASTE_ROWS}
         onChange={(text) => dispatch({ type: "paste", text })}
@@ -122,7 +122,7 @@ function SubstitutionTools({ state, dispatch }: Props) {
   return (
     <>
       <Row>
-        <Output label={t({ en: `Key so far: ${guessed} cipher letters`, vi: `Khóa tới giờ: ${guessed} chữ mã` })}>{keySoFar(state)}</Output>
+        <Output label={t({ en: `Key so far: ${guessed} cipher letters`, vi: `Chìa khóa tới giờ: ${guessed} chữ mật mã` })}>{keySoFar(state)}</Output>
       </Row>
       <Row>
         <Button disabled={!pickedIsGuessed} onClick={() => dispatch({ type: "rubOut" })}>
@@ -147,7 +147,7 @@ function VigenereTools({ state, dispatch }: Props) {
   return (
     <Row>
       <Output label={t({ en: "Keyword so far", vi: "Từ khóa tới giờ" })}>{keyword(state)}</Output>
-      <Stepper label={t({ en: "Key length (resets the keyword)", vi: "Độ dài khóa (đặt lại từ khóa)" })} value={keyLength} onStep={(by) => dispatch({ type: "resize", by })} />
+      <Stepper label={t({ en: "Key length (resets the keyword)", vi: "Độ dài từ khóa (đặt lại từ khóa)" })} value={keyLength} onStep={(by) => dispatch({ type: "resize", by })} />
       <Stepper
         label={t({ en: "Key letter", vi: "Chữ khóa" })}
         value={t({ en: `${position + 1} of ${keyLength}`, vi: `${position + 1} / ${keyLength}` })}

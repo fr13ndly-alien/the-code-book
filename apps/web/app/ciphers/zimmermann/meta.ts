@@ -12,8 +12,8 @@ export const meta: CipherMeta = {
   vi: {
     title: "Bức điện Zimmermann",
     era: "1917",
-    hook: "Một bức điện viết bằng mã bí mật, lọt vào tay những kẻ không nên đọc, đã kéo nước Mỹ vào Chiến tranh thế giới thứ nhất.",
+    hook: "Một bức điện viết bằng mã bí mật, lọt vào tay những người không nên đọc, đã kéo nước Mỹ vào Chiến tranh thế giới thứ nhất.",
     firstStep: "Chạm vào các từ trong sổ mã để soạn một bức điện.",
-    source: "The Code Book, chương 3: Cơ giới hóa việc giữ bí mật",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 3: Cơ giới hóa việc giữ bí mật",
   },
 };

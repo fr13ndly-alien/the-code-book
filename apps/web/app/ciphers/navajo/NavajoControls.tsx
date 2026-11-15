@@ -24,7 +24,7 @@ export function NavajoControls({ state, dispatch }: { state: NavajoState; dispat
             { value: "listen", label: t({ en: "Listen", vi: "Nghe" }) },
           ]}
         />
-        <Output label={sending ? t({ en: "Spoken in code", vi: "Nói bằng mã" }) : t({ en: "Decoded so far", vi: "Đã giải mã được" })}>{output(state)}</Output>
+        <Output label={sending ? t({ en: "Spoken in code", vi: "Nói bằng mật mã" }) : t({ en: "Decoded so far", vi: "Đã giải mã được" })}>{output(state)}</Output>
       </Row>
       {sending ? (
         <Row>
@@ -37,7 +37,7 @@ export function NavajoControls({ state, dispatch }: { state: NavajoState; dispat
         </Row>
       )}
       <details className={styles.lexicon}>
-        <summary>{t({ en: "Terms this page has a code word for", vi: "Các thuật ngữ có từ mã trên trang này" })}</summary>
+        <summary>{t({ en: "Terms this page has a code word for", vi: "Các thuật ngữ có từ mật mã trên trang này" })}</summary>
         <ul>
           {TERM_WORDS.map((term) => (
             <li key={term.stands}>

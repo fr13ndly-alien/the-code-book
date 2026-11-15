@@ -1,146 +1,147 @@
 {/*
-  Translates story.mdx into Vietnamese, following docs/i18n/vi-glossary.md.
+  Retold in Vietnamese from Mật mã: Từ cổ điển đến lượng tử (NXB Trẻ), chương 4: Công phá Enigma,
+  pages 214–237 (Rejewski and the Biuro Szyfrów), 238–264 ("Con ngỗng không bao giờ kêu quạc quạc"),
+  269–270 (keeping Ultra secret) and 275–278. Follows docs/i18n/vi-glossary.md.
   Follows the cipher page template in docs/STANDARDS.md.
-  Facts come from The Code Book, chapter 3 ("Cracking the Enigma" and "The Geese that Never Cackled").
   The Enigma page tells the outline of this story. This page is about doing the attacks. The wording is ours.
 */}
 
 <Standfirst>
-  Mười triệu tỷ khóa, mỗi nửa đêm lại đổi khóa mới, và hai mẹo khiến con số ấy chẳng còn đáng sợ.
+  Mười triệu tỷ chìa khóa mã, mỗi nửa đêm lại đổi, và hai mẹo khiến con số ấy chẳng còn đáng sợ.
 </Standfirst>
 
 <Label>Mở đầu</Label>
 
 ## Người đứng bên cửa sổ
 
-Warsaw, năm 1934. Hermann Göring, một trong những người quyền lực nhất nước Đức, đang ở thành phố này. Ông và đoàn tùy tùng đặt vòng hoa trước Mộ Chiến sĩ Vô danh.
+Vácsava, năm 1934. Hermann Göring, một trong những nhân vật quyền lực nhất nước Đức, đang thăm Ba Lan. Ông cùng đoàn quan chức tới Mộ các Chiến sĩ Vô danh để đặt một vòng hoa.
 
-Từ cửa sổ một văn phòng ngay bên cạnh, một nhà toán học trẻ ít nói nhìn xuống họ. Tên anh là Marian Rejewski. Những người Đức dưới kia tin tuyệt đối vào máy Enigma của mình. Còn Rejewski thì đọc được những bức điện tối mật nhất của họ.
+Ngay bên cạnh là văn phòng của Biuro Szyfrów, cơ quan mật mã Ba Lan. Từ một ô cửa sổ trên đó, một nhà toán học trẻ, ít nói nhìn xuống. Anh tên là Marian Rejewski. Những người Đức dưới kia tin chắc vào máy Enigma của mình. Còn Rejewski thì đang đọc được những bức điện tối mật nhất của họ.
 
-Anh chưa từng thấy một chiếc Enigma thật của quân đội. Anh cũng chưa thử được dù chỉ một phần nhỏ xíu trong số các khóa của nó. Vậy làm sao chọn ra đúng một khóa trong 10.000.000.000.000.000 khóa trước khi hết ngày?
+Anh chưa từng thấy một chiếc Enigma quân sự thật. Anh cũng chưa thử nổi một phần rất nhỏ số chìa khóa của nó. Vậy làm sao chọn đúng một chìa khóa trong 10.000.000.000.000.000 trước khi hết ngày?
 
 <Label>Thử xem</Label>
 
-## Rút một dây cắm ra
+## Rút một dây cáp ra
 
-Mô phỏng này cho bạn thấy thứ Rejewski nhìn thấy mỗi sáng: sáu chữ đầu tiên của các bức điện trong ngày. Bên dưới là một cái bảng, và dưới nữa là vài chuỗi chữ kèm độ dài của chúng. Bạn hãy đoán trước: nếu rút một dây ra khỏi bảng cắm dây, độ dài các chuỗi có thay đổi không?
+Mô phỏng này cho bạn thấy thứ Rejewski nhìn mỗi sáng: sáu chữ đầu của các bức điện trong ngày. Bên dưới là một bảng, và dưới nữa là vài vòng chữ kèm độ dài của chúng. Bạn đoán trước nhé: nếu rút một dây cáp khỏi bảng ổ nối, độ dài các vòng có đổi không?
 
 <Try action="chains" button="Tải các bức điện hôm nay">
-  Ở mục “Dây cắm”, nhấn `A–L` để rút dây đó ra. Hãy nhìn các chuỗi, và nhìn ô “Độ dài chuỗi hôm nay”.
+  Ở mục “Dây cáp”, nhấn `A–L` để rút dây đó ra. Nhìn các vòng chữ, và nhìn ô “Độ dài các vòng hôm nay”.
 </Try>
 
-<Check question="Cái gì đã thay đổi, và cái gì không?">
-  Các chữ trong chuỗi đổi chỗ lung tung. Nhưng độ dài thì không: vẫn là hai chuỗi 11 mắt xích và bốn chuỗi 1 mắt xích. Phần lớn các khóa của Enigma đến từ bảng cắm dây. Và bạn vừa tìm ra một thứ mà bảng cắm dây không chạm tới được.
+<Check question="Cái gì đã đổi, và cái gì không?">
+  Các chữ trong vòng đổi chỗ lung tung. Độ dài thì không: vẫn là hai vòng 11 liên kết và bốn vòng 1 liên kết. Phần lớn chìa khóa của Enigma đến từ bảng ổ nối. Và bạn vừa tìm ra một thứ mà bảng ổ nối không động tới được.
 </Check>
 
 <Label>Cách hoạt động</Label>
 
 ## Hai lối vào
 
-### Chiếc khóa được gửi hai lần
+### Chìa khóa được gửi hai lần
 
-Mỗi người điều khiển Enigma đặt máy theo **khóa ngày** lấy từ một cuốn sổ mã. Nhưng anh ta không dùng khóa ấy cho cả bức điện. Anh ta tự chọn ba chữ, gọi là **khóa bức điện**, rồi gõ chúng hai lần ở cách đặt của ngày hôm đó: `PGHPGH`. Sau đó anh ta xoay các rôto về `PGH` và gõ nội dung bức điện.
+Mỗi người điều khiển Enigma đặt máy theo **khóa mã ngày** ghi trong sổ mã. Nhưng anh ta không mã hóa cả bức điện bằng nó. Anh tự chọn ba chữ, gọi là **khóa mã thư**, và gõ chúng hai lần ở cách đặt của ngày: `PGHPGH`. Rồi anh quay các đĩa mã hóa về `PGH` và gõ nội dung.
 
-Việc gõ lặp lại là để phòng nhiễu sóng vô tuyến. Nhưng nó cũng là một món quà. Trong mọi bức điện ngày hôm ấy, chữ mã thứ 1 và thứ 4 đều thay cho cùng một chữ rõ, chỉ được gõ cách nhau ba lần nhấn phím.
+Gõ hai lần là để phòng nhiễu sóng vô tuyến hay lỗi tay. Nhưng nó cũng là một món quà. Trong mọi bức điện của ngày hôm ấy, chữ mật mã thứ 1 và thứ 4 là mã hóa của cùng một chữ thường. Chỉ khác là giữa hai lần gõ, đĩa mã hóa thứ nhất đã quay đi ba nấc.
 
 <Try action="chains" button="Tải các bức điện hôm nay">
-  Hãy nhìn khối các nhóm sáu chữ. Trong mỗi nhóm, chữ thứ 1 và thứ 4 được làm sáng. Nhấn “2 và 5” ở mục “So sánh chữ” để làm sáng cặp tiếp theo.
+  Nhìn khối các nhóm sáu chữ. Trong mỗi nhóm, chữ thứ 1 và thứ 4 được làm sáng. Nhấn “2 và 5” ở mục “So sánh chữ” để làm sáng cặp tiếp theo.
 </Try>
 
-### Từ cặp chữ đến chuỗi
+### Từ cặp chữ đến vòng liên kết
 
-Rejewski ghi các cặp vào một cái bảng: mỗi chữ thứ 1 ở hàng trên, chữ thứ 4 của nó ở bên dưới. Có đủ bức điện thì bảng sẽ được điền kín.
+Rejewski ghi các cặp vào một bảng: chữ thứ nhất ở hàng trên, chữ thứ tư tương ứng ở hàng dưới. Gom đủ thư của một ngày, bảng sẽ kín.
 
-Rồi anh chơi một trò với cái bảng ấy. Bắt đầu ở chữ `A`. Nhìn chữ nằm dưới nó, rồi tìm chữ đó ở hàng trên. Lại nhìn xuống dưới. Cứ thế đi tiếp cho đến khi quay về `A`. Vòng đó gọi là một **chuỗi**. Bắt đầu lại từ một chữ chưa dùng, cho đến khi chữ nào cũng nằm trong một chuỗi.
+Rồi anh lần theo bảng như chơi một trò. Bắt đầu ở `A`. Xem chữ nằm dưới nó, tìm chữ đó trên hàng trên. Lại nhìn xuống. Cứ thế cho đến khi về lại `A`. Vòng khép kín ấy là một **vòng liên kết**. Bắt đầu lại từ một chữ chưa dùng, cho đến khi chữ nào cũng thuộc một vòng.
 
 <Try action="follow" button="Đi theo chữ A">
-  Chạm vào ô dưới chữ nằm bên dưới `A`, rồi chạm vào ô dưới chữ kế tiếp. Bạn đang đi dọc theo chuỗi được làm sáng trong danh sách.
+  Chạm vào ô dưới chữ nằm bên dưới `A`, rồi chạm vào ô dưới chữ kế tiếp. Bạn đang đi dọc vòng được làm sáng trong danh sách.
 </Try>
 
-<DigDeeper title="Cái bảng của chính cuốn sách">
-  Sách in một bảng đã điền xong và vẽ ra bốn chuỗi từ đó, chuỗi đầu đi từ `A` đến `F` đến `W` rồi về chỗ cũ. Bạn có thể tải đúng cái bảng ấy. Sách không hề nói khóa ngày nào tạo ra nó, nên các rôto và dây cắm không thuộc về bảng này.
+<DigDeeper title="Bảng của chính cuốn sách">
+  Cuốn sách in một bảng đã điền xong và rút ra bốn vòng liên kết. Vòng đầu tiên đi từ `A` sang `F`, sang `W` rồi khép lại. Bạn có thể tải đúng bảng ấy. Sách không nói khóa mã ngày nào tạo ra nó, nên các đĩa mã hóa và dây cáp ở đây không thuộc về bảng.
 
   <Try action="bookTable" button="Tải bảng của sách">
-    Đếm số mắt xích trong mỗi chuỗi: 3, 9, 7 và 7. Chạm vào ô dưới `A` và tự mình đi theo chuỗi ngắn nhất.
+    Đếm số liên kết trong mỗi vòng: 3, 9, 7 và 7. Chạm vào ô dưới `A` và tự lần theo vòng ngắn nhất.
   </Try>
 </DigDeeper>
 
-### Dấu vân tay của các rôto
+### Dấu vân tay của các đĩa mã hóa
 
-Các chuỗi thay đổi mỗi ngày. Phát hiện lớn của Rejewski chính là điều bạn thấy lúc đầu. Một dây cắm đổi chỗ hai chữ, nên nó chỉ đổi tên các chữ trong chuỗi. Nó không thể làm chuỗi dài ra hay ngắn đi. Độ dài chỉ phụ thuộc vào các rôto.
+Các vòng thay đổi mỗi ngày. Phát hiện lớn của Rejewski chính là điều bạn thấy lúc đầu. Một dây cáp đổi chỗ hai chữ, nên nó chỉ thay tên vài chữ trong vòng. Nó không làm vòng dài ra hay ngắn lại. Số liên kết chỉ phụ thuộc vào các đĩa mã hóa.
 
-Vì thế độ dài các chuỗi là một dấu vân tay của cách đặt rôto. Có 6 thứ tự rôto và 17.576 vị trí rôto, tổng cộng 105.456 cách đặt. Nhóm của anh mất một năm để ghi lại độ dài chuỗi cho từng cách đặt. Từ đó, tìm cách đặt rôto của ngày chỉ còn là tra một dấu vân tay trong cuốn danh mục.
+Vậy độ dài các vòng giống như dấu vân tay của cách đặt đĩa. Có 6 cách sắp đặt các đĩa và 17.576 vị trí đĩa, tổng cộng 105.456 khả năng. Nhóm của anh mất ròng rã một năm để ghi độ dài vòng cho từng khả năng. Từ đó, tìm cách đặt đĩa của ngày chỉ còn là đem dấu vân tay ra dò trong sổ, như thám tử tra hồ sơ.
 
 <Try action="chains" button="Tải các bức điện hôm nay">
-  Nhấn ▲ cạnh “Rôto phải” một lần. Độ dài các chuỗi thay đổi hoàn toàn. Nhấn ▼ để quay lại, và chúng trở về như cũ.
+  Nhấn ▲ cạnh “Đĩa phải” một lần. Độ dài các vòng thay đổi hẳn. Nhấn ▼ để quay lại, và chúng trở về như cũ.
 </Try>
 
-<Check question="Cuốn danh mục cho biết cách đặt rôto. Vậy Rejewski tìm ra các dây cắm bằng cách nào?">
-  Anh đặt chiếc Enigma bản sao của mình theo cách đặt rôto ấy, không cắm dây nào cả, rồi gõ một bức điện vào. Kết quả ra gần giống tiếng Đức, chẳng hạn `ALLIVEINBELRIN`. Đáng lẽ phải là “arrive in Berlin” (đến Berlin), nên `R` và `L` hẳn được nối với nhau bằng một dây cắm.
+<Check question="Sổ tra cho biết cách đặt đĩa. Vậy Rejewski tìm ra các dây cáp bằng cách nào?">
+  Anh đặt chiếc Enigma bản sao theo cách đặt đĩa ấy, rút hết dây cáp ra, rồi gõ một bức điện vào. Kết quả gần ra tiếng Đức, kiểu `ALLIVEINBELRIN`. Đoán là “arrive in Berlin” (đến Berlin), nên `R` và `L` hẳn được nối với nhau bằng một dây cáp.
 </Check>
 
-### Một từ đoán trước
+### Một chữ đoán trước
 
-Sớm muộn gì người Đức cũng sẽ thôi gõ khóa bức điện hai lần. Ở Bletchley Park bên Anh, Alan Turing tìm một cách tấn công không cần đến chỗ lặp đó. Ông dùng **từ mồi (crib)**: một từ bạn đoán được là có trong bức điện. Bản tin thời tiết gửi đi ngay sau 6 giờ mỗi sáng gần như chắc chắn có chữ `WETTER` (thời tiết, trong tiếng Đức).
+Người Anh đoán sớm muộn người Đức sẽ thôi gõ khóa mã thư hai lần. Ở Bletchley Park, Alan Turing tìm một cách tấn công không cần đến chỗ lặp ấy. Ông dùng **crib**: một đoạn văn bản thường đoán được là có trong bức điện. Người Đức gửi bản tin thời tiết đều đặn ngay sau 6 giờ sáng, và nó gần như chắc chắn có chữ `WETTER` (tiếng Đức là “thời tiết”).
 
-Nhưng nó nằm ở đâu? Có một quy tắc giúp được. Vì có đĩa phản xạ, Enigma không bao giờ biến một chữ thành chính nó.
+Nhưng chữ ấy nằm ở đâu? Có một quy tắc giúp bạn. Vì có đĩa phản xạ, Enigma không bao giờ biến một chữ thành chính nó.
 
 <Try action="weather" button="Tải bản tin thời tiết">
-  Từ mồi `WETTER` nằm dưới phần đầu bức điện, và có một cột được làm sáng: một chữ `T` nằm dưới một chữ `T`. Vị trí này là không thể. Nhấn ▲ cạnh “Từ mồi bắt đầu ở chữ thứ” và đếm xem bạn gạch bỏ được bao nhiêu vị trí.
+  Crib `WETTER` nằm dưới phần đầu bức điện, và có một cột được làm sáng: một chữ `T` nằm dưới một chữ `T`. Vị trí này không thể đúng. Nhấn ▲ cạnh “Crib bắt đầu ở chữ thứ” và đếm xem bạn gạch được bao nhiêu vị trí.
 </Try>
 
-<DigDeeper title="Từ mồi của chính cuốn sách">
-  Sách đưa ra một từ đoán dài hơn, `WETTERNULLSECHS`, đặt dưới hai mươi chữ mã. Rồi sách trượt từ đoán ấy đi một chỗ về mỗi phía. Các chữ mã của sách chỉ là ví dụ bịa ra, không phải do Enigma thật tạo ra. Vì vậy ở đây việc dò tìm bị tắt.
+<DigDeeper title="Crib của chính cuốn sách">
+  Cuốn sách đặt một đoạn đoán dài hơn, `WETTERNULLSECHS`, dưới hai mươi chữ mật mã. Rồi nó trượt đoạn ấy sang trái và sang phải một chỗ. Các chữ mật mã trong sách chỉ là ví dụ đặt ra, không phải do một chiếc Enigma thật tạo nên. Vì vậy ở đây việc dò tìm bị tắt.
 
-  <Try action="bookCrib" button="Tải từ mồi của sách">
-    Từ mồi bắt đầu ở chữ thứ 3, và có một chữ `E` nằm dưới một chữ `E`. Nhấn ▼ một lần: giờ một chữ `S` nằm dưới một chữ `S`. Nhấn ▲ hai lần để tới chữ thứ 4, nơi không có chữ nào trùng.
+  <Try action="bookCrib" button="Tải crib của sách">
+    Crib bắt đầu ở chữ thứ 3, và có một chữ `E` nằm dưới một chữ `E`. Nhấn ▼ một lần: giờ một chữ `S` nằm dưới một chữ `S`. Nhấn ▲ hai lần để tới chữ thứ 4, nơi không có chữ nào trùng.
   </Try>
 </DigDeeper>
 
 ### Thử mọi cách đặt
 
-Ở chữ thứ 6 không có chữ nào trùng. Điều đó không chứng minh từ mồi nằm ở đó. Nó chỉ cho vị trí ấy quyền được thử: thử mọi cách đặt rôto, xem có cách nào biến sáu chữ mã kia thành `WETTER` không.
+Ở chữ thứ 6 không có chữ nào trùng. Điều đó chưa chứng minh crib nằm ở đó. Nó chỉ cho vị trí ấy được thử: thử mọi vị trí đĩa mã hóa, xem có vị trí nào biến sáu chữ mật mã kia thành `WETTER` không.
 
 <Try>
-  Khi từ mồi ở chữ thứ 6, nhấn “Thử 17.576 vị trí rôto”. Đọc các ô cửa sổ rôto trong dòng chú thích và bức điện ở hàng dưới cùng. Rồi trượt sang chữ thứ 7 và thử lại.
+  Khi crib ở chữ thứ 6, nhấn “Thử 17.576 vị trí đĩa mã hóa”. Đọc các ô cửa sổ trong dòng chú thích và bức điện ở hàng dưới cùng. Rồi trượt sang chữ thứ 7 và thử lại.
 </Try>
 
-Thiết bị của bạn làm xong cuộc dò tìm ấy trong nháy mắt. Turing thì phải chế tạo cả một cỗ máy để làm việc này, đó là **máy bombe**. Ở đây bảng cắm dây để trống và đã biết thứ tự rôto, để việc dò tìm gọn nhẹ. Máy bombe thật phải vượt qua cả hai thứ đó.
+Máy của bạn dò xong trong nháy mắt. Turing thì phải dựng cả một cỗ máy cho việc ấy: **máy bom**, một cỗ máy phá mã chứ không phải vũ khí. Ở đây bảng ổ nối để trống và cách sắp đặt các đĩa đã biết, cho việc dò tìm gọn nhẹ. Máy bom thật phải vượt qua cả hai.
 
 <Label>Câu chuyện</Label>
 
 ## Nỗi sợ, toán học và một điệp viên
 
-Sách nêu ba lý do khiến người Ba Lan thành công. Nỗi sợ: Ba Lan nằm kẹp giữa Đức và Nga. Toán học: Cục Mật mã thuê các nhà toán học từ Poznań, những người biết tiếng Đức. Và một điệp viên: Hans-Thilo Schmidt, bí danh Asche, đã bán những tài liệu cho biết cách đi dây bên trong các rôto.
+Cuốn sách nói người Ba Lan thành công nhờ ba thứ. Nỗi sợ: Ba Lan bị kẹp giữa Đức và Nga. Toán học: Biuro Szyfrów mời các nhà toán học ở trường đại học Poznań, vùng trước năm 1918 thuộc Đức, nên ai cũng thạo tiếng Đức. Và gián điệp: Hans-Thilo Schmidt, bí danh Asche, đã bán những tài liệu để lộ đường dây bên trong từng đĩa mã hóa.
 
-Khi người Đức đổi cách làm việc, cuốn danh mục của Rejewski trở nên vô dụng. Vì thế anh chế tạo những cỗ máy dò 17.576 vị trí thay cho mình, mỗi máy cho một trong sáu thứ tự rôto. Những máy bombe đầu tiên này tìm ra một khóa ngày trong khoảng hai giờ.
+Khi người Đức đổi cách làm, sổ tra của Rejewski hết dùng được. Thế là anh chế những cỗ máy tự dò 17.576 vị trí thay cho mình, mỗi máy ứng với một trong sáu cách sắp đặt đĩa. Sáu máy gộp lại cao gần 1 mét và tìm ra khóa mã ngày trong khoảng hai giờ. Người ta gọi chúng là **bom**, có lẽ vì tiếng lách cách chúng phát ra khi chạy.
 
-Tháng 12 năm 1938, người Đức phát thêm cho mỗi người điều khiển máy hai rôto nữa. Sáu thứ tự rôto thành sáu mươi. Một tháng sau, bảng cắm dây tăng từ sáu dây lên mười dây. Ba Lan không đủ tiền làm số máy bombe nhiều gấp mười. Ngày 24 tháng 7 năm 1939, người Ba Lan đem tất cả ra chia sẻ với người Pháp và người Anh.
+Tháng 12 năm 1938, người Đức phát thêm hai đĩa mã hóa nữa. Sáu cách sắp đặt thành sáu mươi. Tháng sau, số dây cáp tăng từ sáu lên mười. Ba Lan không đủ tiền làm số máy bom nhiều gấp mười. Ngày 24 tháng 7 năm 1939, họ mời người Pháp và người Anh tới, kéo tấm vải đen ra khỏi một máy bom, và kể hết.
 
-<DigDeeper title="Những chiếc khóa trong ngăn bàn">
-  Schmidt tiếp tục bán bí mật suốt bảy năm, trong đó có những cuốn sổ mã chứa khóa ngày của 38 tháng. Cấp trên của Rejewski, Thiếu tá Gwido Langer, khóa kín chúng lại và không bao giờ cho anh biết. Ông muốn các nhà giải mã của mình sẵn sàng cho ngày người điệp viên im lặng. Ngày đó đến ngay trước khi các rôto mới xuất hiện.
+<DigDeeper title="Những khóa mã nằm trong ngăn kéo">
+  Schmidt tiếp tục bán bí mật suốt bảy năm, gặp điệp viên Pháp Rex hai mươi lần. Ông trao cả những cuốn sổ mã chứa khóa mã ngày của 38 tháng. Thiếu tá Gwido Langer, người đứng đầu Biuro, cất chúng trong ngăn kéo bàn và không hề cho Rejewski biết. Ông muốn nhóm giải mã quen tự lực trước ngày người điệp viên im bặt. Ngày đó đến ngay trước khi có các đĩa mã hóa mới.
 </DigDeeper>
 
 <Label>Bị phá như thế nào</Label>
 
-## Một căn lán đầy kim đan
+## Những căn nhà tạm đầy que đan
 
-Bletchley Park bắt đầu với hai trăm người và lớn dần lên tới bảy nghìn người. Các nhà giải mã ở đây còn học được cách đặt cược vào sự lười biếng của con người. Những người điều khiển máy mệt mỏi hay chọn khóa bức điện là các chữ nằm cạnh nhau trên bàn phím, như `QWE`. Có người thì dùng đi dùng lại cùng ba chữ, có lẽ là tên viết tắt của bạn gái. Những khóa như thế được gọi đùa là **cillies**, và các nhà giải mã thử chúng trước tiên.
+Bletchley Park lúc đầu chỉ có khoảng hai trăm người, năm năm sau lên tới bảy nghìn. Các nhà giải mã ở đây còn biết đặt cược vào sự lười của con người. Người điều khiển mệt mỏi hay chọn khóa mã thư là các chữ nằm liền nhau trên bàn phím, như `QWE`. Có người dùng đi dùng lại một bộ ba chữ, có lẽ là tên viết tắt của bạn gái. Những khóa như thế được gọi là **cilly**, và các nhà giải mã thử chúng trước tiên.
 
-Máy bombe của Turing gánh phần việc nặng. Đến cuối năm 1941 đã có mười lăm chiếc chạy, “kêu lách cách như một triệu chiếc kim đan”. Vào ngày may mắn, một máy tìm ra khóa trong vòng một giờ, và sau đó mọi bức điện gửi trong ngày đều đọc được.
+Máy bom của Turing gánh phần nặng nhất. Đến cuối năm 1941 đã có mười lăm chiếc chạy, chiếc nào cũng “kêu lách cách như hàng triệu que đan”. Gặp hôm suôn sẻ, một máy tìm ra chìa khóa mã trong vòng một giờ, và mọi bức điện trong ngày đều đọc được.
 
-Không có một từ mồi tốt, đặt đúng chỗ, thì máy bombe cũng vô dụng. Phần việc ấy vẫn do con người làm.
+Nhưng không có một crib tốt, đặt đúng chỗ, thì máy bom cũng vô dụng. Phần ấy vẫn là việc của con người.
 
-<Check question="Bức điện bạn đọc được là HEUTE WETTER NULL SECHS REGEN UND NEBEL. Vì sao một bản tin như thế lại quý giá đến vậy?">
-  Nó có nghĩa là “Hôm nay, thời tiết lúc 6 giờ: mưa và sương mù”. Chẳng ai quan tâm đến sương mù. Nhưng bản tin đến đúng một giờ mỗi ngày với cùng những chữ ấy, nên rất dễ đoán. Một từ đoán đúng cho ra khóa của ngày, và khóa ấy mở được mọi bức điện khác.
+<Check question="Bức điện bạn đọc được là HEUTE WETTER NULL SECHS REGEN UND NEBEL. Vì sao một bản tin như thế lại quý đến vậy?">
+  Nó có nghĩa là “Hôm nay, thời tiết lúc 6 giờ: mưa và sương mù”. Chẳng ai cần biết chuyện sương mù. Nhưng bản tin đến đúng giờ mỗi ngày với cùng những chữ ấy, nên rất dễ đoán. Một chữ đoán trúng cho ra chìa khóa của ngày, và chìa khóa ấy mở được mọi bức điện khác.
 </Check>
 
-<DigDeeper title="Máy bombe vượt qua bảng cắm dây như thế nào">
-  Bản đầy đủ của cuốn sách giải thích lời giải của Turing. Trong một từ mồi dài, ông tìm các vòng lặp: chữ thứ nhất dẫn tới chữ thứ hai, chữ thứ hai dẫn tới chữ thứ ba, và chữ thứ ba quay về chữ thứ nhất. Giống như các chuỗi của Rejewski, những vòng lặp này có thể được thử theo cách làm cho các dây cắm triệt tiêu nhau.
+<DigDeeper title="Máy bom vượt qua bảng ổ nối như thế nào">
+  Cuốn sách kể kỹ lời giải của Turing. Trong một crib dài, ông tìm các vòng: chữ thứ nhất dẫn tới chữ thứ hai, chữ thứ hai dẫn tới chữ thứ ba, và chữ thứ ba quay về chữ thứ nhất. Giống các vòng liên kết của Rejewski, những vòng này có thể được thử theo cách làm cho các dây cáp triệt tiêu nhau.
 </DigDeeper>
 
 <DigDeeper title="Giữ kín việc phá mã">
-  Tin tức lấy được từ các bức điện Enigma có một tên mật: **Ultra**. Nó chỉ có ích chừng nào nước Đức còn tin Enigma an toàn. Vì vậy phe Đồng minh giấu kín những gì họ biết. Họ để cho một số tàu ngầm U-boat thoát đi. Trước khi tấn công những chiếc khác, họ cho một máy bay trinh sát bay qua trước, để cuộc tấn công trông như chuyện may rủi. Đôi khi họ còn gửi tin giả về việc đã trông thấy tàu. Một cuộc điều tra của Đức đổ lỗi cho vận rủi hoặc cho gián điệp. Họ cho rằng chuyện Enigma bị phá là không thể.
+  Tin tình báo lấy từ các bức điện Enigma có mật danh **Ultra**. Nó chỉ có ích chừng nào nước Đức còn tin Enigma an toàn. Vì thế phe Đồng minh giấu kỹ điều mình biết. Họ cố ý để một số tàu ngầm Đức (U-boat) thoát. Trước khi đánh những chiếc khác, họ cho một máy bay thám thính bay tới trước, để cuộc tấn công trông như tình cờ. Có lúc họ còn gửi thư giả kể là đã trông thấy tàu ngầm. Đô đốc Kurt Fricke của Đức cho điều tra, và kết luận là do xui xẻo hoặc do gián điệp Anh. Chuyện Enigma bị phá thì bị coi là không thể.
 </DigDeeper>
 
 <Label>Thử thách</Label>
@@ -150,32 +151,32 @@ Không có một từ mồi tốt, đặt đúng chỗ, thì máy bombe cũng v�
 <Challenge answer="JMP">
   Bức điện này được gửi vào ban đêm: `DMTTITMTWYQADJCXFRNLZDFXDWEP`
 
-  Bạn chắc chắn nó có chứa `WETTER`. Hãy trượt từ mồi tới vị trí đầu tiên không có chữ nào trùng, rồi thử các vị trí rôto.
+  Bạn chắc chắn nó có `WETTER`. Hãy trượt crib tới vị trí đầu tiên không có chữ nào trùng, rồi thử các vị trí đĩa mã hóa.
 
-  Ba chữ nào hiện trong các ô cửa sổ rôto?
+  Ba chữ nào hiện trong các ô cửa sổ?
 
   <Try action="night" button="Tải bản tin ban đêm" />
 </Challenge>
 
 <Check question="Vì sao bạn không cần thử sáu vị trí đầu tiên?">
-  Ở mỗi vị trí đó, có một chữ của `WETTER` nằm dưới chính chữ ấy trong bản mật mã. Enigma không thể biến một chữ thành chính nó, nên những vị trí này bị loại mà không cần dò tìm gì cả.
+  Ở mỗi vị trí ấy, có một chữ của `WETTER` nằm dưới chính chữ đó trong bản mật mã. Enigma không thể biến một chữ thành chính nó, nên các vị trí này bị loại mà chẳng cần dò.
 </Check>
 
 <Label>Chuyện gì đến tiếp theo</Label>
 
-## Quy tắc để lại khuôn mẫu
+## Quy tắc để lại dấu vết
 
-Các nhà giải mã giữ kín bí mật của họ suốt ba mươi năm. Turing, người góp công nhiều không kém bất kỳ ai, mất năm 1954 khi công việc của ông vẫn chưa ai biết đến.
+Các nhà giải mã giữ kín bí mật suốt ba thập kỷ. Turing, người góp công không kém ai, mất năm 1954 khi công việc của ông vẫn chưa ai được biết.
 
-Cả hai cách tấn công đều thành công vì cùng một lý do. Điểm yếu của Enigma nằm ở những thói quen: một khóa gõ hai lần, một bản tin thời tiết mỗi sáng, một chữ không bao giờ được là chính nó. Máy móc làm theo quy tắc, và quy tắc để lại khuôn mẫu.
+Cả hai cách tấn công đều thành vì cùng một lẽ. Chỗ yếu của Enigma nằm ở những thói quen: khóa mã thư gõ hai lần, bản tin thời tiết mỗi sáng, một chữ không bao giờ là chính nó. Máy móc làm theo quy tắc, mà quy tắc thì để lại khuôn mẫu.
 
-Ở bên kia thế giới, các nhà giải mã Mỹ phải đối mặt với một cỗ máy khác, do Nhật Bản chế tạo từ các công tắc điện thoại: [máy Purple](/ciphers/purple).
+Ở bên kia thế giới, các nhà giải mã Mỹ phải đối đầu với một cỗ máy khác, do Nhật Bản làm từ các công tắc điện thoại: [máy Purple](/ciphers/purple).
 
 <Label>Đọc thêm</Label>
 
 ## Tìm hiểu thêm
 
-- Simon Singh, *The Code Book*, chương 3. Các chuỗi của Rejewski và các từ mồi của Turing, cùng những bảng mà trang này dựa vào.
+- Simon Singh, *Mật mã: Từ cổ điển đến lượng tử* (NXB Trẻ, Phạm Văn Thiều và Phạm Thu Hằng dịch), chương 4: Công phá Enigma. Các vòng liên kết của Rejewski và các crib của Turing, cùng những bảng mà trang này dựa vào.
 - [Máy Enigma](/ciphers/enigma). Chính cỗ máy ấy, trên trang web này.
-- [Bletchley Park](https://bletchleypark.org.uk/). Các dãy nhà ở đây nay là bảo tàng.
-- [Crypto Museum: Enigma](https://www.cryptomuseum.com/crypto/enigma/). Cách đi dây của các rôto mà mô phỏng của chúng tôi dùng.
+- [Bletchley Park](https://bletchleypark.org.uk/). Các căn nhà tạm nay là bảo tàng.
+- [Crypto Museum: Enigma](https://www.cryptomuseum.com/crypto/enigma/). Cách nối dây các đĩa mã hóa mà mô phỏng của chúng tôi dùng.

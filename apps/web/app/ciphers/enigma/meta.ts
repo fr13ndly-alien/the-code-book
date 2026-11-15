@@ -14,6 +14,6 @@ export const meta: CipherMeta = {
     era: "1918–1945",
     hook: "Một chiếc máy đánh chữ đổi mật mã sau mỗi chữ, và những người vẫn phá được nó.",
     firstStep: "Nhấn một phím. Xem các bóng đèn.",
-    source: "The Code Book, chương 3: Cơ giới hóa việc giữ bí mật",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 3: Cơ giới hóa việc giữ bí mật",
   },
 };

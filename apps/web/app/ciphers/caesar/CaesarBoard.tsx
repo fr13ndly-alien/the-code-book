@@ -16,8 +16,8 @@ export function CaesarBoard({ state, onPick }: { state: CaesarState; onPick: (co
     <Board>
       <AlphabetRows
         rows={[
-          { label: t({ en: "Plain", vi: "Rõ" }), letters: ALPHABET },
-          { label: t({ en: "Cipher", vi: "Mã" }), letters: cipher, kind: "cipher" },
+          { label: t({ en: "Plain", vi: "Thường" }), letters: ALPHABET },
+          { label: t({ en: "Cipher", vi: "Mật mã" }), letters: cipher, kind: "cipher" },
         ]}
         highlight={state.picked}
         onPick={onPick}
@@ -32,7 +32,7 @@ export function CaesarBoard({ state, onPick }: { state: CaesarState; onPick: (co
           ),
           vi: (
             <>
-              Độ dịch {state.shift}: chữ rõ <Letters>{ALPHABET[column]}</Letters> thành chữ mã{" "}
+              Độ dịch {state.shift}: chữ thường <Letters>{ALPHABET[column]}</Letters> thành chữ mật mã{" "}
               <Letters>{cipher[column]}</Letters>. Chạm vào ô dưới một chữ để lần theo nó.
             </>
           ),

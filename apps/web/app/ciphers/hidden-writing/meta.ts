@@ -12,8 +12,8 @@ export const meta: CipherMeta = {
   vi: {
     title: "Giấu thư",
     era: "Khoảng năm 500 TCN",
-    hook: "Mẹo cổ xưa nhất của thư bí mật: giấu tin nhắn kỹ đến mức không ai nghĩ tới việc đi tìm.",
+    hook: "Mẹo lâu đời nhất của thư bí mật: giấu bức thư khéo đến mức chẳng ai nghĩ tới việc đi tìm.",
     firstStep: "Nhấn “Phủ sáp”. Rồi gửi nó qua trạm gác.",
-    source: "The Code Book, chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland",
   },
 };

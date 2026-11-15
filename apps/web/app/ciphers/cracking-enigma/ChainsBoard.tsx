@@ -42,12 +42,12 @@ export function ChainsBoard({ state, onPick }: { state: CrackState; onPick: (col
         highlight={picked}
         onPick={onPick}
       />
-      <ol className={styles.chains} aria-label={t({ en: "Chains", vi: "Các chuỗi" })}>
+      <ol className={styles.chains} aria-label={t({ en: "Chains", vi: "Các vòng liên kết" })}>
         {chains(links).map((chain) => (
           <li key={chain} data-on={followed !== undefined && chain.includes(followed)}>
             {[...chain, chain[0]].join(" → ")}
             <span>
-              {t({ en: chain.length === 1 ? "1 link" : `${chain.length} links`, vi: `${chain.length} mắt xích` })}
+              {t({ en: chain.length === 1 ? "1 link" : `${chain.length} links`, vi: `${chain.length} liên kết` })}
             </span>
           </li>
         ))}
@@ -59,16 +59,16 @@ export function ChainsBoard({ state, onPick }: { state: CrackState; onPick: (col
                 "This is the finished table printed in the book. The book does not give the day key behind it. Turn a " +
                 "rotor or pull a cable to go back to today's messages.",
               vi:
-                "Đây là bảng hoàn chỉnh in trong sách. Sách không cho biết khóa ngày nào tạo ra nó. Xoay một rôto " +
-                "hoặc rút một dây cắm để quay về các bức điện hôm nay.",
+                "Đây là bảng hoàn chỉnh in trong sách. Sách không cho biết khóa mã ngày nào tạo ra nó. Xoay một đĩa mã " +
+                "hóa hoặc rút một dây cáp để quay về các bức điện hôm nay.",
             })
           : t({
               en:
                 "Each chain goes from a top letter to the one below it, then on from there, until it comes home. Pull a " +
                 "cable and the letters change but the lengths stay. Turn a rotor and the lengths change.",
               vi:
-                "Mỗi chuỗi đi từ một chữ ở hàng trên xuống chữ nằm dưới nó, rồi cứ thế đi tiếp cho tới khi về chỗ cũ. " +
-                "Rút một dây cắm thì các chữ đổi, nhưng độ dài giữ nguyên. Xoay một rôto thì độ dài thay đổi.",
+                "Mỗi vòng liên kết đi từ một chữ ở hàng trên xuống chữ nằm dưới nó, rồi cứ thế đi tiếp cho tới khi về chỗ cũ. " +
+                "Rút một dây cáp thì các chữ đổi, nhưng độ dài giữ nguyên. Xoay một đĩa mã hóa thì độ dài thay đổi.",
             })}
       </Caption>
     </>

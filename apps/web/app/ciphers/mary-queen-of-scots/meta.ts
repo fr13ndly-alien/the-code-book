@@ -12,8 +12,8 @@ export const meta: CipherMeta = {
   vi: {
     title: "Mật mã của Nữ hoàng Mary xứ Scotland",
     era: "1586",
-    hook: "Một nữ hoàng bị giam cầm giấu âm mưu ám sát sau những ký hiệu lạ. Một nhà giải mã đã đếm chúng.",
-    firstStep: "Chạm vào một ký hiệu trong bức thư để tìm nó trong khóa.",
-    source: "The Code Book, chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland",
+    hook: "Một nữ hoàng bị giam cầm giấu âm mưu ám sát sau những ký hiệu lạ. Một nhà giải mã đã ngồi đếm chúng.",
+    firstStep: "Chạm vào một ký hiệu trong bức thư để tìm nó trong bảng chìa khóa.",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland",
   },
 };

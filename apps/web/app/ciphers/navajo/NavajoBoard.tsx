@@ -22,7 +22,7 @@ function Chain({ word }: { word: CodeWord }) {
     word.kind === "term"
       ? t({
           en: "The lexicon gives this picture to a military term.",
-          vi: "Bộ từ mã dùng hình ảnh này cho một thuật ngữ quân sự.",
+          vi: "Bảng từ vựng dùng hình ảnh này cho một thuật ngữ quân sự.",
         })
       : word.stands === "X"
         ? t({
@@ -65,7 +65,7 @@ export function NavajoBoard({ state, onTap }: { state: NavajoState; onTap: (word
 
   return (
     <Board>
-      <ol className={styles.message} aria-label={t({ en: "The message in code", vi: "Tin nhắn bằng mã" })}>
+      <ol className={styles.message} aria-label={t({ en: "The message in code", vi: "Tin nhắn bằng mật mã" })}>
         {groups.map((group, at) => {
           const first = count;
           count += group.length;
@@ -96,7 +96,7 @@ export function NavajoBoard({ state, onTap }: { state: NavajoState; onTap: (word
       ) : (
         <Caption>
           {words.length === 0
-            ? t({ en: "Type a message below to hear it in code.", vi: "Gõ một tin nhắn ở dưới để nghe nó bằng mã." })
+            ? t({ en: "Type a message below to hear it in code.", vi: "Gõ một tin nhắn ở dưới để nghe nó bằng mật mã." })
             : t({
                 en: "Each box is one spoken word. Tap one to follow it from Navajo to English.",
                 vi: "Mỗi ô là một từ được nói ra. Chạm vào một ô để lần theo nó từ tiếng Navajo sang tiếng Anh.",

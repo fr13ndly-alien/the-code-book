@@ -13,8 +13,8 @@ export const meta: CipherMeta = {
   vi: {
     title: "Lucifer và DES",
     era: "Thập niên 1970",
-    hook: "Lucifer của IBM nhào tin nhắn như nhào bột, mười sáu lần liền, và trở thành mật mã chuẩn của nước Mỹ.",
+    hook: "Lucifer của IBM nhào bức thư như nhào một tảng bột, mười sáu lần liền, rồi trở thành tiêu chuẩn mã hóa của nước Mỹ.",
     firstStep: "Chạm vào một bit ở hàng trên cùng để lật nó.",
-    source: "The Code Book (bản đầy đủ), chương 6: Alice và Bob ra công khai",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 6: Alice và Bob ra công khai",
   },
 };

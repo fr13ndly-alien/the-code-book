@@ -15,6 +15,6 @@ export const meta: CipherMeta = {
     era: "Từ năm 1917",
     hook: "Một tờ giấy đầy chữ ngẫu nhiên, dùng một lần rồi đốt đi, tạo nên loại mật mã duy nhất không bao giờ phá được.",
     firstStep: "Xé một tờ mới. Xem bản mật mã thay đổi.",
-    source: "The Code Book (bản đầy đủ), chương 3",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 3: Cơ giới hóa việc giữ bí mật, và phụ lục G",
   },
 };

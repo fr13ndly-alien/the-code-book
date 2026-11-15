@@ -28,7 +28,7 @@ export function VigenereControls({ state, dispatch }: { state: VigenereState; di
           }
           onStep={(by) => dispatch({ type: "step", by })}
         />
-        <Output label={enciphering ? t({ en: "Ciphertext", vi: "Bản mật mã" }) : t({ en: "Plaintext", vi: "Bản rõ" })}>{output(state)}</Output>
+        <Output label={enciphering ? t({ en: "Ciphertext", vi: "Bản mật mã" }) : t({ en: "Plaintext", vi: "Văn bản thường" })}>{output(state)}</Output>
       </Row>
       <Row>
         <TextField

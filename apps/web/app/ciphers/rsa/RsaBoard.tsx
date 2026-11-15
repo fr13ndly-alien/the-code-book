@@ -72,7 +72,7 @@ function KeyPanel({ keys, hidden }: { keys: RsaKeys; hidden: boolean }) {
   const t = useT();
   const show = useShow();
   return (
-    <Panel title={t({ en: "Alice makes her keys", vi: "Alice tạo khóa của cô" })}>
+    <Panel title={t({ en: "Alice makes her keys", vi: "Alice tạo chìa khóa của cô" })}>
       <table className={styles.lines}>
         <tbody>
           <Line name="p, q" kind="private" hidden={hidden}>
@@ -192,7 +192,7 @@ function AttackPanel({ n, factoring, stolen }: { n: number; factoring: Factoring
             {stolen && (
               <p>
                 Giờ cô làm đúng như Alice đã làm: (p − 1) × (q − 1) = {show(stolen.phi)}, nên d ={" "}
-                <b>{show(stolen.d)}</b>. Cô đọc được mọi tin nhắn.
+                <b>{show(stolen.d)}</b>. Cô đọc được mọi bức thư.
               </p>
             )}
           </>

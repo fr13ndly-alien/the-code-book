@@ -12,8 +12,8 @@ export const meta: CipherMeta = {
   vi: {
     title: "Babbage phá mật mã Vigenère",
     era: "1854",
-    hook: "Một nha sĩ thách Charles Babbage phá mật mã không thể phá. Ông đã phá được, và chẳng nói với ai.",
+    hook: "Một nha sĩ thách Charles Babbage phá mật mã không thể phá nổi. Ông phá được, rồi chẳng nói với ai.",
     firstStep: "Chạm vào một chuỗi chữ lặp lại trong bảng để tìm cả hai bản của nó.",
-    source: "The Code Book, chương 2: Nhà giải mã vô danh",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 2: Le chiffre indéchiffrable",
   },
 };

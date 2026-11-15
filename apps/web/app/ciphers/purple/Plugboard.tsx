@@ -22,7 +22,7 @@ function Group(props: { name: string; kind: "sixes" | "twenties"; letters: strin
 export function Plugboard({ plugboard, lit }: { plugboard: string; lit?: string }) {
   const t = useT();
   return (
-    <div className={styles.board} role="group" aria-label={t({ en: "Plugboard", vi: "Bảng cắm dây" })}>
+    <div className={styles.board} role="group" aria-label={t({ en: "Plugboard", vi: "Bảng ổ nối" })}>
       <Group
         name={t({ en: "Sixes: one switch", vi: "Nhóm sáu: một công tắc" })}
         kind="sixes"

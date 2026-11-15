@@ -11,9 +11,9 @@ export const meta: CipherMeta = {
   source: "The Code Book, Appendix D: The Pigpen Cipher",
   vi: {
     title: "Mật mã chuồng heo",
-    era: "Thế kỷ 18",
-    hook: "Hội Tam Điểm viết bí mật của mình bằng những góc, ô vuông và dấu chấm. Khóa là bốn cái lưới nhỏ.",
+    era: "Những năm 1700",
+    hook: "Hội Tam điểm viết bí mật bằng những góc, ô vuông và dấu chấm. Chìa khóa là bốn cái lưới nhỏ.",
     firstStep: "Chạm vào một chữ trong lưới để xem ký hiệu của nó.",
-    source: "The Code Book, phụ lục D: Mật mã chuồng heo",
+    source: "Mật mã: Từ cổ điển đến lượng tử, phụ lục D: Mật mã chuồng heo",
   },
 };

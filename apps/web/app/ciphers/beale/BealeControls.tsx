@@ -30,12 +30,12 @@ export function BealeControls({ state, dispatch }: { state: BealeState; dispatch
     <Controls>
       <Row>
         <Choice
-          label={t({ en: "Key text", vi: "Văn bản khóa" })}
+          label={t({ en: "Key text", vi: "Văn bản khóa mã" })}
           value={state.keyId}
           onChange={(keyId) => dispatch({ type: "choose", keyId })}
           options={KEY_TEXTS.map((text) => ({ value: text.id, label: titleOf(text.id, text.title) }))}
         />
-        <Output label={enciphering ? t({ en: "Ciphertext", vi: "Bản mật mã" }) : t({ en: "Plaintext", vi: "Bản rõ" })}>{output(state)}</Output>
+        <Output label={enciphering ? t({ en: "Ciphertext", vi: "Bản mật mã" }) : t({ en: "Plaintext", vi: "Văn bản thường" })}>{output(state)}</Output>
       </Row>
       <Row>
         <TextField

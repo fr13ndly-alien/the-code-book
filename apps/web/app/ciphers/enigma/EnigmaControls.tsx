@@ -14,22 +14,22 @@ const SLOT_NAMES: Bilingual<string>[] = [
   { en: "Right", vi: "Phải" },
 ];
 const ROTOR_NAMES_BY_SLOT: Bilingual<string>[] = [
-  { en: "Left rotor", vi: "Rôto trái" },
-  { en: "Middle rotor", vi: "Rôto giữa" },
-  { en: "Right rotor", vi: "Rôto phải" },
+  { en: "Left rotor", vi: "Đĩa trái" },
+  { en: "Middle rotor", vi: "Đĩa giữa" },
+  { en: "Right rotor", vi: "Đĩa phải" },
 ];
 const RING_LABELS: Bilingual<string>[] = [
-  { en: "Ring, left rotor", vi: "Vòng chữ, rôto trái" },
-  { en: "Ring, middle rotor", vi: "Vòng chữ, rôto giữa" },
-  { en: "Ring, right rotor", vi: "Vòng chữ, rôto phải" },
+  { en: "Ring, left rotor", vi: "Vòng chữ, đĩa trái" },
+  { en: "Ring, middle rotor", vi: "Vòng chữ, đĩa giữa" },
+  { en: "Ring, right rotor", vi: "Vòng chữ, đĩa phải" },
 ];
 const KEY = { en: "key", vi: "phím" };
-const PLUGBOARD = { en: "plugboard", vi: "bảng cắm dây" };
+const PLUGBOARD = { en: "plugboard", vi: "bảng ổ nối" };
 const REFLECTOR = { en: "reflector", vi: "đĩa phản xạ" };
 const [LEFT, MIDDLE, RIGHT] = [
-  { en: "left rotor", vi: "rôto trái" },
-  { en: "middle rotor", vi: "rôto giữa" },
-  { en: "right rotor", vi: "rôto phải" },
+  { en: "left rotor", vi: "đĩa mã hóa trái" },
+  { en: "middle rotor", vi: "đĩa mã hóa giữa" },
+  { en: "right rotor", vi: "đĩa mã hóa phải" },
 ];
 const STAGES: Bilingual<string>[] = [KEY, PLUGBOARD, RIGHT, MIDDLE, LEFT, REFLECTOR, LEFT, MIDDLE, RIGHT, PLUGBOARD];
 
@@ -68,7 +68,7 @@ export function EnigmaControls(props: EnigmaControlsProps) {
     <div className={styles.controls}>
       <div className={styles.row}>
         <fieldset className={styles.rotors}>
-          <legend className="visually-hidden">{t({ en: "Rotor positions", vi: "Vị trí các rôto" })}</legend>
+          <legend className="visually-hidden">{t({ en: "Rotor positions", vi: "Vị trí các đĩa mã hóa" })}</legend>
           {SLOTS.map((slot) => (
             <Stepper
               key={slot}
@@ -119,7 +119,7 @@ export function EnigmaControls(props: EnigmaControlsProps) {
       <details className={styles.setup}>
         <summary>{t({ en: "Set up the machine", vi: "Cài đặt máy" })}</summary>
 
-        <h3>{t({ en: "Rotor order", vi: "Thứ tự rôto" })}</h3>
+        <h3>{t({ en: "Rotor order", vi: "Cách sắp đặt các đĩa mã hóa" })}</h3>
         <div className={styles.row}>
           {SLOTS.map((slot) => (
             <RotorSelect
@@ -131,11 +131,11 @@ export function EnigmaControls(props: EnigmaControlsProps) {
           ))}
         </div>
 
-        <h3>{t({ en: "Ring setting of each rotor", vi: "Vị trí vòng chữ của mỗi rôto" })}</h3>
+        <h3>{t({ en: "Ring setting of each rotor", vi: "Vị trí vòng chữ của mỗi đĩa mã hóa" })}</h3>
         <p className={styles.hint}>
           {t({
             en: "Turns a rotor's letters around its wiring. Changing it starts a new message.",
-            vi: "Xoay vòng chữ của rôto quanh phần dây bên trong. Đổi nó là bắt đầu một tin nhắn mới.",
+            vi: "Xoay vòng chữ của đĩa mã hóa quanh phần dây bên trong. Đổi nó là bắt đầu một tin nhắn mới.",
           })}
         </p>
         <div className={styles.row}>
@@ -159,7 +159,7 @@ export function EnigmaControls(props: EnigmaControlsProps) {
             ),
             vi: (
               <>
-                Bảng cắm dây: {settings.cables.length} trên {MAX_CABLES} dây
+                Bảng ổ nối: {settings.cables.length} trên {MAX_CABLES} dây cáp
               </>
             ),
           })}
@@ -167,7 +167,7 @@ export function EnigmaControls(props: EnigmaControlsProps) {
         <p className={styles.hint}>
           {t({
             en: "Pick two letters to join them. Pick a joined letter to pull its cable out.",
-            vi: "Chọn hai chữ để nối chúng với nhau. Chọn một chữ đã nối để rút dây của nó ra.",
+            vi: "Chọn hai chữ để nối chúng với nhau. Chọn một chữ đã nối để rút dây cáp của nó ra.",
           })}
         </p>
         <div className={styles.sockets}>
@@ -182,8 +182,8 @@ export function EnigmaControls(props: EnigmaControlsProps) {
                 aria-pressed={pendingSocket === letter}
                 aria-label={
                   partner === letter
-                    ? t({ en: `Socket ${letter}`, vi: `Ổ cắm ${letter}` })
-                    : t({ en: `Socket ${letter}, joined to ${partner}`, vi: `Ổ cắm ${letter}, nối với ${partner}` })
+                    ? t({ en: `Socket ${letter}`, vi: `Ổ nối ${letter}` })
+                    : t({ en: `Socket ${letter}, joined to ${partner}`, vi: `Ổ nối ${letter}, nối với ${partner}` })
                 }
                 onClick={() => onPickSocket(letter)}
               >

@@ -17,7 +17,7 @@ export function BabbageControls({ state, dispatch }: { state: BabbageState; disp
     <Controls>
       <Row>
         <Output label={t({ en: "Keyword so far", vi: "Từ khóa tới giờ" })}>{keyword(state)}</Output>
-        <Output label={t({ en: "Plaintext so far", vi: "Bản rõ tới giờ" })}>{plaintext(state).slice(0, PREVIEW_LETTERS)}…</Output>
+        <Output label={t({ en: "Plaintext so far", vi: "Văn bản thường tới giờ" })}>{plaintext(state).slice(0, PREVIEW_LETTERS)}…</Output>
       </Row>
       <Row>
         <Choice
@@ -25,13 +25,13 @@ export function BabbageControls({ state, dispatch }: { state: BabbageState; disp
           value={state.stage}
           onChange={(stage) => dispatch({ type: "view", stage })}
           options={[
-            { value: "length", label: t({ en: "1 Key length", vi: "1 Độ dài khóa" }) },
+            { value: "length", label: t({ en: "1 Key length", vi: "1 Độ dài từ khóa" }) },
             { value: "letters", label: t({ en: "2 Key letters", vi: "2 Các chữ khóa" }) },
           ]}
         />
         {state.stage === "length" ? (
           <Stepper
-            label={t({ en: "Key length (resets the keyword)", vi: "Độ dài khóa (đặt lại từ khóa)" })}
+            label={t({ en: "Key length (resets the keyword)", vi: "Độ dài từ khóa (đặt lại từ khóa)" })}
             value={state.keyLength}
             onStep={(by) => dispatch({ type: "resize", by })}
           />

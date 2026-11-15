@@ -17,14 +17,14 @@ const sign = (scheme: Photon["aliceScheme"]) => (scheme === "+" ? "+" : "×");
 
 const ALICE_ROWS: TableRow[] = [
   { label: { en: "Alice's bit", vi: "Bit của Alice" }, cell: (photon) => photon.aliceBit },
-  { label: { en: "Alice's scheme", vi: "Kiểu đo của Alice" }, cell: (photon) => sign(photon.aliceScheme) },
-  { label: { en: "Photon she sends", vi: "Photon cô gửi" }, kind: "photon", cell: (photon) => <Arrow angle={photon.angle} /> },
+  { label: { en: "Alice's scheme", vi: "Sơ đồ của Alice" }, cell: (photon) => sign(photon.aliceScheme) },
+  { label: { en: "Photon she sends", vi: "Phôtôn cô gửi" }, kind: "photon", cell: (photon) => <Arrow angle={photon.angle} /> },
 ];
 
 const EVE_ROWS: TableRow[] = [
   { label: { en: "Eve's detector", vi: "Máy dò của Eve" }, kind: "eve", cell: (photon) => photon.eve && sign(photon.eve.scheme) },
   { label: { en: "Eve reads", vi: "Eve đọc được" }, kind: "eve", cell: (photon) => photon.eve?.bit },
-  { label: { en: "Photon she sends on", vi: "Photon cô gửi tiếp" }, kind: "eve", cell: (photon) => photon.eve && <Arrow angle={photon.eve.angle} /> },
+  { label: { en: "Photon she sends on", vi: "Phôtôn cô gửi tiếp" }, kind: "eve", cell: (photon) => photon.eve && <Arrow angle={photon.eve.angle} /> },
 ];
 
 const BOB_ROWS: TableRow[] = [
@@ -32,7 +32,7 @@ const BOB_ROWS: TableRow[] = [
   { label: { en: "Bob's bit", vi: "Bit của Bob" }, cell: (photon) => photon.bobBit },
 ];
 
-const SIFT_ROW: TableRow = { label: { en: "Same scheme?", vi: "Cùng kiểu đo?" }, cell: (photon) => (photon.kept ? "✓" : "") };
+const SIFT_ROW: TableRow = { label: { en: "Same scheme?", vi: "Cùng sơ đồ?" }, cell: (photon) => (photon.kept ? "✓" : "") };
 
 /** The rows that only exist once a sample has been compared. */
 function compareRows(result: Comparison): TableRow[] {
@@ -41,7 +41,7 @@ function compareRows(result: Comparison): TableRow[] {
       label: { en: "Read out to compare", vi: "Đọc to để so" },
       cell: (photon, column) => (result.sample.includes(column) ? (photon.wrong ? "✗" : "=") : ""),
     },
-    { label: { en: "Secret key", vi: "Khóa bí mật" }, kind: "key", cell: (photon, column) => (result.secret.includes(column) ? photon.aliceBit : "") },
+    { label: { en: "Secret key", vi: "Chìa khóa bí mật" }, kind: "key", cell: (photon, column) => (result.secret.includes(column) ? photon.aliceBit : "") },
   ];
 }
 
@@ -82,7 +82,7 @@ export function PhotonTable(props: {
             </tr>
           ))}
           <tr className={styles.pickers}>
-            <th scope="row">{t({ en: "Photon number", vi: "Số thứ tự photon" })}</th>
+            <th scope="row">{t({ en: "Photon number", vi: "Số thứ tự phôtôn" })}</th>
             {photons.map((_, column) => (
               <td key={column}>
                 <button type="button" aria-pressed={column === picked} onClick={() => props.onPick(column)}>

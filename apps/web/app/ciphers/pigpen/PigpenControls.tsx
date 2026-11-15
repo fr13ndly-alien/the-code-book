@@ -24,7 +24,7 @@ export function PigpenControls({ state, dispatch }: { state: PigpenState; dispat
         {state.hidden ? (
           <Button onClick={() => dispatch({ type: "reveal" })}>{t({ en: "Show every letter", vi: "Hiện mọi chữ" })}</Button>
         ) : (
-          <Output label={t({ en: "Symbols in the message", vi: "Số ký hiệu trong tin nhắn" })}>{String(lettersOnly(state.text).length)}</Output>
+          <Output label={t({ en: "Symbols in the message", vi: "Số ký hiệu trong bức thư" })}>{String(lettersOnly(state.text).length)}</Output>
         )}
       </Row>
       {!state.hidden && (

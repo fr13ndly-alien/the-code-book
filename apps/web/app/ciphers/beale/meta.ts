@@ -10,10 +10,10 @@ export const meta: CipherMeta = {
   firstStep: "Tap a number to find its word in the key text.",
   source: "The Code Book, chapter 2: The Anonymous Codebreaker",
   vi: {
-    title: "Mật thư Beale",
+    title: "Các bản mật mã của Beale",
     era: "1822 đến 1885",
     hook: "Ba tờ giấy đầy con số chỉ đường tới một kho báu bị chôn giấu. Mới chỉ có một tờ từng được đọc.",
-    firstStep: "Chạm vào một con số để tìm từ của nó trong văn bản khóa.",
-    source: "The Code Book, chương 2: Nhà giải mã vô danh",
+    firstStep: "Chạm vào một con số để tìm từ của nó trong văn bản khóa mã.",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 2: Le chiffre indéchiffrable",
   },
 };

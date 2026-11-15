@@ -30,7 +30,7 @@ export function PgpControls({ state, dispatch }: { state: PgpState; dispatch: Di
         <Button primary disabled={!next} onClick={() => dispatch({ type: "step", by: 1 })}>
           {next
             ? t({ en: `Next step: ${next.en}`, vi: `Bước tiếp: ${next.vi}` })
-            : t({ en: "Bob has read the message", vi: "Bob đã đọc tin nhắn" })}
+            : t({ en: "Bob has read the message", vi: "Bob đã đọc bức thư" })}
         </Button>
         <Button onClick={() => dispatch({ type: "step", by: -STEPS.length })}>{t({ en: "Back to step 0", vi: "Về bước 0" })}</Button>
       </Row>

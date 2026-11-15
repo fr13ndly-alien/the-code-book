@@ -39,7 +39,7 @@ export function QuantumControls({ state, dispatch }: { state: QuantumState; disp
           value={t({ en: `${state.stage} of ${STEPS.length}`, vi: `${state.stage} / ${STEPS.length}` })}
           onStep={(by) => dispatch({ type: "step", by })}
         />
-        <Output label={t({ en: "Secret key", vi: "Khóa bí mật" })}>{outcome(state, locale)}</Output>
+        <Output label={t({ en: "Secret key", vi: "Chìa khóa bí mật" })}>{outcome(state, locale)}</Output>
       </Row>
       <Row>
         <Button primary disabled={!next} onClick={() => dispatch({ type: "step", by: 1 })}>
@@ -63,13 +63,13 @@ export function QuantumControls({ state, dispatch }: { state: QuantumState; disp
       </Row>
       <Row>
         <Choice
-          label={t({ en: "Send new photons", vi: "Gửi photon mới" })}
+          label={t({ en: "Send new photons", vi: "Gửi phôtôn mới" })}
           value={String(count)}
           onChange={(size) => dispatch({ type: "send", run: randomRun(Number(size)) })}
           options={SIZES.map((size) => ({ value: size, label: size }))}
         />
         <Button onClick={() => dispatch({ type: "send", run: randomRun(count) })}>
-          {t({ en: <>Send {count} again</>, vi: <>Gửi lại {count} photon</> })}
+          {t({ en: <>Send {count} again</>, vi: <>Gửi lại {count} phôtôn</> })}
         </Button>
       </Row>
     </Controls>

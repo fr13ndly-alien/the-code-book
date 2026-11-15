@@ -12,8 +12,8 @@ export const meta: CipherMeta = {
   vi: {
     title: "Mật mã lượng tử",
     era: "Từ năm 1984",
-    hook: "Gửi một chiếc khóa đi bằng từng hạt ánh sáng một, và không ai nghe lén được mà không để lại dấu vết.",
+    hook: "Gửi một chìa khóa đi bằng từng hạt ánh sáng một, và không ai nghe lén được mà không để lại dấu vết.",
     firstStep: "Nhấn “Bước tiếp” để xem Alice và Bob giữ lại những bit nào.",
-    source: "The Code Book, chương 6: Riêng tư tốt đẹp",
+    source: "Mật mã: Từ cổ điển đến lượng tử, chương 8: Bước nhảy lượng tử vào tương lai",
   },
 };

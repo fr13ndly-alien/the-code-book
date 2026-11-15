@@ -10,7 +10,7 @@ import { tokensOf, type MaryAction, type MaryState } from "./useMary";
 function pickedAsText(symbol: string | undefined, locale: Locale): string {
   if (!symbol) return "";
   const { kind, plain } = lookUp(symbol);
-  if (kind === "null") return locale === "vi" ? `${symbol} = không có nghĩa (chữ đệm)` : `${symbol} = nothing (a null)`;
+  if (kind === "null") return locale === "vi" ? `${symbol} = không có nghĩa (ký tự không)` : `${symbol} = nothing (a null)`;
   if (kind === "doubler") return locale === "vi" ? `${symbol} = nhân đôi ký hiệu tiếp theo` : `${symbol} = double the next sign`;
   return `${symbol} = ${plain}`;
 }
@@ -51,7 +51,7 @@ export function MaryControls({ state, dispatch }: { state: MaryState; dispatch: 
       {writing ? (
         <Row>
           <Choice
-            label={t({ en: "Nulls", vi: "Chữ đệm" })}
+            label={t({ en: "Nulls", vi: "Ký tự không" })}
             value={state.nulls}
             onChange={(nulls) => dispatch({ type: "sprinkle", nulls })}
             options={[
@@ -69,7 +69,7 @@ export function MaryControls({ state, dispatch }: { state: MaryState; dispatch: 
               { value: "off", label: t({ en: "Off", vi: "Tắt" }) },
             ]}
           />
-          <Stepper label={t({ en: "Null pattern", vi: "Kiểu rải chữ đệm" })} value={state.seed} onStep={(by) => dispatch({ type: "shuffle", by })} />
+          <Stepper label={t({ en: "Null pattern", vi: "Kiểu rải ký tự không" })} value={state.seed} onStep={(by) => dispatch({ type: "shuffle", by })} />
         </Row>
       ) : (
         <details className={styles.reveal}>

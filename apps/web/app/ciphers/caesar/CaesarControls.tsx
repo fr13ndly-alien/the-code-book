@@ -15,7 +15,7 @@ export function CaesarControls({ state, dispatch }: { state: CaesarState; dispat
     <Controls>
       <Row>
         <Stepper label={t({ en: "Shift", vi: "Độ dịch" })} value={state.shift} onStep={(by) => dispatch({ type: "turn", by })} />
-        <Output label={enciphering ? t({ en: "Ciphertext", vi: "Bản mật mã" }) : t({ en: "Plaintext", vi: "Bản rõ" })}>{output(state)}</Output>
+        <Output label={enciphering ? t({ en: "Ciphertext", vi: "Bản mật mã" }) : t({ en: "Plaintext", vi: "Văn bản thường" })}>{output(state)}</Output>
       </Row>
       <Row>
         <TextField

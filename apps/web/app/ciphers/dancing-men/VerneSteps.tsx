@@ -9,7 +9,7 @@ import styles from "./VerneSteps.module.css";
 export const VERNE_LABELS: Bilingual[] = [
   { en: "The message", vi: "Tin nhắn" },
   { en: "Hide, step 1: swap each letter", vi: "Giấu, bước 1: đổi từng chữ" },
-  { en: "Hide, step 2: write it backwards. This is the parchment", vi: "Giấu, bước 2: viết ngược lại. Đây là tấm da cổ" },
+  { en: "Hide, step 2: write it backwards. This is the parchment", vi: "Giấu, bước 2: viết ngược lại. Đây là cuộn da" },
   { en: "Undo, step 1: read it backwards", vi: "Gỡ, bước 1: đọc ngược lại" },
   { en: "Undo, step 2: swap each letter back", vi: "Gỡ, bước 2: đổi từng chữ trở lại" },
 ];
@@ -22,7 +22,7 @@ export function VerneSteps({ text, step }: { text: string; step: number }) {
     <>
       <AlphabetRows
         rows={[
-          { label: t({ en: "Plain", vi: "Rõ" }), letters: ALPHABET },
+          { label: t({ en: "Plain", vi: "Thường" }), letters: ALPHABET },
           { label: t({ en: "Ours", vi: "Của chúng tôi" }), letters: VERNE_ALPHABET, kind: "cipher" },
         ]}
       />
@@ -46,7 +46,7 @@ export function VerneSteps({ text, step }: { text: string; step: number }) {
           ),
           vi: (
             <>
-              Bảng chữ dùng để đổi là của chúng tôi. Trong tiểu thuyết, tấm da cổ viết bằng chữ rune, mỗi chữ rune thay cho
+              Bảng chữ dùng để đổi là của chúng tôi. Trong tiểu thuyết, cuộn da viết bằng chữ rune, mỗi chữ rune thay cho
               một chữ cái. Nhấn ▲ cạnh “Bước” để đi tiếp.
             </>
           ),
