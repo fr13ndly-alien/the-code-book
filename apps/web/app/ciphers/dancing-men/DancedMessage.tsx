@@ -1,11 +1,13 @@
-import { describe, inWords, type Figure } from "@codebook/cipher-engine/dancing-men";
+import { inWords, type Figure } from "@codebook/cipher-engine/dancing-men";
+import { useLocale, type Locale } from "~/i18n";
 import { DancingFigure } from "./DancingFigure";
 import styles from "./DancedMessage.module.css";
+import { describePose } from "./vi";
 
 /** What a screen reader says for one figure: its letter if that is showing, its pose, and its flag. */
-function nameOf(figure: Figure, shown: string | undefined): string {
-  const flag = figure.flag ? ", holding a flag" : "";
-  return `${shown ? `${shown}: ` : ""}${describe(figure.pose)}${flag}`;
+function nameOf(figure: Figure, shown: string | undefined, locale: Locale): string {
+  const flag = figure.flag ? (locale === "vi" ? ", tay cầm cờ" : ", holding a flag") : "";
+  return `${shown ? `${shown}: ` : ""}${describePose(figure.pose, locale)}${flag}`;
 }
 
 /**
@@ -18,8 +20,13 @@ export function DancedMessage(props: {
   picked?: string;
   onPick: (letter: string) => void;
 }) {
+  const locale = useLocale();
   return (
-    <div className={styles.message} role="group" aria-label="The message in dancing men">
+    <div
+      className={styles.message}
+      role="group"
+      aria-label={locale === "vi" ? "Tin nhắn viết bằng hình nhân nhảy múa" : "The message in dancing men"}
+    >
       {inWords(props.figures).map((word, at) => (
         <span key={at} className={styles.word}>
           {word.map((figure, i) => {
@@ -29,7 +36,7 @@ export function DancedMessage(props: {
                 key={i}
                 type="button"
                 aria-pressed={figure.letter === props.picked}
-                aria-label={nameOf(figure, shown)}
+                aria-label={nameOf(figure, shown, locale)}
                 onClick={() => props.onPick(figure.letter)}
               >
                 <DancingFigure pose={figure.pose} flag={figure.flag} />

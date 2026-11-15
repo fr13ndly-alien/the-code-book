@@ -1,0 +1,145 @@
+{/*
+  Vietnamese translation of story.mdx. Follows docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md.
+  This cipher is only in the full edition of The Code Book (chapter 3 and Appendix F).
+  The grid, the keyword MARK and the message "attack at 10 pm" are the book's example.
+  Dates and names were checked against the sources in Further reading. The wording is ours.
+*/}
+
+<Standfirst>
+  Sáu chữ cái, một cái lưới và một từ khóa đã giấu mệnh lệnh của quân đội Đức năm 1918, cho tới khi một người Pháp nhìn thấu chúng.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Sáu chữ cái trên sóng vô tuyến
+
+Đó là tháng 6 năm 1918, mùa hè cuối cùng của Chiến tranh thế giới thứ nhất. Quân đội Đức đang tiến về phía Paris. Người Pháp biết sắp có thêm một đòn tấn công nữa. Họ không biết nó sẽ nhắm vào đâu.
+
+Các nhân viên vô tuyến Pháp nghe tín hiệu của Đức suốt ngày đêm. Những gì họ nghe được rất lạ. Bức điện nào cũng chỉ dùng sáu chữ cái: `A`, `D`, `F`, `G`, `V` và `X`.
+
+Các bức điện được đưa tới bàn của Georges Painvin, một nhà giải mã ở phòng mật mã Pháp. Đêm ngày 2 tháng 6, ông đọc được một bức. Nó ra lệnh gấp rút chở đạn pháo tới các khẩu pháo, “kể cả ban ngày nếu không bị nhìn thấy”. Giờ người Pháp đã biết phải chờ ở đâu.
+
+Làm sao cả một ngôn ngữ lại giấu được trong sáu chữ cái?
+
+<Label>Thử xem</Label>
+
+## Lần theo một chữ
+
+Bộ mô phỏng chứa tin nhắn `ATTACK AT 10 PM` (tấn công lúc 10 giờ tối) và từ khóa `MARK`. Hãy đoán trước: tin nhắn có 12 chữ cái và chữ số. Bản mật mã sẽ có bao nhiêu chữ?
+
+<Try action="book" button="Mở tin nhắn">
+  Chạm vào `T` trong lưới lớn. Nhìn chữ ở đầu hàng và chữ ở đầu cột của nó. Rồi tìm những chữ đang sáng trong ba bảng nhỏ.
+</Try>
+
+<Check question="Bản mật mã dài bao nhiêu?">
+  24 chữ, dài gấp đôi tin nhắn. Mỗi chữ cái hay chữ số biến thành hai chữ: tên hàng của nó, rồi tên cột của nó. `T` nằm ở hàng `D`, cột `D`, nên nó thành `DD`.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Đổi chữ, rồi xáo trộn
+
+ADFGVX là hai mật mã, cái này nối tiếp cái kia. Cái thứ nhất đổi chữ. Cái thứ hai xáo trộn.
+
+### Giai đoạn 1: cái lưới
+
+Lưới có sáu hàng và sáu cột. Vậy là có 36 ô: đủ cho 26 chữ cái và mười chữ số. Chúng được rải theo một thứ tự mà chỉ người gửi và người nhận biết.
+
+Muốn mã hóa một chữ, hãy tìm nó trong lưới. Viết chữ ở đầu hàng của nó, rồi chữ ở đầu cột của nó. Vậy `A` thành `DV`, còn `1` thành `AV`. Đây là một phép **thay thế**: mỗi ký hiệu được đổi thành một thứ khác.
+
+Nếu chỉ có giai đoạn 1 thì mật mã còn yếu. `A` lúc nào cũng là `DV`. Nhà giải mã có thể đếm các cặp, giống như đếm chữ cái.
+
+<Try action="book" button="Mở tin nhắn">
+  Chạm vào `A` trong lưới, rồi nhìn vào “Giai đoạn 1”. Đếm xem cặp `DV` xuất hiện bao nhiêu lần.
+</Try>
+
+### Giai đoạn 2: từ khóa
+
+Giờ các cặp bị tách ra. Viết mọi chữ của giai đoạn 1 thành từng hàng dưới từ khóa, ở đây là `MARK`. Rồi sắp xếp các cột sao cho các chữ của từ khóa theo đúng thứ tự bảng chữ cái: `A`, `K`, `M`, `R`. Mỗi cột di chuyển nguyên khối.
+
+Cuối cùng, đọc từ trên xuống cột thứ nhất, rồi cột thứ hai, cứ thế. Chuỗi chữ đó là bản mật mã. Giai đoạn này là **mã chuyển vị**: các chữ giữ nguyên, chỉ đổi chỗ.
+
+<Try>
+  Đổi ô “Từ khóa” từ `MARK` thành `MARKS`. Bảng có thêm cột thứ năm và bản mật mã thay đổi, nhưng các cặp ở giai đoạn 1 thì không.
+</Try>
+
+### Vì sao hai giai đoạn hơn một
+
+Chạm lại vào `T` và nhìn bảng đã sắp xếp. Hai nửa của mỗi cặp `DD` đã rơi vào hai cột khác nhau. Trong bản mật mã, chúng nằm cách xa nhau, lẫn với những nửa của các chữ khác.
+
+Tách một chữ thành nhiều phần rồi rải các phần ấy ra gọi là **chia nhỏ chữ** (phân đoạn). Nhà giải mã không đếm được các cặp, vì các cặp không còn nằm cạnh nhau nữa. Và họ không ghép lại được các cặp nếu không có từ khóa.
+
+Muốn giải mã, bạn làm ngược lại. Lấp bản mật mã vào các cột đã sắp xếp rồi đặt các cột về lại thứ tự của từ khóa. Sau đó đọc theo hàng ngang từng cặp một, và tra từng cặp trong lưới.
+
+<Check question="Vì sao lại là sáu chữ này, chứ không phải từ A đến F?">
+  Các bức điện được gửi qua vô tuyến bằng mã Morse. `A`, `D`, `F`, `G`, `V` và `X` nghe rất khác nhau khi đánh bằng chấm và gạch. Một nhân viên vô tuyến mệt mỏi sẽ ít nhầm chúng hơn.
+</Check>
+
+<Label>Câu chuyện</Label>
+
+## Làm ra cho cuộc tấn công cuối cùng
+
+Mật mã này do Fritz Nebel, một sĩ quan thông tin của Đức, làm ra. Nó được dùng lần đầu vào tháng 3 năm 1918, ngay trước cuộc tấn công mùa xuân lớn của Đức. Khi ấy nó chỉ có năm chữ, `ADFGX`, và một lưới 25 ô.
+
+Đầu tháng 6 năm 1918, chữ thứ sáu xuất hiện: `V`. Lưới lớn hơn có chỗ cho chữ số, nên giờ giấc và số hiệu bản đồ không còn phải đánh vần ra nữa. Các bức điện ngắn đi.
+
+Cả hai khóa, cái lưới và từ khóa, đều được đổi mỗi ngày. Từ khóa thật dài hơn `MARK` nhiều, khoảng hai chục chữ. Người Đức tin chắc mật mã này không thể bị phá.
+
+<DigDeeper title="Vì sao lính tráng ưa nó">
+  Một mật mã dùng ở tiền tuyến phải đơn giản. ADFGVX không cần máy móc, cũng không cần sổ mã dày cộp. Một nhân viên chỉ cần bút chì, giấy kẻ ô và hai khóa của ngày hôm đó.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Những đêm dài của Painvin
+
+Georges Painvin đã phá được phiên bản năm chữ từ đầu tháng 4. Lối vào của ông là một thói quen của quân đội. Nhiều bức điện trong cùng một ngày mở đầu bằng cùng những từ, chẳng hạn một địa chỉ hay một cấp bậc.
+
+Hai bức điện mở đầu giống nhau sẽ cho ra các cặp ở giai đoạn 1 mở đầu giống nhau. Sau khi xáo trộn, những chữ trùng nhau nằm ở đầu mỗi cột. Bằng cách so sánh những bức điện như thế, Painvin tìm ra được từ khóa dài bao nhiêu và các cột đã bị dời đi ra sao.
+
+Khi các cột về lại đúng thứ tự, các cặp lại nằm cạnh nhau. Phần còn lại là giai đoạn 1, một phép thay thế đơn giản. Mà những phép như thế thì thua trước việc đếm.
+
+<Try action="book" button="Mở tin nhắn">
+  Bạn hãy tự làm bước cuối cùng. Trong “Giai đoạn 1”, đếm từng cặp. `DV` và `DD` mỗi cặp xuất hiện ba lần. Trong một bức điện tiếng Anh dài, cặp hay gặp nhất sẽ thay cho `E`.
+</Try>
+
+Công việc làm ông kiệt sức. Người ta kể rằng mùa xuân năm ấy Painvin sụt mất 15 kg. Nhưng ngày 2 tháng 6, một ngày sau khi người Pháp lần đầu nghe thấy chữ `V`, ông đã đọc được mệnh lệnh gấp rút chở đạn dược. Nó được gửi từ mặt trận giữa Montdidier và Compiègne. Khi quân Đức tấn công ở đó vào ngày 9 tháng 6, người Pháp đã chờ sẵn.
+
+Các nhà sử học vẫn còn tranh cãi bức điện này quan trọng tới mức nào. Người Pháp cũng có những lời cảnh báo khác, chẳng hạn từ những người lính bị bắt.
+
+<Label>Thử thách</Label>
+
+## Đọc mệnh lệnh
+
+<Challenge answer="RUSH MUNITIONS">
+  Bạn đang ở phòng mật mã Pháp. Sau nhiều ngày làm việc, bạn đã có lưới của hôm nay (chính là lưới trên trang này) và từ khóa của hôm nay: `PARIS`.
+
+  Bức điện này vừa tới: `VDDDGDGXVXVDGGDDGXADAVXVGV`
+
+  Đặt từ khóa, chọn “Giải mã” rồi gõ bức điện vào, hoặc dùng nút bên dưới. Nó nói gì?
+
+  <Try action="intercepted" button="Mở bức điện" />
+</Challenge>
+
+<Check question="Từ khóa PARIS có năm chữ. Cột nào của bảng được đọc trước tiên?">
+  Cột dưới chữ `A`. Các cột được đọc theo thứ tự bảng chữ cái của các chữ trong từ khóa: `A`, `I`, `P`, `R`, `S`.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Khó không có nghĩa là an toàn
+
+ADFGVX chồng mật mã này lên mật mã kia, và trở thành một trong những mật mã nổi tiếng nhất của cuộc chiến. Nó vẫn bị phá, vì người ta dùng nó theo lối mòn, và vì có một người không chịu bỏ cuộc.
+
+Đến năm 1918, mọi mật mã từng được nghĩ ra đều sớm muộn bị phá. Những người lập mã muốn thứ gì đó tốt hơn là “khó hơn”. Họ muốn một mật mã có thể chứng minh là không thể phá. Nó đã có sẵn, và chẳng dùng gì ngoài những chữ cái ngẫu nhiên: [sổ tay dùng một lần](/ciphers/one-time-pad).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *The Code Book* (bản đầy đủ, 1999), chương 3 và Phụ lục F. Phụ lục làm từng bước với `ATTACK AT 10 PM` và từ khóa `MARK`.
+- [Wikipedia: ADFGVX cipher](https://en.wikipedia.org/wiki/ADFGVX_cipher). Các mốc thời gian, Fritz Nebel, một ví dụ làm mẫu thứ hai, và cuộc tranh cãi về tầm quan trọng của việc phá mã.
+- [Wikipedia: Georges Painvin](https://en.wikipedia.org/wiki/Georges_Painvin). Con người ông và bức điện ngày 2 tháng 6 năm 1918.
+- [Wikipedia: German spring offensive](https://en.wikipedia.org/wiki/German_spring_offensive). Cuộc tấn công ngày 9 tháng 6 năm 1918.
+- David Kahn, *The Codebreakers: The Story of Secret Writing* (Các nhà giải mã: câu chuyện về thư bí mật, 1967; bản sửa đổi năm 1996). Câu chuyện kinh điển về cuộc tấn công của Painvin vào mật mã.

@@ -1,3 +1,4 @@
+import { useT } from "~/i18n";
 import styles from "./PairCards.module.css";
 
 /**
@@ -10,11 +11,12 @@ export function PairCards(props: {
   partner?: string;
   onPick: (letter: string) => void;
 }) {
+  const t = useT();
   const mark = (letter: string) =>
     letter === props.picked ? "on" : letter === props.partner ? "partner" : undefined;
 
   return (
-    <ul className={styles.pairs} aria-label="The thirteen pairs of letters">
+    <ul className={styles.pairs} aria-label={t({ en: "The thirteen pairs of letters", vi: "Mười ba cặp chữ cái" })}>
       {props.pairs.map((pair) => (
         <li key={pair} className={styles.pair}>
           <PairButton letter={pair[0]!} partner={pair[1]!} mark={mark(pair[0]!)} onPick={props.onPick} />
@@ -28,10 +30,11 @@ export function PairCards(props: {
 
 /** One letter of a pair, as a button. */
 function PairButton(props: { letter: string; partner: string; mark?: string; onPick: (letter: string) => void }) {
+  const t = useT();
   return (
     <button
       type="button"
-      aria-label={`${props.letter}, paired with ${props.partner}`}
+      aria-label={t({ en: `${props.letter}, paired with ${props.partner}`, vi: `${props.letter}, cùng cặp với ${props.partner}` })}
       aria-pressed={props.mark === "on"}
       data-mark={props.mark}
       onClick={() => props.onPick(props.letter)}

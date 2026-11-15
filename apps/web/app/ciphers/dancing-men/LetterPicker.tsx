@@ -1,4 +1,5 @@
 import { ALPHABET, ENGLISH_FREQUENCY, indexOfLetter } from "@codebook/cipher-engine/text";
+import { useT } from "~/i18n";
 import styles from "./LetterPicker.module.css";
 
 /** The letters of English, most common first: the order a codebreaker tries them in. */
@@ -14,11 +15,18 @@ export function LetterPicker(props: {
   disabled: boolean;
   onAssign: (plain: string) => void;
 }) {
+  const t = useT();
   return (
-    <div className={styles.picker} role="group" aria-label="Letters, most common in English first">
+    <div
+      className={styles.picker}
+      role="group"
+      aria-label={t({ en: "Letters, most common in English first", vi: "Các chữ cái, chữ hay gặp nhất trong tiếng Anh đứng trước" })}
+    >
       <span className={styles.label}>
-        {props.disabled ? "Tap a figure first. Then pick its letter here" : "Pick a letter for the bright figure"}
-        {" (most common in English first)"}
+        {props.disabled
+          ? t({ en: "Tap a figure first. Then pick its letter here", vi: "Hãy chạm vào một hình nhân trước. Rồi chọn chữ của nó ở đây" })
+          : t({ en: "Pick a letter for the bright figure", vi: "Chọn một chữ cho hình nhân đang sáng" })}
+        {t({ en: " (most common in English first)", vi: " (chữ hay gặp nhất trong tiếng Anh đứng trước)" })}
       </span>
       <div className={styles.letters}>
         {BY_FREQUENCY.map((letter) => (
@@ -28,7 +36,7 @@ export function LetterPicker(props: {
             disabled={props.disabled}
             data-used={props.used.includes(letter)}
             aria-pressed={letter === props.current}
-            aria-label={`Letter ${letter}`}
+            aria-label={t({ en: `Letter ${letter}`, vi: `Chữ ${letter}` })}
             onClick={() => props.onAssign(letter)}
           >
             {letter}

@@ -1,0 +1,134 @@
+{/*
+  Translates story.mdx into Vietnamese, following docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 3 (and chapter 2 for Alberti himself). The wording is ours.
+*/}
+
+<Standfirst>
+  Hai vòng đồng xuyên chung một chiếc ghim: cỗ máy mật mã đầu tiên, và mầm mống của mọi cỗ máy về sau.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Hai chiếc đĩa và một cây kim
+
+Vào thế kỷ 15, một kiến trúc sư người Ý tên là Leon Battista Alberti ngồi xuống với hai chiếc đĩa bằng đồng. Một chiếc lớn hơn chiếc kia một chút. Quanh mép mỗi đĩa, ông viết bảng chữ cái.
+
+Ông đặt đĩa nhỏ lên đĩa lớn rồi xuyên một cây kim qua tâm cả hai. Giờ thì bảng chữ ở vòng trong xoay được, còn bảng chữ ở vòng ngoài vẫn đứng yên.
+
+Trông nó chẳng có gì to tát. Vậy mà quân đội đã dùng những chiếc đĩa như thế suốt năm trăm năm. Lính trong Nội chiến Mỹ vẫn còn mang theo chúng. Trong câu chuyện về thư bí mật, đây là cỗ máy đầu tiên.
+
+Hai vòng chữ có thể làm được gì mà một cây bút chì không làm được?
+
+<Label>Thử xem</Label>
+
+## Xoay vòng trong
+
+Chiếc đĩa trên trang này bắt đầu với chữ `F` của vòng trong nằm cạnh chữ `A` của vòng ngoài. Bạn đoán trước nhé: chữ nào của vòng trong đang nằm cạnh chữ `B` của vòng ngoài?
+
+<Try action="five" button="Đặt đĩa ở chữ F">
+  Tìm chữ `B` trên vòng ngoài rồi đọc chữ nằm ngay dưới nó. Sau đó nhấn ▲ cạnh “Chữ vòng trong cạnh A” và xem vòng chữ xoay.
+</Try>
+
+<Check question="Chữ nào nằm cạnh chữ B?">
+  Chữ `G`. Cả hai vòng đều chứa bảng chữ cái theo đúng thứ tự. Vì vậy khi `A` gặp `F` thì `B` gặp `G`, `C` gặp `H`, và cứ thế suốt một vòng. Chỉ một lần xoay đĩa là cả 26 cặp chữ cùng đổi một lúc.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Một bánh xe, nhiều bảng chữ
+
+### Ngoài là chữ rõ, trong là chữ mã
+
+Vòng ngoài là **bảng chữ rõ**: các chữ trong tin nhắn của bạn. Vòng trong là **bảng chữ mã**: các chữ bạn gửi đi.
+
+Để mã hóa, bạn tìm từng chữ của tin nhắn trên vòng ngoài và chép lại chữ vòng trong nằm cạnh nó. Để giải mã, bạn làm ngược lại: tìm chữ trên vòng trong rồi đọc chữ ở vòng ngoài.
+
+Nếu để yên, chiếc đĩa chính là [mật mã dịch chuyển Caesar](/ciphers/caesar). Đặt chữ `B` của vòng trong cạnh `A` là dịch một chữ. Đặt chữ `F` là dịch năm chữ. Chiếc đĩa không làm mật mã của Caesar khó phá hơn. Nó chỉ giúp bạn làm nhanh hơn và khỏi đếm nhầm.
+
+<Try action="five" button="Đặt đĩa ở chữ F">
+  Gõ tên bạn vào ô “Tin nhắn của bạn”. Chạm vào một chữ bất kỳ trên vòng trong để xoay nó về cạnh chữ `A`, rồi xem bản mật mã thay đổi.
+</Try>
+
+### Vừa viết vừa xoay
+
+Alberti nhận ra chiếc đĩa còn làm được nhiều hơn thế. Nếu bạn xoay nó ngay trong lúc viết tin nhắn thì sao?
+
+Khi đó, bảng chữ mã đổi từ chữ này sang chữ kế tiếp. Cùng một chữ rõ sẽ mang một lớp áo khác mỗi lần xuất hiện. Một mật mã dùng nhiều bảng chữ mã như vậy gọi là **thay thế đa bảng** (dùng nhiều bảng chữ mã). Alberti là một trong những người đầu tiên nghĩ ra nó.
+
+<Try action="turning" button="Cho đĩa tự xoay">
+  Bây giờ chiếc đĩa tự xoay một nấc sau mỗi chữ. Hãy gõ thật chậm `AAAA`. Xem vòng chữ xoay, rồi đọc bản mật mã.
+</Try>
+
+Bốn chữ giống hệt nhau đi vào, còn `ABCD` đi ra. Ai đếm chữ để tìm chữ hay gặp nhất sẽ chẳng biết thêm được gì. Cách đếm chữ chỉ có tác dụng khi mỗi chữ luôn giữ nguyên lớp áo của nó.
+
+### Từ khóa chỉ cách xoay
+
+Người gửi và người nhận phải xoay đĩa giống hệt nhau. Mỗi lần xoay một nấc thì quá dễ đoán. Vì vậy cuốn sách tả một quy tắc tốt hơn: dùng một từ khóa.
+
+Lấy từ khóa `LEON`. Với chữ đầu tiên, bạn đặt chữ `L` của vòng trong cạnh `A`. Với chữ thứ hai, đặt chữ `E`. Rồi đến `O`, rồi `N`, rồi quay lại `L`. Cuốn sách mã hóa từ “goodbye” (tạm biệt) theo cách này, và chữ `g` của nó thành `R`.
+
+<Try action="leon" button="Nạp ví dụ của cuốn sách">
+  Đọc hàng “Chữ vòng trong ở A” dưới chiếc đĩa: nó đánh vần lại từ khóa hết lần này đến lần khác. Thêm chữ vào tin nhắn và xem chiếc đĩa nhảy.
+</Try>
+
+<Check question="Bạn đã gặp mật mã này rồi, dưới một cái tên khác. Đó là mật mã nào?">
+  Đó là [mật mã Vigenère](/ciphers/vigenere). Chiếc đĩa làm thay việc của hình vuông lớn gồm nhiều bảng chữ. Nó dùng nhanh hơn và ít khiến bạn nhầm hơn.
+</Check>
+
+<Label>Câu chuyện</Label>
+
+## Năm thế kỷ phục vụ
+
+Alberti là một con người của thời Phục hưng: vừa là kiến trúc sư, họa sĩ, nhà thơ, vừa là triết gia. Ông đến với mật mã vào thập niên 1460, sau một buổi trò chuyện với người bạn làm việc cho Giáo hoàng.
+
+Chiếc đĩa của ông rất đơn giản, nhưng nó tồn tại rất lâu. Bức hình trong sách cho thấy một chiếc đĩa mà quân đội miền Nam đã dùng trong Nội chiến Mỹ, bốn trăm năm sau.
+
+Cuốn sách có một cái tên hữu ích cho việc chiếc đĩa làm. Nó gọi đó là **bộ xáo trộn**: một thứ nhận từng chữ rõ và biến nó thành một chữ khác. Bộ xáo trộn đứng yên thì yếu. Bộ xáo trộn thay đổi trong lúc bạn viết thì mạnh hơn nhiều. Bạn hãy nhớ ý này. Cỗ máy tiếp theo được xây dựng từ chính nó.
+
+<Label>Bị phá như thế nào</Label>
+
+## Vẫn là Caesar, vẫn là Vigenère
+
+Một cỗ máy chỉ mạnh bằng mật mã nằm bên trong nó.
+
+Một chiếc đĩa đứng yên chỉ có 25 cách đặt dùng được. Kẻ thù bắt được một tin nhắn có thể thử từng cách một. Đó là **thử hết mọi khóa** (tấn công vét cạn). Bạn có thể làm ngay bây giờ.
+
+<Try action="caught" button="Nạp một tin nhắn bị bắt được">
+  Tin nhắn `BNWM VXAN LXYYNA` đến từ một chiếc đĩa đứng yên. Nhấn ▲ cạnh “Chữ vòng trong cạnh A” cho đến khi bản rõ (văn bản thường) hiện ra thành tiếng Anh.
+</Try>
+
+Một chiếc đĩa xoay theo từ khóa thì khó hơn, nhưng vẫn không an toàn. Đó chính là mật mã Vigenère làm bằng bánh xe, và từ khóa cứ lặp đi lặp lại. Charles Babbage và Friedrich Kasiski đã tìm ra cách lợi dụng sự lặp lại đó. Khi đã biết độ dài từ khóa, mỗi chữ của nó chỉ là một phép dịch Caesar đơn giản. Bạn có thể theo dõi cách phá này ở [trang về Babbage](/ciphers/babbage).
+
+Chiếc đĩa giúp mã hóa nhanh hơn. Nó không làm cho mật mã tốt hơn chút nào.
+
+<Label>Thử thách</Label>
+
+## Bức thư trên đường đi
+
+<Challenge answer="HOLD THE BRIDGE">
+  Một người cưỡi ngựa mang đến cho bạn `SAYR IXV TKCYCB`. Bạn biết thói quen của người gửi: anh ta bắt đầu với chữ `L` của vòng trong cạnh `A`, và xoay đĩa một nấc sau mỗi chữ.
+
+  Hãy đặt đĩa của bạn y như vậy rồi chọn “Giải mã”, hoặc dùng nút bên dưới. Mệnh lệnh của bạn là gì?
+
+  <Try action="intercepted" button="Đặt đĩa giúp tôi" />
+</Challenge>
+
+<Check question="Bản rõ có hai chữ D. Vì sao trong bản mật mã chúng không thành cùng một chữ?">
+  Vì chiếc đĩa đã xoay giữa hai chữ ấy. Chữ `D` thứ nhất gặp vòng trong ở một vị trí, chữ thứ hai gặp ở vị trí khác. Vì vậy chúng thành `R` và `Y`.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Chiếc đĩa chạy bằng điện
+
+Bài học của chiếc đĩa là bộ xáo trộn phải luôn chuyển động. Điểm yếu của nó là nó chuyển động theo một kiểu ngắn và đơn giản. Mà kiểu ngắn thì sẽ lặp lại.
+
+Năm 1918, một nhà phát minh người Đức là Arthur Scherbius bắt tay sửa điểm yếu đó. Theo lời cuốn sách, cỗ máy của ông là “một phiên bản chạy điện của đĩa mật mã Alberti”. Nó nối nhiều chiếc đĩa với nhau bằng dây điện và tự xoay chúng mỗi khi bạn nhấn phím. Phải qua hàng nghìn chữ thì kiểu xoay ấy mới lặp lại. Ông đặt tên cho nó là [Enigma](/ciphers/enigma).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *The Code Book*, chương 3, phần “The Development of Cipher Machines” (Sự phát triển của máy mật mã). Chương 2 giới thiệu Alberti.
+- David Kahn, *The Codebreakers* (Các nhà giải mã). Chương sách viết về Alberti gọi ông là cha đẻ của mật mã học phương Tây.

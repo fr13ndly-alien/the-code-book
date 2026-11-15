@@ -1,0 +1,136 @@
+{/*
+  Vietnamese translation of story.mdx. Follows docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapters 1 and 3. The 21 real code groups were checked against
+  the scanned decode worksheet in the U.S. National Archives. The story of the copy from Mexico
+  follows the Archives' Prologue article. The wording is ours.
+*/}
+
+<Standfirst>
+  Một bức điện viết bằng mã bí mật, lọt vào tay những kẻ không nên đọc, đã kéo nước Mỹ vào Chiến tranh thế giới thứ nhất.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Bức điện gửi Mexico
+
+Tháng 1 năm 1917, Đức sắp thả các tàu ngầm của mình ra tấn công mọi con tàu đi tới Anh. Tàu của Mỹ cũng có thể bị đánh chìm. Điều đó có thể kéo nước Mỹ, lúc ấy vẫn trung lập, vào cuộc chiến.
+
+Arthur Zimmermann, Bộ trưởng Ngoại giao Đức, đã có kế hoạch cho chuyện đó. Ngày 16 tháng 1, ông gửi một bức điện cho tổng thống Mexico. Nếu Mỹ tham chiến, Mexico nên tấn công Mỹ. Đức sẽ chi tiền, và Mexico có thể giành lại Texas, New Mexico và Arizona.
+
+Bức điện đi dưới dạng những hàng con số. Một ngày sau, một bản sao đã nằm trên bàn làm việc ở London, trong một văn phòng của Anh có tên là Room 40 (Phòng 40).
+
+Hai người ở đó bắt tay vào việc. Làm sao đọc được một bức điện chỉ toàn con số, khi chẳng có khóa nào để tìm?
+
+<Label>Thử xem</Label>
+
+## Tự gửi một bức điện
+
+Bộ mô phỏng cho thấy bàn làm việc của một nhân viên mã hóa. Ở dưới cùng là một **sổ mã** nhỏ: một danh sách các từ, mỗi từ có một nhóm chữ số bên cạnh. Hãy đoán trước: cần bao nhiêu nhóm để gửi “make war together” (cùng nhau gây chiến)?
+
+<Try action="offer" button="Xem lời đề nghị của Zimmermann">
+  Đọc bức điện ở phía trên bàn. Rồi chạm vào `PEACE` (hòa bình) trong sổ mã và xem một nhóm mới nối vào cuối.
+</Try>
+
+<Check question="MAKE WAR TOGETHER cần bao nhiêu nhóm?">
+  Ba nhóm: mỗi từ một nhóm. Trong bức điện tới được Mexico, đó là `17166`, `5905` và `4458`. Cả một từ được gửi đi như một con số duy nhất, dù từ đó dài đến đâu.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Cuốn từ điển của những con số
+
+### Từ, chứ không phải chữ cái
+
+Mọi thứ bạn gặp từ đầu câu chuyện về thư bí mật này đều là mật mã. Một **mật mã** thay từng chữ cái. Một **mã** thay cả một từ hay một cụm từ bằng một từ hay một con số khác.
+
+Để **mã hóa** một bức điện, nhân viên mã hóa tra từng từ trong sổ mã rồi ghi lại nhóm của nó. Người nhận có đúng cuốn sổ ấy và tra ngược lại từng nhóm. Chẳng có phép tính nào, cũng chẳng phải dịch bảng chữ cái nào. Chính cuốn sổ là bí mật.
+
+<Try action="blank" button="Xóa trắng tờ mẫu điện báo">
+  Soạn `WE BEGIN SUBMARINE WAR IN FEBRUARY` (chúng tôi bắt đầu cuộc chiến tàu ngầm vào tháng Hai) bằng cách chạm lần lượt vào các từ. Đọc ô “Bức điện được gửi đi” ở phần điều khiển.
+</Try>
+
+### Chỉ những gì có trong sổ
+
+Một mật mã có thể xáo trộn mọi từ, vì từ nào cũng làm từ cùng 26 chữ cái. Một bộ mã chỉ gửi được những từ mà người làm ra nó đã nghĩ tới. Vì thế, một sổ mã ngoại giao thật có tới hàng nghìn mục, giống như một cuốn từ điển.
+
+Dù vậy vẫn có chỗ thiếu. Sổ mã dùng cho bức điện Zimmermann không có nhóm nào cho Arizona. Nhân viên mã hóa phải đánh vần nó thành bốn mảnh: `AR`, `IZ`, `ON`, `A`.
+
+Sổ mã của chúng tôi có 25 từ. Hai mươi mốt nhóm là nhóm thật lấy từ bức điện. Bốn nhóm được đánh dấu là tự đặt, vì chúng tôi không biết nhóm thật.
+
+### Cùng một từ, cùng một con số
+
+Một bộ mã có một thói quen giúp ích cho kẻ thù của nó. Một từ luôn biến thành cùng một nhóm. Dùng từ đó hai lần thì nhóm xuất hiện hai lần.
+
+<Try action="repeat" button="Gửi WAR ba lần">
+  Nhìn bức điện trên bàn. Tìm nhóm cứ lặp đi lặp lại. Ai đang nghe lén cũng thấy được điều đó, dù không biết nó nghĩa là gì.
+</Try>
+
+Các nhà ngoại giao và tướng lĩnh lặp lại mình rất nhiều. Qua hàng trăm bức điện, những lần lặp ấy chất đống lên, và mỗi lần là một manh mối.
+
+<Label>Câu chuyện</Label>
+
+## Những sợi cáp dưới đáy biển
+
+Vì sao bức điện bí mật nhất của Đức lại đi qua tay người Anh? Trước bình minh của ngày đầu tiên của cuộc chiến, một con tàu Anh tên là *Telconia* đã kéo các sợi cáp ngầm của Đức nối sang Mỹ lên và cắt đứt chúng. Từ đó, các bức điện của Đức phải đi bằng vô tuyến, hoặc theo những đường cáp của nước khác. Bức điện của Zimmermann đi theo một tuyến có chạm qua nước Anh.
+
+Vậy là người Đức biết mình bị nghe lén, và họ trông cậy vào bộ mã ngoại giao để giữ an toàn.
+
+Room 40 là phòng mật mã của Bộ Hải quân Anh, đặt tên theo căn phòng nơi nó ra đời. Người làm ở đó là các chuyên gia ngôn ngữ, các học giả và những người mê giải đố. Bức điện được giao cho Mục sư Montgomery, một người dịch sách tôn giáo tiếng Đức, và Nigel de Grey, người từng làm cho một nhà xuất bản.
+
+<DigDeeper title="Tấm bưu thiếp với một địa chỉ không thể có">
+  Montgomery có biệt tài nhìn ra ý nghĩa ẩn giấu. Có lần, một tấm bưu thiếp trắng từ Thổ Nhĩ Kỳ gửi tới cho một ông Sir Henry Jones ở “184 King's Road”, tại một ngôi làng ở Scotland chẳng hề có con đường nào như thế. Montgomery đọc địa chỉ ấy như một câu trong Kinh Thánh: sách Các Vua quyển thứ nhất, chương 18, câu 4. Câu đó nói về những người được giấu trong hang và được nuôi ăn. Con trai của Sir Henry, đang là tù binh, muốn báo rằng mình được đối xử tử tế.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Lấp đầy cuốn sổ, từng từ một
+
+Bạn không thể tính ra một sổ mã bằng số học. Bạn phải dựng lại nó bằng cách gom các bức điện và đoán.
+
+Montgomery và de Grey không bắt đầu từ con số không. Room 40 đã nghiên cứu những bức điện trước đó dùng cùng loại mã, nên một số nhóm đã được hiểu. Chỉ trong vài giờ, hai người đã đọc được những mảnh rời rạc. Mỗi từ họ biết lại khiến những từ bên cạnh dễ đoán hơn. Sau vài ngày, họ đã nắm được đại khái kế hoạch.
+
+<Try action="room40" button="Ngồi vào bàn của nhà giải mã">
+  Bốn bức điện đã bị chặn bắt. Một vài nhóm đã biết trước. Nhìn bức thứ hai: có một nhóm đánh dấu `?` xuất hiện hai lần. Chạm vào nó, rồi chạm vào từ bạn nghĩ là hợp.
+</Try>
+
+Người đứng đầu tình báo hải quân, Đô đốc Sir William Hall, lúc ấy gặp một vấn đề. Nếu ông đưa bức điện cho người Mỹ xem, Đức sẽ biết Anh đọc được mã của họ, và sẽ đổi mã. Vì thế Hall khóa bức điện trong két sắt của mình.
+
+Ngày 3 tháng 2, Tổng thống Wilson tuyên bố Mỹ sẽ giữ trung lập, và Hall buộc phải hành động. Đại sứ Đức ở Washington đã chuyển tiếp bức điện sang Mexico bằng điện báo thường, dùng một bộ mã cũ hơn. Một điệp viên Anh ở Thành phố Mexico trả tiền cho một nhân viên bưu điện để lấy một bản sao. Bản sao đó có thể đưa ra cho cả thế giới xem như thể nó bị đánh cắp ở Mexico. Nó còn che giấu một bí mật thứ hai: Anh đã đọc lén những bức điện đi trên chính đường cáp của Mỹ.
+
+Các nhóm thật trên trang này lấy từ bản sao đó.
+
+Ngày 23 tháng 2, bức điện được trao cho đại sứ Mỹ. Ngày 1 tháng 3, nó lên mặt báo. Tháng 4 năm 1917, Mỹ tham chiến.
+
+<Label>Thử thách</Label>
+
+## Đọc bức điện cuối cùng
+
+<Challenge answer="WE MAKE ALLIANCE WITH MEXICO AND JAPAN">
+  Bạn đang ở Room 40 với bốn bức điện bị chặn bắt. Vẫn còn sáu nhóm chưa biết.
+
+  Hãy lấp các chỗ trống bằng cách đoán từ những từ xung quanh. Dòng chú thích cho biết có bao nhiêu phỏng đoán khớp. Bức điện thứ tư nói gì?
+
+  <Try action="room40" button="Mở các bức điện" />
+</Challenge>
+
+<Check question="Manh mối nào giúp bạn nhiều nhất?">
+  Có lẽ là một lần lặp. Một nhóm xuất hiện trong nhiều bức điện có thể được thử ở từng bức, và chỉ có từ đúng mới hợp nghĩa ở mọi chỗ. Đó là điểm yếu của mọi bộ mã: cùng một từ luôn cho ra cùng một nhóm.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Quá lớn để thay đổi
+
+Bức điện cho thấy hai điểm yếu lớn của một bộ mã. Sổ mã rất dày, nên thay nó rất chậm. Và một khi đã dựng lại được đủ phần, mọi bức điện dùng nó đều có thể bị đọc.
+
+Một sứ quán có thể sống chung với một cuốn sổ dày. Một đội quân ngoài chiến trường thì không. Họ cần thứ mà người lính nhớ được trong đầu và đổi được trong một ngày, tức là một mật mã có khóa. Năm 1918, quân đội Đức mở cuộc tấn công với một mật mã hoàn toàn mới: [mật mã ADFGVX](/ciphers/adfgvx).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *The Code Book*, chương 3, về Room 40 và bức điện, và chương 1 về mã và mật mã.
+- Cục Lưu trữ Quốc gia Mỹ, “Letter from Ambassador Walter Page to the Secretary of State: Original Decipher of the Zimmermann Telegram” (Thư của Đại sứ Walter Page gửi Ngoại trưởng: bản giải mã gốc của bức điện Zimmermann), trên trang DocsTeach. Đây là tờ giải mã: các nhóm thật, có viết tiếng Đức bên cạnh.
+- Jay Bellamy, “The Zimmermann Telegram and Other Events Leading to America's Entry into World War I” (Bức điện Zimmermann và những sự kiện khác dẫn tới việc Mỹ tham gia Chiến tranh thế giới thứ nhất), tạp chí *Prologue* (Cục Lưu trữ Quốc gia Mỹ), mùa đông năm 2016. Bài viết kể bản sao từ Mexico đã được lấy và công bố ra sao.
+- Barbara Tuchman, *The Zimmermann Telegram* (Bức điện Zimmermann).

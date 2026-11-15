@@ -1,8 +1,14 @@
 import { useReducer } from "react";
 import { compare, transmit, type Run } from "@codebook/cipher-engine/quantum";
+import type { Bilingual, Locale } from "~/i18n";
 
 /** What each step does, in order. The stage in the state is the number of steps done, 1 to 4. */
-export const STEPS = ["Alice sends photons", "Bob measures them", "They keep the matches", "They compare a sample"];
+export const STEPS: Bilingual[] = [
+  { en: "Alice sends photons", vi: "Alice gửi photon" },
+  { en: "Bob measures them", vi: "Bob đo chúng" },
+  { en: "They keep the matches", vi: "Họ giữ chỗ khớp nhau" },
+  { en: "They compare a sample", vi: "Họ so một phần mẫu" },
+];
 
 /** The stages at which the board gains new rows. */
 export const MEASURED = 2;
@@ -51,9 +57,13 @@ function reduce(state: QuantumState, action: QuantumAction): QuantumState {
 export const photons = (state: QuantumState) => transmit(state.run, state.eve);
 
 /** What Alice and Bob end up with, in words: a key, or a warning. */
-export function outcome(state: QuantumState): string {
-  if (state.stage < COMPARED) return "Not agreed yet";
+export function outcome(state: QuantumState, locale: Locale): string {
+  if (state.stage < COMPARED) return locale === "vi" ? "Chưa thống nhất" : "Not agreed yet";
   const result = compare(photons(state));
+  if (locale === "vi") {
+    if (result.errors > 0) return `Bỏ đi: ${result.errors} trên ${result.sample.length} bit được so không khớp`;
+    return `${result.aliceKey.join("")} (cả ${result.sample.length} bit được so đều khớp)`;
+  }
   if (result.errors > 0) return `Thrown away: ${result.errors} of ${result.sample.length} compared bits differ`;
   return `${result.aliceKey.join("")} (all ${result.sample.length} compared bits agree)`;
 }

@@ -9,4 +9,11 @@ export const meta: CipherMeta = {
   hook: "Shuffle the whole alphabet with one word you can remember, and nobody can try all the keys.",
   firstStep: "Change the keyword. Tap under a letter to follow it.",
   source: "The Code Book, chapter 1: The Cipher of Mary Queen of Scots",
+  vi: {
+    title: "Mật mã từ khóa",
+    era: "Thiên niên kỷ thứ nhất sau Công nguyên",
+    hook: "Xáo cả bảng chữ cái chỉ bằng một từ dễ nhớ, và không ai thử hết được mọi khóa.",
+    firstStep: "Đổi từ khóa. Chạm vào ô dưới một chữ để lần theo nó.",
+    source: "The Code Book, chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland",
+  },
 };

@@ -4,16 +4,19 @@ import { indexOfLetter, inGroups, lettersOnly } from "@codebook/cipher-engine/te
 import { AlphabetRows } from "~/components/sim/AlphabetRows";
 import { Board } from "~/components/sim/Board";
 import { Caption, Letters } from "~/components/sim/Caption";
+import { useLocale, useT } from "~/i18n";
 import styles from "./PadBoard.module.css";
 import { ciphertext, plaintext, type PadState } from "./usePad";
 
 /** The sheet of random letters, the sums it makes, and the two ways to test its secrecy. */
 export function PadBoard({ state, onPick }: { state: PadState; onPick: (column: number) => void }) {
+  const t = useT();
   const cipher = ciphertext(state);
   const plain = plaintext(state);
   const pad = state.pad.slice(0, cipher.length);
-  const message = { label: "Message", letters: plain };
-  const sent = { label: "Ciphertext", letters: cipher, kind: "cipher" as const };
+  const padLabel = t({ en: "Pad", vi: "Tờ khóa" });
+  const message = { label: t({ en: "Message", vi: "Tin nhắn" }), letters: plain };
+  const sent = { label: t({ en: "Ciphertext", vi: "Bản mật mã" }), letters: cipher, kind: "cipher" as const };
 
   return (
     <Board>
@@ -21,8 +24,8 @@ export function PadBoard({ state, onPick }: { state: PadState; onPick: (column: 
       <AlphabetRows
         rows={
           state.mode === "encipher"
-            ? [message, { label: "Pad", letters: pad }, sent]
-            : [sent, { label: "Pad", letters: pad }, message]
+            ? [message, { label: padLabel, letters: pad }, sent]
+            : [sent, { label: padLabel, letters: pad }, message]
         }
         highlight={state.picked}
         onPick={onPick}
@@ -38,9 +41,10 @@ export function PadBoard({ state, onPick }: { state: PadState; onPick: (column: 
 
 /** The sheet in groups of five letters, with the letters this message has used crossed out. */
 function Sheet({ pad, used }: { pad: string; used: number }) {
+  const t = useT();
   const groups = inGroups(pad).split(" ");
   return (
-    <ul className={styles.sheet} aria-label="The top sheet of the pad">
+    <ul className={styles.sheet} aria-label={t({ en: "The top sheet of the pad", vi: "Tờ trên cùng của sổ tay" })}>
       {groups.map((group, at) => {
         const spent = Math.max(0, Math.min(5, used - at * 5));
         return (
@@ -56,9 +60,27 @@ function Sheet({ pad, used }: { pad: string; used: number }) {
 
 /** The arithmetic for the highlighted letter, in words. */
 function Sum({ plain, pad, column }: { plain: string; pad: string; column?: number }) {
+  const t = useT();
+  const locale = useLocale();
   const sum = column === undefined ? undefined : sums(plain, pad)[column];
-  if (!sum) return <>Tap under a letter to see its sum. Each letter has its own pad letter.</>;
+  if (!sum)
+    return (
+      <>
+        {t({
+          en: "Tap under a letter to see its sum. Each letter has its own pad letter.",
+          vi: "Chạm vào dưới một chữ để xem phép cộng của nó. Mỗi chữ có một chữ khóa riêng.",
+        })}
+      </>
+    );
   const key = indexOfLetter(sum.pad);
+  if (locale === "vi")
+    return (
+      <>
+        Coi A là 0. <Letters>{sum.plain}</Letters> ({sum.sum - key}) cộng chữ khóa <Letters>{sum.pad}</Letters> ({key})
+        bằng {sum.sum}
+        {sum.sum >= 26 && `. Vượt quá Z rồi, nên trừ đi 26: ${sum.sum - 26}`}. Chữ mã là <Letters>{sum.cipher}</Letters>.
+      </>
+    );
   return (
     <>
       Count A as 0. <Letters>{sum.plain}</Letters> ({sum.sum - key}) plus pad <Letters>{sum.pad}</Letters> ({key}) is{" "}
@@ -71,18 +93,22 @@ function Sum({ plain, pad, column }: { plain: string; pad: string; column?: numb
 
 /** The proof of secrecy: another message, and the pad that would make the same ciphertext from it. */
 function Claim({ cipher, claim }: { cipher: string; claim: string }) {
+  const t = useT();
   const other = lettersOnly(claim).slice(0, cipher.length);
   return (
-    <Part title="The same ciphertext, a different story">
+    <Part title={t({ en: "The same ciphertext, a different story", vi: "Cùng một bản mật mã, một câu chuyện khác" })}>
       <AlphabetRows
         rows={[
-          { label: "Ciphertext", letters: cipher.slice(0, other.length), kind: "cipher" },
-          { label: "Could be", letters: other },
-          { label: "With pad", letters: padFor(cipher, other) },
+          { label: t({ en: "Ciphertext", vi: "Bản mật mã" }), letters: cipher.slice(0, other.length), kind: "cipher" },
+          { label: t({ en: "Could be", vi: "Có thể là" }), letters: other },
+          { label: t({ en: "With pad", vi: "Với tờ khóa" }), letters: padFor(cipher, other) },
         ]}
       />
       <Caption>
-        This pad is just as likely as the real one. Nothing in the ciphertext says which message is true.
+        {t({
+          en: "This pad is just as likely as the real one. Nothing in the ciphertext says which message is true.",
+          vi: "Tờ khóa này cũng có khả năng đúng như tờ thật. Không gì trong bản mật mã cho biết tin nhắn nào là thật.",
+        })}
       </Caption>
     </Part>
   );
@@ -92,29 +118,37 @@ function Claim({ cipher, claim }: { cipher: string; claim: string }) {
 function Reuse({ state }: { state: PadState }) {
   const first = ciphertext(state);
   const second = encipher(state.second, state.pad);
+  const t = useT();
   const guessedPad = padFor(first, state.claim);
+  const second2 = t({ en: "Ciphertext 2", vi: "Bản mật mã 2" });
   return (
-    <Part title="A second message on the same sheet">
+    <Part title={t({ en: "A second message on the same sheet", vi: "Tin nhắn thứ hai trên cùng một tờ" })}>
       <AlphabetRows
         rows={[
-          { label: "Message 2", letters: lettersOnly(state.second).slice(0, second.length) },
-          { label: "Same pad", letters: state.pad.slice(0, second.length) },
-          { label: "Ciphertext 2", letters: second, kind: "cipher" },
+          { label: t({ en: "Message 2", vi: "Tin nhắn 2" }), letters: lettersOnly(state.second).slice(0, second.length) },
+          { label: t({ en: "Same pad", vi: "Cùng tờ khóa" }), letters: state.pad.slice(0, second.length) },
+          { label: second2, letters: second, kind: "cipher" },
         ]}
       />
       {guessedPad !== "" && (
         <AlphabetRows
           rows={[
-            { label: "Ciphertext 2", letters: second.slice(0, guessedPad.length), kind: "cipher" },
-            { label: "Guessed pad", letters: guessedPad.slice(0, second.length) },
-            { label: "Reads as", letters: decipher(second, guessedPad) },
+            { label: second2, letters: second.slice(0, guessedPad.length), kind: "cipher" },
+            { label: t({ en: "Guessed pad", vi: "Tờ khóa đoán" }), letters: guessedPad.slice(0, second.length) },
+            { label: t({ en: "Reads as", vi: "Đọc thành" }), letters: decipher(second, guessedPad) },
           ]}
         />
       )}
       <Caption>
         {guessedPad === ""
-          ? 'Type a guess at message 1 in "Another message it could be".'
-          : "The guessed pad is tried on ciphertext 2. Real words mean the guess was right. A pad used twice lets a codebreaker check."}
+          ? t({
+              en: 'Type a guess at message 1 in "Another message it could be".',
+              vi: "Gõ một phỏng đoán về tin nhắn 1 vào ô “Một tin nhắn khác mà nó có thể là”.",
+            })
+          : t({
+              en: "The guessed pad is tried on ciphertext 2. Real words mean the guess was right. A pad used twice lets a codebreaker check.",
+              vi: "Tờ khóa đoán được đem thử trên bản mật mã 2. Ra từ thật nghĩa là đoán đúng. Một tờ khóa dùng hai lần cho phép nhà giải mã kiểm tra.",
+            })}
       </Caption>
     </Part>
   );

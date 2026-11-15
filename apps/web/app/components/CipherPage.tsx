@@ -1,8 +1,10 @@
 import { useState, type ReactNode } from "react";
 import { Link } from "react-router";
-import { neighbours } from "~/ciphers";
+import { localize, neighbours } from "~/ciphers";
 import type { CipherMeta } from "~/ciphers/types";
+import { UI, localePath, useLocale } from "~/i18n";
 import styles from "./CipherPage.module.css";
+import { LanguageToggle } from "./LanguageToggle";
 
 interface CipherPageProps {
   meta: CipherMeta;
@@ -18,14 +20,18 @@ interface CipherPageProps {
  * The layout every cipher page uses: the simulator and its controls on one
  * side, the story in a panel the reader can fold away on the other.
  */
-export function CipherPage({ meta, stage, controls, story }: CipherPageProps) {
+export function CipherPage({ meta: plain, stage, controls, story }: CipherPageProps) {
   const [storyOpen, setStoryOpen] = useState(true);
-  const { previous, next } = neighbours(meta.slug);
+  const locale = useLocale();
+  const meta = localize(plain, locale);
+  const around = neighbours(meta.slug);
+  const previous = around.previous && localize(around.previous, locale);
+  const next = around.next && localize(around.next, locale);
 
   return (
     <div className={styles.page} data-story-open={storyOpen}>
       <header className={styles.header}>
-        <Link to="/" className={styles.back} aria-label="Back to the menu">
+        <Link to={localePath("/", locale)} className={styles.back} aria-label={UI.backToMenu[locale]}>
           ←
         </Link>
         <h1 className={styles.title}>{meta.title}</h1>
@@ -37,8 +43,9 @@ export function CipherPage({ meta, stage, controls, story }: CipherPageProps) {
           aria-controls="story"
           onClick={() => setStoryOpen(!storyOpen)}
         >
-          {storyOpen ? "Hide story" : "Read the story"}
+          {storyOpen ? UI.hideStory[locale] : UI.readStory[locale]}
         </button>
+        <LanguageToggle />
       </header>
 
       <main className={styles.workbench}>
@@ -49,24 +56,24 @@ export function CipherPage({ meta, stage, controls, story }: CipherPageProps) {
         <div className={styles.controls}>{controls}</div>
       </main>
 
-      <aside id="story" className={styles.story} aria-label="The story" hidden={!storyOpen}>
+      <aside id="story" className={styles.story} aria-label={UI.theStory[locale]} hidden={!storyOpen}>
         <article className={styles.article}>
           {story}
-          <nav className={styles.neighbours} aria-label="Other ciphers">
+          <nav className={styles.neighbours} aria-label={UI.otherCiphers[locale]}>
             {previous && (
-              <Link to={`/ciphers/${previous.slug}`} rel="prev">
-                <span>Previous</span>
+              <Link to={localePath(`/ciphers/${previous.slug}`, locale)} rel="prev">
+                <span>{UI.previous[locale]}</span>
                 {previous.title}
               </Link>
             )}
             {next && (
-              <Link to={`/ciphers/${next.slug}`} rel="next" data-next>
-                <span>Next</span>
+              <Link to={localePath(`/ciphers/${next.slug}`, locale)} rel="next" data-next>
+                <span>{UI.next[locale]}</span>
                 {next.title}
               </Link>
             )}
           </nav>
-          <footer className={styles.source}>Based on {meta.source}, by Simon Singh. Retold in our own words.</footer>
+          <footer className={styles.source}>{UI.basedOn[locale](meta.source)}</footer>
         </article>
       </aside>
     </div>
@@ -75,5 +82,6 @@ export function CipherPage({ meta, stage, controls, story }: CipherPageProps) {
 
 /** What the stage shows while a 3D scene is loading. */
 export function StageLoading() {
-  return <p className={styles.stageLoading}>Loading the model…</p>;
+  const locale = useLocale();
+  return <p className={styles.stageLoading}>{UI.loadingModel[locale]}</p>;
 }

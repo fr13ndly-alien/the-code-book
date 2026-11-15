@@ -1,0 +1,136 @@
+{/*
+  Vietnamese translation of story.mdx. Follows docs/i18n/vi-glossary.md.
+  Facts come from The Code Book, chapters 1 and 2. The wording is ours.
+*/}
+
+<Standfirst>
+  Người thời Victoria gửi thư bí mật không mất đồng nào, giấu thành những lỗ kim tí hon trên tờ báo cũ.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Một bức thư chẳng tốn xu nào
+
+Hãy hình dung một chàng trai ở Anh vào đầu thế kỷ 19. Anh tìm được việc làm ở nơi xa nhà, và mẹ anh đang chờ tin. Gửi một bức thư tốn khoảng một shilling cho mỗi trăm dặm (khoảng 160 km) thư đi qua. Anh không đủ tiền trả.
+
+Nhưng bưu điện chở báo miễn phí. Vì vậy anh lấy một tờ báo cũ và một chiếc kim. Anh đâm kim xuyên qua trang nhất vài chục lần, gấp tờ báo lại và gửi về nhà.
+
+Mẹ anh chẳng phải trả đồng nào. Bà mở tờ báo ra và giơ nó lên trước cửa sổ. Một phút sau, bà biết con mình vẫn khỏe.
+
+Làm sao một chiếc kim có thể viết thư trên một trang giấy đã kín chữ?
+
+<Label>Thử xem</Label>
+
+## Tìm các lỗ kim
+
+Trình mô phỏng cho thấy một trang của một tờ báo bịa ra. Có người đã giấu `MEET ME AT SIX` (gặp anh lúc sáu giờ) trong đó. Hãy đoán trước: việc đó cần bao nhiêu lỗ?
+
+<Try action="meeting" button="Hiện trang báo đã châm lỗ">
+  Tìm những chấm nhỏ dưới một số chữ. Rồi chọn “Giơ lên trước ánh sáng” trong phần điều khiển và nhìn trang báo.
+</Try>
+
+<Check question="Cần bao nhiêu lỗ để giấu MEET ME AT SIX?">
+  Mười một: mỗi chữ của bí mật một lỗ. Dấu cách không cần lỗ. Khi soi trước ánh sáng, chỉ những chữ nằm trên các lỗ hiện ra, và chúng đọc thành `MEETMEATSIX`.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Mỗi chữ một lỗ
+
+### Châm theo thứ tự
+
+Để giấu một tin nhắn, bạn đánh vần nó bằng những chữ đã có sẵn trên trang. Bắt đầu từ trên cùng. Tìm chữ đầu tiên của bí mật và châm một lỗ dưới nó. Rồi đọc tiếp từ chỗ đó cho tới khi gặp chữ thứ hai của bạn, và châm chữ đó.
+
+Bạn không bao giờ đi ngược lại. Người đọc sẽ gom các chữ đã châm từ trên xuống dưới, nên các lỗ phải đi theo đúng thứ tự của tin nhắn.
+
+Đoạn văn vô hại mang các lỗ gọi là **văn bản che**. Trang nào cũng được, miễn là nó có những chữ bạn cần.
+
+<Try action="blank" button="Xóa bí mật">
+  Gõ một tin nhắn ngắn vào ô “Bí mật của bạn”. Mỗi chữ bạn gõ, sẽ có một chấm hiện ra dưới một chữ trên tờ báo.
+</Try>
+
+### Khi trang giấy hết chữ
+
+Một văn bản che chỉ mang được những gì nó có. Tờ báo của chúng tôi chỉ có đúng một chữ `Z`, trong từ “zest” (hăng hái). Vì vậy nó không giấu được một từ có hai chữ Z.
+
+Còn một cái bẫy thứ hai. Mỗi lỗ phải đứng sau lỗ trước nó. Một trang có thể có chữ bạn muốn, nhưng ở chỗ quá sớm nên chẳng dùng được.
+
+<Try action="stuck" button="Thử giấu PUZZLE">
+  Đọc dòng chú thích dưới tờ báo. Nó cho bạn biết những chữ nào không tìm được chỗ. Giờ hãy đổi bí mật thành `PUZLE` và xem nó vừa khít.
+</Try>
+
+Một văn bản che dài hơn giải quyết được cả hai vấn đề. Đó là lý do cả một trang nhất lại dùng tốt đến thế.
+
+### Giấu đi, không xáo trộn
+
+Ở đây chẳng có gì bị xáo trộn. Mỗi chữ được châm đều là chữ thật của tin nhắn. Mẹo nằm ở chỗ không ai biết là có một tin nhắn ở đó.
+
+Giấu đi sự tồn tại của một tin nhắn gọi là **kỹ thuật giấu thư**. Tên quốc tế của nó, steganography, đến từ những từ Hy Lạp có nghĩa là “chữ viết được che phủ”. Mật mã thì khác. Nó thuộc về **mật mã học**, môn giấu đi ý nghĩa của tin nhắn nhưng để ai cũng thấy là tin nhắn có tồn tại.
+
+<Try action="hand" button="Cho tôi một trang sạch">
+  Tự tay châm tin nhắn của bạn. Chạm vào các chữ từ trên xuống để đánh vần `FISH` (con cá), và xem ô “Các lỗ ghép thành” trong phần điều khiển.
+</Try>
+
+<Label>Câu chuyện</Label>
+
+## Hai nghìn năm châm kim
+
+Ý tưởng này rất cổ xưa. Một người Hy Lạp viết về chiến tranh, Aeneas, người được gọi là “nhà chiến thuật”, đề nghị châm những lỗ tí hon dưới một số chữ đã chọn của một đoạn văn vô hại. Một người lính gác liếc qua trang giấy sẽ chẳng thấy gì lạ.
+
+Khoảng hai nghìn năm sau, người dân ở Anh dùng lại đúng mẹo ấy vì một lý do mới. Họ không trốn kẻ thù. Họ né tiền cước bưu điện. Trước khi hệ thống bưu chính được cải cách vào giữa thế kỷ 19, một bức thư tốn nhiều tiền hơn hẳn số mà phần lớn mọi người có thể bỏ ra. Báo thì được chở miễn phí. Một chiếc kim và một trang nhất cũ thành ra một bức thư miễn phí.
+
+Tới lúc ấy, công chúng đã biết khá nhiều về thư bí mật. Các cặp đôi trẻ còn gửi cho nhau những lời nhắn đã mã hóa qua các mục quảng cáo trên báo.
+
+<DigDeeper title="Sáp, lụa và một cái đầu cạo trọc">
+  Châm kim chỉ là một trong nhiều cách giấu tin nhắn. Nhà sử học Hy Lạp Herodotus kể về Demaratus, người đã báo cho Sparta biết về cuộc xâm lược của Ba Tư. Ông cạo lớp sáp khỏi một cặp bảng viết, viết lên mặt gỗ, rồi phủ lại một lớp sáp mới.
+
+  Một người Hy Lạp khác cạo trọc đầu một người đưa tin, viết lên da đầu, rồi chờ tóc mọc lại. Ở Trung Quốc thời cổ, người ta viết thư lên lụa, vo thành một viên nhỏ, bọc sáp rồi nuốt vào bụng.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Ai cũng soi được trước ánh sáng
+
+Kỹ thuật giấu thư có một điểm yếu lớn. Nếu ai đó tìm ra tin nhắn bị giấu, họ đọc được ngay lập tức. Chẳng còn gì phải giải nữa.
+
+Một tờ báo đã châm lỗ qua được một cái liếc nhanh. Nó không qua được một cuộc lục soát kỹ. Một người lính gác đa nghi chỉ cần làm đúng điều người nhận thật làm: giơ trang báo lên trước cửa sổ. Không cần khóa, cũng chẳng cần thông minh.
+
+<Try action="caught" button="Lục soát tờ báo">
+  Bạn là người lính gác. Trang báo đang được soi trước ánh sáng. Hãy đọc những chữ sáng từ trên xuống. Bí mật chỉ tốn của bạn vài giây.
+</Try>
+
+Hãy so sánh với một mật mã. Người lính gác bắt được một bức thư đã mã hóa thì biết đó là bí mật, nhưng vẫn không đọc được. Đó là lý do mật mã học lớn lên bên cạnh kỹ thuật giấu thư: một bên giấu tin nhắn, bên kia bảo vệ nó khi việc giấu thất bại.
+
+Người cẩn thận dùng cả hai. Họ xáo trộn tin nhắn trước, rồi mới giấu nó đi.
+
+<Label>Thử thách</Label>
+
+## Đọc tờ báo gửi từ nhà
+
+<Challenge answer="COME HOME SOON">
+  Một tờ báo được gửi tới qua bưu điện. Trong nhà bạn không ai mua tờ Harbour Gazette, nên bạn nhìn kỹ hơn và tìm thấy mười hai lỗ kim tí hon.
+
+  Người gửi muốn nói gì với bạn?
+
+  <Try action="posted" button="Mở tờ báo" />
+</Challenge>
+
+<Check question="Vì sao bí mật này dễ đọc đến thế?">
+  Vì nó chỉ được giấu đi, không bị xáo trộn. Một khi bạn biết phải tìm lỗ kim, các chữ là tiếng Anh bình thường theo đúng thứ tự. Một tin nhắn bị giấu chỉ an toàn cho tới khi có người tìm ra nó.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Thay vào đó, hãy giấu ý nghĩa
+
+Lỗ kim giúp tin nhắn rẻ và khuất mắt, nhưng không giữ được nó an toàn trước một cuộc lục soát kỹ. Với những bí mật thật sự, người thời Victoria quay lại với mật mã.
+
+Họ cần một mật mã mạnh, vì những nhà giải mã nghiệp dư cũng đọc báo. Charles Babbage và bạn ông, Ngài Charles Wheatstone, rất thích phá những lời nhắn yêu đương đã mã hóa in trên đó. Về sau Wheatstone thiết kế một mật mã của riêng mình, đổi chữ theo từng cặp hai chữ một. Hãy thử nó ở trang sau: [mật mã Playfair](/ciphers/playfair).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *The Code Book*, chương 2, về lỗ kim và những người thời Victoria tiết kiệm từng xu.
+- Simon Singh, *The Code Book*, chương 1, về kỹ thuật giấu thư và nó khác mật mã học ra sao.
+- Herodotus, *The Histories* (Lịch sử), quyển 7. Câu chuyện về Demaratus và những bảng viết phủ sáp.

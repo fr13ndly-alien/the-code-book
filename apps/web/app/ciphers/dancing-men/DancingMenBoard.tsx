@@ -1,6 +1,5 @@
 import {
   POSES,
-  describe,
   encipher,
   isSolved,
   tally,
@@ -9,11 +8,13 @@ import {
 import { ALPHABET } from "@codebook/cipher-engine/text";
 import { Board } from "~/components/sim/Board";
 import { Caption, Letters } from "~/components/sim/Caption";
+import { useLocale, useT, type Locale } from "~/i18n";
 import { DancedMessage } from "./DancedMessage";
 import { FigureTiles } from "./FigureTiles";
 import { LetterPicker } from "./LetterPicker";
 import type { DancingMenState } from "./useDancingMen";
 import { VerneSteps } from "./VerneSteps";
+import { describePose } from "./vi";
 
 /** The pose key: all 26 figures of our set, each over its letter. */
 const KEY_TILES = [...ALPHABET].map((letter) => ({ letter, pose: POSES[letter]!, under: letter }));
@@ -38,6 +39,8 @@ export function DancingMenBoard(props: BoardProps) {
 
 /** A message in dancing men above the key that reads it. */
 function DanceBoard({ state, onPick }: BoardProps) {
+  const t = useT();
+  const locale = useLocale();
   const figures = encipher(state.text);
   return (
     <>
@@ -47,9 +50,12 @@ function DanceBoard({ state, onPick }: BoardProps) {
         picked={state.picked}
         onPick={onPick}
       />
-      <Caption>{danceNote(state, figures)}</Caption>
+      <Caption>{danceNote(state, figures, locale)}</Caption>
       <FigureTiles
-        title="The key: our own 26 poses, in the spirit of the story. They are not Conan Doyle's drawings."
+        title={t({
+          en: "The key: our own 26 poses, in the spirit of the story. They are not Conan Doyle's drawings.",
+          vi: "Khóa: 26 tư thế do chúng tôi tự vẽ, theo tinh thần câu chuyện. Đây không phải hình vẽ của Conan Doyle.",
+        })}
         tiles={KEY_TILES}
         picked={state.picked}
         onPick={onPick}
@@ -59,14 +65,29 @@ function DanceBoard({ state, onPick }: BoardProps) {
 }
 
 /** What the board says about the figure the reader tapped in a danced message. */
-function danceNote(state: DancingMenState, figures: Figure[]) {
-  if (figures.length === 0) return "Type a message in the controls and watch it dance.";
-  if (!state.picked) return "Tap a dancing man. A flag in his hand means a word ends there.";
-  if (state.hidden) return "The same figure is bright in the key below. Read his letter there.";
+function danceNote(state: DancingMenState, figures: Figure[], locale: Locale) {
+  const vi = locale === "vi";
+  if (figures.length === 0)
+    return vi ? "Gõ một tin nhắn ở phần điều khiển và xem nó nhảy múa." : "Type a message in the controls and watch it dance.";
+  if (!state.picked)
+    return vi
+      ? "Chạm vào một hình nhân. Lá cờ trên tay nghĩa là một từ kết thúc ở đó."
+      : "Tap a dancing man. A flag in his hand means a word ends there.";
+  if (state.hidden)
+    return vi
+      ? "Cũng hình nhân đó đang sáng trong khóa bên dưới. Đọc chữ của nó ở đó."
+      : "The same figure is bright in the key below. Read his letter there.";
   const count = figures.filter((figure) => figure.letter === state.picked).length;
+  if (vi)
+    return (
+      <>
+        <Letters>{state.picked}</Letters> luôn nhảy cùng một kiểu: {describePose(POSES[state.picked]!, locale)}. Ở đây
+        nó xuất hiện {count} lần. Lá cờ chỉ đánh dấu chỗ kết thúc một từ.
+      </>
+    );
   return (
     <>
-      <Letters>{state.picked}</Letters> always dances the same way: {describe(POSES[state.picked]!)}. He appears{" "}
+      <Letters>{state.picked}</Letters> always dances the same way: {describePose(POSES[state.picked]!, locale)}. He appears{" "}
       {count} {count === 1 ? "time" : "times"} here. A flag only marks the end of a word.
     </>
   );
@@ -74,6 +95,8 @@ function danceNote(state: DancingMenState, figures: Figure[]) {
 
 /** Holmes's desk: the count of each figure, the letters to try, and the message filling in. */
 function DeskBoard({ state, onPick, onAssign }: BoardProps) {
+  const t = useT();
+  const locale = useLocale();
   const figures = encipher(state.text);
   const { guesses, picked } = state;
   const tiles = tally(figures).map(({ letter, pose, count }) => ({
@@ -83,27 +106,44 @@ function DeskBoard({ state, onPick, onAssign }: BoardProps) {
   }));
   return (
     <>
-      <FigureTiles title="How often each figure dances, commonest first" tiles={tiles} picked={picked} onPick={onPick} />
+      <FigureTiles
+        title={t({ en: "How often each figure dances, commonest first", vi: "Mỗi hình nhân nhảy bao nhiêu lần, hay gặp nhất đứng trước" })}
+        tiles={tiles}
+        picked={picked}
+        onPick={onPick}
+      />
       <LetterPicker
         used={Object.values(guesses)}
         current={picked ? guesses[picked] : undefined}
         disabled={!picked}
         onAssign={onAssign}
       />
-      <Caption>{deskNote(state, figures)}</Caption>
+      <Caption>{deskNote(state, figures, locale)}</Caption>
       <DancedMessage figures={figures} letterUnder={(figure) => guesses[figure.letter]} picked={picked} onPick={onPick} />
     </>
   );
 }
 
 /** What the counts say about the figure being worked on at the desk. */
-function deskNote(state: DancingMenState, figures: Figure[]): string {
-  if (isSolved(figures, state.guesses)) return "Every figure has its right letter. You have read it the way Holmes did.";
-  if (!state.picked) return "Tap a figure in the counts or in the message. Then pick the letter you think he hides.";
+function deskNote(state: DancingMenState, figures: Figure[], locale: Locale): string {
+  const vi = locale === "vi";
+  if (isSolved(figures, state.guesses))
+    return vi
+      ? "Hình nhân nào cũng đã có đúng chữ của mình. Bạn đã đọc nó theo cách của Holmes."
+      : "Every figure has its right letter. You have read it the way Holmes did.";
+  if (!state.picked)
+    return vi
+      ? "Chạm vào một hình nhân trong bảng đếm hoặc trong tin nhắn. Rồi chọn chữ mà bạn nghĩ nó đang giấu."
+      : "Tap a figure in the counts or in the message. Then pick the letter you think he hides.";
   const same = figures.filter((figure) => figure.letter === state.picked);
   const percent = ((100 * same.length) / figures.length).toFixed(0);
   const ends = same.filter((figure) => figure.flag).length;
   const guess = state.guesses[state.picked];
+  if (vi)
+    return (
+      `Hình nhân này nhảy ${same.length} lần (${percent}% tin nhắn) và cầm cờ ở cuối ${ends} từ. ` +
+      (guess ? `Bạn đọc nó là ${guess}.` : "Hãy chọn chữ của nó ở trên.")
+    );
   return (
     `This figure dances ${same.length} times (${percent}% of the message) and ends ${ends} ` +
     `${ends === 1 ? "word" : "words"} with a flag. ` +

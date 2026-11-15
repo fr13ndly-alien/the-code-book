@@ -1,4 +1,5 @@
 import { MAX_KEY_LENGTH, tallyFactors, type Repeat } from "@codebook/cipher-engine/babbage";
+import { useT } from "~/i18n";
 import styles from "./RepeatsTable.module.css";
 
 const LENGTHS = Array.from({ length: MAX_KEY_LENGTH - 1 }, (_, index) => index + 2);
@@ -15,13 +16,20 @@ export function RepeatsTable(props: {
   picked?: number;
   onPick: (row: number) => void;
 }) {
+  const t = useT();
   const { repeats, keyLength } = props;
   return (
-    <table className={styles.table} aria-label="Repeated sequences, their spacings and the key lengths that fit">
+    <table
+      className={styles.table}
+      aria-label={t({
+        en: "Repeated sequences, their spacings and the key lengths that fit",
+        vi: "Các chuỗi chữ lặp lại, khoảng cách của chúng và những độ dài khóa khớp với chúng",
+      })}
+    >
       <thead>
         <tr>
-          <th scope="col">Repeat</th>
-          <th scope="col">Spacing</th>
+          <th scope="col">{t({ en: "Repeat", vi: "Chuỗi lặp" })}</th>
+          <th scope="col">{t({ en: "Spacing", vi: "Khoảng cách" })}</th>
           {LENGTHS.map((length) => (
             <th key={length} scope="col" data-on={length === keyLength}>
               {length}
@@ -49,7 +57,7 @@ export function RepeatsTable(props: {
       <tfoot>
         <tr>
           <th scope="row" colSpan={2}>
-            Repeats that fit
+            {t({ en: "Repeats that fit", vi: "Số chuỗi lặp khớp" })}
           </th>
           {tallyFactors(repeats).map(({ length, count }) => (
             <td key={length} data-on={length === keyLength}>

@@ -1,0 +1,124 @@
+{/*
+  Bản dịch tiếng Việt của story.mdx. Theo docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 5. The wording is ours.
+*/}
+
+<Standfirst>
+  Máy tính không xáo trộn được chữ cái. Nó biến chữ thành các số 1 và số 0, rồi xáo trộn chúng.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Những người đưa thư xách cặp khóa kín
+
+Vào thập niên 1970, một số người được tin cậy nhất trong ngân hàng là những người đưa thư hỏa tốc. Họ lao đi khắp thế giới với những chiếc cặp khóa bằng ổ khóa móc. Bên trong không phải tiền mà là khóa: các thiết lập bí mật cho các tin nhắn của ngân hàng trong tuần tới.
+
+Lúc ấy, bản thân các tin nhắn đã được máy tính xáo trộn chỉ trong nháy mắt. Thế nhưng khóa vẫn phải đi bằng tay người, như thời Caesar.
+
+Sự trái ngược ấy chính là câu chuyện của chương này. Muốn hiểu vì sao khóa lại gây đau đầu đến thế, trước hết bạn cần xem máy tính làm gì với chúng.
+
+Một cỗ máy chỉ hiểu con số thì mã hóa một từ bằng cách nào?
+
+<Label>Thử xem</Label>
+
+## Máy tính nhìn thấy gì
+
+Máy tính lưu mọi thứ bằng **chữ số nhị phân**, hay **bit**: các số 1 và số 0. Hãy đoán trước. Bạn cần bao nhiêu bit để mỗi chữ in hoa có một kiểu riêng?
+
+<Try action="ascii" button="Hiện một chữ A">
+  Bảng mô phỏng hiện chữ `A` thành bảy bit: `1000001`. Gõ `B` rồi `C` sau nó ở ô “Tin nhắn của bạn” và xem các kiểu bit đếm tăng dần.
+</Try>
+
+<Check question="Vì sao lại là bảy bit, trong khi năm bit đã đủ cho 26 chữ cái?">
+  Bảy bit tạo ra 128 kiểu khác nhau, vì nhân 2 với chính nó bảy lần được 128. Như vậy còn chỗ cho cả chữ thường, chữ số và dấu câu. Chữ thường `a` là `1100001` và `!` là `0100001`.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Xáo trộn các con số
+
+### Chữ cái thành con số
+
+Quy tắc biến ký tự thành bit có tên là **ASCII**, đọc là "át-ki". Đó là tên viết tắt của American Standard Code for Information Interchange (Mã chuẩn Mỹ dùng để trao đổi thông tin). Nó không bí mật, và cũng không phải một mật mã. Mọi máy tính dùng chung một bảng, giống như mọi nhân viên điện báo dùng chung một bảng mã Morse.
+
+Vậy bước đầu tiên chẳng giấu được gì. `HELLO` (xin chào) thành năm hàng, mỗi hàng bảy bit, tổng cộng 35 bit, và ai cũng đổi ngược lại được.
+
+### Cộng khóa vào
+
+Giờ mới đến mật mã. Người gửi và người nhận thống nhất một khóa. Ở đây đó là từ `DAVID`, cũng được ASCII biến thành 35 bit.
+
+Đặt khóa thẳng hàng dưới tin nhắn rồi so từng cặp bit. Nếu hai bit giống nhau, viết `0`. Nếu chúng khác nhau, viết `1`. Hàng bạn thu được chính là bản mật mã.
+
+<Try action="hello" button="Mở HELLO và DAVID">
+  Tìm khối của chữ `H`. Bit khóa cuối cùng của nó là `0`. Chạm vào để lật nó thành `1`, và xem bit bên dưới đổi theo. Lật thêm vài bit nữa, rồi nhấn “Trả lại các chữ số tôi đã lật”.
+</Try>
+
+### Cộng thêm lần nữa
+
+Để giải mã, người nhận làm đúng phép cộng ấy. Anh ta đặt cùng khóa đó thẳng hàng dưới bản mật mã rồi so lại. Bit nào khóa đã đổi thì giờ được đổi trở lại.
+
+<Try action="back" button="Mở bản mật mã">
+  Các hàng trên giờ là bản mật mã trong sách, và khóa vẫn là `DAVID`. Đọc các chữ ở bên trái mỗi hàng dưới cùng.
+</Try>
+
+<Check question="Vì sao cùng một phép cộng vừa mã hóa vừa giải mã được?">
+  Bit khóa là `1` thì lật bit phía trên nó, bit khóa là `0` thì để yên. Làm vậy hai lần thì bit nào đã lật sẽ lật trở lại. Nên phép cộng thứ hai gỡ bỏ phép cộng thứ nhất.
+</Check>
+
+<Label>Câu chuyện</Label>
+
+## Từ phòng kín của chính phủ đến văn phòng
+
+Mật mã máy tính khác một cỗ máy như Enigma ở ba điểm. Máy tính có thể bắt chước một cỗ máy phức tạp đến mức không chế tạo nổi. Nó nhanh hơn rất nhiều. Và nó làm việc với con số, không phải chữ cái.
+
+Lúc đầu chỉ chính phủ và quân đội mới có máy tính. Rồi máy tính rẻ dần. Năm 1947, Phòng thí nghiệm Bell phát minh ra bóng bán dẫn (transistor), thay cho bóng đèn điện tử cồng kềnh. Từ năm 1951, các hãng như Ferranti làm máy tính theo đơn đặt hàng. IBM tung ra chiếc máy tính đầu tiên của mình năm 1953. Mạch tích hợp ra đời tiếp theo, năm 1959.
+
+Đến thập niên 1960, các doanh nghiệp bình thường đã đủ tiền mua máy tính. Các ngân hàng bắt đầu mã hóa các lệnh chuyển tiền và các cuộc thương lượng làm ăn. Mỗi tin nhắn như thế đều cần một khóa ở cả hai đầu.
+
+<Label>Bị phá như thế nào</Label>
+
+## Khóa mới là vấn đề
+
+Mật mã trên trang này yếu. Một từ khóa ngắn, dùng đi dùng lại, chính là mật mã Vigenère cũ khoác áo bit. Và phép cộng có một tính chất khó chịu: nó dùng được theo cả ba chiều.
+
+<Try action="known" button="Đoán tin nhắn">
+  Bạn có bản mật mã trong sách, và bạn ngờ rằng nó nói `HELLO`. Vì vậy `HELLO` đã được gõ vào ô khóa. Đọc các hàng dưới cùng: khóa thật hiện ra.
+</Try>
+
+Ai biết được một tin nhắn là có thể suy ra khóa và đọc hết phần còn lại. Mật mã máy tính thật trộn nhiều hơn thế rất nhiều để ngăn điều này.
+
+Nhưng ngay cả một mật mã hoàn hảo cũng không giải quyết được nỗi lo của ngân hàng. Cả hai đầu cần cùng một khóa, mà không thể gửi khóa qua chính đường dây đang bị nghe lén. Đây là **bài toán phân phối khóa**. Nước Đức gặp nó với những cuốn sổ khóa ngày hằng tháng của Enigma. Đến thập niên 1970, nó nghĩa là những người đưa thư xách cặp, và chi phí cứ tăng mãi.
+
+<Label>Thử thách</Label>
+
+## Tin nhắn này gửi cho ai?
+
+<Challenge answer="ALICE">
+  Một ngân hàng gửi năm ký tự: `0001100 0000011 0000111 0000110 0011100`. Một người đưa thư đã mang khóa đến cho bạn: `MONEY` (tiền).
+
+  Gõ khóa vào và đọc cái tên.
+
+  <Try action="intercepted" button="Mở bản mật mã" />
+</Challenge>
+
+<Check question="Kẻ nghe lén cần gì để đọc được tin nhắn này?">
+  Chỉ cần khóa. Bảng ASCII là công khai, và cách làm cũng vậy. Toàn bộ bí mật nằm trong năm chữ cái mà người đưa thư mang theo. Đó là lý do việc giao khóa an toàn lại quan trọng đến thế.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Một mật mã cho mọi người
+
+Máy tính trao cho mọi doanh nghiệp sức mạnh xáo trộn tin nhắn. Điều đó sinh ra hai vấn đề mới.
+
+Vấn đề thứ nhất là chọn lựa. Nếu mỗi công ty tự nghĩ ra mật mã riêng, thì không hai công ty nào nói chuyện bí mật với nhau được. Giới kinh doanh cần một mật mã mạnh mà ai cũng dùng chung và tin tưởng. Câu chuyện về mật mã chuẩn ấy nằm ở trang sau: [Lucifer](/ciphers/lucifer).
+
+Vấn đề thứ hai là những người đưa thư. Mật mã dù tốt đến đâu, vẫn phải có người mang khóa đi. Ở phần sau của chương này, hai người chưa từng gặp nhau sẽ thống nhất một khóa ngay giữa chốn công khai.
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *The Code Book*, chương 5.
+- Bảng ASCII: American Standard Code for Information Interchange, mã 7 bit dùng trên trang này.

@@ -1,0 +1,139 @@
+{/*
+  Bản tiếng Việt của story.mdx. Theo docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 6. The wording is ours.
+*/}
+
+<Standfirst>
+  Phil Zimmermann bỏ hai loại mật mã vào cùng một phong bì, rồi tặng cho mọi người một cách giữ bí mật thật mạnh, miễn phí.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Thả lên mạng internet
+
+Tháng 6 năm 1991, Phil Zimmermann, một lập trình viên ở Boulder, bang Colorado, đưa ra một quyết định liều lĩnh. Nhiều năm liền, ông viết một chương trình giúp người bình thường khóa thư điện tử của mình. Ông vốn định đem nó đi bán.
+
+Rồi Thượng viện Mỹ bàn về một điều luật. Điều luật ấy có vẻ đe dọa mọi loại mật mã mạnh. Cuối cùng nó bị gác lại, nhưng Zimmermann sợ nó sẽ quay lại. Vì vậy ông nhờ một người bạn đăng chương trình lên một diễn đàn Usenet. Ở đó, ai cũng chép về được mà không mất tiền.
+
+Mật mã bên trong chương trình là RSA, nổi tiếng là chậm. Nó cần những máy tính lớn của chính phủ và ngân hàng. Vậy Zimmermann làm cách nào để nó chạy được trên máy tính ở nhà?
+
+<Label>Thử xem</Label>
+
+## Hai ổ khóa, một phong bì
+
+Alice muốn gửi cho Bob một tin nhắn. Bạn hãy đoán trước: cô phải bỏ vào phong bì bao nhiêu thứ riêng biệt?
+
+<Try action="start" button="Bắt đầu với tin nhắn của Alice">
+  Nhấn “Bước tiếp” bốn lần. Hãy xem bàn của Alice đầy dần các phép tính, và xem phong bì ở giữa đầy lên.
+</Try>
+
+<Check question="Alice đã gửi bao nhiêu thứ?">
+  Hai thứ. Phần 1 là tin nhắn của cô, khóa bằng một khóa nhỏ chọn ngẫu nhiên. Phần 2 là chính khóa nhỏ đó, khóa bằng khóa công khai của Bob. Bob cần cả hai phần, và anh phải mở phần 2 trước.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Một mật mã nhanh chở tin nhắn, một mật mã chậm chở khóa
+
+### Ổ khóa nhanh
+
+Loại mật mã mà hai người dùng chung một khóa gọi là mật mã **đối xứng**. Chúng chạy nhanh, kể cả với tin nhắn dài. Zimmermann chọn một mật mã đối xứng tên là IDEA.
+
+Máy tính của Alice tạo ra một khóa mới cho mỗi tin nhắn. Khóa này gọi là **khóa phiên**, vì nó chỉ dùng cho một phiên rồi bỏ đi.
+
+Mô hình dùng một món đồ chơi thay cho IDEA. Mỗi chữ của tin nhắn được dịch dọc bảng chữ cái theo một chữ của khóa phiên. Cách này quá yếu để dùng thật, nhưng nó cho bạn thấy ý tưởng.
+
+<Try action="lockedMessage" button="Xem ổ khóa nhanh">
+  Đọc từ trên xuống một cột của bảng trên bàn Alice: chữ của tin nhắn, chữ của khóa, chữ sau khi dịch. Rồi nhấn “Khóa phiên mới” và xem mọi chữ đã dịch đều đổi.
+</Try>
+
+### Ổ khóa chậm
+
+Mật mã đối xứng có một vấn đề cũ. Bob cần đúng khóa ấy, mà Alice không thể cứ thế gửi đi, vì Eve đang nghe lén.
+
+Đây là lúc RSA vào cuộc. Bob có hai khóa. **Khóa công khai** của anh dùng để khóa, và anh đưa nó cho mọi người. **Khóa riêng** của anh dùng để mở, và anh không nói cho ai. Alice khóa khóa phiên bằng khóa công khai của Bob.
+
+RSA chậm vì nó làm việc với những con số khổng lồ. Nhưng khóa phiên rất nhỏ so với tin nhắn. Khóa nó gần như chẳng mất thời gian.
+
+<Try action="lockedKey" button="Xem ổ khóa chậm">
+  Nhìn bảng thứ hai trên bàn Alice. Mỗi chữ của khóa thành một con số. Mỗi số được nâng lên lũy thừa 7 rồi chia cho 187. Chỉ giữ lại số dư.
+</Try>
+
+### Bob làm ngược lại
+
+Bob nhận được hai phần đã khóa. Anh dùng khóa riêng mở phần 2 và có được khóa phiên. Rồi anh dùng khóa phiên mở phần 1 và có được tin nhắn.
+
+Không ai phải nghĩ tới những việc này. Chương trình của Zimmermann tự làm cả hai ổ khóa. Ông đặt tên nó là **Pretty Good Privacy** (Riêng tư tốt đẹp), gọi tắt là PGP. Cái tên lấy theo một cửa hàng tạp hóa tưởng tượng trong một chương trình radio ông rất thích.
+
+<Try action="sent" button="Gửi phong bì">
+  Nhấn “Bước tiếp” hai lần và xem bàn của Bob. Đầu tiên, bốn con số trở lại thành khóa phiên. Sau đó khóa phiên biến các chữ trở lại thành tin nhắn.
+</Try>
+
+<Check question="Sao không khóa cả tin nhắn bằng RSA?">
+  Vì sẽ mất quá lâu. Vào thập niên 1980, một tin nhắn dài có thể tốn vài phút trên máy tính ở nhà. Chỉ khóa khóa phiên ngắn bằng RSA thì vẫn an toàn y như vậy, mà tốn ít công hơn rất nhiều.
+</Check>
+
+<Label>Câu chuyện</Label>
+
+## Người lập trình và đại bồi thẩm đoàn
+
+Trước khi viết PGP, Zimmermann là một nhà hoạt động chính trị. Ông lo thư điện tử sẽ ảnh hưởng tới sự riêng tư. Đọc trộm thư giấy là việc chậm, từng phong bì một. Còn thư điện tử thì máy có thể quét hàng triệu bức cùng lúc, mà không ai hay biết.
+
+Khi đã lên internet, PGP lan ra khắp thế giới. Các nhóm nhân quyền dùng nó để bảo vệ hồ sơ của mình. Zimmermann còn nghe nói các nhóm kháng chiến ở Miến Điện dùng nó trong rừng rậm.
+
+Còn ở nhà, ông gặp rắc rối. Luật Mỹ coi mật mã mạnh là vũ khí, giống tên lửa và súng máy. Muốn đưa chúng ra nước ngoài thì phải có giấy phép. Tháng 2 năm 1993, hai điều tra viên của chính phủ tới gặp ông. Suốt ba năm, một đại bồi thẩm đoàn xem xét liệu ông có phải là kẻ buôn vũ khí hay không.
+
+<DigDeeper title="Riêng tư hay giữ trật tự?">
+  Vụ việc mở ra một cuộc tranh cãi đến nay vẫn chưa dứt. Cảnh sát nói họ cần nghe lén tội phạm, và mật mã mạnh khiến việc đó không thể làm được. Những người khác nói riêng tư là một quyền con người, và các chính phủ từng lạm dụng việc nghe lén. Giới kinh doanh đứng về phía này, vì không ai mua sắm trên mạng nếu thiếu bí mật. Theo tác giả, kết quả tùy vào việc người ta sợ ai hơn: tội phạm, hay chính phủ của mình.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Không ai phá được, nên người ta tranh cãi
+
+Năm 1996, chính phủ bỏ vụ kiện. PGP khi ấy đã có mặt khắp nơi, nên một phiên tòa cũng chẳng thay đổi được gì. Cũng chưa ai tìm ra cách phá nó.
+
+Lý do nằm ở khóa công khai của Bob. Số N là tích của hai số nguyên tố bí mật. Ai tách được N trở lại thành hai số nguyên tố ấy thì tính ra được khóa riêng của Bob. Khi đó cả hai ổ khóa đều sụp.
+
+Số N đồ chơi của Bob là 187. Eve tách nó trong chớp mắt.
+
+<Try action="eve" button="Nhìn qua mắt Eve">
+  Bàn của Eve chỉ hiện những gì được gửi đi: khóa công khai và hai phần đã khóa. Nhấn “Eve: tách N thành các số nguyên tố”. Cô thử chia cho 2, rồi 3, rồi 4, cho tới khi gặp một số chia hết. Sau đó cô đọc được tất cả.
+</Try>
+
+Một số N thật dài hàng trăm chữ số. Không ai biết cách nhanh để tách một số lớn như vậy. Một phó giám đốc Cơ quan An ninh Quốc gia Mỹ (NSA) từng làm một phép tính. Giả sử mọi máy tính cá nhân trên thế giới cùng phá một tin nhắn PGP. Chúng sẽ cần khoảng mười hai triệu lần tuổi của vũ trụ.
+
+<Label>Thử thách</Label>
+
+## Làm Eve một ngày
+
+<Challenge answer="IT IS OUT ON THE NET">
+  Bây giờ là tháng 6 năm 1991, và bạn là Eve. Bạn chép được một phong bì đang trên đường tới chỗ Bob. Phần 1 ghi `HF ZC NGK YM FYO MQK`. Phần 2 ghi `95 121 91 114`. Bob vẫn dùng khóa công khai đồ chơi của anh: N là 187 và e là 7.
+
+  Hãy phá vào. Tin nhắn nói gì?
+
+  <Try action="intercepted" button="Mở phong bì" />
+</Challenge>
+
+<Check question="Eve đã có khóa phiên. Cô có đọc được tin nhắn tiếp theo của Alice bằng nó không?">
+  Không. Mỗi tin nhắn có một khóa phiên ngẫu nhiên mới. Nhưng Eve còn tìm ra khóa riêng của Bob, và điều đó tệ hơn nhiều. Có nó, cô mở được khóa phiên của mọi tin nhắn mà bất kỳ ai gửi cho anh.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Ai thật sự gửi tin này?
+
+PGP trao cho mọi người một ổ khóa mà không gián điệp nào cạy được. Lần đầu tiên, những mật mã mạnh nhất không còn chỉ dành cho quân đội và vua chúa.
+
+Nhưng ổ khóa không cho bạn biết ai đã dùng nó. Khóa công khai của Bob thì ai cũng có. Ai cũng khóa được một tin nhắn bằng nó, và ai cũng gõ được “Alice gửi” ở đầu thư. Làm sao Bob chắc chắn tin nhắn đúng là của cô?
+
+Lời giải dùng chính hai khóa ấy, nhưng theo chiều ngược lại. Alice khóa bằng khóa riêng của mình, và cả thế giới kiểm tra bằng khóa công khai của cô. PGP cũng làm được việc này. Hãy xem cách làm ở trang sau: [chữ ký số](/ciphers/digital-signatures).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *The Code Book*, chương 6.
+- Philip Zimmermann, “Why I Wrote PGP” (Vì sao tôi viết PGP, 1991, cập nhật năm 1999). Lý do của chính ông, bằng lời của ông.
+- D. Atkins, W. Stallings và P. Zimmermann, *PGP Message Exchange Formats* (Các định dạng trao đổi tin nhắn PGP, RFC 1991, năm 1996). Hai phần của phong bì thật sự được sắp xếp ra sao.

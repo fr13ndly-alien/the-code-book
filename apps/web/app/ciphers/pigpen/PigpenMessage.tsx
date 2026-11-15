@@ -1,6 +1,8 @@
-import { describe, encipher } from "@codebook/cipher-engine/pigpen";
+import { encipher } from "@codebook/cipher-engine/pigpen";
+import { useLocale, useT } from "~/i18n";
 import { PigpenGlyph } from "./PigpenGlyph";
 import styles from "./PigpenMessage.module.css";
+import { describe } from "./vi";
 
 /**
  * A message in pigpen symbols, each over its letter. When `hidden` is set the
@@ -12,8 +14,14 @@ export function PigpenMessage(props: {
   picked?: string;
   onPick: (letter: string) => void;
 }) {
+  const t = useT();
+  const locale = useLocale();
   return (
-    <div className={styles.message} role="group" aria-label="The message in pigpen symbols">
+    <div
+      className={styles.message}
+      role="group"
+      aria-label={t({ en: "The message in pigpen symbols", vi: "Tin nhắn bằng ký hiệu chuồng heo" })}
+    >
       {encipher(props.text).map((word, at) => (
         <span key={at} className={styles.word}>
           {word.map((glyph, i) => {
@@ -23,7 +31,7 @@ export function PigpenMessage(props: {
                 key={i}
                 type="button"
                 aria-pressed={glyph.letter === props.picked}
-                aria-label={shown ? `${glyph.letter}: ${describe(glyph)}` : describe(glyph)}
+                aria-label={shown ? `${glyph.letter}: ${describe(glyph, locale)}` : describe(glyph, locale)}
                 onClick={() => props.onPick(glyph.letter)}
               >
                 <PigpenGlyph glyph={glyph} />

@@ -1,44 +1,50 @@
 import { keyNumbers, keyUnder, lockKey, lockMessage } from "@codebook/cipher-engine/pgp";
 import { lettersOnly } from "@codebook/cipher-engine/text";
+import { useT } from "~/i18n";
 import { Desk, Line, Working } from "./Desk";
 import { BOB, type PgpState } from "./usePgp";
 
 /** Alice's side: her message, the session key, and the working of the two locks. */
 export function AliceDesk({ state }: { state: PgpState }) {
+  const t = useT();
   const { message, sessionKey, stage } = state;
+  const title = t({ en: "Alice", vi: "Alice" });
+  const note = t({ en: "writes and locks", vi: "viết và khóa" });
   if (state.sealed) {
     return (
-      <Desk title="Alice" note="writes and locks">
-        <Line label="Message">covered: you were not in the room</Line>
+      <Desk title={title} note={note}>
+        <Line label={t({ en: "Message", vi: "Tin nhắn" })}>
+          {t({ en: "covered: you were not in the room", vi: "bị che: bạn không có mặt trong phòng" })}
+        </Line>
       </Desk>
     );
   }
   const letters = lettersOnly(message);
   return (
-    <Desk title="Alice" note="writes and locks">
-      <Line label="Message">{message || "nothing yet"}</Line>
+    <Desk title={title} note={note}>
+      <Line label={t({ en: "Message", vi: "Tin nhắn" })}>{message || t({ en: "nothing yet", vi: "chưa có gì" })}</Line>
       {stage >= 1 && (
-        <Line label="Session key, picked at random for this message" secret>
+        <Line label={t({ en: "Session key, picked at random for this message", vi: "Khóa phiên, chọn ngẫu nhiên cho riêng tin nhắn này" })} secret>
           {sessionKey}
         </Line>
       )}
       {stage >= 2 && (
         <Working
-          label="Locking the message with the session key"
+          label={t({ en: "Locking the message with the session key", vi: "Khóa tin nhắn bằng khóa phiên" })}
           rows={[
-            { label: "Message", cells: [...letters] },
-            { label: "Session key", cells: [...keyUnder(message, sessionKey)] },
-            { label: "Shifted", cells: [...lettersOnly(lockMessage(message, sessionKey))], secret: true },
+            { label: t({ en: "Message", vi: "Tin nhắn" }), cells: [...letters] },
+            { label: t({ en: "Session key", vi: "Khóa phiên" }), cells: [...keyUnder(message, sessionKey)] },
+            { label: t({ en: "Shifted", vi: "Đã dịch" }), cells: [...lettersOnly(lockMessage(message, sessionKey))], secret: true },
           ]}
         />
       )}
       {stage >= 3 && (
         <Working
-          label="Locking the session key with Bob's public key"
+          label={t({ en: "Locking the session key with Bob's public key", vi: "Khóa khóa phiên bằng khóa công khai của Bob" })}
           rows={[
-            { label: "Session key", cells: [...sessionKey] },
-            { label: "As a number", cells: keyNumbers(sessionKey) },
-            { label: `To the power ${BOB.e}, mod ${BOB.n}`, cells: lockKey(sessionKey, BOB), secret: true },
+            { label: t({ en: "Session key", vi: "Khóa phiên" }), cells: [...sessionKey] },
+            { label: t({ en: "As a number", vi: "Đổi thành số" }), cells: keyNumbers(sessionKey) },
+            { label: t({ en: `To the power ${BOB.e}, mod ${BOB.n}`, vi: `Lũy thừa ${BOB.e}, mod ${BOB.n}` }), cells: lockKey(sessionKey, BOB), secret: true },
           ]}
         />
       )}

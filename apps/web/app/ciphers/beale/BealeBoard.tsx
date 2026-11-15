@@ -2,11 +2,16 @@ import { useEffect, useRef } from "react";
 import { keyText, letterFor } from "@codebook/cipher-engine/beale";
 import { Board } from "~/components/sim/Board";
 import { Caption, Letters } from "~/components/sim/Caption";
+import { useLocale, useT, type Locale } from "~/i18n";
 import styles from "./BealeBoard.module.css";
 import { stepsOf, wordsOf, type BealeState } from "./useBeale";
+import { KEY_TEXT_TITLES } from "./vi";
 
 /** The message as numbers and letters, above the key text with every word numbered. */
 export function BealeBoard({ state, onPick }: { state: BealeState; onPick: (number: number) => void }) {
+  const t = useT();
+  const locale = useLocale();
+  const title = KEY_TEXT_TITLES[state.keyId];
   const words = wordsOf(state);
   const steps = stepsOf(state);
   const used = new Set(steps.map((step) => step.number));
@@ -14,7 +19,10 @@ export function BealeBoard({ state, onPick }: { state: BealeState; onPick: (numb
 
   return (
     <Board>
-      <ol className={styles.message} aria-label="The message, one number for each letter">
+      <ol
+        className={styles.message}
+        aria-label={t({ en: "The message, one number for each letter", vi: "Tin nhắn, mỗi chữ một con số" })}
+      >
         {steps.map((step, index) => (
           <li key={index}>
             <button
@@ -31,16 +39,32 @@ export function BealeBoard({ state, onPick }: { state: BealeState; onPick: (numb
           </li>
         ))}
       </ol>
-      <Caption>{captionFor(state.picked, words)}</Caption>
-      <KeyTextBox title={keyText(state.keyId).title} words={words} used={used} picked={state.picked} onPick={onPick} />
+      <Caption>{captionFor(state.picked, words, locale)}</Caption>
+      <KeyTextBox
+        title={title ? t(title) : keyText(state.keyId).title}
+        words={words} used={used} picked={state.picked} onPick={onPick} />
     </Board>
   );
 }
 
-function captionFor(picked: number | undefined, words: string[]) {
-  if (picked === undefined) return "Tap a number, or a word, to see which letter it stands for.";
+function captionFor(picked: number | undefined, words: string[], locale: Locale) {
+  const vi = locale === "vi";
+  if (picked === undefined)
+    return vi
+      ? "Chạm vào một con số, hoặc một từ, để xem nó thay cho chữ nào."
+      : "Tap a number, or a word, to see which letter it stands for.";
   const word = words[picked - 1];
-  if (word === undefined) return `This key text has only ${words.length} words here, so ${picked} points at nothing.`;
+  if (word === undefined)
+    return vi
+      ? `Ở đây văn bản khóa này chỉ có ${words.length} từ, nên số ${picked} không chỉ vào từ nào cả.`
+      : `This key text has only ${words.length} words here, so ${picked} points at nothing.`;
+  if (vi)
+    return (
+      <>
+        Từ số {picked} là “{word}”. Nó bắt đầu bằng <Letters>{letterFor(picked, words)}</Letters>, nên số {picked} thay
+        cho <Letters>{letterFor(picked, words)}</Letters>.
+      </>
+    );
   return (
     <>
       Word {picked} is "{word}". It starts with <Letters>{letterFor(picked, words)}</Letters>, so {picked} stands for{" "}
@@ -57,6 +81,7 @@ function KeyTextBox(props: {
   picked?: number;
   onPick: (number: number) => void;
 }) {
+  const t = useT();
   const box = useRef<HTMLOListElement>(null);
   const pickedWord = useRef<HTMLLIElement>(null);
 
@@ -68,8 +93,10 @@ function KeyTextBox(props: {
   }, [props.picked, props.words]);
 
   return (
-    <section className={styles.keyText} aria-label={`Key text: ${props.title}`}>
-      <h2 className={styles.title}>Key text: {props.title}</h2>
+    <section className={styles.keyText} aria-label={t({ en: `Key text: ${props.title}`, vi: `Văn bản khóa: ${props.title}` })}>
+      <h2 className={styles.title}>
+        {t({ en: "Key text:", vi: "Văn bản khóa:" })} {props.title}
+      </h2>
       <ol ref={box} className={styles.words}>
         {props.words.map((word, index) => (
           <li key={index} ref={index + 1 === props.picked ? pickedWord : undefined}>

@@ -1,0 +1,152 @@
+{/*
+  Bản dịch tiếng Việt của story.mdx. Theo docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md.
+  Lucifer is only in the full edition of The Code Book (chapter 6). Dates and
+  numbers were checked against the book and the sources in "Further reading".
+  The wording is ours.
+  The simulator is a toy Feistel network, not real DES.
+*/}
+
+<Standfirst>
+  Lucifer của IBM nhào tin nhắn như nhào bột, mười sáu lần liền, và trở thành mật mã chuẩn của nước Mỹ.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Một mật mã mang tên quỷ dữ
+
+Năm 1934, Horst Feistel rời Đức sang Mỹ. Khi chiến tranh nổ ra, đất nước mới của ông không tin ông. Ông bị quản thúc tại gia một thời gian, và mãi đến năm 1944 mới thành công dân Mỹ.
+
+Mật mã cuốn hút ông. Năm 1968, ông vào làm ở IBM, nơi ông được tự do nghiên cứu chúng. Lúc ấy các ngân hàng và doanh nghiệp đang mua máy tính. Mỗi máy lại xáo trộn tin nhắn theo cách riêng. Một ngân hàng không thể gửi điều bí mật cho một khách hàng có máy tính xáo trộn theo kiểu khác.
+
+Feistel tạo ra một mật mã đủ mạnh để tất cả cùng dùng chung. Ông đặt tên nó là Lucifer (tên một con quỷ). Làm sao xáo trộn một tin nhắn kỹ đến mức ai cũng có thể biết cách làm?
+
+<Label>Thử xem</Label>
+
+## Lật một bit
+
+Bảng mô phỏng đã xáo trộn hai chữ `HI` (chào). Mỗi hàng cho thấy tin nhắn sau thêm một vòng xáo trộn. Hãy đoán trước: nếu bạn đổi một phần thật nhỏ của tin nhắn, bản mật mã sẽ đổi bao nhiêu?
+
+<Try action="lucifer" button="Hiện HI, mười sáu vòng">
+  Chạm vào chữ số `0` đầu tiên ở hàng trên cùng để lật nó thành `1`. Nhìn hàng dưới cùng, và đọc ô “Số bit đổi vì lần lật”.
+</Try>
+
+<Check question="Bản mật mã đã đổi bao nhiêu?">
+  Khoảng một nửa: 8 trên 16 bit. Một bit bị lật ở trên cùng lan ra cho đến khi mỗi bit ở dưới cùng đều có một nửa khả năng đổi. Người lập mã gọi hiện tượng này là hiệu ứng tuyết lở.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Nhào, đổi chỗ, lặp lại
+
+### Chữ cái thành bit
+
+Máy tính không xáo trộn được chữ cái. Nó xáo trộn con số, viết bằng các số 1 và số 0 gọi là **bit**. Trang về [số nhị phân](/ciphers/binary) cho thấy mỗi chữ cái có một kiểu bit riêng ra sao. `H` là `01001000` và `I` là `01001001`.
+
+Một mật mã như Lucifer cắt tin nhắn thành những **khối** có kích thước cố định và xáo trộn từng khối một. Phiên bản trở thành mật mã chuẩn dùng khối 64 bit. Khối của chúng ta chỉ 16 bit, tức là hai chữ cái, để bạn nhìn thấy được từng bit.
+
+Khóa cũng là một con số. Ở đây khóa là một chữ cái, tức là 8 bit.
+
+<Try action="lucifer" button="Hiện lại HI">
+  Đổi ô “Hai chữ cái” thành chữ cái đầu tên họ của bạn. Rồi đổi ô “Chữ khóa” và xem mọi hàng dưới hàng trên cùng đều thay đổi.
+</Try>
+
+### Một vòng
+
+Hãy coi khối như một tảng bột. Lucifer cắt nó thành nửa trái và nửa phải. Rồi nó làm ba việc, gộp lại thành một **vòng**.
+
+Thứ nhất, nó xáo trộn một bản sao của nửa phải, dùng khóa. Thứ hai, nó cộng bản sao đã xáo trộn ấy vào nửa trái. Cộng bit rất đơn giản: hai bit giống nhau cho `0`, hai bit khác nhau cho `1`. Thứ ba, hai nửa đổi bên cho nhau.
+
+Để ý rằng bản thân nửa phải không hề thay đổi. Nó chỉ chuyển chỗ. Chi tiết này sẽ quan trọng về sau.
+
+<Try action="oneRound" button="Hiện một vòng">
+  Đọc dòng chữ phía trên bảng. Nó đi qua vòng 1: nửa phải `01001001` được xáo trộn thành `01101111`, rồi cộng vào nửa trái.
+</Try>
+
+### Mười sáu vòng
+
+Một vòng giấu được rất ít. Một nửa khối vẫn nằm phơi ra đó. Vì vậy Lucifer nhào tiếp, rồi nhào nữa, mỗi lần với một **khóa vòng** hơi khác. Ở đây khóa vòng là khóa chính xoay sang trái một vị trí.
+
+Mỗi vòng gấp nửa này vào nửa kia. Sau vài vòng, mỗi bit của bản mật mã phụ thuộc vào mọi bit của tin nhắn và mọi bit của khóa.
+
+<Try action="oneFlip" button="Lật một bit, một vòng">
+  Một bit đã bị lật, và sau một vòng chỉ có 1 bit thay đổi. Nhấn ▲ cạnh “Số vòng” và xem con số: 1, rồi 4, rồi 9.
+</Try>
+
+### Chạy ngược bằng chính cỗ máy ấy
+
+Để giải mã, bạn chạy đúng các vòng ấy, nhưng với các khóa vòng theo thứ tự ngược lại. Không có gì phải gỡ xáo trộn cả.
+
+Lý do là thế này. Mỗi vòng để nguyên một nửa, nên người nhận có thể xáo trộn lại nửa đó và được đúng kết quả cũ. Cộng cùng các bit hai lần thì chúng triệt tiêu. Nửa cũ hơn hiện trở lại.
+
+<Try action="reverse" button="Giải mã 0A68">
+  Bản mật mã `0A68` đi vào ở trên cùng. Lần theo các hàng xuống đến `HI`. Dùng ô “Giải thích vòng” để đi qua từng vòng đang được gỡ.
+</Try>
+
+<Label>Câu chuyện</Label>
+
+## Từ Lucifer đến một mật mã chuẩn
+
+Ngày 15 tháng 5 năm 1973, Cục Tiêu chuẩn Quốc gia Mỹ kêu gọi tìm một mật mã mà cả nước có thể dùng. IBM đưa ra một phiên bản của Lucifer.
+
+Cách làm sẽ được công khai. Toàn bộ bí mật nằm ở khóa. Vì vậy độ dài khóa rất quan trọng, và đến đây Cơ quan An ninh Quốc gia Mỹ (NSA), những người phá mã của nước Mỹ, đã nhảy vào. Về sau, một ủy ban của Thượng viện phát hiện rằng NSA đã thuyết phục IBM rằng một khóa ngắn hơn là đủ.
+
+Phiên bản Lucifer mạnh nhất của Feistel có khóa 128 bit. Mật mã chuẩn chỉ có khóa 56 bit. Như thế vẫn cho hơn 70.000.000.000.000.000 khóa (hơn 70 triệu tỷ). Ngày 23 tháng 11 năm 1976, phiên bản Lucifer này được duyệt làm **Chuẩn mã hóa dữ liệu**, gọi tắt là DES. Nó được công bố ngày 15 tháng 1 năm 1977. Cuối cùng các doanh nghiệp đã có thể gửi điều bí mật cho nhau.
+
+<DigDeeper title="Vì sao NSA lại muốn khóa ngắn hơn?">
+  Nhiều người ngờ rằng có một lý do đơn giản. Với 56 bit, không doanh nghiệp nào đủ tiền để thử hết mọi khóa. Nhưng một cơ quan có những máy tính lớn nhất thế giới thì có lẽ làm được. Ủy ban Thượng viện kết luận rằng NSA không can thiệp vào thiết kế, và còn giúp làm cho các bảng xáo trộn mạnh hơn.
+</DigDeeper>
+
+<DigDeeper title="DES thật khác mô hình đồ chơi này thế nào">
+  DES thật có khối 64 bit, nên mỗi nửa là 32 bit. Bước xáo trộn của nó dùng tám bảng khác nhau, gọi là hộp S (S-box), và sau đó còn xáo vị trí các bit. Mô hình đồ chơi của chúng ta mượn một hàng của bảng DES đầu tiên và dùng nó hai lần. Nó quá nhỏ để giữ được một bí mật thật.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Rốt cuộc, quá ít khóa
+
+Không ai tìm ra mẹo dễ dàng nào để gỡ các vòng. Điểm yếu chính là điều người ta đã tranh cãi năm 1976: số lượng khóa. Một mật mã có cách làm công khai chỉ an toàn ngang với độ dài khóa của nó.
+
+Máy tính ngày càng nhanh hơn. Tháng 7 năm 1998, một nhóm tên là Electronic Frontier Foundation (Tổ chức Biên giới Điện tử) chế tạo một cỗ máy tên Deep Crack với giá khoảng 250.000 đô la. Nó thử hết khóa này đến khóa khác và tìm ra một khóa DES trong 56 giờ. Năm 2001, một mật mã chuẩn mới với khóa dài hơn nhiều được công bố để thay DES. Nó có tên là AES.
+
+Mô hình đồ chơi của chúng ta còn yếu hơn nhiều. Nếu khóa là một chữ in hoa, thì chỉ có 26 khóa.
+
+<Try action="intercepted" button="Mở một khối chặn bắt được">
+  Bạn đã bắt được khối `4FD3`. Mở mục “Thử mọi chữ khóa, từ A đến Z” bên dưới các nút điều khiển. Hai mươi lăm cách đọc là vô nghĩa.
+</Try>
+
+<Label>Thử thách</Label>
+
+## Hai chữ cái từ ngân hàng
+
+<Challenge answer="OK">
+  Một ngân hàng gửi cho khách hàng một câu trả lời dài hai chữ cái, xáo trộn qua mười sáu vòng. Bạn bắt được nó dưới dạng `4FD3`. Bạn biết khóa là một chữ in hoa, nhưng không biết là chữ nào.
+
+  Ngân hàng đã nói gì?
+
+  <Try action="intercepted" button="Mở khối" />
+</Challenge>
+
+<Check question="Vì sao giải mã không cần một cỗ máy gỡ xáo trộn?">
+  Mỗi vòng để nguyên một nửa. Người nhận xáo trộn nửa đó theo đúng cách cũ rồi cộng lại lần nữa. Cộng cùng các bit hai lần thì chúng triệt tiêu, nên nửa kia hiện trở lại.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Khóa vẫn phải đi đường xa
+
+DES trao cho mọi người cùng một ổ khóa chắc chắn. Nhưng nó chẳng làm gì được với vấn đề lâu đời nhất của thư bí mật. Trước khi một ngân hàng và khách hàng dùng được DES, cả hai phải giữ cùng một khóa, và không ai khác được thấy nó.
+
+Vào thập niên 1970, các ngân hàng cử những người đưa thư tin cẩn đi khắp thế giới, mang khóa trong những chiếc cặp có khóa. Việc đó vừa chậm vừa tốn kém, và không bao giờ áp dụng được cho hàng triệu người bình thường.
+
+Liệu hai người lạ có thể thống nhất một khóa bí mật trong khi kẻ thù nghe hết từng lời? Nghe như chuyện không thể. Hãy xem người ta đã làm điều đó thế nào ở trang sau: [trao đổi khóa](/ciphers/key-exchange).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *The Code Book* (bản đầy đủ, 1999), chương 6, "Alice and Bob Go Public" (Alice và Bob ra công khai).
+- Viện Tiêu chuẩn và Công nghệ Quốc gia Mỹ (NIST), [FIPS PUB 46-3: Data Encryption Standard (DES)](https://csrc.nist.gov/pubs/fips/46-3/final), 1999. Bản mô tả chính thức, có các bảng hộp S. Phiên bản đầu tiên, [FIPS PUB 46](https://csrc.nist.gov/pubs/fips/46/final), đề ngày 15 tháng 1 năm 1977.
+- William E. Burr, ["Data Encryption Standard"](https://nvlpubs.nist.gov/nistpubs/sp958-lide/html/250-253.html), trong ấn phẩm đặc biệt NIST Special Publication 958 (2001). Một bản lược sử ngắn do chính cơ quan tiêu chuẩn viết.
+- Wikipedia tiếng Anh, [Data Encryption Standard](https://en.wikipedia.org/wiki/Data_Encryption_Standard), [Lucifer (cipher)](https://en.wikipedia.org/wiki/Lucifer_(cipher)) và [Horst Feistel](https://en.wikipedia.org/wiki/Horst_Feistel). Nguồn để chúng tôi kiểm tra các mốc thời gian, độ dài khóa và kết luận của ủy ban Thượng viện.
+- Electronic Frontier Foundation, *Cracking DES: Secrets of Encryption Research, Wiretap Politics, and Chip Design* (O'Reilly, 1998). Kể cách chế tạo Deep Crack.

@@ -1,11 +1,12 @@
 import { pageMeta } from "~/ciphers";
 import { CipherPage } from "~/components/CipherPage";
-import { STORY_BLOCKS, Story } from "~/components/story/Story";
+import { Story } from "~/components/story/Story";
 import { MaryBoard } from "./MaryBoard";
 import { MaryControls } from "./MaryControls";
 import { meta as mary } from "./meta";
 import { PRESETS } from "./presets";
-import StoryText from "./story.mdx";
+import StoryEn from "./story.mdx";
+import StoryVi from "./story.vi.mdx";
 import { useMary } from "./useMary";
 
 export const meta = pageMeta(mary);
@@ -19,9 +20,7 @@ export default function MaryRoute() {
       stage={<MaryBoard state={state} onPick={(symbol) => dispatch({ type: "pick", symbol })} />}
       controls={<MaryControls state={state} dispatch={dispatch} />}
       story={
-        <Story onAction={(name) => dispatch({ type: "load", preset: PRESETS[name]! })}>
-          <StoryText components={STORY_BLOCKS} />
-        </Story>
+        <Story onAction={(name) => dispatch({ type: "load", preset: PRESETS[name]! })} text={{ en: StoryEn, vi: StoryVi }} />
       }
     />
   );

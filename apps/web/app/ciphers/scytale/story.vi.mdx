@@ -1,0 +1,124 @@
+{/*
+  Bản dịch tiếng Việt của story.mdx. Theo docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 1. The wording is ours.
+*/}
+
+<Standfirst>
+  Một dải da, một cây gậy gỗ, và một tin nhắn chỉ hiện ra khi gậy dày vừa đúng.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Chiếc thắt lưng của người đưa tin
+
+Năm 404 TCN, một người đưa tin loạng choạng đến trước Lysander, một vị tướng của Sparta. Người ấy máu me đầy mình, thương tích khắp người. Năm người đưa tin đã lên đường từ Ba Tư, và chỉ mình anh đến được nơi.
+
+Anh không mang theo bức thư nào. Thay vào đó, anh cởi thắt lưng ra và trao cho Lysander. Ở mặt trong của dải da là một hàng chữ cái chẳng ghép thành nghĩa gì cả.
+
+Lysander quấn chiếc thắt lưng quanh một cây gậy gỗ ông vẫn mang bên mình. Giờ các chữ xếp thẳng hàng thành từ. Chúng cảnh báo rằng Pharnabazus của Ba Tư sắp tấn công. Lysander chuẩn bị sẵn sàng, và đánh lui được cuộc tấn công.
+
+Làm sao một cây gậy lại biến một chuỗi vô nghĩa thành lời cảnh báo?
+
+<Label>Thử xem</Label>
+
+## Tháo dải da ra
+
+Mô hình cho thấy một dải da quấn quanh cây gậy. Tin nhắn “send more troops to southern flank and” (gửi thêm quân tới cánh phía nam và) được viết dọc theo nó thành bốn dòng. Hãy đoán trước: khi bạn tháo dải da ra, bốn chữ nào đứng đầu?
+
+<Try action="book" button="Xem cây gậy của cuốn sách">
+  Nhấn ▲ cạnh “Xoay cây gậy” để xem lần lượt từng dòng. Rồi tìm ô “Dải da đã tháo ra” bên dưới và đọc nhóm đầu tiên của nó.
+</Try>
+
+<Check question="Những chữ nào đứng đầu trên dải da đã tháo ra?">
+  `STSF`. Vòng quấn đầu tiên của dải da chạm vào mỗi dòng một lần, nên nó mang chữ đầu tiên của từng dòng: `S` của “send”, `T` của “troops”, `S` của “southern” và `F` của “flank”.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Cây gậy làm việc xáo chữ
+
+### Viết dọc, đọc vòng
+
+**Gậy scytale** là một cây gậy gỗ có dải da hoặc giấy da quấn quanh. Người gửi viết dọc theo chiều dài cây gậy, mỗi vòng quấn của dải da một chữ. Tới cuối cây gậy, họ xoay nó đi một chút và bắt đầu một dòng mới.
+
+Rồi họ tháo dải da ra. Mỗi vòng quấn giữ một chữ của từng dòng, nên giờ dải da đọc theo chiều cắt ngang các dòng chứ không dọc theo chúng. Các từ biến mất, và thứ còn lại trông như một dãy chữ cái lộn xộn.
+
+<Try action="short" button="Quấn một tin nhắn ngắn">
+  Cây gậy này chứa ba dòng: `HELP`, `ISCO` và `MING`. Đọc dải da đã tháo ra trong ô bên dưới. Rồi gõ tin nhắn của riêng bạn và xem dải da thay đổi.
+</Try>
+
+### Chỉ có thứ tự là thay đổi
+
+Hãy nhìn kỹ dải da. Mọi chữ của tin nhắn vẫn còn đó. Không chữ nào biến thành chữ khác. Chúng chỉ đổi chỗ cho nhau. Loại mật mã này gọi là **mã chuyển vị**, và mật mã hàng rào ở trang trước cũng là một loại như vậy.
+
+Gậy scytale khiến việc đổi chỗ trở nên dễ dàng. Không ai phải đếm hay nhớ quy luật nào. Mảnh gỗ làm thay hết.
+
+### Độ dày là khóa
+
+Để đọc dải da, người nhận quấn nó quanh một cây gậy “có cùng đường kính” với gậy của người gửi. Một cây gậy to hơn hay nhỏ hơn sẽ chứa số chữ khác trên mỗi vòng. Khi ấy các chữ của cùng một dòng không còn nằm cạnh nhau nữa, và cây gậy chỉ hiện ra chuỗi vô nghĩa.
+
+Vậy bí mật mà người gửi và người nhận cùng biết, tức **khóa**, chính là kích cỡ cây gậy.
+
+<Try action="wrongStaff" button="Quấn dải da lên nhầm gậy">
+  Đây là dải da của cuốn sách, quấn trên một cây gậy quá mảnh. Nhấn ▲ cạnh “Độ dày” từng nấc một. Quan sát mô hình và ô “Các dòng trên cây gậy” cho tới khi hiện ra chữ có nghĩa.
+</Try>
+
+<Check question="Vì sao nhầm gậy thì chỉ thấy chuỗi vô nghĩa?">
+  Các chữ trên dải da có thứ tự cố định. Độ dày quyết định bao nhiêu chữ quấn hết một vòng trước khi sang vòng sau. Đổi con số đó, mỗi chữ sẽ rơi vào một dòng khác, cạnh những chữ không phải hàng xóm của nó.
+</Check>
+
+<Label>Câu chuyện</Label>
+
+## Cây gậy mật mã của Sparta
+
+Gậy scytale có từ thế kỷ 5 TCN. Đó là dụng cụ mật mã đầu tiên mà chúng ta biết được làm ra cho quân đội. Nó rất hợp với binh lính. Cây gậy dễ mang theo, và nó làm thay bạn việc xáo trộn.
+
+Người Sparta còn thêm một mẹo thứ hai. Người đưa tin có thể đeo dải da làm thắt lưng, mặt có chữ quay vào trong. Với lính gác, đó chỉ là một chiếc thắt lưng. Thế là tin nhắn được giấu hai lần: trước hết là khuất khỏi tầm mắt, rồi còn bị xáo trộn phòng khi bị tìm thấy.
+
+Hãy để ý điều dụng cụ này không làm được. Nó dời chỗ các chữ, nhưng không bao giờ ngụy trang chúng. Đó là dấu hiệu của mọi mật mã chuyển vị.
+
+<Label>Bị phá như thế nào</Label>
+
+## Thử một cây gậy khác
+
+Khóa chỉ là một con số nhỏ: bao nhiêu chữ vừa một vòng gậy. Như vậy có rất ít khóa. Kẻ thù biết cách làm thì chẳng cần cây gậy của người Sparta. Họ có thể thử một que mảnh, rồi một que dày hơn, cứ thế. Thử mọi khóa như vậy gọi là **tấn công vét cạn**.
+
+Trên giấy còn nhanh hơn nữa. Viết dải chữ thành từng hàng hai chữ, rồi ba chữ, rồi bốn chữ. Với đúng con số, tin nhắn hiện ra khi đọc xuống theo cột.
+
+<Try action="belt" button="Mở một chiếc thắt lưng bị thu được">
+  Dải da ghi `PUAHSTAPTRLANACANKBSYATOZOU`. Mở mục “Thử mọi cây gậy cùng lúc” bên dưới các ô điều khiển. Dò xuống danh sách tìm dòng bạn đọc được.
+</Try>
+
+Một mật mã chỉ có vài khóa thì chỉ an toàn chừng nào chính cách làm còn được giữ bí mật.
+
+<Label>Thử thách</Label>
+
+## Lời cảnh báo gửi Lysander
+
+<Challenge answer="PHARNABAZUS PLANS TO ATTACK YOU">
+  Hãy tưởng tượng bạn là Lysander. Chiếc thắt lưng trong tay bạn ghi `PUAHSTAPTRLANACANKBSYATOZOU`, còn cây gậy của bạn thì đã mất.
+
+  Hãy tìm đúng độ dày. Chiếc thắt lưng nói gì?
+
+  <Try action="belt" button="Mở chiếc thắt lưng" />
+</Challenge>
+
+<Check question="Điều gì giữ nguyên khi một tin nhắn đi qua gậy scytale?">
+  Chính các chữ cái. Dải da chứa đúng những chữ của tin nhắn, chữ nào cũng không đổi. Chỉ có thứ tự của chúng là khác, và đó là điều làm nên một mã chuyển vị.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Đổi chữ thay vì dời chữ
+
+Mật mã hàng rào và gậy scytale đều giữ nguyên các chữ và dời chỗ chúng. Còn một cách thứ hai để xáo trộn tin nhắn, và nó làm theo hướng ngược lại. Để mỗi chữ yên ở chỗ của nó, nhưng đổi nó thành một chữ khác. Cách này gọi là **mật mã thay thế**.
+
+Một trong những bản mô tả cổ nhất về nó đến từ Ấn Độ, trong một cuốn sách nổi tiếng vì những lời khuyên khác. Nó ghép các chữ cái thành từng cặp và đổi mỗi chữ thành chữ cùng cặp: [mật mã Kama Sutra](/ciphers/kama-sutra).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *The Code Book*, chương 1.
+- Plutarch, *Cuộc đời Lysander* (*Life of Lysander*), chương 19. Một bản mô tả thời cổ đại về cách người Sparta dùng gậy scytale.

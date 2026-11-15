@@ -2,6 +2,7 @@ import { fence, readRails } from "@codebook/cipher-engine/rail-fence";
 import { Board } from "~/components/sim/Board";
 import { Caption } from "~/components/sim/Caption";
 import { LetterGrid } from "~/components/sim/LetterGrid";
+import { useT } from "~/i18n";
 import { RailReadout } from "./RailReadout";
 import { plaintext, type RailFenceState } from "./useRailFence";
 
@@ -10,6 +11,7 @@ const LARGE_CELLS_UP_TO = 8;
 
 /** The message written zig-zag on the rails, and the rails read off below it. */
 export function RailFenceBoard({ state, onPick }: { state: RailFenceState; onPick: (rail: number) => void }) {
+  const t = useT();
   const plain = plaintext(state);
   const cells = fence(plain, state.rails);
   const columns = cells[0]?.length ?? 0;
@@ -17,7 +19,7 @@ export function RailFenceBoard({ state, onPick }: { state: RailFenceState; onPic
   return (
     <Board>
       <LetterGrid
-        label="The message written on the rails"
+        label={t({ en: "The message written on the rails", vi: "Tin nhắn viết trên các thanh rào" })}
         cells={cells}
         rowHeads={cells.map((_, rail) => String(rail + 1))}
         size={columns > LARGE_CELLS_UP_TO ? "small" : "large"}
@@ -27,8 +29,14 @@ export function RailFenceBoard({ state, onPick }: { state: RailFenceState; onPic
       <RailReadout rails={readRails(plain, state.rails)} picked={state.picked} onPick={onPick} />
       <Caption>
         {state.mode === "encipher"
-          ? "Write the message down and up the rails. Then read rail 1, rail 2 and so on: that is the ciphertext."
-          : "The ciphertext is cut into rails and laid back on the fence. Follow the zig-zag to read the message."}
+          ? t({
+              en: "Write the message down and up the rails. Then read rail 1, rail 2 and so on: that is the ciphertext.",
+              vi: "Viết tin nhắn đi xuống rồi đi lên qua các thanh rào. Rồi đọc thanh 1, thanh 2, cứ thế: đó là bản mật mã.",
+            })
+          : t({
+              en: "The ciphertext is cut into rails and laid back on the fence. Follow the zig-zag to read the message.",
+              vi: "Bản mật mã được cắt thành từng thanh và đặt lại lên hàng rào. Đi theo đường zíc zắc để đọc tin nhắn.",
+            })}
       </Caption>
     </Board>
   );

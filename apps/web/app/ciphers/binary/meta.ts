@@ -9,4 +9,11 @@ export const meta: CipherMeta = {
   hook: "A computer cannot scramble letters. It turns them into ones and zeros, and scrambles those.",
   firstStep: "Tap a digit of the key to flip it.",
   source: "The Code Book, chapter 5: Alice and Bob Go Public",
+  vi: {
+    title: "Mật mã cho máy tính",
+    era: "Thập niên 1950 đến thập niên 1970",
+    hook: "Máy tính không xáo trộn được chữ cái. Nó biến chữ thành các số 1 và số 0, rồi xáo trộn chúng.",
+    firstStep: "Chạm vào một chữ số của khóa để lật nó.",
+    source: "The Code Book, chương 5: Alice và Bob ra công khai",
+  },
 };

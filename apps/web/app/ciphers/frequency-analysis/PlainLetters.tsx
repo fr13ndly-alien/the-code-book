@@ -1,4 +1,5 @@
 import { ENGLISH_RANK } from "@codebook/cipher-engine/frequency-analysis";
+import { useT } from "~/i18n";
 import styles from "./PlainLetters.module.css";
 
 /**
@@ -13,9 +14,14 @@ export function PlainLetters(props: {
   disabled: boolean;
   onAssign: (plain: string) => void;
 }) {
+  const t = useT();
   return (
-    <div className={styles.picker} role="group" aria-label="Plain letters, most common in English first">
-      <span className={styles.label}>English, most common first</span>
+    <div
+      className={styles.picker}
+      role="group"
+      aria-label={t({ en: "Plain letters, most common in English first", vi: "Các chữ rõ, chữ hay gặp nhất trong tiếng Anh đứng đầu" })}
+    >
+      <span className={styles.label}>{t({ en: "English, most common first", vi: "Tiếng Anh, chữ hay gặp nhất đứng đầu" })}</span>
       <div className={styles.letters}>
         {ENGLISH_RANK.map((letter) => (
           <button
@@ -24,7 +30,7 @@ export function PlainLetters(props: {
             disabled={props.disabled}
             data-used={props.used.includes(letter)}
             aria-pressed={letter === props.current}
-            aria-label={`Plain ${letter}`}
+            aria-label={t({ en: `Plain ${letter}`, vi: `Chữ rõ ${letter}` })}
             onClick={() => props.onAssign(letter)}
           >
             {letter.toLowerCase()}

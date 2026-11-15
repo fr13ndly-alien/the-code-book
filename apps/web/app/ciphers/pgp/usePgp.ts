@@ -1,17 +1,18 @@
 import { useReducer } from "react";
 import { BOOK_KEY, factorKey, open, seal } from "@codebook/cipher-engine/pgp";
+import type { Bilingual, Locale } from "~/i18n";
 
 /** Bob's toy RSA key, the one from the book's worked example. */
 export const BOB = BOOK_KEY;
 
 /** What each step does, in order. The stage number in the state counts how many are done. */
-export const STEPS = [
-  "Make a session key",
-  "Lock the message",
-  "Lock the session key",
-  "Send the envelope",
-  "Bob unlocks the session key",
-  "Bob unlocks the message",
+export const STEPS: Bilingual[] = [
+  { en: "Make a session key", vi: "Tạo khóa phiên" },
+  { en: "Lock the message", vi: "Khóa tin nhắn" },
+  { en: "Lock the session key", vi: "Khóa khóa phiên" },
+  { en: "Send the envelope", vi: "Gửi phong bì" },
+  { en: "Bob unlocks the session key", vi: "Bob mở khóa phiên" },
+  { en: "Bob unlocks the message", vi: "Bob mở tin nhắn" },
 ];
 
 /** The stage at which the envelope has left Alice. */
@@ -72,10 +73,10 @@ export function evesLoot(state: PgpState) {
 }
 
 /** What is travelling where Eve can copy it, as one line of text. */
-export function travelling(state: PgpState): string {
-  if (state.stage < SENT) return "Nothing yet";
+export function travelling(state: PgpState, locale: Locale): string {
+  if (state.stage < SENT) return locale === "vi" ? "Chưa có gì" : "Nothing yet";
   const { ciphertext, lockedKey } = envelope(state);
-  return `${ciphertext} + key ${lockedKey.join(" ")}`;
+  return locale === "vi" ? `${ciphertext} + khóa ${lockedKey.join(" ")}` : `${ciphertext} + key ${lockedKey.join(" ")}`;
 }
 
 /** The state of the PGP page and the way to change it. */

@@ -9,4 +9,11 @@ export const meta: CipherMeta = {
   hook: "Keep every letter of your message, but shuffle their order with a zig-zag only your friend knows.",
   firstStep: "Tap a rail to see where its letters go.",
   source: "The Code Book, chapter 1: The Cipher of Mary Queen of Scots",
+  vi: {
+    title: "Mật mã hàng rào",
+    era: "Thế giới cổ đại",
+    hook: "Giữ nguyên mọi chữ trong tin nhắn, chỉ xáo thứ tự của chúng theo một đường zíc zắc mà chỉ bạn của bạn biết.",
+    firstStep: "Chạm vào một thanh rào để xem các chữ của nó đi đâu.",
+    source: "The Code Book, chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland",
+  },
 };

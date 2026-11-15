@@ -9,4 +9,11 @@ export const meta: CipherMeta = {
   hook: "The oldest trick in secret writing: hide the message so well that nobody looks for it.",
   firstStep: "Press \"Cover with wax\". Then send it past the guard.",
   source: "The Code Book, chapter 1: The Cipher of Mary Queen of Scots",
+  vi: {
+    title: "Giấu thư",
+    era: "Khoảng năm 500 TCN",
+    hook: "Mẹo cổ xưa nhất của thư bí mật: giấu tin nhắn kỹ đến mức không ai nghĩ tới việc đi tìm.",
+    firstStep: "Nhấn “Phủ sáp”. Rồi gửi nó qua trạm gác.",
+    source: "The Code Book, chương 1: Bản mật mã của Nữ hoàng Mary xứ Scotland",
+  },
 };

@@ -1,8 +1,12 @@
 import { SIGNS, readSign, type Clash, type SignId, type Values } from "@codebook/cipher-engine/linear-b";
+import type { Locale } from "~/i18n";
 
 /** The name of a sign for screen readers: its sound once known, its catalogue number until then. */
-export function signLabel(sign: SignId, values: Values): string {
+export function signLabel(sign: SignId, values: Values, locale: Locale): string {
   const reading = readSign(sign, values);
+  if (locale === "vi") {
+    return reading === sign ? `ký hiệu ${reading}` : `ký hiệu số ${SIGNS[sign].number}, âm ${reading}`;
+  }
   return reading === sign ? `sign ${reading}` : `sign ${SIGNS[sign].number}, sound ${reading}`;
 }
 
@@ -24,7 +28,8 @@ export function columnSound(column: number, values: Values): string | undefined 
 }
 
 /** A clash in plain words, using the grid's own row and column names. */
-export function clashText(clash: Clash): string {
+export function clashText(clash: Clash, locale: Locale): string {
+  if (locale === "vi") return clashTextVi(clash);
   if (clash.kind === "length") {
     return `That name has ${clash.syllables} syllables, but the word has ${clash.signs} signs.`;
   }
@@ -37,4 +42,20 @@ export function clashText(clash: Clash): string {
   const [first, second] = clash.indexes;
   const names = `${lineName(line, first)} and ${lineName(line, second)}`;
   return `This name gives ${line}s ${names} the same ${part}, ${clash.sound || "none"}. Two ${line}s cannot share one.`;
+}
+
+/** The same clash, written as whole Vietnamese sentences. */
+function clashTextVi(clash: Clash): string {
+  if (clash.kind === "length") {
+    return `Tên này có ${clash.syllables} âm tiết, nhưng từ này có ${clash.signs} ký hiệu.`;
+  }
+  const { line } = clash;
+  const lineVi = line === "row" ? "hàng" : "cột";
+  const part = line === "row" ? "phụ âm" : "nguyên âm";
+  if (clash.kind === "split") {
+    const sounds = clash.sounds.map((sound) => sound || "không có").join(" và ");
+    return `Các ký hiệu cùng một ${lineVi} có chung ${part}. Tên này lại cho ${lineVi} ${lineName(line, clash.index)} tới hai ${part}: ${sounds}.`;
+  }
+  const [first, second] = clash.indexes;
+  return `Tên này cho ${lineVi} ${lineName(line, first)} và ${lineName(line, second)} cùng một ${part}: ${clash.sound || "không có"}. Hai ${lineVi} không thể có chung một ${part}.`;
 }

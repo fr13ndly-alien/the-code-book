@@ -10,4 +10,11 @@ export const meta: CipherMeta = {
   firstStep: "Change one letter of the message that arrives. Watch Bob's check.",
   source: "The Code Book (full edition): Pretty Good Privacy",
   fullEditionOnly: true,
+  vi: {
+    title: "Chữ ký số",
+    era: "Từ năm 1976",
+    hook: "Dùng mật mã khóa công khai theo chiều ngược lại, và nó chứng minh được ai đã viết một tin nhắn.",
+    firstStep: "Đổi một chữ của tin nhắn đến nơi. Hãy xem phép kiểm tra của Bob.",
+    source: "The Code Book (bản đầy đủ): Riêng tư tốt đẹp",
+  },
 };

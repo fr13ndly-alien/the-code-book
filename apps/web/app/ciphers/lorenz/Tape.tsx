@@ -1,4 +1,5 @@
 import { ITA2 } from "@codebook/cipher-engine/lorenz";
+import { useT } from "~/i18n";
 import styles from "./Tape.module.css";
 
 /** A strip of punched paper tape: one column of five holes per character. */
@@ -11,6 +12,7 @@ export function Tape(props: {
   picked: number;
   onPick: (at: number) => void;
 }) {
+  const t = useT();
   return (
     <div className={styles.frame}>
       <span className={styles.label}>{props.label}</span>
@@ -20,7 +22,10 @@ export function Tape(props: {
             key={at}
             type="button"
             className={styles.column}
-            aria-label={`${props.label}, character ${at + 1}: ${symbol}, holes ${ITA2[symbol]}`}
+            aria-label={t({
+              en: `${props.label}, character ${at + 1}: ${symbol}, holes ${ITA2[symbol]}`,
+              vi: `${props.label}, ký tự ${at + 1}: ${symbol}, lỗ ${ITA2[symbol]}`,
+            })}
             aria-pressed={at === props.picked}
             onClick={() => props.onPick(at)}
           >

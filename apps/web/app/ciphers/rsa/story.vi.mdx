@@ -1,0 +1,147 @@
+{/*
+  Bản dịch tiếng Việt của story.mdx. Theo docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 5 and Appendix E. The wording is ours.
+*/}
+
+<Standfirst>
+  Hãy công bố một ổ khóa móc mà ai cũng bấm khóa được, và giữ chiếc chìa duy nhất mở được nó.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Một đêm mất ngủ
+
+Tháng 4 năm 1977, ba nhà nghiên cứu ở MIT đi dự bữa tối Lễ Vượt Qua và về nhà vào khoảng nửa đêm. Ron Rivest không ngủ được. Ông nằm trên ghế dài với một cuốn sách toán, nghiền ngẫm một câu đố đã làm ông bó tay suốt một năm.
+
+Whitfield Diffie đã mơ đến một kiểu mật mã mới, với một khóa để khóa lại và một khóa khác để mở ra. Không ai biết cách tạo ra nó. Rivest và Adi Shamir liên tục nghĩ ra các cách. Người đồng nghiệp của họ, Leonard Adleman, liên tục tìm ra lỗ hổng.
+
+Đêm đó, câu trả lời đã đến. Đến lúc trời sáng, Rivest đã viết xong cả một bài báo khoa học. Làm sao một khóa mà ai cũng biết lại giữ được bí mật?
+
+<Label>Thử xem</Label>
+
+## Gửi một nụ hôn
+
+Bob muốn gửi Alice một nụ hôn: chữ `X` (người nói tiếng Anh viết chữ X ở cuối thư để thay cho nụ hôn). Máy tính lưu `X` thành số 88. Alice đã công bố hai số, N = 187 và e = 7. Hãy đoán trước: con số sau khi xáo trộn có giống 88 chút nào không?
+
+<Try action="book" button="Mở ví dụ trong sách">
+  Đọc ô “Bản mật mã C” trong phần điều khiển. Rồi gõ một chữ khác vào ô “Tin nhắn” và xem phép tính thay đổi.
+</Try>
+
+<Check question="88 biến thành số mấy?">
+  Nó thành 11. Bob tính 88<sup>7</sup> (mod 187). Tức là nhân bảy số 88 với nhau, chia cho 187 rồi lấy số dư. Chẳng có gì ở số 11 gợi ý đến 88.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Hai số nguyên tố và một ổ khóa móc
+
+### Một khóa để khóa, một khóa khác để mở
+
+Mọi mật mã trước đó đều **đối xứng**: cùng một khóa để khóa lại và mở ra. Vì vậy khóa phải được giao tận tay trong bí mật.
+
+Mật mã **bất đối xứng** có hai khóa. **Khóa công khai** của Alice chỉ dùng để khóa. Cô có thể in nó lên danh thiếp. **Khóa riêng** của cô dùng để mở, và nó không bao giờ rời khỏi cô.
+
+Hãy hình dung Alice phát cho mọi người hàng nghìn ổ khóa móc đang mở. Ai cũng bấm khóa được một chiếc lên một cái hộp. Chỉ Alice có chìa khóa mở được chúng. Ngay cả Bob cũng không mở lại được chiếc hộp anh vừa khóa.
+
+### Hai số nguyên tố tạo ra N
+
+**Số nguyên tố** là số không chia hết cho số nào, ngoại trừ 1 và chính nó. Alice bí mật chọn hai số nguyên tố. Sách gọi chúng là p và q, và dùng 17 và 11.
+
+Cô nhân chúng với nhau để được N = 187. Cô cũng chọn một số e, ở đây là 7. Rồi cô công bố N và e. Cặp số ấy là khóa công khai của cô. Hai số nguyên tố thì được giấu kín.
+
+<Try action="book" button="Hiện các khóa của Alice">
+  Nhấn ▲ cạnh “Số nguyên tố p”. Xem N và số riêng d thay đổi ở ô trên cùng.
+</Try>
+
+### Khóa lại bằng N và e
+
+Để mã hóa một tin nhắn M, Bob tính M<sup>e</sup> (mod N). Đây là một hàm một chiều, giống hàm trong [trao đổi khóa](/ciphers/key-exchange).
+
+Các con số sẽ khổng lồ nếu bạn nhân trước rồi mới chia sau. Vì vậy sách dùng một mẹo. Vì 7 = 4 + 2 + 1, Bob chỉ cần 88<sup>1</sup>, 88<sup>2</sup> và 88<sup>4</sup>, mỗi số được giữ nhỏ bằng cách lấy số dư ngay trong lúc tính. Đó là 88, 77 và 132. Nhân chúng với nhau, trong mod 187, được 11.
+
+### Mở ra bằng d
+
+Alice biết p và q, nên cô làm được một việc mà không ai khác làm được. Cô lấy mỗi số nguyên tố trừ đi 1, rồi nhân lại: 16 × 10 = 160. Rồi cô tìm số d sao cho e × d chia cho 160 dư 1. Ở đây d = 23, vì 7 × 23 = 161.
+
+Để giải mã, cô tính 11<sup>23</sup> (mod 187). Kết quả ra 88.
+
+<Try action="open" button="Mở tin nhắn bằng d">
+  Bản mật mã 11 đã được nạp. Lần theo các bình phương xuống ô ở giữa đến kết quả, 88, tức là `X`.
+</Try>
+
+<DigDeeper title="Vì sao RSA thật không mã hóa từng chữ một">
+  Bảng mô phỏng của chúng ta khóa từng chữ một. Sách cảnh báo rằng làm vậy chỉ để minh họa. Chữ `X` nào cũng sẽ thành cùng một con số. Khi đó RSA sẽ chỉ còn là một mật mã thay thế đơn bảng (một bảng chữ mã), và [đếm chữ](/ciphers/frequency-analysis) sẽ phá được nó. RSA thật khóa những khối bit lớn hơn nhiều cùng một lúc, nên chẳng còn gì để đếm. Sách cũng nêu tên công cụ Alice dùng để tìm d thật nhanh: thuật toán Euclid.
+</DigDeeper>
+
+<Label>Câu chuyện</Label>
+
+## Bài báo kém thú vị nhất
+
+Rivest, Shamir và Adleman làm việc ở tầng tám của một phòng thí nghiệm máy tính tại MIT. Suốt một năm, hai người đầu nghĩ ra ý tưởng, còn người thứ ba bắn hạ chúng. Chính những thất bại ấy đã lái họ về phía câu trả lời.
+
+Sáng hôm sau đêm mất ngủ, Rivest đưa bài báo cho Adleman. Lần này Adleman không tìm ra lỗi nào. Ông chỉ xin bỏ tên mình ra, vì ý tưởng là của Rivest. Rivest từ chối. Adleman đồng ý đứng tên thứ ba, và nghĩ rằng đây sẽ là bài báo kém thú vị nhất mà ông từng ký tên.
+
+Vì thế mật mã này có tên là **RSA**. Nó trở thành mật mã có ảnh hưởng lớn nhất thời hiện đại.
+
+<DigDeeper title="Người Anh đã đến trước, trong bí mật">
+  Năm 1969, James Ellis, làm việc ở GCHQ, cơ quan tình báo bí mật của Anh, đã chứng minh rằng có thể có một mật mã với khóa công khai. Tia sáng của ông là một bản báo cáo thời chiến của hãng Bell Telephone. Báo cáo gợi ý rằng người nhận cuộc gọi có thể thêm tiếng ồn vào đường dây. Chỉ họ biết tiếng ồn đó, nên chỉ họ trừ được nó đi để nghe lời nói. Người nhận, chứ không phải người gửi, là người khóa. Nhưng Ellis không tìm ra được thứ toán học cần thiết. Năm 1973, một người mới vào, Clifford Cocks, nghe kể về bài toán này. Ông tìm ra cái mà ngày nay ta gọi là RSA chỉ trong khoảng nửa giờ. Năm 1974, bạn ông là Malcolm Williamson tìm ra cách trao đổi khóa. Cả ba đều phải giữ im lặng. Ngày 18 tháng 12 năm 1997, GCHQ cho phép Cocks kể lại câu chuyện. Ellis đã mất trước đó một tháng.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Tìm ra hai số nguyên tố
+
+RSA chỉ có một lối vào. Nếu Eve tách được N trở lại thành p và q, cô có thể tính ra d giống hệt Alice. Tách một số như vậy gọi là **phân tích ra thừa số nguyên tố**.
+
+Nhân hai số nguyên tố chỉ mất một chốc. Làm ngược lại thì phải thử hết số chia này đến số chia khác. Với N = 187, việc đó nhanh thôi.
+
+<Try action="attack" button="Để Eve phân tích 187">
+  Đọc ô dưới cùng. Eve chỉ cần 6 lần thử để tìm ra 11 và 17, rồi đến d.
+</Try>
+
+Giờ hãy cho các số nguyên tố lớn hơn. Sách thách người đọc phân tích 1.709.023 ra thừa số bằng máy tính bỏ túi, và cảnh báo rằng việc đó sẽ ngốn gần hết một buổi chiều.
+
+<Try action="dare" button="Để Eve phân tích 1.709.023">
+  Eve cần 601 lần thử. Công việc của Alice thì hầu như không tăng: cô vẫn chỉ nhân hai số với nhau.
+</Try>
+
+Tháng 8 năm 1977, tạp chí *Scientific American* in một số N dài 129 chữ số, kèm giải thưởng 100 đô la. Nó bị phân tích ra thừa số vào ngày 26 tháng 4 năm 1994, mười bảy năm sau, bởi sáu trăm tình nguyện viên cùng máy tính của họ. Tin nhắn giấu bên trong là "The magic words are squeamish ossifrage." (Câu thần chú là: chim kền kền khó tính.) Khóa ngày nay dài hơn rất nhiều.
+
+<DigDeeper title="N phải lớn đến mức nào?">
+  Chương sách dùng các số nguyên tố lớn hơn mô hình đồ chơi của chúng ta: 17.159 × 10.247 = 175.828.273. Số nguyên tố thật còn lớn hơn rất, rất nhiều. Hãy lấy hai số nguyên tố, mỗi số khoảng 65 chữ số. N của chúng có khoảng 130 chữ số. Sách dẫn một ước tính rằng một máy tính gia đình thập niên 1990 sẽ cần năm mươi năm để phân tích nó. Một trăm triệu máy như thế cùng làm thì cần khoảng mười lăm giây. Vì vậy các ngân hàng dùng N dài hơn 300 chữ số. Khi đó, cũng chừng ấy máy tính sẽ cần hơn một nghìn năm.
+</DigDeeper>
+
+<Label>Thử thách</Label>
+
+## Đánh cắp một khóa riêng
+
+<Challenge answer="SPY">
+  Bạn là Eve. Một khóa công khai ghi N = 247, e = 5. Bạn bắt được ba con số gửi đến chủ của nó: `239`, `188` và `33`. Mỗi số là một chữ cái.
+
+  Nhấn “Để Eve phân tích N ra thừa số” để lấy d. Rồi giải mã ba con số, từng số một. Đó là từ gì? (Một từ tiếng Anh.)
+
+  <Try action="intercepted" button="Mở khóa công khai" />
+</Challenge>
+
+<Check question="Vì sao Alice có thể yên tâm cho mọi người biết N?">
+  Chỉ có N thì chỉ khóa được thôi. Muốn mở, bạn cần d, và muốn tìm d, bạn cần hai số nguyên tố nằm bên trong N. Với N đủ lớn, không ai tìm ra chúng trong cả một đời người.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Riêng tư cho tất cả mọi người?
+
+RSA chấm dứt bài toán giao khóa. Alice chẳng bận tâm ai thấy khóa công khai của cô. Càng nhiều người thấy càng tốt.
+
+Nhưng RSA có cái giá của nó. Tất cả những phép tính với các con số khổng lồ ấy cần sức mạnh tính toán lớn hơn rất nhiều so với một mật mã kiểu cũ. Vào thập niên 1970, điều đó khiến nó nằm ngoài tầm tay người bình thường.
+
+Rồi máy tính gia đình trở nên nhanh và rẻ. Một người đàn ông quyết định rằng ai cũng xứng đáng có được kiểu bí mật này, chứ không chỉ chính phủ và các công ty lớn. Chương trình của ông, và những rắc rối nó gây ra cho ông, mở đầu chương cuối: [Riêng tư tốt đẹp](/ciphers/pgp).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *The Code Book*, chương 5 và Phụ lục E.
+- Martin Gardner, "A New Kind of Cipher that Would Take Millions of Years to Break" (Một kiểu mật mã mới cần hàng triệu năm mới phá được), *Scientific American*, tháng 8 năm 1977. Bài báo công bố RSA.
+- R. L. Rivest, A. Shamir và L. Adleman, "A Method for Obtaining Digital Signatures and Public-Key Cryptosystems" (Một phương pháp tạo chữ ký số và hệ mật khóa công khai), *Communications of the ACM*, tháng 2 năm 1978. Chính bài báo gốc.

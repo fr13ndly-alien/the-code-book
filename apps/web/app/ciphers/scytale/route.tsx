@@ -2,11 +2,12 @@ import { lazy } from "react";
 import { pageMeta } from "~/ciphers";
 import { CipherPage, StageLoading } from "~/components/CipherPage";
 import { ClientOnly } from "~/components/ClientOnly";
-import { STORY_BLOCKS, Story } from "~/components/story/Story";
+import { Story } from "~/components/story/Story";
 import { meta as scytale } from "./meta";
 import { PRESETS } from "./presets";
 import { ScytaleControls } from "./ScytaleControls";
-import StoryText from "./story.mdx";
+import StoryEn from "./story.mdx";
+import StoryVi from "./story.vi.mdx";
 import { linesOnStaff, useScytale } from "./useScytale";
 
 // three.js is large, so the 3D scene loads only once the page is on screen.
@@ -31,9 +32,7 @@ export default function ScytaleRoute() {
       }
       controls={<ScytaleControls state={state} dispatch={dispatch} />}
       story={
-        <Story onAction={(name) => dispatch({ type: "load", preset: PRESETS[name]! })}>
-          <StoryText components={STORY_BLOCKS} />
-        </Story>
+        <Story onAction={(name) => dispatch({ type: "load", preset: PRESETS[name]! })} text={{ en: StoryEn, vi: StoryVi }} />
       }
     />
   );

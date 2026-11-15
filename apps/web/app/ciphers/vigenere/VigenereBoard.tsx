@@ -4,6 +4,7 @@ import { AlphabetRows } from "~/components/sim/AlphabetRows";
 import { Board } from "~/components/sim/Board";
 import { Caption, Letters } from "~/components/sim/Caption";
 import { LetterGrid, type CellMark } from "~/components/sim/LetterGrid";
+import { useT } from "~/i18n";
 import styles from "./VigenereBoard.module.css";
 import { steps, type VigenereState } from "./useVigenere";
 
@@ -11,6 +12,7 @@ const SQUARE_CELLS = SQUARE.map((row) => [...row]);
 
 /** The message under its keyword, and the Vigenère square with one letter's row and column lit. */
 export function VigenereBoard({ state, onPick }: { state: VigenereState; onPick: (position: number) => void }) {
+  const t = useT();
   const all = steps(state);
   const step = all[state.position];
   const keyRow = step ? indexOfLetter(step.key) : -1;
@@ -29,19 +31,31 @@ export function VigenereBoard({ state, onPick }: { state: VigenereState; onPick:
         <div className={styles.scroll}>
           <AlphabetRows
             rows={[
-              { label: "Key", letters: all.map((each) => each.key) },
-              { label: "Plain", letters: all.map((each) => each.plain) },
-              { label: "Cipher", letters: all.map((each) => each.cipher), kind: "cipher" },
+              { label: t({ en: "Key", vi: "Khóa" }), letters: all.map((each) => each.key) },
+              { label: t({ en: "Plain", vi: "Rõ" }), letters: all.map((each) => each.plain) },
+              { label: t({ en: "Cipher", vi: "Mã" }), letters: all.map((each) => each.cipher), kind: "cipher" },
             ]}
             highlight={state.position}
             onPick={onPick}
           />
         </div>
       )}
-      <Caption>{step ? <StepCaption state={state} /> : "Type a message below to see it pass through the square."}</Caption>
+      <Caption>
+        {step ? (
+          <StepCaption state={state} />
+        ) : (
+          t({
+            en: "Type a message below to see it pass through the square.",
+            vi: "Gõ một tin nhắn ở bên dưới để xem nó đi qua hình vuông.",
+          })
+        )}
+      </Caption>
       <div className={styles.scroll}>
         <LetterGrid
-          label="Vigenère square: one row for each key letter, one column for each plain letter"
+          label={t({
+            en: "Vigenère square: one row for each key letter, one column for each plain letter",
+            vi: "Hình vuông Vigenère: mỗi chữ khóa một hàng, mỗi chữ rõ một cột",
+          })}
           cells={SQUARE_CELLS}
           columnHeads={[...ALPHABET]}
           rowHeads={[...ALPHABET]}
@@ -55,19 +69,36 @@ export function VigenereBoard({ state, onPick }: { state: VigenereState; onPick:
 
 /** One sentence saying how the lit row and column give the current letter. */
 function StepCaption({ state }: { state: VigenereState }) {
+  const t = useT();
   const step = steps(state)[state.position]!;
   if (state.mode === "encipher") {
-    return (
-      <>
-        Key letter <Letters>{step.key}</Letters> picks the row. Plain <Letters>{step.plain}</Letters> picks the column.
-        They meet at cipher <Letters>{step.cipher}</Letters>.
-      </>
-    );
+    return t({
+      en: (
+        <>
+          Key letter <Letters>{step.key}</Letters> picks the row. Plain <Letters>{step.plain}</Letters> picks the
+          column. They meet at cipher <Letters>{step.cipher}</Letters>.
+        </>
+      ),
+      vi: (
+        <>
+          Chữ khóa <Letters>{step.key}</Letters> chọn hàng. Chữ rõ <Letters>{step.plain}</Letters> chọn cột. Chúng gặp
+          nhau ở chữ mã <Letters>{step.cipher}</Letters>.
+        </>
+      ),
+    });
   }
-  return (
-    <>
-      Key letter <Letters>{step.key}</Letters> picks the row. Find cipher <Letters>{step.cipher}</Letters> in that row.
-      The top of its column is plain <Letters>{step.plain}</Letters>.
-    </>
-  );
+  return t({
+    en: (
+      <>
+        Key letter <Letters>{step.key}</Letters> picks the row. Find cipher <Letters>{step.cipher}</Letters> in that
+        row. The top of its column is plain <Letters>{step.plain}</Letters>.
+      </>
+    ),
+    vi: (
+      <>
+        Chữ khóa <Letters>{step.key}</Letters> chọn hàng. Tìm chữ mã <Letters>{step.cipher}</Letters> trong hàng đó.
+        Đầu cột của nó là chữ rõ <Letters>{step.plain}</Letters>.
+      </>
+    ),
+  });
 }

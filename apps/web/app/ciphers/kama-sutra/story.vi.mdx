@@ -1,0 +1,124 @@
+{/*
+  Bản dịch tiếng Việt của story.mdx. Theo docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 1. The wording is ours.
+*/}
+
+<Standfirst>
+  Ghép các chữ cái thành từng cặp một cách ngẫu nhiên, rồi đổi mỗi chữ thành chữ cùng cặp với nó.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Môn nghệ thuật thứ bốn mươi lăm
+
+Vào thế kỷ 4 sau Công nguyên, một học giả Ấn Độ tên là Vātsyāyana viết một cuốn sách khuyên nhủ, cuốn Kama Sutra. Một phần của sách liệt kê sáu mươi tư môn nghệ thuật mà người phụ nữ nên học. Nấu ăn có trong danh sách. Cờ vua, nghề mộc, ảo thuật và làm nước hoa cũng vậy.
+
+Môn thứ bốn mươi lăm thì khác. Nó có tên là mlecchita-vikalpa: nghệ thuật viết bí mật. Cuốn sách khuyên học môn này để phụ nữ có thể giữ kín chuyện tình cảm riêng tư của mình.
+
+Hãy hình dung một mẩu giấy được chuyền qua một khoảng sân đông người. Ai cũng có thể nhặt được nó. Vậy mà nó chỉ được phép cho đúng một người biết gặp nhau ở đâu và lúc nào. Bạn sẽ viết mẩu giấy ấy thế nào?
+
+<Label>Thử xem</Label>
+
+## Tìm chữ cùng cặp
+
+Mô phỏng cho thấy bảng chữ cái được chia thành mười ba cặp. Bên dưới là tin nhắn “meet at midnight” (gặp nhau lúc nửa đêm). Hãy đoán trước: tin nhắn bắt đầu bằng chữ `M`. Tìm `M` trong các cặp. Nó sẽ được viết thành chữ gì?
+
+<Try action="book" button="Xem các cặp của cuốn sách">
+  Chạm vào `M` trong các cặp và xem chữ nào sáng lên cùng nó. Rồi chạm vào `E`, và tìm cả hai chữ cùng cặp ở dòng dưới của tin nhắn.
+</Try>
+
+<Check question="M thành chữ gì?">
+  `C`. Trong bộ cặp này, `M` và `C` là một cặp, nên mọi chữ `M` trong tin nhắn được viết thành `C`. Tương tự, `E` thành `U`, vì vậy “meet” bắt đầu bằng `CUU`.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Mười ba cặp, một lần đổi
+
+### Đổi mỗi chữ thành chữ cùng cặp
+
+Tin nhắn ban đầu gọi là **bản rõ** (văn bản thường). Tin nhắn đã xáo trộn mà bạn gửi đi gọi là **bản mật mã**.
+
+Một cách làm trong Kama Sutra là ghép các chữ cái thành cặp “một cách ngẫu nhiên”. Để mã hóa, bạn lấy từng chữ của bản rõ và viết chữ cùng cặp với nó thay vào. Với các cặp của cuốn sách, “meet at midnight” thành `CUUZ VZ CGXSGIBZ`.
+
+Đây là một **mật mã thay thế**. Một mã chuyển vị, như gậy scytale, giữ nguyên mỗi chữ và dời chỗ nó. Mật mã thay thế làm ngược lại: mọi chữ ở yên chỗ của nó nhưng đổi thành một chữ khác.
+
+<Try action="book" button="Làm lại từ đầu">
+  Gõ tên của bạn vào ô “Tin nhắn của bạn, hoặc một bản mật mã”. Đọc bản đã đổi ở ô bên dưới, và so hai chữ của nó với các cặp.
+</Try>
+
+### Cùng một lần đổi để đọc lại
+
+Các cặp có tác dụng theo cả hai chiều. Nếu `M` thành `C`, thì `C` thành `M`. Vì vậy bạn của bạn không cần một cách giải mã riêng. Bạn ấy chỉ cần cho bản mật mã đi qua đúng lần đổi ấy, và bản rõ hiện ra.
+
+<Try action="reply" button="Mở bản mật mã">
+  Ô tin nhắn giờ chứa `CUUZ VZ CGXSGIBZ`. Nhìn vào dòng dưới của lưới chữ. Lần đổi đã biến nó trở lại thành những từ có nghĩa.
+</Try>
+
+### Các cặp là khóa
+
+Ai cũng có thể biết rằng bạn đổi chữ theo cặp. Điều họ không được biết là chữ nào đi với chữ nào. Danh sách các cặp ấy là **khóa**, và cả hai người phải giữ cùng một khóa.
+
+Có rất nhiều khóa để chọn. Hai mươi sáu chữ cái có thể ghép cặp theo 7.905.853.580.625 cách khác nhau.
+
+<Try action="book" button="Xem các cặp của cuốn sách">
+  Nhấn “Xáo các cặp” vài lần. Tin nhắn vẫn giữ nguyên, nhưng mỗi bộ cặp mới cho ra một bản mật mã khác.
+</Try>
+
+<Check question="Vì sao cùng một lần đổi vừa mã hóa được, vừa giải mã được?">
+  Mỗi chữ có đúng một chữ cùng cặp, và quan hệ cặp đi theo cả hai chiều. Đổi hai lần sẽ đưa bạn từ một chữ sang chữ cùng cặp với nó, rồi quay thẳng về chữ ban đầu.
+</Check>
+
+<Label>Câu chuyện</Label>
+
+## Cổ xưa hơn vẻ ngoài
+
+Vātsyāyana viết vào thế kỷ 4 sau Công nguyên, nhưng ông dựa trên những bản viết tay có từ tận thế kỷ 4 TCN. Vì vậy đây là một trong những bản mô tả mật mã thay thế sớm nhất ở bất cứ đâu.
+
+Nó cũng cho thấy viết bí mật chưa bao giờ chỉ dành cho các vị tướng. Gậy scytale mang mệnh lệnh chiến trận. Còn mật mã này dành cho đời sống riêng tư, được dạy bên cạnh nấu ăn và cờ vua như một kỹ năng hữu ích.
+
+Ý tưởng này không cần dụng cụ gì. Hai người thỏa thuận mười ba cặp, rồi sau đó chỉ cần một cây bút. Vì một lần đổi làm được cả hai việc, nên chỉ có một quy tắc phải học.
+
+<Label>Bị phá như thế nào</Label>
+
+## Quy luật lộ ra
+
+Gần tám nghìn tỷ khóa là quá nhiều để thử từng cái một. Nhưng kẻ thù không cần làm thế. Mật mã này đổi các chữ và để yên mọi thứ khác. Độ dài của từ, chữ đôi và những chữ hay gặp đều còn nguyên.
+
+<Try action="pattern" button="Tìm một quy luật">
+  Mọi chữ `U` trong bản mật mã đều sáng lên. Hai chữ trong số đó đứng cạnh nhau ở từ đầu tiên. Trong tiếng Anh, ít chữ cái đứng đôi ở giữa một từ ngắn, nên `U` có lẽ là `E` hoặc `O`. Dòng bên dưới cho thấy là chữ nào.
+</Try>
+
+Mỗi lần đoán đúng làm lộ ra hai chữ cùng lúc, vì các cặp đổi theo cả hai chiều. Chỉ vài lần đoán có thể gỡ tung cả một tin nhắn. Về sau, các nhà giải mã biến kiểu đoán này thành một phương pháp bằng cách đếm chữ.
+
+<Label>Thử thách</Label>
+
+## Mẩu giấy trong sân
+
+<Challenge answer="MEET ME BY THE RIVER AT DAWN">
+  Một mẩu giấy gấp lại ghi `CUUZ CU HP ZBU LGAUL VZ XVFS`. Nó được viết bằng các cặp của cuốn sách, nhưng ai đó đã xáo các cặp trên bảng của bạn.
+
+  Hãy đặt lại đúng các cặp. Mẩu giấy nói gì?
+
+  <Try action="note" button="Mở mẩu giấy" />
+</Challenge>
+
+<Check question="Mật mã thay thế khác mã chuyển vị thế nào?">
+  Trong mã chuyển vị, mỗi chữ giữ nguyên là chính nó nhưng dời tới chỗ mới. Trong mật mã thay thế, mỗi chữ giữ nguyên chỗ nhưng biến thành một chữ khác.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Từ những người yêu nhau đến các quân đoàn
+
+Mười ba cặp ngẫu nhiên thì khó nhớ, mà viết ra giấy thì nguy hiểm. Một đội quân cần một khóa mà viên sĩ quan mệt mỏi cũng nhớ được trong đầu.
+
+Khoảng bốn trăm năm trước khi Vātsyāyana viết sách, một vị tướng La Mã đã tìm ra khóa như thế. Ông không ghép cặp chữ gì cả. Ông dịch cả bảng chữ cái đi một số chỗ cố định, nên khóa chỉ là một con số. Ông là vị chỉ huy đầu tiên mà chúng ta biết đã dùng mật mã thay thế trong chiến tranh. Hãy gặp [mật mã dịch chuyển Caesar](/ciphers/caesar).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *The Code Book*, chương 1.
+- Vātsyāyana, *Kama Sutra*, quyển 1, chương 3. Danh sách sáu mươi tư môn nghệ thuật.

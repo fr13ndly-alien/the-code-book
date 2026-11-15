@@ -1,3 +1,4 @@
+import { UI, useLocale } from "~/i18n";
 import styles from "./AlphabetRows.module.css";
 
 /** One line of an alphabet table, such as the plain alphabet or a cipher alphabet. */
@@ -19,6 +20,7 @@ export function AlphabetRows(props: {
   highlight?: number;
   onPick?: (column: number) => void;
 }) {
+  const locale = useLocale();
   const columns = [...props.rows[0]!.letters];
   return (
     <div className={styles.scroll}>
@@ -37,13 +39,13 @@ export function AlphabetRows(props: {
           {props.onPick && (
             <tr className={styles.pickers}>
               <th scope="row" className="visually-hidden">
-                Highlight
+                {UI.highlight[locale]}
               </th>
               {columns.map((letter, column) => (
                 <td key={column}>
                   <button
                     type="button"
-                    aria-label={`Highlight ${letter}`}
+                    aria-label={`${UI.highlight[locale]} ${letter}`}
                     aria-pressed={column === props.highlight}
                     onClick={() => props.onPick!(column)}
                   />

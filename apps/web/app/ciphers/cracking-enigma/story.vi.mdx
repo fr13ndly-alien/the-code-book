@@ -1,0 +1,181 @@
+{/*
+  Translates story.mdx into Vietnamese, following docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 3 ("Cracking the Enigma" and "The Geese that Never Cackled").
+  The Enigma page tells the outline of this story. This page is about doing the attacks. The wording is ours.
+*/}
+
+<Standfirst>
+  Mười triệu tỷ khóa, mỗi nửa đêm lại đổi khóa mới, và hai mẹo khiến con số ấy chẳng còn đáng sợ.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Người đứng bên cửa sổ
+
+Warsaw, năm 1934. Hermann Göring, một trong những người quyền lực nhất nước Đức, đang ở thành phố này. Ông và đoàn tùy tùng đặt vòng hoa trước Mộ Chiến sĩ Vô danh.
+
+Từ cửa sổ một văn phòng ngay bên cạnh, một nhà toán học trẻ ít nói nhìn xuống họ. Tên anh là Marian Rejewski. Những người Đức dưới kia tin tuyệt đối vào máy Enigma của mình. Còn Rejewski thì đọc được những bức điện tối mật nhất của họ.
+
+Anh chưa từng thấy một chiếc Enigma thật của quân đội. Anh cũng chưa thử được dù chỉ một phần nhỏ xíu trong số các khóa của nó. Vậy làm sao chọn ra đúng một khóa trong 10.000.000.000.000.000 khóa trước khi hết ngày?
+
+<Label>Thử xem</Label>
+
+## Rút một dây cắm ra
+
+Mô phỏng này cho bạn thấy thứ Rejewski nhìn thấy mỗi sáng: sáu chữ đầu tiên của các bức điện trong ngày. Bên dưới là một cái bảng, và dưới nữa là vài chuỗi chữ kèm độ dài của chúng. Bạn hãy đoán trước: nếu rút một dây ra khỏi bảng cắm dây, độ dài các chuỗi có thay đổi không?
+
+<Try action="chains" button="Tải các bức điện hôm nay">
+  Ở mục “Dây cắm”, nhấn `A–L` để rút dây đó ra. Hãy nhìn các chuỗi, và nhìn ô “Độ dài chuỗi hôm nay”.
+</Try>
+
+<Check question="Cái gì đã thay đổi, và cái gì không?">
+  Các chữ trong chuỗi đổi chỗ lung tung. Nhưng độ dài thì không: vẫn là hai chuỗi 11 mắt xích và bốn chuỗi 1 mắt xích. Phần lớn các khóa của Enigma đến từ bảng cắm dây. Và bạn vừa tìm ra một thứ mà bảng cắm dây không chạm tới được.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Hai lối vào
+
+### Chiếc khóa được gửi hai lần
+
+Mỗi người điều khiển Enigma đặt máy theo **khóa ngày** lấy từ một cuốn sổ mã. Nhưng anh ta không dùng khóa ấy cho cả bức điện. Anh ta tự chọn ba chữ, gọi là **khóa bức điện**, rồi gõ chúng hai lần ở cách đặt của ngày hôm đó: `PGHPGH`. Sau đó anh ta xoay các rôto về `PGH` và gõ nội dung bức điện.
+
+Việc gõ lặp lại là để phòng nhiễu sóng vô tuyến. Nhưng nó cũng là một món quà. Trong mọi bức điện ngày hôm ấy, chữ mã thứ 1 và thứ 4 đều thay cho cùng một chữ rõ, chỉ được gõ cách nhau ba lần nhấn phím.
+
+<Try action="chains" button="Tải các bức điện hôm nay">
+  Hãy nhìn khối các nhóm sáu chữ. Trong mỗi nhóm, chữ thứ 1 và thứ 4 được làm sáng. Nhấn “2 và 5” ở mục “So sánh chữ” để làm sáng cặp tiếp theo.
+</Try>
+
+### Từ cặp chữ đến chuỗi
+
+Rejewski ghi các cặp vào một cái bảng: mỗi chữ thứ 1 ở hàng trên, chữ thứ 4 của nó ở bên dưới. Có đủ bức điện thì bảng sẽ được điền kín.
+
+Rồi anh chơi một trò với cái bảng ấy. Bắt đầu ở chữ `A`. Nhìn chữ nằm dưới nó, rồi tìm chữ đó ở hàng trên. Lại nhìn xuống dưới. Cứ thế đi tiếp cho đến khi quay về `A`. Vòng đó gọi là một **chuỗi**. Bắt đầu lại từ một chữ chưa dùng, cho đến khi chữ nào cũng nằm trong một chuỗi.
+
+<Try action="follow" button="Đi theo chữ A">
+  Chạm vào ô dưới chữ nằm bên dưới `A`, rồi chạm vào ô dưới chữ kế tiếp. Bạn đang đi dọc theo chuỗi được làm sáng trong danh sách.
+</Try>
+
+<DigDeeper title="Cái bảng của chính cuốn sách">
+  Sách in một bảng đã điền xong và vẽ ra bốn chuỗi từ đó, chuỗi đầu đi từ `A` đến `F` đến `W` rồi về chỗ cũ. Bạn có thể tải đúng cái bảng ấy. Sách không hề nói khóa ngày nào tạo ra nó, nên các rôto và dây cắm không thuộc về bảng này.
+
+  <Try action="bookTable" button="Tải bảng của sách">
+    Đếm số mắt xích trong mỗi chuỗi: 3, 9, 7 và 7. Chạm vào ô dưới `A` và tự mình đi theo chuỗi ngắn nhất.
+  </Try>
+</DigDeeper>
+
+### Dấu vân tay của các rôto
+
+Các chuỗi thay đổi mỗi ngày. Phát hiện lớn của Rejewski chính là điều bạn thấy lúc đầu. Một dây cắm đổi chỗ hai chữ, nên nó chỉ đổi tên các chữ trong chuỗi. Nó không thể làm chuỗi dài ra hay ngắn đi. Độ dài chỉ phụ thuộc vào các rôto.
+
+Vì thế độ dài các chuỗi là một dấu vân tay của cách đặt rôto. Có 6 thứ tự rôto và 17.576 vị trí rôto, tổng cộng 105.456 cách đặt. Nhóm của anh mất một năm để ghi lại độ dài chuỗi cho từng cách đặt. Từ đó, tìm cách đặt rôto của ngày chỉ còn là tra một dấu vân tay trong cuốn danh mục.
+
+<Try action="chains" button="Tải các bức điện hôm nay">
+  Nhấn ▲ cạnh “Rôto phải” một lần. Độ dài các chuỗi thay đổi hoàn toàn. Nhấn ▼ để quay lại, và chúng trở về như cũ.
+</Try>
+
+<Check question="Cuốn danh mục cho biết cách đặt rôto. Vậy Rejewski tìm ra các dây cắm bằng cách nào?">
+  Anh đặt chiếc Enigma bản sao của mình theo cách đặt rôto ấy, không cắm dây nào cả, rồi gõ một bức điện vào. Kết quả ra gần giống tiếng Đức, chẳng hạn `ALLIVEINBELRIN`. Đáng lẽ phải là “arrive in Berlin” (đến Berlin), nên `R` và `L` hẳn được nối với nhau bằng một dây cắm.
+</Check>
+
+### Một từ đoán trước
+
+Sớm muộn gì người Đức cũng sẽ thôi gõ khóa bức điện hai lần. Ở Bletchley Park bên Anh, Alan Turing tìm một cách tấn công không cần đến chỗ lặp đó. Ông dùng **từ mồi (crib)**: một từ bạn đoán được là có trong bức điện. Bản tin thời tiết gửi đi ngay sau 6 giờ mỗi sáng gần như chắc chắn có chữ `WETTER` (thời tiết, trong tiếng Đức).
+
+Nhưng nó nằm ở đâu? Có một quy tắc giúp được. Vì có đĩa phản xạ, Enigma không bao giờ biến một chữ thành chính nó.
+
+<Try action="weather" button="Tải bản tin thời tiết">
+  Từ mồi `WETTER` nằm dưới phần đầu bức điện, và có một cột được làm sáng: một chữ `T` nằm dưới một chữ `T`. Vị trí này là không thể. Nhấn ▲ cạnh “Từ mồi bắt đầu ở chữ thứ” và đếm xem bạn gạch bỏ được bao nhiêu vị trí.
+</Try>
+
+<DigDeeper title="Từ mồi của chính cuốn sách">
+  Sách đưa ra một từ đoán dài hơn, `WETTERNULLSECHS`, đặt dưới hai mươi chữ mã. Rồi sách trượt từ đoán ấy đi một chỗ về mỗi phía. Các chữ mã của sách chỉ là ví dụ bịa ra, không phải do Enigma thật tạo ra. Vì vậy ở đây việc dò tìm bị tắt.
+
+  <Try action="bookCrib" button="Tải từ mồi của sách">
+    Từ mồi bắt đầu ở chữ thứ 3, và có một chữ `E` nằm dưới một chữ `E`. Nhấn ▼ một lần: giờ một chữ `S` nằm dưới một chữ `S`. Nhấn ▲ hai lần để tới chữ thứ 4, nơi không có chữ nào trùng.
+  </Try>
+</DigDeeper>
+
+### Thử mọi cách đặt
+
+Ở chữ thứ 6 không có chữ nào trùng. Điều đó không chứng minh từ mồi nằm ở đó. Nó chỉ cho vị trí ấy quyền được thử: thử mọi cách đặt rôto, xem có cách nào biến sáu chữ mã kia thành `WETTER` không.
+
+<Try>
+  Khi từ mồi ở chữ thứ 6, nhấn “Thử 17.576 vị trí rôto”. Đọc các ô cửa sổ rôto trong dòng chú thích và bức điện ở hàng dưới cùng. Rồi trượt sang chữ thứ 7 và thử lại.
+</Try>
+
+Thiết bị của bạn làm xong cuộc dò tìm ấy trong nháy mắt. Turing thì phải chế tạo cả một cỗ máy để làm việc này, đó là **máy bombe**. Ở đây bảng cắm dây để trống và đã biết thứ tự rôto, để việc dò tìm gọn nhẹ. Máy bombe thật phải vượt qua cả hai thứ đó.
+
+<Label>Câu chuyện</Label>
+
+## Nỗi sợ, toán học và một điệp viên
+
+Sách nêu ba lý do khiến người Ba Lan thành công. Nỗi sợ: Ba Lan nằm kẹp giữa Đức và Nga. Toán học: Cục Mật mã thuê các nhà toán học từ Poznań, những người biết tiếng Đức. Và một điệp viên: Hans-Thilo Schmidt, bí danh Asche, đã bán những tài liệu cho biết cách đi dây bên trong các rôto.
+
+Khi người Đức đổi cách làm việc, cuốn danh mục của Rejewski trở nên vô dụng. Vì thế anh chế tạo những cỗ máy dò 17.576 vị trí thay cho mình, mỗi máy cho một trong sáu thứ tự rôto. Những máy bombe đầu tiên này tìm ra một khóa ngày trong khoảng hai giờ.
+
+Tháng 12 năm 1938, người Đức phát thêm cho mỗi người điều khiển máy hai rôto nữa. Sáu thứ tự rôto thành sáu mươi. Một tháng sau, bảng cắm dây tăng từ sáu dây lên mười dây. Ba Lan không đủ tiền làm số máy bombe nhiều gấp mười. Ngày 24 tháng 7 năm 1939, người Ba Lan đem tất cả ra chia sẻ với người Pháp và người Anh.
+
+<DigDeeper title="Những chiếc khóa trong ngăn bàn">
+  Schmidt tiếp tục bán bí mật suốt bảy năm, trong đó có những cuốn sổ mã chứa khóa ngày của 38 tháng. Cấp trên của Rejewski, Thiếu tá Gwido Langer, khóa kín chúng lại và không bao giờ cho anh biết. Ông muốn các nhà giải mã của mình sẵn sàng cho ngày người điệp viên im lặng. Ngày đó đến ngay trước khi các rôto mới xuất hiện.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Một căn lán đầy kim đan
+
+Bletchley Park bắt đầu với hai trăm người và lớn dần lên tới bảy nghìn người. Các nhà giải mã ở đây còn học được cách đặt cược vào sự lười biếng của con người. Những người điều khiển máy mệt mỏi hay chọn khóa bức điện là các chữ nằm cạnh nhau trên bàn phím, như `QWE`. Có người thì dùng đi dùng lại cùng ba chữ, có lẽ là tên viết tắt của bạn gái. Những khóa như thế được gọi đùa là **cillies**, và các nhà giải mã thử chúng trước tiên.
+
+Máy bombe của Turing gánh phần việc nặng. Đến cuối năm 1941 đã có mười lăm chiếc chạy, “kêu lách cách như một triệu chiếc kim đan”. Vào ngày may mắn, một máy tìm ra khóa trong vòng một giờ, và sau đó mọi bức điện gửi trong ngày đều đọc được.
+
+Không có một từ mồi tốt, đặt đúng chỗ, thì máy bombe cũng vô dụng. Phần việc ấy vẫn do con người làm.
+
+<Check question="Bức điện bạn đọc được là HEUTE WETTER NULL SECHS REGEN UND NEBEL. Vì sao một bản tin như thế lại quý giá đến vậy?">
+  Nó có nghĩa là “Hôm nay, thời tiết lúc 6 giờ: mưa và sương mù”. Chẳng ai quan tâm đến sương mù. Nhưng bản tin đến đúng một giờ mỗi ngày với cùng những chữ ấy, nên rất dễ đoán. Một từ đoán đúng cho ra khóa của ngày, và khóa ấy mở được mọi bức điện khác.
+</Check>
+
+<DigDeeper title="Máy bombe vượt qua bảng cắm dây như thế nào">
+  Bản đầy đủ của cuốn sách giải thích lời giải của Turing. Trong một từ mồi dài, ông tìm các vòng lặp: chữ thứ nhất dẫn tới chữ thứ hai, chữ thứ hai dẫn tới chữ thứ ba, và chữ thứ ba quay về chữ thứ nhất. Giống như các chuỗi của Rejewski, những vòng lặp này có thể được thử theo cách làm cho các dây cắm triệt tiêu nhau.
+</DigDeeper>
+
+<DigDeeper title="Giữ kín việc phá mã">
+  Tin tức lấy được từ các bức điện Enigma có một tên mật: **Ultra**. Nó chỉ có ích chừng nào nước Đức còn tin Enigma an toàn. Vì vậy phe Đồng minh giấu kín những gì họ biết. Họ để cho một số tàu ngầm U-boat thoát đi. Trước khi tấn công những chiếc khác, họ cho một máy bay trinh sát bay qua trước, để cuộc tấn công trông như chuyện may rủi. Đôi khi họ còn gửi tin giả về việc đã trông thấy tàu. Một cuộc điều tra của Đức đổ lỗi cho vận rủi hoặc cho gián điệp. Họ cho rằng chuyện Enigma bị phá là không thể.
+</DigDeeper>
+
+<Label>Thử thách</Label>
+
+## Bản tin ban đêm
+
+<Challenge answer="JMP">
+  Bức điện này được gửi vào ban đêm: `DMTTITMTWYQADJCXFRNLZDFXDWEP`
+
+  Bạn chắc chắn nó có chứa `WETTER`. Hãy trượt từ mồi tới vị trí đầu tiên không có chữ nào trùng, rồi thử các vị trí rôto.
+
+  Ba chữ nào hiện trong các ô cửa sổ rôto?
+
+  <Try action="night" button="Tải bản tin ban đêm" />
+</Challenge>
+
+<Check question="Vì sao bạn không cần thử sáu vị trí đầu tiên?">
+  Ở mỗi vị trí đó, có một chữ của `WETTER` nằm dưới chính chữ ấy trong bản mật mã. Enigma không thể biến một chữ thành chính nó, nên những vị trí này bị loại mà không cần dò tìm gì cả.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Quy tắc để lại khuôn mẫu
+
+Các nhà giải mã giữ kín bí mật của họ suốt ba mươi năm. Turing, người góp công nhiều không kém bất kỳ ai, mất năm 1954 khi công việc của ông vẫn chưa ai biết đến.
+
+Cả hai cách tấn công đều thành công vì cùng một lý do. Điểm yếu của Enigma nằm ở những thói quen: một khóa gõ hai lần, một bản tin thời tiết mỗi sáng, một chữ không bao giờ được là chính nó. Máy móc làm theo quy tắc, và quy tắc để lại khuôn mẫu.
+
+Ở bên kia thế giới, các nhà giải mã Mỹ phải đối mặt với một cỗ máy khác, do Nhật Bản chế tạo từ các công tắc điện thoại: [máy Purple](/ciphers/purple).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *The Code Book*, chương 3. Các chuỗi của Rejewski và các từ mồi của Turing, cùng những bảng mà trang này dựa vào.
+- [Máy Enigma](/ciphers/enigma). Chính cỗ máy ấy, trên trang web này.
+- [Bletchley Park](https://bletchleypark.org.uk/). Các dãy nhà ở đây nay là bảo tàng.
+- [Crypto Museum: Enigma](https://www.cryptomuseum.com/crypto/enigma/). Cách đi dây của các rôto mà mô phỏng của chúng tôi dùng.

@@ -1,13 +1,17 @@
+import { useLocale } from "~/i18n";
 import styles from "./Marks.module.css";
 
 /** How one dot or dash is drawn: lit now, already sent, or plain. */
 export type MarkState = "now" | "sent" | undefined;
 
 const NAMES: Record<string, string> = { ".": "dot", "-": "dash" };
+/** The same names as a Vietnamese screen reader says them. */
+const SPOKEN_VI: Record<string, string> = { ".": "chấm", "-": "gạch" };
 
 /** A pattern of dots and dashes drawn as shapes, with the words for screen readers. */
 export function Marks({ code, stateOf }: { code: string; stateOf?: (mark: number) => MarkState }) {
-  const spoken = [...code].map((symbol) => NAMES[symbol]).join(" ");
+  const names = useLocale() === "vi" ? SPOKEN_VI : NAMES;
+  const spoken = [...code].map((symbol) => names[symbol]).join(" ");
   return (
     <span className={styles.marks} role="img" aria-label={spoken}>
       {[...code].map((symbol, mark) => (

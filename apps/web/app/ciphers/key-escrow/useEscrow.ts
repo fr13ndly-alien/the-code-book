@@ -9,6 +9,8 @@ import {
   type Held,
 } from "@codebook/cipher-engine/key-escrow";
 import { lettersOnly } from "@codebook/cipher-engine/text";
+import type { Locale } from "~/i18n";
+import { READER_NAMES_VI } from "./vi";
 
 /** One of the two agencies that each store half a key. */
 export type Agency = keyof Held;
@@ -66,20 +68,28 @@ function reduce(state: EscrowPageState, action: EscrowAction): EscrowPageState {
   }
 }
 
-/** A list in words: "Alice and Bob", "Alice, Bob and the police". */
-const inWords = (names: string[]) =>
-  names.length < 2 ? names.join("") : `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
+/** A list in words: "Alice and Bob", "Alice, Bob and the police". In Vietnamese, "và" joins the last two. */
+const inWords = (names: string[], and: string) =>
+  names.length < 2 ? names.join("") : `${names.slice(0, -1).join(", ")} ${and} ${names[names.length - 1]}`;
 
 /** Who can read the message right now, as one line of text. */
-export function readers(state: EscrowPageState): string {
+export function readers(state: EscrowPageState, locale: Locale): string {
   const names = whoCanRead(state);
-  return names.length === 2 ? `Only ${inWords(names)}` : inWords(names);
+  if (locale === "vi") {
+    const list = inWords(names.map((name) => READER_NAMES_VI[name] ?? name), "và");
+    return names.length === 2 ? `Chỉ ${list}` : list;
+  }
+  return names.length === 2 ? `Only ${inWords(names, "and")}` : inWords(names, "and");
 }
 
 /** What the police have on their desk, as one line of text. */
-export function policeView(state: EscrowPageState): string {
+export function policeView(state: EscrowPageState, locale: Locale): string {
   const view = whatPoliceCanRead(state);
   if (view.canRead) return view.text;
+  if (locale === "vi") {
+    if (view.key !== null) return `${view.text} (vô nghĩa: người gửi đã dùng một khóa chưa bao giờ được ký gửi)`;
+    return `${view.text} (${view.one ?? view.two ? "vô nghĩa: một nửa không phải là khóa" : "vẫn còn mã hóa"})`;
+  }
   if (view.key !== null) return `${view.text} (nonsense: the sender used a key that was never lodged)`;
   return `${view.text} (${view.one ?? view.two ? "nonsense: one half is not a key" : "still enciphered"})`;
 }

@@ -1,12 +1,14 @@
 import { BITS, charOf, type Column } from "@codebook/cipher-engine/binary";
 import { Board } from "~/components/sim/Board";
 import { Caption } from "~/components/sim/Caption";
+import { useT } from "~/i18n";
 import styles from "./BinaryBoard.module.css";
 import { columnsOf, type BinaryState } from "./useBinary";
 
 /** One character of the sum: its digits, the key's digits under them, and the result. */
 function Sum(props: { column: Column; keyRow: number; flips: number[]; onFlip: (digit: number) => void }) {
   const { column, keyRow } = props;
+  const t = useT();
   return (
     <li className={styles.sum}>
       <span className={styles.char}>{charOf(column.input)}</span>
@@ -23,7 +25,7 @@ function Sum(props: { column: Column; keyRow: number; flips: number[]; onFlip: (
           <button
             key={at}
             type="button"
-            aria-label={`Key digit ${bit}. Flip it`}
+            aria-label={t({ en: `Key digit ${bit}. Flip it`, vi: `Chữ số khóa ${bit}. Lật nó` })}
             aria-pressed={props.flips.includes(keyRow * BITS + at)}
             disabled={keyRow < 0}
             onClick={() => props.onFlip(keyRow * BITS + at)}
@@ -51,10 +53,11 @@ export function BinaryBoard({ state, onFlip }: { state: BinaryState; onFlip: (di
   const columns = columnsOf(state);
   const keyLength = [...state.key].length;
   const enciphering = state.mode === "encipher";
+  const t = useT();
 
   return (
     <Board>
-      <ol className={styles.sums} aria-label="The sum, one block per character">
+      <ol className={styles.sums} aria-label={t({ en: "The sum, one block per character", vi: "Phép cộng, mỗi ký tự một khối" })}>
         {columns.map((column, at) => (
           <Sum
             key={at}
@@ -67,8 +70,11 @@ export function BinaryBoard({ state, onFlip }: { state: BinaryState; onFlip: (di
       </ol>
       <Caption>
         {columns.length === 0
-          ? "Type below to fill the board."
-          : `Each block is one character. Top row: the ${enciphering ? "message" : "ciphertext"}. Middle row: the key. Bottom row: their sum, where a digit is 1 only if the two above it differ. A dot is a number with no printable character.`}
+          ? t({ en: "Type below to fill the board.", vi: "Gõ ở dưới để điền vào bảng." })
+          : t({
+              en: `Each block is one character. Top row: the ${enciphering ? "message" : "ciphertext"}. Middle row: the key. Bottom row: their sum, where a digit is 1 only if the two above it differ. A dot is a number with no printable character.`,
+              vi: `Mỗi khối là một ký tự. Hàng trên: ${enciphering ? "tin nhắn" : "bản mật mã"}. Hàng giữa: khóa. Hàng dưới: tổng của chúng, trong đó một chữ số là 1 chỉ khi hai chữ số phía trên nó khác nhau. Dấu chấm là một con số không ứng với ký tự in được nào.`,
+            })}
       </Caption>
     </Board>
   );

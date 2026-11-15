@@ -2,6 +2,7 @@ import { TOY_KEYS, TOY_LAMPS, toyAlphabet } from "@codebook/cipher-engine";
 import type { Dispatch } from "react";
 import type { ToyAction, ToyState } from "./useToyScrambler";
 import styles from "./ToyScrambler.module.css";
+import { useLocale, useT, type Locale } from "~/i18n";
 
 /** The drawing's own units. The SVG scales to the width it is given. */
 const VIEW = { width: 280, rowHeight: 26, top: 18 };
@@ -23,15 +24,19 @@ export function ToyScrambler({ toy, dispatch }: ToyScramblerProps) {
   // The drawing shows the scrambler as it stood when the last lamp lit, like the book's figures.
   const drawn = last ? last.position : toy.position;
   const alphabet = toyAlphabet(drawn);
+  const t = useT();
+  const locale = useLocale();
 
   return (
     <div className={styles.toy}>
       <p className={styles.hint}>
-        The book explains Enigma with six letters and one scrambler. Each key has a wire through the scrambler to
-        one lamp.
+        {t({
+          en: "The book explains Enigma with six letters and one scrambler. Each key has a wire through the scrambler to one lamp.",
+          vi: "Cuốn sách giải thích Enigma bằng sáu chữ và một bộ xáo trộn. Mỗi phím có một sợi dây đi qua bộ xáo trộn tới một bóng đèn.",
+        })}
       </p>
 
-      <Wiring alphabet={alphabet} litKey={last?.key ?? null} />
+      <Wiring alphabet={alphabet} litKey={last?.key ?? null} locale={locale} />
 
       <p className={styles.table}>
         {[...TOY_KEYS].map((key, row) => (
@@ -42,21 +47,21 @@ export function ToyScrambler({ toy, dispatch }: ToyScramblerProps) {
       </p>
 
       <p className={styles.hint} aria-live="polite">
-        {describe(toy)}
+        {describe(toy, locale)}
       </p>
 
-      <div className={styles.keys} role="group" aria-label="Keys of the six-letter model">
+      <div className={styles.keys} role="group" aria-label={t({ en: "Keys of the six-letter model", vi: "Các phím của mô hình sáu chữ" })}>
         {[...TOY_KEYS].map((key) => (
-          <button key={key} type="button" aria-label={`Press ${key}`} onClick={() => dispatch({ type: "press", key })}>
+          <button key={key} type="button" aria-label={t({ en: `Press ${key}`, vi: `Nhấn ${key}` })} onClick={() => dispatch({ type: "press", key })}>
             {key}
           </button>
         ))}
       </div>
 
       <dl className={styles.tape} aria-live="polite">
-        <dt>You typed</dt>
+        <dt>{t({ en: "You typed", vi: "Bạn đã gõ" })}</dt>
         <dd>{toy.typed || "…"}</dd>
-        <dt>Lamps lit</dt>
+        <dt>{t({ en: "Lamps lit", vi: "Đèn đã sáng" })}</dt>
         <dd className={styles.lamps}>{toy.lamps || "…"}</dd>
       </dl>
 
@@ -66,18 +71,27 @@ export function ToyScrambler({ toy, dispatch }: ToyScramblerProps) {
           checked={rotating}
           onChange={(event) => dispatch({ type: "setTurning", rotating: event.target.checked })}
         />
-        The scrambler turns after each letter (starts again)
+        {t({
+          en: "The scrambler turns after each letter (starts again)",
+          vi: "Bộ xáo trộn xoay sau mỗi chữ (bắt đầu lại)",
+        })}
       </label>
 
       <button type="button" className={styles.button} onClick={() => dispatch({ type: "restart" })}>
-        Start again
+        {t({ en: "Start again", vi: "Bắt đầu lại" })}
       </button>
     </div>
   );
 }
 
 /** Says in words what the drawing shows. */
-function describe({ last, rotating }: ToyState): string {
+function describe({ last, rotating }: ToyState, locale: Locale): string {
+  if (locale === "vi") {
+    if (!last) return "Nhấn một phím để lần theo sợi dây của nó.";
+    const lit = `${last.key} làm sáng đèn ${last.output}.`;
+    if (!rotating) return `${lit} Bộ xáo trộn đứng yên, nên ${last.key} luôn làm sáng đèn ${last.output}.`;
+    return `${lit} Rồi bộ xáo trộn xoay một nấc, nên với chữ tiếp theo, mọi sợi dây đều thấp xuống một hàng.`;
+  }
   if (!last) return "Press a key to follow its wire.";
   const lit = `${last.key} lit ${last.output}.`;
   if (!rotating) return `${lit} The scrambler stays still, so ${last.key} always lights ${last.output}.`;
@@ -85,12 +99,13 @@ function describe({ last, rotating }: ToyState): string {
 }
 
 /** Keys on the left, lamps on the right, and the six wires through the scrambler between them. */
-function Wiring({ alphabet, litKey }: { alphabet: string; litKey: string | null }) {
+function Wiring({ alphabet, litKey, locale }: { alphabet: string; litKey: string | null; locale: Locale }) {
   const litLamp = litKey ? alphabet[TOY_KEYS.indexOf(litKey)] : null;
-  const label = [...TOY_KEYS].map((key, row) => `${key} to ${alphabet[row]}`).join(", ");
+  const to = locale === "vi" ? "tới" : "to";
+  const label = [...TOY_KEYS].map((key, row) => `${key} ${to} ${alphabet[row]}`).join(", ");
 
   return (
-    <svg className={styles.wiring} viewBox={`0 0 ${VIEW.width} ${HEIGHT}`} role="img" aria-label={`Wiring: ${label}`}>
+    <svg className={styles.wiring} viewBox={`0 0 ${VIEW.width} ${HEIGHT}`} role="img" aria-label={locale === "vi" ? `Đường dây: ${label}` : `Wiring: ${label}`}>
       <rect
         className={styles.scrambler}
         x={X.scramblerIn}

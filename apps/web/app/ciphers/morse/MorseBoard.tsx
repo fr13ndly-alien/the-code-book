@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { candidates, decode, type Pulse, type Sign } from "@codebook/cipher-engine/morse";
 import { Board } from "~/components/sim/Board";
 import { Caption } from "~/components/sim/Caption";
+import { useLocale, useT, type Locale } from "~/i18n";
 import { Marks, type MarkState } from "./Marks";
 import styles from "./MorseBoard.module.css";
 import { MorseChart } from "./MorseChart";
@@ -23,6 +24,8 @@ function useSendTimer(state: MorseState, pulse: Pulse | undefined, onTick: () =>
 
 /** The lamp, the message as dots and dashes, and the Morse table. */
 export function MorseBoard(props: { state: MorseState; onTick: () => void; onFinish: () => void }) {
+  const t = useT();
+  const locale = useLocale();
   const { state } = props;
   const pulses = timeline(state);
   const current = state.sending ? pulses[state.sent] : undefined;
@@ -35,15 +38,19 @@ export function MorseBoard(props: { state: MorseState; onTick: () => void; onFin
 
   return (
     <Board>
-      {sending && <div className={styles.lamp} data-on={current?.on ?? false} role="img" aria-label="Signal lamp" />}
-      {!sending && state.tape && <Message label="Signals from the wire" signs={decode(state.tape)} hideLetters />}
+      {sending && <div className={styles.lamp} data-on={current?.on ?? false} role="img" aria-label={t({ en: "Signal lamp", vi: "Đèn tín hiệu" })} />}
+      {!sending && state.tape && <Message label={t({ en: "Signals from the wire", vi: "Tín hiệu từ đường dây" })} signs={decode(state.tape)} hideLetters />}
       <Message
-        label={sending ? "Your message in Morse" : "What you have keyed"}
+        label={
+          sending
+            ? t({ en: "Your message in Morse", vi: "Tin nhắn của bạn bằng mã Morse" })
+            : t({ en: "What you have keyed", vi: "Những gì bạn đã gõ" })
+        }
         signs={signs}
         stateOf={stateOf}
         nowSign={current?.sign}
       />
-      <Caption>{captionFor(state)}</Caption>
+      <Caption>{captionFor(state, locale)}</Caption>
       <MorseChart on={sending ? (nowSending ? [nowSending] : []) : candidates(halfKeyed(state))} />
     </Board>
   );
@@ -56,7 +63,16 @@ function markState(state: MorseState, pulses: Pulse[], sign: number, mark: numbe
   return at < state.sent ? "sent" : undefined;
 }
 
-function captionFor(state: MorseState) {
+function captionFor(state: MorseState, locale: Locale) {
+  if (locale === "vi") {
+    if (state.mode === "send")
+      return "Một gạch dài bằng ba chấm. Các khoảng lặng giữa chữ và giữa từ cũng là một phần của mã.";
+    const half = halfKeyed(state);
+    if (half === "") return "Nhấn “Chấm” hoặc “Gạch” để bắt đầu một chữ. Bảng cho thấy mọi chữ mà nó có thể trở thành.";
+    const left = candidates(half);
+    if (left.length === 0) return "Không có chữ nào bắt đầu như thế này. Hãy xóa đi và thử lại.";
+    return `${left.length} trên 36 ký hiệu bắt đầu như thế này. Nhấn “Chữ tiếp” khi chữ của bạn đã xong.`;
+  }
   if (state.mode === "send") return "A dash lasts as long as three dots. The gaps between letters and words are part of the code.";
   const half = halfKeyed(state);
   if (half === "") return "Press Dot or Dash to start a letter. The table shows every letter it could become.";
@@ -73,11 +89,12 @@ function Message(props: {
   stateOf?: (sign: number) => (mark: number) => MarkState;
   nowSign?: number;
 }) {
+  const t = useT();
   return (
     <ol className={styles.message} aria-label={props.label}>
       {props.signs.map((sign, index) =>
         sign.char === " " ? (
-          <li key={index} className={styles.wordGap} aria-label="gap between words" />
+          <li key={index} className={styles.wordGap} aria-label={t({ en: "gap between words", vi: "khoảng lặng giữa hai từ" })} />
         ) : (
           <li key={index} className={styles.card} data-now={index === props.nowSign}>
             {!props.hideLetters && <span className={styles.char}>{sign.char}</span>}

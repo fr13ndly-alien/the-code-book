@@ -1,0 +1,140 @@
+{/*
+  Vietnamese translation of story.mdx. Follows docs/i18n/vi-glossary.md.
+  This cipher is in the full edition of The Code Book only (chapter 2).
+  Dates and numbers for the Great Cipher and the Mantua cipher were checked
+  against the sources in Further reading. The wording is ours.
+*/}
+
+<Standfirst>
+  Cho những chữ bận rộn thêm nhiều lớp hóa trang, và các cột cao của biểu đồ tần suất tan biến.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Lần đếm chẳng tìm ra gì
+
+Hãy hình dung một nhà giải mã ngồi bên bàn làm việc, vài năm sau khi Nữ hoàng Mary xứ Scotland bị chém đầu. Trước mặt ông là một bức thư bị bắt được. Nó toàn là số, từ `00` đến `99`.
+
+Ông biết phải làm gì. Ông đếm từng con số và chờ một con số nổi bật lên, như chữ `E` lúc nào cũng vậy. Chẳng có số nào nổi bật. Con số nào cũng xuất hiện khoảng một lần trong một trăm. Không có cột cao nào để bám vào, cũng chẳng có chữ hiếm nào.
+
+Ai đó đã là phẳng cả ngôn ngữ. Làm sao một mật mã có thể khiến mọi ký hiệu đều hay gặp như nhau, khi các chữ đằng sau chúng thì không?
+
+<Label>Thử xem</Label>
+
+## Xem cột cao biến mất
+
+Trình mô phỏng có hai biểu đồ. Biểu đồ trên đếm các chữ của một tin nhắn. Biểu đồ dưới đếm các con số thay cho chúng. Hãy đoán trước: `E` là cột cao nhất ở trên. Điều gì xảy ra với nó ở bên dưới?
+
+<Try action="duke" button="Mở bức thư của ngài công tước">
+  Chạm vào cột `E` cao trong biểu đồ trên. Các con số của nó sáng lên trong bảng và trong biểu đồ dưới. Hãy đếm các cột sáng.
+</Try>
+
+<Check question="Cột E cao đã đi đâu?">
+  Nó bị cắt thành mười hai phần. `E` có mười hai con số khác nhau, và người gửi chọn một trong số đó. Mỗi con số chỉ gánh một phần mười hai công việc, nên mỗi số chỉ tạo ra một cột thấp.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Nhiều mặt nạ cho những chữ bận rộn
+
+### Một trăm con số để chia nhau
+
+Trong **mật mã thay thế đồng âm**, một chữ có thể có nhiều ký hiệu thay thế. Cái tên này đến từ những từ Hy Lạp có nghĩa là “cùng âm”. Điều khéo léo nằm ở chỗ mỗi chữ được bao nhiêu ký hiệu.
+
+`A` chiếm khoảng 8% chữ trong tiếng Anh, nên nó được tám con số. `E` chiếm khoảng 12%, nên nó được mười hai. Những chữ hiếm như `Q` và `Z` mỗi chữ được một số. Gộp lại, 26 chữ dùng hết mọi con số từ `00` đến `99`.
+
+Bảng trên trình mô phỏng chính là khóa. Người gửi và người nhận đều phải giữ cùng một bảng.
+
+<Try>
+  Nhấn ▲ cạnh “Bảng” để chia lại các con số. Chữ nào cũng giữ nguyên phần của mình, nhưng các con số đổi chỗ. Nhấn ▼ để quay về bảng 1.
+</Try>
+
+### Chọn số nào cũng được
+
+Để mã hóa một chữ, hãy nhìn xuống cột của nó và viết một con số bất kỳ trong cột. Lần sau chữ đó xuất hiện, hãy chọn lại.
+
+Giờ hãy nghĩ về việc đếm. `A` chiếm 8% một tin nhắn, và phần đó được chia cho tám con số. Vậy mỗi con số chiếm khoảng 1%. Phép tính ấy đúng với mọi chữ. Cuối cùng con số nào cũng chiếm khoảng 1% bản mật mã.
+
+Một tin nhắn ngắn không bao giờ phẳng hoàn toàn. Do tình cờ, có số xuất hiện hai lần, có số chẳng xuất hiện lần nào. Điều quan trọng là không có số nào vượt hẳn lên trên các số khác.
+
+<Try action="blank" button="Xóa tin nhắn">
+  Gõ `SEE THE BEES` (hãy xem những con ong) và nhìn con số dưới mỗi chữ `E`. Rồi nhấn ▲ cạnh “Chọn lại các con số”. Các con số thay đổi, còn tin nhắn thì không.
+</Try>
+
+### Chỉ một đường quay về
+
+Với người nhận, đọc tin nhắn thật dễ. Một chữ có nhiều con số, nhưng mỗi con số chỉ thuộc về một chữ. Vậy nên chỉ có đúng một đường quay về.
+
+Hãy nhớ điều đó. Nó giúp mọi việc đơn giản cho một người bạn có bảng trong tay. Nó cũng sẽ giúp cả kẻ thù không có bảng.
+
+<Try action="duke" button="Mở lại bức thư của ngài công tước">
+  Đặt “Tôi muốn” thành “Giải mã”. Các con số chuyển vào ô nhập và các chữ hiện ra trở lại. Chạm vào bất kỳ con số nào trong tin nhắn để xem chữ duy nhất của nó trong bảng.
+</Try>
+
+<Label>Câu chuyện</Label>
+
+## Một lối đi ở giữa
+
+Sau cái chết của Mary, ai cũng biết mật mã thay thế thường không an toàn. Một mật mã mạnh hơn nhiều, mật mã Vigenère, đã có từ trước. Nhưng nó chậm và rắc rối khi dùng. Một viên thư ký bận rộn với cả chồng thư rất dễ mắc lỗi.
+
+Vì vậy những người lập mã tìm một thứ nằm ở giữa. Mật mã đồng âm gần nhanh bằng mật mã thay thế thường, mà cách đếm đơn giản lại không làm gì được nó.
+
+Ý tưởng này đã có từ lâu. Mật mã đồng âm cổ nhất mà chúng ta biết được làm ra ở Mantua, nước Ý, năm 1401. Nó đã cho mỗi nguyên âm vài ký hiệu. Những mật mã về sau mở rộng mẹo này ra nhiều chữ hơn, rồi tới cả các phần của từ.
+
+<DigDeeper title="Mật mã Vĩ đại của vua Louis XIV">
+  Người họ hàng hoành tráng nhất của mật mã này ra đời ở Pháp. Antoine Rossignol và con trai là Bonaventure đã tạo ra Mật mã Vĩ đại cho vua Louis XIV. Nó dùng 587 con số, và chúng thay cho các âm tiết, không phải từng chữ cái. Nó còn có cả bẫy: một con số bảo người đọc bỏ qua con số đứng trước nó.
+
+  Sau khi mật mã thôi được dùng, không ai đọc nổi những bức thư bí mật của nhà vua. Năm 1890, một số bức được giao cho một nhà giải mã của quân đội Pháp tên là Étienne Bazeries. Ông phá được mật mã vào khoảng năm 1893, sau chừng ba năm làm việc. Lối vào của ông là một phỏng đoán: một dãy số lặp lại, `124-22-125-46-345`, ghép thành *les ennemis*, “kẻ thù”.
+
+  Một bức thư ông đọc được nói về một vị tướng bị thất sủng, Bulonde. Bazeries đoán ông này chính là người tù nổi tiếng gọi là Người Đeo Mặt Nạ Sắt. Các nhà sử học về sau nghi ngờ điều đó.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Chữ Q làm lộ bí mật
+
+Làm phẳng kết quả đếm sẽ giấu được mỗi chữ xuất hiện bao nhiêu lần. Nhưng nó không giấu được chữ nào đứng cạnh chữ nào. Chữ nào cũng có thói quen. Thói quen nổi tiếng nhất là trong tiếng Anh, sau `Q` gần như lúc nào cũng là `U`.
+
+`Q` hiếm, nên nó chỉ có một con số. `U` có ba. Vậy ở đâu đó trong một bản mật mã dài, có một con số mà theo sau nó chỉ luôn là cùng ba con số. Tìm ra nó, và bạn có ngay `Q` cùng mọi chữ `U`. Những thói quen khác cho thêm nhiều chữ nữa, và mỗi chữ tìm được lại khiến chữ sau dễ tìm hơn.
+
+<Try action="queen" button="Mở một bức thư đầy chữ Q">
+  Con số `84` đang được chọn. Hãy đọc dòng chú thích: những số nào đứng sau nó? Giờ hãy chạm vào một con số trong cột `E` của bảng và so sánh.
+</Try>
+
+Còn một lý do sâu xa hơn. Mỗi con số thay cho một chữ và không bao giờ đổi. Vậy đây vẫn là một mật mã thay thế đơn bảng (chỉ một bảng chữ mã), chỉ khoác một chiếc áo khéo léo. Những nhà giải mã kiên nhẫn đánh bại nó bằng các công cụ cũ của họ: cặp chữ, khuôn mẫu và những từ đoán trước.
+
+<Label>Thử thách</Label>
+
+## Mười lăm con số
+
+<Challenge answer="NO BAR STANDS TALL">
+  Một gián điệp đưa bạn một mẩu giấy. Nó được viết bằng bảng 1:
+
+  `72 09 97 98 85 15 35 82 58 87 22 32 20 34 11`
+
+  Hãy tìm từng con số trong bảng, hoặc dựng bàn giải mã rồi gõ các con số vào. Mẩu giấy nói gì?
+
+  <Try action="desk" button="Dựng bàn giải mã" />
+</Challenge>
+
+<Check question="Vì sao E được nhiều con số hơn Q?">
+  Vì `E` làm nhiều việc hơn hẳn. Nếu mỗi chữ chỉ có một số, con số của `E` sẽ xuất hiện thường gấp khoảng một trăm lần con số của `Q`. Mười hai con số cho `E` và một số cho `Q` khiến mọi con số đều hay gặp gần như nhau.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Giấu một thói quen là chưa đủ
+
+Mật mã đồng âm cho thấy cách những người lập mã suy nghĩ. Họ tìm ra công cụ mà kẻ thù dùng và lấy mất nó. Nhưng họ để nguyên những thói quen khác của ngôn ngữ, và chừng đó là đủ cho một nhà giải mã kiên nhẫn.
+
+Dù sao thì không phải ai cũng muốn thêm sức mạnh ấy. Mật mã thay thế thường dễ đến mức người ta cứ dùng nó suốt nhiều thế kỷ, chỉ khoác lên những ký hiệu mới. Vào thế kỷ 18, Hội Tam Điểm ghi chép sổ sách bằng một mật mã chỉ gồm những đường kẻ và dấu chấm: [mật mã chuồng heo](/ciphers/pigpen).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *The Code Book* (bản đầy đủ, 1999), chương 2. Mật mã đồng âm, điểm yếu `Q` và `U`, và Mật mã Vĩ đại.
+- Simon Singh, [Phòng Đen: mật mã đồng âm](https://simonsingh.net/The_Black_Chamber/homophonic_cipher.html). Trang riêng của tác giả, có một mật mã để thử (tiếng Anh).
+- David Kahn, *The Codebreakers: The Story of Secret Writing* (Những người giải mã: câu chuyện về chữ viết bí mật; 1967, bản sửa đổi 1996). Mật mã Mantua năm 1401 và cha con nhà Rossignol.
+- Wikipedia, [Great Cipher](https://en.wikipedia.org/wiki/Great_Cipher) (Mật mã Vĩ đại). 587 con số, Bazeries và bức thư về Bulonde, có nguồn dẫn.
+- Wikipedia, [Substitution cipher](https://en.wikipedia.org/wiki/Substitution_cipher) (Mật mã thay thế). Mật mã Mantua, mật mã đồng âm sớm nhất được biết đến.

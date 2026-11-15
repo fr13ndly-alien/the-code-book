@@ -1,4 +1,5 @@
 import { WHEEL_LENGTHS, WHEEL_PINS, type Step } from "@codebook/cipher-engine/lorenz";
+import { useT } from "~/i18n";
 import styles from "./Adding.module.css";
 
 /** How many pins to show on each side of the pin in use. */
@@ -19,24 +20,36 @@ function Pins({ wheel, pin }: { wheel: number; pin: number }) {
 
 /** The sum for one character, impulse by impulse: message hole, plus wheel pin, gives output hole. */
 export function Adding({ step }: { step: Step }) {
+  const t = useT();
   return (
     <table className={styles.table}>
       <caption>
-        Adding the key to <b>{step.input}</b>. Alike gives 0, different gives 1.
+        {t({
+          en: (
+            <>
+              Adding the key to <b>{step.input}</b>. Alike gives 0, different gives 1.
+            </>
+          ),
+          vi: (
+            <>
+              Cộng khóa vào <b>{step.input}</b>. Giống nhau cho 0, khác nhau cho 1.
+            </>
+          ),
+        })}
       </caption>
       <thead>
         <tr>
-          <th scope="col">Wheel, pin in use</th>
-          <th scope="col">Tape</th>
-          <th scope="col">+ Key</th>
-          <th scope="col">= Out</th>
+          <th scope="col">{t({ en: "Wheel, pin in use", vi: "Bánh xe, chốt đang dùng" })}</th>
+          <th scope="col">{t({ en: "Tape", vi: "Băng" })}</th>
+          <th scope="col">{t({ en: "+ Key", vi: "+ Khóa" })}</th>
+          <th scope="col">{t({ en: "= Out", vi: "= Ra" })}</th>
         </tr>
       </thead>
       <tbody>
         {step.pins.map((pin, wheel) => (
           <tr key={wheel}>
             <th scope="row">
-              {wheel + 1}: {pin + 1} of {WHEEL_LENGTHS[wheel]} <Pins wheel={wheel} pin={pin} />
+              {wheel + 1}: {pin + 1} {t({ en: "of", vi: "/" })} {WHEEL_LENGTHS[wheel]} <Pins wheel={wheel} pin={pin} />
             </th>
             <td>{step.inputBits[wheel]}</td>
             <td className={styles.key}>{step.keyBits[wheel]}</td>
@@ -44,7 +57,7 @@ export function Adding({ step }: { step: Step }) {
           </tr>
         ))}
         <tr>
-          <th scope="row">As a character</th>
+          <th scope="row">{t({ en: "As a character", vi: "Thành ký tự" })}</th>
           <td>{step.input}</td>
           <td />
           <td className={styles.out}>{step.output}</td>

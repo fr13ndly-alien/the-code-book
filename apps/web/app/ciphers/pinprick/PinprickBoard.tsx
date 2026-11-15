@@ -1,5 +1,6 @@
 import { Board } from "~/components/sim/Board";
 import { Caption, Letters } from "~/components/sim/Caption";
+import { useLocale, useT, type Locale } from "~/i18n";
 import styles from "./PinprickBoard.module.css";
 import { hiding, pricks, type PinprickState } from "./usePinprick";
 
@@ -10,6 +11,7 @@ const wordsOf = (text: string) => [...text.matchAll(/\S+/g)].map((match) => ({ s
 
 /** A newspaper page whose letters can be pricked. Held to the light, only the pricked ones show. */
 export function PinprickBoard({ state, onPrick }: { state: PinprickState; onPrick: (position: number) => void }) {
+  const locale = useLocale();
   const holes = new Set(pricks(state));
 
   return (
@@ -31,19 +33,20 @@ export function PinprickBoard({ state, onPrick }: { state: PinprickState; onPric
           ))}
         </div>
       </div>
-      <Caption>{captionFor(state)}</Caption>
+      <Caption>{captionFor(state, locale)}</Caption>
     </Board>
   );
 }
 
 /** One character of the page: a button if it is a letter, plain text if it is punctuation. */
 function Character(props: { char: string; pricked: boolean; onPrick: () => void }) {
+  const t = useT();
   if (!IS_LETTER.test(props.char)) return <span className={styles.mark}>{props.char}</span>;
   return (
     <button
       type="button"
       className={styles.letter}
-      aria-label={props.pricked ? `${props.char}, pricked` : props.char}
+      aria-label={props.pricked ? t({ en: `${props.char}, pricked`, vi: `${props.char}, đã châm lỗ` }) : props.char}
       aria-pressed={props.pricked}
       onClick={props.onPrick}
     >
@@ -52,9 +55,22 @@ function Character(props: { char: string; pricked: boolean; onPrick: () => void 
   );
 }
 
-function captionFor(state: PinprickState) {
-  if (state.mode === "hand") return "Tap a letter to prick a hole under it. Tap it again to mend the hole.";
+function captionFor(state: PinprickState, locale: Locale) {
+  const vi = locale === "vi";
+  if (state.mode === "hand") {
+    return vi
+      ? "Chạm vào một chữ để châm một lỗ dưới nó. Chạm lần nữa để vá lỗ."
+      : "Tap a letter to prick a hole under it. Tap it again to mend the hole.";
+  }
   const { positions, left } = hiding(state);
+  if (left !== "" && vi) {
+    return (
+      <>
+        Hết trang rồi. Sau lỗ cuối cùng không còn chữ <Letters>{left[0]}</Letters> nào, nên không thể giấu{" "}
+        <Letters>{left}</Letters>.
+      </>
+    );
+  }
   if (left !== "") {
     return (
       <>
@@ -63,5 +79,6 @@ function captionFor(state: PinprickState) {
       </>
     );
   }
+  if (vi) return `${positions.length} lỗ, mỗi lỗ dưới một chữ, ứng với từng chữ trong bí mật của bạn, theo đúng thứ tự.`;
   return `${positions.length} holes, one under a letter for each letter of your secret, in order.`;
 }

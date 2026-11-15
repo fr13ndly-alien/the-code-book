@@ -5,6 +5,7 @@ import { LetterBlock } from "~/ciphers/babbage/LetterBlock";
 import { RepeatsTable } from "~/ciphers/babbage/RepeatsTable";
 import { Caption, Letters } from "~/components/sim/Caption";
 import { FrequencyBars } from "~/components/sim/FrequencyBars";
+import { useT } from "~/i18n";
 import styles from "./Bench.module.css";
 
 /** The table shows the longest repeats only: they are the least likely to be accidents. */
@@ -25,6 +26,7 @@ export function VigenereBench(props: {
   repeat?: number;
   onPickRepeat: (row: number) => void;
 }) {
+  const t = useT();
   const { ciphertext, keyLength, keyShifts, position } = props;
   const repeats = useMemo(() => findRepeats(ciphertext).slice(0, ROWS_SHOWN), [ciphertext]);
   const picked = props.repeat === undefined ? undefined : repeats[props.repeat];
@@ -36,7 +38,7 @@ export function VigenereBench(props: {
   return (
     <>
       <LetterBlock
-        label="The ciphertext"
+        label={t({ en: "The ciphertext", vi: "Bản mật mã" })}
         letters={ciphertext}
         lit={(at) => picked !== undefined && (inCopy(letterIndex(at), picked.first) || inCopy(letterIndex(at), picked.second))}
       />
@@ -44,29 +46,58 @@ export function VigenereBench(props: {
         <RepeatsTable repeats={repeats} keyLength={keyLength} picked={props.repeat} onPick={props.onPickRepeat} />
       </div>
       <Caption>
-        {picked && (
-          <>
-            <Letters>{picked.sequence}</Letters> appears twice, {picked.spacing} letters apart.{" "}
-          </>
-        )}
+        {picked &&
+          t({
+            en: (
+              <>
+                <Letters>{picked.sequence}</Letters> appears twice, {picked.spacing} letters apart.{" "}
+              </>
+            ),
+            vi: (
+              <>
+                <Letters>{picked.sequence}</Letters> xuất hiện hai lần, cách nhau {picked.spacing} chữ.{" "}
+              </>
+            ),
+          })}
         {repeats.length === 0
-          ? "No run of four letters appears twice in this text, so there is no gap to measure."
-          : `A keyword of ${keyLength} letters would explain ${fits} of these ${repeats.length} repeats.`}
+          ? t({
+              en: "No run of four letters appears twice in this text, so there is no gap to measure.",
+              vi: "Trong văn bản này không có chuỗi bốn chữ nào xuất hiện hai lần, nên không có khoảng cách nào để đo.",
+            })
+          : t({
+              en: `A keyword of ${keyLength} letters would explain ${fits} of these ${repeats.length} repeats.`,
+              vi: `Một từ khóa dài ${keyLength} chữ sẽ giải thích được ${fits} trong số ${repeats.length} lần lặp này.`,
+            })}
       </Caption>
       <Caption>
-        Key letter {position + 1} of {keyLength} enciphered {slice.length} of the letters. Trying{" "}
-        <Letters>{letterAt(shift)}</Letters>: solid bars are these letters, outlines are ordinary English.
+        {t({
+          en: (
+            <>
+              Key letter {position + 1} of {keyLength} enciphered {slice.length} of the letters. Trying{" "}
+              <Letters>{letterAt(shift)}</Letters>: solid bars are these letters, outlines are ordinary English.
+            </>
+          ),
+          vi: (
+            <>
+              Chữ khóa thứ {position + 1} trên {keyLength} đã mã hóa {slice.length} chữ. Đang thử{" "}
+              <Letters>{letterAt(shift)}</Letters>: cột đặc là các chữ này, cột viền là tiếng Anh bình thường.
+            </>
+          ),
+        })}
       </Caption>
       <div className={styles.scroll}>
         <FrequencyBars
-          label={`Letter counts for key letter ${position + 1} with a shift of ${shift}, compared with English`}
+          label={t({
+            en: `Letter counts for key letter ${position + 1} with a shift of ${shift}, compared with English`,
+            vi: `Số lần xuất hiện của mỗi chữ với chữ khóa thứ ${position + 1}, độ dịch ${shift}, so với tiếng Anh`,
+          })}
           symbols={[...ALPHABET]}
           values={countsAfterShift(slice, shift)}
           compare={ENGLISH_FREQUENCY}
         />
       </div>
       <LetterBlock
-        label="The plaintext so far"
+        label={t({ en: "The plaintext so far", vi: "Bản rõ tới giờ" })}
         letters={applyKey(ciphertext, keyShifts)}
         lit={(at) => letterIndex(at) >= 0 && letterIndex(at) % keyLength === position}
         tone="lamp"

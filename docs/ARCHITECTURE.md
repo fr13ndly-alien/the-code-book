@@ -133,11 +133,33 @@ No file lists the ciphers. Two lookups find them:
 
 So adding a cipher never means editing a shared file. A new route folder does need a restart of the dev server.
 
+## Two languages
+
+The site is in English and Vietnamese. English pages live at `/…` and Vietnamese pages at `/vi/…`.
+
+- **One route, two addresses.** Every route is declared with an optional segment, `vi?/ciphers/<slug>`, so both addresses use the same route. Switching language changes the address but keeps the page mounted, and the simulator keeps its state.
+- **The address decides the language.** `useLocale()` in `app/i18n.ts` reads it from the path. There is no language state to keep in step.
+- **The toggle** (`components/LanguageToggle.tsx`) sits at the top right of every page. It links to the same page in the other language and remembers the choice in the browser. On the first page of a later visit, a reader who chose Vietnamese is sent to the Vietnamese address.
+- **What gets translated, and where:**
+
+| Text | Where the Vietnamese lives |
+|---|---|
+| Page frame, menu, story blocks, shared fields | `UI` in `app/i18n.ts` |
+| A cipher's title, era, hook, first step, source | The `vi` field of its `meta.ts` |
+| Chapter titles and summaries | The `vi` field in `chapters.ts`; titles follow the Vietnamese edition of the book |
+| The story | `story.vi.mdx` beside `story.mdx`. Same parts, same button actions, same challenge answers. |
+| Labels and captions in a cipher's board and controls | Inline, as `t({ en: "…", vi: "…" })` with `const t = useT()` |
+
+- **Cipher data is not translated.** Example messages, keys and challenge answers stay as the book gives them, in A to Z. The Vietnamese text explains what they mean.
+- **Links in a story stay in its language.** `<Story>` turns `/ciphers/…` links into `/vi/ciphers/…` on Vietnamese pages.
+
+`npm run check:i18n` checks that every page has a Vietnamese story with the same shape as the English one. The wording rules are in [i18n/vi-glossary.md](i18n/vi-glossary.md).
+
 ## The build
 
 `npm run build` does this:
 
-1. Reads the routes and renders each one to `build/client/<path>/index.html`. The story text is in the HTML, so pages can be read and indexed before any script runs.
+1. Reads the routes and renders each one, in both languages, to `build/client/<path>/index.html` and `build/client/vi/<path>/index.html`. The story text is in the HTML, so pages can be read and indexed before any script runs.
 2. Splits the JavaScript per route. A reader of the Caesar page never downloads three.js.
 3. Writes a fallback page for addresses that were not prerendered.
 
@@ -149,6 +171,7 @@ So adding a cipher never means editing a shared file. A new route folder does ne
 |---|---|---|
 | Engine tests | `npm test` | Each cipher matches a published example, and each page's challenge has the stated answer |
 | Types | `npm run typecheck` | Engine and site agree on every call |
+| Translation | `npm run check:i18n` | Every page has a Vietnamese story with the same parts, buttons, answers and links as the English one |
 | Coverage | `npm run check:coverage` | Every item in [COVERAGE.md](COVERAGE.md) names a page that exists and contains the quoted words |
 | Build | `npm run build` | Every page renders to HTML |
 

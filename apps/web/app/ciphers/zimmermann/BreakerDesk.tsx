@@ -1,4 +1,5 @@
 import { INTERCEPT, UNKNOWN } from "@codebook/cipher-engine/zimmermann";
+import { useT } from "~/i18n";
 import styles from "./Desk.module.css";
 import { readingsOf, type ZimmermannState } from "./useZimmermann";
 
@@ -8,6 +9,7 @@ export function BreakerDesk(props: {
   onPick: (group: number) => void;
   onGuess: (word: string) => void;
 }) {
+  const t = useT();
   const { state } = props;
   const readings = readingsOf(state);
   const used = Object.values(state.guesses);
@@ -15,7 +17,7 @@ export function BreakerDesk(props: {
   return (
     <>
       {INTERCEPT.telegrams.map((telegram, row) => (
-        <ol key={row} className={styles.telegram} aria-label={`Intercepted telegram ${row + 1}`}>
+        <ol key={row} className={styles.telegram} aria-label={t({ en: `Intercepted telegram ${row + 1}`, vi: `Bức điện bị chặn bắt số ${row + 1}` })}>
           {telegram.map((group, index) => (
             <li key={index}>
               <Group
@@ -29,7 +31,7 @@ export function BreakerDesk(props: {
           ))}
         </ol>
       ))}
-      <ul className={styles.suspects} aria-label="Words it might be">
+      <ul className={styles.suspects} aria-label={t({ en: "Words it might be", vi: "Những từ mà nó có thể là" })}>
         {INTERCEPT.suspects.map((word) => (
           <li key={word}>
             <button

@@ -1,5 +1,6 @@
 import { read, type Guesses } from "@codebook/cipher-engine/frequency-analysis";
 import { indexOfLetter } from "@codebook/cipher-engine/text";
+import { useT } from "~/i18n";
 import styles from "./WorkingText.module.css";
 
 /**
@@ -12,8 +13,9 @@ export function WorkingText(props: {
   picked?: string;
   onPick: (cipher: string) => void;
 }) {
+  const t = useT();
   return (
-    <p className={styles.text} aria-label="The message so far">
+    <p className={styles.text} aria-label={t({ en: "The message so far", vi: "Tin nhắn tới giờ" })}>
       {props.ciphertext.split(/\s+/).map((word, at) => (
         <span key={at} className={styles.word}>
           {read(word, props.guesses).map(({ cipher, plain }, i) =>
@@ -25,7 +27,11 @@ export function WorkingText(props: {
                 type="button"
                 data-solved={plain !== undefined}
                 aria-pressed={cipher === props.picked}
-                aria-label={plain ? `Cipher ${cipher}, read as ${plain}` : `Cipher ${cipher}, not solved`}
+                aria-label={
+                  plain
+                    ? t({ en: `Cipher ${cipher}, read as ${plain}`, vi: `Chữ mã ${cipher}, đọc là ${plain}` })
+                    : t({ en: `Cipher ${cipher}, not solved`, vi: `Chữ mã ${cipher}, chưa giải` })
+                }
                 onClick={() => props.onPick(cipher)}
               >
                 {plain?.toLowerCase() ?? cipher}

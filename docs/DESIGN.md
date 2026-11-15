@@ -134,6 +134,12 @@ Most ciphers are ideas on paper, so most simulators are flat: alphabets, grids, 
 
 Two devices are 3D because their shape is the point: **Enigma** (keyboard, rotors, lampboard, plugboard) and the **scytale** (a strip wound round a rod). Both are built from simple shapes in code, lettered with textures drawn at run time, and redrawn only when something changes, which keeps them light on a phone.
 
+## Two languages
+
+The site is in English and Vietnamese. A small EN | VI switch sits at the top right of every page; on narrow phones it shows only the language you can switch to. Switching keeps your place: the same page, the same simulator settings, the same story open.
+
+The Vietnamese is our own translation of our English, not text from the Vietnamese edition of the book. It does use that edition's chapter titles and terms (*Mật mã: Từ cổ điển đến lượng tử*, NXB Trẻ), so readers of the Vietnamese book recognise them. Cipher letters and example messages stay in A to Z, as the book gives them, with their meaning explained in Vietnamese. The words we use are listed in [i18n/vi-glossary.md](i18n/vi-glossary.md).
+
 ## Phones
 
 The site is designed for a phone first.

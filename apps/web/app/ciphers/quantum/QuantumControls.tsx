@@ -2,6 +2,7 @@ import type { Dispatch } from "react";
 import type { Bit, Run, Scheme } from "@codebook/cipher-engine/quantum";
 import { Button, Controls, Row } from "~/components/sim/Controls";
 import { Choice, Output, Stepper } from "~/components/sim/Fields";
+import { useLocale, useT } from "~/i18n";
 import { outcome, STEPS, type QuantumAction, type QuantumState } from "./useQuantum";
 
 const SIZES = ["16", "32", "64"] as const;
@@ -25,6 +26,8 @@ const eveChoice = (state: QuantumState) => (state.eveHidden ? "" : state.eve ? "
 
 /** The HTML controls of the quantum page: the step, the key, Eve, and new photons. */
 export function QuantumControls({ state, dispatch }: { state: QuantumState; dispatch: Dispatch<QuantumAction> }) {
+  const t = useT();
+  const locale = useLocale();
   const next = STEPS[state.stage];
   const count = state.run.aliceBits.length;
 
@@ -32,34 +35,42 @@ export function QuantumControls({ state, dispatch }: { state: QuantumState; disp
     <Controls>
       <Row>
         <Stepper
-          label="Step"
-          value={`${state.stage} of ${STEPS.length}`}
+          label={t({ en: "Step", vi: "Bước" })}
+          value={t({ en: `${state.stage} of ${STEPS.length}`, vi: `${state.stage} / ${STEPS.length}` })}
           onStep={(by) => dispatch({ type: "step", by })}
         />
-        <Output label="Secret key">{outcome(state)}</Output>
+        <Output label={t({ en: "Secret key", vi: "Khóa bí mật" })}>{outcome(state, locale)}</Output>
       </Row>
       <Row>
         <Button primary disabled={!next} onClick={() => dispatch({ type: "step", by: 1 })}>
-          {next ? `Next step: ${next}` : "All steps done"}
+          {next
+            ? t({ en: `Next step: ${next.en}`, vi: `Bước tiếp: ${next.vi}` })
+            : t({ en: "All steps done", vi: "Đã xong mọi bước" })}
         </Button>
         <Choice
-          label={state.eveHidden ? "Eve is listening (unknown)" : "Eve is listening"}
+          label={
+            state.eveHidden
+              ? t({ en: "Eve is listening (unknown)", vi: "Eve đang nghe lén (chưa biết)" })
+              : t({ en: "Eve is listening", vi: "Eve đang nghe lén" })
+          }
           value={eveChoice(state)}
           onChange={(value) => dispatch({ type: "listen", eve: value === "on" })}
           options={[
-            { value: "off", label: "No" },
-            { value: "on", label: "Yes" },
+            { value: "off", label: t({ en: "No", vi: "Không" }) },
+            { value: "on", label: t({ en: "Yes", vi: "Có" }) },
           ]}
         />
       </Row>
       <Row>
         <Choice
-          label="Send new photons"
+          label={t({ en: "Send new photons", vi: "Gửi photon mới" })}
           value={String(count)}
           onChange={(size) => dispatch({ type: "send", run: randomRun(Number(size)) })}
           options={SIZES.map((size) => ({ value: size, label: size }))}
         />
-        <Button onClick={() => dispatch({ type: "send", run: randomRun(count) })}>Send {count} again</Button>
+        <Button onClick={() => dispatch({ type: "send", run: randomRun(count) })}>
+          {t({ en: <>Send {count} again</>, vi: <>Gửi lại {count} photon</> })}
+        </Button>
       </Row>
     </Controls>
   );

@@ -1,0 +1,133 @@
+{/*
+  Vietnamese translation of story.mdx. Follows docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md.
+  The abridged Code Book only mentions Morse code in passing, so the facts here
+  were checked against the sources listed under "Further reading". The wording is ours.
+*/}
+
+<Standfirst>
+  Hai tín hiệu, một ngắn một dài, đưa tin tức của cả thế giới đi theo dây điện. Chúng chẳng giữ bí mật gì cả.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Bốn chữ từ Washington
+
+Ngày 24 tháng 5 năm 1844, Samuel Morse ngồi trong tòa nhà Quốc hội ở Washington, tay đặt trên một chiếc nút gõ nhỏ bằng kim loại. Từ đó, một sợi dây điện chạy suốt tới tận Baltimore. Ở đầu dây bên kia, người cộng sự của ông, Alfred Vail, đang chờ.
+
+Morse nhấn nút theo một kiểu gõ ngắn, gõ dài. Ở Baltimore, một cỗ máy vạch đúng kiểu ấy lên một dải băng giấy. Vail đọc ra: “What hath God wrought” (Chúa đã làm nên điều kỳ diệu gì).
+
+Trước khi có máy điện báo, gần như mọi tin tức chỉ đi nhanh bằng ngựa, tàu thủy hay tàu hỏa. Giờ đây, lời nhắn đi từ thành phố này sang thành phố khác chỉ trong thời gian gõ chúng ra.
+
+Nhưng một sợi dây chỉ làm được hai việc: có dòng điện chạy qua, hoặc không. Vậy làm sao đánh vần được các từ với nó?
+
+<Label>Thử xem</Label>
+
+## Nhìn ngọn đèn
+
+Bộ mô phỏng có một ngọn đèn thay cho sợi dây. Nó đã được nạp sẵn `SOS`, tín hiệu nổi tiếng nhất. Hãy đoán trước: gửi chữ nào lâu hơn, `S` hay `O`?
+
+<Try action="sos" button="Mở SOS">
+  Nhấn “Gửi” ở phần điều khiển. Nhìn ngọn đèn nháy, và xem các chấm, gạch sáng lên dưới từng chữ.
+</Try>
+
+<Check question="Chữ nào gửi lâu hơn, S hay O?">
+  Chữ `O`. Một chữ `S` là ba lần nháy ngắn, gọi là chấm. Một chữ `O` là ba lần nháy dài, gọi là gạch. Mỗi gạch dài bằng ba chấm, nên chữ `O` tốn hơn gấp đôi thời gian.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Ngắn, dài và im lặng
+
+### Mỗi chữ một kiểu
+
+**Mã Morse** cho mỗi chữ cái một kiểu **chấm** và **gạch** riêng. Bảng dưới ngọn đèn cho thấy tất cả, kèm cả mười chữ số.
+
+Các kiểu này không dài bằng nhau. Chữ `E`, chữ hay gặp nhất trong tiếng Anh, chỉ là một chấm. Chữ `T` là một gạch. Những chữ hiếm như `J`, `Q` và `Y` mỗi chữ cần bốn tín hiệu. Một nhân viên điện báo gửi hàng nghìn chữ mỗi ngày, nên kiểu ngắn cho chữ hay gặp giúp tiết kiệm rất nhiều thời gian.
+
+<Try action="common" button="So sánh chữ hay gặp và chữ hiếm">
+  Ba chữ hay gặp đứng trước ba chữ hiếm. Đếm các chấm và gạch dưới mỗi thẻ. Rồi nhấn “Gửi” và ước lượng bằng mắt thời gian của hai từ.
+</Try>
+
+### Khoảng lặng làm một nửa công việc
+
+Chỉ có chấm và gạch thì chưa đủ. Chữ `E` là một chấm, còn `S` là ba chấm. Vậy ba chấm là một chữ `S`, hay là `EEE`?
+
+Sự im lặng cho câu trả lời. Trong cùng một chữ, khoảng lặng giữa các tín hiệu chỉ ngắn bằng một chấm. Giữa hai chữ, nó dài bằng ba chấm. Giữa hai từ, nó dài bằng bảy. Một đôi tai đã quen nghe được những quãng ngừng ấy rõ như mắt bạn thấy các dấu cách trên trang này.
+
+<Try action="first" button="Mở bức điện đầu tiên của Morse">
+  Nhấn “Gửi” và nhìn ngọn đèn. Để ý quãng ngừng ngắn sau mỗi chữ và quãng ngừng dài sau mỗi từ.
+</Try>
+
+### Gõ bằng tay
+
+Nhân viên điện báo tạo ra từng tín hiệu ấy bằng tay, nhấn nút gõ lâu hoặc nhanh. Ở đầu bên kia, một nhân viên khác chuyển kiểu gõ trở lại thành chữ cái.
+
+Ở đây bạn làm được cả hai việc. Khi bạn gõ dần một chữ, bảng sẽ thu hẹp những chữ mà nó có thể là. Một chấm có thể là đầu của nhiều chữ. Chấm, chấm, chấm thì chỉ còn vài chữ.
+
+<Try action="key" button="Đưa tôi nút gõ">
+  Nhấn “Chấm” ba lần, rồi “Chữ tiếp”. Nhấn “Gạch” ba lần, rồi “Chữ tiếp”. Kết thúc bằng ba chấm nữa. Đọc ô “Đọc được” ở phần điều khiển.
+</Try>
+
+<Label>Câu chuyện</Label>
+
+## Một bộ mã, không phải mật mã
+
+Morse và Vail làm ra máy điện báo để người ta đọc. Bảng chấm gạch được công bố, và nhân viên điện báo nào cũng thuộc lòng. Không có khóa nào cần giữ kín, nên mã Morse chẳng giấu được gì. Nó là một cách gửi chữ cái, cũng như chữ viết tay là một cách thể hiện chúng.
+
+Điều đó làm máy điện báo vừa nhanh, vừa bất tiện. Muốn gửi một bức điện, bạn đưa lời nhắn cho nhân viên điện báo, người này đọc rồi gõ đi. Một nhân viên khác đọc nó ở đầu bên kia. Ai câu trộm vào dây dọc đường cũng đọc được.
+
+Những người có việc riêng tư không thích như vậy. Cách giải quyết là xáo trộn tin nhắn trước, rồi mới đưa cho nhân viên điện báo.
+
+<DigDeeper title="Vì sao gọi là mã Morse quốc tế">
+  Bảng trên trang này không hoàn toàn giống bảng mà Morse và Vail đã dùng. Năm 1848, Friedrich Gerke, một người đi đầu ngành điện báo ở Đức, đã đổi gần một nửa bộ mã của họ. Năm 1851, Đức và Áo dùng phiên bản của ông. Năm 1865, một hội nghị ở Paris lấy một phiên bản sửa nhẹ của nó làm chuẩn quốc tế. Bản gốc vẫn được dùng ở Bắc Mỹ với tên mã Morse kiểu Mỹ.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Chẳng có gì để phá
+
+Bạn không thể phá mã Morse, vì nó chưa bao giờ bị khóa. Đọc bức điện của người khác chẳng cần khéo léo gì, chỉ cần cái bảng.
+
+Vì vậy các doanh nghiệp thời Victoria chuyển sang dùng một mật mã thật sự. *The Code Book* kể rằng máy điện báo đã khiến họ ưa chuộng mật mã Vigenère. Đó là cách tốt nhất để nhân viên điện báo không đọc được thứ mình gửi đi. Mã hóa tốn thời gian và làm bức điện đắt hơn, nhưng người ta vẫn chịu trả tiền.
+
+Bức điện dưới đây đã được mã hóa trước khi tới tay nhân viên điện báo. Bản rõ (văn bản thường) là `ATTACK AT DAWN` (tấn công lúc bình minh), và từ khóa Vigenère là `LEMON`.
+
+<Try action="enciphered" button="Gửi một bức điện đã mã hóa">
+  Nhấn “Gửi”. Bạn là nhân viên điện báo, và bạn đọc được mọi chữ trên các thẻ. Bạn có biết bức điện nói gì không?
+</Try>
+
+Mã Morse và mật mã làm hai việc khác nhau. Một bên biến chữ cái thành tín hiệu. Bên kia giấu đi ý nghĩa. Một bức điện bí mật cần cả hai, theo đúng thứ tự đó.
+
+<Label>Thử thách</Label>
+
+## Đọc đường dây
+
+<Challenge answer="COME AT ONCE">
+  Một dải băng giấy chạy ra từ máy điện báo. Trên đó có chấm và gạch, nhưng không có chữ.
+
+  Hãy gõ từng kiểu bằng tay, nhấn “Chữ tiếp” và “Từ tiếp” đúng chỗ. Bức điện nói gì?
+
+  <Try action="wire" button="Mở dải băng" />
+</Challenge>
+
+<Check question="Vì sao bạn đọc được bức điện này mà không cần ai cho biết khóa?">
+  Vì mã Morse không có khóa. Bảng mã ai cũng như ai, và được công bố công khai. Đó là chỗ khác nhau giữa một bộ mã để gửi tin và một mật mã để giấu tin.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Từ dây điện lên không trung
+
+Máy điện báo cần một sợi dây nối người gửi với người nhận. Vào khoảng cuối thế kỷ, nhà vật lý người Ý Guglielmo Marconi tìm ra cách gửi đúng những chấm và gạch đó mà không cần dây. Đó là khởi đầu của vô tuyến điện.
+
+Các tướng lĩnh và đô đốc rất thích nó. Họ cũng sợ nó, vì sóng vô tuyến lan ra mọi hướng. Mọi bức điện đều tới tay kẻ thù, chứ không riêng phe mình. Từ đó trở đi, bí mật hoàn toàn trông vào mã và mật mã. Năm 1917, một bức điện bị chặn bắt đã làm thay đổi cả một cuộc chiến: [bức điện Zimmermann](/ciphers/zimmermann).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *The Code Book* (bản đầy đủ, 1999), chương 2, về máy điện báo và lý do người thời Victoria mã hóa các bức điện của họ.
+- Thư viện Quốc hội Mỹ, *Samuel F. B. Morse Papers* (Hồ sơ của Samuel F. B. Morse): mục “Invention of the Telegraph” (Phát minh ra máy điện báo). Thư viện còn giữ dải băng giấy của ngày 24 tháng 5 năm 1844.
+- Liên minh Viễn thông Quốc tế, [Khuyến nghị ITU-R M.1677-1](https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1677-1-200910-I!!PDF-E.pdf), *International Morse code* (Mã Morse quốc tế, 2009). Bảng mã và các độ dài chính thức.
+- Wikipedia, [Morse code](https://en.wikipedia.org/wiki/Morse_code) và [Friedrich Clemens Gerke](https://en.wikipedia.org/wiki/Friedrich_Clemens_Gerke), về lần sửa đổi năm 1848 và hội nghị Paris năm 1865.

@@ -10,4 +10,11 @@ export const meta: CipherMeta = {
   firstStep: "Press Send and watch the lamp.",
   source: "The Code Book (full edition), chapter 2",
   fullEditionOnly: true,
+  vi: {
+    title: "Mã Morse",
+    era: "Từ năm 1844",
+    hook: "Hai tín hiệu, một ngắn một dài, đưa tin tức của cả thế giới đi theo dây điện. Chúng chẳng giữ bí mật gì cả.",
+    firstStep: "Nhấn “Gửi” và nhìn ngọn đèn.",
+    source: "The Code Book (bản đầy đủ), chương 2",
+  },
 };

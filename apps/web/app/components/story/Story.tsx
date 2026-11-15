@@ -1,4 +1,7 @@
-import { createContext, useContext, useId, useState, type ReactNode } from "react";
+import type { MDXContent } from "mdx/types";
+import { createContext, useContext, useId, useState, type ComponentProps, type ReactNode } from "react";
+import { Link } from "react-router";
+import { UI, localePath, useLocale, type Bilingual } from "~/i18n";
 import styles from "./Story.module.css";
 
 /**
@@ -9,12 +12,26 @@ import styles from "./Story.module.css";
 /** Lets a story set up the simulator. The cipher page decides what each action name does. */
 const StoryActions = createContext<(action: string) => void>(() => {});
 
-export function Story({ onAction, children }: { onAction: (action: string) => void; children: ReactNode }) {
+/**
+ * A cipher's story, in the page's language: story.mdx for English, story.vi.mdx for Vietnamese.
+ * Both share the same action names, so their buttons load the same presets.
+ */
+export function Story({ onAction, text }: { onAction: (action: string) => void; text: Bilingual<MDXContent> }) {
+  const Text = text[useLocale()];
   return (
     <StoryActions.Provider value={onAction}>
-      <div className={styles.story}>{children}</div>
+      <div className={styles.story}>
+        <Text components={STORY_BLOCKS} />
+      </div>
     </StoryActions.Provider>
   );
+}
+
+/** Links in a story. A link to another page of the site stays in the reader's language. */
+function StoryLink({ href = "", ...rest }: ComponentProps<"a">) {
+  const locale = useLocale();
+  if (href.startsWith("/")) return <Link to={localePath(href, locale)} {...rest} />;
+  return <a href={href} {...rest} />;
 }
 
 /** The one-paragraph opening under the title. */
@@ -30,6 +47,7 @@ export function Label({ children }: { children: ReactNode }) {
 /** An invitation to do something on the simulator, with an optional button that sets it up. */
 export function Try({ action, button, children }: { action?: string; button?: string; children?: ReactNode }) {
   const run = useContext(StoryActions);
+  const locale = useLocale();
   if (!children) {
     return (
       <button type="button" className={styles.button} onClick={() => run(action!)}>
@@ -39,7 +57,7 @@ export function Try({ action, button, children }: { action?: string; button?: st
   }
   return (
     <div className={styles.try}>
-      <strong className={styles.tag}>Try it</strong>
+      <strong className={styles.tag}>{UI.tryIt[locale]}</strong>
       {children}
       {action && (
         <button type="button" className={styles.button} onClick={() => run(action)}>
@@ -75,6 +93,7 @@ const lettersOnly = (text: string) => text.toUpperCase().replace(/[^A-Z]/g, "");
 /** A puzzle with one right answer. Spaces and letter case are ignored. */
 export function Challenge({ answer, children }: { answer: string; children: ReactNode }) {
   const id = useId();
+  const locale = useLocale();
   const [guess, setGuess] = useState("");
   const [result, setResult] = useState<"right" | "wrong" | null>(null);
 
@@ -86,22 +105,22 @@ export function Challenge({ answer, children }: { answer: string; children: Reac
         setResult(lettersOnly(guess) === lettersOnly(answer) ? "right" : "wrong");
       }}
     >
-      <strong className={styles.tag}>Challenge</strong>
+      <strong className={styles.tag}>{UI.challenge[locale]}</strong>
       {children}
-      <label htmlFor={id}>Your answer</label>
+      <label htmlFor={id}>{UI.yourAnswer[locale]}</label>
       <div className={styles.answerRow}>
         <input id={id} value={guess} onChange={(event) => setGuess(event.target.value)} autoComplete="off" />
         <button type="submit" className={styles.button}>
-          Check
+          {UI.check[locale]}
         </button>
       </div>
       <p role="status" className={styles.result} data-result={result}>
-        {result === "right" && "Correct. Well done."}
-        {result === "wrong" && "Not yet. Check your setup and try again."}
+        {result === "right" && UI.correct[locale]}
+        {result === "wrong" && UI.notYet[locale]}
       </p>
     </form>
   );
 }
 
-/** Every block, ready to hand to a story: <StoryText components={STORY_BLOCKS} />. */
-export const STORY_BLOCKS = { Standfirst, Label, Try, Check, Challenge, DigDeeper };
+/** Every block a story can use. <Story> hands them to the MDX. */
+export const STORY_BLOCKS = { Standfirst, Label, Try, Check, Challenge, DigDeeper, a: StoryLink };

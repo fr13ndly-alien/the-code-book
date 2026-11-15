@@ -1,5 +1,6 @@
 import { useReducer } from "react";
 import { TOY_KEY, forge, sign, verify } from "@codebook/cipher-engine/digital-signatures";
+import type { Locale } from "~/i18n";
 
 /** Alice's toy RSA key. */
 export const ALICE = TOY_KEY;
@@ -48,8 +49,12 @@ export const check = (state: SignaturesState) =>
   state.signature === null ? null : verify(state.arrived, state.signature, ALICE);
 
 /** Bob's verdict in words. */
-export function verdict(state: SignaturesState): string {
+export function verdict(state: SignaturesState, locale: Locale): string {
   const result = check(state);
+  if (locale === "vi") {
+    if (!result) return "Không có chữ ký: tin này có thể là của bất kỳ ai";
+    return result.valid ? "✓ Thật: các con số khớp nhau" : "✗ Đừng tin: các con số khác nhau";
+  }
   if (!result) return "No signature: this could be from anyone";
   return result.valid ? "✓ Genuine: the numbers match" : "✗ Do not trust: the numbers differ";
 }

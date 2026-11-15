@@ -1,6 +1,7 @@
 import { useReducer } from "react";
 import { eveSearch, exchange, primesUpTo, type PublicNumbers } from "@codebook/cipher-engine/key-exchange";
 import { mod } from "@codebook/cipher-engine/text";
+import type { Locale } from "~/i18n";
 
 /** The primes the reader can choose for P. The smallest leaves room for a secret; the largest keeps Eve's list short. */
 export const PRIMES = primesUpTo(101).filter((prime) => prime >= 5);
@@ -87,9 +88,10 @@ export function runEve(state: KeyExchangeState) {
 }
 
 /** The shared key as the controls show it: hidden until it exists, or until Eve has found it. */
-export function keyText(state: KeyExchangeState): string {
+export function keyText(state: KeyExchangeState, locale: Locale): string {
   if (state.youAreEve) return String(runEve(state)?.key ?? "?");
-  return state.step < LAST_STEP ? "Not yet" : String(runExchange(state).alice.key);
+  if (state.step < LAST_STEP) return locale === "vi" ? "Chưa có" : "Not yet";
+  return String(runExchange(state).alice.key);
 }
 
 /** The state of the key exchange page and the way to change it. */

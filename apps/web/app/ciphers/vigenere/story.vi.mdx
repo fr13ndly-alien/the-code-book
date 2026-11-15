@@ -1,0 +1,148 @@
+{/*
+  Vietnamese translation of story.mdx. Follows docs/i18n/vi-glossary.md.
+  Facts come from The Code Book, chapter 2. The wording is ours.
+*/}
+
+<Standfirst>
+  Một từ khóa, hai mươi sáu bảng chữ cái, và một mật mã mạnh đến mức người ta gọi nó là không thể phá.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Dạo bước trong khu vườn của Giáo hoàng
+
+Một ngày trong thập niên 1460, Leon Battista Alberti đang tản bộ trong các khu vườn của Vatican. Alberti là kiến trúc sư, họa sĩ và nhà thơ. Ở đó ông gặp một người bạn, Leonardo Dato, thư ký của Giáo hoàng. Dato bắt đầu nói chuyện về mật mã.
+
+Lúc ấy, mật mã đang gặp rắc rối. Mọi mật mã đều đổi mỗi chữ lấy một chữ bạn cố định. Các nhà giải mã đã học được cách đếm các chữ trong một bức thư, và việc đếm làm lộ ra những cặp bạn đó.
+
+Cuộc trò chuyện khiến Alberti suy nghĩ, và ông viết một bài luận chứa một ý tưởng mới. Sẽ ra sao nếu một chữ không giữ mãi một chữ bạn trong suốt bức thư?
+
+<Label>Thử xem</Label>
+
+## Một chữ, nhiều lớp hóa trang
+
+Trình mô phỏng chứa tin nhắn `DIVERT TROOPS TO EAST RIDGE` (chuyển quân sang sườn núi phía đông) và từ khóa `WHITE`. Tin nhắn có hai chữ `T` đứng cạnh nhau. Hãy đoán trước: chúng có biến thành cùng một chữ mã không?
+
+<Try action="white" button="Mở tin nhắn">
+  Nhấn ▲ cạnh “Chữ” cho tới khi tới chữ thứ 6, rồi đi tiếp tới chữ thứ 7. Hãy xem hàng “Mã” phía trên hình vuông.
+</Try>
+
+<Check question="Hai chữ T có cùng một chữ mã không?">
+  Không. Chữ `T` đầu tiên thành `P`, còn chữ thứ hai thành `A`. Mỗi chữ nằm dưới một chữ khác của từ khóa, nên mỗi chữ dùng một hàng khác của hình vuông. Nhà giải mã đếm chữ không còn tin được kết quả đếm nữa.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Hai mươi sáu bảng chữ cái và một từ khóa
+
+### Hình vuông
+
+Alberti đề nghị dùng hai bảng chữ mã và đổi qua lại giữa chúng. Một người Pháp, Blaise de Vigenère, đẩy ý tưởng ấy đi xa hết mức. Mật mã của ông dùng 26 bảng.
+
+<DigDeeper title="Ví dụ trong chính cuốn sách: hai bảng chữ cái">
+  Cuốn sách minh họa ý tưởng của Alberti bằng hai bảng chữ mã xáo trộn đặt dưới bảng chữ rõ:
+
+  `abcdefghijklmnopqrstuvwxyz`
+
+  `FZBVKIXAYMEPLSDHJORGNQCUTW`
+
+  `GOXBFWTHQILAPZJDESVYCRKUHN`
+
+  Dùng hàng thứ nhất cho các chữ thứ 1, 3 và 5 của “hello” (xin chào), và hàng thứ hai cho các chữ thứ 2 và 4. Bạn được `AFPAD`. Hai chữ `l` thành `P` và `A`. Trình mô phỏng không mở được các hàng này, vì mọi hàng của nó đều là mật mã dịch chuyển Caesar.
+</DigDeeper>
+
+Lưới trên trình mô phỏng là **hình vuông Vigenère**. Dòng trên cùng là bảng chữ rõ. Bên dưới là 26 bảng chữ mã, mỗi bảng dịch thêm một chỗ so với bảng ở trên. Mỗi hàng là một [mật mã dịch chuyển Caesar](/ciphers/caesar). Chữ ở đầu bên trái của một hàng là tên của hàng đó.
+
+Một mật mã chỉ dùng một bảng chữ mã gọi là mật mã **thay thế đơn bảng**. Một mật mã đổi qua lại giữa nhiều bảng chữ mã gọi là mật mã **thay thế đa bảng**.
+
+<Try action="oneLetter" button="Dùng từ khóa một chữ">
+  Từ khóa giờ chỉ còn `W`. Đi qua tin nhắn bằng ▲. Lúc nào cũng chỉ có một hàng được dùng, nên đây là một mật mã Caesar bình thường, và cả hai chữ `T` đều thành `P`.
+</Try>
+
+### Từ khóa chọn hàng
+
+Người gửi và người nhận phải đổi hàng theo cùng một thứ tự. Họ thống nhất một **từ khóa**. Viết nó phía trên tin nhắn, lặp đi lặp lại, cho tới khi chữ nào của tin nhắn cũng có một chữ khóa ở trên.
+
+Để mã hóa một chữ, hãy nhìn chữ khóa của nó. Tìm tới hàng mang tên chữ đó. Rồi đi dọc hàng tới cột nằm dưới chữ rõ của bạn. Chữ ở chỗ hàng và cột gặp nhau là chữ mã.
+
+Với từ khóa `WHITE`, bạn lần lượt dùng năm hàng. Chữ thứ sáu quay lại hàng `W`.
+
+<Try action="troops" button="Nhảy tới hai chữ O liền nhau">
+  Bạn đang ở chữ `O` đầu tiên của `TROOPS` (quân lính). Hãy đọc chữ khóa, hàng và chữ mã của nó. Nhấn ▲ một lần để tới chữ `O` thứ hai. Một chữ thành `H`, chữ kia thành `S`.
+</Try>
+
+### Đọc ngược lại
+
+Người nhận biết từ khóa, nên công việc chạy theo chiều ngược lại. Viết từ khóa phía trên bản mật mã. Với mỗi chữ, tìm tới hàng của chữ khóa và tìm chữ mã trong hàng đó. Chữ rõ nằm ở đầu cột ấy.
+
+<Try action="receive" button="Giải mã tin nhắn">
+  Bản mật mã đã được mở, và “Tôi muốn” đã được đặt là “Giải mã”. Đi qua từng chữ bằng ▲ và xem mệnh lệnh hiện ra trở lại. Rồi đổi một chữ của từ khóa và xem bản rõ (văn bản thường) biến thành vô nghĩa.
+</Try>
+
+<Check question="Bản mật mã có năm chữ Z. Chúng có cùng thay cho một chữ không?">
+  Không. Ở đây `Z` thay cho `D`, rồi `R`, rồi `S`. Chữ mã hay gặp nhất không phải là chữ `E` đội lốt, nên việc đếm chữ chỉ cho nhà giải mã đi sai đường.
+</Check>
+
+<Label>Câu chuyện</Label>
+
+## Nhà ngoại giao về hưu để học
+
+Blaise de Vigenère sinh năm 1523 và làm nhà ngoại giao cho nước Pháp. Năm hai mươi sáu tuổi, ông được cử tới Rome hai năm, và ở đó ông bắt gặp các bài viết của Alberti. Lúc đầu, mật mã chỉ là một phần công việc của ông.
+
+Năm ba mươi chín tuổi, ông đã dành dụm đủ tiền để thôi làm việc và chuyên tâm học. Chỉ khi đó ông mới biến ý tưởng của Alberti thành một mật mã hoàn chỉnh. Ông công bố nó năm 1586 trong cuốn *Traicté des chiffres* (Bàn về chữ viết bí mật).
+
+Mật mã của ông có hai điểm mạnh. Đếm chữ không phá được nó. Và khóa có thể là bất cứ từ hay cụm từ nào, nên có quá nhiều khóa để thử hết.
+
+Ở thế kỷ 19, máy điện báo khiến nó được các doanh nghiệp ưa chuộng. Nhân viên điện báo phải đọc mọi bức điện mình gửi đi, và một mật mã giữ bí mật kinh doanh khỏi tay anh ta. Người ta gọi nó là *le chiffre indéchiffrable*: “mật mã không thể phá”.
+
+<DigDeeper title="Còn ai khác góp tay vào?">
+  Bản đầy đủ của cuốn sách kể tên thêm hai người nữa, sống giữa thời Alberti và Vigenère. Johannes Trithemius là một tu viện trưởng người Đức, còn Giovanni Porta là một nhà khoa học người Ý. Mỗi người góp thêm vào ý tưởng ấy. Vigenère đọc cả ba người và cho mật mã hình dạng cuối cùng, vì thế nó mang tên ông.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Từ khóa quay vòng trở lại
+
+Điểm yếu nằm ẩn trong từ khóa. Từ khóa ngắn, nên nó lặp lại. Một từ khóa bốn chữ chỉ có thể mã hóa một từ hay gặp như `THE` theo bốn cách. Trong một bức thư dài, chắc chắn sẽ có một cách xuất hiện hai lần.
+
+<Try action="repeats" button="Mở câu “the sun and the man in the moon”">
+  Từ khóa là `KING`. Câu này nghĩa là “mặt trời và chú cuội trên cung trăng”. Bạn đang ở chữ `THE` thứ hai. Hãy đọc ba chữ mã của nó, rồi nhấn ▲ đi tiếp tới chữ `THE` thứ ba. Cả hai đều là `BUK`.
+</Try>
+
+Hai chữ `BUK` bắt đầu cách nhau tám chữ. Tám là gấp đôi độ dài của `KING`. Vậy một chỗ lặp trong bản mật mã cho nhà giải mã biết đôi điều về độ dài của từ khóa.
+
+Một khi bạn biết độ dài, mật mã sụp đổ. Với từ khóa năm chữ, các chữ thứ 1, 6, 11, và cứ thế, đều dùng cùng một hàng. Chúng là một mật mã Caesar. Các chữ thứ 2, 7, 12 cũng vậy. Mật mã “không thể phá” thật ra là năm mật mã dễ dàng đan vào nhau.
+
+Charles Babbage đã nhìn ra điều này, có lẽ vào năm 1854. Bạn có thể theo dõi cách ông tấn công ở trang [Babbage phá mật mã Vigenère](/ciphers/babbage).
+
+<Label>Thử thách</Label>
+
+## Lời đáp từ sườn núi
+
+<Challenge answer="HOLD THE RIDGE UNTIL DARK">
+  Mệnh lệnh đã được gửi đi: `DIVERT TROOPS TO EAST RIDGE`. Một giờ sau, một người cưỡi ngựa mang tới thư trả lời: `DVTW XDL ZBHCL CGXES LTVG`.
+
+  Nó được mã hóa bằng cùng từ khóa `WHITE`. Thư nói gì?
+
+  <Try action="reply" button="Mở thư trả lời" />
+</Challenge>
+
+<Check question="Vì sao từ khóa dài an toàn hơn từ khóa ngắn?">
+  Từ khóa dài hơn đưa nhiều hàng của hình vuông vào cuộc hơn. Khi đó một từ như `THE` có thể được mã hóa theo nhiều cách hơn, nên các chỗ lặp hiếm hơn và khó tìm hơn.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Mạnh, nhưng chậm
+
+Mật mã Vigenère đã thắng được việc đếm chữ, và đó là một chiến thắng thật sự của những người lập mã. Nhưng nó có cái giá của nó. Từng chữ một đều cần một lần tra hình vuông riêng. Làm vậy bằng tay cho một bức thư dài thì mất cả buổi.
+
+Vì vậy nhiều người vẫn dùng những mật mã cũ, đơn giản hơn. Những người khác tìm một lối đi ở giữa: một mật mã gần nhanh bằng mật mã thay thế thường, nhưng khó phá bằng cách đếm hơn. Câu trả lời của họ cho mỗi chữ hay gặp vài lớp hóa trang. Đó là trang tiếp theo: [mật mã thay thế đồng âm](/ciphers/homophonic).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *The Code Book*, chương 2.
+- Blaise de Vigenère, *Traicté des chiffres* (1586). Cuốn sách trong đó ông trình bày mật mã này.
+- David Kahn, *The Codebreakers* (Những người giải mã). Một bộ lịch sử đầy đủ, có thêm nhiều chuyện về Alberti, Trithemius và Porta.

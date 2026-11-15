@@ -1,8 +1,12 @@
 import { inWords, type Token } from "@codebook/cipher-engine/mary-queen-of-scots";
+import { useT, type Bilingual } from "~/i18n";
 import styles from "./SignStrip.module.css";
 
 /** What to write above a sign that stands for no letter. */
-const NOTE: Partial<Record<Token["kind"], string>> = { null: "null", doubler: "double" };
+const NOTE: Partial<Record<Token["kind"], Bilingual>> = {
+  null: { en: "null", vi: "đệm" },
+  doubler: { en: "double", vi: "kép" },
+};
 
 /**
  * A message as a row of signs, with the meaning of each sign above it.
@@ -14,13 +18,15 @@ export function SignStrip(props: {
   picked?: string;
   onPick: (symbol: string) => void;
 }) {
+  const t = useT();
   return (
-    <div className={styles.strip} role="group" aria-label="The message in signs">
+    <div className={styles.strip} role="group" aria-label={t({ en: "The message in signs", vi: "Bức thư bằng ký hiệu" })}>
       {inWords(props.tokens).map((word, at) => (
         <span key={at} className={styles.word}>
           {word.map((token, i) => {
             const shown = !props.hidden || token.symbol === props.picked;
-            const meaning = NOTE[token.kind] ?? token.plain;
+            const note = NOTE[token.kind];
+            const meaning = note ? t(note) : token.plain;
             return (
               <button
                 key={i}

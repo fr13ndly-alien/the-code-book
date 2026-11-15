@@ -4,10 +4,34 @@ import { ToyScrambler } from "./ToyScrambler";
 import type { EnigmaAction, EnigmaState } from "./useEnigma";
 import type { ToyAction, ToyState } from "./useToyScrambler";
 import styles from "./EnigmaControls.module.css";
+import { useT, type Bilingual } from "~/i18n";
 
 const SLOTS = [0, 1, 2] as const;
-const SLOT_NAMES = ["Left", "Middle", "Right"];
-const STAGES = ["key", "plugboard", "right rotor", "middle rotor", "left rotor", "reflector", "left rotor", "middle rotor", "right rotor", "plugboard"];
+/** Each slot's short name (above a menu) and its rotor's full name, in both languages. */
+const SLOT_NAMES: Bilingual<string>[] = [
+  { en: "Left", vi: "Trái" },
+  { en: "Middle", vi: "Giữa" },
+  { en: "Right", vi: "Phải" },
+];
+const ROTOR_NAMES_BY_SLOT: Bilingual<string>[] = [
+  { en: "Left rotor", vi: "Rôto trái" },
+  { en: "Middle rotor", vi: "Rôto giữa" },
+  { en: "Right rotor", vi: "Rôto phải" },
+];
+const RING_LABELS: Bilingual<string>[] = [
+  { en: "Ring, left rotor", vi: "Vòng chữ, rôto trái" },
+  { en: "Ring, middle rotor", vi: "Vòng chữ, rôto giữa" },
+  { en: "Ring, right rotor", vi: "Vòng chữ, rôto phải" },
+];
+const KEY = { en: "key", vi: "phím" };
+const PLUGBOARD = { en: "plugboard", vi: "bảng cắm dây" };
+const REFLECTOR = { en: "reflector", vi: "đĩa phản xạ" };
+const [LEFT, MIDDLE, RIGHT] = [
+  { en: "left rotor", vi: "rôto trái" },
+  { en: "middle rotor", vi: "rôto giữa" },
+  { en: "right rotor", vi: "rôto phải" },
+];
+const STAGES: Bilingual<string>[] = [KEY, PLUGBOARD, RIGHT, MIDDLE, LEFT, REFLECTOR, LEFT, MIDDLE, RIGHT, PLUGBOARD];
 
 /** Splits text into the five-letter groups radio operators used. */
 const inGroups = (text: string) => text.replace(/(.{5})(?=.)/g, "$1 ");
@@ -26,6 +50,7 @@ export function EnigmaControls(props: EnigmaControlsProps) {
   const { state, dispatch, pendingSocket, onPickSocket, toy, toyDispatch } = props;
   const { settings, positions, typed, lamps, last } = state;
   const toyPanel = useRef<HTMLDetailsElement>(null);
+  const t = useT();
 
   // On a phone the controls are a short scrolling strip while the story is open,
   // so a story button that opens the model must also bring it into view.
@@ -43,11 +68,11 @@ export function EnigmaControls(props: EnigmaControlsProps) {
     <div className={styles.controls}>
       <div className={styles.row}>
         <fieldset className={styles.rotors}>
-          <legend className="visually-hidden">Rotor positions</legend>
+          <legend className="visually-hidden">{t({ en: "Rotor positions", vi: "Vị trí các rôto" })}</legend>
           {SLOTS.map((slot) => (
             <Stepper
               key={slot}
-              label={`${SLOT_NAMES[slot]} rotor`}
+              label={t(ROTOR_NAMES_BY_SLOT[slot]!)}
               letter={ALPHABET[positions[slot]]!}
               onStep={(by) => dispatch({ type: "turn", slot, by })}
             />
@@ -55,19 +80,19 @@ export function EnigmaControls(props: EnigmaControlsProps) {
         </fieldset>
 
         <dl className={styles.tape} aria-live="polite">
-          <dt>You typed</dt>
+          <dt>{t({ en: "You typed", vi: "Bạn đã gõ" })}</dt>
           <dd>{inGroups(typed) || "…"}</dd>
-          <dt>Lamps lit</dt>
+          <dt>{t({ en: "Lamps lit", vi: "Đèn đã sáng" })}</dt>
           <dd className={styles.lamps}>{inGroups(lamps) || "…"}</dd>
         </dl>
       </div>
 
       <div className={styles.row}>
         <label className={styles.typing}>
-          <span className="visually-hidden">Type a message</span>
+          <span className="visually-hidden">{t({ en: "Type a message", vi: "Gõ một tin nhắn" })}</span>
           <input
             value=""
-            placeholder="Type here, or tap the keys"
+            placeholder={t({ en: "Type here, or tap the keys", vi: "Gõ vào đây, hoặc chạm vào các phím" })}
             autoCapitalize="characters"
             autoComplete="off"
             autoCorrect="off"
@@ -76,45 +101,49 @@ export function EnigmaControls(props: EnigmaControlsProps) {
           />
         </label>
         <button type="button" className={styles.button} onClick={() => dispatch({ type: "rewind" })}>
-          Back to start
+          {t({ en: "Back to start", vi: "Về lúc đầu" })}
         </button>
       </div>
 
       <p className={styles.path}>
-        <span className={styles.pathLabel}>Path of the current:</span>
+        <span className={styles.pathLabel}>{t({ en: "Path of the current:", vi: "Đường đi của dòng điện:" })}</span>
         {last
           ? last.trace.map((letter, i) => (
-              <span key={i} title={STAGES[i]} className={styles.hop}>
+              <span key={i} title={t(STAGES[i]!)} className={styles.hop}>
                 {letter}
               </span>
             ))
-          : "press a key to see it"}
+          : t({ en: "press a key to see it", vi: "nhấn một phím để xem" })}
       </p>
 
       <details className={styles.setup}>
-        <summary>Set up the machine</summary>
+        <summary>{t({ en: "Set up the machine", vi: "Cài đặt máy" })}</summary>
 
-        <h3>Rotor order</h3>
+        <h3>{t({ en: "Rotor order", vi: "Thứ tự rôto" })}</h3>
         <div className={styles.row}>
           {SLOTS.map((slot) => (
             <RotorSelect
               key={slot}
-              label={SLOT_NAMES[slot]!}
+              label={t(SLOT_NAMES[slot]!)}
               value={settings.rotors[slot]}
               onChange={(rotor) => dispatch({ type: "fit", slot, rotor })}
             />
           ))}
         </div>
 
-        <h3>Ring setting of each rotor</h3>
+        <h3>{t({ en: "Ring setting of each rotor", vi: "Vị trí vòng chữ của mỗi rôto" })}</h3>
         <p className={styles.hint}>
-          Turns a rotor's letters around its wiring. Changing it starts a new message.
+          {t({
+            en: "Turns a rotor's letters around its wiring. Changing it starts a new message.",
+            vi: "Xoay vòng chữ của rôto quanh phần dây bên trong. Đổi nó là bắt đầu một tin nhắn mới.",
+          })}
         </p>
         <div className={styles.row}>
           {SLOTS.map((slot) => (
             <RingSelect
               key={slot}
-              label={SLOT_NAMES[slot]!}
+              label={t(SLOT_NAMES[slot]!)}
+              ringLabel={t(RING_LABELS[slot]!)}
               value={settings.rings[slot]}
               onChange={(ring) => dispatch({ type: "ring", slot, ring })}
             />
@@ -122,9 +151,25 @@ export function EnigmaControls(props: EnigmaControlsProps) {
         </div>
 
         <h3>
-          Plugboard: {settings.cables.length} of {MAX_CABLES} cables
+          {t({
+            en: (
+              <>
+                Plugboard: {settings.cables.length} of {MAX_CABLES} cables
+              </>
+            ),
+            vi: (
+              <>
+                Bảng cắm dây: {settings.cables.length} trên {MAX_CABLES} dây
+              </>
+            ),
+          })}
         </h3>
-        <p className={styles.hint}>Pick two letters to join them. Pick a joined letter to pull its cable out.</p>
+        <p className={styles.hint}>
+          {t({
+            en: "Pick two letters to join them. Pick a joined letter to pull its cable out.",
+            vi: "Chọn hai chữ để nối chúng với nhau. Chọn một chữ đã nối để rút dây của nó ra.",
+          })}
+        </p>
         <div className={styles.sockets}>
           {[...ALPHABET].map((letter) => {
             const partner = plugSwap(settings.cables, letter);
@@ -135,7 +180,11 @@ export function EnigmaControls(props: EnigmaControlsProps) {
                 className={styles.socket}
                 data-wired={partner !== letter}
                 aria-pressed={pendingSocket === letter}
-                aria-label={partner === letter ? `Socket ${letter}` : `Socket ${letter}, joined to ${partner}`}
+                aria-label={
+                  partner === letter
+                    ? t({ en: `Socket ${letter}`, vi: `Ổ cắm ${letter}` })
+                    : t({ en: `Socket ${letter}, joined to ${partner}`, vi: `Ổ cắm ${letter}, nối với ${partner}` })
+                }
                 onClick={() => onPickSocket(letter)}
               >
                 {letter}
@@ -155,7 +204,7 @@ export function EnigmaControls(props: EnigmaControlsProps) {
           if (open !== toy.open) toyDispatch({ type: "show", open });
         }}
       >
-        <summary>The book's six-letter model</summary>
+        <summary>{t({ en: "The book's six-letter model", vi: "Mô hình sáu chữ của cuốn sách" })}</summary>
         <ToyScrambler toy={toy} dispatch={toyDispatch} />
       </details>
     </div>
@@ -163,13 +212,14 @@ export function EnigmaControls(props: EnigmaControlsProps) {
 }
 
 function Stepper({ label, letter, onStep }: { label: string; letter: string; onStep: (by: 1 | -1) => void }) {
+  const t = useT();
   return (
     <div className={styles.stepper} role="group" aria-label={label}>
-      <button type="button" aria-label={`${label}: next letter`} onClick={() => onStep(1)}>
+      <button type="button" aria-label={t({ en: `${label}: next letter`, vi: `${label}: chữ tiếp theo` })} onClick={() => onStep(1)}>
         ▲
       </button>
-      <output aria-label={`${label} shows`}>{letter}</output>
-      <button type="button" aria-label={`${label}: previous letter`} onClick={() => onStep(-1)}>
+      <output aria-label={t({ en: `${label} shows`, vi: `${label} đang hiện` })}>{letter}</output>
+      <button type="button" aria-label={t({ en: `${label}: previous letter`, vi: `${label}: chữ trước đó` })} onClick={() => onStep(-1)}>
         ▼
       </button>
     </div>
@@ -189,12 +239,12 @@ function RotorSelect(props: { label: string; value: RotorName; onChange: (rotor:
   );
 }
 
-function RingSelect(props: { label: string; value: number; onChange: (ring: number) => void }) {
+function RingSelect(props: { label: string; ringLabel: string; value: number; onChange: (ring: number) => void }) {
   return (
     <label className={styles.select}>
       {props.label}
       <select
-        aria-label={`Ring, ${props.label.toLowerCase()} rotor`}
+        aria-label={props.ringLabel}
         value={props.value}
         onChange={(event) => props.onChange(Number(event.target.value))}
       >

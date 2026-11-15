@@ -1,6 +1,7 @@
 import { useReducer } from "react";
 import { crack, decipher, encipher, makeKeys, validExponents, type PowerSteps, type RsaKeys } from "@codebook/cipher-engine/rsa";
 import { mod } from "@codebook/cipher-engine/text";
+import type { Locale } from "~/i18n";
 
 /** The small primes the reader can choose p and q from. */
 export const PRIME_CHOICES = [3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
@@ -95,12 +96,12 @@ export function work(state: RsaState): PowerSteps | undefined {
 export const withLetter = (code: number) => (code > 32 && code < 127 ? `${code} = ${String.fromCharCode(code)}` : String(code));
 
 /** The result as the controls show it, or the reason there is none. */
-export function output(state: RsaState): string {
+export function output(state: RsaState, locale: Locale): string {
   const input = inputNumber(state);
   if (input === undefined) return "";
-  if (input >= keysOf(state).n) return "Too big: it must be less than N";
+  if (input >= keysOf(state).n) return locale === "vi" ? "Quá lớn: phải nhỏ hơn N" : "Too big: it must be less than N";
   const steps = work(state);
-  if (!steps) return "You need d first";
+  if (!steps) return locale === "vi" ? "Bạn cần có d trước đã" : "You need d first";
   return state.mode === "encipher" ? String(steps.result) : withLetter(steps.result);
 }
 

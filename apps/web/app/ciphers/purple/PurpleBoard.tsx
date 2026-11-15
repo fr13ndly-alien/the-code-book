@@ -1,5 +1,6 @@
 import { Board } from "~/components/sim/Board";
 import { Caption } from "~/components/sim/Caption";
+import { useT } from "~/i18n";
 import { Counts } from "./Counts";
 import { Path } from "./Path";
 import { Plugboard } from "./Plugboard";
@@ -9,6 +10,7 @@ import { ciphertextOf, stepsOf, type PurpleState } from "./usePurple";
 
 /** The Purple machine at work on one letter, or the letter counts of its ciphertext. */
 export function PurpleBoard({ state, onPick }: { state: PurpleState; onPick: (at: number) => void }) {
+  const t = useT();
   if (state.view === "count") {
     return (
       <Board>
@@ -31,7 +33,12 @@ export function PurpleBoard({ state, onPick }: { state: PurpleState; onPick: (at
       ) : (
         <>
           <Plugboard plugboard={state.plugboard} />
-          <Caption>Type a message below to send it through the switches.</Caption>
+          <Caption>
+            {t({
+              en: "Type a message below to send it through the switches.",
+              vi: "Gõ một tin nhắn ở bên dưới để đưa nó qua các công tắc.",
+            })}
+          </Caption>
         </>
       )}
     </Board>

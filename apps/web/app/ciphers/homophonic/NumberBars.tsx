@@ -1,3 +1,4 @@
+import { useT } from "~/i18n";
 import styles from "./NumberBars.module.css";
 
 /**
@@ -12,10 +13,14 @@ export function NumberBars(props: {
   /** The numbers to light up: those of the letter being looked at. */
   lit: string[];
 }) {
+  const t = useT();
   const height = (count: number) => `${Math.min(100, (100 * count) / Math.max(1, props.full))}%`;
   return (
     <div className={styles.chart}>
-      <ol className={styles.bars} aria-label="How often each number from 00 to 99 appears in the ciphertext">
+      <ol className={styles.bars} aria-label={t({
+          en: "How often each number from 00 to 99 appears in the ciphertext",
+          vi: "Số lần mỗi con số từ 00 đến 99 xuất hiện trong bản mật mã",
+        })}>
         {props.counts.map((count, n) => {
           const number = String(n).padStart(2, "0");
           return (

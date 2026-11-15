@@ -1,0 +1,120 @@
+{/*
+  Bản dịch tiếng Việt của story.mdx. Theo docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 1. The wording is ours.
+*/}
+
+<Standfirst>
+  Julius Caesar dịch bảng chữ cái đi ba chỗ, và các tướng của ông đọc được điều mà kẻ thù không đọc nổi.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Bức thư buộc trên ngọn giáo
+
+Julius Caesar đang đánh trận ở xứ Gaul thì một sĩ quan của ông, Cicero, bị bao vây và sắp phải đầu hàng. Caesar cần báo cho ông ấy biết quân cứu viện đang tới. Nhưng người đưa tin phải đi qua vùng của địch, và có thể bị bắt.
+
+Vì vậy Caesar viết bức thư theo cách mà người Gaul không đọc được. Người đưa tin buộc nó vào một ngọn giáo và phóng vào doanh trại. Ngọn giáo cắm vào một tòa tháp, nằm đó suốt hai ngày mà không ai để ý. Rồi một người lính tìm thấy nó. Cicero đọc to bức thư, và binh lính của ông reo hò.
+
+Caesar giấu lời mình thường xuyên đến mức một tác giả La Mã đã viết hẳn một cuốn sách về các mật mã của ông. Làm sao viết được một bức thư mà chỉ bạn bè của bạn đọc được?
+
+<Label>Thử xem</Label>
+
+## Trượt bảng chữ cái
+
+Mô phỏng cho thấy hai bảng chữ cái. Bảng trên dành cho tin nhắn của bạn. Bảng dưới vẫn là bảng chữ cái ấy, nhưng bị đẩy lệch đi. Hãy đoán trước: với độ dịch 3, chữ `A` sẽ thành chữ gì?
+
+<Try action="caesar" button="Xem mật mã của chính Caesar">
+  Chạm vào ô dưới chữ `A` trong bảng. Rồi nhấn ▲ cạnh “Độ dịch” vài lần và xem hàng dưới trượt đi.
+</Try>
+
+<Check question="Với độ dịch 3, A thành chữ gì?">
+  `D`. Mỗi chữ được đổi thành chữ đứng sau nó ba chỗ, nên `B` thành `E` và `C` thành `F`. Tới cuối, bảng chữ cái vòng lại từ đầu: `X`, `Y` và `Z` thành `A`, `B` và `C`.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Hai bảng chữ cái, một con số
+
+### Chữ rõ và chữ mã
+
+Người lập mã gọi tin nhắn ban đầu của bạn là **bản rõ** (văn bản thường), còn tin nhắn đã xáo trộn là **bản mật mã**. **Bảng chữ rõ** là bảng chữ cái bình thường. **Bảng chữ mã** chứa những chữ bạn viết thay vào.
+
+Để mã hóa, hãy tìm từng chữ của tin nhắn ở hàng trên và viết ra chữ nằm ngay dưới nó. Với độ dịch ba của Caesar, “I came, I saw, I conquered” (Ta đến, ta thấy, ta chinh phục) thành `L FDPH, L VDZ, L FRQTXHUHG`.
+
+Để giải mã, hãy đi theo chiều ngược lại: tìm từng chữ ở hàng dưới và đọc chữ nằm ngay trên nó.
+
+<Try action="blank" button="Xóa tin nhắn">
+  Gõ tên của bạn vào ô “Tin nhắn của bạn”. Rồi đổi độ dịch và xem bản mật mã thay đổi theo.
+</Try>
+
+### Cách làm và khóa
+
+Mật mã nào cũng có hai phần. **Thuật toán**, tức là cách làm: ở đây là “dịch bảng chữ cái”. **Khóa** là chi tiết khiến lần dùng này khác lần dùng khác: ở đây là dịch đi bao xa.
+
+Kẻ thù của Caesar có thể đoán ra cách làm. Như thế chưa đủ. Muốn đọc tin nhắn, họ còn cần cả khóa. Một mật mã tốt vẫn an toàn ngay cả khi kẻ thù biết rõ nó hoạt động thế nào, miễn là khóa được giữ bí mật. Quy tắc này gọi là **nguyên lý Kerckhoffs**, theo tên Auguste Kerckhoffs, nhà ngôn ngữ học người Hà Lan đã viết ra nó năm 1883.
+
+<Check question="Mật mã dịch chuyển Caesar có bao nhiêu khóa khác nhau?">
+  Chỉ 25. Bạn có thể dịch 1, 2, 3 chỗ, cứ thế cho tới 25. Dịch 26 chỗ thì mọi chữ quay về đúng chính nó, chẳng giấu được gì.
+</Check>
+
+<Label>Câu chuyện</Label>
+
+## Dịch xuống ba chỗ
+
+Chúng ta biết mật mã của Caesar hoạt động thế nào là nhờ Suetonius, người viết về cuộc đời các hoàng đế Caesar hơn một thế kỷ sau. Ông giải thích rằng Caesar đổi mỗi chữ thành chữ đứng sau nó ba chỗ trong bảng chữ cái.
+
+Đây là một **mật mã thay thế**: mỗi chữ ở yên chỗ của nó trong tin nhắn nhưng đổi thành một chữ khác. Đó là mật mã thay thế đầu tiên mà chúng ta biết đã được một đội quân sử dụng. Trước đó, phần lớn thư bí mật chỉ dời chỗ các chữ trong tin nhắn.
+
+Nó rất hợp với một vị tướng. Không có gì phải mang theo, cũng chẳng có gì để đánh mất. Viên sĩ quan chỉ cần nhớ một con số.
+
+<DigDeeper title="Mật mã kia của Caesar">
+  Bức thư trên ngọn giáo không dùng cách dịch chữ. Chính Caesar kể lại câu chuyện trong cuốn *Chiến tranh xứ Gaul* (*Gallic Wars*). Với tin nhắn đó, ông đổi mỗi chữ La Mã thành một chữ Hy Lạp. Người Gaul không đọc được.
+
+  Vẫn là ý tưởng ấy, chỉ với một bảng chữ mã khác. Mỗi chữ giữ nguyên chỗ và đổi hình dạng. Cách dịch ba chỗ là cách mà Suetonius mô tả, nên đó là cách chúng ta gọi là mã Caesar.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Hai mươi lăm lần đoán
+
+Chính con số nhỏ bé ấy cũng là điểm yếu. Nếu kẻ thù nghi đây là mã Caesar, họ chẳng cần thông minh. Họ có thể thử mọi khóa. Cách này gọi là **tấn công vét cạn**.
+
+Với 25 khóa, chỉ cần một cây bút và vài phút. Chỉ một trong 25 kết quả cho ra những từ thật. Số còn lại đều vô nghĩa.
+
+<Try action="intercepted" button="Mở một tin nhắn bị chặn được">
+  Bạn đã bắt được tin nhắn `UXPTKX MAX BWXL HY FTKVA`. Mở mục “Thử mọi độ dịch cùng lúc” bên dưới các ô điều khiển và dò xuống danh sách tìm dòng có nghĩa.
+</Try>
+
+Một mật mã an toàn cần nhiều khóa đến mức không ai thử hết được.
+
+<Label>Thử thách</Label>
+
+## Đọc lời cảnh báo
+
+<Challenge answer="BEWARE THE IDES OF MARCH">
+  Một thầy bói có lời cảnh báo dành cho Caesar. Nó đến dưới dạng `UXPTKX MAX BWXL HY FTKVA`, và không ai cho bạn biết độ dịch.
+
+  Hãy tìm khóa. Lời cảnh báo nói gì?
+
+  <Try action="intercepted" button="Mở tin nhắn" />
+</Challenge>
+
+<Check question="Vì sao thử mọi khóa lại thành công ở đây?">
+  Chỉ có 25 khóa, nên kiểm tra hết chúng rất nhanh. Và chỉ một khóa cho ra từ tiếng Anh, nên bạn biết ngay khi đã tìm thấy nó.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Nhiều khóa hơn
+
+Cách chữa là thôi trượt bảng chữ cái và bắt đầu xáo trộn nó. Nếu bảng chữ mã có thể là bất kỳ cách sắp xếp nào của 26 chữ cái, thì có hơn 400.000.000.000.000.000.000.000.000 khóa. Không ai thử hết được.
+
+Nhưng một bảng chữ cái đã xáo trộn thì khó nhớ. Lời giải là một từ khóa, và bạn có thể thử nó ở trang tiếp theo: [mật mã từ khóa](/ciphers/keyword-substitution).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *The Code Book*, chương 1.
+- Suetonius, *Cuộc đời các hoàng đế Caesar* (*Lives of the Caesars*), quyển 1, mục 56. Bản mô tả gốc về mật mã này.

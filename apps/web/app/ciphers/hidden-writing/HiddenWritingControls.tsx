@@ -2,6 +2,7 @@ import type { Dispatch } from "react";
 import { MAX_HEAT, nextCovered, reads } from "@codebook/cipher-engine/hidden-writing";
 import { Button, Controls, Row } from "~/components/sim/Controls";
 import { Choice, Output, TextField } from "~/components/sim/Fields";
+import { useLocale, useT } from "~/i18n";
 import { report, type HiddenWritingAction, type HiddenWritingState } from "./useHiddenWriting";
 
 /** The HTML controls of the hidden writing page: the hiding place, the message and the guard. */
@@ -10,52 +11,58 @@ export function HiddenWritingControls(props: { state: HiddenWritingState; dispat
   const { page } = state;
   const wax = page.method === "wax";
   const showing = reads(page);
+  const t = useT();
+  const locale = useLocale();
 
   return (
     <Controls>
       <Row>
-        <Output label="What anyone can read now">{showing || "Nothing. It looks blank."}</Output>
+        <Output label={t({ en: "What anyone can read now", vi: "Điều ai cũng đọc được lúc này" })}>
+          {showing || t({ en: "Nothing. It looks blank.", vi: "Không có gì. Trông như để trống." })}
+        </Output>
         <Choice
-          label="Hide it with"
+          label={t({ en: "Hide it with", vi: "Giấu bằng" })}
           value={page.method}
           onChange={(method) => dispatch({ type: "switch", method })}
           options={[
-            { value: "wax", label: "Wax" },
-            { value: "ink", label: "Invisible ink" },
+            { value: "wax", label: t({ en: "Wax", vi: "Sáp" }) },
+            { value: "ink", label: t({ en: "Invisible ink", vi: "Mực vô hình" }) },
           ]}
         />
       </Row>
       <Row>
         <TextField
-          label="Your message (typing starts a fresh page)"
+          label={t({ en: "Your message (typing starts a fresh page)", vi: "Tin nhắn của bạn (gõ chữ là bắt đầu trang mới)" })}
           value={state.message}
           onChange={(message) => dispatch({ type: "type", message })}
         />
         <Button primary disabled={showing === ""} onClick={() => dispatch({ type: "hide" })}>
-          {wax ? "Cover with wax" : "Let the ink dry"}
+          {wax ? t({ en: "Cover with wax", vi: "Phủ sáp" }) : t({ en: "Let the ink dry", vi: "Để mực khô" })}
         </Button>
         {wax ? (
           <Button disabled={nextCovered(page) < 0} onClick={() => dispatch({ type: "scrapeNext" })}>
-            Scrape the next strip
+            {t({ en: "Scrape the next strip", vi: "Cạo dải tiếp theo" })}
           </Button>
         ) : (
           <Button disabled={page.heat >= MAX_HEAT} onClick={() => dispatch({ type: "warm" })}>
-            Warm the page
+            {t({ en: "Warm the page", vi: "Hơ nóng tờ giấy" })}
           </Button>
         )}
       </Row>
       <Row>
         <Choice
-          label="The guard is"
+          label={t({ en: "The guard is", vi: "Lính gác" })}
           value={state.guard}
           onChange={(guard) => dispatch({ type: "post", guard })}
           options={[
-            { value: "casual", label: "In a hurry" },
-            { value: "thorough", label: "Thorough" },
+            { value: "casual", label: t({ en: "In a hurry", vi: "Vội vàng" }) },
+            { value: "thorough", label: t({ en: "Thorough", vi: "Kỹ tính" }) },
           ]}
         />
-        <Button onClick={() => dispatch({ type: "send" })}>Send it past the guard</Button>
-        <Output label="The guard says">{report(state) ?? "He has not looked yet."}</Output>
+        <Button onClick={() => dispatch({ type: "send" })}>{t({ en: "Send it past the guard", vi: "Gửi qua trạm gác" })}</Button>
+        <Output label={t({ en: "The guard says", vi: "Lính gác nói" })}>
+          {report(state, locale) ?? t({ en: "He has not looked yet.", vi: "Lính gác chưa kiểm tra." })}
+        </Output>
       </Row>
     </Controls>
   );

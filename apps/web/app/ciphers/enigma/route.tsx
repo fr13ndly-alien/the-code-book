@@ -1,12 +1,13 @@
 import { lazy } from "react";
 import { CipherPage, StageLoading } from "~/components/CipherPage";
 import { ClientOnly } from "~/components/ClientOnly";
-import { STORY_BLOCKS, Story } from "~/components/story/Story";
+import { Story } from "~/components/story/Story";
 import { pageMeta } from "~/ciphers";
 import { EnigmaControls } from "./EnigmaControls";
 import { meta as enigma } from "./meta";
 import { PRESETS, TOY_PRESETS } from "./presets";
-import StoryText from "./story.mdx";
+import StoryEn from "./story.mdx";
+import StoryVi from "./story.vi.mdx";
 import { useEnigma } from "./useEnigma";
 import { usePlugPicker } from "./usePlugPicker";
 import { useToyScrambler } from "./useToyScrambler";
@@ -57,9 +58,7 @@ export default function EnigmaRoute() {
         />
       }
       story={
-        <Story onAction={loadPreset}>
-          <StoryText components={STORY_BLOCKS} />
-        </Story>
+        <Story onAction={loadPreset} text={{ en: StoryEn, vi: StoryVi }} />
       }
     />
   );

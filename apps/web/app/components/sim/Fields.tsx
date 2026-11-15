@@ -1,4 +1,5 @@
 import { useId, type ReactNode } from "react";
+import { UI, useLocale } from "~/i18n";
 import styles from "./Fields.module.css";
 
 /** A labelled box for typing a message or a key. `rows` above 1 makes it a text area. */
@@ -47,15 +48,16 @@ export function Output({ label, children }: { label: string; children: ReactNode
 
 /** A value with buttons to step it down and up, such as a shift or a rotor position. */
 export function Stepper(props: { label: string; value: string | number; onStep: (by: 1 | -1) => void }) {
+  const locale = useLocale();
   return (
     <div className={styles.stepper} role="group" aria-label={props.label}>
       <span className={styles.label}>{props.label}</span>
       <div className={styles.stepperRow}>
-        <button type="button" aria-label={`${props.label}: one back`} onClick={() => props.onStep(-1)}>
+        <button type="button" aria-label={UI.oneBack[locale](props.label)} onClick={() => props.onStep(-1)}>
           ▼
         </button>
         <output aria-live="polite">{props.value}</output>
-        <button type="button" aria-label={`${props.label}: one forward`} onClick={() => props.onStep(1)}>
+        <button type="button" aria-label={UI.oneForward[locale](props.label)} onClick={() => props.onStep(1)}>
           ▲
         </button>
       </div>

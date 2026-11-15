@@ -3,6 +3,7 @@ import { ALPHABET, indexOfLetter, letterAt, lettersOnly, mod } from "@codebook/c
 import { AlphabetRows } from "~/components/sim/AlphabetRows";
 import { Board } from "~/components/sim/Board";
 import { Caption, Letters } from "~/components/sim/Caption";
+import { useT } from "~/i18n";
 import styles from "./DiscBoard.module.css";
 import { DISC } from "./layout";
 import { output, shownSetting, type DiscState } from "./useDisc";
@@ -16,6 +17,7 @@ export function DiscBoard({ state, onTurn }: { state: DiscState; onTurn: (by: nu
   const cipher = state.mode === "encipher" ? result : typed;
   // The pair of letters the disc was last used for, as a place on the outer ring.
   const lastPlain = plain === "" ? undefined : indexOfLetter(plain.at(-1)!);
+  const t = useT();
 
   return (
     <Board>
@@ -26,20 +28,45 @@ export function DiscBoard({ state, onTurn }: { state: DiscState; onTurn: (by: nu
         onPick={state.turning === "keyword" ? undefined : (inner) => onTurn(shortestTurn(inner - setting))}
       />
       <Caption>
-        The inner <Letters>{letterAt(setting)}</Letters> is beside the outer <Letters>A</Letters>.
+        {t({
+          en: (
+            <>
+              The inner <Letters>{letterAt(setting)}</Letters> is beside the outer <Letters>A</Letters>.
+            </>
+          ),
+          vi: (
+            <>
+              Chữ <Letters>{letterAt(setting)}</Letters> của vòng trong đang nằm cạnh chữ <Letters>A</Letters> của vòng
+              ngoài.
+            </>
+          ),
+        })}
         {lastPlain !== undefined && (
           <>
             {" "}
-            For the last letter, outer <Letters>{plain.at(-1)}</Letters> meets inner <Letters>{cipher.at(-1)}</Letters>.
+            {t({
+              en: (
+                <>
+                  For the last letter, outer <Letters>{plain.at(-1)}</Letters> meets inner{" "}
+                  <Letters>{cipher.at(-1)}</Letters>.
+                </>
+              ),
+              vi: (
+                <>
+                  Với chữ vừa gõ, chữ <Letters>{plain.at(-1)}</Letters> ở vòng ngoài gặp chữ{" "}
+                  <Letters>{cipher.at(-1)}</Letters> ở vòng trong.
+                </>
+              ),
+            })}
           </>
         )}
       </Caption>
       {plain !== "" && (
         <AlphabetRows
           rows={[
-            { label: "Plain (outer)", letters: plain },
-            { label: "Inner letter at A", letters: settingsUsed(state, typed).map(letterAt) },
-            { label: "Cipher (inner)", letters: cipher, kind: "cipher" },
+            { label: t({ en: "Plain (outer)", vi: "Rõ (vòng ngoài)" }), letters: plain },
+            { label: t({ en: "Inner letter at A", vi: "Chữ vòng trong ở A" }), letters: settingsUsed(state, typed).map(letterAt) },
+            { label: t({ en: "Cipher (inner)", vi: "Mã (vòng trong)" }), letters: cipher, kind: "cipher" },
           ]}
           highlight={plain.length - 1}
         />

@@ -1,11 +1,12 @@
 import { pageMeta } from "~/ciphers";
 import { CipherPage } from "~/components/CipherPage";
-import { STORY_BLOCKS, Story } from "~/components/story/Story";
+import { Story } from "~/components/story/Story";
 import { KeyExchangeBoard } from "./KeyExchangeBoard";
 import { KeyExchangeControls } from "./KeyExchangeControls";
 import { meta as keyExchange } from "./meta";
 import { PRESETS } from "./presets";
-import StoryText from "./story.mdx";
+import StoryEn from "./story.mdx";
+import StoryVi from "./story.vi.mdx";
 import { useKeyExchange } from "./useKeyExchange";
 
 export const meta = pageMeta(keyExchange);
@@ -19,9 +20,7 @@ export default function KeyExchangeRoute() {
       stage={<KeyExchangeBoard state={state} />}
       controls={<KeyExchangeControls state={state} dispatch={dispatch} />}
       story={
-        <Story onAction={(name) => dispatch({ type: "load", preset: PRESETS[name]! })}>
-          <StoryText components={STORY_BLOCKS} />
-        </Story>
+        <Story onAction={(name) => dispatch({ type: "load", preset: PRESETS[name]! })} text={{ en: StoryEn, vi: StoryVi }} />
       }
     />
   );

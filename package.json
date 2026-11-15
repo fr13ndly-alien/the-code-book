@@ -12,6 +12,7 @@
     "preview": "npm run preview -w @codebook/web",
     "test": "npm run test -w @codebook/cipher-engine",
     "typecheck": "npm run typecheck --workspaces",
-    "check:coverage": "node scripts/check-coverage.mjs"
+    "check:coverage": "node scripts/check-coverage.mjs",
+    "check:i18n": "node scripts/check-i18n.mjs"
   }
 }

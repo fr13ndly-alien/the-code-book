@@ -1,6 +1,8 @@
-import { describe, type Pose } from "@codebook/cipher-engine/dancing-men";
+import type { Pose } from "@codebook/cipher-engine/dancing-men";
+import { useLocale } from "~/i18n";
 import { DancingFigure } from "./DancingFigure";
 import styles from "./FigureTiles.module.css";
+import { describePose } from "./vi";
 
 /** One tile: a figure with a short line under it, such as its letter or its count. */
 export interface FigureTile {
@@ -17,6 +19,7 @@ export function FigureTiles(props: {
   picked?: string;
   onPick: (letter: string) => void;
 }) {
+  const locale = useLocale();
   if (props.tiles.length === 0) return null;
   return (
     <div className={styles.tiles}>
@@ -27,7 +30,7 @@ export function FigureTiles(props: {
             <button
               type="button"
               aria-pressed={tile.letter === props.picked}
-              aria-label={`${describe(tile.pose)}: ${tile.under}`}
+              aria-label={`${describePose(tile.pose, locale)}: ${tile.under}`}
               onClick={() => props.onPick(tile.letter)}
             >
               <DancingFigure pose={tile.pose} />

@@ -3,6 +3,7 @@ import { CRYPTOGRAMS, type Kind } from "@codebook/cipher-engine/codebreakers-cha
 import { letterAt } from "@codebook/cipher-engine/text";
 import { Button, Controls, Row } from "~/components/sim/Controls";
 import { Choice, Output, Stepper, TextField } from "~/components/sim/Fields";
+import { useT, type Bilingual } from "~/i18n";
 import {
   OWN,
   currentIsSolved,
@@ -24,10 +25,10 @@ const PREVIEW_LETTERS = 64;
 const PASTE_ROWS = 3;
 
 /** The kinds of cipher a pasted cryptogram can be worked on as. */
-const KINDS: { value: Kind; label: string }[] = [
-  { value: "caesar", label: "Caesar shift" },
-  { value: "substitution", label: "Substitution" },
-  { value: "vigenere", label: "Vigenère" },
+const KINDS: { value: Kind; label: Bilingual }[] = [
+  { value: "caesar", label: { en: "Caesar shift", vi: "Mã Caesar" } },
+  { value: "substitution", label: { en: "Substitution", vi: "Thay thế" } },
+  { value: "vigenere", label: { en: "Vigenère", vi: "Vigenère" } },
 ];
 
 const preview = (text: string) => (text.length > PREVIEW_LETTERS ? `${text.slice(0, PREVIEW_LETTERS)}…` : text);
@@ -40,20 +41,27 @@ const keySoFar = (state: ChallengeState) =>
     .join(" ");
 
 /** What the first row calls the reading: we can only judge our own cryptograms. */
-function readingLabel(state: ChallengeState): string {
-  if (isOwn(state)) return "Your own cryptogram: the reading so far";
-  return `Cryptogram ${state.current + 1}: ${currentIsSolved(state) ? "solved" : "not solved yet"}`;
+function readingLabel(state: ChallengeState): Bilingual {
+  if (isOwn(state)) {
+    return { en: "Your own cryptogram: the reading so far", vi: "Bức mật thư của riêng bạn: cách đọc tới giờ" };
+  }
+  const solved = currentIsSolved(state);
+  return {
+    en: `Cryptogram ${state.current + 1}: ${solved ? "solved" : "not solved yet"}`,
+    vi: `Bức mật thư ${state.current + 1}: ${solved ? "đã giải được" : "chưa giải được"}`,
+  };
 }
 
 /** The HTML controls of the challenge page: which cryptogram, its reading, whether it is solved, and its tool. */
 export function CodebreakersChallengeControls({ state, dispatch }: Props) {
+  const t = useT();
   const { kind } = onBench(state);
 
   return (
     <Controls>
       <Row>
         <Choice
-          label="Cryptogram (✓ is solved)"
+          label={t({ en: "Cryptogram (✓ is solved)", vi: "Bức mật thư (✓ là đã giải được)" })}
           value={String(state.current)}
           onChange={(value) => dispatch({ type: "open", cryptogram: Number(value) })}
           options={[
@@ -61,10 +69,10 @@ export function CodebreakersChallengeControls({ state, dispatch }: Props) {
               value: String(at),
               label: state.solved[at] ? `${each.number} ✓` : `${each.number}`,
             })),
-            { value: String(OWN), label: "Your own" },
+            { value: String(OWN), label: t({ en: "Your own", vi: "Của riêng bạn" }) },
           ]}
         />
-        <Output label={readingLabel(state)}>{preview(reading(state))}</Output>
+        <Output label={t(readingLabel(state))}>{preview(reading(state))}</Output>
       </Row>
       {isOwn(state) && <OwnTools state={state} dispatch={dispatch} />}
       {kind === "caesar" && <CaesarTools state={state} dispatch={dispatch} />}
@@ -76,18 +84,19 @@ export function CodebreakersChallengeControls({ state, dispatch }: Props) {
 
 /** The reader's own cryptogram: the text, and the kind of cipher to treat it as. */
 function OwnTools({ state, dispatch }: Props) {
+  const t = useT();
   return (
     <Row>
       <TextField
-        label="Paste a cryptogram (a change starts again)"
+        label={t({ en: "Paste a cryptogram (a change starts again)", vi: "Dán một bức mật thư (thay đổi thì làm lại từ đầu)" })}
         value={state.own.text}
         rows={PASTE_ROWS}
         onChange={(text) => dispatch({ type: "paste", text })}
       />
       <Choice
-        label="Kind of cipher (a change starts again)"
+        label={t({ en: "Kind of cipher (a change starts again)", vi: "Loại mật mã (thay đổi thì làm lại từ đầu)" })}
         value={state.own.kind}
-        options={KINDS}
+        options={KINDS.map(({ value, label }) => ({ value, label: t(label) }))}
         onChange={(kind) => dispatch({ type: "pickKind", kind })}
       />
     </Row>
@@ -96,31 +105,35 @@ function OwnTools({ state, dispatch }: Props) {
 
 /** A Caesar cryptogram: the shift to undo. */
 function CaesarTools({ state, dispatch }: Props) {
+  const t = useT();
   return (
     <Row>
-      <Stepper label="Shift" value={currentWork(state).shift} onStep={(by) => dispatch({ type: "turn", by })} />
+      <Stepper label={t({ en: "Shift", vi: "Độ dịch" })} value={currentWork(state).shift} onStep={(by) => dispatch({ type: "turn", by })} />
     </Row>
   );
 }
 
 /** A substitution cryptogram: the key so far, and ways to rub guesses out. */
 function SubstitutionTools({ state, dispatch }: Props) {
+  const t = useT();
   const { guesses, picked } = currentWork(state);
   const guessed = Object.keys(guesses).length;
   const pickedIsGuessed = picked !== undefined && guesses[picked] !== undefined;
   return (
     <>
       <Row>
-        <Output label={`Key so far: ${guessed} cipher letters`}>{keySoFar(state)}</Output>
+        <Output label={t({ en: `Key so far: ${guessed} cipher letters`, vi: `Khóa tới giờ: ${guessed} chữ mã` })}>{keySoFar(state)}</Output>
       </Row>
       <Row>
         <Button disabled={!pickedIsGuessed} onClick={() => dispatch({ type: "rubOut" })}>
-          Rub out {picked ?? "this letter"}
+          {t({ en: <>Rub out {picked ?? "this letter"}</>, vi: <>Xóa {picked ?? "chữ này"}</> })}
         </Button>
         <Button disabled={guessed === 0} onClick={() => dispatch({ type: "rubOutAll" })}>
-          Rub out every guess
+          {t({ en: "Rub out every guess", vi: "Xóa mọi phỏng đoán" })}
         </Button>
-        <Button onClick={() => dispatch({ type: "guessByRank" })}>Guess every letter by rank</Button>
+        <Button onClick={() => dispatch({ type: "guessByRank" })}>
+          {t({ en: "Guess every letter by rank", vi: "Đoán mọi chữ theo thứ hạng" })}
+        </Button>
       </Row>
     </>
   );
@@ -128,18 +141,19 @@ function SubstitutionTools({ state, dispatch }: Props) {
 
 /** A Vigenère cryptogram: the key length, then the shift of each key letter. */
 function VigenereTools({ state, dispatch }: Props) {
+  const t = useT();
   const { keyLength, keyShifts, position } = currentWork(state);
   const shift = keyShifts[position]!;
   return (
     <Row>
-      <Output label="Keyword so far">{keyword(state)}</Output>
-      <Stepper label="Key length (resets the keyword)" value={keyLength} onStep={(by) => dispatch({ type: "resize", by })} />
+      <Output label={t({ en: "Keyword so far", vi: "Từ khóa tới giờ" })}>{keyword(state)}</Output>
+      <Stepper label={t({ en: "Key length (resets the keyword)", vi: "Độ dài khóa (đặt lại từ khóa)" })} value={keyLength} onStep={(by) => dispatch({ type: "resize", by })} />
       <Stepper
-        label="Key letter"
-        value={`${position + 1} of ${keyLength}`}
+        label={t({ en: "Key letter", vi: "Chữ khóa" })}
+        value={t({ en: `${position + 1} of ${keyLength}`, vi: `${position + 1} / ${keyLength}` })}
         onStep={(by) => dispatch({ type: "move", by })}
       />
-      <Stepper label="Shift" value={`${letterAt(shift)} ${shift}`} onStep={(by) => dispatch({ type: "slide", by })} />
+      <Stepper label={t({ en: "Shift", vi: "Độ dịch" })} value={`${letterAt(shift)} ${shift}`} onStep={(by) => dispatch({ type: "slide", by })} />
     </Row>
   );
 }

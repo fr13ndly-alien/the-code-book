@@ -9,4 +9,11 @@ export const meta: CipherMeta = {
   hook: "A dentist dared Charles Babbage to crack the unbreakable cipher. So he did, and told nobody.",
   firstStep: "Tap a repeated sequence in the table to find both copies.",
   source: "The Code Book, chapter 2: The Anonymous Codebreaker",
+  vi: {
+    title: "Babbage phá mật mã Vigenère",
+    era: "1854",
+    hook: "Một nha sĩ thách Charles Babbage phá mật mã không thể phá. Ông đã phá được, và chẳng nói với ai.",
+    firstStep: "Chạm vào một chuỗi chữ lặp lại trong bảng để tìm cả hai bản của nó.",
+    source: "The Code Book, chương 2: Nhà giải mã vô danh",
+  },
 };

@@ -1,0 +1,124 @@
+{/*
+  Vietnamese translation of story.mdx. Follows docs/i18n/vi-glossary.md.
+  Facts come from The Code Book, Appendix C and chapter 1. The wording is ours.
+*/}
+
+<Standfirst>
+  Nhảy qua một văn bản dài theo những bước đều nhau, và các từ hiện ra. Chúng có nghĩa gì không?
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Lời tiên tri trên mặt báo
+
+Năm 1997, một cuốn sách tên là *The Bible Code* (Mật mã Kinh Thánh) lên báo khắp thế giới. Tác giả của nó, Michael Drosnin, nói rằng Kinh Thánh có giấu những bức thư bí mật.
+
+Bạn không thể thấy chúng nếu đọc theo cách thường. Thay vào đó, bạn chọn một chữ để bắt đầu. Rồi bạn nhảy tới một số chữ cố định, lần này qua lần khác, và ghi lại từng chữ mình rơi vào. Đôi khi những chữ đó ghép thành một từ. Drosnin kể rằng ông tìm được theo cách này một số từ nhiều đến kinh ngạc, có khi cả những câu trọn vẹn.
+
+Nghe như một mật mã có khóa bí mật. Nhưng nếu bạn tìm thấy một từ bằng cách nhảy qua văn bản, liệu có ai đã đặt nó vào đó không?
+
+<Label>Thử xem</Label>
+
+## Đi tìm chữ “mưa”
+
+Trình mô phỏng chứa phần mở đầu cuốn tiểu thuyết *Moby-Dick*, đã bỏ hết dấu cách. Mỗi hàng của lưới rộng tám chữ. Hãy đoán trước: nếu bạn nhảy tám chữ một lần, mỗi bước nhảy sẽ rơi vào đâu trên lưới?
+
+<Try action="rain" button="Hiện một từ ẩn">
+  Đọc cột sáng từ trên xuống. Rồi tìm đúng những chữ ấy ở ô “Các chữ đọc được” trong phần điều khiển.
+</Try>
+
+<Check question="Một bước nhảy tám chữ rơi vào đâu?">
+  Ngay bên dưới. Mỗi hàng có tám chữ, nên đi tiếp tám chữ là tới cùng cột đó, thấp hơn một hàng. Cột sáng ghép thành `RAIN` (mưa). Herman Melville, người viết cuốn tiểu thuyết, không hề giấu nó ở đó.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Bắt đầu, nhảy, đọc
+
+### Những bước nhảy đều nhau
+
+Tên gọi đúng của cách này là **dãy chữ cách đều**: một chuỗi chữ nằm cách nhau cùng một khoảng. Bạn cần hai con số để tạo ra một dãy. **Điểm bắt đầu** là chữ bạn khởi đầu. **Bước nhảy** là mỗi lần bạn nhảy xa bao nhiêu chữ.
+
+*The Code Book* thử cách này trên chính một đoạn văn của nó. Sách bắt đầu ở chữ `M` của “Michael” và ghi lại cứ mỗi chữ thứ năm. Kết quả mở đầu bằng `MESAHIRT`, chẳng có nghĩa gì cả. Hầu hết các dãy đều như vậy.
+
+<Try action="fifth" button="Lấy cứ mỗi chữ thứ năm">
+  Lưới giờ bắt đầu ở chữ đầu tiên của cuốn tiểu thuyết, với bước nhảy 5. Nhấn ▲ cạnh “Bắt đầu từ chữ” vài lần và xem ô “Các chữ đọc được”. Bạn có thấy từ nào không?
+</Try>
+
+### Để máy tìm giúp
+
+Tìm bằng tay thì chậm, nên hãy để trình mô phỏng tìm. Nó thử mọi điểm bắt đầu với mọi bước nhảy, đọc cả xuôi lẫn ngược. Với một từ bốn chữ trong đoạn văn ngắn này, có tất cả 259.602 dãy chữ.
+
+<Try action="shot" button="Tìm chữ SHOT">
+  Phần điều khiển cho biết `SHOT` (phát súng) ẩn trong đoạn văn bao nhiêu lần. Nhấn ▲ cạnh “Chỗ tìm thấy” để xem từng chỗ sáng lên trên lưới. Rồi gõ một từ ngắn của riêng bạn vào ô “Từ cần tìm”.
+</Try>
+
+Từ ba chữ xuất hiện hàng chục lần. Từ bốn chữ mỗi từ xuất hiện vài lần. Từ dài hơn thì hiếm hơn. Nhưng văn bản càng dài thì cuộc tìm kiếm càng có thêm rất nhiều chỗ để dò.
+
+<Check question="Vì sao từ ngắn dễ tìm hơn từ dài?">
+  Mỗi chữ của từ đó đều phải rơi đúng chỗ nhờ may mắn. Một từ ba chữ cần ba lần may, còn một từ sáu chữ cần sáu lần. Vậy nên từ dài cần nhiều lần thử hơn hẳn, và một văn bản khổng lồ cho đủ số lần thử đó.
+</Check>
+
+### Văn bản nào cũng được
+
+Có lẽ một cuốn tiểu thuyết lớn thì đặc biệt. Vậy hãy thử một văn bản chẳng đặc biệt gì. Đoạn thứ hai là một tấm biển thông báo ở bãi đỗ xe. Nó được viết riêng cho trang này, sao cho càng nhạt nhẽo càng tốt. Không ai giấu gì trong đó cả.
+
+<Try action="notice" button="Tìm trong tấm biển bãi đỗ xe">
+  Cuộc tìm kiếm thấy `FIRE` (lửa) bốn lần. Hãy xem lần lượt từng chỗ. Rồi chuyển qua lại giữa “Moby-Dick” và “Một tấm biển ở bãi đỗ xe” ở mục “Tìm trong”, và thử những từ khác trong cả hai.
+</Try>
+
+<Label>Câu chuyện</Label>
+
+## Cuộc săn cũ, cuốn sách mới
+
+Tìm bí mật trong Kinh Thánh là một thói quen đã có từ lâu. Vào thời Trung cổ tăm tối, châu Âu gần như không biết gì về mật mã. Nơi duy nhất khuyến khích việc học viết bí mật là các tu viện. Ở đó, các tu sĩ lục tung Kinh Thánh để tìm những ý nghĩa ẩn giấu.
+
+Cuốn sách của Drosnin mang niềm say mê ấy vào thời hiện đại. Cách làm của ông không cần khóa nào từ quá khứ, cũng không cần lời chỉ dẫn nào của người viết. Bạn tự chọn chỗ bắt đầu và nhảy xa bao nhiêu.
+
+Những người hoài nghi nói rằng chính sự tự do ấy là vấn đề. Kinh Thánh rất dài. Thay đổi cả điểm bắt đầu lẫn bước nhảy, và một văn bản dài sẽ cho ra vô số dãy chữ. Thế nào cũng có vài dãy ghép thành một điều gì đó.
+
+<Label>Bị phá như thế nào</Label>
+
+## Con cá voi đoán trước những vụ ám sát
+
+Brendan McKay, ở Đại học Quốc gia Úc, đem ý tưởng này ra thử. Ông không tranh cãi về Kinh Thánh. Ông chạy đúng kiểu tìm kiếm ấy trên *Moby-Dick*, một cuốn tiểu thuyết về cuộc săn cá voi.
+
+Ông tìm được mười ba lời nói về những vụ ám sát người nổi tiếng. Trotsky, Gandhi và Robert Kennedy đều có trong đó. Không ai tin cuốn tiểu thuyết đã thấy trước những cái chết ấy. Vậy là cách làm này “tìm ra” thông tin ở bất cứ đâu người ta chĩa nó vào, và một lần tìm thấy chẳng chứng minh được gì.
+
+Hãy để ý xem ai mới là người làm việc. Người tìm chọn từ, chọn điểm bắt đầu và bước nhảy. Rồi họ chỉ giữ lại những kết quả trông có vẻ có nghĩa. Hàng nghìn dãy vô nghĩa bị bỏ đi mà không ai nhắc tới.
+
+<Try>
+  Chọn “Một tấm biển ở bãi đỗ xe” và gõ `DOOM` (tai họa) vào ô “Từ cần tìm”. Nó ẩn đúng một lần. Bãi đỗ xe sắp gặp họa, hay bạn chỉ đơn giản là đã dò ở 170.170 chỗ?
+</Try>
+
+<Label>Thử thách</Label>
+
+## Lời cảnh báo của bãi đỗ xe
+
+<Challenge answer="DEAD">
+  Một nhà tiên tri nói rằng tấm biển bãi đỗ xe giấu một lời cảnh báo thứ hai. Nó bắt đầu ở chữ thứ 434, là một chữ `D`. Ông đã quên mất bước nhảy, nhưng nó lớn hơn 50 một chút.
+
+  Nhấn ▲ cạnh “Bước nhảy” cho tới khi bốn chữ ghép thành một từ. Đó là từ gì?
+
+  <Try action="warning" button="Mở tấm biển" />
+</Challenge>
+
+<Check question="Tìm thấy từ đó có chứng minh rằng ai đó đã giấu nó không?">
+  Không. Bạn đã đổi bước nhảy cho tới khi một từ hiện ra, và bỏ qua những chữ vô nghĩa trên đường đi. Khi có đủ điểm bắt đầu và bước nhảy để chọn, gần như lúc nào cũng có một từ nào đó xuất hiện. Đó là sự tình cờ, không phải một bức thư.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Một bí mật thật thì có người gửi
+
+Một mật mã thật hoạt động theo chiều ngược lại. Người gửi chọn cách làm và khóa trước khi viết. Người nhận dùng đúng khóa đó và nhận được một bức thư duy nhất, chứ không phải bức thư nào hợp ý mình.
+
+Trong khi các tu sĩ tìm những mật mã không hề có, thì những mật mã thật đang tới. Sách viết rằng tới thế kỷ 15, mật mã học châu Âu đã là “một ngành đang lớn mạnh”, nhờ những âm mưu giữa các triều đình đối địch. Chẳng bao lâu nữa, một nữ hoàng sẽ đặt cả mạng sống của mình vào một mật mã. Hãy gặp bà ở trang sau: [mật mã của Nữ hoàng Mary xứ Scotland](/ciphers/mary-queen-of-scots).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *The Code Book*, phụ lục C, “The So-Called Bible Code” (Cái gọi là mật mã Kinh Thánh).
+- Brendan McKay và các cộng sự, “Solving the Bible Code Puzzle” (Giải câu đố mật mã Kinh Thánh), *Statistical Science*, 1999. Lời đáp đầy đủ của những người hoài nghi.
+- Herman Melville, *Moby-Dick*, 1851. Cuốn tiểu thuyết đã hết bản quyền từ lâu, nên ai cũng có thể dò tìm trong nó.

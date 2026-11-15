@@ -1,0 +1,172 @@
+{/*
+  Bản dịch tiếng Việt của story.mdx. Theo docs/i18n/vi-glossary.md.
+  Follows the cipher page template in docs/STANDARDS.md.
+  Facts come from The Code Book, chapter 1 and Appendix B. The wording is ours.
+  The intercepted message is our own passage, enciphered by the engine.
+*/}
+
+<Standfirst>
+  Ngôn ngữ nào cũng có những chữ cái được ưa dùng. Một học giả ở Baghdad đã dựa vào chúng để phá loại mật mã được cho là không thể phá.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Đếm chữ ở Baghdad
+
+Ở Baghdad thế kỷ 9, các học giả đọc kinh Koran cẩn thận khác thường. Họ muốn biết những lời mặc khải nào của Muhammad có trước. Vì vậy họ đếm từ, bởi có những từ mới xuất hiện sau những từ khác.
+
+Rồi họ đi xa hơn nữa và đếm từng chữ cái. Họ thấy tiếng Ả Rập có những chữ được ưa dùng. Hai chữ `a` và `l` xuất hiện ở khắp nơi. Chữ `j` chỉ xuất hiện ít bằng một phần mười.
+
+Một học giả, al-Kindi, nhận ra điều này có ý nghĩa gì với thư bí mật. Suốt nhiều thế kỷ, mật mã thay thế tưởng như không thể phá, vì nó có quá nhiều khóa để thử. Liệu chỉ việc đếm chữ có làm được điều mà không cuộc dò tìm nào làm nổi?
+
+<Label>Thử xem</Label>
+
+## Tìm chữ được ưa dùng
+
+Mô phỏng đang giữ một tin nhắn bị chặn được. Ai đó đã đổi mỗi chữ thành một chữ khác, theo một bảng chữ cái đã xáo trộn. Các cột đếm xem mỗi chữ mã xuất hiện bao nhiêu lần. Hãy đoán trước: tiếng Anh dùng chữ nào nhiều nhất?
+
+<Try action="intercepted" button="Mở tin nhắn bị chặn được">
+  Chạm vào cột cao nhất, `O`. Rồi chạm vào `e` ở hàng chữ rõ và xem tin nhắn.
+</Try>
+
+<Check question="Vì sao E là phỏng đoán tốt cho cột cao nhất?">
+  `E` là chữ hay gặp nhất trong tiếng Anh: nó chiếm khoảng một phần tám số chữ. Mật mã thay thế đổi vẻ ngoài của một chữ, nhưng không đổi được việc nó xuất hiện thường xuyên ra sao. Vì vậy chữ mã bận rộn nhất có lẽ là `E` cải trang.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Công thức của al-Kindi
+
+### Đếm, xếp hạng, ghép đôi
+
+Phương pháp của al-Kindi gọi là **phân tích tần suất**. **Tần suất** của một chữ là mức độ nó xuất hiện thường xuyên. Trước hết, hãy lấy một đoạn văn thường thật dài, đúng thứ tiếng cần dùng, và đếm từng chữ. Trong tiếng Anh, `E` đứng đầu, rồi đến `T`, rồi `A`. Những chữ hiếm như `J`, `Q`, `X` và `Z` mỗi chữ chiếm chưa tới một phần trăm.
+
+Tiếp theo, đếm các chữ của bản mật mã theo cùng cách đó. Giờ ghép hai danh sách với nhau. Chữ mã hay gặp nhất có lẽ là `E`. Chữ đứng thứ hai có lẽ là `T`, và cứ thế xuống dưới.
+
+Trên mô phỏng, cột tô đặc là bản mật mã, còn viền rỗng là tiếng Anh thông thường. Cả hai đều xếp cột cao nhất lên trước, nên bạn có thể so hình dạng của chúng.
+
+<Try action="byRank" button="Làm theo công thức một cách máy móc">
+  Nút này điền mọi chữ chỉ dựa vào thứ hạng của chúng. Đọc tin nhắn xem. Đã ra tiếng Anh chưa?
+</Try>
+
+### Gần đúng, nhưng chưa đúng
+
+Kết quả gần như đọc được, và đó chính là bài học. Bảng tần suất tiếng Anh chỉ là con số trung bình. Không tin nhắn thật nào khớp với nó hoàn toàn, và một tin nhắn ngắn có thể lệch rất xa. Với dưới một trăm chữ, phương pháp này gặp khó.
+
+Vì vậy nhà giải mã coi việc đếm chỉ là phỏng đoán đầu tiên, rồi đi tìm các từ. Tin nhắn này đầy những từ `tae`. Không có từ nào như thế, nhưng “the” là từ ba chữ hay gặp nhất trong tiếng Anh. Chữ mã đang hiện là `a` hẳn thật ra là `H`.
+
+<Try>
+  Chữ mã `B` đã được chọn sẵn. Chạm vào `h` ở hàng chữ rõ. Mọi chữ `tae` đều thành `the`, và những từ khác bắt đầu hiện ra.
+</Try>
+
+### Mỗi chữ có một tính cách
+
+Mỗi chữ còn có những thói quen, và mật mã không giấu được chúng. Nguyên âm rất dễ gần: `E` đứng cạnh gần như mọi chữ khác. Phụ âm thì kén chọn hơn. `T` hiếm khi đứng cạnh `B`, `D`, `G`, `J`, `K`, `M`, `Q` hay `V`.
+
+`H` thường đứng ngay trước `E`, như trong “the” và “then”, nhưng hiếm khi đứng sau nó. Chỉ vài chữ thích đứng đôi: các cặp hay gặp là `SS`, `EE`, `TT`, `FF`, `LL`, `MM` và `OO`. Và tiếng Anh chỉ có hai từ một chữ cái: “a” và “I”.
+
+<Try action="started" button="Bắt đầu với E, T và H">
+  Tìm hai chữ mã đứng riêng một mình thành từ: `X` và `Y`. Một chữ là `a`, chữ kia là `i`. Gán cho mỗi chữ đúng chữ rõ của nó, rồi đoán từ `thJee`.
+</Try>
+
+<Check question="Một chữ mã đứng cạnh gần như mọi chữ khác. Đó là nguyên âm hay phụ âm?">
+  Có lẽ là nguyên âm. Gần như từ nào cũng cần nguyên âm, nên chúng rốt cuộc đứng cạnh gần như mọi chữ. Chạm vào một chữ, mô phỏng sẽ cho bạn biết nó đứng cạnh bao nhiêu chữ khác nhau.
+</Check>
+
+<Label>Câu chuyện</Label>
+
+## Triết gia của người Ả Rập
+
+Bản mô tả sớm nhất mà chúng ta biết về cách tấn công này đến từ al-Kindi, một nhà khoa học thế kỷ 9. Người ta gọi ông là “triết gia của người Ả Rập”. Ông viết 290 cuốn sách, về y học, thiên văn học, toán học, ngôn ngữ và âm nhạc.
+
+Tác phẩm lớn của ông về mật mã bị thất lạc suốt nhiều thế kỷ. Mãi tới năm 1987 nó mới được tìm thấy lại, trong một kho lưu trữ ở Istanbul. Nhan đề của nó là *A Manuscript on Deciphering Cryptographic Messages* (Bản viết tay về việc giải những bức thư mật mã). Bản thân công thức chỉ chiếm hai đoạn văn ngắn.
+
+Baghdad là nơi rất hợp cho phát hiện này. Các nhà cai trị ở đó điều hành một đế chế giàu có, tổ chức chặt chẽ, và quan chức dùng mật mã hằng ngày, kể cả cho sổ sách thuế. Các học giả ở đây học toán, thống kê và ngôn ngữ cùng lúc. Muốn phá mật mã thì cần cả ba.
+
+Với al-Kindi, một môn khoa học mới ra đời: **thám mã**, tức là phá mã: đọc những tin nhắn bí mật mà không có khóa. Từ đây, mọi người lập mã đều có một đối thủ.
+
+<DigDeeper title="Cuốn tiểu thuyết không có chữ E">
+  Năm 1969, nhà văn Pháp Georges Perec viết *La Disparition*, một cuốn tiểu thuyết dài hai trăm trang không hề dùng chữ `e`. Sau đó Gilbert Adair dịch nó sang tiếng Anh thành *A Void*, vẫn không có lấy một chữ `e`.
+
+  Đem mã hóa cuốn sách ấy, cột cao nhất sẽ chẳng phải là `E` chút nào. Nhà giải mã nào tin vào phép đếm một cách máy móc sẽ đi sai ngay từ bước đầu.
+
+  Một văn bản cố tình bỏ hẳn một chữ cái gọi là **văn bản kiêng chữ** (lipogram). Chúng tôi đã tự viết một đoạn ngắn, không có chữ `e`, rồi mã hóa nó.
+
+  <Try action="lipogram" button="Mở tin nhắn không có chữ E">
+    Công thức lại được làm theo một cách máy móc. Nó gọi cột cao nhất, `X`, là `e`. Đọc tin nhắn: toàn vô nghĩa. Giờ chạm vào `a` ở hàng chữ rõ và xem các từ hiện ra.
+  </Try>
+</DigDeeper>
+
+<DigDeeper title="Thêm những manh mối mà nhà giải mã dùng">
+  Phụ lục B của cuốn sách bổ sung vài mẹo. Mỗi ngôn ngữ có một hình dạng riêng. Trong tiếng Đức, `e` chiếm gần một phần năm số chữ. Vì vậy một cột đầu tiên rất cao gợi ý rằng tin nhắn là tiếng Đức, và bạn cần một bảng tần suất tiếng Đức.
+
+  Loại tin nhắn cũng quan trọng. Binh lính hay bỏ bớt những từ nhỏ như mạo từ hay chữ “I”, và điều đó làm lệch phép đếm.
+
+  Tốt nhất là có một **từ mồi** (crib): một từ hay cụm từ bạn đoán là có trong tin nhắn. Nhà giải mã Ả Rập thời đầu al-Khalil đoán rằng một bức thư bằng tiếng Hy Lạp mở đầu bằng câu “Nhân danh Thượng đế”. Phỏng đoán ấy mở khóa cho phần còn lại.
+</DigDeeper>
+
+<DigDeeper title="Bức mật thư của chính cuốn sách">
+  Cuốn sách phá từng bước một tin nhắn dài 338 chữ. Bạn có thể phá đúng tin nhắn đó ở đây. Bản báo cáo của điệp viên của chúng tôi được làm bằng cùng một khóa, nên giải được một bản là lộ luôn bản kia.
+
+  <Try action="book" button="Mở bức mật thư của cuốn sách">
+    Hãy tự chạm vào các cột cao nhất và tự đoán trước đã.
+  </Try>
+
+  Ba phát hiện đầu tiên của cuốn sách là `O` = `e`, `X` = `a` và `Y` = `i`.
+
+  <Try action="bookStart" button="Bắt đầu với ba chữ của cuốn sách">
+    Chữ mã `B` đã được chọn. Nó hay đứng trước `e` và không bao giờ đứng sau. Chữ nào có thói quen như vậy?
+  </Try>
+</DigDeeper>
+
+<DigDeeper title="Khóa tìm được một nửa có thể tự hoàn thiện">
+  Trong lúc giải, hãy viết ra bảng chữ mã, chừa chỗ trống cho những chữ bạn chưa tìm được. Trong ví dụ của cuốn sách, sáu chữ liền nhau trong hàng ấy đọc thành `VOIDBY`. Đó không phải tình cờ. Người lập mã đã dựng bảng chữ cái từ một cụm từ khóa, `A VOID BY GEORGES PEREC`. Đoán ra cụm từ, bạn sẽ điền được các chỗ trống. Những chữ chưa dùng nối theo thứ tự bảng chữ cái. Phần còn lại của tin nhắn khi ấy chẳng cần đếm gì nữa.
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Quá trung thành để giấu được
+
+Phân tích tần suất chấm dứt thời gian dài an toàn của **mật mã thay thế đơn bảng** (chỉ dùng một bảng chữ mã). Đó là tên gọi cho mọi mật mã đổi mỗi chữ thành một chữ hay ký hiệu cố định. Hàng tỷ khóa của nó chẳng còn ý nghĩa gì. Nhà giải mã có thể tìm ra tin nhắn trong vài phút mà không cần thử một khóa nào.
+
+Điểm yếu là mật mã này quá trung thành. Mọi chữ `E` đều thành cùng một chữ mã, lần nào cũng vậy. Thế là thói quen của ngôn ngữ lộ thẳng qua lớp cải trang.
+
+Cách tấn công này lan sang châu Âu, hoặc được tìm ra lại ở đó. Năm 1506, Giovanni Soro trở thành thư ký mật mã của Venice. Ông giỏi đến mức các nước khác gửi cho ông những bức thư mà họ không đọc nổi.
+
+Người lập mã chống trả. Họ chèn thêm **chữ đệm** (ký tự vô nghĩa), tức những ký hiệu thừa chẳng mang nghĩa gì, để làm hỏng phép đếm. Họ còn thay một số từ nguyên vẹn bằng một ký hiệu duy nhất.
+
+<Try action="started" button="Tiếp tục từ E, T và H">
+  Hãy làm nốt. Đoán một từ, điền các chữ của nó, rồi xem các từ xung quanh có bắt đầu có nghĩa không. Nếu chúng hóa thành vô nghĩa, hãy xóa phỏng đoán đó đi và thử cái khác.
+</Try>
+
+<Label>Thử thách</Label>
+
+## Mật khẩu của điệp viên
+
+<Challenge answer="LANTERN">
+  Tin nhắn bị chặn được là bản báo cáo của một điệp viên. Câu cuối của nó là `LBO FXKKQCJV YK RXPLOJP`.
+
+  Hãy phá mật mã. Mật khẩu, tức từ cuối cùng của bản báo cáo, là gì?
+
+  <Try action="intercepted" button="Mở tin nhắn" />
+</Challenge>
+
+<Check question="Vì sao cách tấn công này gặp khó với một tin nhắn mười chữ?">
+  Mười chữ thì quá ít để đếm. Bảng tần suất là con số trung bình trên rất nhiều văn bản. Một tin nhắn ngắn rất có thể chẳng có chữ `E` nào, nên cột cao nhất của nó cho bạn biết rất ít.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Một nữ hoàng tin vào mật mã của mình
+
+Bài học là có cực nhiều khóa không làm cho mật mã an toàn. Một mật mã chỉ mạnh bằng những quy luật mà nó giấu được, và mật mã thay thế đơn thuần chẳng giấu được quy luật nào.
+
+Thế nhưng người ta vẫn tiếp tục tin vào nó, chỉ thêm vài mẹo lên trên. Năm 1586, một trong số đó là một nữ hoàng đang bị giam cầm, mưu tính chống lại một nữ hoàng khác. Bà viết bằng ký hiệu, có chữ đệm và có những dấu thay cho cả một từ. Nhà giải mã giỏi nhất nước Anh đang chờ những bức thư của bà. Liệu các mẹo của bà có thắng nổi phép đếm? Hãy tìm hiểu ở trang tiếp theo: [mật mã của Nữ hoàng Mary xứ Scotland](/ciphers/mary-queen-of-scots).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *The Code Book*, chương 1, và Phụ lục B, “Some Elementary Tips for Frequency Analysis” (Một vài mẹo cơ bản trong phân tích tần suất).
+- Al-Kindi, *A Manuscript on Deciphering Cryptographic Messages* (Bản viết tay về việc giải những bức thư mật mã), thế kỷ 9. Bản mô tả sớm nhất được biết đến về phương pháp này.
+- H. Beker và F. Piper, *Cipher Systems: The Protection of Communication* (Các hệ thống mật mã: bảo vệ thông tin liên lạc). Nguồn của bảng tần suất chữ cái tiếng Anh.

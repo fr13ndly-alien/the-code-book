@@ -9,4 +9,11 @@ export const meta: CipherMeta = {
   hook: "Send a key one particle of light at a time, and nobody can listen without leaving a mark.",
   firstStep: "Press “Next step” to see which bits Alice and Bob keep.",
   source: "The Code Book, chapter 6: Pretty Good Privacy",
+  vi: {
+    title: "Mật mã lượng tử",
+    era: "Từ năm 1984",
+    hook: "Gửi một chiếc khóa đi bằng từng hạt ánh sáng một, và không ai nghe lén được mà không để lại dấu vết.",
+    firstStep: "Nhấn “Bước tiếp” để xem Alice và Bob giữ lại những bit nào.",
+    source: "The Code Book, chương 6: Riêng tư tốt đẹp",
+  },
 };

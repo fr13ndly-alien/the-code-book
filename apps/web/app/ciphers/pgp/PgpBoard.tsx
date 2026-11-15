@@ -1,5 +1,6 @@
 import { Board } from "~/components/sim/Board";
 import { Caption } from "~/components/sim/Caption";
+import { useT, type Bilingual } from "~/i18n";
 import { AliceDesk } from "./AliceDesk";
 import { BobDesk } from "./BobDesk";
 import { EnvelopeDesk } from "./EnvelopeDesk";
@@ -7,26 +8,54 @@ import { EveDesk } from "./EveDesk";
 import type { PgpState } from "./usePgp";
 
 /** What has just happened at each stage, for readers who never open the story. */
-const CAPTIONS = [
-  "Alice has written a message for Bob. Nothing is locked yet.",
-  "Alice's computer picks a session key at random. It will be used for this message only.",
-  "The fast lock: each letter of the message is shifted by a letter of the session key.",
-  "The slow lock: each letter of the session key becomes a number, locked with Bob's public key.",
-  "Both locked parts travel together. Bob's private key stays at home.",
-  "Bob's private key turns part 2 back into the session key.",
-  "The session key turns part 1 back into the message. Only Bob could do both steps.",
+const CAPTIONS: Bilingual[] = [
+  {
+    en: "Alice has written a message for Bob. Nothing is locked yet.",
+    vi: "Alice đã viết một tin nhắn cho Bob. Chưa có gì bị khóa.",
+  },
+  {
+    en: "Alice's computer picks a session key at random. It will be used for this message only.",
+    vi: "Máy tính của Alice chọn ngẫu nhiên một khóa phiên. Khóa này chỉ dùng cho tin nhắn này.",
+  },
+  {
+    en: "The fast lock: each letter of the message is shifted by a letter of the session key.",
+    vi: "Ổ khóa nhanh: mỗi chữ của tin nhắn được dịch theo một chữ của khóa phiên.",
+  },
+  {
+    en: "The slow lock: each letter of the session key becomes a number, locked with Bob's public key.",
+    vi: "Ổ khóa chậm: mỗi chữ của khóa phiên thành một con số, khóa bằng khóa công khai của Bob.",
+  },
+  {
+    en: "Both locked parts travel together. Bob's private key stays at home.",
+    vi: "Hai phần đã khóa được gửi đi cùng nhau. Khóa riêng của Bob vẫn ở nhà.",
+  },
+  {
+    en: "Bob's private key turns part 2 back into the session key.",
+    vi: "Khóa riêng của Bob biến phần 2 trở lại thành khóa phiên.",
+  },
+  {
+    en: "The session key turns part 1 back into the message. Only Bob could do both steps.",
+    vi: "Khóa phiên biến phần 1 trở lại thành tin nhắn. Chỉ Bob làm được cả hai bước.",
+  },
 ];
 
-const EVE_CAPTION = "Eve can copy everything that travels. Without d she cannot unlock part 2, so she cannot unlock part 1.";
-const CRACKED_CAPTION = "A toy N is easy to split. A real one is hundreds of digits long, and nobody knows a quick way.";
+const EVE_CAPTION: Bilingual = {
+  en: "Eve can copy everything that travels. Without d she cannot unlock part 2, so she cannot unlock part 1.",
+  vi: "Eve chép được mọi thứ được gửi đi. Không có d, cô không mở được phần 2, nên cũng không mở được phần 1.",
+};
+const CRACKED_CAPTION: Bilingual = {
+  en: "A toy N is easy to split. A real one is hundreds of digits long, and nobody knows a quick way.",
+  vi: "Số N đồ chơi thì dễ tách. Số N thật dài hàng trăm chữ số, và không ai biết cách tách nhanh.",
+};
 
 /** The hybrid scheme as three desks: Alice's, the envelope and Bob's. Or Eve's desk alone. */
 export function PgpBoard({ state }: { state: PgpState }) {
+  const t = useT();
   if (state.viewer === "eve") {
     return (
       <Board>
         <EveDesk state={state} />
-        <Caption>{state.cracked ? CRACKED_CAPTION : EVE_CAPTION}</Caption>
+        <Caption>{t(state.cracked ? CRACKED_CAPTION : EVE_CAPTION)}</Caption>
       </Board>
     );
   }
@@ -36,7 +65,11 @@ export function PgpBoard({ state }: { state: PgpState }) {
       <EnvelopeDesk state={state} />
       <BobDesk state={state} />
       <Caption>
-        {CAPTIONS[state.stage]} These are toy locks: real PGP used a cipher called IDEA and far bigger numbers.
+        {t(CAPTIONS[state.stage]!)}{" "}
+        {t({
+          en: "These are toy locks: real PGP used a cipher called IDEA and far bigger numbers.",
+          vi: "Đây là những ổ khóa đồ chơi: PGP thật dùng một mật mã tên là IDEA và những con số lớn hơn nhiều.",
+        })}
       </Caption>
     </Board>
   );

@@ -3,6 +3,7 @@ import { AlphabetRows } from "~/components/sim/AlphabetRows";
 import { Board } from "~/components/sim/Board";
 import { Caption, Letters } from "~/components/sim/Caption";
 import { LetterGrid, type CellMark } from "~/components/sim/LetterGrid";
+import { useLocale, useT, type Locale } from "~/i18n";
 import styles from "./PlayfairBoard.module.css";
 import { steps, type PlayfairState } from "./usePlayfair";
 
@@ -13,7 +14,21 @@ function squareCells(keyword: string): string[][] {
 }
 
 /** What each rule tells you to do, in the direction being used. */
-function ruleText(step: PlayfairStep, enciphering: boolean): string {
+function ruleText(step: PlayfairStep, enciphering: boolean, locale: Locale): string {
+  if (locale === "vi") {
+    switch (step.rule) {
+      case "row":
+        return enciphering
+          ? "nằm cùng một hàng, nên mỗi chữ đổi thành chữ bên phải nó, tới mép thì vòng lại"
+          : "nằm cùng một hàng, nên mỗi chữ đổi thành chữ bên trái nó, tới mép thì vòng lại";
+      case "column":
+        return enciphering
+          ? "nằm cùng một cột, nên mỗi chữ đổi thành chữ ngay bên dưới nó, tới mép thì vòng lại"
+          : "nằm cùng một cột, nên mỗi chữ đổi thành chữ ngay bên trên nó, tới mép thì vòng lại";
+      case "rectangle":
+        return "là hai góc của một hình chữ nhật, nên mỗi chữ đổi thành góc còn lại trên hàng của nó";
+    }
+  }
   switch (step.rule) {
     case "row":
       return `share a row, so each becomes the letter on its ${enciphering ? "right" : "left"}, going round at the edge`;
@@ -25,7 +40,12 @@ function ruleText(step: PlayfairStep, enciphering: boolean): string {
 }
 
 /** Why a pair holds a letter that was not in the message, if it does. */
-function paddingText(step: PlayfairStep): string {
+function paddingText(step: PlayfairStep, locale: Locale): string {
+  if (locale === "vi") {
+    if (step.padded === "double") return ` Chữ ${step.plain[1]} được thêm vào để tách hai chữ ${step.plain[0]} liền nhau.`;
+    if (step.padded === "end") return ` Chữ ${step.plain[1]} được thêm vào cho đủ cặp cuối cùng.`;
+    return "";
+  }
   if (step.padded === "double") return ` The ${step.plain[1]} was added to split a double ${step.plain[0]}.`;
   if (step.padded === "end") return ` The ${step.plain[1]} was added to complete the last pair.`;
   return "";
@@ -33,6 +53,8 @@ function paddingText(step: PlayfairStep): string {
 
 /** The message in pairs, and the Playfair square with the pair in view lit. */
 export function PlayfairBoard({ state, onPick }: { state: PlayfairState; onPick: (position: number) => void }) {
+  const t = useT();
+  const locale = useLocale();
   const all = steps(state);
   const step = all[state.position];
   const enciphering = state.mode === "encipher";
@@ -52,23 +74,26 @@ export function PlayfairBoard({ state, onPick }: { state: PlayfairState; onPick:
         <div className={styles.scroll}>
           <AlphabetRows
             rows={[
-              { label: "Plain", letters: all.map((each) => each.plain) },
-              { label: "Cipher", letters: all.map((each) => each.cipher), kind: "cipher" },
+              { label: t({ en: "Plain", vi: "Rõ" }), letters: all.map((each) => each.plain) },
+              { label: t({ en: "Cipher", vi: "Mã" }), letters: all.map((each) => each.cipher), kind: "cipher" },
             ]}
             highlight={state.position}
             onPick={onPick}
           />
         </div>
       )}
-      <LetterGrid label="Playfair square" cells={squareCells(state.keyword)} mark={mark} />
+      <LetterGrid label={t({ en: "Playfair square", vi: "Hình vuông Playfair" })} cells={squareCells(state.keyword)} mark={mark} />
       <Caption>
         {step ? (
           <>
-            <Letters>{enciphering ? step.plain : step.cipher}</Letters> {ruleText(step, enciphering)}:{" "}
-            <Letters>{enciphering ? step.cipher : step.plain}</Letters>.{enciphering && paddingText(step)}
+            <Letters>{enciphering ? step.plain : step.cipher}</Letters> {ruleText(step, enciphering, locale)}:{" "}
+            <Letters>{enciphering ? step.cipher : step.plain}</Letters>.{enciphering && paddingText(step, locale)}
           </>
         ) : (
-          "Type a message below to see it pass through the square."
+          t({
+            en: "Type a message below to see it pass through the square.",
+            vi: "Gõ một tin nhắn ở bên dưới để xem nó đi qua hình vuông.",
+          })
         )}
       </Caption>
     </Board>

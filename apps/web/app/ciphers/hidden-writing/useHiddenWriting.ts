@@ -10,6 +10,7 @@ import {
   type Method,
   type Page,
 } from "@codebook/cipher-engine/hidden-writing";
+import type { Locale } from "~/i18n";
 
 /** Everything the hidden writing page remembers. */
 export interface HiddenWritingState {
@@ -70,11 +71,17 @@ function reduce(state: HiddenWritingState, action: HiddenWritingAction): HiddenW
 }
 
 /** What the guard says after his search, or nothing if he has not looked yet. */
-export function report(state: HiddenWritingState): string | undefined {
+export function report(state: HiddenWritingState, locale: Locale): string | undefined {
   if (state.found === undefined) return undefined;
-  const thing = state.page.method === "wax" ? "tablet" : "sheet";
+  const wax = state.page.method === "wax";
+  if (locale === "vi") {
+    if (state.found === "") return wax ? "“Một tấm bảng trống trơn. Đi tiếp đi.”" : "“Một tờ giấy trắng. Đi tiếp đi.”";
+    const how = wax ? "Ta đã cạo lớp sáp" : "Ta đã hơ nó trên ngọn lửa";
+    return state.guard === "thorough" ? `“${how}. Bắt kẻ đưa thư lại!”` : "“Ta đọc được cái này. Bắt kẻ đưa thư lại!”";
+  }
+  const thing = wax ? "tablet" : "sheet";
   if (state.found === "") return `"A blank ${thing}. On your way."`;
-  const how = state.page.method === "wax" ? "I scraped off the wax" : "I held it over a flame";
+  const how = wax ? "I scraped off the wax" : "I held it over a flame";
   return state.guard === "thorough" ? `"${how}. Seize the messenger!"` : '"I can read this. Seize the messenger!"';
 }
 

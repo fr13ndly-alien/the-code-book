@@ -9,4 +9,11 @@ export const meta: CipherMeta = {
   hook: "A typewriter that changes its cipher after every letter, and the people who broke it anyway.",
   firstStep: "Press a key. Watch the lamps.",
   source: "The Code Book, chapter 3: The Mechanization of Secrecy",
+  vi: {
+    title: "Máy Enigma",
+    era: "1918–1945",
+    hook: "Một chiếc máy đánh chữ đổi mật mã sau mỗi chữ, và những người vẫn phá được nó.",
+    firstStep: "Nhấn một phím. Xem các bóng đèn.",
+    source: "The Code Book, chương 3: Cơ giới hóa việc giữ bí mật",
+  },
 };

@@ -1,5 +1,7 @@
-import { SIGNS, type SignId } from "@codebook/cipher-engine/hieroglyphs";
+import type { SignId } from "@codebook/cipher-engine/hieroglyphs";
+import { useLocale } from "~/i18n";
 import styles from "./Glyph.module.css";
+import { signName } from "./vi";
 
 /**
  * Simple outlines of the signs, drawn on a 40 by 40 grid. They are sketches to
@@ -28,8 +30,9 @@ const OUTLINES: Record<SignId, string> = {
 
 /** One hieroglyph as a small line drawing, named for screen readers. */
 export function Glyph({ sign }: { sign: SignId }) {
+  const locale = useLocale();
   return (
-    <svg className={styles.glyph} viewBox="0 0 40 40" role="img" aria-label={SIGNS[sign].name}>
+    <svg className={styles.glyph} viewBox="0 0 40 40" role="img" aria-label={signName(sign, locale)}>
       <path d={OUTLINES[sign]} />
     </svg>
   );

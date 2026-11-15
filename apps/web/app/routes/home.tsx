@@ -1,45 +1,54 @@
-import { Link } from "react-router";
-import { MENU } from "~/ciphers";
+import { Link, type MetaArgs } from "react-router";
+import { MENU, localize, localizeChapter } from "~/ciphers";
+import { LanguageToggle } from "~/components/LanguageToggle";
+import { UI, localeOf, localePath, useLocale } from "~/i18n";
 import styles from "./home.module.css";
 
-export function meta() {
-  return [
-    { title: "The Code Book, interactive" },
-    { name: "description", content: "Try every cipher from Simon Singh's The Code Book, chapter by chapter." },
-  ];
+export function meta({ location }: MetaArgs) {
+  const locale = localeOf(location.pathname);
+  return [{ title: UI.siteName[locale] }, { name: "description", content: UI.siteDescription[locale] }];
 }
 
 /** The menu: the chapters of the book, each with its ciphers. */
 export default function Home() {
+  const locale = useLocale();
+  const menu = MENU.map(({ chapter, ciphers }) => ({
+    chapter: localizeChapter(chapter, locale),
+    ciphers: ciphers.map((cipher) => localize(cipher, locale)),
+  }));
+
   return (
     <main className={styles.page}>
-      <header>
-        <h1 className={styles.title}>The Code Book, interactive</h1>
-        <p className={styles.intro}>
-          Every cipher in Simon Singh's book, chapter by chapter. Pick one, read its story and try it yourself.
-        </p>
+      <header className={styles.header}>
+        <div>
+          <h1 className={styles.title}>{UI.siteName[locale]}</h1>
+          <p className={styles.intro}>{UI.intro[locale]}</p>
+        </div>
+        <LanguageToggle />
       </header>
 
-      <nav className={styles.contents} aria-label="Chapters">
-        {MENU.map(({ chapter }) => (
+      <nav className={styles.contents} aria-label={UI.chapters[locale]}>
+        {menu.map(({ chapter }) => (
           <a key={chapter.number} href={`#chapter-${chapter.number}`}>
             {chapter.number}. {chapter.title}
           </a>
         ))}
       </nav>
 
-      {MENU.map(({ chapter, ciphers }) => (
+      {menu.map(({ chapter, ciphers }) => (
         <section key={chapter.number} id={`chapter-${chapter.number}`} className={styles.chapter}>
-          <p className={styles.number}>{chapter.number === 7 ? "After the last chapter" : `Chapter ${chapter.number}`}</p>
+          <p className={styles.number}>
+            {chapter.number === 7 ? UI.afterLastChapter[locale] : `${UI.chapter[locale]} ${chapter.number}`}
+          </p>
           <h2 className={styles.chapterTitle}>{chapter.title}</h2>
           <p className={styles.summary}>{chapter.summary}</p>
           <ol className={styles.ciphers}>
             {ciphers.map((cipher) => (
               <li key={cipher.slug}>
-                <Link to={`/ciphers/${cipher.slug}`} className={styles.card}>
+                <Link to={localePath(`/ciphers/${cipher.slug}`, locale)} className={styles.card}>
                   <span className={styles.era}>
                     {cipher.era}
-                    {cipher.fullEditionOnly && <span className={styles.badge}>Full edition</span>}
+                    {cipher.fullEditionOnly && <span className={styles.badge}>{UI.fullEdition[locale]}</span>}
                   </span>
                   <span className={styles.name}>{cipher.title}</span>
                   <span className={styles.hook}>{cipher.hook}</span>
@@ -50,9 +59,7 @@ export default function Home() {
         </section>
       ))}
 
-      <p className={styles.note}>
-        Pages marked “Full edition” cover ciphers from the full edition of the book that the abridged edition leaves out.
-      </p>
+      <p className={styles.note}>{UI.fullEditionNote[locale]}</p>
     </main>
   );
 }

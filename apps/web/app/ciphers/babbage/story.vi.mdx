@@ -1,0 +1,150 @@
+{/*
+  Vietnamese translation of story.mdx. Follows docs/i18n/vi-glossary.md.
+  Facts come from The Code Book, chapter 2. The wording is ours.
+*/}
+
+<Standfirst>
+  Một nha sĩ thách Charles Babbage phá mật mã không thể phá. Ông đã phá được, và chẳng nói với ai.
+</Standfirst>
+
+<Label>Mở đầu</Label>
+
+## Lời thách của ông nha sĩ
+
+Năm 1854, một nha sĩ ở Bristol tên là John Hall Brock Thwaites viết thư cho một tạp chí, kể về một mật mã mới do ông phát minh. Ông hy vọng được cấp bằng sáng chế cho nó.
+
+Charles Babbage đọc bức thư và cũng viết thư tới tạp chí. Ông nói mật mã ấy chẳng mới chút nào. Nó rất cũ, và bạn có thể tìm thấy nó trong hầu hết các cuốn sách. Thwaites đã phát minh lại [mật mã Vigenère](/ciphers/vigenere), muộn gần ba trăm năm.
+
+Thwaites không xin lỗi. Thay vào đó, ông thách Babbage phá nó. Đó là một lời thách táo bạo. Người ta gọi mật mã này là không thể phá, và phần lớn các nhà giải mã đã bỏ cuộc trước nó.
+
+Babbage không cưỡng lại được. Nhưng biết bắt đầu từ đâu với một mật mã che giấu mỗi chữ được dùng bao nhiêu lần?
+
+<Label>Thử xem</Label>
+
+## Đi tìm tiếng vọng
+
+Trình mô phỏng cho thấy một bức thư dài 499 chữ, được mã hóa bằng một từ khóa mà bạn không biết. Hãy đoán trước: liệu chín chữ liền nhau có thể xuất hiện hai lần chỉ do tình cờ không?
+
+<Try action="intercept" button="Mở bức thư bị chặn">
+  Bảng liệt kê những chuỗi chữ xuất hiện hai lần. Chạm vào `XHQUBTHQJ`, rồi `NSUFASW`, và tìm cả hai bản của mỗi chuỗi trong bản mật mã. Vừa làm vừa đọc cột “Khoảng cách”.
+</Try>
+
+<Check question="Một chuỗi lặp như XHQUBTHQJ có phải là tình cờ không?">
+  Gần như chắc chắn là không. Cùng những từ của bản rõ đã được mã hóa bởi cùng một đoạn của từ khóa, hai lần. Điều đó chỉ xảy ra khi ở giữa hai lần ấy, từ khóa đã quay vòng tròn một số nguyên lần.
+</Check>
+
+<Label>Cách hoạt động</Label>
+
+## Từ tiếng vọng tới từ khóa
+
+### Vì sao có chuỗi lặp
+
+Trong mật mã Vigenère, từ khóa được viết lặp đi lặp lại phía trên tin nhắn. Một từ khóa năm chữ chỉ có thể xếp thẳng hàng với một từ theo năm cách. Vậy một từ hay gặp chỉ có thể được mã hóa theo năm cách.
+
+Trong một bức thư dài, sớm muộn gì cùng một từ cũng sẽ gặp lại cùng một đoạn của từ khóa. Khi đó những chữ mã giống hệt nhau lại hiện ra. Babbage thấy rằng những tiếng vọng này chính là lối vào của ông.
+
+**Khoảng cách** là số chữ tính từ đầu bản thứ nhất tới đầu bản tiếp theo. Từ khóa phải vừa khít trong khoảng cách đó, không thừa chữ nào.
+
+<Try>
+  Lần lượt chạm vào từng hàng của bảng. Dòng chú thích dưới bản mật mã cho bạn biết khoảng cách. Những chuỗi lặp ngắn chỉ ba chữ bị bỏ ra ngoài, vì chúng thường là tình cờ.
+</Try>
+
+### Khoảng cách cho biết độ dài
+
+Lấy một khoảng cách là 40. Một từ khóa dài 2, 4, 5, 8, 10 hay 20 chữ đều vừa khít trong đó. Những số này là các **ước** của 40. Chỉ một chuỗi lặp thì không thể cho bạn biết số nào đúng.
+
+Nhưng từ khóa phải vừa khít *mọi* khoảng cách. Bảng đánh dấu ✓ dưới mỗi độ dài khớp với một hàng. Bạn đang tìm một cột được đánh dấu từ trên xuống dưới.
+
+<Try>
+  Nhấn ▲ cạnh “Độ dài khóa” và xem dòng cuối của bảng. Dừng lại ở độ dài giải thích được cả tám chuỗi lặp.
+</Try>
+
+<Check question="Từ khóa dài bao nhiêu?">
+  Năm chữ. Mọi khoảng cách trong bảng đều chia hết cho 5: 65, 95, 105, 145, 195, 40, 255 và 305. Không có độ dài nào khác khớp với quá ba trong số đó.
+</Check>
+
+### Năm mật mã dễ
+
+Giờ tới phần khéo léo. Nếu từ khóa có năm chữ, thì các chữ thứ 1, 6, 11, 16, và cứ thế, đều được mã hóa bằng cùng một chữ khóa. Chúng đều dùng một hàng của hình vuông Vigenère. Một hàng chỉ là một [mật mã dịch chuyển Caesar](/ciphers/caesar).
+
+Vậy mật mã không thể phá thật ra là năm mật mã Caesar thay phiên nhau. Mà mật mã Caesar thì không giấu được mỗi chữ được dùng bao nhiêu lần. Hãy rút ra cứ mỗi chữ thứ năm, đếm chúng, và hình dáng của tiếng Anh hiện ra ở đó. Nó chỉ bị trượt đi một đoạn thôi.
+
+<Try action="letters" button="Tới bước 2">
+  Các cột đặc đếm cứ mỗi chữ thứ năm. Các đường viền cho thấy tiếng Anh thông thường. Nhấn ▼ cạnh “Độ dịch” tám lần, tới `S`. Cột cao rơi đúng vào `E`, còn các chữ hiếm `J`, `Q`, `X` và `Z` trống trơn.
+</Try>
+
+### Từng chữ một
+
+Chữ khóa đầu tiên là `S`. Hãy làm tương tự với bốn chữ còn lại. Tiếng Anh có một cột `E` cao, ba cột mạnh ở `R`, `S` và `T`, rồi một đoạn trũng dài từ `U` tới `Z`. Trượt từng biểu đồ cho tới khi những nét ấy khớp nhau.
+
+<Try>
+  Nhấn ▲ cạnh “Chữ khóa” để chuyển sang chữ thứ 2, rồi trượt độ dịch của nó cho tới khi các cột khớp. Hãy xem ô “Bản rõ tới giờ” trong phần điều khiển. Nếu bí, nhấn “Tìm độ dịch này giúp tôi”.
+</Try>
+
+<Label>Câu chuyện</Label>
+
+## Người muốn hơi nước làm tính
+
+Charles Babbage sinh năm 1791, là con trai một chủ ngân hàng giàu có ở London. Ông nổi tiếng nhất vì đã thiết kế những cỗ máy tính toán, tổ tiên của máy tính ngày nay. Ý tưởng đến với ông năm 1821, khi ông thấy hết trang này tới trang khác đầy lỗi trong những bảng số đã in. Ông ước gì các phép tính ấy được “chạy bằng hơi nước”.
+
+Ông mê mật mã từ hồi đi học. Những cậu lớn hơn tự nghĩ ra mật mã, và ông tìm ra khóa của chúng. Đôi khi họ đánh ông vì chuyện đó.
+
+Cách ông tấn công mật mã Vigenère chẳng cần máy móc nào, chỉ cần kiên nhẫn và đếm. Có lẽ ông làm xong năm 1854, ít lâu sau lời thách.
+
+<DigDeeper title="Ví dụ trong chính cuốn sách">
+  Cuốn sách phá một bản mật mã khác theo cùng các bước. Bản rõ của nó lấy từ một bài thơ của Alfred Tennyson, và từ khóa là tên của vợ Tennyson.
+
+  Babbage từng viết thư cho nhà thơ về chính bài thơ ấy. Bài thơ nói rằng mỗi khoảnh khắc có một người chết và một người ra đời. Babbage chỉ ra rằng nếu thế thì dân số thế giới sẽ không bao giờ tăng.
+
+  <Try action="book" button="Mở bản mật mã của cuốn sách" />
+</DigDeeper>
+
+<Label>Bị phá như thế nào</Label>
+
+## Một bí mật suốt chín năm
+
+Điểm yếu là từ khóa lặp lại. Nó biến một mật mã mạnh thành vài mật mã yếu, và các chuỗi lặp cho bạn biết là bao nhiêu cái.
+
+Đoán sai độ dài sẽ cho thấy vì sao bước đầu tiên quan trọng.
+
+<Try action="intercept" button="Bắt đầu lại">
+  Đặt “Độ dài khóa” là 4. Chọn “2 Các chữ khóa” và trượt độ dịch. Các cột vẫn phẳng và lổn nhổn, và chẳng độ dịch nào trông giống tiếng Anh.
+</Try>
+
+Babbage không bao giờ công bố cách làm của mình. Không ai biết ông đã làm được cho tới khi các học giả đọc kỹ những ghi chép của ông vào thế kỷ 20.
+
+Vì sao ông im lặng? Ông vốn hay bỏ dở công việc. Nhưng còn một lý do khác có thể đúng. Chiến tranh Krym vừa nổ ra, và nước Anh đang đánh nhau với nước Nga. Có thể quân đội Anh đã yêu cầu ông giữ bí mật.
+
+Trong khi đó, một sĩ quan quân đội Phổ đã về hưu, Friedrich Wilhelm Kasiski, tự mình tìm ra đúng cách làm ấy. Ông công bố nó năm 1863. Từ đó tới nay, việc săn tìm chuỗi lặp được gọi là **phép thử Kasiski**, và Kasiski được ghi công.
+
+<Label>Thử thách</Label>
+
+## Mục nhắn tin trên báo
+
+<Challenge answer="HEART">
+  Những cặp tình nhân thời Victoria gửi cho nhau những lời nhắn bí mật qua mục rao vặt nhỏ trên báo. Babbage rất thích phá chúng. Lời nhắn này là của chúng tôi, không phải một lời nhắn thật, và nó dùng một từ khóa Vigenère.
+
+  Hãy tìm độ dài khóa, rồi tới từng chữ khóa. Từ khóa là gì?
+
+  <Try action="agony" button="Mở lời nhắn trên báo" />
+</Challenge>
+
+<Check question="Vì sao Babbage phải tìm độ dài khóa trước mọi thứ khác?">
+  Đếm chữ chỉ hiệu quả với những chữ dùng chung một bảng chữ mã. Khi chưa biết độ dài, bạn không thể biết những chữ nào thuộc về cùng một nhóm.
+</Check>
+
+<Label>Chuyện gì đến tiếp theo</Label>
+
+## Bí mật trên mặt báo
+
+Bài học ở đây là khóa không được lặp lại. Một từ khóa ngắn dùng đi dùng lại sẽ để lại tiếng vọng, và tiếng vọng thì đo được. Những người lập mã về sau sẽ thử dùng khóa dài bằng chính bức thư.
+
+Tới lúc này, mật mã không còn chỉ dành cho vua chúa và tướng lĩnh. Máy điện báo đã khiến người thường nghĩ tới chuyện ai có thể đọc được thư của mình. Có người giấu lời nhắn trên báo, bằng mật mã hoặc bằng một thứ còn đơn giản hơn: những lỗ kim tí hon. Hãy xem [thư lỗ kim](/ciphers/pinprick).
+
+<Label>Đọc thêm</Label>
+
+## Tìm hiểu thêm
+
+- Simon Singh, *The Code Book*, chương 2.
+- Friedrich Kasiski, *Die Geheimschriften und die Dechiffrirkunst* (Chữ viết bí mật và nghệ thuật giải mã, 1863). Bài viết đầu tiên công bố cách làm này.
+- Charles Babbage, *Passages from the Life of a Philosopher* (Những đoạn đời của một triết gia, 1864). Cuốn tự truyện của ông, trong đó ông gọi việc giải mã là một nghệ thuật cuốn hút.

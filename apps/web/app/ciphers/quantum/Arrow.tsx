@@ -1,11 +1,24 @@
+import { useT, type Bilingual } from "~/i18n";
 import styles from "./Arrow.module.css";
 
-const NAMES: Record<number, string> = { 0: "flat", 90: "upright", 45: "leaning right", 135: "leaning left" };
+const NAMES: Record<number, Bilingual> = {
+  0: { en: "flat", vi: "nằm ngang" },
+  90: { en: "upright", vi: "dựng đứng" },
+  45: { en: "leaning right", vi: "nghiêng phải" },
+  135: { en: "leaning left", vi: "nghiêng trái" },
+};
 
 /** A photon's polarisation, drawn as a two-headed arrow at the given angle in degrees. */
 export function Arrow({ angle }: { angle: number }) {
+  const t = useT();
+  const named = NAMES[angle];
   return (
-    <svg className={styles.arrow} viewBox="0 0 24 24" role="img" aria-label={NAMES[angle] ?? `${angle} degrees`}>
+    <svg
+      className={styles.arrow}
+      viewBox="0 0 24 24"
+      role="img"
+      aria-label={named ? t(named) : t({ en: `${angle} degrees`, vi: `${angle} độ` })}
+    >
       {/* SVG angles turn clockwise, polarisation angles anticlockwise: hence the minus. */}
       <path
         transform={`rotate(${-angle} 12 12)`}

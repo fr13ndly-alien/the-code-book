@@ -17,7 +17,12 @@ export interface CipherMeta {
   source: string;
   /** True for ciphers found only in the full edition of the book, not the abridged one. */
   fullEditionOnly?: boolean;
+  /** The same text in Vietnamese, for the /vi/ pages. */
+  vi: CipherMetaText;
 }
+
+/** The parts of a cipher's meta that a reader sees, and so are translated. */
+export type CipherMetaText = Pick<CipherMeta, "title" | "era" | "hook" | "firstStep" | "source">;
 
 /** A chapter of the book: one section of the menu. */
 export interface Chapter {
@@ -26,4 +31,6 @@ export interface Chapter {
   title: string;
   /** What the chapter covers, in our words. */
   summary: string;
+  /** The title (as in the Vietnamese edition of the book) and summary in Vietnamese. */
+  vi: { title: string; summary: string };
 }
