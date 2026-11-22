@@ -215,7 +215,7 @@ All values come from `app/app.css`.
 | Space | `--space-1` to `--space-8` | Multiples of 4px |
 | Touch | `--tap` (44px) | Smallest size of anything tappable |
 
-Fonts are the device's own. Do not load web fonts: the site must work offline.
+UI and cipher fonts are the device's own. The story font, Literata, ships with the site (`@fontsource-variable/literata`) because device serifs draw Vietnamese stacked marks badly. Never load fonts from a CDN: the site must work offline.
 
 ### Interaction
 

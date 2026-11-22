@@ -22,7 +22,8 @@
 
   /* Type */
   --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-story: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  /* Literata ships with the site: full Vietnamese, including stacked marks. */
+  --font-story: "Literata Variable", "Noto Serif", Georgia, serif;
   --font-cipher: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --text-sm: 0.875rem;
   --text-md: 1rem;
