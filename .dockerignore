@@ -1,0 +1,10 @@
+**/node_modules
+**/build
+**/.react-router
+.git
+resource
+research_notes
+reports
+docs
+*.local
+.DS_Store
