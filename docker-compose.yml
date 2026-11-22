@@ -1,0 +1,17 @@
+name: the-code-book
+
+# Serves the built site on the shared proxy-net network, where the Cloudflare
+# tunnel in ~/Projects/edge can reach it at http://the-code-book:80.
+services:
+  web:
+    build: .
+    container_name: the-code-book
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8090:80"
+    networks:
+      - proxy-net
+
+networks:
+  proxy-net:
+    external: true

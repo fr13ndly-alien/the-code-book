@@ -23,6 +23,10 @@ Then open http://localhost:5173.
 | `npm run build` | Builds the static site into `apps/web/build/client` |
 | `npm run preview` | Serves the built site |
 
+## Host it
+
+`docker compose up -d --build` builds the site and serves it with nginx as the `the-code-book` container on the shared `proxy-net` network (and on http://127.0.0.1:8090 locally). The Cloudflare tunnel in `~/Projects/edge` routes a public hostname to `http://the-code-book:80`. Run the same command again to publish changes.
+
 ## Where things are
 
 - `packages/cipher-engine/`: the cipher logic, in pure TypeScript.
