@@ -11,6 +11,8 @@ import {
 } from "react-router";
 import type { Route } from "./+types/root";
 import { LOCALE_STORAGE_KEY, UI, localeOf, localePath } from "./i18n";
+import "@fontsource-variable/literata";
+import "@fontsource-variable/literata/wght-italic.css";
 import "./app.css";
 
 export function Layout({ children }: { children: React.ReactNode }) {
